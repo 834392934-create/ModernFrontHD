@@ -1,0 +1,433 @@
+{
+  "paintAudit": [
+    {
+      "node": 64,
+      "name": "Hull chassis",
+      "sourceMaterial": 7,
+      "paintMaterial": 16
+    },
+    {
+      "node": 27,
+      "name": "Driver Hatch",
+      "sourceMaterial": 1,
+      "paintMaterial": 17
+    },
+    {
+      "node": 33,
+      "name": "Front Hull part",
+      "sourceMaterial": 1,
+      "paintMaterial": 17
+    },
+    {
+      "node": 34,
+      "name": "Front hull part.001",
+      "sourceMaterial": 1,
+      "paintMaterial": 17
+    },
+    {
+      "node": 41,
+      "name": "Hull part.001",
+      "sourceMaterial": 1,
+      "paintMaterial": 17
+    },
+    {
+      "node": 46,
+      "name": "LFP",
+      "sourceMaterial": 2,
+      "paintMaterial": 18
+    },
+    {
+      "node": 47,
+      "name": "LFP armor addon",
+      "sourceMaterial": 2,
+      "paintMaterial": 18
+    },
+    {
+      "node": 48,
+      "name": "LFP armor addon.001",
+      "sourceMaterial": 2,
+      "paintMaterial": 18
+    },
+    {
+      "node": 115,
+      "name": "Turret",
+      "sourceMaterial": 14,
+      "paintMaterial": 19
+    },
+    {
+      "node": 75,
+      "name": "Cube.003",
+      "sourceMaterial": 12,
+      "paintMaterial": 20
+    },
+    {
+      "node": 76,
+      "name": "Cube.005",
+      "sourceMaterial": 12,
+      "paintMaterial": 20
+    },
+    {
+      "node": 77,
+      "name": "Cube.007",
+      "sourceMaterial": 12,
+      "paintMaterial": 20
+    },
+    {
+      "node": 78,
+      "name": "Cube.008",
+      "sourceMaterial": 12,
+      "paintMaterial": 20
+    },
+    {
+      "node": 79,
+      "name": "Cube.009",
+      "sourceMaterial": 12,
+      "paintMaterial": 20
+    },
+    {
+      "node": 90,
+      "name": "Front turret ERA",
+      "sourceMaterial": 12,
+      "paintMaterial": 20
+    },
+    {
+      "node": 91,
+      "name": "Front turret ERA.001",
+      "sourceMaterial": 12,
+      "paintMaterial": 20
+    },
+    {
+      "node": 92,
+      "name": "Gun mantlet",
+      "sourceMaterial": 13,
+      "paintMaterial": 21
+    },
+    {
+      "node": 110,
+      "name": "Turret ERA",
+      "sourceMaterial": 12,
+      "paintMaterial": 20
+    },
+    {
+      "node": 111,
+      "name": "Turret ERA.001",
+      "sourceMaterial": 12,
+      "paintMaterial": 20
+    },
+    {
+      "node": 112,
+      "name": "Turret roof  era",
+      "sourceMaterial": 12,
+      "paintMaterial": 20
+    },
+    {
+      "node": 114,
+      "name": "Turret.001",
+      "sourceMaterial": 14,
+      "paintMaterial": 19
+    }
+  ],
+  "sourceSha256": "3f36c5eabd16dd0f8c0a67e2c4d26198c7d41198b99b0f681a4e938cff8ac9b0",
+  "outputSha256": "58a8ed5339168757d5ead282639fc74ac4f880cf0b1edae77170a5b943a4ecce",
+  "triangles": 122516,
+  "meshes": 23,
+  "materials": 22,
+  "images": 42,
+  "bytes": 14916000,
+  "pivots": {
+    "hull": [
+      0,
+      0,
+      0
+    ],
+    "turret": [
+      0.13690605909148107,
+      1.6983813163714752,
+      -0.00202689363339275
+    ],
+    "gun": [
+      1.2985794772503625,
+      1.6511022235469335,
+      -0.0020268936333926076
+    ]
+  },
+  "groups": [
+    {
+      "group": "hull",
+      "material": 0,
+      "sourceNodes": [
+        0,
+        1,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        21,
+        22,
+        23,
+        24,
+        30,
+        39,
+        50,
+        61
+      ],
+      "triangles": 9152
+    },
+    {
+      "group": "hull",
+      "material": 16,
+      "sourceNodes": [
+        64
+      ],
+      "triangles": 472
+    },
+    {
+      "group": "hull",
+      "material": 1,
+      "sourceNodes": [
+        2,
+        3,
+        4,
+        5,
+        25,
+        26,
+        28,
+        29,
+        36,
+        37
+      ],
+      "triangles": 6734
+    },
+    {
+      "group": "hull",
+      "material": 2,
+      "sourceNodes": [
+        20,
+        49
+      ],
+      "triangles": 1996
+    },
+    {
+      "group": "hull",
+      "material": 17,
+      "sourceNodes": [
+        27,
+        33,
+        34,
+        41
+      ],
+      "triangles": 1822
+    },
+    {
+      "group": "hull",
+      "material": 0,
+      "sourceNodes": [
+        31,
+        32,
+        40
+      ],
+      "triangles": 3036
+    },
+    {
+      "group": "hull",
+      "material": 3,
+      "sourceNodes": [
+        35,
+        51,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58
+      ],
+      "triangles": 14111
+    },
+    {
+      "group": "hull",
+      "material": 4,
+      "sourceNodes": [
+        38,
+        44,
+        45,
+        59
+      ],
+      "triangles": 5574
+    },
+    {
+      "group": "hull",
+      "material": 5,
+      "sourceNodes": [
+        42,
+        43
+      ],
+      "triangles": 11806
+    },
+    {
+      "group": "hull",
+      "material": 18,
+      "sourceNodes": [
+        46
+      ],
+      "triangles": 116
+    },
+    {
+      "group": "hull",
+      "material": 18,
+      "sourceNodes": [
+        47,
+        48
+      ],
+      "triangles": 464
+    },
+    {
+      "group": "hull",
+      "material": 15,
+      "sourceNodes": [
+        52
+      ],
+      "triangles": 90
+    },
+    {
+      "group": "hull",
+      "material": 6,
+      "sourceNodes": [
+        60,
+        62
+      ],
+      "triangles": 29280
+    },
+    {
+      "group": "hull",
+      "material": 7,
+      "sourceNodes": [
+        63
+      ],
+      "triangles": 92
+    },
+    {
+      "group": "turret",
+      "material": 19,
+      "sourceNodes": [
+        115,
+        114
+      ],
+      "triangles": 1400
+    },
+    {
+      "group": "turret",
+      "material": 8,
+      "sourceNodes": [
+        65,
+        67,
+        74,
+        96,
+        97,
+        105,
+        106,
+        107,
+        108,
+        109
+      ],
+      "triangles": 6962
+    },
+    {
+      "group": "turret",
+      "material": 9,
+      "sourceNodes": [
+        66,
+        81
+      ],
+      "triangles": 4594
+    },
+    {
+      "group": "turret",
+      "material": 10,
+      "sourceNodes": [
+        68,
+        70,
+        71,
+        95,
+        100,
+        101,
+        113
+      ],
+      "triangles": 5448
+    },
+    {
+      "group": "turret",
+      "material": 11,
+      "sourceNodes": [
+        69,
+        72,
+        73,
+        80,
+        84,
+        82,
+        85,
+        86,
+        87,
+        88,
+        89,
+        93,
+        94,
+        102,
+        103,
+        104
+      ],
+      "triangles": 6267
+    },
+    {
+      "group": "turret",
+      "material": 20,
+      "sourceNodes": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        90,
+        91,
+        110,
+        111,
+        112
+      ],
+      "triangles": 7890
+    },
+    {
+      "group": "turret",
+      "material": 11,
+      "sourceNodes": [
+        83
+      ],
+      "triangles": 96
+    },
+    {
+      "group": "turret",
+      "material": 21,
+      "sourceNodes": [
+        92
+      ],
+      "triangles": 1152
+    },
+    {
+      "group": "gun",
+      "material": 8,
+      "sourceNodes": [
+        99,
+        98
+      ],
+      "triangles": 3962
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "reports": [
+    {
+      "key": "ifv_usa",
+      "triangles": 13384,
+      "parts": 650,
+      "profile": "M2A3 Bradley"
+    },
+    {
+      "key": "arty_usa",
+      "triangles": 11950,
+      "parts": 613,
+      "profile": "M109A7 Paladin"
+    },
+    {
+      "key": "rocket_usa",
+      "triangles": 6780,
+      "parts": 294,
+      "profile": "M142 HIMARS"
+    },
+    {
+      "key": "aa_usa",
+      "triangles": 8568,
+      "parts": 377,
+      "profile": "Stryker M-SHORAD"
+    },
+    {
+      "key": "ifv_rus",
+      "triangles": 12332,
+      "parts": 588,
+      "profile": "BMP-3"
+    },
+    {
+      "key": "arty_rus",
+      "triangles": 11902,
+      "parts": 609,
+      "profile": "2S19 Msta-S"
+    },
+    {
+      "key": "rocket_rus",
+      "triangles": 8964,
+      "parts": 374,
+      "profile": "BM-30 Smerch"
+    },
+    {
+      "key": "aa_rus",
+      "triangles": 11848,
+      "parts": 505,
+      "profile": "Pantsir-S1"
+    },
+    {
+      "key": "ifv_chn",
+      "triangles": 14264,
+      "parts": 687,
+      "profile": "ZBD-04A"
+    },
+    {
+      "key": "arty_chn",
+      "triangles": 11950,
+      "parts": 613,
+      "profile": "PLZ-05"
+    },
+    {
+      "key": "rocket_chn",
+      "triangles": 9108,
+      "parts": 386,
+      "profile": "PHL-191"
+    },
+    {
+      "key": "aa_chn",
+      "triangles": 10458,
+      "parts": 574,
+      "profile": "HQ-17"
+    },
+    {
+      "key": "ifv_ind",
+      "triangles": 12088,
+      "parts": 585,
+      "profile": "BMP-2 Sarath"
+    },
+    {
+      "key": "arty_ind",
+      "triangles": 12166,
+      "parts": 617,
+      "profile": "K9 Vajra-T"
+    },
+    {
+      "key": "rocket_ind",
+      "triangles": 9108,
+      "parts": 386,
+      "profile": "Pinaka"
+    },
+    {
+      "key": "aa_ind",
+      "triangles": 8120,
+      "parts": 398,
+      "profile": "Akash"
+    },
+    {
+      "key": "ifv_kor",
+      "triangles": 13324,
+      "parts": 654,
+      "profile": "K21"
+    },
+    {
+      "key": "arty_kor",
+      "triangles": 12166,
+      "parts": 617,
+      "profile": "K9 Thunder"
+    },
+    {
+      "key": "rocket_kor",
+      "triangles": 9108,
+      "parts": 386,
+      "profile": "K239 Chunmoo"
+    },
+    {
+      "key": "aa_kor",
+      "triangles": 11308,
+      "parts": 579,
+      "profile": "K30 Biho"
+    }
+  ],
+  "errors": []
+}

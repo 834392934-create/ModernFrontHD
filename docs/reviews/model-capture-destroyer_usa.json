@@ -1,0 +1,29 @@
+{
+  "recordedAt": "2026-10-15T19:57:56.763Z",
+  "models": [
+    {
+      "key": "destroyer_usa",
+      "scale": 5.4,
+      "parts": 6,
+      "triangles": 49381,
+      "profile": "Arleigh Burke DDG-51 / Flight I — licensed textured exterior",
+      "evidenceStatus": "photo-referenced",
+      "reviewStatus": "licensed-art-multi-view-reviewed",
+      "referenceUrl": "https://www.usff.navy.mil/Press-Room/News-Stories/Article/3112957/uss-arleigh-burke-responds-to-man-overboard/",
+      "assetSource": "https://sketchfab.com/3d-models/11-low-poly-us-navy-ddg-51-uss-arleigh-burke-17be09c31c6047e4a5969b68c29eba03",
+      "license": "CC-BY-4.0",
+      "author": "Yi Tsung Lee / WTigerTw",
+      "assetPath": "assets/models/burke.glb",
+      "waterlineY": 0,
+      "limitations": "Exterior game art; not an engineering reconstruction. Source includes underwater hull.",
+      "kind": "destroyer",
+      "dimensions": [
+        24,
+        8.341902172044326,
+        3.8606098026224815
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

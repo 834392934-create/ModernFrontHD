@@ -1,0 +1,804 @@
+{
+  "source": {
+    "author": "Andrew Swihart (https://sketchfab.com/andrewswihart)",
+    "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+    "source": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+    "title": "AH-64 Helicopter"
+  },
+  "sourceTriangles": 220715,
+  "outputTriangles": 220711,
+  "meshes": 12,
+  "materials": 10,
+  "bytes": 12346344,
+  "sha256": "b7a0b2a2f917afc83be6736bda1a3bfddafdd17a444d01c3d762cb108849b2fd",
+  "pivots": {
+    "static": [
+      0,
+      0,
+      0
+    ],
+    "rotor": [
+      1.2891224994675354,
+      2.6945166221602657,
+      -0.001822227466581186
+    ],
+    "tailRotor": [
+      -4.427092758799693,
+      2.2634267556923624,
+      -0.47571768116919266
+    ]
+  },
+  "notes": "No decimation. Removed four triangles from two zero-alpha studio planes. Baked transforms, leveled source 10-degree nose-down pose, corrected reflected winding, preserved original PBR factors except four main blades assigned photo-referenced dark nonmetallic coating (nodes144/147/150/153), root linkages and hub untouched; 4 main blades and tail rotor are independently pivoted. Main mast/radar remain static.",
+  "audit": [
+    {
+      "sourceNode": 7,
+      "action": "drop-zero-alpha-studio-plane"
+    },
+    {
+      "sourceNode": 9,
+      "animation": "static",
+      "material": 0,
+      "triangles": 462
+    },
+    {
+      "sourceNode": 10,
+      "animation": "static",
+      "material": 1,
+      "triangles": 22
+    },
+    {
+      "sourceNode": 12,
+      "animation": "static",
+      "material": 0,
+      "triangles": 462
+    },
+    {
+      "sourceNode": 13,
+      "animation": "static",
+      "material": 1,
+      "triangles": 22
+    },
+    {
+      "sourceNode": 15,
+      "animation": "static",
+      "material": 0,
+      "triangles": 306
+    },
+    {
+      "sourceNode": 17,
+      "animation": "static",
+      "material": 0,
+      "triangles": 423
+    },
+    {
+      "sourceNode": 19,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 21,
+      "animation": "static",
+      "material": 0,
+      "triangles": 92
+    },
+    {
+      "sourceNode": 23,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 25,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 27,
+      "animation": "static",
+      "material": 0,
+      "triangles": 59
+    },
+    {
+      "sourceNode": 29,
+      "animation": "static",
+      "material": 0,
+      "triangles": 421
+    },
+    {
+      "sourceNode": 31,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 33,
+      "animation": "static",
+      "material": 0,
+      "triangles": 92
+    },
+    {
+      "sourceNode": 35,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 37,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 39,
+      "animation": "static",
+      "material": 0,
+      "triangles": 59
+    },
+    {
+      "sourceNode": 41,
+      "animation": "static",
+      "material": 0,
+      "triangles": 306
+    },
+    {
+      "sourceNode": 43,
+      "animation": "static",
+      "material": 0,
+      "triangles": 462
+    },
+    {
+      "sourceNode": 44,
+      "animation": "static",
+      "material": 1,
+      "triangles": 22
+    },
+    {
+      "sourceNode": 46,
+      "animation": "static",
+      "material": 0,
+      "triangles": 421
+    },
+    {
+      "sourceNode": 48,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 50,
+      "animation": "static",
+      "material": 0,
+      "triangles": 92
+    },
+    {
+      "sourceNode": 52,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 54,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 56,
+      "animation": "static",
+      "material": 0,
+      "triangles": 59
+    },
+    {
+      "sourceNode": 58,
+      "animation": "static",
+      "material": 0,
+      "triangles": 462
+    },
+    {
+      "sourceNode": 59,
+      "animation": "static",
+      "material": 1,
+      "triangles": 22
+    },
+    {
+      "sourceNode": 61,
+      "animation": "static",
+      "material": 0,
+      "triangles": 423
+    },
+    {
+      "sourceNode": 63,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 65,
+      "animation": "static",
+      "material": 0,
+      "triangles": 92
+    },
+    {
+      "sourceNode": 67,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 69,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 71,
+      "animation": "static",
+      "material": 0,
+      "triangles": 59
+    },
+    {
+      "sourceNode": 73,
+      "animation": "static",
+      "material": 0,
+      "triangles": 462
+    },
+    {
+      "sourceNode": 74,
+      "animation": "static",
+      "material": 1,
+      "triangles": 22
+    },
+    {
+      "sourceNode": 76,
+      "animation": "static",
+      "material": 0,
+      "triangles": 462
+    },
+    {
+      "sourceNode": 77,
+      "animation": "static",
+      "material": 1,
+      "triangles": 22
+    },
+    {
+      "sourceNode": 79,
+      "animation": "static",
+      "material": 0,
+      "triangles": 306
+    },
+    {
+      "sourceNode": 81,
+      "animation": "static",
+      "material": 0,
+      "triangles": 423
+    },
+    {
+      "sourceNode": 83,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 85,
+      "animation": "static",
+      "material": 0,
+      "triangles": 92
+    },
+    {
+      "sourceNode": 87,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 89,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 91,
+      "animation": "static",
+      "material": 0,
+      "triangles": 59
+    },
+    {
+      "sourceNode": 93,
+      "animation": "static",
+      "material": 0,
+      "triangles": 421
+    },
+    {
+      "sourceNode": 95,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 97,
+      "animation": "static",
+      "material": 0,
+      "triangles": 92
+    },
+    {
+      "sourceNode": 99,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 101,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 103,
+      "animation": "static",
+      "material": 0,
+      "triangles": 59
+    },
+    {
+      "sourceNode": 105,
+      "animation": "static",
+      "material": 0,
+      "triangles": 306
+    },
+    {
+      "sourceNode": 107,
+      "animation": "static",
+      "material": 0,
+      "triangles": 462
+    },
+    {
+      "sourceNode": 108,
+      "animation": "static",
+      "material": 1,
+      "triangles": 22
+    },
+    {
+      "sourceNode": 110,
+      "animation": "static",
+      "material": 0,
+      "triangles": 421
+    },
+    {
+      "sourceNode": 112,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 114,
+      "animation": "static",
+      "material": 0,
+      "triangles": 92
+    },
+    {
+      "sourceNode": 116,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 118,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 120,
+      "animation": "static",
+      "material": 0,
+      "triangles": 59
+    },
+    {
+      "sourceNode": 122,
+      "animation": "static",
+      "material": 0,
+      "triangles": 462
+    },
+    {
+      "sourceNode": 123,
+      "animation": "static",
+      "material": 1,
+      "triangles": 22
+    },
+    {
+      "sourceNode": 125,
+      "animation": "static",
+      "material": 0,
+      "triangles": 423
+    },
+    {
+      "sourceNode": 127,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 129,
+      "animation": "static",
+      "material": 0,
+      "triangles": 92
+    },
+    {
+      "sourceNode": 131,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 133,
+      "animation": "static",
+      "material": 0,
+      "triangles": 28
+    },
+    {
+      "sourceNode": 135,
+      "animation": "static",
+      "material": 0,
+      "triangles": 59
+    },
+    {
+      "sourceNode": 137,
+      "animation": "static",
+      "material": 0,
+      "triangles": 32797
+    },
+    {
+      "sourceNode": 138,
+      "animation": "static",
+      "material": 0,
+      "triangles": 31971
+    },
+    {
+      "sourceNode": 140,
+      "animation": "static",
+      "material": 0,
+      "triangles": 64768
+    },
+    {
+      "sourceNode": 142,
+      "action": "drop-zero-alpha-studio-plane"
+    },
+    {
+      "sourceNode": 144,
+      "animation": "rotor",
+      "material": 2,
+      "triangles": 5001
+    },
+    {
+      "sourceNode": 145,
+      "animation": "rotor",
+      "material": 0,
+      "triangles": 1054
+    },
+    {
+      "sourceNode": 147,
+      "animation": "rotor",
+      "material": 2,
+      "triangles": 5001
+    },
+    {
+      "sourceNode": 148,
+      "animation": "rotor",
+      "material": 0,
+      "triangles": 1054
+    },
+    {
+      "sourceNode": 150,
+      "animation": "rotor",
+      "material": 2,
+      "triangles": 5001
+    },
+    {
+      "sourceNode": 151,
+      "animation": "rotor",
+      "material": 0,
+      "triangles": 1054
+    },
+    {
+      "sourceNode": 153,
+      "animation": "rotor",
+      "material": 2,
+      "triangles": 5001
+    },
+    {
+      "sourceNode": 154,
+      "animation": "rotor",
+      "material": 0,
+      "triangles": 1054
+    },
+    {
+      "sourceNode": 156,
+      "animation": "static",
+      "material": 0,
+      "triangles": 238
+    },
+    {
+      "sourceNode": 158,
+      "animation": "rotor",
+      "material": 0,
+      "triangles": 668
+    },
+    {
+      "sourceNode": 160,
+      "animation": "rotor",
+      "material": 0,
+      "triangles": 434
+    },
+    {
+      "sourceNode": 162,
+      "animation": "static",
+      "material": 0,
+      "triangles": 712
+    },
+    {
+      "sourceNode": 163,
+      "animation": "static",
+      "material": 0,
+      "triangles": 1758
+    },
+    {
+      "sourceNode": 165,
+      "animation": "static",
+      "material": 0,
+      "triangles": 654
+    },
+    {
+      "sourceNode": 167,
+      "animation": "tailRotor",
+      "material": 0,
+      "triangles": 724
+    },
+    {
+      "sourceNode": 168,
+      "animation": "tailRotor",
+      "material": 0,
+      "triangles": 1228
+    },
+    {
+      "sourceNode": 169,
+      "animation": "tailRotor",
+      "material": 3,
+      "triangles": 252
+    },
+    {
+      "sourceNode": 171,
+      "animation": "static",
+      "material": 4,
+      "triangles": 167
+    },
+    {
+      "sourceNode": 172,
+      "animation": "static",
+      "material": 5,
+      "triangles": 681
+    },
+    {
+      "sourceNode": 173,
+      "animation": "static",
+      "material": 6,
+      "triangles": 372
+    },
+    {
+      "sourceNode": 175,
+      "animation": "static",
+      "material": 0,
+      "triangles": 315
+    },
+    {
+      "sourceNode": 177,
+      "animation": "static",
+      "material": 7,
+      "triangles": 1186
+    },
+    {
+      "sourceNode": 178,
+      "animation": "static",
+      "material": 8,
+      "triangles": 756
+    },
+    {
+      "sourceNode": 179,
+      "animation": "static",
+      "material": 5,
+      "triangles": 120
+    },
+    {
+      "sourceNode": 180,
+      "animation": "static",
+      "material": 0,
+      "triangles": 92
+    },
+    {
+      "sourceNode": 182,
+      "animation": "static",
+      "material": 7,
+      "triangles": 106
+    },
+    {
+      "sourceNode": 183,
+      "animation": "static",
+      "material": 0,
+      "triangles": 1079
+    },
+    {
+      "sourceNode": 184,
+      "animation": "static",
+      "material": 0,
+      "triangles": 1211
+    },
+    {
+      "sourceNode": 186,
+      "animation": "static",
+      "material": 0,
+      "triangles": 1975
+    },
+    {
+      "sourceNode": 188,
+      "animation": "static",
+      "material": 7,
+      "triangles": 1186
+    },
+    {
+      "sourceNode": 189,
+      "animation": "static",
+      "material": 8,
+      "triangles": 756
+    },
+    {
+      "sourceNode": 190,
+      "animation": "static",
+      "material": 5,
+      "triangles": 120
+    },
+    {
+      "sourceNode": 191,
+      "animation": "static",
+      "material": 0,
+      "triangles": 92
+    },
+    {
+      "sourceNode": 193,
+      "animation": "static",
+      "material": 7,
+      "triangles": 106
+    },
+    {
+      "sourceNode": 194,
+      "animation": "static",
+      "material": 0,
+      "triangles": 1079
+    },
+    {
+      "sourceNode": 195,
+      "animation": "static",
+      "material": 0,
+      "triangles": 1211
+    },
+    {
+      "sourceNode": 197,
+      "animation": "static",
+      "material": 0,
+      "triangles": 2063
+    },
+    {
+      "sourceNode": 199,
+      "animation": "static",
+      "material": 5,
+      "triangles": 80
+    },
+    {
+      "sourceNode": 201,
+      "animation": "static",
+      "material": 0,
+      "triangles": 6087
+    },
+    {
+      "sourceNode": 203,
+      "animation": "static",
+      "material": 7,
+      "triangles": 1121
+    },
+    {
+      "sourceNode": 205,
+      "animation": "static",
+      "material": 0,
+      "triangles": 7400
+    },
+    {
+      "sourceNode": 206,
+      "animation": "static",
+      "material": 0,
+      "triangles": 1317
+    },
+    {
+      "sourceNode": 207,
+      "animation": "static",
+      "material": 9,
+      "triangles": 938
+    },
+    {
+      "sourceNode": 209,
+      "animation": "static",
+      "material": 0,
+      "triangles": 76
+    },
+    {
+      "sourceNode": 210,
+      "animation": "static",
+      "material": 5,
+      "triangles": 300
+    },
+    {
+      "sourceNode": 211,
+      "animation": "static",
+      "material": 0,
+      "triangles": 3295
+    },
+    {
+      "sourceNode": 213,
+      "animation": "static",
+      "material": 7,
+      "triangles": 6783
+    },
+    {
+      "sourceNode": 214,
+      "animation": "static",
+      "material": 0,
+      "triangles": 3279
+    },
+    {
+      "sourceNode": 216,
+      "animation": "static",
+      "material": 7,
+      "triangles": 673
+    },
+    {
+      "sourceNode": 218,
+      "animation": "static",
+      "material": 7,
+      "triangles": 1262
+    },
+    {
+      "sourceNode": 219,
+      "animation": "static",
+      "material": 5,
+      "triangles": 14
+    },
+    {
+      "sourceNode": 221,
+      "animation": "static",
+      "material": 7,
+      "triangles": 673
+    },
+    {
+      "sourceNode": 223,
+      "animation": "static",
+      "material": 7,
+      "triangles": 1262
+    },
+    {
+      "sourceNode": 224,
+      "animation": "static",
+      "material": 5,
+      "triangles": 14
+    },
+    {
+      "sourceNode": 226,
+      "animation": "static",
+      "material": 7,
+      "triangles": 471
+    },
+    {
+      "sourceNode": 227,
+      "animation": "static",
+      "material": 5,
+      "triangles": 217
+    }
+  ]
+}

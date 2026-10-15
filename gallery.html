@@ -55,6 +55,8 @@
         border-radius: 2px;
         cursor: pointer;
       }
+      .bar select { max-width: min(44vw, 510px); }
+      .controls { flex-wrap: wrap; justify-content: flex-end; max-width: calc(100vw - 50px); }
       .spacer {
         flex: 1;
       }
@@ -98,6 +100,7 @@
         letter-spacing: 3px;
       }
       @media (max-width: 760px) {
+        .views { top: 122px !important; left: 12px !important; }
         .bar {
           padding: 12px;
           gap: 8px;
@@ -148,8 +151,7 @@
     <div class="info">
       <b id="model-name">装备检视</b>
       <div id="stats"></div>
-      鼠标拖动旋转 · 滚轮缩放 · 双击恢复视角<br />根据公开外观制作的原创研究模型，非摄影测量复刻。<br />材质为实时标准金属
-      / 粗糙度着色，无 DLSS 或光线追踪。
+      鼠标拖动旋转 · 滚轮缩放 · 双击恢复视角<br />原创外观模型；照片参考与剩余偏差独立记录。
     </div>
     <div class="controls">
       <button id="rotate">自动旋转 开</button><button id="wire">线框 关</button
@@ -157,6 +159,19 @@
     </div>
     <div class="error" id="error"></div>
     <script src="assets/vendor/three.min.js"></script>
-    <script src="src/gallery.js"></script>
+    <script src="assets/vendor/GLTFLoader.bundle.js"></script>
+    <script src="src/data.js"></script>
+    <script src="src/models3d.js"></script>
+    <script src="src/models-tanks.js"></script>
+    <script src="src/models-vehicles.js"></script>
+    <script src="src/models-air.js"></script>
+    <script src="src/models-naval.js"></script>
+    <script src="assets/models/burke-data.js"></script>
+    <script src="src/models-imported.js"></script>
+    <script src="assets/models/ah64-data.js"></script>
+    <script src="src/models-imported-air.js"></script>
+    <script src="assets/models/t90m-data.js"></script>
+    <script src="src/models-imported-ground.js"></script>
+    <script src="src/armory3d.js"></script>
   </body>
 </html>

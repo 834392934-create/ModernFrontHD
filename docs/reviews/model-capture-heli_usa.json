@@ -1,0 +1,79 @@
+{
+  "recordedAt": "2026-10-15T20:11:49.879Z",
+  "models": [
+    {
+      "key": "heli_usa",
+      "scale": 8,
+      "parts": 12,
+      "triangles": 220711,
+      "profile": "AH-64 Longbow reference configuration — licensed exterior",
+      "evidenceStatus": "photo-referenced",
+      "reviewStatus": "licensed-art-multi-view-reviewed",
+      "referenceUrl": "https://www.dvidshub.net/image/6422832/tf-expect-no-mercy-flyover-greece",
+      "assetSource": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+      "author": "Andrew Swihart / ArionDigital",
+      "license": "CC-BY-4.0",
+      "assetPath": "assets/models/ah64.glb",
+      "rotorBlades": 4,
+      "rotorLevels": 1,
+      "groundY": 0,
+      "forwardAxis": "+X",
+      "limits": "Longbow exterior reference, not an authenticated AH-64E batch. Original PBR except photo-referenced dark main-blade coating; no bitmap textures. No engineering reconstruction.",
+      "kind": "heli",
+      "dimensions": [
+        11.059866552975482,
+        3.588741034269333,
+        8.90522050857544
+      ]
+    },
+    {
+      "key": "heli_kor",
+      "scale": 8,
+      "parts": 12,
+      "triangles": 220711,
+      "profile": "AH-64 Longbow reference configuration — licensed exterior",
+      "evidenceStatus": "photo-referenced",
+      "reviewStatus": "licensed-art-multi-view-reviewed",
+      "referenceUrl": "https://www.dvidshub.net/image/6422832/tf-expect-no-mercy-flyover-greece",
+      "assetSource": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+      "author": "Andrew Swihart / ArionDigital",
+      "license": "CC-BY-4.0",
+      "assetPath": "assets/models/ah64.glb",
+      "rotorBlades": 4,
+      "rotorLevels": 1,
+      "groundY": 0,
+      "forwardAxis": "+X",
+      "limits": "Longbow exterior reference, not an authenticated AH-64E batch. Original PBR except photo-referenced dark main-blade coating; no bitmap textures. No engineering reconstruction.",
+      "kind": "heli",
+      "dimensions": [
+        11.059866552975482,
+        3.588741034269333,
+        8.90522050857544
+      ]
+    },
+    {
+      "key": "destroyer_usa",
+      "scale": 5.4,
+      "parts": 6,
+      "triangles": 49381,
+      "profile": "Arleigh Burke DDG-51 / Flight I — licensed textured exterior",
+      "evidenceStatus": "photo-referenced",
+      "reviewStatus": "licensed-art-multi-view-reviewed",
+      "referenceUrl": "https://www.usff.navy.mil/Press-Room/News-Stories/Article/3112957/uss-arleigh-burke-responds-to-man-overboard/",
+      "assetSource": "https://sketchfab.com/3d-models/11-low-poly-us-navy-ddg-51-uss-arleigh-burke-17be09c31c6047e4a5969b68c29eba03",
+      "license": "CC-BY-4.0",
+      "author": "Yi Tsung Lee / WTigerTw",
+      "assetPath": "assets/models/burke.glb",
+      "waterlineY": 0,
+      "limitations": "Exterior game art; not an engineering reconstruction. Source includes underwater hull.",
+      "kind": "destroyer",
+      "dimensions": [
+        24,
+        8.341902172044326,
+        3.8606098026224815
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

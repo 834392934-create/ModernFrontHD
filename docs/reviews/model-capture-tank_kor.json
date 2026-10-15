@@ -1,0 +1,24 @@
+{
+  "recordedAt": "2026-10-15T19:44:50.513Z",
+  "models": [
+    {
+      "key": "tank_kor",
+      "scale": 6.6,
+      "parts": 1209,
+      "profile": "K2 Black Panther",
+      "evidenceStatus": "photo-referenced",
+      "reviewStage": "silhouette-rebuilt",
+      "referenceUrl": "https://www.hyundai-rotem.co.kr/en/business/defense/details.do?productCt03=defense0101",
+      "sourceReview": "docs/reviews/ground-reference-review.md",
+      "kind": "tank",
+      "triangles": 31060,
+      "dimensions": [
+        10.797999954223632,
+        3.587677740454674,
+        3.8499999046325684
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

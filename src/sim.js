@@ -245,11 +245,17 @@
         buffs: [],
         advanced: true,
         playerOnlyTech: true,
+        aiSpaceWeapons: false,
+        mode: 'annihilation',
+        scoreLimit: 600,
         ...options,
       };
       this.options.enemies = clamp(Number(this.options.enemies) || 1, 1, 4);
       if (!F[this.options.faction]) this.options.faction = "chn";
       this.map = makeMap(this.options.map);
+      this.options.scoreLimit=clamp(Number(this.options.scoreLimit)||600,10,5000);
+      this.ore=this.map.spawns.map((p,i)=>({id:i,x:p.x+(i===4?-280:300),y:p.y+(p.y>H/2?-140:180),amount:24000,initial:24000}));
+      this.formation='line';
       this.entities = [];
       this.nodes = this.map.nodes.map((n, i) => ({
         ...n,
@@ -292,13 +298,15 @@
           spent: 0,
           kills: 0,
           lost: 0,
+          score: 0,
+          harvested: 0,
           queue: [],
           buildQueue: [],
           power: 0,
           income: 0,
           alive: true,
           aiClock: 0,
-          attackAt: 28 + i * 4,
+          attackAt: (this.options.difficulty==='easy'?100:this.options.difficulty==='brutal'?40:65) + i * 6,
         };
         this.teams.push(t);
         const p = this.map.spawns[i];
@@ -308,6 +316,7 @@
         this.spawn(i, "refinery", p.x + 130, p.y - 90 * dir);
         this.spawn(i, "barracks", p.x - 120, p.y + 110 * dir);
         this.spawn(i, "factory", p.x + 130, p.y + 120 * dir);
+        this.spawn(i,'harvester',p.x+210,p.y+140*dir);
         for (let j = 0; j < 3; j++)
           this.spawn(
             i,
@@ -378,6 +387,8 @@
         order: null,
         disabled: 0,
         lastHit: -100,
+        orderQueue: [],
+        cargo: 0,
         anim: this.random() * 10,
       };
       this.entities.push(e);
@@ -417,6 +428,7 @@
       if (
         !d ||
         !t?.alive ||
+        (team > 0 && d.spaceWeapon && this.options.aiSpaceWeapons === false) ||
         (d.advanced &&
           (!this.options.advanced ||
             (team > 0 && this.options.playerOnlyTech))) ||
@@ -519,15 +531,38 @@
       });
       return true;
     }
-    command(ids, x, y, attack = false, target = null) {
+    destination(e,x,y){
+      x=clamp(x,24,W-24);y=clamp(y,24,H-24);
+      if(U[e.kind]?.air)return{x,y};
+      const blocked=U[e.kind]?.naval?this.map.navalBlocked:this.map.blocked;
+      const free=(px,py)=>px>=24&&px<W-24&&py>=24&&py<H-24&&!blocked[Math.floor(py/T)*COLS+Math.floor(px/T)]&&!this.entities.some(o=>o.structure&&o.hp>0&&Math.hypot(px-o.x,py-o.y)<o.r+e.r+6)&&(U[e.kind]?.naval||!this.ore.some(o=>Math.hypot(o.x-px,o.y-py)<52));
+      if(free(x,y))return{x,y};
+      for(let r=24;r<Math.max(W,H);r+=24)for(let j=0;j<24;j++){const a=j*Math.PI/12,px=x+Math.cos(a)*r,py=y+Math.sin(a)*r;if(free(px,py))return{x:px,y:py};}
+      return{x:e.x,y:e.y};
+    }
+    setRally(ids,x,y){for(const id of ids){const e=this.get(id);if(e?.structure&&Object.values(U).some(d=>d.producer===e.kind))e.rally={x:clamp(x,24,W-24),y:clamp(y,24,H-24)};}}
+    retreat(ids){for(const id of ids){const e=this.get(id);if(!e||e.structure||U[e.kind]?.naval||U[e.kind]?.space)continue;const base=this.teamEntities(e.team).filter(o=>o.kind==='repairhub'||o.kind==='hq').sort((a,b)=>dist(a,e)-dist(b,e))[0];if(base){this.command([id],base.x+90,base.y+90);e.retreating=true;}}}
+    setAISpaceWeapons(allow){
+      this.options.aiSpaceWeapons=!!allow;if(allow)return;
+      for(const t of this.teams.slice(1)){for(const q of t.queue)if(U[q.kind]?.spaceWeapon)t.money+=this.cost(t.id,q.kind);t.queue=t.queue.filter(q=>!U[q.kind]?.spaceWeapon);}
+      this.entities=this.entities.filter(e=>e.team===0||!U[e.kind]?.spaceWeapon);
+      this.effects=this.effects.filter(fx=>!(fx.from>0&&(fx.space||fx.type==='orbital')));
+    }
+    command(ids, x, y, attack = false, target = null, options = {}) {
+      if(!Number.isFinite(x)||!Number.isFinite(y))return;
       const units = ids
         .map((id) => this.get(id))
         .filter((e) => e && !e.structure);
       let n = 0;
+      const formation=options.formation||this.formation||'line',cols=formation==='column'?1:Math.ceil(Math.sqrt(units.length)*1.6),spacing=formation==='spread'?65:40;
       for (const e of units) {
-        let tx = clamp(x + ((n % 5) - 2) * 28, 24, W - 24),
-          ty = clamp(y + Math.floor(n / 5) * 28, 24, H - 24);
-        e.order = { x: tx, y: ty, attack, target };
+        const width=Math.min(cols,units.length),rows=Math.ceil(units.length/cols);
+        const p=this.destination(e,x+((n%cols)-(width-1)/2)*spacing,y+(Math.floor(n/cols)-(rows-1)/2)*spacing);
+        const order={x:p.x,y:p.y,attack,target};
+        if(options.queue&&e.order){e.orderQueue=e.orderQueue||[];if(e.orderQueue.length<16)e.orderQueue.push(order);n++;continue;}
+        e.orderQueue=[];e.retreating=false;
+        if(e.kind==='harvester'){const ore=this.ore.filter(o=>o.amount>0).sort((a,b)=>dist(p,a)-dist(p,b))[0];e.oreId=ore&&dist(ore,p)<120?ore.id:null;e.manualMove=e.oreId===null;e.miningState=null;}
+        e.order = order;
         e.target = target;
         e.path = [];
         e.repath = 0;
@@ -553,6 +588,7 @@
         !d ||
         !t?.alive ||
         this.options.abilities === false ||
+        (team > 0 && kind==='orbital' && this.options.aiSpaceWeapons===false) ||
         (d.advanced &&
           (!this.options.advanced ||
             (team > 0 && this.options.playerOnlyTech))) ||
@@ -576,11 +612,11 @@
         this.reveals.push({ x, y, r: d.radius, until: this.time + 22 });
       if (kind === "repair")
         for (const e of this.entities)
-          if (e.team === 0 && dist(e, { x, y }) < d.radius)
+          if (e.team === team && dist(e, { x, y }) < d.radius)
             e.hp = Math.min(e.maxHp, e.hp + e.maxHp * 0.45);
       if (kind === "emp")
         for (const e of this.entities)
-          if (this.isEnemy(0, e.team) && dist(e, { x, y }) < d.radius)
+          if (this.isEnemy(team, e.team) && dist(e, { x, y }) < d.radius)
             e.disabled = this.time + 9;
       const delay =
         kind === "nuke"
@@ -677,7 +713,7 @@
       if (!t.alive) return;
       t.aiClock -= dt;
       if (t.aiClock > 0) return;
-      const hard = this.options.difficulty === "hard",
+      const hard = ['hard','brutal'].includes(this.options.difficulty),
         easy = this.options.difficulty === "easy";
       t.aiClock = easy ? 3.2 : hard ? 1.2 : 2;
       let es = this.teamEntities(t.id),
@@ -752,6 +788,12 @@
         }
       }
       const units = es.filter((e) => !e.structure);
+      for(const ship of units.filter(e=>U[e.kind].naval&&!e.order)){
+        const enemyShip=this.entities.filter(e=>U[e.kind]?.naval&&this.isEnemy(t.id,e.team)).sort((a,b)=>dist(ship,a)-dist(ship,b))[0];
+        if(enemyShip)this.command([ship.id],enemyShip.x,enemyShip.y,true,enemyShip.id);
+      }
+      if(!units.some(e=>e.kind==='harvester')&&!t.queue.some(q=>q.kind==='harvester'))this.train(t.id,'harvester');
+      for(const e of units)if(e.hp<e.maxHp*.25&&!e.retreating&&!U[e.kind].space&&!U[e.kind].naval&&e.kind!=='harvester')this.retreat([e.id]);
       const capturers = units.filter(
         (e) => (e.kind === "infantry" || e.kind === "ifv") && !e.order,
       );
@@ -770,17 +812,17 @@
           (e) => e.kind === "hq" && e.hp > 0 && this.isEnemy(t.id, e.team),
         );
         hqs.sort((a, b) => dist(hq, a) - dist(hq, b));
-        let dest = hqs[0];
+        let dest = this.options.mode==='domination'?this.nodes.filter(n=>n.owner!==t.id).sort((a,b)=>dist(hq,a)-dist(hq,b))[0]||hqs[0]:hqs[0];
         if (dest) {
           let attack = units.filter(
-            (e) => e.kind !== "infantry" || this.random() > 0.4,
+            (e) => e.kind!=='harvester'&&!e.retreating&&!U[e.kind].naval&&(e.kind !== "infantry" || this.random() > 0.4),
           );
           this.command(
             attack.map((e) => e.id),
             dest.x,
             dest.y,
             true,
-            dest.id,
+            dest.kind?dest.id:null,
           );
         }
       }
@@ -795,18 +837,26 @@
       this.teamSight = this.teams.map((t) =>
         this.entities.filter((e) => e.team === t.id && e.hp > 0),
       );
+      if(!this.groundNavigation||this.tick%10===1){
+        const blocked=this.map.blocked.slice();
+        for(const e of this.entities)if(e.structure&&e.hp>0&&!B[e.kind].water){
+          for(let y=Math.max(0,Math.floor((e.y-e.r-12)/T));y<=Math.min(ROWS-1,Math.floor((e.y+e.r+12)/T));y++)for(let x=Math.max(0,Math.floor((e.x-e.r-12)/T));x<=Math.min(COLS-1,Math.floor((e.x+e.r+12)/T));x++)if(Math.hypot(x*T+24-e.x,y*T+24-e.y)<e.r+14)blocked[y*COLS+x]=1;
+        }
+        this.groundNavigation={blocked};
+        for(const o of this.ore)for(let y=Math.max(0,Math.floor((o.y-48)/T));y<=Math.min(ROWS-1,Math.floor((o.y+48)/T));y++)for(let x=Math.max(0,Math.floor((o.x-48)/T));x<=Math.min(COLS-1,Math.floor((o.x+48)/T));x++)if(Math.hypot(x*T+24-o.x,y*T+24-o.y)<45)blocked[y*COLS+x]=1;
+      }
       for (const t of this.teams) {
         if (!t.alive) continue;
         t.power = this.power(t.id);
         const es = this.teamEntities(t.id);
         t.income =
           12 +
-          es.filter((e) => e.kind === "refinery").length * 15 +
+          es.filter((e) => e.kind === "refinery").length * 4 +
           this.nodes.filter((n) => n.owner === t.id).length * 22;
         const inc = t.id === 0 && this.buffs.has("income") ? 2 : 1;
         const difficulty =
           t.id > 0
-            ? this.options.difficulty === "hard"
+            ? this.options.difficulty === "brutal" ? 1.7 : this.options.difficulty === "hard"
               ? 1.3
               : this.options.difficulty === "easy"
                 ? 0.8
@@ -817,8 +867,8 @@
           (t.power < 0 ? 0.4 : 1) *
           F[t.faction].rate *
           (t.id === 0 && this.buffs.has("rapid") ? 3 : 1);
-        const q = t.queue[0];
-        if (q) {
+        const productionHeads=[...new Set(t.queue.map(q=>U[q.kind].producer))].map(producer=>t.queue.find(q=>U[q.kind].producer===producer));
+        for (const q of productionHeads) {
           const prod = es.find(
             (e) => e.kind === U[q.kind].producer && e.disabled <= this.time,
           );
@@ -827,12 +877,13 @@
             if (q.remaining <= 0) {
               let pos = this.freeSpawn(prod);
               if (pos) {
-                this.spawn(t.id, q.kind, pos.x, pos.y);
-                t.queue.shift();
+                const spawned=this.spawn(t.id, q.kind, pos.x, pos.y);
+                if(prod.rally&&q.kind!=='harvester')this.command([spawned.id],prod.rally.x,prod.rally.y,true);
+                t.queue.splice(t.queue.indexOf(q),1);
               }
             }
           } else if (!es.some((e) => e.kind === U[q.kind].producer)) {
-            this.cancel(t.id, 0);
+            this.cancel(t.id, t.queue.indexOf(q));
           }
         }
         const b = t.buildQueue[0];
@@ -848,6 +899,8 @@
       for (const e of this.entities) {
         if (e.hp <= 0 || e.disabled > this.time) continue;
         const d = U[e.kind] || B[e.kind];
+        if(e.kind==='harvester')this.harvest(e,dt);
+        if(e.retreating&&this.time-e.lastHit>5){const base=this.teamEntities(e.team).some(o=>(o.kind==='hq'||o.kind==='repairhub')&&dist(e,o)<165);if(base){e.hp=Math.min(e.maxHp,e.hp+e.maxHp*.035*dt);if(e.hp>=e.maxHp)e.retreating=false;}}
         e.cool -= dt;
         if (
           e.team === 0 &&
@@ -859,17 +912,22 @@
           continue;
         if (d.heal) {
           for (const a of this.spatial.query(e.x, e.y, d.range))
-            if (a.team === e.team && !a.structure)
+            if (a.team === e.team && !a.structure && dist(e,a)<=d.range)
               a.hp = Math.min(a.maxHp, a.hp + d.heal * dt);
         }
         if (d.jam) {
           for (const a of this.spatial.query(e.x, e.y, d.range))
-            if (this.isEnemy(e.team, a.team) && !a.structure)
+            if (this.isEnemy(e.team, a.team) && !a.structure && dist(e,a)<=d.range)
               a.disabled = this.time + 0.15;
         }
         if (!d.damage && !e.order) continue;
         let target = this.get(e.target);
         let range = d.range;
+        if(e.structure&&d.damage&&this.teamEntities(e.team).some(r=>r.kind==='radar'&&r.disabled<=this.time&&dist(e,r)<450))range*=1.15;
+        if(e.kind==='ciws'&&(e.interceptAt||0)<=this.time){
+          const rocket=this.effects.find(f=>f.type==='shot'&&f.rocket&&this.isEnemy(e.team,f.from)&&Math.hypot(f.x+(f.tx-f.x)*(1-f.ttl/f.max)-e.x,f.y+(f.ty-f.y)*(1-f.ttl/f.max)-e.y)<d.range);
+          if(rocket){rocket.type='intercepted';rocket.ttl=.12;rocket.max=.12;e.interceptAt=this.time+.55;}
+        }
         const canHit = (t) =>
           this.isEnemy(e.team, t.team) &&
           (U[t.kind]?.space
@@ -936,6 +994,7 @@
               ttl: travel,
               max: travel,
               rocket: e.kind === "rocket" || e.kind === "heli",
+              space: !!d.spaceWeapon,
             });
           }
         }
@@ -950,8 +1009,9 @@
             goal.x = orderedTarget.x;
             goal.y = orderedTarget.y;
           }
-          if (dist(e, goal) < 28) {
-            e.order = null;
+          if (dist(e, goal) < 14) {
+            e.order = e.orderQueue?.shift() || null;
+            e.manualMove=false;
             e.path = [];
             continue;
           }
@@ -963,12 +1023,13 @@
               (e.repath || 0) <= this.time
             ) {
               e.path = findPath(
-                d.naval ? { blocked: this.map.navalBlocked } : this.map,
+                d.naval ? { blocked: this.map.navalBlocked } : this.groundNavigation,
                 e.x,
                 e.y,
                 goal.x,
                 goal.y,
               );
+              if(e.path.length){const last=e.path[e.path.length-1];if(Math.hypot(last.x-goal.x,last.y-goal.y)<T*1.5)e.path.push({x:goal.x,y:goal.y});}
               e.repath = this.time + 1;
               this.pathBudget--;
             }
@@ -1015,7 +1076,7 @@
       for (const n of this.nodes) {
         const close = this.spatial
           .query(n.x, n.y, 100)
-          .filter((e) => !e.structure && !U[e.kind]?.air && e.hp > 0);
+          .filter((e) => !e.structure && !U[e.kind]?.air && !U[e.kind]?.naval && e.kind!=='harvester' && e.hp > 0 && dist(e,n)<90);
         const teams = [...new Set(close.map((e) => e.team))];
         if (teams.length === 1 && teams[0] !== n.owner) {
           if (n.claim !== teams[0]) {
@@ -1120,7 +1181,28 @@
       if (!this.teams[0].alive) this.result = "defeat";
       else if (this.teams.slice(1).every((t) => !t.alive))
         this.result = "victory";
+      if(!this.result&&this.options.mode==='domination'){
+        for(const t of this.teams)if(t.alive){t.score=(t.score||0)+this.nodes.filter(n=>n.owner===t.id).length*dt;if(t.score>=this.options.scoreLimit){this.result=t.id===0?'victory':'defeat';this.message(F[t.faction].name+'取得据点积分胜利');break;}}
+      }
       this.entities = this.entities.filter((e) => e.hp > 0);
+    }
+    harvest(e,dt){
+      if(e.manualMove&&e.order)return;
+      const refinery=this.teamEntities(e.team).filter(o=>o.kind==='refinery').sort((a,b)=>dist(e,a)-dist(e,b))[0];
+      if(!refinery){e.order=null;return;}
+      let ore=this.ore.find(o=>o.id===e.oreId&&o.amount>0)||this.ore.filter(o=>o.amount>0).sort((a,b)=>dist(e,a)-dist(e,b))[0];
+      const returning=e.cargo>=U.harvester.capacity||(!ore&&e.cargo>0);
+      if(returning){
+        if(dist(e,refinery)<refinery.r+e.r+60){const multiplier=(e.team===0&&this.buffs.has('income'))?2:1;this.teams[e.team].money+=e.cargo*multiplier;this.teams[e.team].harvested=(this.teams[e.team].harvested||0)+e.cargo;e.cargo=0;e.order=null;e.path=[];}
+        else if(!e.order||e.miningState!=='return'){const p=this.destination(e,refinery.x,refinery.y);e.order={...p,attack:false};e.path=[];}
+        e.miningState='return';
+      }else if(ore){
+        const entrance={x:ore.x-75,y:ore.y+35};const changing=e.miningState!=='gather'||e.oreId!==ore.id;
+        e.oreId=ore.id;
+        if(dist(e,entrance)<32){e.order=null;e.path=[];let take=Math.min(U.harvester.harvestRate*dt,ore.amount,U.harvester.capacity-e.cargo);ore.amount-=take;e.cargo+=take;}
+        else if(!e.order||changing){e.order={...entrance,attack:false};e.path=[];}
+        e.miningState='gather';
+      }else e.miningState='empty';
     }
     freeSpawn(prod) {
       const d = { naval: prod.kind === "navalyard" };
@@ -1165,6 +1247,8 @@
         buffs: [...this.buffs],
         explored: Array.from(this.explored),
         result: this.result,
+        ore: this.ore,
+        formation: this.formation,
       };
     }
     static load(json) {
@@ -1246,6 +1330,8 @@
         )
           throw Error("存档实体数据无效");
       const g = new Game(s.options);
+      if(s.ore){if(!Array.isArray(s.ore)||s.ore.length>20||s.ore.some(o=>!finite(o.x)||!finite(o.y)||!finite(o.amount)||o.amount<0))throw Error('矿区存档无效');g.ore=s.ore;}
+      g.formation=['line','column','spread'].includes(s.formation)?s.formation:'line';
       for (const k of [
         "time",
         "tick",
@@ -1259,6 +1345,8 @@
       ])
         g[k] = s[k];
       g.wealthGranted = !!s.wealthGranted;
+      for(const t of g.teams){t.score=finite(t.score)?Math.max(0,t.score):0;t.harvested=finite(t.harvested)?Math.max(0,t.harvested):0;}
+      for(const e of g.entities){if(e.rally&&(!finite(e.rally.x)||!finite(e.rally.y)))throw Error('集结点无效');if(e.orderQueue&&(!Array.isArray(e.orderQueue)||e.orderQueue.length>16||e.orderQueue.some(p=>!finite(p.x)||!finite(p.y))))throw Error('路径队列无效');e.cargo=finite(e.cargo)?clamp(e.cargo,0,500):0;}
       g.buffs = new Set(s.buffs);
       g.explored = Uint8Array.from(s.explored);
       g.effects = Array.isArray(s.effects) ? s.effects : [];
@@ -1271,6 +1359,7 @@
       )
         throw Error("存档效果数据无效");
       g.spatial.rebuild(g.entities);
+      if(g.options.aiSpaceWeapons===false)g.setAISpaceWeapons(false);
       g.updateFog();
       g.message("本地存档已恢复");
       return g;

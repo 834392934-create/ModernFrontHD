@@ -1,0 +1,23 @@
+{
+  "recordedAt": "2026-10-15T19:37:14.214Z",
+  "models": [
+    {
+      "key": "tank_usa",
+      "scale": 6.6,
+      "parts": 1295,
+      "profile": "M1A2 SEPv3 exterior approximation",
+      "evidenceStatus": "photo-referenced",
+      "reviewStage": "silhouette-rebuilt",
+      "sourceReview": "docs/reviews/ground-reference-review.md",
+      "kind": "tank",
+      "triangles": 33544,
+      "dimensions": [
+        10.3979998588562,
+        3.7176778835058215,
+        3.950000047683716
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

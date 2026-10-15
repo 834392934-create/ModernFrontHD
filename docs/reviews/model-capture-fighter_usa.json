@@ -1,0 +1,182 @@
+{
+  "recordedAt": "2026-10-15T19:50:42.730Z",
+  "models": [
+    {
+      "key": "fighter_usa",
+      "scale": 7.4,
+      "parts": 124,
+      "profile": "F-35A",
+      "evidenceStatus": "photo-referenced",
+      "referenceUrl": "https://www.dvidshub.net/image/8627178/f-35a-demo-team-mcconnell-afb",
+      "spanLengthRatio": 0.6814,
+      "visualReview": "second-pass silhouette and surface revision; not photogrammetry",
+      "kind": "fighter",
+      "triangles": 3536,
+      "dimensions": [
+        10.02750015258789,
+        2.074999988079071,
+        6.814000129699707
+      ]
+    },
+    {
+      "key": "fighter_rus",
+      "scale": 7.4,
+      "parts": 118,
+      "profile": "Su-57",
+      "evidenceStatus": "photo-referenced",
+      "referenceUrl": "https://commons.wikimedia.org/wiki/File:Su-57_052_and_Su-57_051_in_MAKS_2019.jpg",
+      "spanLengthRatio": 0.7186991869918699,
+      "visualReview": "second-pass silhouette and surface revision; not photogrammetry",
+      "kind": "fighter",
+      "triangles": 3936,
+      "dimensions": [
+        12.329999923706055,
+        1.9044702053070068,
+        8.84000015258789
+      ]
+    },
+    {
+      "key": "fighter_chn",
+      "scale": 7.4,
+      "parts": 120,
+      "profile": "J-20",
+      "evidenceStatus": "photo-referenced",
+      "referenceUrl": "https://www.mod.gov.cn/gfbw/sy/rt/16285349.html",
+      "spanLengthRatio": 0.6171875,
+      "visualReview": "second-pass silhouette and surface revision; not photogrammetry",
+      "kind": "fighter",
+      "triangles": 3388,
+      "dimensions": [
+        12.827499866485596,
+        2.325000047683716,
+        7.900000095367432
+      ]
+    },
+    {
+      "key": "fighter_ind",
+      "scale": 7.4,
+      "parts": 96,
+      "profile": "Rafale C",
+      "evidenceStatus": "photo-referenced",
+      "referenceUrl": "https://www.dassault-aviation.com/en/defense/rafale/introduction/",
+      "spanLengthRatio": 0.7123076923076923,
+      "visualReview": "second-pass silhouette and surface revision; not photogrammetry",
+      "kind": "fighter",
+      "triangles": 3568,
+      "dimensions": [
+        9.77750015258789,
+        2.309999942779541,
+        7.048999786376953
+      ]
+    },
+    {
+      "key": "fighter_kor",
+      "scale": 7.4,
+      "parts": 122,
+      "profile": "F-35A",
+      "evidenceStatus": "photo-referenced",
+      "referenceUrl": "https://www.mindef.gov.sg/news-and-events/latest-releases/28feb24_fs/",
+      "spanLengthRatio": 0.6814,
+      "visualReview": "second-pass silhouette and surface revision; not photogrammetry",
+      "kind": "fighter",
+      "triangles": 3548,
+      "dimensions": [
+        10.02750015258789,
+        2.074999988079071,
+        6.814000129699707
+      ]
+    },
+    {
+      "key": "heli_usa",
+      "scale": 8,
+      "parts": 138,
+      "profile": "AH-64E",
+      "evidenceStatus": "photo-referenced",
+      "referenceUrl": "https://www.dvidshub.net/image/6422832/tf-expect-no-mercy-flyover-greece",
+      "rotorBlades": 4,
+      "rotorLevels": 1,
+      "visualReview": "second-pass cockpit and gear revision; not photogrammetry",
+      "kind": "heli",
+      "triangles": 5172,
+      "dimensions": [
+        10.990000205039978,
+        3.2121945905685427,
+        9.5600004196167
+      ]
+    },
+    {
+      "key": "heli_rus",
+      "scale": 8,
+      "parts": 121,
+      "profile": "Ka-52",
+      "evidenceStatus": "photo-referenced",
+      "referenceUrl": "https://russianplanes.net/id112234",
+      "rotorBlades": 3,
+      "rotorLevels": 2,
+      "visualReview": "second-pass cockpit and gear revision; not photogrammetry",
+      "kind": "heli",
+      "triangles": 4884,
+      "dimensions": [
+        9.58,
+        3.819999969005585,
+        7.977001667022705
+      ]
+    },
+    {
+      "key": "heli_chn",
+      "scale": 8,
+      "parts": 135,
+      "profile": "Z-10",
+      "evidenceStatus": "photo-referenced",
+      "referenceUrl": "https://eng.mod.gov.cn/2025xb/H_251589/F/16452384.html",
+      "rotorBlades": 5,
+      "rotorLevels": 1,
+      "visualReview": "second-pass cockpit and gear revision; not photogrammetry",
+      "kind": "heli",
+      "triangles": 4996,
+      "dimensions": [
+        10.059999804496766,
+        3.240000038146973,
+        8.039862394332886
+      ]
+    },
+    {
+      "key": "heli_ind",
+      "scale": 8,
+      "parts": 145,
+      "profile": "LCH Prachand",
+      "evidenceStatus": "photo-referenced",
+      "referenceUrl": "https://www.ddpmod.gov.in/en/resources/products/light-combat-helicopter-lch",
+      "rotorBlades": 4,
+      "rotorLevels": 1,
+      "visualReview": "second-pass cockpit and gear revision; not photogrammetry",
+      "kind": "heli",
+      "triangles": 4980,
+      "dimensions": [
+        9.979999785423278,
+        3.240000038146973,
+        8.4399995803833
+      ]
+    },
+    {
+      "key": "heli_kor",
+      "scale": 8,
+      "parts": 136,
+      "profile": "AH-64E",
+      "evidenceStatus": "photo-referenced",
+      "referenceUrl": "https://www.boeing.com/content/theboeingcompany/us/en/defense/military-rotorcraft/ah-64-apache.html",
+      "rotorBlades": 4,
+      "rotorLevels": 1,
+      "visualReview": "second-pass cockpit and gear revision; not photogrammetry",
+      "kind": "heli",
+      "triangles": 5184,
+      "dimensions": [
+        10.990000205039978,
+        3.2121945905685427,
+        9.5600004196167
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

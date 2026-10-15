@@ -1,0 +1,245 @@
+{
+  "recordedAt": "2026-10-15T19:41:54.801Z",
+  "models": [
+    {
+      "key": "destroyer_chn",
+      "scale": 5.4,
+      "parts": 266,
+      "profile": "Type 055 exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "destroyer",
+      "triangles": 7356,
+      "dimensions": [
+        27,
+        7.489999771118164,
+        3.8478260040283203
+      ]
+    },
+    {
+      "key": "destroyer_usa",
+      "scale": 5.4,
+      "parts": 264,
+      "profile": "Arleigh Burke class exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "destroyer",
+      "triangles": 7296,
+      "dimensions": [
+        24,
+        7.690000057220459,
+        3.290600061416626
+      ]
+    },
+    {
+      "key": "destroyer_rus",
+      "scale": 5.4,
+      "parts": 234,
+      "profile": "Admiral Gorshkov Project 22350 exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "destroyer",
+      "triangles": 7124,
+      "dimensions": [
+        21,
+        7.489999771118164,
+        2.690000057220459
+      ]
+    },
+    {
+      "key": "destroyer_ind",
+      "scale": 5.4,
+      "parts": 266,
+      "profile": "Kolkata class exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "destroyer",
+      "triangles": 7822,
+      "dimensions": [
+        25,
+        7.489999771118164,
+        3.3815999031066895
+      ]
+    },
+    {
+      "key": "destroyer_kor",
+      "scale": 5.4,
+      "parts": 276,
+      "profile": "Sejong the Great Batch I exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "destroyer",
+      "triangles": 7456,
+      "dimensions": [
+        26,
+        7.690000057220459,
+        3.767662763595581
+      ]
+    },
+    {
+      "key": "carrier_chn",
+      "scale": 5.4,
+      "parts": 310,
+      "profile": "Liaoning Type 001 exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "carrier",
+      "triangles": 8622,
+      "dimensions": [
+        34,
+        8.360000133514404,
+        7.744999885559082
+      ]
+    },
+    {
+      "key": "carrier_usa",
+      "scale": 5.4,
+      "parts": 269,
+      "profile": "Nimitz class exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "carrier",
+      "triangles": 7914,
+      "dimensions": [
+        36,
+        8.40999984741211,
+        8.59499979019165
+      ]
+    },
+    {
+      "key": "carrier_ind",
+      "scale": 5.4,
+      "parts": 314,
+      "profile": "INS Vikramaditya exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "carrier",
+      "triangles": 8670,
+      "dimensions": [
+        32,
+        8.559999942779541,
+        7.744999885559082
+      ]
+    },
+    {
+      "key": "carrier_kor",
+      "scale": 5.4,
+      "parts": 441,
+      "profile": "Dokdo LPH exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "carrier",
+      "triangles": 9734,
+      "dimensions": [
+        27,
+        7.509999752044678,
+        6.554999828338623
+      ]
+    },
+    {
+      "key": "submarine_chn",
+      "scale": 5.4,
+      "parts": 30,
+      "profile": "Type 093 early exterior exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "submarine",
+      "triangles": 5352,
+      "dimensions": [
+        22.395000457763672,
+        6.44228720664978,
+        4.550000190734863
+      ]
+    },
+    {
+      "key": "submarine_usa",
+      "scale": 5.4,
+      "parts": 30,
+      "profile": "Virginia class exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "submarine",
+      "triangles": 5352,
+      "dimensions": [
+        23.395000457763672,
+        5.855125427246094,
+        4.375
+      ]
+    },
+    {
+      "key": "submarine_rus",
+      "scale": 5.4,
+      "parts": 35,
+      "profile": "Yasen Project 885 exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "submarine",
+      "triangles": 5412,
+      "dimensions": [
+        25.395000457763672,
+        6.478269457817078,
+        5.425000190734863
+      ]
+    },
+    {
+      "key": "submarine_ind",
+      "scale": 5.4,
+      "parts": 30,
+      "profile": "Kalvari / Scorpene exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "submarine",
+      "triangles": 5352,
+      "dimensions": [
+        16.395000457763672,
+        5.019041180610657,
+        3.5
+      ]
+    },
+    {
+      "key": "submarine_kor",
+      "scale": 5.4,
+      "parts": 35,
+      "profile": "Dosan Ahn Changho Batch I exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "submarine",
+      "triangles": 5412,
+      "dimensions": [
+        19.395000457763672,
+        6.166525602340698,
+        4.900000095367432
+      ]
+    },
+    {
+      "key": "ciws_chn",
+      "scale": 7,
+      "parts": 34,
+      "profile": "C-RAM inspired gameplay emplacement",
+      "evidenceStatus": "gameplay-inspired",
+      "kind": "ciws",
+      "triangles": 892,
+      "dimensions": [
+        6.359999895095825,
+        4.280000215768814,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "sam_chn",
+      "scale": 7,
+      "parts": 13,
+      "profile": "Canister SAM gameplay emplacement",
+      "evidenceStatus": "gameplay-inspired",
+      "kind": "sam",
+      "triangles": 208,
+      "dimensions": [
+        6,
+        4.219129091501236,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "radar_chn",
+      "scale": 7,
+      "parts": 17,
+      "profile": "Rectangular-array gameplay radar",
+      "evidenceStatus": "gameplay-inspired",
+      "kind": "radar",
+      "triangles": 256,
+      "dimensions": [
+        6,
+        4.956890112161636,
+        5.400000095367432
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

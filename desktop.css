@@ -1,0 +1,29 @@
+/* Compact tactical HUD. */
+:root{--panel:#242c2d;--bg:#131b1d;--line:#515a55;--muted:#a5afa7;--accent:#d6be7c;--green:#9bc5a6}
+button,select,.map-button,.catalog-item{border-radius:0}
+.topbar{height:52px;background:linear-gradient(#303936,#172121);border-bottom:2px solid #687064;gap:13px}
+.topbar button{background:#222d2d;padding:6px 8px}
+.mission{top:65px;background:#172222cc;border-left:3px solid #c8b879;padding:8px 12px}#notifications{top:108px}
+#sidebar{top:52px;right:0;bottom:0;width:254px;background:linear-gradient(90deg,#171f20,#303936 4%,#1d2728 100%);border:0;border-left:3px solid #647061;box-shadow:-6px 0 18px #0005;overflow-y:auto}
+#sidebar .minimap-wrap{width:236px;height:162px;margin:9px 7px 0;border:3px ridge #667363;box-shadow:inset 0 0 12px #000}
+.side-header{padding:9px 12px;font-size:11px}
+#catalog{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:7px}.catalog-category{grid-column:1/-1}
+.catalog-item{position:relative;display:flex;flex-direction:column;gap:0;padding:0;margin:0;height:112px;overflow:hidden;background:linear-gradient(#414a45,#202b29);border:1px solid #60685b;box-shadow:inset 0 0 0 2px #121c1b}
+.catalog-item:hover:not(:disabled){border-color:#f0d48a;box-shadow:inset 0 0 10px #c3ac6433}.catalog-item:disabled{opacity:.48;filter:grayscale(.65)}
+.catalog-item .unit-symbol{border:0;width:100%;height:67px;background:radial-gradient(ellipse,#4d5c51,#1b2627);font-size:30px;flex-shrink:0}.catalog-item img{width:100%;height:100%;object-fit:contain}
+.catalog-item .item-body{width:100%;padding:3px 5px;background:#152020ba}.catalog-item strong{font-size:10px;line-height:15px}.catalog-item small{font-size:8px;margin-top:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.catalog-item .price{position:absolute;top:4px;right:4px;background:#131f21bb;color:#f3d48a;padding:2px 3px;font-size:10px}
+.tabs{padding:5px}.tabs button{padding:8px 1px;background:#1e2928}.tabs button.active{background:#586254;border:1px solid #a89d72;color:#f5ebc5}
+.bottom-panel{left:0;right:254px;bottom:0;height:130px;padding:10px 18px;gap:14px;background:linear-gradient(#293432ed,#142120f5);border:0;border-top:2px solid #687064}
+.selection-panel{min-width:0;padding:0}#selection-title{font-size:14px}#selection-info{font-size:10px;margin-top:5px}#selection-icons{min-height:27px;max-height:28px;overflow:hidden;margin:5px 0}
+#selection-icons span{width:27px;height:26px;font-size:17px}.command-buttons{display:flex;gap:5px;align-items:center}.command-buttons button{white-space:nowrap;padding:5px 7px;font-size:10px;min-width:45px}.command-buttons select{width:92px;padding:5px 3px;font-size:10px}
+.bottom-status{width:245px;padding-left:12px}.bottom-status p{font-size:9px;line-height:1.6;margin:4px 0}.bottom-status button{font-size:9px;padding:4px 6px}.bottom-status>div:last-child{display:flex;gap:3px;flex-wrap:wrap}
+#restore-hud{display:none;position:fixed;bottom:15px;right:18px;background:#17232499;border:1px solid #74877b;color:#d7e0d5;padding:8px 14px;font-size:11px;z-index:15}
+.immersive #hud .topbar,.immersive #sidebar,.immersive .bottom-panel,.immersive #notifications,.immersive .mission{display:none}.immersive #restore-hud{display:block}.immersive #pause-banner{top:15px}
+.space-option{display:block;font-size:11px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.menu-shell{background:linear-gradient(105deg,#172222f5,#182321e6);border:1px solid #637063;box-shadow:0 20px 100px #0008}
+#menu:before{background:linear-gradient(90deg,#14201ef0,#17201ec0),url('assets/references/m1a2-dvids.jpg') center/cover;opacity:1}
+.brand h1{font-weight:800;letter-spacing:5px}.brand p{color:#c3cbbd}.section-title{color:#e7d5aa}.map-button{background:#23332b80}
+.menu-footer{position:sticky;bottom:-1px;background:#172120;padding:15px 0;z-index:2}.graphic-options{display:grid;gap:10px}.graphic-options label{display:flex;align-items:center;justify-content:space-between;gap:15px}.graphic-options select{width:180px}
+@media(max-width:1100px){.bottom-status{width:180px}.topbar{gap:7px;padding:0 10px}.resource{padding-left:10px;min-width:55px}.topbar button{font-size:10px;padding:5px}.bottom-panel{padding:10px}.command-buttons{gap:3px}.command-buttons button{padding:4px}.hud-brand span{display:none}.launch-actions{flex-wrap:wrap;justify-content:flex-end}}
+@media(max-width:760px){#sidebar{width:182px;top:85px;bottom:119px}#sidebar .minimap-wrap{width:164px;height:112px}.topbar{height:85px;flex-wrap:wrap;gap:7px}.mission{top:92px;max-width:calc(100% - 195px);font-size:9px;padding:6px}.mission b,.mission #fps{display:none}#notifications{display:none}.bottom-panel{right:0;height:119px;padding:8px}.bottom-status{display:none}.catalog-item{height:97px}.catalog-item .unit-symbol{height:55px}.catalog-item strong{font-size:9px}.catalog-item small{font-size:7px}.catalog-item .price{font-size:8px}.bottom-panel .selection-panel{min-width:0}.command-buttons button{font-size:9px}.command-buttons select{width:85px}.menu-footer{position:static}.topbar #team-name{margin:0}.topbar #fullscreen{display:block}.topbar .resource{min-width:50px}.topbar #clock{margin-left:auto}.side-header{display:none}}

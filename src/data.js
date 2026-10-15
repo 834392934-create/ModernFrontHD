@@ -20,7 +20,7 @@
         "M109A7 Paladin",
         "M142 HIMARS",
         "Stryker M-SHORAD",
-        "AH-64E Apache",
+        "AH-64 Apache",
       ],
       support: "联合空中支援",
     },
@@ -105,7 +105,7 @@
         "K9 Thunder",
         "K239 Chunmoo",
         "K30 Biho",
-        "AH-64E Apache",
+        "AH-64 Apache",
       ],
       support: "快速反应支援",
     },
@@ -516,7 +516,7 @@
     },
     orbital: {
       name: "轨道武装平台（架空）",
-      role: "太空层 / 对地光束 / 超视距",
+      role: "太空 / 海陆空 / 基地全域打击（架空）",
       cost: 5500,
       hp: 1800,
       speed: 90,
@@ -531,6 +531,8 @@
       space: true,
       air: true,
       antiSpace: true,
+      antiAir: true,
+      spaceWeapon: true,
       advanced: true,
     },
     asat: {
@@ -727,6 +729,7 @@
       defense: true,
     },
   });
+  U.harvester={name:'装甲采矿车',role:'自动采矿 / 运回精炼厂 / 可右键指定矿区',cost:700,hp:720,speed:67,damage:0,range:0,reload:1,sight:230,r:18,time:10,producer:'factory',icon:'▣',ground:true,capacity:500,harvestRate:65};
   const D = {
     F,
     U,

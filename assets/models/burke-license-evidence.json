@@ -1,0 +1,201 @@
+{
+  "animationCount": 0,
+  "categories": [
+    {
+      "uid": "22a2f677efad4d7bbca5ad45f9b5868e",
+      "name": "Cars & Vehicles",
+      "slug": "cars-vehicles",
+      "uri": "https://api.sketchfab.com/v3/categories/22a2f677efad4d7bbca5ad45f9b5868e",
+      "icon": "https://static.sketchfab.com/static/builds/web/dist/static/assets/images/icons/categories/45dd0cc0860ac57fcd63bde1cc3f2b7c-v2.svg",
+      "thumbnails": [
+        {
+          "width": "512",
+          "height": "288",
+          "url": "https://static.sketchfab.com/categories/22a2f677efad4d7bbca5ad45f9b5868e/512x288.png"
+        },
+        {
+          "width": "800",
+          "height": "450",
+          "url": "https://static.sketchfab.com/categories/22a2f677efad4d7bbca5ad45f9b5868e/800x450.png"
+        }
+      ]
+    },
+    {
+      "uid": "3badf36bd9f549bdba295334d75e04d3",
+      "name": "Weapons & Military",
+      "slug": "weapons-military",
+      "uri": "https://api.sketchfab.com/v3/categories/3badf36bd9f549bdba295334d75e04d3",
+      "icon": "https://static.sketchfab.com/static/builds/web/dist/static/assets/images/icons/categories/6f71af8dadcca706c7404c9a0f82c1a3-v2.svg",
+      "thumbnails": [
+        {
+          "width": "512",
+          "height": "288",
+          "url": "https://static.sketchfab.com/categories/3badf36bd9f549bdba295334d75e04d3/512x288.png"
+        },
+        {
+          "width": "800",
+          "height": "450",
+          "url": "https://static.sketchfab.com/categories/3badf36bd9f549bdba295334d75e04d3/800x450.png"
+        }
+      ]
+    }
+  ],
+  "commentCount": 25,
+  "createdAt": "2021-10-14T04:48:36.768131",
+  "embedUrl": "https://sketchfab.com/models/17be09c31c6047e4a5969b68c29eba03/embed",
+  "faceCount": 49632,
+  "isAgeRestricted": false,
+  "license": {
+    "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+    "label": "CC Attribution",
+    "fullName": "Creative Commons Attribution",
+    "requirements": "Author must be credited. Commercial use is allowed.",
+    "url": "http://creativecommons.org/licenses/by/4.0/",
+    "slug": "by"
+  },
+  "likeCount": 575,
+  "name": "1:1 Low poly US NAVY DDG-51 USS Arleigh Burke.",
+  "publishedAt": "2021-10-14T05:10:44.554719",
+  "soundCount": 0,
+  "staffpickedAt": null,
+  "tags": [
+    {
+      "name": "warship",
+      "slug": "warship",
+      "uri": "https://api.sketchfab.com/v3/tags/warship"
+    },
+    {
+      "name": "Destroyer",
+      "slug": "destroyer",
+      "uri": "https://api.sketchfab.com/v3/tags/destroyer"
+    },
+    {
+      "name": "aegis",
+      "slug": "aegis",
+      "uri": "https://api.sketchfab.com/v3/tags/aegis"
+    },
+    {
+      "name": "ddg",
+      "slug": "ddg",
+      "uri": "https://api.sketchfab.com/v3/tags/ddg"
+    },
+    {
+      "name": "usnavy",
+      "slug": "usnavy",
+      "uri": "https://api.sketchfab.com/v3/tags/usnavy"
+    },
+    {
+      "name": "arleigh-burke-class-guided-missile-destroyer",
+      "slug": "arleigh-burke-class-guided-missile-destroyer",
+      "uri": "https://api.sketchfab.com/v3/tags/arleigh-burke-class-guided-missile-destroyer"
+    },
+    {
+      "name": "ship",
+      "slug": "ship",
+      "uri": "https://api.sketchfab.com/v3/tags/ship"
+    },
+    {
+      "name": "navy",
+      "slug": "navy",
+      "uri": "https://api.sketchfab.com/v3/tags/navy"
+    }
+  ],
+  "thumbnails": {
+    "images": [
+      {
+        "uid": "f70b0236190b4d0d8364b25d7c9c388a",
+        "width": 1920,
+        "height": 1080,
+        "size": 163996,
+        "url": "https://media.sketchfab.com/models/17be09c31c6047e4a5969b68c29eba03/thumbnails/53bc8841d13c47b2ab249d8e6dcac00b/7339199beabe4d90a270274ae0c9b1d0.jpeg"
+      },
+      {
+        "uid": "c1851913c630427988a7ccdae70bb7f7",
+        "width": 1024,
+        "height": 576,
+        "size": 47522,
+        "url": "https://media.sketchfab.com/models/17be09c31c6047e4a5969b68c29eba03/thumbnails/53bc8841d13c47b2ab249d8e6dcac00b/d64a85b9dc6742e4bc3e4608256cc85f.jpeg"
+      },
+      {
+        "uid": "bf5fcdec37e047f493a1abc9e615c86c",
+        "width": 720,
+        "height": 405,
+        "size": 26986,
+        "url": "https://media.sketchfab.com/models/17be09c31c6047e4a5969b68c29eba03/thumbnails/53bc8841d13c47b2ab249d8e6dcac00b/94c8a7bc930341c4a46f36f45c2430b3.jpeg"
+      },
+      {
+        "uid": "fc53654515da46c280af1449acfeb68d",
+        "width": 256,
+        "height": 144,
+        "size": 5269,
+        "url": "https://media.sketchfab.com/models/17be09c31c6047e4a5969b68c29eba03/thumbnails/53bc8841d13c47b2ab249d8e6dcac00b/14685196efb944f8adadf4bb02d0a92a.jpeg"
+      },
+      {
+        "uid": "6daf76433230451d973c4e5a4a7626b0",
+        "width": 64,
+        "height": 36,
+        "size": 1159,
+        "url": "https://media.sketchfab.com/models/17be09c31c6047e4a5969b68c29eba03/thumbnails/53bc8841d13c47b2ab249d8e6dcac00b/f2fff4881a3c485bb76e28443e96e195.jpeg"
+      }
+    ]
+  },
+  "uid": "17be09c31c6047e4a5969b68c29eba03",
+  "uri": "https://api.sketchfab.com/v3/models/17be09c31c6047e4a5969b68c29eba03",
+  "user": {
+    "uid": "141a1f588f5242449dcfb12f41361b32",
+    "username": "WTigerTw",
+    "displayName": "Yi Tsung Lee",
+    "account": "basic",
+    "profileUrl": "https://sketchfab.com/WTigerTw",
+    "avatar": {
+      "uid": "2cb05e0905b448cc90452735947d0077",
+      "uri": "https://api.sketchfab.com/v3/avatars/2cb05e0905b448cc90452735947d0077",
+      "images": [
+        {
+          "width": 32,
+          "height": 32,
+          "size": 730,
+          "url": "https://media.sketchfab.com/avatars/2cb05e0905b448cc90452735947d0077/cc13603c69c04297b2abe43c98507884.jpeg"
+        },
+        {
+          "width": 48,
+          "height": 48,
+          "size": 1167,
+          "url": "https://media.sketchfab.com/avatars/2cb05e0905b448cc90452735947d0077/4d1129708aaa4a91b4360f542067958b.jpeg"
+        },
+        {
+          "width": 90,
+          "height": 90,
+          "size": 3205,
+          "url": "https://media.sketchfab.com/avatars/2cb05e0905b448cc90452735947d0077/ff0ca52443264c6ba7d79665201472b2.jpeg"
+        },
+        {
+          "width": 100,
+          "height": 100,
+          "size": 3801,
+          "url": "https://media.sketchfab.com/avatars/2cb05e0905b448cc90452735947d0077/bf5842640fac47b487063ee505ee9e51.jpeg"
+        }
+      ]
+    },
+    "uri": "https://api.sketchfab.com/v3/users/141a1f588f5242449dcfb12f41361b32"
+  },
+  "vertexCount": 29655,
+  "viewCount": 70665,
+  "viewerUrl": "https://sketchfab.com/3d-models/11-low-poly-us-navy-ddg-51-uss-arleigh-burke-17be09c31c6047e4a5969b68c29eba03",
+  "isDownloadable": true,
+  "isProtected": false,
+  "description": "1:1 Low poly model US NAVY USS Arleight Burke guided missile destroyer.\nmodel and texture by WTigerTw.\nCreated for use in Cities Skylines.",
+  "price": null,
+  "downloadCount": 12227,
+  "editorUrl": "https://sketchfab.com/models/17be09c31c6047e4a5969b68c29eba03/edit",
+  "status": {
+    "warning": {},
+    "processing": "SUCCEEDED"
+  },
+  "source": "website",
+  "hasCommentsDisabled": false,
+  "updatedAt": "2022-07-21T13:09:47.104971",
+  "pbrType": "metalness",
+  "textureCount": 14,
+  "materialCount": 5
+}

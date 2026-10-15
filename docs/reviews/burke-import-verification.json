@@ -1,0 +1,79 @@
+{
+  "state": "ready",
+  "errors": [],
+  "dims": [
+    24,
+    8.341902172044326,
+    3.8606098026224815
+  ],
+  "metadata": {
+    "scale": 5.4,
+    "parts": 6,
+    "triangles": 49381,
+    "profile": "Arleigh Burke DDG-51 / Flight I — licensed textured exterior",
+    "evidenceStatus": "photo-referenced",
+    "reviewStatus": "licensed-art-multi-view-reviewed",
+    "referenceUrl": "https://www.usff.navy.mil/Press-Room/News-Stories/Article/3112957/uss-arleigh-burke-responds-to-man-overboard/",
+    "assetSource": "https://sketchfab.com/3d-models/11-low-poly-us-navy-ddg-51-uss-arleigh-burke-17be09c31c6047e4a5969b68c29eba03",
+    "license": "CC-BY-4.0",
+    "author": "Yi Tsung Lee / WTigerTw",
+    "assetPath": "assets/models/burke.glb",
+    "waterlineY": 0,
+    "limitations": "Exterior game art; not an engineering reconstruction. Source includes underwater hull.",
+    "kind": "destroyer"
+  },
+  "meshes": [
+    {
+      "name": "Object_4",
+      "preserve": true,
+      "map": true,
+      "material": "CIWS"
+    },
+    {
+      "name": "Object_6",
+      "preserve": true,
+      "map": true,
+      "material": "DDG112"
+    },
+    {
+      "name": "Object_8",
+      "preserve": true,
+      "map": true,
+      "material": "mk38"
+    },
+    {
+      "name": "Object_10",
+      "preserve": true,
+      "map": true,
+      "material": "DDG112"
+    },
+    {
+      "name": "Object_12",
+      "preserve": true,
+      "map": true,
+      "material": "RHIB.001"
+    },
+    {
+      "name": "Object_14",
+      "preserve": true,
+      "map": true,
+      "material": "spg62"
+    }
+  ],
+  "triangles": 49381,
+  "bounds": {
+    "isBox3": true,
+    "min": {
+      "x": -12,
+      "y": -1.4679946431609603,
+      "z": -1.9303049013112408
+    },
+    "max": {
+      "x": 12,
+      "y": 6.8739075288833655,
+      "z": 1.9303049013112408
+    }
+  },
+  "pageErrors": [],
+  "networkRequests": []
+}

@@ -1,0 +1,18 @@
+{
+  "ready": {
+    "status": "failed",
+    "loaded": [],
+    "errors": [
+      "Embedded Burke GLB data is missing"
+    ]
+  },
+  "fallback": {
+    "scale": 5.4,
+    "parts": 264,
+    "profile": "Arleigh Burke class exterior study",
+    "evidenceStatus": "photo-referenced",
+    "referenceUrl": "https://www.usff.navy.mil/Press-Room/News-Stories/Article/3112957/uss-arleigh-burke-responds-to-man-overboard/",
+    "reviewStatus": "needs-multi-view-review",
+    "kind": "destroyer"
+  }
+}

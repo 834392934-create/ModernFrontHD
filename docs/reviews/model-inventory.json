@@ -1,0 +1,1189 @@
+{
+  "recordedAt": "2026-10-15T20:21:21.243Z",
+  "scope": "Coverage and source inventory; not a visual acceptance certificate.",
+  "knownSlotCount": 49,
+  "conceptGenerationAllowed": false,
+  "policy": "ACCEPTANCE_POLICY.md",
+  "units": [
+    {
+      "key": "infantry_usa",
+      "name": "步兵小组",
+      "category": "generic-game-role",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "tank_usa",
+      "name": "M1A2 SEPv3",
+      "category": "known-photo-reference",
+      "profile": "M1A2 SEPv3 exterior approximation",
+      "referenceUrl": "https://www.dvidshub.net/image/5852204/abram-tank-operations",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "ifv_usa",
+      "name": "M2A3 Bradley",
+      "category": "known-photo-reference",
+      "profile": "M2A3 Bradley",
+      "referenceUrl": "https://www.dvidshub.net/image/6775085/iron-rangers-off-load-military-vehicles-mk-air-base",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "arty_usa",
+      "name": "M109A7 Paladin",
+      "category": "known-photo-reference",
+      "profile": "M109A7 Paladin",
+      "referenceUrl": "https://babel.ua/amp/news/46776-ssha-pochinaye-vikoristovuvati-suputniki-dlya-navedennya-artileriji-na-cili",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "rocket_usa",
+      "name": "M142 HIMARS",
+      "category": "known-photo-reference",
+      "profile": "M142 HIMARS",
+      "referenceUrl": "https://thegaze.media/news/victorys-arsenal-its-himars-oclock",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "aa_usa",
+      "name": "Stryker M-SHORAD",
+      "category": "known-photo-reference",
+      "profile": "Stryker M-SHORAD",
+      "referenceUrl": "https://odin.t2com.army.mil/WEG/Asset/d8e35b53d1a96872dcc5ca0865253b54",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "heli_usa",
+      "name": "AH-64 Apache",
+      "category": "known-photo-reference",
+      "profile": "AH-64 Longbow reference configuration — licensed exterior",
+      "referenceUrl": "https://www.dvidshub.net/image/6422832/tf-expect-no-mercy-flyover-greece",
+      "assetSource": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+      "license": "CC-BY-4.0",
+      "author": "Andrew Swihart / ArionDigital",
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "jet_usa",
+      "name": "六代制空战机",
+      "category": "concept-frozen",
+      "profile": "concept",
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "fighter_usa",
+      "name": "F-35A",
+      "category": "known-photo-reference",
+      "profile": "F-35A",
+      "referenceUrl": "https://www.dvidshub.net/image/8627178/f-35a-demo-team-mcconnell-afb",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "destroyer_usa",
+      "name": "阿利·伯克级",
+      "category": "known-photo-reference",
+      "profile": "Arleigh Burke DDG-51 / Flight I — licensed textured exterior",
+      "referenceUrl": "https://www.usff.navy.mil/Press-Room/News-Stories/Article/3112957/uss-arleigh-burke-responds-to-man-overboard/",
+      "assetSource": "https://sketchfab.com/3d-models/11-low-poly-us-navy-ddg-51-uss-arleigh-burke-17be09c31c6047e4a5969b68c29eba03",
+      "license": "CC-BY-4.0",
+      "author": "Yi Tsung Lee / WTigerTw",
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "carrier_usa",
+      "name": "尼米兹级",
+      "category": "known-photo-reference",
+      "profile": "Nimitz class exterior study",
+      "referenceUrl": "https://www.dvidshub.net/image/7090267/uss-nimitz-shoots-photo-exercise",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "submarine_usa",
+      "name": "弗吉尼亚级",
+      "category": "known-photo-reference",
+      "profile": "Virginia class exterior study",
+      "referenceUrl": "https://www.navy.mil/Resources/Photo-Gallery/igphoto/2003974517/",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "satellite_usa",
+      "name": "X-37B（在轨试验 / 玩法抽象）",
+      "category": "role-abstraction",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "orbital_usa",
+      "name": "轨道武装平台（架空）",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "asat_usa",
+      "name": "反轨道系统（架空）",
+      "category": "role-abstraction",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "harvester_usa",
+      "name": "装甲采矿车",
+      "category": "generic-game-role",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "infantry_rus",
+      "name": "步兵小组",
+      "category": "generic-game-role",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "tank_rus",
+      "name": "T-90M",
+      "category": "known-photo-reference",
+      "profile": "T-90M — licensed textured exterior",
+      "referenceUrl": "https://www.rostec.ru/media/news/tank-t-90m-proryvnaya-mashina/",
+      "assetSource": "https://sketchfab.com/3d-models/t-90m-2e31a3cf16b04f0180b9387df5198c9a",
+      "license": "CC-BY-4.0",
+      "author": "minehffd",
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "ifv_rus",
+      "name": "BMP-3",
+      "category": "known-photo-reference",
+      "profile": "BMP-3",
+      "referenceUrl": "https://defence-ua.com/news/zsu_na_pjatij_misjats_vijni_prodovzhujut_zbirati_trofejni_bmp_3_rashistiv_foto-8320.html",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "arty_rus",
+      "name": "2S19 Msta-S",
+      "category": "known-photo-reference",
+      "profile": "2S19 Msta-S",
+      "referenceUrl": "https://commons.wikimedia.org/wiki/File%3AArtillery_exercise_with_2S19_Msta-S_at_the_Mulino_Training_Ground_%2825-03-2020%29_06.jpg",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "rocket_rus",
+      "name": "BM-30 Smerch",
+      "category": "known-photo-reference",
+      "profile": "BM-30 Smerch",
+      "referenceUrl": "https://truck-encyclopedia.com/coldwar/ussr/BM-30_Smerch.php",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "aa_rus",
+      "name": "Pantsir-S1",
+      "category": "known-photo-reference",
+      "profile": "Pantsir-S1",
+      "referenceUrl": "https://commons.wikimedia.org/wiki/File:Bronnitsy_-_02_-_Pantsir-S1_SAM.jpg",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "heli_rus",
+      "name": "Ka-52",
+      "category": "known-photo-reference",
+      "profile": "Ka-52",
+      "referenceUrl": "https://russianplanes.net/id112234",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "jet_rus",
+      "name": "六代制空战机",
+      "category": "concept-frozen",
+      "profile": "concept",
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "fighter_rus",
+      "name": "Su-57",
+      "category": "known-photo-reference",
+      "profile": "Su-57",
+      "referenceUrl": "https://commons.wikimedia.org/wiki/File:Su-57_052_and_Su-57_051_in_MAKS_2019.jpg",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "destroyer_rus",
+      "name": "戈尔什科夫海军元帅级（护卫舰）",
+      "category": "known-photo-reference",
+      "profile": "Admiral Gorshkov Project 22350 exterior study",
+      "referenceUrl": "https://commons.wikimedia.org/wiki/File:Admiral_Gorshkov_frigate_03.jpg",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "carrier_rus",
+      "name": "航空作战舰（架空）",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "submarine_rus",
+      "name": "亚森级",
+      "category": "known-photo-reference",
+      "profile": "Yasen Project 885 exterior study",
+      "referenceUrl": "https://commons.wikimedia.org/wiki/File:Северодвинск_(АПЛ).jpeg",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "satellite_rus",
+      "name": "轨道侦察平台（抽象）",
+      "category": "role-abstraction",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "orbital_rus",
+      "name": "轨道武装平台（架空）",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "asat_rus",
+      "name": "反轨道系统（架空）",
+      "category": "role-abstraction",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "harvester_rus",
+      "name": "装甲采矿车",
+      "category": "generic-game-role",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "infantry_chn",
+      "name": "步兵小组",
+      "category": "generic-game-role",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "tank_chn",
+      "name": "ZTZ-99A",
+      "category": "known-photo-reference",
+      "profile": "ZTZ-99A",
+      "referenceUrl": "https://www.mod.gov.cn/gfbw/jmsd/4806118.html",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "ifv_chn",
+      "name": "ZBD-04A",
+      "category": "known-photo-reference",
+      "profile": "ZBD-04A",
+      "referenceUrl": "https://odin.t2com.army.mil/WEG/Asset/ZBD-04A_Chinese_Amphibious_Infantry_Fighting_Vehicle_%28IFV%29",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "arty_chn",
+      "name": "PLZ-05",
+      "category": "known-photo-reference",
+      "profile": "PLZ-05",
+      "referenceUrl": "https://www.sohu.com/picture/752175627",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "rocket_chn",
+      "name": "PHL-191",
+      "category": "known-photo-reference",
+      "profile": "PHL-191",
+      "referenceUrl": "https://www.g-enews.com/article/General-News/2019/12/201912091306401342c5557f8da8_1",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "aa_chn",
+      "name": "HQ-17",
+      "category": "known-photo-reference",
+      "profile": "HQ-17",
+      "referenceUrl": "https://www.popsci.com/blog-network/eastern-arsenal/hq-17-classic-russian-missile-new-chinese-twist/",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "heli_chn",
+      "name": "Z-10",
+      "category": "known-photo-reference",
+      "profile": "Z-10",
+      "referenceUrl": "https://eng.mod.gov.cn/2025xb/H_251589/F/16452384.html",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "jet_chn",
+      "name": "六代制空战机",
+      "category": "concept-frozen",
+      "profile": "concept",
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "fighter_chn",
+      "name": "J-20",
+      "category": "known-photo-reference",
+      "profile": "J-20",
+      "referenceUrl": "https://www.mod.gov.cn/gfbw/sy/rt/16285349.html",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "destroyer_chn",
+      "name": "055 型",
+      "category": "known-photo-reference",
+      "profile": "Type 055 exterior study",
+      "referenceUrl": "https://eng.mod.gov.cn/xb/News_213114/Photos/16352318.html",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "carrier_chn",
+      "name": "辽宁舰",
+      "category": "known-photo-reference",
+      "profile": "Liaoning Type 001 exterior study",
+      "referenceUrl": "https://eng.chinamil.com.cn/CHINA_209163/TopStories_209189/9476125.html",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "submarine_chn",
+      "name": "093 型",
+      "category": "known-photo-reference",
+      "profile": "Type 093 early exterior exterior study",
+      "referenceUrl": "https://mil.news.sina.com.cn/p/2007-09-17/1117464337.html",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "satellite_chn",
+      "name": "可重复使用试验航天器（玩法抽象）",
+      "category": "role-abstraction",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "orbital_chn",
+      "name": "轨道武装平台（架空）",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "asat_chn",
+      "name": "反轨道系统（架空）",
+      "category": "role-abstraction",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "harvester_chn",
+      "name": "装甲采矿车",
+      "category": "generic-game-role",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "infantry_ind",
+      "name": "步兵小组",
+      "category": "generic-game-role",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "tank_ind",
+      "name": "T-90S Bhishma",
+      "category": "known-photo-reference",
+      "profile": "T-90S Bhishma",
+      "referenceUrl": "https://sputniknews.in/20250407/indian-army-to-procure-anti-drone-systems-for-t-72-and-t-90-tanks-8956117.html",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "ifv_ind",
+      "name": "BMP-2 Sarath",
+      "category": "known-photo-reference",
+      "profile": "BMP-2 Sarath",
+      "referenceUrl": "https://timesofindia.indiatimes.com/defence/weapons/tank/bmp-2-sarath",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "arty_ind",
+      "name": "K9 Vajra-T",
+      "category": "known-photo-reference",
+      "profile": "K9 Vajra-T",
+      "referenceUrl": "https://m.economictimes.com/news/defence/lt-bags-its-biggest-defence-order-worth-rs-4500-crore-to-supply-self-propelled-guns-to-indian-army/articleshow/58644663.cms",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "rocket_ind",
+      "name": "Pinaka",
+      "category": "known-photo-reference",
+      "profile": "Pinaka",
+      "referenceUrl": "https://tribune.com.pk/story/2527703/france-in-talks-to-purchase-rocket-launcher-from-india-officials-confirm",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "aa_ind",
+      "name": "Akash",
+      "category": "known-photo-reference",
+      "profile": "Akash",
+      "referenceUrl": "https://m.rediff.com/news/report/r-day-parade-indian-army-showcases-its-might-at-rajpath/20220126.htm",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "heli_ind",
+      "name": "LCH Prachand",
+      "category": "known-photo-reference",
+      "profile": "LCH Prachand",
+      "referenceUrl": "https://www.ddpmod.gov.in/en/resources/products/light-combat-helicopter-lch",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "jet_ind",
+      "name": "六代制空战机",
+      "category": "concept-frozen",
+      "profile": "concept",
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "fighter_ind",
+      "name": "Rafale",
+      "category": "known-photo-reference",
+      "profile": "Rafale C",
+      "referenceUrl": "https://www.dassault-aviation.com/en/defense/rafale/introduction/",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "destroyer_ind",
+      "name": "加尔各答级",
+      "category": "known-photo-reference",
+      "profile": "Kolkata class exterior study",
+      "referenceUrl": "https://www.deccanherald.com/india/ins-kolkatas-weapon-system-marred-2203885",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "carrier_ind",
+      "name": "维克拉玛蒂亚号",
+      "category": "known-photo-reference",
+      "profile": "INS Vikramaditya exterior study",
+      "referenceUrl": "https://commons.wikimedia.org/wiki/File:INS_Vikramaditya_-_06.jpg",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "submarine_ind",
+      "name": "鲉鱼级",
+      "category": "known-photo-reference",
+      "profile": "Kalvari / Scorpene exterior study",
+      "referenceUrl": "https://www.businessinsider.com/india-to-buy-submarines-amid-china-naval-activity-in-the-indian-ocean-2017-7",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "satellite_ind",
+      "name": "轨道侦察平台（抽象）",
+      "category": "role-abstraction",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "orbital_ind",
+      "name": "轨道武装平台（架空）",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "asat_ind",
+      "name": "反轨道系统（架空）",
+      "category": "role-abstraction",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "harvester_ind",
+      "name": "装甲采矿车",
+      "category": "generic-game-role",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "infantry_kor",
+      "name": "步兵小组",
+      "category": "generic-game-role",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "tank_kor",
+      "name": "K2 Black Panther",
+      "category": "known-photo-reference",
+      "profile": "K2 Black Panther",
+      "referenceUrl": "https://www.hyundai-rotem.co.kr/en/business/defense/details.do?productCt03=defense0101",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "ifv_kor",
+      "name": "K21",
+      "category": "known-photo-reference",
+      "profile": "K21",
+      "referenceUrl": "https://historia.org.pl/2022/05/30/k21-i-as21-redback-czyli-koreanskie-bojowe-wozy-piechoty/",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "arty_kor",
+      "name": "K9 Thunder",
+      "category": "known-photo-reference",
+      "profile": "K9 Thunder",
+      "referenceUrl": "https://medium.com/lessons-from-history/5-most-dangerous-artillery-guns-in-the-world-9a35d8a1e491",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "rocket_kor",
+      "name": "K239 Chunmoo",
+      "category": "known-photo-reference",
+      "profile": "K239 Chunmoo",
+      "referenceUrl": "https://commons.wikimedia.org/wiki/File:K239_Chunmoo_MLRS.png",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "aa_kor",
+      "name": "K30 Biho",
+      "category": "known-photo-reference",
+      "profile": "K30 Biho",
+      "referenceUrl": "https://w.atwiki.jp/namacha/pages/60.html",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "heli_kor",
+      "name": "AH-64 Apache",
+      "category": "known-photo-reference",
+      "profile": "AH-64 Longbow reference configuration — licensed exterior",
+      "referenceUrl": "https://www.dvidshub.net/image/6422832/tf-expect-no-mercy-flyover-greece",
+      "assetSource": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+      "license": "CC-BY-4.0",
+      "author": "Andrew Swihart / ArionDigital",
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "jet_kor",
+      "name": "六代制空战机",
+      "category": "concept-frozen",
+      "profile": "concept",
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "fighter_kor",
+      "name": "F-35A",
+      "category": "known-photo-reference",
+      "profile": "F-35A",
+      "referenceUrl": "https://www.mindef.gov.sg/news-and-events/latest-releases/28feb24_fs/",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "destroyer_kor",
+      "name": "世宗大王级",
+      "category": "known-photo-reference",
+      "profile": "Sejong the Great Batch I exterior study",
+      "referenceUrl": "https://commons.wikimedia.org/wiki/File:ROKS_Sejong_the_Great_(DDG_991).jpg",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "carrier_kor",
+      "name": "独岛级两栖攻击舰（航空玩法抽象）",
+      "category": "known-photo-reference",
+      "profile": "Dokdo LPH exterior study",
+      "referenceUrl": "https://commons.wikimedia.org/wiki/File:ROKS_Dokdo_(LPH_6111)_underway_in_March_2014.JPG",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "submarine_kor",
+      "name": "岛山安昌浩级",
+      "category": "known-photo-reference",
+      "profile": "Dosan Ahn Changho Batch I exterior study",
+      "referenceUrl": "https://www.bairdmaritime.com/security/naval/naval-submersibles/south-korean-navy-commissions-first-kss-3-submarine",
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "satellite_kor",
+      "name": "轨道侦察平台（抽象）",
+      "category": "role-abstraction",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "orbital_kor",
+      "name": "轨道武装平台（架空）",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "asat_kor",
+      "name": "反轨道系统（架空）",
+      "category": "role-abstraction",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "harvester_kor",
+      "name": "装甲采矿车",
+      "category": "generic-game-role",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "infantry_imp",
+      "name": "步兵小组",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "tank_imp",
+      "name": "黎曼鲁斯主战坦克",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "ifv_imp",
+      "name": "奇美拉装甲输送车",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "arty_imp",
+      "name": "石化蜥蜴自行炮",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "rocket_imp",
+      "name": "螳螂火箭炮",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "aa_imp",
+      "name": "九头蛇防空炮",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "heli_imp",
+      "name": "瓦尔基里突击艇",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "jet_imp",
+      "name": "六代制空战机",
+      "category": "concept-frozen",
+      "profile": "concept",
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "fighter_imp",
+      "name": "雷霆战斗机",
+      "category": "concept-frozen",
+      "profile": "concept",
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "destroyer_imp",
+      "name": "帝国近海炮舰（架空）",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "carrier_imp",
+      "name": "帝国重型航空舰（架空）",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "submarine_imp",
+      "name": "帝国深潜艇（架空）",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "satellite_imp",
+      "name": "帝国侦察伺服器（架空）",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "orbital_imp",
+      "name": "月级轨道巡洋舰（科幻抽象）",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "asat_imp",
+      "name": "帝国防御激光阵列（架空）",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "harvester_imp",
+      "name": "装甲采矿车",
+      "category": "concept-frozen",
+      "profile": null,
+      "referenceUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    }
+  ],
+  "facilities": [
+    {
+      "key": "hq",
+      "name": "指挥中心",
+      "category": "generic-game-facility"
+    },
+    {
+      "key": "power",
+      "name": "供能站",
+      "category": "generic-game-facility"
+    },
+    {
+      "key": "refinery",
+      "name": "补给精炼厂",
+      "category": "generic-game-facility"
+    },
+    {
+      "key": "barracks",
+      "name": "战术兵营",
+      "category": "generic-game-facility"
+    },
+    {
+      "key": "factory",
+      "name": "战车工厂",
+      "category": "generic-game-facility"
+    },
+    {
+      "key": "airfield",
+      "name": "陆航基地",
+      "category": "generic-game-facility"
+    },
+    {
+      "key": "turret",
+      "name": "防御炮塔",
+      "category": "generic-game-facility"
+    },
+    {
+      "key": "navalyard",
+      "name": "海军船坞",
+      "category": "generic-game-facility"
+    },
+    {
+      "key": "spaceport",
+      "name": "航天发射中心",
+      "category": "generic-game-facility"
+    },
+    {
+      "key": "bunker",
+      "name": "加固火力堡垒",
+      "category": "generic-game-facility"
+    },
+    {
+      "key": "sam",
+      "name": "防空导弹阵地",
+      "category": "generic-game-facility"
+    },
+    {
+      "key": "ciws",
+      "name": "近防炮阵地（参考 C-RAM）",
+      "category": "photo-inspired-game-facility"
+    },
+    {
+      "key": "radar",
+      "name": "联合警戒雷达",
+      "category": "generic-game-facility"
+    },
+    {
+      "key": "repairhub",
+      "name": "战地维修站",
+      "category": "generic-game-facility"
+    },
+    {
+      "key": "laser",
+      "name": "定向能炮塔（概念）",
+      "category": "concept-frozen"
+    },
+    {
+      "key": "shield",
+      "name": "区域护盾（架空）",
+      "category": "concept-frozen"
+    },
+    {
+      "key": "jammer",
+      "name": "电磁压制塔（架空）",
+      "category": "concept-frozen"
+    }
+  ],
+  "abilities": [
+    {
+      "key": "recon",
+      "name": "战场侦察",
+      "category": "abstract-effect-no-specific-exterior-model"
+    },
+    {
+      "key": "repair",
+      "name": "应急维修",
+      "category": "abstract-effect-no-specific-exterior-model"
+    },
+    {
+      "key": "strike",
+      "name": "战区火力",
+      "category": "abstract-effect-no-specific-exterior-model"
+    },
+    {
+      "key": "emp",
+      "name": "电子压制",
+      "category": "abstract-effect-no-specific-exterior-model"
+    },
+    {
+      "key": "nuke",
+      "name": "战略核打击",
+      "category": "abstract-effect-no-specific-exterior-model"
+    },
+    {
+      "key": "bunker",
+      "name": "钻地弹打击",
+      "category": "abstract-effect-no-specific-exterior-model"
+    },
+    {
+      "key": "orbital",
+      "name": "帝国轨道光矛",
+      "category": "abstract-effect-no-specific-exterior-model"
+    }
+  ]
+}

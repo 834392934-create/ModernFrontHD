@@ -35,7 +35,7 @@
     sound = true,
     audio = null,
     hadFocus = true;
-  const lighting = new WarLighting($("#battle"));
+  const lighting = r.is3D ? {available:true,enabled:true,night:false,output:{hidden:true},draw(){}} : new WarLighting($("#battle"));
   r.camera = { x: 1550, y: 1000, zoom: 0.64 };
   r.prepare(demo);
   function escapeHTML(v) {
@@ -249,7 +249,7 @@
     r.camera = {
       x: p.x + 150,
       y: p.y + 150,
-      zoom: innerWidth < 760 ? 0.58 : 0.9,
+      zoom: innerWidth < 760 ? 0.75 : 1.25,
     };
     r.prepare(game);
     r.pointer = pointer;
@@ -265,6 +265,9 @@
       abilities: $("#abilities").checked,
       advanced: $("#advanced").checked,
       playerOnlyTech: $("#player-only").checked,
+      aiSpaceWeapons: !$("#ai-space-ban").checked,
+      mode: $('#game-mode').value,
+      scoreLimit: Number($('#score-limit').value),
       buffs: $$("#buffs input:checked").map((e) => e.dataset.buff),
       opponents: $$("#opponents select").map((e) => e.value || undefined),
     };
@@ -296,9 +299,9 @@
     $("#population").textContent = unit.length + " / 100";
     $("#clock").textContent = formatTime(game.time);
     $("#speed").textContent = speed + "×";
-    $("#objective").textContent =
-      "摧毁敌方指挥中心 · 剩余 " +
-      game.teams.slice(1).filter((t) => t.alive).length;
+    $("#objective").textContent = game.options.mode==='domination' ?
+      '控制据点 '+game.nodes.filter(n=>n.owner===0).length+'/6 · 积分 '+Math.floor(t.score||0)+'/'+game.options.scoreLimit+' · 敌最高 '+Math.floor(Math.max(...game.teams.slice(1).map(t=>t.score||0))) :
+      '摧毁指挥中心 · 对手 '+game.teams.slice(1).filter((t) => t.alive).length+' · 据点 '+game.nodes.filter(n=>n.owner===0).length+'/6';
     $("#pause").textContent = paused ? "▶ 继续" : "Ⅱ 暂停";
     $("#pause-banner").hidden = !paused || !$("#modal").hidden;
     const activeIds = new Set(game.entities.map((e) => e.id));
@@ -487,7 +490,7 @@
       ' title="' +
       escapeHTML(title) +
       '"><span class="unit-symbol">' +
-      icon +
+      (U[k]?'<img src="assets/portraits/'+k+'_'+game.teams[0].faction+'.png" alt="">':icon) +
       '</span><span class="item-body"><strong>' +
       escapeHTML(name) +
       "</strong><small>" +
@@ -547,7 +550,9 @@
       if (paused) return;
       const p = r.toWorld(e.clientX, e.clientY),
         target = enemyAt(p);
-      game.command([...selection], p.x, p.y, !!target, target?.id || null);
+      const picked=r.pick?.(game,e.clientX,e.clientY,true)||target;
+      if([...selection].some(id=>game.get(id)?.structure)){game.setRally([...selection],p.x,p.y);toast('集结点已设置，新生产单位自动前往');}
+      game.command([...selection], picked?.x||p.x, picked?.y||p.y, !!picked, picked?.id || null,{queue:e.shiftKey});
       beep(330, 0.06);
       return;
     }
@@ -559,7 +564,7 @@
       }
       const p = r.toWorld(e.clientX, e.clientY);
       if (mode === "attack") {
-        game.command([...selection], p.x, p.y, true);
+        game.command([...selection], p.x, p.y, true,null,{queue:e.shiftKey});
         setMode(null);
       } else if (B[mode]) {
         if (game.build(0, mode, p.x, p.y)) {
@@ -588,8 +593,8 @@
     }
     if (game && !drag) {
       r.hover =
-        selectable(r.toWorld(pointer.x, pointer.y))?.id ||
-        enemyAt(r.toWorld(pointer.x, pointer.y))?.id ||
+        (r.pick?.(game,pointer.x,pointer.y)||selectable(r.toWorld(pointer.x, pointer.y)))?.id ||
+        (r.pick?.(game,pointer.x,pointer.y,true)||enemyAt(r.toWorld(pointer.x, pointer.y)))?.id ||
         null;
     }
   });
@@ -603,7 +608,7 @@
     drag = null;
     if (!d.shift) selection.clear();
     if (Math.hypot(e.clientX - d.x, e.clientY - d.y) < 6) {
-      let found = selectable(r.toWorld(e.clientX, e.clientY));
+      let found = r.pick?.(game,e.clientX,e.clientY)||selectable(r.toWorld(e.clientX, e.clientY));
       if (found) {
         if (d.shift && selection.has(found.id)) selection.delete(found.id);
         else selection.add(found.id);
@@ -612,16 +617,18 @@
     } else {
       const a = r.toWorld(Math.min(d.x, e.clientX), Math.min(d.y, e.clientY)),
         b = r.toWorld(Math.max(d.x, e.clientX), Math.max(d.y, e.clientY));
-      for (const u of game.entities)
+      for (const u of game.entities) {
+        const p=r.entityScreen?.(u)||r.toScreen(u.x,u.y);
         if (
           u.team === 0 &&
           !u.structure &&
-          u.x >= a.x &&
-          u.x <= b.x &&
-          u.y >= a.y &&
-          u.y <= b.y
+          p.x >= Math.min(d.x,e.clientX) &&
+          p.x <= Math.max(d.x,e.clientX) &&
+          p.y >= Math.min(d.y,e.clientY) &&
+          p.y <= Math.max(d.y,e.clientY)
         )
           selection.add(u.id);
+      }
     }
     updateHUD();
   });
@@ -631,7 +638,7 @@
   });
   canvas.addEventListener("dblclick", (e) => {
     if (!game) return;
-    const hit = selectable(r.toWorld(e.clientX, e.clientY));
+    const hit = r.pick?.(game,e.clientX,e.clientY)||selectable(r.toWorld(e.clientX, e.clientY));
     if (hit && !hit.structure) {
       selection = new Set(
         game.entities
@@ -668,7 +675,7 @@
   function selectAll() {
     selection = new Set(
       game.entities
-        .filter((e) => e.team === 0 && !e.structure)
+        .filter((e) => e.team === 0 && !e.structure && e.kind!=='harvester')
         .map((e) => e.id),
     );
     updateHUD();
@@ -687,6 +694,8 @@
         e.order = null;
         e.path = [];
         e.target = null;
+        e.orderQueue=[];
+        e.manualMove=false;
       }
     }
     setMode(null);
@@ -715,6 +724,8 @@
   addEventListener("keydown", (e) => {
     if (/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)) return;
     const k = e.key.toLowerCase();
+    if(k==='f11'){e.preventDefault();toggleFullscreen();return;}
+    if(k==='tab'&&game){e.preventDefault();document.body.classList.toggle('immersive');return;}
     if (k === "escape") {
       if (!$("#modal").hidden) closeModal();
       else if (mode) setMode(null);
@@ -733,6 +744,8 @@
     else if (k === "a" && !e.ctrlKey) setMode("attack");
     else if (k === "s") stopUnits();
     else if (k === "h") home();
+    else if (k === "r") {game.retreat([...selection]);toast('撤回基地，脱战后维修');}
+    else if (k === "f") {const fs=['line','column','spread'];game.formation=fs[(fs.indexOf(game.formation)+1)%3];$('#formation').value=game.formation;toast('阵型已切换');}
     else if (k === "f5") {
       e.preventDefault();
       save();
@@ -889,6 +902,7 @@
     }
     game.options.playerOnlyTech = $("#live-player-only").checked;
     game.options.advanced = $("#live-advanced").checked;
+    game.setAISpaceWeapons(!$('#live-ai-space-ban').checked);
     if (game.options.playerOnlyTech || !game.options.advanced) {
       for (const t of game.teams) {
         if (t.id === 0 && game.options.advanced) continue;
@@ -917,6 +931,7 @@
   $("#buff-settings").onclick = () => {
     openModal(
       "<small>PLAYER MODIFIERS</small><h2>战场增益与科技</h2>" +
+        '<label class="buff-item">禁止 AI 建造太空武器<input id="live-ai-space-ban" type="checkbox" '+(game.options.aiSpaceWeapons===false?'checked':'')+'></label>' +
         buffHTML(game.buffs, "live") +
         '<div class="switch-row"><label><input id="live-advanced" type="checkbox" ' +
         (game.options.advanced ? "checked" : "") +
@@ -935,11 +950,11 @@
       "<small>OPERATION " +
         (victory ? "COMPLETE" : "ENDED") +
         "</small><h2>" +
-        (victory ? "战区控制完成" : "指挥中心失守") +
+        (victory ? "战区控制完成" : "作战失败") +
         "</h2><p>" +
         (victory
-          ? "敌方指挥体系已瓦解。你的部队取得了本次遭遇战的胜利。"
-          : "你的指挥中心已被摧毁。调整兵种与防线后重新部署。") +
+          ? "你的部队达成了本次作战的胜利条件。"
+          : "对手达成了胜利条件。调整采矿、兵种与防线后重新部署。") +
         '</p><div class="help-grid"><div><strong>作战时长</strong><span class="result-number">' +
         formatTime(game.time) +
         '</span></div><div><strong>摧毁 / 损失</strong><span class="result-number">' +
@@ -1122,6 +1137,12 @@
   graphicButton.id = "graphics";
   graphicButton.textContent = "光影";
   graphicButton.onclick = () => {
+    if(r.is3D){
+      openModal('<small>GRAPHICS</small><h2>画面设置</h2><p>实时三维、材质纹理、动态阴影与色调映射。</p><div class="graphic-options"><label>画质<select id="quality"><option value="high">高 · 2048 阴影</option><option value="medium">标准 · 1024 阴影</option><option value="low">流畅 · 关闭阴影</option></select></label><label>视角<select id="camera-angle"><option value=".78">战术斜视</option><option value="1.18">经典俯视</option><option value=".53">低角度检视</option></select></label></div><label class="buff-item">动态阴影<input id="fx-toggle" type="checkbox" '+(r.gl.shadowMap.enabled?'checked':'')+'></label><label class="buff-item">夜间色调<input id="night-toggle" type="checkbox" '+(lighting.night?'checked':'')+'></label><p>滚轮靠近可查看模型。实际流畅度取决于分辨率、单位数量和 GPU。没有集成 DLSS 或光线追踪。</p><button id="apply-fx" class="primary">应用画面</button>');
+      $('#quality').value=r.quality||'high';$('#camera-angle').value=String(r.elevation);
+      $('#apply-fx').onclick=()=>{r.quality=$('#quality').value;const low=r.quality==='low';r.gl.shadowMap.enabled=!low&&$('#fx-toggle').checked;lighting.enabled=r.gl.shadowMap.enabled;lighting.night=$('#night-toggle').checked;r.elevation=Number($('#camera-angle').value)||.78;const size=r.quality==='high'?2048:1024;r.sun.shadow.mapSize.set(size,size);r.sun.shadow.map?.dispose();r.sun.shadow.map=null;r.dpr=r.quality==='high'?Math.min(1.5,devicePixelRatio):1;r.gl.setPixelRatio(r.dpr);r.gl.setSize(r.width,r.height,false);r.overlay.width=r.width*r.dpr;r.overlay.height=r.height*r.dpr;closeModal();};
+      return;
+    }
     openModal(
       "<small>GRAPHICS / LOCAL HARDWARE</small><h2>画质与光影</h2><p>本机 RTX 3060。GPU 后处理状态：" +
         (lighting.available ? "WebGL2 可用" : "不可用，自动回退标准渲染") +
@@ -1148,6 +1169,22 @@
   $(".battle-section").append(tech);
   $("#enemies").onchange = opponentSelectors;
   opponentSelectors();
+  $('#sidebar').prepend($('.minimap-wrap'));
+  const modeRow=document.createElement('div');modeRow.className='option-row';
+  modeRow.innerHTML='<label>胜利条件<select id="game-mode"><option value="domination">据点争夺 + 基地歼灭</option><option value="annihilation">经典基地歼灭</option></select></label><label>据点目标<select id="score-limit"><option value="300">快速 · 300 分</option><option value="600" selected>标准 · 600 分</option><option value="1200">持久 · 1200 分</option></select></label>';
+  $('.battle-section').insertBefore(modeRow,$('.battle-section .option-row'));
+  $('#difficulty').insertAdjacentHTML('beforeend','<option value="brutal">残酷 · 收入 ×1.7 / 快速攻势</option>');
+  const spaceOption=document.createElement('label');spaceOption.className='space-option';spaceOption.innerHTML='<input id="ai-space-ban" type="checkbox" checked>禁止 AI 建造太空武器';$('.battle-section').append(spaceOption);
+  const formation=document.createElement('select');formation.id='formation';formation.title='编队阵型 F';formation.innerHTML='<option value="line">横队 · F</option><option value="column">纵队 · F</option><option value="spread">疏散 · F</option>';formation.onchange=()=>{if(game)game.formation=formation.value;};$('.command-buttons').append(formation);
+  const retreatButton=document.createElement('button');retreatButton.id='retreat';retreatButton.textContent='撤回维修 R';retreatButton.onclick=()=>{game.retreat([...selection]);toast('撤回基地，脱战后自动维修');};$('.command-buttons').append(retreatButton);
+  async function toggleFullscreen(){try{if(window.DesktopGame){await DesktopGame.fullscreen();}else if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch(e){toast('无法切换全屏：'+e.message)}}
+  const fsButton=document.createElement('button');fsButton.id='fullscreen';fsButton.textContent='全屏 F11';fsButton.onclick=toggleFullscreen;$('.topbar').insertBefore(fsButton,$('#settings'));
+  const immersion=document.createElement('button');immersion.id='immersion';immersion.textContent='沉浸 Tab';immersion.onclick=()=>document.body.classList.toggle('immersive');$('.bottom-status>div:last-child').append(immersion);
+  if(window.DesktopGame){const quit=document.createElement('button');quit.id='desktop-quit';quit.textContent='退出游戏';quit.onclick=()=>DesktopGame.close();$('.launch-actions').append(quit);const minimize=document.createElement('button');minimize.textContent='—';minimize.title='最小化';minimize.onclick=()=>DesktopGame.minimize();$('.topbar').append(minimize);}
+  const restore=document.createElement('button');restore.id='restore-hud';restore.textContent='恢复指挥界面 · Tab';restore.onclick=()=>document.body.classList.remove('immersive');document.body.append(restore);
+  $('.bottom-status p').innerHTML='右键指令 · Shift 连续路点 / 追加选择<br>F 阵型 · R 撤退 · F11 全屏 · Tab 沉浸<br>选择生产建筑 → 右键设集结点';
+  document.querySelector('.edition').textContent='DESKTOP TACTICAL EDITION / 02';
+  document.querySelector('.menu-footer>div:first-child').innerHTML='<span class="status-dot"></span>本地离线战役 · 实时三维战场<p>自动采矿 / 联合作战 / 据点争夺 / 1–4 名 AI</p>';
   setupMenu();
   requestAnimationFrame(frame);
   // Read-only test bridge; automation can exercise the same public game methods as UI.

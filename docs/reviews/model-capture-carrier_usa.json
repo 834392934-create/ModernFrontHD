@@ -1,0 +1,21 @@
+{
+  "recordedAt": "2026-10-15T19:43:03.596Z",
+  "models": [
+    {
+      "key": "carrier_usa",
+      "scale": 5.4,
+      "parts": 268,
+      "profile": "Nimitz class exterior study",
+      "evidenceStatus": "photo-referenced",
+      "kind": "carrier",
+      "triangles": 7908,
+      "dimensions": [
+        36,
+        8.40999984741211,
+        8.59499979019165
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

@@ -1,0 +1,161 @@
+{
+  "version": "44.7.2",
+  "windows": 1,
+  "gpu": {
+    "auxAttributes": {
+      "amdSwitchable": false,
+      "canSupportThreadedTextureMailbox": false,
+      "directMLFeatureLevel": "Not supported",
+      "dx12FeatureLevel": "Not supported",
+      "glImplementationParts": "(gl=none,angle=none)",
+      "glResetNotificationStrategy": 0,
+      "inProcessGpu": true,
+      "initializationTime": 0,
+      "isAsan": false,
+      "isClangCoverage": false,
+      "jpegDecodeAcceleratorSupported": false,
+      "optimus": false,
+      "overlayInfo": {
+        "bgra8OverlaySupport": "NONE",
+        "directComposition": false,
+        "nv12OverlaySupport": "NONE",
+        "p010OverlaySupport": "NONE",
+        "rgb10a2OverlaySupport": "NONE",
+        "supportsOverlays": false,
+        "yuy2OverlaySupport": "NONE"
+      },
+      "passthroughCmdDecoder": false,
+      "sandboxed": false,
+      "skiaBackendType": "None",
+      "subpixelFontRendering": true,
+      "supportsD3dSharedImages": false,
+      "supportsDirectML": false,
+      "supportsDx12": false,
+      "supportsVulkan": false,
+      "targetCpuBits": 64,
+      "visibilityCallbackCallCount": 0,
+      "vulkanVersion": "Not supported"
+    },
+    "gpuDevice": [
+      {
+        "active": false,
+        "deviceId": 9476,
+        "deviceString": "NVIDIA GeForce RTX 3060",
+        "driverVersion": "32.0.15.9579",
+        "gpuPreference": 2,
+        "revision": 161,
+        "subSysId": 355864798,
+        "vendorId": 4318
+      },
+      {
+        "active": false,
+        "deviceId": 9476,
+        "deviceString": "NVIDIA GeForce RTX 3060",
+        "driverVersion": "32.0.15.9579",
+        "gpuPreference": 0,
+        "revision": 161,
+        "subSysId": 355864798,
+        "vendorId": 4318
+      },
+      {
+        "active": false,
+        "deviceId": 9476,
+        "deviceString": "NVIDIA GeForce RTX 3060",
+        "driverVersion": "32.0.15.9579",
+        "gpuPreference": 0,
+        "revision": 161,
+        "subSysId": 355864798,
+        "vendorId": 4318
+      },
+      {
+        "active": false,
+        "deviceId": 9476,
+        "deviceString": "NVIDIA GeForce RTX 3060",
+        "driverVersion": "32.0.15.9579",
+        "gpuPreference": 0,
+        "revision": 161,
+        "subSysId": 355864798,
+        "vendorId": 4318
+      },
+      {
+        "active": false,
+        "deviceId": 9476,
+        "deviceString": "NVIDIA GeForce RTX 3060",
+        "driverVersion": "32.0.15.9579",
+        "gpuPreference": 0,
+        "revision": 161,
+        "subSysId": 355864798,
+        "vendorId": 4318
+      },
+      {
+        "active": false,
+        "deviceId": 9476,
+        "deviceString": "NVIDIA GeForce RTX 3060",
+        "driverVersion": "32.0.15.9579",
+        "gpuPreference": 0,
+        "revision": 161,
+        "subSysId": 355864798,
+        "vendorId": 4318
+      },
+      {
+        "active": false,
+        "deviceId": 9476,
+        "deviceString": "NVIDIA GeForce RTX 3060",
+        "driverVersion": "32.0.15.9579",
+        "gpuPreference": 0,
+        "revision": 161,
+        "subSysId": 355864798,
+        "vendorId": 4318
+      },
+      {
+        "active": false,
+        "deviceId": 140,
+        "deviceString": "Microsoft Basic Render Driver",
+        "driverVersion": "10.0.26100.9278",
+        "gpuPreference": 0,
+        "revision": 0,
+        "subSysId": 0,
+        "vendorId": 5140
+      }
+    ]
+  },
+  "fullscreenToggle": true,
+  "packageSourceMatch": true,
+  "imported": {
+    "ship": "ready",
+    "air": "ready",
+    "ground": "ready",
+    "errors": [],
+    "models": [
+      {
+        "key": "destroyer_usa",
+        "source": "https://sketchfab.com/3d-models/11-low-poly-us-navy-ddg-51-uss-arleigh-burke-17be09c31c6047e4a5969b68c29eba03",
+        "license": "CC-BY-4.0",
+        "meshes": 6,
+        "preserved": 6
+      },
+      {
+        "key": "heli_usa",
+        "source": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+        "license": "CC-BY-4.0",
+        "meshes": 12,
+        "preserved": 12
+      },
+      {
+        "key": "heli_kor",
+        "source": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+        "license": "CC-BY-4.0",
+        "meshes": 12,
+        "preserved": 12
+      },
+      {
+        "key": "tank_rus",
+        "source": "https://sketchfab.com/3d-models/t-90m-2e31a3cf16b04f0180b9387df5198c9a",
+        "license": "CC-BY-4.0",
+        "meshes": 23,
+        "preserved": 23
+      }
+    ]
+  },
+  "errors": []
+}

@@ -1,0 +1,98 @@
+{
+  "recordedAt": "2026-10-15T20:21:12.961Z",
+  "models": [
+    {
+      "key": "tank_chn",
+      "scale": 6.6,
+      "parts": 1207,
+      "profile": "ZTZ-99A",
+      "evidenceStatus": "photo-referenced",
+      "reviewStage": "silhouette-rebuilt",
+      "referenceUrl": "https://www.mod.gov.cn/gfbw/jmsd/4806118.html",
+      "sourceReview": "docs/reviews/ground-reference-review.md",
+      "kind": "tank",
+      "triangles": 31032,
+      "dimensions": [
+        10.797999715805053,
+        3.7176778835058215,
+        3.869999885559082
+      ]
+    },
+    {
+      "key": "tank_usa",
+      "scale": 6.6,
+      "parts": 1304,
+      "profile": "M1A2 SEPv3 exterior approximation",
+      "evidenceStatus": "photo-referenced",
+      "reviewStage": "silhouette-rebuilt",
+      "referenceUrl": "https://www.dvidshub.net/image/5852204/abram-tank-operations",
+      "sourceReview": "docs/reviews/ground-reference-review.md",
+      "kind": "tank",
+      "triangles": 34128,
+      "dimensions": [
+        10.3979998588562,
+        3.7176778835058215,
+        3.950000047683716
+      ]
+    },
+    {
+      "key": "tank_rus",
+      "scale": 6.4,
+      "parts": 23,
+      "triangles": 122516,
+      "profile": "T-90M — licensed textured exterior",
+      "evidenceStatus": "photo-referenced",
+      "reviewStatus": "licensed-art-multi-view-reviewed",
+      "referenceUrl": "https://www.rostec.ru/media/news/tank-t-90m-proryvnaya-mashina/",
+      "assetSource": "https://sketchfab.com/3d-models/t-90m-2e31a3cf16b04f0180b9387df5198c9a",
+      "author": "minehffd",
+      "license": "CC-BY-4.0",
+      "assetPath": "assets/models/t90m.glb",
+      "forwardAxis": "+X",
+      "groundY": 0,
+      "limitations": "Author page labels CC-BY; source metadata and visual correspondence retained. Exterior artwork, not engineering reconstruction or an absolute originality guarantee.",
+      "kind": "tank",
+      "dimensions": [
+        10.175956033646846,
+        3.053650867648636,
+        3.8822288513183594
+      ]
+    },
+    {
+      "key": "tank_ind",
+      "scale": 6.6,
+      "parts": 1140,
+      "profile": "T-90S Bhishma",
+      "evidenceStatus": "photo-referenced",
+      "reviewStage": "silhouette-rebuilt",
+      "referenceUrl": "https://sputniknews.in/20250407/indian-army-to-procure-anti-drone-systems-for-t-72-and-t-90-tanks-8956117.html",
+      "sourceReview": "docs/reviews/ground-reference-review.md",
+      "kind": "tank",
+      "triangles": 29764,
+      "dimensions": [
+        10.39800009727478,
+        3.4976777786016466,
+        3.75
+      ]
+    },
+    {
+      "key": "tank_kor",
+      "scale": 6.6,
+      "parts": 1209,
+      "profile": "K2 Black Panther",
+      "evidenceStatus": "photo-referenced",
+      "reviewStage": "silhouette-rebuilt",
+      "referenceUrl": "https://www.hyundai-rotem.co.kr/en/business/defense/details.do?productCt03=defense0101",
+      "sourceReview": "docs/reviews/ground-reference-review.md",
+      "kind": "tank",
+      "triangles": 31060,
+      "dimensions": [
+        10.797999954223632,
+        3.587677740454674,
+        3.8499999046325684
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

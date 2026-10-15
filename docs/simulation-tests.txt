@@ -1,0 +1,40 @@
+✔ destroyed producer refunds its blocked queue item (9.2097ms)
+✔ malformed nested save data is rejected (5.031ms)
+✔ public evidence stays separate and verified mobility is mapped (1.8106ms)
+✔ five factions, unique armored rosters (0.2329ms)
+✔ all maps connect every HQ to the center and other spawns (12.1821ms)
+✔ queue spends money, requires producer, completes after simulation time (37.1508ms)
+✔ impassable river blocks a direct route and paths use bridges (1.1741ms)
+✔ all five factions can play and AI constructs and produces (2848.0256ms)
+✔ buffs, ability cost and cooldown are enforced (2.2029ms)
+✔ save/load restores state and rejects malformed data (12.6879ms)
+✔ HQ elimination ends a duel and records victory (1.8718ms)
+✔ building placement rejects river, overlap and distant territory (1.7245ms)
+✔ all maps have connected oceans and ships stay on water (13.0357ms)
+✔ advanced technology rejects AI by default and allows opt-in (0.8442ms)
+✔ nuclear and bunker strikes resolve after warning and survive saves (24.3852ms)
+✔ Imperium is stronger and has exclusive orbital support (1.7043ms)
+✔ space units move independently, ground guns cannot hit orbit (6.7632ms)
+✔ shield mitigates hits only while powered; repair hub heals (6.5573ms)
+✔ sam targets aircraft and jammer disables hostile units (6.6304ms)
+✔ space weapons hit ground, naval, air, orbit and base (26.802ms)
+✔ independent AI space restriction permits jets and unarmed satellites (1.1968ms)
+✔ harvesters gather, deliver credits and persist cargo (126.5853ms)
+✔ formations keep single unit exact and provide distinct spread (2.2298ms)
+✔ rally point moves newly produced units and shift queues survive save (18.0978ms)
+✔ domination victory and contested capture rule (8.3556ms)
+✔ blocked destination is resolved to accessible ground (1.716ms)
+✔ all land vehicle classes and air reach an ordered point on all three maps (837.0308ms)
+✔ mine loading bay remains accessible; depletion chooses another mine (13.1723ms)
+✔ CIWS intercepts rockets and does not erase nuclear warning (1.6175ms)
+✔ independent production lanes finish infantry while tank is queued (5.4404ms)
+✔ saved AI space ban removes forbidden platforms and refunds queued ones (2.2014ms)
+✔ every mine on every map supports an ordered round trip to a refinery (883.2326ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3101.8925

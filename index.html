@@ -7,6 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <title>现代战线 HD · 五强遭遇战</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="desktop.css" />
   </head>
   <body>
     <canvas id="battle" aria-label="即时战略战场"></canvas>
@@ -188,10 +189,25 @@
       </div>
     </div>
     <div id="toast" role="status"></div>
+    <script src="assets/vendor/three.min.js"></script>
+    <script src="assets/vendor/GLTFLoader.bundle.js"></script>
+    <script src="assets/textures/ground-data.js"></script>
     <script src="src/data.js"></script>
     <script src="src/equipment.js"></script>
     <script src="src/sim.js"></script>
     <script src="src/render.js"></script>
+    <script src="src/models3d.js"></script>
+    <script src="src/models-tanks.js"></script>
+    <script src="src/models-vehicles.js"></script>
+    <script src="src/models-air.js"></script>
+    <script src="src/models-naval.js"></script>
+    <script src="assets/models/burke-data.js"></script>
+    <script src="src/models-imported.js"></script>
+    <script src="assets/models/ah64-data.js"></script>
+    <script src="src/models-imported-air.js"></script>
+    <script src="assets/models/t90m-data.js"></script>
+    <script src="src/models-imported-ground.js"></script>
+    <script src="src/battle3d.js"></script>
     <script src="src/lighting.js"></script>
     <script src="src/app.js"></script>
   </body>

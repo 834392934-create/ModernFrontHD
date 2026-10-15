@@ -1,0 +1,24 @@
+{
+  "recordedAt": "2026-10-15T19:46:02.561Z",
+  "models": [
+    {
+      "key": "fighter_chn",
+      "scale": 7.4,
+      "parts": 120,
+      "profile": "J-20",
+      "evidenceStatus": "photo-referenced",
+      "referenceUrl": "https://www.mod.gov.cn/gfbw/sy/rt/16285349.html",
+      "spanLengthRatio": 0.6171875,
+      "visualReview": "second-pass silhouette and surface revision; not photogrammetry",
+      "kind": "fighter",
+      "triangles": 3388,
+      "dimensions": [
+        12.827499866485596,
+        2.325000047683716,
+        7.900000095367432
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

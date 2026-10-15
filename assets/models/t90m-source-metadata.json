@@ -1,0 +1,211 @@
+{
+  "animationCount": 0,
+  "categories": [
+    {
+      "uid": "22a2f677efad4d7bbca5ad45f9b5868e",
+      "name": "Cars & Vehicles",
+      "slug": "cars-vehicles",
+      "uri": "https://api.sketchfab.com/v3/categories/22a2f677efad4d7bbca5ad45f9b5868e",
+      "icon": "https://static.sketchfab.com/static/builds/web/dist/static/assets/images/icons/categories/45dd0cc0860ac57fcd63bde1cc3f2b7c-v2.svg",
+      "thumbnails": [
+        {
+          "width": "512",
+          "height": "288",
+          "url": "https://static.sketchfab.com/categories/22a2f677efad4d7bbca5ad45f9b5868e/512x288.png"
+        },
+        {
+          "width": "800",
+          "height": "450",
+          "url": "https://static.sketchfab.com/categories/22a2f677efad4d7bbca5ad45f9b5868e/800x450.png"
+        }
+      ]
+    },
+    {
+      "uid": "3badf36bd9f549bdba295334d75e04d3",
+      "name": "Weapons & Military",
+      "slug": "weapons-military",
+      "uri": "https://api.sketchfab.com/v3/categories/3badf36bd9f549bdba295334d75e04d3",
+      "icon": "https://static.sketchfab.com/static/builds/web/dist/static/assets/images/icons/categories/6f71af8dadcca706c7404c9a0f82c1a3-v2.svg",
+      "thumbnails": [
+        {
+          "width": "512",
+          "height": "288",
+          "url": "https://static.sketchfab.com/categories/3badf36bd9f549bdba295334d75e04d3/512x288.png"
+        },
+        {
+          "width": "800",
+          "height": "450",
+          "url": "https://static.sketchfab.com/categories/3badf36bd9f549bdba295334d75e04d3/800x450.png"
+        }
+      ]
+    }
+  ],
+  "commentCount": 0,
+  "createdAt": "2025-05-28T01:42:53.289789",
+  "embedUrl": "https://sketchfab.com/models/2e31a3cf16b04f0180b9387df5198c9a/embed",
+  "faceCount": 205998,
+  "isAgeRestricted": false,
+  "license": {
+    "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+    "label": "CC Attribution",
+    "fullName": "Creative Commons Attribution",
+    "requirements": "Author must be credited. Commercial use is allowed.",
+    "url": "http://creativecommons.org/licenses/by/4.0/",
+    "slug": "by"
+  },
+  "likeCount": 23,
+  "name": "T-90M",
+  "publishedAt": "2025-05-28T02:28:41.585529",
+  "soundCount": 0,
+  "staffpickedAt": null,
+  "tags": [
+    {
+      "name": "russia",
+      "slug": "russia",
+      "uri": "https://api.sketchfab.com/v3/tags/russia"
+    },
+    {
+      "name": "Tank",
+      "slug": "tank",
+      "uri": "https://api.sketchfab.com/v3/tags/tank"
+    },
+    {
+      "name": "MBT",
+      "slug": "mbt",
+      "uri": "https://api.sketchfab.com/v3/tags/mbt"
+    },
+    {
+      "name": "t-90",
+      "slug": "t-90",
+      "uri": "https://api.sketchfab.com/v3/tags/t-90"
+    },
+    {
+      "name": "russian-weapon",
+      "slug": "russian-weapon",
+      "uri": "https://api.sketchfab.com/v3/tags/russian-weapon"
+    },
+    {
+      "name": "army-vehicle",
+      "slug": "army-vehicle",
+      "uri": "https://api.sketchfab.com/v3/tags/army-vehicle"
+    },
+    {
+      "name": "breakthrough",
+      "slug": "breakthrough",
+      "uri": "https://api.sketchfab.com/v3/tags/breakthrough"
+    },
+    {
+      "name": "military",
+      "slug": "military",
+      "uri": "https://api.sketchfab.com/v3/tags/military"
+    },
+    {
+      "name": "war",
+      "slug": "war",
+      "uri": "https://api.sketchfab.com/v3/tags/war"
+    },
+    {
+      "name": "t-90m",
+      "slug": "t-90m",
+      "uri": "https://api.sketchfab.com/v3/tags/t-90m"
+    }
+  ],
+  "thumbnails": {
+    "images": [
+      {
+        "uid": "e18b24cff1c247b28f51a7fb42915da1",
+        "width": 1920,
+        "height": 1080,
+        "size": 148011,
+        "url": "https://media.sketchfab.com/models/2e31a3cf16b04f0180b9387df5198c9a/thumbnails/4cc6472ac70e40eba0c7fbcf44a63ce8/d370d86c7a9d44c2afa5ae434e731363.jpeg"
+      },
+      {
+        "uid": "ee2a5ceddcdb4f6e9f5d7c9629c5f076",
+        "width": 1024,
+        "height": 576,
+        "size": 34289,
+        "url": "https://media.sketchfab.com/models/2e31a3cf16b04f0180b9387df5198c9a/thumbnails/4cc6472ac70e40eba0c7fbcf44a63ce8/10efbc08f9e04faba608cd38c61393e8.jpeg"
+      },
+      {
+        "uid": "b0f8d1b004564b129a8945d9be9178b5",
+        "width": 720,
+        "height": 405,
+        "size": 17777,
+        "url": "https://media.sketchfab.com/models/2e31a3cf16b04f0180b9387df5198c9a/thumbnails/4cc6472ac70e40eba0c7fbcf44a63ce8/c8622ab916364c1395c20e5a79e4615e.jpeg"
+      },
+      {
+        "uid": "f7cf2e848e764925946e419f8f18b5b5",
+        "width": 256,
+        "height": 144,
+        "size": 3453,
+        "url": "https://media.sketchfab.com/models/2e31a3cf16b04f0180b9387df5198c9a/thumbnails/4cc6472ac70e40eba0c7fbcf44a63ce8/2186591bd50444ca82554d3b7f185f58.jpeg"
+      },
+      {
+        "uid": "e9317f861c7e4dd5843d6099d3511897",
+        "width": 64,
+        "height": 36,
+        "size": 954,
+        "url": "https://media.sketchfab.com/models/2e31a3cf16b04f0180b9387df5198c9a/thumbnails/4cc6472ac70e40eba0c7fbcf44a63ce8/b23623126f124d27b7d49a4b5d20aff0.jpeg"
+      }
+    ]
+  },
+  "uid": "2e31a3cf16b04f0180b9387df5198c9a",
+  "uri": "https://api.sketchfab.com/v3/models/2e31a3cf16b04f0180b9387df5198c9a",
+  "user": {
+    "uid": "8a606a4dd8184d878c1eee11010f55db",
+    "username": "minehffd",
+    "displayName": "minehffd",
+    "account": "basic",
+    "profileUrl": "https://sketchfab.com/minehffd",
+    "avatar": {
+      "uid": "ed22bf90eeb44b44844ba7911476ce83",
+      "uri": "https://api.sketchfab.com/v3/avatars/ed22bf90eeb44b44844ba7911476ce83",
+      "images": [
+        {
+          "width": 32,
+          "height": 32,
+          "size": 858,
+          "url": "https://media.sketchfab.com/avatars/ed22bf90eeb44b44844ba7911476ce83/1c0eaf2b2de94b55ba0f3fd5285004c4.jpeg"
+        },
+        {
+          "width": 48,
+          "height": 48,
+          "size": 1045,
+          "url": "https://media.sketchfab.com/avatars/ed22bf90eeb44b44844ba7911476ce83/c3d8ca274f6144c38ae0d0ff77df2864.jpeg"
+        },
+        {
+          "width": 90,
+          "height": 90,
+          "size": 1652,
+          "url": "https://media.sketchfab.com/avatars/ed22bf90eeb44b44844ba7911476ce83/8edcb47ee2e24c1bad20810a0296166a.jpeg"
+        },
+        {
+          "width": 100,
+          "height": 100,
+          "size": 1824,
+          "url": "https://media.sketchfab.com/avatars/ed22bf90eeb44b44844ba7911476ce83/1c00ea9db4bd49f496cd7e17c959ac3b.jpeg"
+        }
+      ]
+    },
+    "uri": "https://api.sketchfab.com/v3/users/8a606a4dd8184d878c1eee11010f55db"
+  },
+  "vertexCount": 109019,
+  "viewCount": 1862,
+  "viewerUrl": "https://sketchfab.com/3d-models/t-90m-2e31a3cf16b04f0180b9387df5198c9a",
+  "isDownloadable": true,
+  "isProtected": false,
+  "description": "T-90M with **2k** textures. There may be some minor texturing issues that I did not look into due to time constraints.\nCredit if possible!",
+  "price": null,
+  "downloadCount": 311,
+  "editorUrl": "https://sketchfab.com/models/2e31a3cf16b04f0180b9387df5198c9a/edit",
+  "status": {
+    "warning": {},
+    "processing": "SUCCEEDED"
+  },
+  "source": "website",
+  "hasCommentsDisabled": false,
+  "updatedAt": "2026-07-02T10:45:17.739582",
+  "pbrType": "metalness",
+  "textureCount": 54,
+  "materialCount": 16
+}

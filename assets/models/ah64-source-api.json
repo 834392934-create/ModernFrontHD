@@ -1,0 +1,201 @@
+{
+  "animationCount": 0,
+  "categories": [
+    {
+      "uid": "17d20ca7b35243d4a45171838b50704c",
+      "name": "Science & Technology",
+      "slug": "science-technology",
+      "uri": "https://api.sketchfab.com/v3/categories/17d20ca7b35243d4a45171838b50704c",
+      "icon": "https://static.sketchfab.com/static/builds/web/dist/static/assets/images/icons/categories/86b1bae49e0ed3f43b2d59b26700234e-v2.svg",
+      "thumbnails": [
+        {
+          "width": "512",
+          "height": "288",
+          "url": "https://static.sketchfab.com/categories/17d20ca7b35243d4a45171838b50704c/512x288.png"
+        },
+        {
+          "width": "800",
+          "height": "450",
+          "url": "https://static.sketchfab.com/categories/17d20ca7b35243d4a45171838b50704c/800x450.png"
+        }
+      ]
+    },
+    {
+      "uid": "3badf36bd9f549bdba295334d75e04d3",
+      "name": "Weapons & Military",
+      "slug": "weapons-military",
+      "uri": "https://api.sketchfab.com/v3/categories/3badf36bd9f549bdba295334d75e04d3",
+      "icon": "https://static.sketchfab.com/static/builds/web/dist/static/assets/images/icons/categories/6f71af8dadcca706c7404c9a0f82c1a3-v2.svg",
+      "thumbnails": [
+        {
+          "width": "512",
+          "height": "288",
+          "url": "https://static.sketchfab.com/categories/3badf36bd9f549bdba295334d75e04d3/512x288.png"
+        },
+        {
+          "width": "800",
+          "height": "450",
+          "url": "https://static.sketchfab.com/categories/3badf36bd9f549bdba295334d75e04d3/800x450.png"
+        }
+      ]
+    }
+  ],
+  "commentCount": 5,
+  "createdAt": "2019-12-18T06:17:31.311752",
+  "embedUrl": "https://sketchfab.com/models/56f54d3865d247c78b49c2b47454da86/embed",
+  "faceCount": 220791,
+  "isAgeRestricted": false,
+  "license": {
+    "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+    "label": "CC Attribution",
+    "fullName": "Creative Commons Attribution",
+    "requirements": "Author must be credited. Commercial use is allowed.",
+    "url": "http://creativecommons.org/licenses/by/4.0/",
+    "slug": "by"
+  },
+  "likeCount": 273,
+  "name": "AH-64 Helicopter",
+  "publishedAt": "2019-12-18T06:33:58.734628",
+  "soundCount": 0,
+  "staffpickedAt": null,
+  "tags": [
+    {
+      "name": "aviation",
+      "slug": "aviation",
+      "uri": "https://api.sketchfab.com/v3/tags/aviation"
+    },
+    {
+      "name": "ah-64",
+      "slug": "ah-64",
+      "uri": "https://api.sketchfab.com/v3/tags/ah-64"
+    },
+    {
+      "name": "military-vehicle",
+      "slug": "military-vehicle",
+      "uri": "https://api.sketchfab.com/v3/tags/military-vehicle"
+    },
+    {
+      "name": "military-transport",
+      "slug": "military-transport",
+      "uri": "https://api.sketchfab.com/v3/tags/military-transport"
+    },
+    {
+      "name": "military-equipment",
+      "slug": "military-equipment",
+      "uri": "https://api.sketchfab.com/v3/tags/military-equipment"
+    },
+    {
+      "name": "military",
+      "slug": "military",
+      "uri": "https://api.sketchfab.com/v3/tags/military"
+    },
+    {
+      "name": "helicopter",
+      "slug": "helicopter",
+      "uri": "https://api.sketchfab.com/v3/tags/helicopter"
+    },
+    {
+      "name": "military-object",
+      "slug": "military-object",
+      "uri": "https://api.sketchfab.com/v3/tags/military-object"
+    }
+  ],
+  "thumbnails": {
+    "images": [
+      {
+        "uid": "100f5e15435b4bba87765c10f5d81060",
+        "width": 1920,
+        "height": 1080,
+        "size": 141164,
+        "url": "https://media.sketchfab.com/models/56f54d3865d247c78b49c2b47454da86/thumbnails/c4f91c96fa374f56a7900620cbb131e7/c77948bc955040319b88dfca9a868619.jpeg"
+      },
+      {
+        "uid": "3e0b87bb05e44562bc44db211b22fd20",
+        "width": 1024,
+        "height": 576,
+        "size": 31587,
+        "url": "https://media.sketchfab.com/models/56f54d3865d247c78b49c2b47454da86/thumbnails/c4f91c96fa374f56a7900620cbb131e7/97146dc7f7614cf5ae54fa324034b069.jpeg"
+      },
+      {
+        "uid": "3bc98d32d05641ceb6ce016854189fec",
+        "width": 720,
+        "height": 405,
+        "size": 19031,
+        "url": "https://media.sketchfab.com/models/56f54d3865d247c78b49c2b47454da86/thumbnails/c4f91c96fa374f56a7900620cbb131e7/e669129a182f456f9659acfa333d7ef9.jpeg"
+      },
+      {
+        "uid": "9d3100545f22483fad3204eb59e6e44e",
+        "width": 256,
+        "height": 144,
+        "size": 4078,
+        "url": "https://media.sketchfab.com/models/56f54d3865d247c78b49c2b47454da86/thumbnails/c4f91c96fa374f56a7900620cbb131e7/2214e96d39164fa6a23f1d8e13b81dc8.jpeg"
+      },
+      {
+        "uid": "c833fadca07b41c195c4d5b66f26e1f7",
+        "width": 64,
+        "height": 36,
+        "size": 736,
+        "url": "https://media.sketchfab.com/models/56f54d3865d247c78b49c2b47454da86/thumbnails/c4f91c96fa374f56a7900620cbb131e7/8ae6ab84a0ea41bfbd43fe56c961469a.jpeg"
+      }
+    ]
+  },
+  "uid": "56f54d3865d247c78b49c2b47454da86",
+  "uri": "https://api.sketchfab.com/v3/models/56f54d3865d247c78b49c2b47454da86",
+  "user": {
+    "uid": "39a99bbc1364435c8abf0201ecf5d75a",
+    "username": "andrewswihart",
+    "displayName": "Arion Digital",
+    "account": "basic",
+    "profileUrl": "https://sketchfab.com/andrewswihart",
+    "avatar": {
+      "uid": "108b5ab73d574174a0d5d177ef2144f3",
+      "uri": "https://api.sketchfab.com/v3/avatars/108b5ab73d574174a0d5d177ef2144f3",
+      "images": [
+        {
+          "width": 32,
+          "height": 32,
+          "size": 453,
+          "url": "https://media.sketchfab.com/avatars/108b5ab73d574174a0d5d177ef2144f3/e25a49de4c56416283629bc21b9fa6f9.jpeg"
+        },
+        {
+          "width": 48,
+          "height": 48,
+          "size": 614,
+          "url": "https://media.sketchfab.com/avatars/108b5ab73d574174a0d5d177ef2144f3/e88bd38566fe4096a37ee6089631477e.jpeg"
+        },
+        {
+          "width": 90,
+          "height": 90,
+          "size": 906,
+          "url": "https://media.sketchfab.com/avatars/108b5ab73d574174a0d5d177ef2144f3/72cf7a7c0fb14f32ad182525b95c5a9c.jpeg"
+        },
+        {
+          "width": 100,
+          "height": 100,
+          "size": 1087,
+          "url": "https://media.sketchfab.com/avatars/108b5ab73d574174a0d5d177ef2144f3/b760df38fe5647afbe191c02405c6e17.jpeg"
+        }
+      ]
+    },
+    "uri": "https://api.sketchfab.com/v3/users/39a99bbc1364435c8abf0201ecf5d75a"
+  },
+  "vertexCount": 114443,
+  "viewCount": 22554,
+  "viewerUrl": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+  "isDownloadable": true,
+  "isProtected": false,
+  "description": "AH-64 Helicopter online for free.\n\nNeed a 3d model made for you?\n\nEmail: hello@ariondigital.com\nphone number: +1 661.388.4504\n\nwebsite: www.ariondigital.com\nblog: www.ariondigital.com/3d-visual-fx-interactive-maps-blog\nfacebook: www.facebook.com/ArionDigital3D\nlinkedin: www.linkedin.com/company/ariondigital\ntwitter: twitter.com/ArionDigital3D\ninstagram: www.instagram.com/ariondigital",
+  "price": null,
+  "downloadCount": 6857,
+  "editorUrl": "https://sketchfab.com/models/56f54d3865d247c78b49c2b47454da86/edit",
+  "status": {
+    "warning": {},
+    "processing": "SUCCEEDED"
+  },
+  "source": "website",
+  "hasCommentsDisabled": false,
+  "updatedAt": "2022-07-21T02:42:37.132869",
+  "pbrType": null,
+  "textureCount": 0,
+  "materialCount": 15
+}

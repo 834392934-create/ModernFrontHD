@@ -1,0 +1,210 @@
+{
+  "checks": [
+    {
+      "scheme": "http",
+      "faction": "usa",
+      "status": "ready",
+      "scale": 8,
+      "parts": 12,
+      "triangles": 220711,
+      "profile": "AH-64 Longbow reference configuration — licensed exterior",
+      "evidenceStatus": "photo-referenced",
+      "reviewStatus": "licensed-art-multi-view-reviewed",
+      "referenceUrl": "https://www.dvidshub.net/image/6422832/tf-expect-no-mercy-flyover-greece",
+      "assetSource": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+      "author": "Andrew Swihart / ArionDigital",
+      "license": "CC-BY-4.0",
+      "assetPath": "assets/models/ah64.glb",
+      "rotorBlades": 4,
+      "rotorLevels": 1,
+      "groundY": 0,
+      "forwardAxis": "+X",
+      "limits": "Longbow exterior reference, not an authenticated AH-64E batch. Original PBR except photo-referenced dark main-blade coating; no bitmap textures. No engineering reconstruction.",
+      "kind": "heli",
+      "minY": 0,
+      "dimensions": [
+        11.059866552975482,
+        3.588741034269333,
+        8.90522050857544
+      ],
+      "rotorPosition": [
+        1.2891224994675354,
+        2.6945166221602657,
+        -0.001822227466581186
+      ],
+      "tailPosition": [
+        -4.427092758799693,
+        2.2634267556923624,
+        -0.47571768116919266
+      ],
+      "bodyPosition": [
+        0,
+        0,
+        0
+      ],
+      "rotorMeshes": 2,
+      "tailMeshes": 2
+    },
+    {
+      "scheme": "http",
+      "faction": "kor",
+      "status": "ready",
+      "scale": 8,
+      "parts": 12,
+      "triangles": 220711,
+      "profile": "AH-64 Longbow reference configuration — licensed exterior",
+      "evidenceStatus": "photo-referenced",
+      "reviewStatus": "licensed-art-multi-view-reviewed",
+      "referenceUrl": "https://www.dvidshub.net/image/6422832/tf-expect-no-mercy-flyover-greece",
+      "assetSource": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+      "author": "Andrew Swihart / ArionDigital",
+      "license": "CC-BY-4.0",
+      "assetPath": "assets/models/ah64.glb",
+      "rotorBlades": 4,
+      "rotorLevels": 1,
+      "groundY": 0,
+      "forwardAxis": "+X",
+      "limits": "Longbow exterior reference, not an authenticated AH-64E batch. Original PBR except photo-referenced dark main-blade coating; no bitmap textures. No engineering reconstruction.",
+      "kind": "heli",
+      "minY": 0,
+      "dimensions": [
+        11.059866552975482,
+        3.588741034269333,
+        8.90522050857544
+      ],
+      "rotorPosition": [
+        1.2891224994675354,
+        2.6945166221602657,
+        -0.001822227466581186
+      ],
+      "tailPosition": [
+        -4.427092758799693,
+        2.2634267556923624,
+        -0.47571768116919266
+      ],
+      "bodyPosition": [
+        0,
+        0,
+        0
+      ],
+      "rotorMeshes": 2,
+      "tailMeshes": 2
+    },
+    {
+      "scheme": "http",
+      "animation": {
+        "staticBodyUnmoved": true,
+        "pivotsUnmoved": true,
+        "rotorY": 0.7,
+        "tailZ": 1.1
+      }
+    },
+    {
+      "scheme": "file",
+      "faction": "usa",
+      "status": "ready",
+      "scale": 8,
+      "parts": 12,
+      "triangles": 220711,
+      "profile": "AH-64 Longbow reference configuration — licensed exterior",
+      "evidenceStatus": "photo-referenced",
+      "reviewStatus": "licensed-art-multi-view-reviewed",
+      "referenceUrl": "https://www.dvidshub.net/image/6422832/tf-expect-no-mercy-flyover-greece",
+      "assetSource": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+      "author": "Andrew Swihart / ArionDigital",
+      "license": "CC-BY-4.0",
+      "assetPath": "assets/models/ah64.glb",
+      "rotorBlades": 4,
+      "rotorLevels": 1,
+      "groundY": 0,
+      "forwardAxis": "+X",
+      "limits": "Longbow exterior reference, not an authenticated AH-64E batch. Original PBR except photo-referenced dark main-blade coating; no bitmap textures. No engineering reconstruction.",
+      "kind": "heli",
+      "minY": 0,
+      "dimensions": [
+        11.059866552975482,
+        3.588741034269333,
+        8.90522050857544
+      ],
+      "rotorPosition": [
+        1.2891224994675354,
+        2.6945166221602657,
+        -0.001822227466581186
+      ],
+      "tailPosition": [
+        -4.427092758799693,
+        2.2634267556923624,
+        -0.47571768116919266
+      ],
+      "bodyPosition": [
+        0,
+        0,
+        0
+      ],
+      "rotorMeshes": 2,
+      "tailMeshes": 2
+    },
+    {
+      "scheme": "file",
+      "faction": "kor",
+      "status": "ready",
+      "scale": 8,
+      "parts": 12,
+      "triangles": 220711,
+      "profile": "AH-64 Longbow reference configuration — licensed exterior",
+      "evidenceStatus": "photo-referenced",
+      "reviewStatus": "licensed-art-multi-view-reviewed",
+      "referenceUrl": "https://www.dvidshub.net/image/6422832/tf-expect-no-mercy-flyover-greece",
+      "assetSource": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+      "author": "Andrew Swihart / ArionDigital",
+      "license": "CC-BY-4.0",
+      "assetPath": "assets/models/ah64.glb",
+      "rotorBlades": 4,
+      "rotorLevels": 1,
+      "groundY": 0,
+      "forwardAxis": "+X",
+      "limits": "Longbow exterior reference, not an authenticated AH-64E batch. Original PBR except photo-referenced dark main-blade coating; no bitmap textures. No engineering reconstruction.",
+      "kind": "heli",
+      "minY": 0,
+      "dimensions": [
+        11.059866552975482,
+        3.588741034269333,
+        8.90522050857544
+      ],
+      "rotorPosition": [
+        1.2891224994675354,
+        2.6945166221602657,
+        -0.001822227466581186
+      ],
+      "tailPosition": [
+        -4.427092758799693,
+        2.2634267556923624,
+        -0.47571768116919266
+      ],
+      "bodyPosition": [
+        0,
+        0,
+        0
+      ],
+      "rotorMeshes": 2,
+      "tailMeshes": 2
+    },
+    {
+      "scheme": "file",
+      "animation": {
+        "staticBodyUnmoved": true,
+        "pivotsUnmoved": true,
+        "rotorY": 0.7,
+        "tailZ": 1.1
+      }
+    },
+    {
+      "fallback": {
+        "status": "failed",
+        "usa": "AH-64E",
+        "kor": "AH-64E"
+      }
+    }
+  ],
+  "errors": []
+}

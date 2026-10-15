@@ -1,24 +1,17 @@
-# 画质实现与 NVIDIA 边界
+# 2.0 实时三维画质
 
-核查日期：2026-10-16。通过 Win32_VideoController 检测本机为 NVIDIA GeForce RTX 3060，驱动版本 32.0.15.9579；同时存在远程桌面虚拟显示设备。WMI 的 AdapterRAM 字段存在 32 位截断，不能据此判断真实显存容量。
+主战场采用Three.js 0.160 WebGL实时三维。旧2D渲染仅在图形初始化失败时回退；早期STEP/CAD资产与本轮模型不同。
 
-## 本版实际实现
+实际功能：独立车体/炮塔、旋翼、合批共享几何、日光和半球光、最高2048 PCF软阴影、ACES色调映射、粗糙度/金属度、观察窗与钢材的表面响应、程序迷彩与尘土。地面使用Poly Haven CC0 1K漫反射/法线图，嵌入支持离线。迷雾采样作用于三维表面；选框、路径、血条与打击警告为覆盖层。
 
-- 参数化 build123d CAD 装配，STEP 作为可编辑中间产物；构件三角化、光照法线计算、16 方向透明图集烘焙。
-- 方向光明暗、接触投影、自制地表纹理、动态爆炸与支援效果。
-- WebGL2 屏幕后处理：亮区提取、8 采样泛光、色调映射、轻微暗角、可选夜间调色。UI 在 GPU 效果层之上，保持字体清晰。
-- GPU 不可用或上下文丢失时显示 Canvas 标准画面；没有账号、许可证服务器、订阅或联网依赖。
-- 宽屏 / 高 DPI 画布；DPR 上限 2，地图只烘焙一次，实体裁剪、固定 20 Hz 逻辑、空间网格和分批 AI 更新。
+相机支持战术斜视/经典俯视/低角度。高画质DPR上限1.5，标准/流畅为1；标准阴影1024，流畅关闭阴影。高面数模型受单位数、分辨率与GPU限制，不能用旧版2D测量替代新性能。
 
-## 没有实现的技术
+装备检视有五种固定角度；模型落地归一化避免负坐标几何被地面遮住。加载成功不代表外观真实性。概念模型保持原型占位，已知装备未全部终验前冻结生成。
 
-没有 DLSS、DLAA、NVIDIA Ray Reconstruction、硬件光线追踪或神经渲染。不能将普通泛光或图像放大叫作 DLSS。
+授权外部资产保留自己的材质，不被程序迷彩覆盖。伯克保留PBR贴图，AH-64保留原材质并按实拍修正主桨涂层；几何合批后分离主/尾旋翼。加载失败明确记录错误并保留原程序模型。实际发布验收需要断言导入成功，不能把回退可运行当作新资产已交付。
 
-NVIDIA 官方 DLSS 5 研究页面将本地神经渲染描述为 RTX 50 Series 管线阶段；本机 RTX 3060 不在该范围内。Streamline / DLSS 的接入还要求原生图形管线及相应资源，浏览器 Canvas / WebGL 没有直接绑定。
+T-90M保留PBR贴图、车体/炮塔/炮管的独立结构；仅可可靠识别的装甲漆面作橄榄色低金属修正。部分混合材质前板和侧裙仍偏灰，未整车染色掩盖差异。
 
-- [DLSS 5 官方研究说明](https://research.nvidia.com/labs/adlr/DLSS5/)
-- [NVIDIA DLSS 开发文档](https://developer.nvidia.com/rtx/dlss)
-- [NVIDIA Streamline](https://developer.nvidia.com/rtx/streamline)
-- [Streamline 官方开源仓库](https://github.com/NVIDIAGameWorks/Streamline)
+没有DLSS、DLAA、Ray Reconstruction、硬件光追、摄影测量或真实弹道。Electron独立窗口不会自动获得这些能力，未使用破解组件。原生SDK要求可查 [NVIDIA开发文档](https://developer.nvidia.com/rtx/dlss) 和 [Streamline](https://github.com/NVIDIAGameWorks/Streamline)，本项目未集成。
 
-如果未来迁移到原生渲染器，必须生成正确的深度、运动向量、曝光和抖动数据，按 SDK 的资源生命周期与功能支持查询接入，并分别验证支持的超分辨率、帧生成和光线重建功能。不能通过复制某个 DLL 或破解组件给不支持的硬件补齐代际功能。该原生迁移不属于本次可运行浏览器版本。
+来源见 [图片依据](VISUAL_REFERENCES.md) 和 [第三方说明](../THIRD_PARTY_NOTICES.md)。

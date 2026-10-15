@@ -1,0 +1,57 @@
+{
+  "state": "ready",
+  "loaded": [
+    "tank_rus"
+  ],
+  "parts": 23,
+  "triangles": 122516,
+  "neutralDimensions": [
+    10.175956033646846,
+    3.053650867648636,
+    3.8822288513183594
+  ],
+  "dimensionsAtTurretYaw90": [
+    7.699999809265137,
+    3.053650867648636,
+    8.920671335334175
+  ],
+  "staticHull": true,
+  "stationaryTurretPivot": true,
+  "gunMoved": 5.028381750085445,
+  "gunIsTurretChild": true,
+  "preserved": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "indianSource": "procedural",
+  "failure": {
+    "status": "failed",
+    "loaded": [],
+    "errors": [
+      "Embedded T-90M data is missing"
+    ],
+    "retained": true
+  },
+  "pageErrors": []
+}

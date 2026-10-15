@@ -1,0 +1,92 @@
+{
+  "recordedAt": "2026-10-15T20:23:20.306Z",
+  "environment": "Chromium headless",
+  "scope": "Warmed static army with simulation running, 6-second sample; not an interactive combat guarantee.",
+  "samples": [
+    {
+      "faction": "chn",
+      "extraUnits": 0,
+      "viewport": [
+        1600,
+        1000
+      ],
+      "dpr": 1,
+      "frames": 301,
+      "durationMs": 6017.399999904632,
+      "meanFPS": 50,
+      "p50FrameMs": 20,
+      "p95FrameMs": 20.100000000000364,
+      "entities": 32,
+      "calls": 28,
+      "triangles": 255810,
+      "visibleEntities": 16,
+      "geometries": 121,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "quality": "high"
+    },
+    {
+      "faction": "chn",
+      "extraUnits": 120,
+      "viewport": [
+        1600,
+        1000
+      ],
+      "dpr": 1,
+      "frames": 301,
+      "durationMs": 6002.0999999999985,
+      "meanFPS": 50.1,
+      "p50FrameMs": 20,
+      "p95FrameMs": 20.200000000000728,
+      "entities": 152,
+      "calls": 295,
+      "triangles": 2046874,
+      "visibleEntities": 151,
+      "geometries": 135,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "quality": "high"
+    },
+    {
+      "faction": "usa",
+      "extraUnits": 120,
+      "viewport": [
+        1600,
+        1000
+      ],
+      "dpr": 1,
+      "frames": 301,
+      "durationMs": 6012.9000000000015,
+      "meanFPS": 50.1,
+      "p50FrameMs": 20,
+      "p95FrameMs": 20.100000000002183,
+      "entities": 152,
+      "calls": 451,
+      "triangles": 5396029,
+      "visibleEntities": 151,
+      "geometries": 153,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "quality": "high"
+    },
+    {
+      "faction": "rus",
+      "extraUnits": 120,
+      "viewport": [
+        1600,
+        1000
+      ],
+      "dpr": 1,
+      "frames": 301,
+      "durationMs": 6015.199999856952,
+      "meanFPS": 50,
+      "p50FrameMs": 20,
+      "p95FrameMs": 20.10000000000582,
+      "entities": 152,
+      "calls": 946,
+      "triangles": 4875092,
+      "visibleEntities": 151,
+      "geometries": 163,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "quality": "high"
+    }
+  ],
+  "errors": []
+}

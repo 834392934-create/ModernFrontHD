@@ -1,0 +1,23 @@
+{
+  "checks": [
+    "licensed T-90M, ship and AH-64 load from embedded GLB with preserved materials",
+    "desktop deployment, six factions, four AI difficulties, real WebGL battlefield",
+    "3D picking and right-click move through real pointer input",
+    "Shift appends waypoints",
+    "formation and retreat commands",
+    "production rally via selecting factory and right-click",
+    "independent live AI space permission",
+    "night, quality and immersive HUD restoration",
+    "narrow layout without horizontal overflow",
+    "offline file startup, embedded textures/models, zero HTTP requests",
+    "all factions start in new renderer"
+  ],
+  "errors": [],
+  "stats": {
+    "fps": 20,
+    "calls": 27,
+    "triangles": 223034,
+    "visibleEntities": 16,
+    "geometries": 137
+  }
+}

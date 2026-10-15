@@ -1,0 +1,327 @@
+{
+  "recordedAt": "2026-10-15T20:09:54.264Z",
+  "models": [
+    {
+      "key": "ifv_chn",
+      "scale": 6.4,
+      "parts": 687,
+      "profile": "ZBD-04A",
+      "referenceUrl": "https://odin.t2com.army.mil/WEG/Asset/ZBD-04A_Chinese_Amphibious_Infantry_Fighting_Vehicle_%28IFV%29",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "ifv",
+      "triangles": 14264,
+      "dimensions": [
+        7.788291931152344,
+        3.941735083758831,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "ifv_usa",
+      "scale": 6.4,
+      "parts": 650,
+      "profile": "M2A3 Bradley",
+      "referenceUrl": "https://www.dvidshub.net/image/6775085/iron-rangers-off-load-military-vehicles-mk-air-base",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "ifv",
+      "triangles": 13384,
+      "dimensions": [
+        7.587645053863525,
+        4.07397489219904,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "ifv_rus",
+      "scale": 6.4,
+      "parts": 588,
+      "profile": "BMP-3",
+      "referenceUrl": "https://defence-ua.com/news/zsu_na_pjatij_misjats_vijni_prodovzhujut_zbirati_trofejni_bmp_3_rashistiv_foto-8320.html",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "ifv",
+      "triangles": 12332,
+      "dimensions": [
+        7.486629486083984,
+        3.6236543011665345,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "ifv_ind",
+      "scale": 6.4,
+      "parts": 585,
+      "profile": "BMP-2 Sarath",
+      "referenceUrl": "https://timesofindia.indiatimes.com/defence/weapons/tank/bmp-2-sarath",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "ifv",
+      "triangles": 12088,
+      "dimensions": [
+        7.486629486083984,
+        3.6236543011665345,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "ifv_kor",
+      "scale": 6.4,
+      "parts": 654,
+      "profile": "K21",
+      "referenceUrl": "https://historia.org.pl/2022/05/30/k21-i-as21-redback-czyli-koreanskie-bojowe-wozy-piechoty/",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "ifv",
+      "triangles": 13324,
+      "dimensions": [
+        7.486629486083984,
+        3.9436543011665344,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "arty_chn",
+      "scale": 6.4,
+      "parts": 613,
+      "profile": "PLZ-05",
+      "referenceUrl": "https://www.sohu.com/picture/752175627",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "arty",
+      "triangles": 11950,
+      "dimensions": [
+        10.823888397216797,
+        4.444605291187763,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "arty_usa",
+      "scale": 6.4,
+      "parts": 613,
+      "profile": "M109A7 Paladin",
+      "referenceUrl": "https://babel.ua/amp/news/46776-ssha-pochinaye-vikoristovuvati-suputniki-dlya-navedennya-artileriji-na-cili",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "arty",
+      "triangles": 11950,
+      "dimensions": [
+        9.62440619468689,
+        4.37999997317791,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "arty_rus",
+      "scale": 6.4,
+      "parts": 609,
+      "profile": "2S19 Msta-S",
+      "referenceUrl": "https://commons.wikimedia.org/wiki/File%3AArtillery_exercise_with_2S19_Msta-S_at_the_Mulino_Training_Ground_%2825-03-2020%29_06.jpg",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "arty",
+      "triangles": 11902,
+      "dimensions": [
+        10.924275970458984,
+        4.813661828935146,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "arty_ind",
+      "scale": 6.4,
+      "parts": 617,
+      "profile": "K9 Vajra-T",
+      "referenceUrl": "https://m.economictimes.com/news/defence/lt-bags-its-biggest-defence-order-worth-rs-4500-crore-to-supply-self-propelled-guns-to-indian-army/articleshow/58644663.cms",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "arty",
+      "triangles": 12166,
+      "dimensions": [
+        10.823888397216797,
+        4.444605291187763,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "arty_kor",
+      "scale": 6.4,
+      "parts": 617,
+      "profile": "K9 Thunder",
+      "referenceUrl": "https://medium.com/lessons-from-history/5-most-dangerous-artillery-guns-in-the-world-9a35d8a1e491",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "arty",
+      "triangles": 12166,
+      "dimensions": [
+        10.823888397216797,
+        4.444605291187763,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "rocket_chn",
+      "scale": 6.4,
+      "parts": 386,
+      "profile": "PHL-191",
+      "referenceUrl": "https://www.g-enews.com/article/General-News/2019/12/201912091306401342c5557f8da8_1",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "rocket",
+      "triangles": 9108,
+      "dimensions": [
+        10.652499675750732,
+        3.801541795713229,
+        3.5850000381469727
+      ]
+    },
+    {
+      "key": "rocket_usa",
+      "scale": 6.4,
+      "parts": 294,
+      "profile": "M142 HIMARS",
+      "referenceUrl": "https://thegaze.media/news/victorys-arsenal-its-himars-oclock",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "rocket",
+      "triangles": 6780,
+      "dimensions": [
+        7.852499723434448,
+        3.7855588531087645,
+        3.5850000381469727
+      ]
+    },
+    {
+      "key": "rocket_rus",
+      "scale": 6.4,
+      "parts": 374,
+      "profile": "BM-30 Smerch",
+      "referenceUrl": "https://truck-encyclopedia.com/coldwar/ussr/BM-30_Smerch.php",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "rocket",
+      "triangles": 8964,
+      "dimensions": [
+        9.952499866485596,
+        4.277840980309994,
+        3.3499999046325684
+      ]
+    },
+    {
+      "key": "rocket_ind",
+      "scale": 6.4,
+      "parts": 386,
+      "profile": "Pinaka",
+      "referenceUrl": "https://tribune.com.pk/story/2527703/france-in-talks-to-purchase-rocket-launcher-from-india-officials-confirm",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "rocket",
+      "triangles": 9108,
+      "dimensions": [
+        9.952499866485596,
+        3.801541795713229,
+        3.5850000381469727
+      ]
+    },
+    {
+      "key": "rocket_kor",
+      "scale": 6.4,
+      "parts": 386,
+      "profile": "K239 Chunmoo",
+      "referenceUrl": "https://commons.wikimedia.org/wiki/File:K239_Chunmoo_MLRS.png",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "rocket",
+      "triangles": 9108,
+      "dimensions": [
+        10.252500057220459,
+        3.801541795713229,
+        3.5850000381469727
+      ]
+    },
+    {
+      "key": "aa_chn",
+      "scale": 6.4,
+      "parts": 574,
+      "profile": "HQ-17",
+      "referenceUrl": "https://www.popsci.com/blog-network/eastern-arsenal/hq-17-classic-russian-missile-new-chinese-twist/",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "aa",
+      "triangles": 10458,
+      "dimensions": [
+        8.088896751403809,
+        4.64691979020834,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "aa_usa",
+      "scale": 6.4,
+      "parts": 377,
+      "profile": "Stryker M-SHORAD",
+      "referenceUrl": "https://odin.t2com.army.mil/WEG/Asset/d8e35b53d1a96872dcc5ca0865253b54",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "aa",
+      "triangles": 8568,
+      "dimensions": [
+        7.099999904632568,
+        3.314999924041331,
+        3.5299999713897705
+      ]
+    },
+    {
+      "key": "aa_rus",
+      "scale": 6.4,
+      "parts": 505,
+      "profile": "Pantsir-S1",
+      "referenceUrl": "https://commons.wikimedia.org/wiki/File:Bronnitsy_-_02_-_Pantsir-S1_SAM.jpg",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "aa",
+      "triangles": 11848,
+      "dimensions": [
+        9.752500057220459,
+        5.3950000214576725,
+        3.5850000381469727
+      ]
+    },
+    {
+      "key": "aa_ind",
+      "scale": 6.4,
+      "parts": 398,
+      "profile": "Akash",
+      "referenceUrl": "https://m.rediff.com/news/report/r-day-parade-indian-army-showcases-its-might-at-rajpath/20220126.htm",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "aa",
+      "triangles": 8120,
+      "dimensions": [
+        9.752500057220459,
+        4.535000026226044,
+        3.5850000381469727
+      ]
+    },
+    {
+      "key": "aa_kor",
+      "scale": 6.4,
+      "parts": 579,
+      "profile": "K30 Biho",
+      "referenceUrl": "https://w.atwiki.jp/namacha/pages/60.html",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 3,
+      "kind": "aa",
+      "triangles": 11308,
+      "dimensions": [
+        7.8060996532440186,
+        4.118334943652153,
+        3.700000047683716
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}
