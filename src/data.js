@@ -515,14 +515,14 @@
       air: true,
     },
     orbital: {
-      name: "轨道武装平台（架空）",
+      name: "重型轨道打击平台（架空）",
       role: "太空 / 海陆空 / 基地全域打击（架空）",
       cost: 5500,
       hp: 1800,
-      speed: 90,
+      speed: 62,
       damage: 200,
       range: 610,
-      reload: 2.6,
+      reload: 3.2,
       sight: 620,
       r: 29,
       time: 38,
@@ -534,6 +534,14 @@
       antiAir: true,
       spaceWeapon: true,
       advanced: true,
+    },
+    orbital_interceptor: {
+      name: "轨道截击舰（架空）",
+      role: "空中 / 太空截击；不能攻击海陆及基地",
+      cost: 3000, hp: 850, speed: 145, damage: 95, range: 490,
+      reload: 0.95, sight: 600, r: 22, time: 26, producer: "spaceport", icon: "⋈",
+      space: true, air: true, antiSpace: true, antiAir: true, onlyAir: true,
+      spaceWeapon: true, advanced: true,
     },
     asat: {
       name: "反轨道系统（架空）",
@@ -621,6 +629,17 @@
       asat: "帝国防御激光阵列（架空）",
     },
   };
+  // Original names deliberately do not identify fictional spacecraft as real X-37B hardware.
+  const spaceNames = {
+    chn: ["天巡侦察星", "飞梭截击舰", "天环重型平台", "望穹反轨车"],
+    usa: ["远眺侦察星", "游隼截击舰", "天桥重型平台", "天盾反轨车"],
+    rus: ["极光侦察星", "寒锋截击舰", "极轴重型平台", "极卫反轨车"],
+    ind: ["曙光侦察星", "流星截击舰", "三曜重型平台", "穹顶反轨车"],
+    kor: ["晨星侦察星", "双锋截击舰", "双极重型平台", "远卫反轨车"],
+    imp: ["圣瞳侦察星", "审判截击舰", "圣垒重装轨道舰", "铁壁反轨车"],
+  };
+  for (const [f, names] of Object.entries(spaceNames))
+    ["satellite", "orbital_interceptor", "orbital", "asat"].forEach((k, i) => EXTRA[f][k] = names[i] + "（原创架空）");
   Object.assign(B, {
     bunker: {
       name: "加固火力堡垒",

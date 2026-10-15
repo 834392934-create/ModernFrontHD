@@ -1,0 +1,229 @@
+{
+  "recordedAt": "2026-10-15T23:20:38.189Z",
+  "models": [
+    {
+      "key": "satellite_chn",
+      "scale": 5.8,
+      "parts": 62,
+      "profile": "chn-satellite-cinematic-v1",
+      "evidenceStatus": "space-concept-original",
+      "designRole": "unarmed-recon",
+      "inspirationUrl": "https://www.nasa.gov/international-space-station/",
+      "fiction": true,
+      "variant": 0,
+      "kind": "satellite",
+      "triangles": 2100,
+      "dimensions": [
+        4.170499920845032,
+        2.5100000500679016,
+        10.618000030517578
+      ]
+    },
+    {
+      "key": "orbital_interceptor_usa",
+      "scale": 6.7,
+      "parts": 284,
+      "profile": "usa-orbital_interceptor-cinematic-v1",
+      "evidenceStatus": "space-concept-original",
+      "designRole": "air-space-interceptor",
+      "inspirationUrl": "https://www.aboutamazon.com/news/entertainment/the-expanses-new-space",
+      "fiction": true,
+      "kind": "orbital_interceptor",
+      "triangles": 5160,
+      "dimensions": [
+        9.742499828338623,
+        2.2700000405311584,
+        5.317999839782715
+      ]
+    },
+    {
+      "key": "orbital_chn",
+      "scale": 6.5,
+      "parts": 286,
+      "profile": "chn-orbital-cinematic-v1",
+      "evidenceStatus": "space-concept-original",
+      "designRole": "heavy-all-domain-strike",
+      "inspirationUrl": "https://image-engine.com/case-studies/elysium/",
+      "fiction": true,
+      "kind": "orbital",
+      "triangles": 5740,
+      "dimensions": [
+        11.492499828338623,
+        3.5425000190734863,
+        11.868000030517578
+      ]
+    },
+    {
+      "key": "orbital_imp",
+      "scale": 7.2,
+      "parts": 643,
+      "profile": "imp-orbital-cinematic-v1",
+      "evidenceStatus": "space-concept-original",
+      "designRole": "heavy-all-domain-strike",
+      "inspirationUrl": "https://www.starwars.com/databank/imperial-star-destroyer",
+      "fiction": true,
+      "kind": "orbital",
+      "triangles": 11516,
+      "dimensions": [
+        15.742499828338623,
+        6.237500190734863,
+        7.349999904632568
+      ]
+    },
+    {
+      "key": "asat_chn",
+      "scale": 6.2,
+      "parts": 122,
+      "profile": "chn-asat-cinematic-v1",
+      "evidenceStatus": "space-concept-original",
+      "designRole": "ground-space-defense",
+      "inspirationUrl": "https://www.nasa.gov/international-space-station/",
+      "fiction": true,
+      "kind": "asat",
+      "triangles": 4652,
+      "dimensions": [
+        7.5,
+        6.298999942839146,
+        3.240000009536743
+      ]
+    },
+    {
+      "key": "ciws_usa",
+      "scale": 7,
+      "parts": 91,
+      "profile": "ciws-detailed-emplacement-v1",
+      "evidenceStatus": "photo-inspired-facility",
+      "referenceUrl": "https://www.dvidshub.net/image/1182160/protecting-force",
+      "fiction": false,
+      "reviewStatus": "needs-visual-review",
+      "kind": "ciws",
+      "triangles": 2144,
+      "dimensions": [
+        6.857142925262451,
+        4.612000084519386,
+        6.977142810821533
+      ]
+    },
+    {
+      "key": "sam_usa",
+      "scale": 7,
+      "parts": 76,
+      "profile": "sam-detailed-emplacement-v1",
+      "evidenceStatus": "photo-inspired-facility",
+      "referenceUrl": "https://www.rtx.com/raytheon/what-we-do/integrated-air-and-missile-defense/patriot",
+      "fiction": false,
+      "reviewStatus": "needs-visual-review",
+      "kind": "sam",
+      "triangles": 1428,
+      "dimensions": [
+        8,
+        5.1543379789590835,
+        8.119999885559082
+      ]
+    },
+    {
+      "key": "radar_usa",
+      "scale": 7,
+      "parts": 183,
+      "profile": "radar-detailed-emplacement-v1",
+      "evidenceStatus": "photo-inspired-facility",
+      "referenceUrl": "https://news.lockheedmartin.com/2022-05-04-Lockheed-Martins-First-TPY-4-Radar-Completes-Production-Bringing-Unmatched-Tracking-Precision-and-Speed-to-the-US-and-its-Allies",
+      "fiction": false,
+      "reviewStatus": "needs-visual-review",
+      "kind": "radar",
+      "triangles": 5360,
+      "dimensions": [
+        8.285714149475098,
+        4.79080977499485,
+        8.40571403503418
+      ]
+    },
+    {
+      "key": "bunker_chn",
+      "scale": 7,
+      "parts": 163,
+      "profile": "bunker-detailed-emplacement-v1",
+      "evidenceStatus": "photo-inspired-facility",
+      "referenceUrl": "https://www.dvidshub.net/image/1380277/mwss-271-completes-field-exercise-camp-lejeune",
+      "fiction": false,
+      "reviewStatus": "needs-visual-review",
+      "kind": "bunker",
+      "triangles": 2276,
+      "dimensions": [
+        8.571428298950195,
+        2.8500000035762785,
+        8.691428184509277
+      ]
+    },
+    {
+      "key": "laser_usa",
+      "scale": 7,
+      "parts": 49,
+      "profile": "laser-detailed-emplacement-v1",
+      "evidenceStatus": "original-concept-facility",
+      "referenceUrl": "https://www.rtx.com/raytheon/what-we-do/integrated-air-and-missile-defense/lasers",
+      "fiction": true,
+      "reviewStatus": "needs-visual-review",
+      "kind": "laser",
+      "triangles": 1056,
+      "dimensions": [
+        7.714285850524902,
+        3.020000029206276,
+        7.834285736083984
+      ]
+    },
+    {
+      "key": "shield_chn",
+      "scale": 7,
+      "parts": 46,
+      "profile": "shield-detailed-emplacement-v1",
+      "evidenceStatus": "original-concept-facility",
+      "referenceUrl": null,
+      "fiction": true,
+      "reviewStatus": "needs-visual-review",
+      "kind": "shield",
+      "triangles": 1552,
+      "dimensions": [
+        9.714285850524902,
+        4.170000076889992,
+        9.834285736083984
+      ]
+    },
+    {
+      "key": "jammer_chn",
+      "scale": 7,
+      "parts": 38,
+      "profile": "jammer-detailed-emplacement-v1",
+      "evidenceStatus": "original-concept-facility",
+      "referenceUrl": null,
+      "fiction": true,
+      "reviewStatus": "needs-visual-review",
+      "kind": "jammer",
+      "triangles": 972,
+      "dimensions": [
+        8,
+        5.599999905228615,
+        8.119999885559082
+      ]
+    },
+    {
+      "key": "navalyard_chn",
+      "scale": 7,
+      "parts": 62,
+      "profile": "navalyard-detailed-emplacement-v1",
+      "evidenceStatus": "original-game-facility",
+      "referenceUrl": null,
+      "fiction": false,
+      "reviewStatus": "needs-visual-review",
+      "kind": "navalyard",
+      "triangles": 1656,
+      "dimensions": [
+        10.571428298950195,
+        5.875000000596047,
+        10.691428184509277
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

@@ -490,7 +490,7 @@
       ' title="' +
       escapeHTML(title) +
       '"><span class="unit-symbol">' +
-      (U[k]?'<img src="assets/portraits/'+k+'_'+game.teams[0].faction+'.png" alt="">':icon) +
+      ((U[k]||B[k])?'<img src="assets/portraits/'+k+'_'+game.teams[0].faction+'.png" alt="">':icon) +
       '</span><span class="item-body"><strong>' +
       escapeHTML(name) +
       "</strong><small>" +
@@ -1183,7 +1183,7 @@
   if(window.DesktopGame){const quit=document.createElement('button');quit.id='desktop-quit';quit.textContent='退出游戏';quit.onclick=()=>DesktopGame.close();$('.launch-actions').append(quit);const minimize=document.createElement('button');minimize.textContent='—';minimize.title='最小化';minimize.onclick=()=>DesktopGame.minimize();$('.topbar').append(minimize);}
   const restore=document.createElement('button');restore.id='restore-hud';restore.textContent='恢复指挥界面 · Tab';restore.onclick=()=>document.body.classList.remove('immersive');document.body.append(restore);
   $('.bottom-status p').innerHTML='右键指令 · Shift 连续路点 / 追加选择<br>F 阵型 · R 撤退 · F11 全屏 · Tab 沉浸<br>选择生产建筑 → 右键设集结点';
-  document.querySelector('.edition').textContent='DESKTOP TACTICAL EDITION / 02';
+  document.querySelector('.edition').textContent='DESKTOP TACTICAL EDITION / 03';
   document.querySelector('.menu-footer>div:first-child').innerHTML='<span class="status-dot"></span>本地离线战役 · 实时三维战场<p>自动采矿 / 联合作战 / 据点争夺 / 1–4 名 AI</p>';
   setupMenu();
   requestAnimationFrame(frame);

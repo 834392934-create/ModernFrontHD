@@ -38,7 +38,7 @@ test('blocked destination is resolved to accessible ground',()=>{
  const k=Math.floor(e.order.y/48)*64+Math.floor(e.order.x/48);assert.equal(g.map.blocked[k],0);
 });
 test('all land vehicle classes and air reach an ordered point on all three maps',()=>{
- for(const map of ['river','desert','industry'])for(const kind of ['infantry','tank','ifv','arty','rocket','aa','heli','fighter','jet','satellite','orbital','asat']){
+ for(const map of ['river','desert','industry'])for(const kind of ['infantry','tank','ifv','arty','rocket','aa','heli','fighter','jet','satellite','orbital','orbital_interceptor','asat']){
   const g=new Game({enemies:1,map,buffs:['vision']});g.entities=[];g.ore=[];g.spawn(0,'hq',300,360);g.spawn(1,'hq',2700,1700);g.teams.forEach(t=>t.aiClock=9999);
   const e=g.spawn(0,kind,720,600);g.command([e.id],2200,1100);advance(g,100);assert.ok(Math.hypot(e.x-2200,e.y-1100)<30,map+' '+kind+' failed to arrive: '+e.x+','+e.y);
  }

@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
     const url = new URL(req.url, "http://localhost");
     if (url.pathname === "/health") {
       res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ app: "modern-front-hd", version: "2.0.0" }));
+      res.end(JSON.stringify({ app: "modern-front-hd", version: "2.1.0" }));
       return;
     }
     const relative =

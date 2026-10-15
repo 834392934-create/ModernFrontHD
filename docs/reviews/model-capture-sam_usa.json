@@ -1,0 +1,24 @@
+{
+  "recordedAt": "2026-10-15T23:26:51.267Z",
+  "models": [
+    {
+      "key": "sam_usa",
+      "scale": 7,
+      "parts": 80,
+      "profile": "sam-detailed-emplacement-v1",
+      "evidenceStatus": "photo-inspired-facility",
+      "referenceUrl": "https://www.rtx.com/raytheon/what-we-do/integrated-air-and-missile-defense/patriot",
+      "fiction": false,
+      "reviewStatus": "needs-visual-review",
+      "kind": "sam",
+      "triangles": 1528,
+      "dimensions": [
+        8,
+        5.1543379789590835,
+        8.119999885559082
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

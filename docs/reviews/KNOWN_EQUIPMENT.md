@@ -1,6 +1,6 @@
 # 49个实物参考槽位
 
-全部单位、设施和能力的覆盖清单见 [model-inventory.json](model-inventory.json)。此表只列有实图参考的具体装备；完整视觉终验尚未全部通过，概念生成保持冻结。判据见 [验收顺序](ACCEPTANCE_POLICY.md)。
+全部单位、设施和能力的覆盖清单见 [model-inventory.json](model-inventory.json)。此表只列有实图参考的具体装备；完整视觉终验尚未全部通过，其余概念生成保持冻结；2026-10-16 用户单独授权太空4型与全部建筑。判据见 [验收顺序](ACCEPTANCE_POLICY.md)。
 
 |键|游戏名称|参考|实现|完整视觉验收|
 |---|---|---|---|---|

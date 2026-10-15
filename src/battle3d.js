@@ -132,7 +132,9 @@
         if(!visible){if(o)o.visible=false;continue;}
         if(!o){o=root.WarModels.create(e.kind,game.teams[e.team].faction);o.scale.setScalar(o.userData.scale);o.traverse(m=>{if(m.isMesh&&m.userData.preserveMaterial)for(const mat of Array.isArray(m.material)?m.material:[m.material])this.fogify(mat)});this.objects.set(e.id,o);this.scene.add(o);}
         o.visible=true;visibleCount++;o.position.set(e.x,this.entityHeight(e),e.y);o.rotation.y=e.structure?0:-e.angle;
-        const turret=o.getObjectByName('turret');if(turret)turret.rotation.y=e.angle-(e.target?e.turret:e.angle);
+        const turret=o.getObjectByName('turret');if(turret)turret.rotation.y=e.target?(e.structure?0:e.angle)-e.turret:0;
+        const radar=o.getObjectByName('radar');if(radar)radar.rotation.y=time*.45;
+        const jammer=o.getObjectByName('jammerHead');if(jammer)jammer.rotation.y=time*.18;
         const rotor=o.getObjectByName('rotor');if(rotor)rotor.rotation.y=time*27;
         const rotorCounter=o.getObjectByName('rotorCounter');if(rotorCounter)rotorCounter.rotation.y=-time*27;
         const tailRotor=o.getObjectByName('tailRotor');if(tailRotor)tailRotor.rotation.z=time*38;
@@ -151,14 +153,26 @@
         if(e.kind==='harvester'&&(selected||e.cargo>0)){text(Math.floor(e.cargo)+'/500',p.x,p.y+16,'#e1d39d');}
         if(e.order&&!e.structure&&!U[e.kind]?.air&&!U[e.kind]?.naval&&Math.sin(time*8+e.id)>.1){const a=this.toScreen(e.x-Math.cos(e.angle)*25,e.y-Math.sin(e.angle)*25,3);g.fillStyle='#c2b38c22';g.beginPath();g.ellipse(a.x,a.y,12*this.camera.zoom,5*this.camera.zoom,0,0,7);g.fill();}
       }
-      for(const fx of game.effects){const p=this.toScreen(fx.x,fx.y),t=clamp(1-fx.ttl/fx.max,0,1);
+      for(const fx of game.effects){const p=this.toScreen(fx.x,fx.y,fx.height||0),t=clamp(1-fx.ttl/fx.max,0,1);
         if(!ui.demo&&!game.visibleAt(fx.x,fx.y)&&!['nuke','orbital'].includes(fx.type))continue;
         if(fx.type==='shot'){
-          const target=game.get(fx.target),end=this.toScreen(fx.tx,fx.ty,target?this.entityHeight(target):0),start=this.toScreen(fx.x,fx.y,fx.space?145:9);let x=start.x+(end.x-start.x)*t,y=start.y+(end.y-start.y)*t-Math.sin(t*Math.PI)*(fx.rocket?40:8);
-          g.strokeStyle=fx.space?'#9de4f6':'#ffdba0';g.lineWidth=fx.space?3:1.8;g.beginPath();g.moveTo(x,y);g.lineTo(x-(end.x-start.x)*.045,y-(end.y-start.y)*.045);g.stroke();if(t<.2){g.fillStyle='#fff1bc';g.beginPath();g.arc(start.x,start.y,4,0,7);g.fill();}
+          const target=game.get(fx.target),end=this.toScreen(fx.tx,fx.ty,fx.targetHeight??(target?this.entityHeight(target):0));
+          if(!fx.visualOrigin){const anchor=this.objects.get(fx.sourceId)?.getObjectByName('muzzle');if(anchor){const pos=anchor.getWorldPosition(new T.Vector3());fx.visualOrigin=[pos.x,pos.z,pos.y];}}
+          const start=fx.visualOrigin?this.toScreen(...fx.visualOrigin):this.toScreen(fx.x,fx.y,fx.sourceHeight??(fx.space?145:9));
+          const beam=fx.weaponFx==='orbital-beam'||fx.weaponFx==='laser-beam',imperial=game.teams[fx.from]?.faction==='imp';
+          if(beam){
+            const color=imperial?'#edc989':fx.space?'#8fd5ef':'#dfb797';
+            // Visible charge halo followed by a short continuous strike, not a falling bullet.
+            g.save();g.strokeStyle=color;g.shadowColor=color;g.shadowBlur=14;g.lineWidth=2;g.beginPath();g.arc(start.x,start.y,3+Math.sin(Math.min(1,t/.28)*Math.PI/2)*5,0,7);g.stroke();
+            if(t>.28){g.globalAlpha=Math.sin((t-.28)/.72*Math.PI)*.8+.2;g.lineWidth=fx.space?5:2.5;g.beginPath();g.moveTo(start.x,start.y);g.lineTo(end.x,end.y);g.stroke();g.shadowBlur=0;g.strokeStyle='#f1f7ef';g.lineWidth=1;g.stroke();}g.restore();
+          }else{
+            const burst=fx.weaponFx==='interceptor-burst',asat=fx.weaponFx==='asat-missile',count=burst?3:1;
+            for(let n=0;n<count;n++){const u=Math.max(0,t-n*.11),x=start.x+(end.x-start.x)*u,y=start.y+(end.y-start.y)*u-Math.sin(u*Math.PI)*(asat?65:fx.rocket?40:8);g.strokeStyle=burst?'#a9dbf6':asat?'#ffe4b5':'#ffdba0';g.lineWidth=burst?2.6:1.8;g.beginPath();g.moveTo(x,y);g.lineTo(x-(end.x-start.x)*.045,y-(end.y-start.y)*.045);g.stroke();if(asat){g.strokeStyle='#c9c3ae66';g.lineWidth=3;g.beginPath();g.moveTo(start.x,start.y);g.quadraticCurveTo((start.x+x)/2,(start.y+y)/2-40*u,x,y);g.stroke();}}
+            if(t<.2){g.fillStyle='#fff1bc';g.beginPath();g.arc(start.x,start.y,4,0,7);g.fill();}
+          }
         }else if(['nuke','bunker','strike','orbital'].includes(fx.type)){ring(fx.x,fx.y,fx.r,'#f19b76',2,.6+.4*Math.sin(time*12));text((fx.type==='nuke'?'核打击':'打击倒计时')+' '+fx.ttl.toFixed(1),p.x,p.y-20,'#ffd0a0');}
         else if(['impact','explosion','nuclear','lance'].includes(fx.type)){
-          const r=(fx.r||30)*this.camera.zoom*(.2+t*.9),grad=g.createRadialGradient(p.x,p.y,0,p.x,p.y,r);grad.addColorStop(0,'#fff4c9');grad.addColorStop(.25,'#e6a853aa');grad.addColorStop(.65,'#856c4844');grad.addColorStop(1,'#42382d00');g.globalAlpha=1-t;g.fillStyle=grad;g.beginPath();g.arc(p.x,p.y,r,0,7);g.fill();g.globalAlpha=1;ring(fx.x,fx.y,(fx.r||25)*t*1.3,'#ead3ac',2,1-t);
+          const r=(fx.r||30)*this.camera.zoom*(.2+t*.9),grad=g.createRadialGradient(p.x,p.y,0,p.x,p.y,r);grad.addColorStop(0,'#fff4c9');grad.addColorStop(.25,'#e6a853aa');grad.addColorStop(.65,'#856c4844');grad.addColorStop(1,'#42382d00');g.globalAlpha=1-t;g.fillStyle=grad;g.beginPath();g.arc(p.x,p.y,r,0,7);g.fill();g.globalAlpha=1;if(!fx.height)ring(fx.x,fx.y,(fx.r||25)*t*1.3,'#ead3ac',2,1-t);
           if(fx.type==='lance'){g.strokeStyle='#c4e5ff';g.lineWidth=5*(1-t);g.beginPath();g.moveTo(p.x,p.y-600);g.lineTo(p.x,p.y);g.stroke();}
         }else ring(fx.x,fx.y,12+t*25,fx.attack?'#eeb195':'#b6dfca',2,1-t);
       }

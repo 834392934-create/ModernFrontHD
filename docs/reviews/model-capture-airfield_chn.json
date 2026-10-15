@@ -1,0 +1,126 @@
+{
+  "recordedAt": "2026-10-15T23:25:39.768Z",
+  "models": [
+    {
+      "key": "airfield_chn",
+      "scale": 7,
+      "parts": 92,
+      "profile": "airfield-detailed-emplacement-v1",
+      "evidenceStatus": "original-game-facility",
+      "referenceUrl": null,
+      "fiction": false,
+      "reviewStatus": "needs-visual-review",
+      "kind": "airfield",
+      "triangles": 1868,
+      "dimensions": [
+        12.857142448425293,
+        6.30000019133091,
+        12.977143287658691
+      ]
+    },
+    {
+      "key": "repairhub_chn",
+      "scale": 7,
+      "parts": 71,
+      "profile": "repairhub-detailed-emplacement-v1",
+      "evidenceStatus": "original-game-facility",
+      "referenceUrl": null,
+      "fiction": false,
+      "reviewStatus": "needs-visual-review",
+      "kind": "repairhub",
+      "triangles": 1372,
+      "dimensions": [
+        8.571428298950195,
+        3.577500105500221,
+        8.691428184509277
+      ]
+    },
+    {
+      "key": "ciws_usa",
+      "scale": 7,
+      "parts": 92,
+      "profile": "ciws-detailed-emplacement-v1",
+      "evidenceStatus": "photo-inspired-facility",
+      "referenceUrl": "https://www.dvidshub.net/image/1182160/protecting-force",
+      "fiction": false,
+      "reviewStatus": "needs-visual-review",
+      "kind": "ciws",
+      "triangles": 2208,
+      "dimensions": [
+        6.857142925262451,
+        4.612000084519386,
+        6.977142810821533
+      ]
+    },
+    {
+      "key": "sam_usa",
+      "scale": 7,
+      "parts": 77,
+      "profile": "sam-detailed-emplacement-v1",
+      "evidenceStatus": "photo-inspired-facility",
+      "referenceUrl": "https://www.rtx.com/raytheon/what-we-do/integrated-air-and-missile-defense/patriot",
+      "fiction": false,
+      "reviewStatus": "needs-visual-review",
+      "kind": "sam",
+      "triangles": 1492,
+      "dimensions": [
+        8,
+        5.1543379789590835,
+        8.119999885559082
+      ]
+    },
+    {
+      "key": "laser_usa",
+      "scale": 7,
+      "parts": 50,
+      "profile": "laser-detailed-emplacement-v1",
+      "evidenceStatus": "original-concept-facility",
+      "referenceUrl": "https://www.rtx.com/raytheon/what-we-do/integrated-air-and-missile-defense/lasers",
+      "fiction": true,
+      "reviewStatus": "needs-visual-review",
+      "kind": "laser",
+      "triangles": 1120,
+      "dimensions": [
+        7.714285850524902,
+        3.020000029206276,
+        7.834285736083984
+      ]
+    },
+    {
+      "key": "orbital_chn",
+      "scale": 6.5,
+      "parts": 286,
+      "profile": "chn-orbital-cinematic-v1",
+      "evidenceStatus": "space-concept-original",
+      "designRole": "heavy-all-domain-strike",
+      "inspirationUrl": "https://image-engine.com/case-studies/elysium/",
+      "fiction": true,
+      "kind": "orbital",
+      "triangles": 5740,
+      "dimensions": [
+        11.492499828338623,
+        3.5425000190734863,
+        11.868000030517578
+      ]
+    },
+    {
+      "key": "asat_chn",
+      "scale": 6.2,
+      "parts": 134,
+      "profile": "chn-asat-cinematic-v1",
+      "evidenceStatus": "space-concept-original",
+      "designRole": "ground-space-defense",
+      "inspirationUrl": "https://www.nasa.gov/international-space-station/",
+      "fiction": true,
+      "kind": "asat",
+      "triangles": 4828,
+      "dimensions": [
+        7.575000047683716,
+        6.298999942839146,
+        3.5
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

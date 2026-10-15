@@ -1,0 +1,256 @@
+{
+  "recordedAt": "2026-10-15T23:28:17.981Z",
+  "environment": "Packaged Electron fullscreen",
+  "checks": [
+    "24 space units and 102 faction-building slots use new models with valid bounds and weapon anchors",
+    "28 four-quadrant aim checks: fixed foundations, rotating weapons, effects originate at actual model muzzle",
+    "three distinct space attack styles render from ground/orbit to intended layers"
+  ],
+  "models": 126,
+  "tracking": [
+    {
+      "kind": "ciws",
+      "angle": 0,
+      "headingError": 0,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "ciws",
+      "angle": 1.5707963267948966,
+      "headingError": 1.6081226496766364e-16,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "ciws",
+      "angle": 3.141592653589793,
+      "headingError": 0,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "ciws",
+      "angle": -1.5707963267948966,
+      "headingError": 1.6081226496766364e-16,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "sam",
+      "angle": 0,
+      "headingError": 0,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "sam",
+      "angle": 1.5707963267948966,
+      "headingError": 1.6081226496766364e-16,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "sam",
+      "angle": 3.141592653589793,
+      "headingError": 0,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "sam",
+      "angle": -1.5707963267948966,
+      "headingError": 1.6081226496766364e-16,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "turret",
+      "angle": 0,
+      "headingError": 0,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "turret",
+      "angle": 1.5707963267948966,
+      "headingError": 1.6081226496766364e-16,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "turret",
+      "angle": 3.141592653589793,
+      "headingError": 0,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "turret",
+      "angle": -1.5707963267948966,
+      "headingError": 1.6081226496766364e-16,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "bunker",
+      "angle": 0,
+      "headingError": 0,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "bunker",
+      "angle": 1.5707963267948966,
+      "headingError": 1.6081226496766364e-16,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "bunker",
+      "angle": 3.141592653589793,
+      "headingError": 0,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "bunker",
+      "angle": -1.5707963267948966,
+      "headingError": 1.6081226496766364e-16,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "laser",
+      "angle": 0,
+      "headingError": 0,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "laser",
+      "angle": 1.5707963267948966,
+      "headingError": 1.6081226496766364e-16,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "laser",
+      "angle": 3.141592653589793,
+      "headingError": 0,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "laser",
+      "angle": -1.5707963267948966,
+      "headingError": 1.6081226496766364e-16,
+      "baseAngle": 0,
+      "originError": 0
+    },
+    {
+      "kind": "asat",
+      "angle": 0,
+      "headingError": 7.162729191130043e-17,
+      "baseAngle": -0.731,
+      "originError": 0
+    },
+    {
+      "kind": "asat",
+      "angle": 1.5707963267948966,
+      "headingError": 1.0394951953932772e-17,
+      "baseAngle": -0.731,
+      "originError": 0
+    },
+    {
+      "kind": "asat",
+      "angle": 3.141592653589793,
+      "headingError": 5.083738800343489e-17,
+      "baseAngle": -0.731,
+      "originError": 0
+    },
+    {
+      "kind": "asat",
+      "angle": -1.5707963267948966,
+      "headingError": 8.202224386523318e-17,
+      "baseAngle": -0.731,
+      "originError": 0
+    },
+    {
+      "kind": "orbital_interceptor",
+      "angle": 0,
+      "headingError": 1.1102230246251565e-16,
+      "baseAngle": -0.731,
+      "originError": 0
+    },
+    {
+      "kind": "orbital_interceptor",
+      "angle": 1.5707963267948966,
+      "headingError": 2.3216232583018857e-16,
+      "baseAngle": -0.731,
+      "originError": 0
+    },
+    {
+      "kind": "orbital_interceptor",
+      "angle": 3.141592653589793,
+      "headingError": 7.63812349435017e-17,
+      "baseAngle": -0.731,
+      "originError": 0
+    },
+    {
+      "kind": "orbital_interceptor",
+      "angle": -1.5707963267948966,
+      "headingError": 5.0496316620446645e-18,
+      "baseAngle": -0.731,
+      "originError": 0
+    }
+  ],
+  "anchors": [
+    {
+      "style": "orbital-beam",
+      "origin": [
+        1160,
+        850,
+        132.455
+      ],
+      "targetHeight": 5
+    },
+    {
+      "style": "interceptor-burst",
+      "origin": [
+        1406.7,
+        859.38,
+        151.566
+      ],
+      "targetHeight": 145
+    },
+    {
+      "style": "asat-missile",
+      "origin": [
+        1633.8,
+        845.97,
+        39.68000000000001
+      ],
+      "targetHeight": 145
+    }
+  ],
+  "performance": {
+    "frames": 283,
+    "durationMs": 6015.700000095367,
+    "meanFPS": 47,
+    "p95FrameMs": 21.800000000000182,
+    "viewport": [
+      2752,
+      1152
+    ],
+    "dpr": 1.25,
+    "entities": 97,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "calls": 206,
+    "triangles": 642685,
+    "visibleEntities": 97,
+    "geometries": 156
+  },
+  "performanceScope": "48 extra space/ASAT units + 17 facilities; warmed 6-second static army with simulation running, not sustained-combat performance.",
+  "errors": []
+}

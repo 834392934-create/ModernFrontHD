@@ -14,3 +14,7 @@
 - 世界观、商标、真实装备名称和第三方网页不属于本项目自有权利。MIT 许可仅涵盖本项目原创代码与原创资产，不授予第三方商标、世界观或官方素材使用权。
 - 战锤阵营是非官方同人展示；商业发行需自行处理相关权利。
 - 本项目没有复制 OpenRA、PathFinding.js、RBush、Ares、Phobos 或 cnc-ddraw 的代码或二进制；它们作为设计调研来源列于文档。
+
+## 2.1 原创太空与建筑
+
+`src/models-space.js`、`src/models-buildings.js`为本项目原创程序网格。影视/官方设备图片只作视觉研究，未将图片或预览网格打入发布包。引用与观察记录见 `docs/reviews/space-reference-review.md`、`defense-building-reference.md`。Sketchfab新候选尚未取得源文件，没有新增第三方模型导入；既有T-90M/AH-64/伯克许可继续适用。

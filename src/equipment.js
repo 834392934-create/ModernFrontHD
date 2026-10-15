@@ -191,6 +191,11 @@
   function dossier(faction, kind) {
     const f = WarData.F[faction],
       d = WarData.U[kind] || WarData.B[kind];
+    if (["satellite", "orbital_interceptor", "orbital", "asat"].includes(kind)) return {
+      status: "原创架空航天体系 / 影视美术借鉴",
+      specs: { 外形参考: "影视工业舰船、公开太阳翼及散热桁架；非真实型号复刻", 职责: d.role, 性能: "全部是游戏参数，不代表现实装备能力" },
+      refs: [], concept: true, fiction: true,
+    };
     if (f.fiction)
       return {
         status: "战锤非官方同人 / 科幻设定",

@@ -762,7 +762,7 @@
         "satellite",
       ];
       if (!this.options.playerOnlyTech && this.options.advanced)
-        choices.push("jet", "orbital", "asat");
+        choices.push("jet", "orbital", "orbital_interceptor", "asat");
       if (t.queue.length < 3) {
         let kind = choices[Math.floor(this.random() * choices.length)];
         this.train(t.id, kind);
@@ -929,6 +929,7 @@
           if(rocket){rocket.type='intercepted';rocket.ttl=.12;rocket.max=.12;e.interceptAt=this.time+.55;}
         }
         const canHit = (t) =>
+          d.damage > 0 &&
           this.isEnemy(e.team, t.team) &&
           (U[t.kind]?.space
             ? d.antiSpace
@@ -993,8 +994,13 @@
               splash: d.splash || 0,
               ttl: travel,
               max: travel,
-              rocket: e.kind === "rocket" || e.kind === "heli",
+              rocket: ["rocket", "heli", "asat", "sam"].includes(e.kind),
               space: !!d.spaceWeapon,
+              sourceKind: e.kind,
+              sourceId: e.id,
+              sourceHeight: d.space ? 145 : d.air ? 65 : e.structure ? 20 : 12,
+              targetHeight: U[target.kind]?.space ? 145 : U[target.kind]?.air ? 65 : 5,
+              weaponFx: e.kind === "orbital" ? "orbital-beam" : e.kind === "orbital_interceptor" ? "interceptor-burst" : e.kind === "asat" ? "asat-missile" : e.kind === "laser" ? "laser-beam" : "projectile",
             });
           }
         }
@@ -1120,6 +1126,7 @@
             type: "impact",
             x: fx.tx,
             y: fx.ty,
+            height: fx.targetHeight || 0,
             r: fx.splash || 14,
             ttl: 0.3,
             max: 0.3,

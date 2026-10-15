@@ -1,4 +1,4 @@
-# 现代战线 HD · 2.0
+# 现代战线 HD · 2.1
 
 可离线运行的三维即时战略遭遇战。项目位于 `D:\现代战线HD`；原参考目录 `D:\红警\2024` 未修改。
 
@@ -15,10 +15,14 @@
 - 美国、俄罗斯、中国、印度、韩国、战锤人类帝国同人阵营；1玩家对1–4 AI，支持混战/敌方联盟。
 - 简单、标准、困难、极难四档AI；高难度包含经济补助，不能等同于公平经济下更聪明。
 - 三张地图、连通海域、陆路桥梁、矿山、补给据点；基地歼灭与据点积分胜利规则。
-- 16类海陆空天单位、17类基地/防御设施、7类支援能力、8项玩家增益；本地保存和JSON导入导出。
+- 17类海陆空天单位、17类基地/防御设施、7类支援能力、8项玩家增益；本地保存和JSON导入导出。
 - 每矿山初始24,000资源；采矿车容量500、装载65/秒，自动往返装车区和炼厂。采空后另寻矿源，炼厂损失时保留货物等待。矿体阻挡车辆，装车区可达。
 - 陆海空生产线分别推进；集结点、队形、排队路径、撤退维修、近防火箭拦截、雷达防御增益。
 - 尖端科技仅玩家可用与禁止AI太空武器独立设置；可在对局内更改，禁止后退还AI相关排队订单。轨道武器可攻击海陆空、轨道目标和基地。
+
+太空重平台保留海陆空天及基地攻击；新截击舰只打空中/太空，速度145、伤害95/0.95秒；重平台速度62、伤害200/3.2秒（均为游戏数值）。AI太空开关同时控制两种武装太空单位。
+
+外观总览：[太空24槽位](screenshots/space-review-sheet.png) / [17建筑](screenshots/buildings-review-sheet.png)。[监督审查](docs/reviews/space-supervision.md) / [Sketchfab候选](docs/reviews/sketchfab-candidates.md)。
 
 ## 操作
 
@@ -44,9 +48,9 @@
 
 大部分装备为原创程序网格；俄罗斯T-90M、美国伯克级与美韩AH-64已接入有CC-BY署名许可的离线美术资产。T-90M保留独立炮塔，AH-64保留主/尾旋翼动画。AH-64按Longbow家族参考外观展示，不认证某个AH-64E生产批次。具体作者、来源、改动和许可见 [第三方说明](THIRD_PARTY_NOTICES.md)。
 
-**尚未完成所有型号“接近实物”的视觉终验。** 功能测试、部件数和三角面数不能代表真实性。照片仅支持可见外观；X-37B槽位等玩法抽象也不能视为已还原实物。25个地面槽位通过一级轮廓初审，详细剩余项见 [验收顺序](docs/reviews/ACCEPTANCE_POLICY.md) 和 [49个实物槽位清单](docs/reviews/KNOWN_EQUIPMENT.md)。
+**尚未完成所有型号“接近实物”的视觉终验。** 功能测试、部件数和三角面数不能代表真实性。照片仅支持可见外观；原创航天单元不冒称现实已部署装备。25个地面槽位通过一级轮廓初审，详细剩余项见 [验收顺序](docs/reviews/ACCEPTANCE_POLICY.md) 和 [49个实物槽位清单](docs/reviews/KNOWN_EQUIPMENT.md)。
 
-按用户要求，六代机、轨道武装、护盾、虚构舰艇与帝国模型本轮保持旧版占位。有充分图片的装备尚未全部终验前，不继续生成未知外形。证据与冻结范围见 [图片来源](docs/VISUAL_REFERENCES.md)。
+2026-10-16 用户新增授权太空4型与全部17类建筑细化：6阵营24个太空槽位，区分无武装侦察、空天截击、全域重型打击和地面反轨；帝国太空舰采用厚装甲、高塔和侧舷炮舱。建筑借鉴 C-RAM、Patriot、TPY-4、HESCO 和光电设备照片，游戏组合不冒称精确实物。六代机与其余未知车辆舰机继续保持旧版占位。证据与冻结范围见 [图片来源](docs/VISUAL_REFERENCES.md)。
 
 公开资料与游戏数值分开；未知射程、防护和毁伤不填假精确值。概念能力为游戏强化，不是现实仿真。没有集成DLSS或光追，详见 [画质说明](docs/GRAPHICS.md)。
 
@@ -60,6 +64,8 @@ powershell -File build-desktop.ps1
 node server.cjs
 # 第二终端；需要已有Playwright或设置PLAYWRIGHT_MODULE：
 node tests/gallery.cjs
+node tests/gallery-framing.cjs
+node tests/space-browser.cjs --desktop
 node tests/upgrade.cjs
 node tests/performance3d.cjs --desktop
 # 模型修改后更新核查视图与生产缩略图，再重建发布包：
@@ -71,7 +77,7 @@ powershell -File build-desktop.ps1
 
 游戏运行不需要开发工具。报告见 [验证记录](docs/VALIDATION.md)，真实截图在 `screenshots/`。
 
-新版实时外观源为 `src/models-tanks.js`、`models-vehicles.js`、`models-air.js`、`models-naval.js`。`models/`内STEP为早期CAD研究资产，**不等同于当前实时模型**。运行无需Fusion/FreeCAD/Python。
+新版实时外观源为 `src/models-tanks.js`、`models-vehicles.js`、`models-air.js`、`models-naval.js`、`models-space.js`、`models-buildings.js`。`models/`内STEP为早期CAD研究资产，**不等同于当前实时模型**。运行无需Fusion/FreeCAD/Python。
 
 ## Git
 
