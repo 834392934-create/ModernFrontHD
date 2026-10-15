@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#16252d" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <title>现代战线 HD · 五强遭遇战</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="battle" aria-label="即时战略战场"></canvas>
+    <div id="menu" class="screen">
+      <div class="menu-shell">
+        <header class="brand">
+          <div class="eyebrow">
+            <span class="brand-mark">⌖</span> INDEPENDENT REAL-TIME STRATEGY
+            <span class="edition">LOCAL EDITION / 01</span>
+          </div>
+          <h1>现代战线<span>HD</span></h1>
+          <div class="brand-sub">MODERN FRONT <i></i> 五强遭遇战</div>
+          <p>建立防线。争夺补给。掌控战场。</p>
+        </header>
+        <div class="setup-grid">
+          <section class="faction-section">
+            <div class="section-title">
+              <span>01 / 选择阵营</span><small>GFP 2026 TOP FIVE</small>
+            </div>
+            <div id="factions"></div>
+            <div id="faction-detail"></div>
+          </section>
+          <section class="battle-section">
+            <div class="section-title">
+              <span>02 / 战场部署</span><small>SKIRMISH</small>
+            </div>
+            <div id="maps"></div>
+            <div class="option-row">
+              <label
+                >敌方 AI 数量<select id="enemies">
+                  <option value="1">1 名对手 · 双方对决</option>
+                  <option value="2" selected>2 名对手 · 三方交锋</option>
+                  <option value="3">3 名对手 · 四方争夺</option>
+                  <option value="4">4 名对手 · 五强会战</option>
+                </select></label
+              ><label
+                >AI 难度<select id="difficulty">
+                  <option value="easy">新兵 · 收入 ×0.8</option>
+                  <option value="normal" selected>标准 · 公平经济</option>
+                  <option value="hard">精锐 · 收入 ×1.3</option>
+                </select></label
+              >
+            </div>
+            <div class="switch-row">
+              <label><input id="allied" type="checkbox" />敌方结盟</label
+              ><label
+                ><input
+                  id="abilities"
+                  type="checkbox"
+                  checked
+                />启用特殊能力</label
+              >
+            </div>
+            <p class="small-note">
+              AI 阵营按其余四国轮换配置；全部采用公开装备题材。
+            </p>
+          </section>
+          <section class="buff-section">
+            <div class="section-title">
+              <span>03 / 自定义增益</span><small>PLAYER MODIFIERS</small>
+            </div>
+            <div id="buffs"></div>
+            <div class="buff-footer">
+              <button id="all-buffs" class="text-button">全部开启</button
+              ><button id="clear-buffs" class="text-button">公平对战</button
+              ><span>仅对玩家生效 · 对局内可调整</span>
+            </div>
+          </section>
+        </div>
+        <footer class="menu-footer">
+          <div>
+            <span class="status-dot"></span>离线就绪
+            <span class="divider">/</span>原生高清画布
+            <span class="divider">/</span>1–4 名 AI
+            <p>现实装备名称 · 虚构平衡数值 · 自制俯视轮廓</p>
+          </div>
+          <div class="launch-actions">
+            <button id="load-menu" class="secondary">读取存档</button
+            ><button id="help-menu" class="secondary">作战指南</button
+            ><button id="start" class="primary">
+              部署战场 <span>↗</span>
+            </button>
+          </div>
+        </footer>
+      </div>
+      <div class="legal">
+        装备与排名来源见本地资料文档。本游戏为独立原创原型，与《红色警戒》及其版权方无关联。
+      </div>
+    </div>
+    <div id="hud" hidden>
+      <header class="topbar">
+        <div class="hud-brand">MF<span> / HD</span></div>
+        <div id="team-name"></div>
+        <div class="resource">
+          <small>补给资金</small><strong id="money">0</strong
+          ><em id="income"></em>
+        </div>
+        <div class="resource">
+          <small>电力余量</small><strong id="power">0</strong>
+        </div>
+        <div class="resource">
+          <small>作战单位</small><strong id="population">0 / 100</strong>
+        </div>
+        <div class="hud-spacer"></div>
+        <span id="clock">00:00</span
+        ><button id="speed" title="切换游戏速度">1×</button
+        ><button id="sound" title="开关音效">音效 开</button
+        ><button id="pause">Ⅱ 暂停</button
+        ><button id="settings">☷ 菜单</button>
+      </header>
+      <div class="mission">
+        <span class="status-dot"></span><b>遭遇战</b
+        ><span id="objective">摧毁所有敌方指挥中心</span><span id="fps"></span>
+      </div>
+      <div id="notifications" aria-live="polite"></div>
+      <aside id="sidebar">
+        <div class="side-header">
+          <span>战场指挥</span><small id="side-faction"></small>
+        </div>
+        <div class="tabs">
+          <button data-tab="units" class="active">部队</button
+          ><button data-tab="buildings">建造</button
+          ><button data-tab="abilities">支援</button>
+        </div>
+        <div id="catalog"></div>
+        <div class="queue-title">
+          生产序列 <span id="queue-count">0 / 12</span>
+        </div>
+        <div id="queue"></div>
+        <p class="sidebar-note">
+          右键队列取消 · 返还 75%<br />低电力时生产速度降至 40%
+        </p>
+        <div id="intel"></div>
+      </aside>
+      <footer class="bottom-panel">
+        <div class="minimap-wrap">
+          <canvas
+            id="minimap"
+            width="246"
+            height="168"
+            aria-label="战略小地图"
+          ></canvas>
+          <div class="minimap-label">TACTICAL OVERVIEW <span>⌖</span></div>
+        </div>
+        <div class="selection-panel">
+          <div id="selection-title">战区待命</div>
+          <div id="selection-info">左键选择单位，按住拖动框选</div>
+          <div id="selection-icons"></div>
+          <div class="command-buttons">
+            <button id="select-all">全军 <kbd>Q</kbd></button
+            ><button id="attack-move">攻击移动 <kbd>A</kbd></button
+            ><button id="stop-units">停止 <kbd>S</kbd></button
+            ><button id="home">基地 <kbd>H</kbd></button>
+          </div>
+        </div>
+        <div class="bottom-status">
+          <div id="order-status">等待指令</div>
+          <p>
+            右键移动 / 攻击 · 滚轮缩放<br />WASD / 方向键平移 · 空格暂停<br />Ctrl
+            + 1–5 编组 · 1–5 调用
+          </p>
+          <div>
+            <button id="save">保存</button
+            ><button id="buff-settings">增益</button
+            ><button id="help">操作</button>
+          </div>
+        </div>
+      </footer>
+      <div id="pause-banner" hidden>
+        行动暂停 <small>空格 / 暂停按钮继续</small>
+      </div>
+    </div>
+    <div id="modal" class="modal-backdrop" hidden>
+      <div class="modal">
+        <button id="close-modal" class="close-button" aria-label="关闭">
+          ×
+        </button>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+    <div id="toast" role="status"></div>
+    <script src="src/data.js"></script>
+    <script src="src/equipment.js"></script>
+    <script src="src/sim.js"></script>
+    <script src="src/render.js"></script>
+    <script src="src/lighting.js"></script>
+    <script src="src/app.js"></script>
+  </body>
+</html>

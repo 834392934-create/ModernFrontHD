@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>装备检视 · 现代战线 HD</title>
+    <link rel="icon" href="favicon.svg" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #11191d;
+        color: #deded0;
+        font:
+          13px "Microsoft YaHei",
+          sans-serif;
+        overflow: hidden;
+      }
+      #view {
+        width: 100vw;
+        height: 100vh;
+        display: block;
+      }
+      .bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        padding: 18px 26px;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        background: linear-gradient(#111b24f2, #111b2400);
+        z-index: 2;
+      }
+      h1 {
+        font-size: 19px;
+        color: #e4c384;
+        letter-spacing: 3px;
+        margin: 0;
+      }
+      small {
+        color: #99a8ac;
+        font-size: 10px;
+      }
+      select,
+      button {
+        background: #24333a;
+        color: #e4e6d9;
+        border: 1px solid #5b6b6c;
+        padding: 9px 13px;
+        font: inherit;
+        border-radius: 2px;
+        cursor: pointer;
+      }
+      .spacer {
+        flex: 1;
+      }
+      .info {
+        position: fixed;
+        left: 27px;
+        bottom: 27px;
+        max-width: 470px;
+        line-height: 1.9;
+        color: #a9b8b8;
+        background: #14232acf;
+        padding: 16px 20px;
+        border-left: 2px solid #d4b978;
+        pointer-events: none;
+      }
+      .info b {
+        color: #e7c57d;
+      }
+      .error {
+        position: fixed;
+        inset: 30%;
+        background: #22343b;
+        padding: 30px;
+        line-height: 2;
+        display: none;
+      }
+      .controls {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+        display: flex;
+        gap: 8px;
+      }
+      #loading {
+        position: fixed;
+        left: 50%;
+        top: 45%;
+        transform: translateX(-50%);
+        color: #e5ca96;
+        font-size: 18px;
+        letter-spacing: 3px;
+      }
+      @media (max-width: 760px) {
+        .bar {
+          padding: 12px;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+        h1 {
+          font-size: 14px;
+        }
+        .info {
+          left: 12px;
+          bottom: 65px;
+          font-size: 10px;
+          max-width: 80%;
+        }
+        .controls {
+          right: 12px;
+          bottom: 12px;
+        }
+        .bar small {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="view"></canvas>
+    <div class="bar">
+      <div>
+        <h1>装备检视 / ARMORY</h1>
+        <small>CAD GEOMETRY · REAL-TIME MATERIAL PREVIEW</small>
+      </div>
+      <select id="model">
+        <option value="tank_chn">ZTZ-99A 外观研究</option>
+        <option value="tank_usa">M1A2 外观研究</option>
+        <option value="tank_rus">T-90M 外观研究</option>
+        <option value="tank_ind">T-90S 外观研究</option>
+        <option value="tank_kor">K2 外观研究</option>
+        <option value="tank_imp">帝国重装 · 科幻</option>
+        <option value="destroyer">导弹舰 · 通用外观</option>
+        <option value="fighter">无尾战机 · 概念推演</option>
+        <option value="satellite">轨道平台 · 用途推演</option>
+        <option value="orbital">轨道战舰 · 科幻推演</option>
+        <option value="defense">定向能防御塔 · 概念</option></select
+      ><span class="spacer"></span
+      ><button onclick="location.href='index.html'">返回游戏</button>
+    </div>
+    <div id="loading">正在载入几何与材质…</div>
+    <div class="info">
+      <b id="model-name">装备检视</b>
+      <div id="stats"></div>
+      鼠标拖动旋转 · 滚轮缩放 · 双击恢复视角<br />根据公开外观制作的原创研究模型，非摄影测量复刻。<br />材质为实时标准金属
+      / 粗糙度着色，无 DLSS 或光线追踪。
+    </div>
+    <div class="controls">
+      <button id="rotate">自动旋转 开</button><button id="wire">线框 关</button
+      ><button id="camo">迷彩 开</button><button id="light">切换灯光</button>
+    </div>
+    <div class="error" id="error"></div>
+    <script src="assets/vendor/three.min.js"></script>
+    <script src="src/gallery.js"></script>
+  </body>
+</html>

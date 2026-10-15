@@ -1,0 +1,61 @@
+{
+  "reports": [
+    {
+      "key": "tank_usa",
+      "parts": 441,
+      "triangles": 28914
+    },
+    {
+      "key": "tank_rus",
+      "parts": 438,
+      "triangles": 27302
+    },
+    {
+      "key": "tank_chn",
+      "parts": 433,
+      "triangles": 26954
+    },
+    {
+      "key": "tank_ind",
+      "parts": 438,
+      "triangles": 27302
+    },
+    {
+      "key": "tank_kor",
+      "parts": 427,
+      "triangles": 26874
+    },
+    {
+      "key": "tank_imp",
+      "parts": 427,
+      "triangles": 26874
+    },
+    {
+      "key": "destroyer",
+      "parts": 162,
+      "triangles": 2980
+    },
+    {
+      "key": "fighter",
+      "parts": 19,
+      "triangles": 724
+    },
+    {
+      "key": "satellite",
+      "parts": 40,
+      "triangles": 1734
+    },
+    {
+      "key": "orbital",
+      "parts": 58,
+      "triangles": 3508
+    },
+    {
+      "key": "defense",
+      "parts": 21,
+      "triangles": 2196
+    }
+  ],
+  "errors": [],
+  "interactions": "model selection, orbit drag, material, wireframe, lighting"
+}

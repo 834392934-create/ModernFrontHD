@@ -1,0 +1,170 @@
+[
+  {
+    "kind": "tank",
+    "components": 433,
+    "triangles": 26954,
+    "valid": true,
+    "bbox_mm": [
+      135.5,
+      60.8,
+      52.8
+    ],
+    "sprite": "assets/sprites/tank.png",
+    "views": 16,
+    "cell": 192
+  },
+  {
+    "kind": "tank_usa",
+    "components": 441,
+    "triangles": 28914,
+    "valid": true,
+    "bbox_mm": [
+      135.5,
+      60.8,
+      55.8
+    ],
+    "sprite": "assets/sprites/tank_usa.png",
+    "views": 16,
+    "cell": 192
+  },
+  {
+    "kind": "tank_rus",
+    "components": 438,
+    "triangles": 27302,
+    "valid": true,
+    "bbox_mm": [
+      135.5,
+      60.8,
+      52.8
+    ],
+    "sprite": "assets/sprites/tank_rus.png",
+    "views": 16,
+    "cell": 192
+  },
+  {
+    "kind": "tank_chn",
+    "components": 433,
+    "triangles": 26954,
+    "valid": true,
+    "bbox_mm": [
+      135.5,
+      60.8,
+      52.8
+    ],
+    "sprite": "assets/sprites/tank_chn.png",
+    "views": 16,
+    "cell": 192
+  },
+  {
+    "kind": "tank_ind",
+    "components": 438,
+    "triangles": 27302,
+    "valid": true,
+    "bbox_mm": [
+      135.5,
+      60.8,
+      52.8
+    ],
+    "sprite": "assets/sprites/tank_ind.png",
+    "views": 16,
+    "cell": 192
+  },
+  {
+    "kind": "tank_kor",
+    "components": 427,
+    "triangles": 26874,
+    "valid": true,
+    "bbox_mm": [
+      135.5,
+      60.8,
+      52.8
+    ],
+    "sprite": "assets/sprites/tank_kor.png",
+    "views": 16,
+    "cell": 192
+  },
+  {
+    "kind": "tank_imp",
+    "components": 427,
+    "triangles": 26874,
+    "valid": true,
+    "bbox_mm": [
+      135.5,
+      60.8,
+      59.8
+    ],
+    "sprite": "assets/sprites/tank_imp.png",
+    "views": 16,
+    "cell": 192
+  },
+  {
+    "kind": "satellite",
+    "components": 40,
+    "triangles": 1734,
+    "valid": true,
+    "bbox_mm": [
+      37.0,
+      141.0,
+      35.5
+    ],
+    "sprite": "assets/sprites/satellite.png",
+    "views": 16,
+    "cell": 192
+  },
+  {
+    "kind": "orbital",
+    "components": 58,
+    "triangles": 3508,
+    "valid": true,
+    "bbox_mm": [
+      220.5,
+      95.0,
+      53.0
+    ],
+    "sprite": "assets/sprites/orbital.png",
+    "views": 16,
+    "cell": 192
+  },
+  {
+    "kind": "defense",
+    "components": 21,
+    "triangles": 2196,
+    "valid": true,
+    "bbox_mm": [
+      64.5,
+      60.0,
+      53.0
+    ],
+    "sprite": "assets/sprites/defense.png",
+    "views": 16,
+    "cell": 192
+  },
+  {
+    "kind": "destroyer",
+    "components": 162,
+    "triangles": 2980,
+    "valid": true,
+    "bbox_mm": [
+      212.0000002,
+      22.0000002,
+      54.0000001
+    ],
+    "sprite": "assets/sprites/destroyer.png",
+    "views": 16,
+    "cell": 192
+  },
+  {
+    "kind": "fighter",
+    "components": 19,
+    "triangles": 724,
+    "valid": true,
+    "bbox_mm": [
+      126.0,
+      96.0,
+      16.5000001
+    ],
+    "sprite": "assets/sprites/fighter.png",
+    "views": 16,
+    "cell": 192
+  }
+]

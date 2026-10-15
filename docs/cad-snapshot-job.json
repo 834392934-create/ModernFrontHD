@@ -1,0 +1,157 @@
+{
+  "jobs": [
+    {
+      "input": "models/tank.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "screenshots/cad-tank.png",
+          "camera": "iso",
+          "width": 1200,
+          "height": 900
+        },
+        {
+          "path": "screenshots/cad-tank-top.png",
+          "camera": "top",
+          "width": 1200,
+          "height": 900
+        }
+      ],
+      "render": {
+        "padding": 0.1
+      }
+    },
+    {
+      "input": "models/destroyer.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "screenshots/cad-destroyer.png",
+          "camera": "iso",
+          "width": 1200,
+          "height": 900
+        }
+      ]
+    },
+    {
+      "input": "models/fighter.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "screenshots/cad-fighter.png",
+          "camera": "iso",
+          "width": 1200,
+          "height": 900
+        }
+      ]
+    },
+    {
+      "input": "models/satellite.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "screenshots/cad-satellite.png",
+          "camera": "iso",
+          "width": 1200,
+          "height": 900
+        }
+      ]
+    },
+    {
+      "input": "models/orbital.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "screenshots/cad-orbital.png",
+          "camera": "iso",
+          "width": 1200,
+          "height": 900
+        }
+      ]
+    },
+    {
+      "input": "models/defense.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "screenshots/cad-defense.png",
+          "camera": "iso",
+          "width": 1200,
+          "height": 900
+        }
+      ]
+    },
+    {
+      "input": "models/tank_usa.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "screenshots/cad-tank_usa.png",
+          "camera": "iso",
+          "width": 1400,
+          "height": 1000
+        }
+      ]
+    },
+    {
+      "input": "models/tank_rus.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "screenshots/cad-tank_rus.png",
+          "camera": "iso",
+          "width": 1400,
+          "height": 1000
+        }
+      ]
+    },
+    {
+      "input": "models/tank_chn.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "screenshots/cad-tank_chn.png",
+          "camera": "iso",
+          "width": 1400,
+          "height": 1000
+        }
+      ]
+    },
+    {
+      "input": "models/tank_ind.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "screenshots/cad-tank_ind.png",
+          "camera": "iso",
+          "width": 1400,
+          "height": 1000
+        }
+      ]
+    },
+    {
+      "input": "models/tank_kor.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "screenshots/cad-tank_kor.png",
+          "camera": "iso",
+          "width": 1400,
+          "height": 1000
+        }
+      ]
+    },
+    {
+      "input": "models/tank_imp.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "screenshots/cad-tank_imp.png",
+          "camera": "iso",
+          "width": 1400,
+          "height": 1000
+        }
+      ]
+    }
+  ]
+}

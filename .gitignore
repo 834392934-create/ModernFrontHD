@@ -1,0 +1,14 @@
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+models/.*.glb
+models/.*.json
+.tmp/
+test-results/
+release/
+*.log
+*.save.json
+.DS_Store
+Thumbs.db
+.env

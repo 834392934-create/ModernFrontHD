@@ -1,0 +1,25 @@
+{
+  "environment": "Chromium headless, 1600x1000, generated stress scenario, not a guarantee of interactive performance",
+  "samples": [
+    {
+      "fps": 30,
+      "entities": 530,
+      "time": 1.3000000000000005
+    },
+    {
+      "fps": 46,
+      "entities": 530,
+      "time": 2.499999999999999
+    },
+    {
+      "fps": 46,
+      "entities": 530,
+      "time": 3.699999999999995
+    },
+    {
+      "fps": 46,
+      "entities": 530,
+      "time": 4.899999999999991
+    }
+  ]
+}
