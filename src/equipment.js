@@ -191,6 +191,11 @@
   function dossier(faction, kind) {
     const f = WarData.F[faction],
       d = WarData.U[kind] || WarData.B[kind];
+    if (d?.roleVariant) return {
+      status: "原创职责模型 / 公开外形借鉴",
+      specs: { 职责: d.role, 参数依据: "射程、伤害、速度与维修量均为游戏平衡参数", 外形: "按用途设计的原创模型，不冒称具体真实型号" },
+      refs: [], concept: !!d.space, fiction: !!d.space || !!f.fiction,
+    };
     if (["satellite", "orbital_interceptor", "orbital", "asat"].includes(kind)) return {
       status: "原创架空航天体系 / 影视美术借鉴",
       specs: { 外形参考: "影视工业舰船、公开太阳翼及散热桁架；非真实型号复刻", 职责: d.role, 性能: "全部是游戏参数，不代表现实装备能力" },

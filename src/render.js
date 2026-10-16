@@ -1190,6 +1190,7 @@
         }
       }
       g.restore();
+      this.rangeOverlays=root.WarRanges?.collect(game,ui,this)||[];root.WarRanges?.draw(g,this,this.rangeOverlays);
       if (ui.drag) {
         const d = ui.drag;
         g.fillStyle = "#e5be711c";

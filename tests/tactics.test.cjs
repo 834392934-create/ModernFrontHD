@@ -1,5 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict');
-require('../src/data.js');require('../src/equipment.js');require('../src/sim.js');
+require('../src/data.js');require('../src/roster.js');require('../src/equipment.js');require('../src/sim.js');
 const {Game}=WarSim;
 const advance=(g,s)=>{for(let i=0;i<s*20;i++)g.step(.05);};
 test('space weapons hit ground, naval, air, orbit and base',()=>{

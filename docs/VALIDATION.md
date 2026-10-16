@@ -1,3 +1,29 @@
+# 2.2 验证记录
+
+日期：2026-10-16。项目 D:\现代战线HD；原参考目录未修改。
+
+|检查|实际结果|证据|
+|---|---|---|
+|模拟|55/55通过；新增21种武装角色×5目标域=105次射击场景；44种生产、存档、维修域、AI限制与连通海域|simulation-tests.txt / tests/expanded.test.cjs|
+|图鉴|366可选项，0错误；新增162阵营角色槽位几何与炮口检查通过|gallery-report.json / expanded-browser-report.json|
+|五视图|1200×800和700×900各340个取景检查，共680项，通过|gallery-framing-report.json|
+|角色美术|新增27角色135张五视图；两轮监督闭环，原创角色辨识通过|reviews/expanded-model-supervision.md|
+|生产头像|366张，与战场同一模型源，最后修订后重烘|../assets/portraits/|
+|范围提示|真实输入验证选中/悬停、V三态、建造预览、雷达EMP及攻击379.5/拦截330区别|expanded-browser-report.json|
+|兼容2D|新增27角色可绘制；同一379.5/330范围规则通过|range-fallback-report.json|
+|原有交互/离线|11组检查通过；原有三种导入模块ready、PBR材质和署名保留，file://零HTTP请求|upgrade-browser-report.json / desktop-report.json|
+|实际EXE|全屏、Tab、366头像入口、四军种搜索/生产、162模型、雷达与推进桨转动通过，错误0|expanded-desktop-report.json|
+|运行高度|航空65、太空145游戏单位；实际运行对象位置断言及混编截图|expanded-desktop-report.json 的 animation|
+|独立审查|两个UI启动阻断和不可达河段问题已修复并独立复核|reviews/expanded-integration-review.md|
+
+性能记录：RTX 3060，物理屏幕3440×1440，CSS视口2752×1152，DPR1.25。实际EXE混编场景采样4秒约50.1 FPS；5秒交火由58实体降至47，观察92次发射、峰值31个效果及4组防御圈，平均50.18 FPS，P95帧20.1ms。短时采样，不是长局/极限人口承诺。控制场景含54新增模型与基地，原生产队列可能继续产出；报告记录的是采样时真实实体数。
+
+外观边界：新增是27种原创职责模型、6阵营色系，共162槽位；不是162种精确实物型号。完整实物终验仍未全部完成；本轮没有导入新的Sketchfab模型，没有集成DLSS或光追。候选来源与许可见 reviews/expanded-model-references.md。
+
+下文保留2.1历史记录；其中旧数量和性能只适用于对应旧版。
+
+---
+
 # 2.1 验证记录
 
 日期：2026-10-16。项目位于 `D:\现代战线HD`；原参考目录 `D:\红警\2024` 未修改。

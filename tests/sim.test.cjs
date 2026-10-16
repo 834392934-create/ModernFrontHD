@@ -1,6 +1,6 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-require("../src/data.js");
+require("../src/data.js");require('../src/roster.js');
 require("../src/equipment.js");
 require("../src/sim.js");
 const { Game, makeMap, findPath } = global.WarSim;

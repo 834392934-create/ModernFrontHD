@@ -1,5 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict');
-require('../src/data.js');require('../src/equipment.js');require('../src/sim.js');
+require('../src/data.js');require('../src/roster.js');require('../src/equipment.js');require('../src/sim.js');
 const {Game}=WarSim;
 function arena(){const g=new Game({enemies:1,buffs:['vision'],playerOnlyTech:false,aiSpaceWeapons:true});g.entities=[];g.spawn(0,'hq',300,300);g.spawn(1,'hq',2700,1800);g.teams.forEach(t=>t.aiClock=999999);return g;}
 function step(g,s){for(let i=0;i<s*20;i++)g.step(.05);}

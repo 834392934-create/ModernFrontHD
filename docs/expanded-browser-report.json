@@ -1,0 +1,40 @@
+{
+  "recordedAt": "2026-10-16T15:20:14.699Z",
+  "environment": "Chromium",
+  "checks": [
+    "162 new faction-role models have valid geometry, truthful source metadata and appropriate weapon anchors",
+    "four production filters expose 13 land + logistics / 10 navy / 10 air / 10 orbit",
+    "name search, no-match feedback, preserved focus, no shortcut leakage, and new production buttons work via real input",
+    "visible CIWS 379.5 attack vs 330 interception; radar EMP removes bonus; disabled hints and three-state V toggle",
+    "placement footprint and projected-power defense range preview use the live build UI",
+    "mixed new units render at their domain altitude; UAV propeller animates; immersive HUD toggles"
+  ],
+  "models": 162,
+  "animation": {
+    "a": 35,
+    "b": 70,
+    "r1": 0.9,
+    "r2": 1.35,
+    "airHeight": 65,
+    "spaceHeight": 145
+  },
+  "performance": {
+    "frames": 201,
+    "durationMs": 4008.699999904633,
+    "meanFPS": 50.1,
+    "p95FrameMs": 20.200000000000728,
+    "viewport": [
+      1600,
+      1000
+    ],
+    "dpr": 1,
+    "entities": 57,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "calls": 104,
+    "triangles": 360942,
+    "visibleEntities": 55,
+    "geometries": 185
+  },
+  "performanceScope": "54 added-role models + 3 buildings; warmed 4-second mixed-domain render with simulation running. Not sustained combat benchmark.",
+  "errors": []
+}

@@ -157,5 +157,10 @@
       }
     ]
   },
-  "errors": []
+  "errors": [],
+  "expandedPackageSourceAndPortraitMatch": {
+    "files": 388,
+    "sha256Equal": true,
+    "version": "2.2.0"
+  }
 }

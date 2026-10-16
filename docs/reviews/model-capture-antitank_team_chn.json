@@ -1,0 +1,119 @@
+{
+  "recordedAt": "2026-10-16T15:12:02.763Z",
+  "models": [
+    {
+      "key": "antitank_team_chn",
+      "scale": 5.6,
+      "parts": 53,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "陆军反装甲 / 高单发、慢装填 / 脆弱步兵",
+      "profile": "role-antitank_team-chn-v1",
+      "fiction": false,
+      "modelFamily": "antitank_team",
+      "squadMembers": 3,
+      "kind": "antitank_team",
+      "triangles": 2176,
+      "dimensions": [
+        2.9100000858306885,
+        1.8172000236809254,
+        2.9530036449432373
+      ]
+    },
+    {
+      "key": "machinegun_team_chn",
+      "scale": 5.6,
+      "parts": 49,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "中距反步兵 / 快速连射 / 对重装甲弱",
+      "profile": "role-machinegun_team-chn-v1",
+      "fiction": false,
+      "modelFamily": "machinegun_team",
+      "squadMembers": 2,
+      "kind": "machinegun_team",
+      "triangles": 1912,
+      "dimensions": [
+        3.853999972343445,
+        1.4172000475227833,
+        1.95453542470932
+      ]
+    },
+    {
+      "key": "mortar_team_chn",
+      "scale": 5.6,
+      "parts": 38,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "廉价曲射溅射 / 最小射程 90 / 需要侦察",
+      "profile": "role-mortar_team-chn-v1",
+      "fiction": false,
+      "modelFamily": "mortar_team",
+      "squadMembers": 2,
+      "kind": "mortar_team",
+      "triangles": 1424,
+      "dimensions": [
+        3,
+        1.8372000269591808,
+        3.1580036878585815
+      ]
+    },
+    {
+      "key": "assault_team_chn",
+      "scale": 5.6,
+      "parts": 69,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "近距离突入 / 较高生命 / 射程短",
+      "profile": "role-assault_team-chn-v1",
+      "fiction": false,
+      "modelFamily": "assault_team",
+      "squadMembers": 3,
+      "kind": "assault_team",
+      "triangles": 2628,
+      "dimensions": [
+        2.7239999771118164,
+        1.8172000236809254,
+        2.609999895095825
+      ]
+    },
+    {
+      "key": "recon_vehicle_chn",
+      "scale": 6.2,
+      "parts": 73,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "快速前出 / 大视野 / 弱自卫火力",
+      "profile": "role-recon_vehicle-chn-v1",
+      "fiction": false,
+      "modelFamily": "recon_vehicle",
+      "kind": "recon_vehicle",
+      "triangles": 2628,
+      "dimensions": [
+        5.740000009536743,
+        3.970000185072422,
+        3.240000009536743
+      ]
+    },
+    {
+      "key": "repair_vehicle_chn",
+      "scale": 6.2,
+      "parts": 106,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 近距维修友方陆军 / 不能修复基地",
+      "profile": "role-repair_vehicle-chn-v1",
+      "fiction": false,
+      "modelFamily": "repair_vehicle",
+      "kind": "repair_vehicle",
+      "triangles": 3160,
+      "dimensions": [
+        8.435793161392212,
+        3.7994086399674414,
+        3.3399999141693115
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

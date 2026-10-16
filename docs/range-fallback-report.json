@@ -1,0 +1,39 @@
+{
+  "range": {
+    "kind": "ciws",
+    "active": true,
+    "reason": null,
+    "preview": false,
+    "power": 60,
+    "boosted": true,
+    "attack": 379.49999999999994,
+    "nominal": 330,
+    "min": 0,
+    "domains": [
+      "ground",
+      "naval",
+      "structure",
+      "air"
+    ],
+    "zones": [
+      {
+        "type": "attack",
+        "label": "攻击",
+        "radius": 379.49999999999994,
+        "min": 0,
+        "domains": [
+          "ground",
+          "naval",
+          "structure",
+          "air"
+        ]
+      },
+      {
+        "type": "intercept",
+        "label": "拦截火箭",
+        "radius": 330
+      }
+    ]
+  },
+  "units": 44
+}

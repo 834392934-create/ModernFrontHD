@@ -4,11 +4,6 @@
     { F, U, B, W, H, T, COLS, ROWS, ABILITIES } = D,
     clamp = (v, a, b) => Math.max(a, Math.min(b, v)),
     dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
-  function unitsInSight(target, units) {
-    return units.some(
-      (u) => dist(target, u) < (u.structure ? 330 : U[u.kind].sight),
-    );
-  }
   function rng(seed) {
     return () => {
       seed |= 0;
@@ -407,6 +402,67 @@
         0,
       );
     }
+    targetDomain(kind) {
+      const d=U[kind];
+      return B[kind]?'structure':d?.space?'space':d?.naval?'naval':d?.air?'air':'ground';
+    }
+    operational(e, power) {
+      return e.hp!==0 && !(e.hp<0) && !(e.disabled>this.time) &&
+        !(B[e.kind] && e.kind!=='turret' && (power??this.power(e.team))<0);
+    }
+    sightRadius(e, power) {
+      const d=U[e.kind]||B[e.kind];
+      const base=B[e.kind]?(d.sight&&this.operational(e,power)?d.sight:330):d.sight;
+      return base*(F[this.teams[e.team].faction].vision||1);
+    }
+    unitsInSight(target,units) {
+      return units.some(e=>e.hp>0&&dist(target,e)<this.sightRadius(e));
+    }
+    targetDomains(kind) {
+      const d=U[kind]||B[kind];
+      if(!d?.damage)return [];
+      if(d.targetDomains)return d.targetDomains;
+      if(kind==='asat')return ['space'];
+      const domains=d.onlyAir?[]:['ground','naval','structure'];
+      if(d.antiAir||kind==='heli'||kind==='turret')domains.push('air');
+      if(d.antiSpace)domains.push('space');
+      return domains;
+    }
+    canTargetKind(sourceKind,targetKind) {
+      return this.targetDomains(sourceKind).includes(this.targetDomain(targetKind));
+    }
+    attackDamage(kind,target,base) {
+      const d=U[kind]||B[kind],family=U[target.kind]?.modelKind||target.kind;
+      return base*(d.damageBonuses?.[this.targetDomain(target.kind)]||1)*
+        (d.targetBonuses?.[target.kind]??d.targetBonuses?.[family]??1);
+    }
+    rangeProfile(e,preview=false) {
+      const d=U[e.kind]||B[e.kind],structure=!!B[e.kind],power=(structure?this.power(e.team):0)+(preview?(d.power||0):0);
+      const active=this.operational(e,power),reason=e.disabled>this.time?'EMP停机':!active?'供电不足':null;
+      const boosted=structure&&d.damage>0&&power>=0&&this.teamEntities(e.team).some(r=>r.kind==='radar'&&this.operational(r,power)&&dist(e,r)<450);
+      const attack=d.damage>0?(d.range||0)*(boosted?1.15:1):0;
+      const zones=[];
+      if(attack){zones.push({type:'attack',label:'攻击',radius:attack,min:d.minRange||0,domains:this.targetDomains(e.kind)});if(d.minRange)zones.push({type:'blind',label:'最小射程盲区',radius:d.minRange});}
+      if(e.kind==='ciws')zones.push({type:'intercept',label:'拦截火箭',radius:d.range});
+      if(d.heal)zones.push({type:'repair',label:'维修',radius:d.range,domains:d.healDomains||['ground','naval','air','space']});
+      if(d.shield)zones.push({type:'shield',label:'护盾',radius:d.range});
+      if(d.jam)zones.push({type:'jam',label:'电磁压制',radius:d.range});
+      if(e.kind==='radar')zones.push({type:'link',label:'雷达联动',radius:450});
+      if(e.kind==='radar'||(!d.damage&&!d.heal&&!structure))zones.push({type:'sight',label:'侦察',radius:this.sightRadius(e,power),active:true});
+      return {kind:e.kind,active,reason,preview,power,boosted,attack,nominal:d.range||0,min:d.minRange||0,domains:this.targetDomains(e.kind),zones};
+    }
+    availableUnitKinds(team) {
+      const t=this.teams[team],own=this.teamEntities(team),producers=new Set(own.filter(e=>e.structure&&e.disabled<=this.time).map(e=>e.kind));
+      return Object.keys(U).filter(k=>{const d=U[k];return !d.logistics&&k!=='harvester'&&producers.has(d.producer)&&t.money>=this.cost(team,k)&&
+        !(d.advanced&&(!this.options.advanced||(team>0&&this.options.playerOnlyTech)))&&!(team>0&&d.spaceWeapon&&this.options.aiSpaceWeapons===false);});
+    }
+    chooseUnitKind(choices) {
+      const weight=k=>Math.max(0,U[k].aiWeight??(['tank','ifv'].includes(k)?3:1));
+      const total=choices.reduce((sum,k)=>sum+weight(k),0);if(!total)return null;
+      let roll=this.random()*total;
+      for(const k of choices){roll-=weight(k);if(roll<0)return k;}
+      return choices.at(-1);
+    }
     cost(team, kind) {
       return Math.round(
         (U[kind] || B[kind]).cost *
@@ -647,12 +703,7 @@
           circles.push({
             x: e.x,
             y: e.y,
-            r:
-              (e.structure
-                ? B[e.kind].sight && this.power(e.team) >= 0
-                  ? B[e.kind].sight
-                  : 330
-                : U[e.kind].sight) * F[this.teams[0].faction].vision,
+            r: this.sightRadius(e),
           });
       for (const v of this.reveals) if (v.until > this.time) circles.push(v);
       for (const v of circles) {
@@ -709,6 +760,34 @@
           this.message(B[e.kind].name + "被摧毁");
       }
     }
+    navalApproach(ship,goal) {
+      if(!this.navalRegions){
+        const regions=new Int32Array(COLS*ROWS);let label=0;
+        for(let start=0;start<regions.length;start++)if(!this.map.navalBlocked[start]&&!regions[start]){
+          const queue=[start];regions[start]=++label;
+          for(let n=0;n<queue.length;n++){const at=queue[n],x=at%COLS,y=Math.floor(at/COLS);
+            for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const xx=x+dx,yy=y+dy,next=yy*COLS+xx;if(xx>=0&&xx<COLS&&yy>=0&&yy<ROWS&&!this.map.navalBlocked[next]&&!regions[next]){regions[next]=label;queue.push(next);}}
+          }
+        }this.navalRegions=regions;
+      }
+      const region=this.navalRegions[Math.floor(ship.y/T)*COLS+Math.floor(ship.x/T)];if(!region)return null;
+      let best=null,score=Infinity;
+      for(let i=0;i<this.map.navalBlocked.length;i++)if(this.navalRegions[i]===region){
+        const p={x:(i%COLS)*T+T/2,y:Math.floor(i/COLS)*T+T/2},d=dist(p,goal),value=d+dist(p,ship)*.04;
+        if(d<(U[ship.kind].minRange||0)+20)continue;
+        if(value<score){score=value;best=p;}
+      }
+      return best;
+    }
+    commandSupport(team,units) {
+      for(const support of units.filter(e=>U[e.kind].heal&&!e.retreating)){
+        const d=U[support.kind],allies=units.filter(e=>e.id!==support.id&&U[e.kind].damage&&(!d.healDomains||d.healDomains.includes(this.targetDomain(e.kind))));
+        allies.sort((a,b)=>(a.hp/a.maxHp-b.hp/b.maxHp)||dist(a,support)-dist(b,support));
+        const ally=allies[0];if(!ally)continue;
+        if(dist(support,ally)>d.range*.72)this.command([support.id],ally.x,ally.y,false);
+        else if(support.order){support.order=null;support.path=[];support.orderQueue=[];}
+      }
+    }
     ai(t, dt) {
       if (!t.alive) return;
       t.aiClock -= dt;
@@ -746,33 +825,17 @@
           if (this.build(t.id, buildKind, x, y)) break;
         }
       }
-      const choices = [
-        "infantry",
-        "tank",
-        "ifv",
-        "tank",
-        "arty",
-        "aa",
-        "rocket",
-        "heli",
-        "fighter",
-        "destroyer",
-        "carrier",
-        "submarine",
-        "satellite",
-      ];
-      if (!this.options.playerOnlyTech && this.options.advanced)
-        choices.push("jet", "orbital", "orbital_interceptor", "asat");
-      if (t.queue.length < 3) {
-        let kind = choices[Math.floor(this.random() * choices.length)];
-        this.train(t.id, kind);
+      const choices=this.availableUnitKinds(t.id);
+      if(t.queue.length<3&&choices.length){
+        const kind=this.chooseUnitKind(choices);
+        if(kind)this.train(t.id,kind);
       }
       if (this.time > 100 && this.options.abilities !== false) {
         const observed = this.entities.filter(
           (e) =>
             this.isEnemy(t.id, e.team) &&
             e.kind === "hq" &&
-            unitsInSight(e, es),
+            this.unitsInSight(e, es),
         );
         const target = observed[0];
         if (target) {
@@ -788,14 +851,19 @@
         }
       }
       const units = es.filter((e) => !e.structure);
-      for(const ship of units.filter(e=>U[e.kind].naval&&!e.order)){
-        const enemyShip=this.entities.filter(e=>U[e.kind]?.naval&&this.isEnemy(t.id,e.team)).sort((a,b)=>dist(ship,a)-dist(ship,b))[0];
-        if(enemyShip)this.command([ship.id],enemyShip.x,enemyShip.y,true,enemyShip.id);
+      this.commandSupport(t.id,units);
+      for(const ship of units.filter(e=>U[e.kind].naval&&U[e.kind].damage&&!e.retreating)){
+        if(ship.order&&(!ship.order.target||this.get(ship.order.target)?.hp>0))continue;
+        const enemy=this.entities.filter(e=>e.hp>0&&this.isEnemy(t.id,e.team)&&this.canTargetKind(ship.kind,e.kind)&&this.unitsInSight(e,es)).sort((a,b)=>dist(ship,a)-dist(ship,b))[0];
+        const goal=enemy||this.entities.filter(e=>e.hp>0&&e.kind==='hq'&&this.isEnemy(t.id,e.team)).sort((a,b)=>dist(ship,a)-dist(ship,b))[0];
+        if(!goal)continue;
+        const sea=this.navalApproach(ship,goal);
+        if(sea&&dist(ship,sea)>35)this.command([ship.id],sea.x,sea.y,true,U[enemy?.kind]?.naval?enemy.id:null);
       }
       if(!units.some(e=>e.kind==='harvester')&&!t.queue.some(q=>q.kind==='harvester'))this.train(t.id,'harvester');
       for(const e of units)if(e.hp<e.maxHp*.25&&!e.retreating&&!U[e.kind].space&&!U[e.kind].naval&&e.kind!=='harvester')this.retreat([e.id]);
       const capturers = units.filter(
-        (e) => (e.kind === "infantry" || e.kind === "ifv") && !e.order,
+        (e) => (U[e.kind].capturePriority || U[e.kind].modelKind === 'infantry' || e.kind === 'infantry' || e.kind === 'ifv') && !e.order,
       );
       for (const e of capturers) {
         let node = this.nodes
@@ -815,7 +883,7 @@
         let dest = this.options.mode==='domination'?this.nodes.filter(n=>n.owner!==t.id).sort((a,b)=>dist(hq,a)-dist(hq,b))[0]||hqs[0]:hqs[0];
         if (dest) {
           let attack = units.filter(
-            (e) => e.kind!=='harvester'&&!e.retreating&&!U[e.kind].naval&&(e.kind !== "infantry" || this.random() > 0.4),
+            (e) => e.kind!=='harvester'&&!U[e.kind].heal&&!e.retreating&&!U[e.kind].naval&&(e.kind !== "infantry" || this.random() > 0.4),
           );
           this.command(
             attack.map((e) => e.id),
@@ -908,11 +976,11 @@
           this.time - e.lastHit > 7
         )
           e.hp = Math.min(e.maxHp, e.hp + e.maxHp * 0.015 * dt);
-        if (e.structure && e.kind !== "turret" && this.power(e.team) < 0)
+        if (!this.operational(e))
           continue;
         if (d.heal) {
           for (const a of this.spatial.query(e.x, e.y, d.range))
-            if (a.team === e.team && !a.structure && dist(e,a)<=d.range)
+            if (a.hp>0 && a.team === e.team && !a.structure && dist(e,a)<=d.range && (!d.healDomains||d.healDomains.includes(this.targetDomain(a.kind))))
               a.hp = Math.min(a.maxHp, a.hp + d.heal * dt);
         }
         if (d.jam) {
@@ -922,8 +990,7 @@
         }
         if (!d.damage && !e.order) continue;
         let target = this.get(e.target);
-        let range = d.range;
-        if(e.structure&&d.damage&&this.teamEntities(e.team).some(r=>r.kind==='radar'&&r.disabled<=this.time&&dist(e,r)<450))range*=1.15;
+        let range = this.rangeProfile(e).attack;
         if(e.kind==='ciws'&&(e.interceptAt||0)<=this.time){
           const rocket=this.effects.find(f=>f.type==='shot'&&f.rocket&&this.isEnemy(e.team,f.from)&&Math.hypot(f.x+(f.tx-f.x)*(1-f.ttl/f.max)-e.x,f.y+(f.ty-f.y)*(1-f.ttl/f.max)-e.y)<d.range);
           if(rocket){rocket.type='intercepted';rocket.ttl=.12;rocket.max=.12;e.interceptAt=this.time+.55;}
@@ -931,17 +998,10 @@
         const canHit = (t) =>
           d.damage > 0 &&
           this.isEnemy(e.team, t.team) &&
-          (U[t.kind]?.space
-            ? d.antiSpace
-            : !U[t.kind]?.air ||
-              d.antiAir ||
-              e.kind === "heli" ||
-              e.kind === "turret") &&
-          !(d.onlyAir && !U[t.kind]?.air) &&
-          !(e.kind === "asat" && !U[t.kind]?.space) &&
+          this.canTargetKind(e.kind,t.kind) && dist(e,t)>=(d.minRange||0) &&
           (e.team === 0
             ? this.visibleAt(t.x, t.y)
-            : unitsInSight(t, this.teamSight[e.team]));
+            : this.unitsInSight(t, this.teamSight[e.team]));
         if (!target || !canHit(target) || dist(e, target) > range * 1.35)
           target = null;
         // Player explicit movement suppresses auto-fire until arrival; attack move engages.
@@ -973,7 +1033,7 @@
             e.cool <= 0
           ) {
             e.cool = d.reload;
-            let val = d.damage;
+            let val = this.attackDamage(e.kind,target,d.damage);
             if (e.kind === "submarine" && !U[target.kind]?.naval) val *= 0.2;
             if (e.kind === "ifv" && target.kind === "infantry") val *= 1.7;
             if (e.kind === "tank" && target.kind === "ifv") val *= 1.3;
@@ -991,22 +1051,24 @@
               target: target.id,
               from: e.team,
               damage: val,
+              baseDamage: d.damage,
+              targetDomain: this.targetDomain(target.kind),
               splash: d.splash || 0,
               ttl: travel,
               max: travel,
-              rocket: ["rocket", "heli", "asat", "sam"].includes(e.kind),
+              rocket: !!d.rocket || ["rocket", "heli", "asat", "sam"].includes(e.kind),
               space: !!d.spaceWeapon,
               sourceKind: e.kind,
               sourceId: e.id,
               sourceHeight: d.space ? 145 : d.air ? 65 : e.structure ? 20 : 12,
               targetHeight: U[target.kind]?.space ? 145 : U[target.kind]?.air ? 65 : 5,
-              weaponFx: e.kind === "orbital" ? "orbital-beam" : e.kind === "orbital_interceptor" ? "interceptor-burst" : e.kind === "asat" ? "asat-missile" : e.kind === "laser" ? "laser-beam" : "projectile",
+              weaponFx: d.weaponFx || (e.kind === "orbital" ? "orbital-beam" : e.kind === "orbital_interceptor" ? "interceptor-burst" : e.kind === "asat" ? "asat-missile" : e.kind === "laser" ? "laser-beam" : "projectile"),
             });
           }
         }
         if (e.structure) continue;
         const fight =
-          target && dist(e, target) <= range && (!e.order || e.order.attack);
+          target && dist(e, target) <= range && dist(e,target)>=(d.minRange||0) && (!e.order || e.order.attack);
         if (fight) continue;
         if (e.order) {
           let goal = e.order;
@@ -1108,10 +1170,12 @@
         if (fx.type === "shot") {
           if (fx.splash) {
             for (const e of this.spatial.query(fx.tx, fx.ty, fx.splash))
-              if (this.isEnemy(fx.from, e.team) && !U[e.kind]?.air)
+              if (e.hp>0 && this.isEnemy(fx.from, e.team) &&
+                (fx.sourceKind?this.canTargetKind(fx.sourceKind,e.kind):!U[e.kind]?.air) &&
+                (['air','space'].includes(fx.targetDomain)?this.targetDomain(e.kind)===fx.targetDomain:!U[e.kind]?.air))
                 this.damage(
                   e,
-                  fx.damage *
+                  (fx.sourceKind&&fx.baseDamage!==undefined?this.attackDamage(fx.sourceKind,e,fx.baseDamage):fx.damage) *
                     Math.max(
                       0.25,
                       1 - dist(e, { x: fx.tx, y: fx.ty }) / (fx.splash + e.r),

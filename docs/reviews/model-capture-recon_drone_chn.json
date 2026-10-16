@@ -1,0 +1,133 @@
+{
+  "recordedAt": "2026-10-16T15:16:45.524Z",
+  "models": [
+    {
+      "key": "recon_drone_chn",
+      "scale": 5.6,
+      "parts": 38,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 高速侦察 / 低成本低生命",
+      "profile": "role-recon_drone-chn-v1",
+      "fiction": false,
+      "modelFamily": "recon_drone",
+      "kind": "recon_drone",
+      "triangles": 1696,
+      "dimensions": [
+        8.300000190734863,
+        2.209858477115631,
+        16.200000762939453
+      ]
+    },
+    {
+      "key": "attack_drone_chn",
+      "scale": 5.6,
+      "parts": 58,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "对陆海及建筑单体打击 / 低成本 / 无制空能力",
+      "profile": "role-attack_drone-chn-v1",
+      "fiction": false,
+      "modelFamily": "attack_drone",
+      "kind": "attack_drone",
+      "triangles": 2284,
+      "dimensions": [
+        8.300000190734863,
+        2.4673584699630737,
+        12.399999618530273
+      ]
+    },
+    {
+      "key": "interceptor_chn",
+      "scale": 6,
+      "parts": 55,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "只攻击飞机 / 高速远射程 / 装填较慢",
+      "profile": "role-interceptor-chn-v1",
+      "fiction": false,
+      "modelFamily": "interceptor",
+      "kind": "interceptor",
+      "triangles": 2408,
+      "dimensions": [
+        11,
+        2.6060166358947754,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "close_support_aircraft_chn",
+      "scale": 6,
+      "parts": 55,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "对陆军及建筑溅射 / 高耐久 / 短射程低速",
+      "profile": "role-close_support_aircraft-chn-v1",
+      "fiction": false,
+      "modelFamily": "close_support_aircraft",
+      "kind": "close_support_aircraft",
+      "triangles": 2632,
+      "dimensions": [
+        9.328999996185303,
+        2.3500000834465027,
+        11.600000381469727
+      ]
+    },
+    {
+      "key": "heavy_bomber_chn",
+      "scale": 5.1,
+      "parts": 20,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "对陆海及建筑大范围轰击 / 昂贵、慢速、慢装填",
+      "profile": "role-heavy_bomber-chn-v1",
+      "fiction": false,
+      "modelFamily": "heavy_bomber",
+      "kind": "heavy_bomber",
+      "triangles": 572,
+      "dimensions": [
+        10,
+        1.012499988079071,
+        20
+      ]
+    },
+    {
+      "key": "early_warning_aircraft_chn",
+      "scale": 5.2,
+      "parts": 87,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 超大视野 / 较慢较昂贵；不提供额外伤害加成",
+      "profile": "role-early_warning_aircraft-chn-v1",
+      "fiction": false,
+      "modelFamily": "early_warning_aircraft",
+      "kind": "early_warning_aircraft",
+      "triangles": 3188,
+      "dimensions": [
+        12,
+        3.8299999237060547,
+        15.399999618530273
+      ]
+    },
+    {
+      "key": "escort_helicopter_chn",
+      "scale": 6.2,
+      "parts": 76,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "只攻击飞机 / 近距快射 / 保护慢速航空编队",
+      "profile": "role-escort_helicopter-chn-v1",
+      "fiction": false,
+      "modelFamily": "escort_helicopter",
+      "kind": "escort_helicopter",
+      "triangles": 3092,
+      "dimensions": [
+        9.699999809265137,
+        3.7599999845027923,
+        5.782876968383789
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

@@ -137,12 +137,14 @@
         const jammer=o.getObjectByName('jammerHead');if(jammer)jammer.rotation.y=time*.18;
         const rotor=o.getObjectByName('rotor');if(rotor)rotor.rotation.y=time*27;
         const rotorCounter=o.getObjectByName('rotorCounter');if(rotorCounter)rotorCounter.rotation.y=-time*27;
+        const propeller=o.getObjectByName('propeller');if(propeller)propeller.rotation.x=time*35;
         const tailRotor=o.getObjectByName('tailRotor');if(tailRotor)tailRotor.rotation.z=time*38;
       }
       for(const [id,o]of this.objects)if(!alive.has(id)){this.scene.remove(o);this.objects.delete(id);}
       this.gl.render(this.scene,this.cam);this.stats={calls:this.gl.info.render.calls,triangles:this.gl.info.render.triangles,visibleEntities:visibleCount,geometries:this.gl.info.memory.geometries};
       const ring=(x,y,rad,color,width=1,alpha=1)=>{const p=this.toScreen(x,y);g.globalAlpha=alpha;g.strokeStyle=color;g.lineWidth=width;g.beginPath();g.ellipse(p.x,p.y,rad*this.camera.zoom,rad*this.camera.zoom*Math.sin(this.elevation),0,0,7);g.stroke();g.globalAlpha=1;};
       const text=(s,x,y,color='#d7e3d4')=>{g.font='12px "Microsoft YaHei"';g.textAlign='center';g.lineWidth=3;g.strokeStyle='#172229';g.strokeText(s,x,y);g.fillStyle=color;g.fillText(s,x,y);};
+      this.rangeOverlays=root.WarRanges?.collect(game,ui,this)||[];root.WarRanges?.draw(g,this,this.rangeOverlays);
       for(const ore of game.ore||[])if(!ui.demo&&game.visibleAt(ore.x,ore.y)){const p=this.toScreen(ore.x,ore.y);text('矿山 '+(ore.id+1)+' · '+(ore.amount>0?Math.ceil(ore.amount/1000)+'k':'已采空'),p.x,p.y+45,'#d9cd9a');}
       for(const n of game.nodes){const p=this.toScreen(n.x,n.y,48),color=n.owner<0?'#e5d5a6':n.owner===0?'#94d6d4':'#e59a7e';ring(n.x,n.y,65,color,1.4,.6);text(String.fromCharCode(65+n.id)+'  '+(n.owner<0?'补给据点':F[game.teams[n.owner].faction].name),p.x,p.y,color);if(n.progress>0){g.fillStyle='#0f2126';g.fillRect(p.x-24,p.y+6,48,4);g.fillStyle=color;g.fillRect(p.x-24,p.y+6,48*n.progress/7,4);}}
       for(const e of game.entities){const o=this.objects.get(e.id);if(!o?.visible)continue;const p=this.entityScreen(e),selected=ui.selection?.has(e.id),color=e.team===0?'#a7e0d1':'#e89978';

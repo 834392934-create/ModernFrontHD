@@ -15,6 +15,10 @@
     faction = "chn",
     map = "river",
     tab = "units",
+    unitGroup = "ground",
+    unitQuery = "",
+    rangeMode = "selected",
+    catalogHTML = null,
     paused = false,
     modalWasPaused = false,
     speed = 1,
@@ -306,15 +310,17 @@
     $("#pause-banner").hidden = !paused || !$("#modal").hidden;
     const activeIds = new Set(game.entities.map((e) => e.id));
     for (const id of selection) if (!activeIds.has(id)) selection.delete(id);
+    $("#unit-filters").hidden=tab!=="units";
     let catalog = "";
     if (tab === "units") {
       catalog = Object.entries(U)
+        .filter(([k,d])=>d.unitGroup===unitGroup&&(!unitQuery||(unitName(k,t.faction)+' '+d.name+' '+d.role+' '+k).toLowerCase().includes(unitQuery)))
         .map(([k, d]) => {
-          if (d.advanced && !game.options.advanced) return "";
+          const technologyReady=!d.advanced||game.options.advanced;
           const prod = own.some((e) => e.kind === d.producer),
             cost = game.cost(0, k),
             ready =
-              prod &&
+              technologyReady && prod &&
               t.money >= cost &&
               t.queue.length < 12 &&
               unit.length + t.queue.length < 100;
@@ -322,7 +328,7 @@
             k,
             unitName(k, t.faction),
             d.icon,
-            prod
+            !technologyReady ? "尖端科技未开启" : prod
               ? (d.advanced ? "尖端科技 · " : d.name + " · ") + d.time + "s"
               : "需要 " + B[d.producer].name,
             cost,
@@ -378,7 +384,8 @@
           );
         })
         .join("");
-    $("#catalog").innerHTML = catalog;
+    if(!catalog)catalog='<p id="catalog-empty">没有匹配兵种，试试其他名称或类别。</p>';
+    if(catalog!==catalogHTML){catalogHTML=catalog;$("#catalog").innerHTML = catalog;
     $$("[data-item]").forEach(
       (b) =>
         (b.onclick = () => {
@@ -391,6 +398,7 @@
           } else setMode(k);
         }),
     );
+    }
     $("#queue-count").textContent = t.queue.length + " / 12";
     $("#queue").innerHTML =
       t.queue
@@ -722,7 +730,7 @@
     if (sound) beep();
   };
   addEventListener("keydown", (e) => {
-    if (/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)) return;
+    if (/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)||e.target.isContentEditable) return;
     const k = e.key.toLowerCase();
     if(k==='f11'){e.preventDefault();toggleFullscreen();return;}
     if(k==='tab'&&game){e.preventDefault();document.body.classList.toggle('immersive');return;}
@@ -746,6 +754,7 @@
     else if (k === "h") home();
     else if (k === "r") {game.retreat([...selection]);toast('撤回基地，脱战后维修');}
     else if (k === "f") {const fs=['line','column','spread'];game.formation=fs[(fs.indexOf(game.formation)+1)%3];$('#formation').value=game.formation;toast('阵型已切换');}
+    else if (k === "v") toggleRanges();
     else if (k === "f5") {
       e.preventDefault();
       save();
@@ -1000,9 +1009,12 @@
       }
       r.draw(
         game,
-        { selection, hover: r.hover, pointer, mode, drag },
+        { selection, hover: r.hover, pointer, mode, drag, rangeMode },
         now / 1000,
       );
+      const rangeFocus=(r.rangeOverlays||[]).find(v=>v.preview)||(r.rangeOverlays||[]).find(v=>v.focus);
+      $('#range-readout').hidden=!rangeFocus||!$('#modal').hidden;
+      if(rangeFocus)$('#range-readout').textContent=(rangeFocus.preview?'建造预览 · ':'')+rangeFocus.label;
       uiTimer += raw;
       if (uiTimer > 0.2) {
         updateHUD();
@@ -1185,6 +1197,14 @@
   $('.bottom-status p').innerHTML='右键指令 · Shift 连续路点 / 追加选择<br>F 阵型 · R 撤退 · F11 全屏 · Tab 沉浸<br>选择生产建筑 → 右键设集结点';
   document.querySelector('.edition').textContent='DESKTOP TACTICAL EDITION / 03';
   document.querySelector('.menu-footer>div:first-child').innerHTML='<span class="status-dot"></span>本地离线战役 · 实时三维战场<p>自动采矿 / 联合作战 / 据点争夺 / 1–4 名 AI</p>';
+  const filters=document.createElement('div');filters.id='unit-filters';
+  filters.innerHTML='<div class="unit-groups">'+Object.entries(D.UNIT_GROUPS).map(([key,g])=>'<button data-unit-group="'+key+'" class="'+(key===unitGroup?'active':'')+'">'+g.name+' <small>'+D.ROSTER.groups[key].length+'</small></button>').join('')+'</div><input id="unit-search" type="search" placeholder="搜索名称 / 职责" aria-label="搜索兵种">';
+  $('#catalog').before(filters);
+  filters.querySelectorAll('[data-unit-group]').forEach(b=>b.onclick=()=>{unitGroup=b.dataset.unitGroup;filters.querySelectorAll('[data-unit-group]').forEach(v=>v.classList.toggle('active',v===b));updateHUD();});
+  $('#unit-search').oninput=e=>{unitQuery=e.target.value.trim().toLowerCase();updateHUD();};$('#unit-search').onfocus=()=>keys.clear();
+  const rangeButton=document.createElement('button');rangeButton.id='range-toggle';rangeButton.title='V 切换：选中与悬停 / 全部己方防线 / 关闭';rangeButton.textContent='范围：选中 V';rangeButton.onclick=toggleRanges;$('.command-buttons').append(rangeButton);
+  const rangeReadout=document.createElement('div');rangeReadout.id='range-readout';rangeReadout.hidden=true;$('#hud').append(rangeReadout);
+  function toggleRanges(){const modes=['selected','defenses','off'];rangeMode=modes[(modes.indexOf(rangeMode)+1)%modes.length];rangeButton.textContent='范围：'+({selected:'选中',defenses:'防线',off:'关闭'})[rangeMode]+' V';}
   setupMenu();
   requestAnimationFrame(frame);
   // Read-only test bridge; automation can exercise the same public game methods as UI.
@@ -1198,6 +1218,8 @@
     get paused() {
       return paused;
     },
+    get unitGroup(){return unitGroup;},
+    get rangeMode(){return rangeMode;},
     get selection() {
       return [...selection];
     },

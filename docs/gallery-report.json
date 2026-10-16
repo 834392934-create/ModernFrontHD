@@ -1,6 +1,16 @@
 {
   "reports": [
     {
+      "key": "infantry_chn",
+      "parts": 21,
+      "triangles": 720,
+      "dimensions": [
+        2.2450000643730164,
+        1.629000049084425,
+        2.8499999046325684
+      ]
+    },
+    {
       "key": "tank_chn",
       "parts": 1207,
       "triangles": 31032,
@@ -51,23 +61,83 @@
       ]
     },
     {
-      "key": "heli_chn",
-      "parts": 135,
-      "triangles": 4996,
+      "key": "asat_chn",
+      "parts": 134,
+      "triangles": 4828,
       "dimensions": [
-        10.059999804496766,
-        3.240000038146973,
-        8.039862394332886
+        7.575000047683716,
+        6.298999942839146,
+        3.5
       ]
     },
     {
-      "key": "fighter_chn",
-      "parts": 120,
-      "triangles": 3388,
+      "key": "harvester_chn",
+      "parts": 86,
+      "triangles": 2856,
       "dimensions": [
-        12.827499866485596,
-        2.325000047683716,
-        7.900000095367432
+        7.400000095367432,
+        3.0100000515580176,
+        3.200000047683716
+      ]
+    },
+    {
+      "key": "antitank_team_chn",
+      "parts": 95,
+      "triangles": 5620,
+      "dimensions": [
+        2.8949999809265137,
+        1.830000001937151,
+        3.003214955329895
+      ]
+    },
+    {
+      "key": "machinegun_team_chn",
+      "parts": 77,
+      "triangles": 4208,
+      "dimensions": [
+        3.8389999866485596,
+        1.4300000257790089,
+        2.016430079936981
+      ]
+    },
+    {
+      "key": "recon_vehicle_chn",
+      "parts": 73,
+      "triangles": 2628,
+      "dimensions": [
+        5.740000009536743,
+        3.970000185072422,
+        3.240000009536743
+      ]
+    },
+    {
+      "key": "repair_vehicle_chn",
+      "parts": 125,
+      "triangles": 3436,
+      "dimensions": [
+        8.435793161392212,
+        3.7994086399674414,
+        3.3399999141693115
+      ]
+    },
+    {
+      "key": "mortar_team_chn",
+      "parts": 66,
+      "triangles": 3720,
+      "dimensions": [
+        2.9850000143051147,
+        1.8500000052154064,
+        3.2082149982452393
+      ]
+    },
+    {
+      "key": "assault_team_chn",
+      "parts": 111,
+      "triangles": 6072,
+      "dimensions": [
+        2.708999991416931,
+        1.830000001937151,
+        2.6664299964904785
       ]
     },
     {
@@ -101,503 +171,173 @@
       ]
     },
     {
-      "key": "tank_usa",
-      "parts": 1304,
-      "triangles": 34128,
-      "dimensions": [
-        10.3979998588562,
-        3.7176778835058215,
-        3.950000047683716
-      ]
-    },
-    {
-      "key": "ifv_usa",
-      "parts": 650,
-      "triangles": 13384,
-      "dimensions": [
-        7.587645053863525,
-        4.07397489219904,
-        3.700000047683716
-      ]
-    },
-    {
-      "key": "arty_usa",
-      "parts": 613,
-      "triangles": 11950,
-      "dimensions": [
-        9.62440619468689,
-        4.37999997317791,
-        3.700000047683716
-      ]
-    },
-    {
-      "key": "rocket_usa",
-      "parts": 294,
-      "triangles": 6780,
-      "dimensions": [
-        7.852499723434448,
-        3.7855588531087645,
-        3.5850000381469727
-      ]
-    },
-    {
-      "key": "aa_usa",
-      "parts": 377,
-      "triangles": 8568,
-      "dimensions": [
-        7.099999904632568,
-        3.314999924041331,
-        3.5299999713897705
-      ]
-    },
-    {
-      "key": "heli_usa",
-      "parts": 12,
-      "triangles": 220711,
-      "dimensions": [
-        11.059866552975482,
-        3.588741034269333,
-        8.90522050857544
-      ]
-    },
-    {
-      "key": "fighter_usa",
-      "parts": 124,
-      "triangles": 3536,
-      "dimensions": [
-        10.02750015258789,
-        2.074999988079071,
-        6.814000129699707
-      ]
-    },
-    {
-      "key": "destroyer_usa",
-      "parts": 6,
-      "triangles": 49381,
-      "dimensions": [
-        24,
-        8.341902172044326,
-        3.8606098026224815
-      ]
-    },
-    {
-      "key": "carrier_usa",
-      "parts": 268,
-      "triangles": 7908,
-      "dimensions": [
-        36,
-        8.40999984741211,
-        8.59499979019165
-      ]
-    },
-    {
-      "key": "submarine_usa",
-      "parts": 30,
-      "triangles": 5352,
-      "dimensions": [
-        23.395000457763672,
-        5.855125427246094,
-        4.375
-      ]
-    },
-    {
-      "key": "tank_rus",
-      "parts": 23,
-      "triangles": 122516,
-      "dimensions": [
-        10.175956033646846,
-        3.053650867648636,
-        3.8822288513183594
-      ]
-    },
-    {
-      "key": "ifv_rus",
-      "parts": 588,
-      "triangles": 12332,
-      "dimensions": [
-        7.486629486083984,
-        3.6236543011665345,
-        3.700000047683716
-      ]
-    },
-    {
-      "key": "arty_rus",
-      "parts": 609,
-      "triangles": 11902,
-      "dimensions": [
-        10.924275970458984,
-        4.813661828935146,
-        3.700000047683716
-      ]
-    },
-    {
-      "key": "rocket_rus",
-      "parts": 374,
-      "triangles": 8964,
-      "dimensions": [
-        9.952499866485596,
-        4.277840980309994,
-        3.3499999046325684
-      ]
-    },
-    {
-      "key": "aa_rus",
-      "parts": 505,
-      "triangles": 11848,
-      "dimensions": [
-        9.752500057220459,
-        5.3950000214576725,
-        3.5850000381469727
-      ]
-    },
-    {
-      "key": "heli_rus",
-      "parts": 121,
-      "triangles": 4884,
-      "dimensions": [
-        9.58,
-        3.819999969005585,
-        7.977001667022705
-      ]
-    },
-    {
-      "key": "fighter_rus",
-      "parts": 118,
-      "triangles": 3936,
-      "dimensions": [
-        12.329999923706055,
-        1.9044702053070068,
-        8.84000015258789
-      ]
-    },
-    {
-      "key": "destroyer_rus",
-      "parts": 234,
-      "triangles": 7124,
-      "dimensions": [
-        21,
-        7.489999771118164,
-        2.690000057220459
-      ]
-    },
-    {
-      "key": "carrier_rus",
-      "parts": 52,
-      "triangles": 844,
-      "dimensions": [
-        30,
-        6.199999928474426,
-        7
-      ]
-    },
-    {
-      "key": "submarine_rus",
-      "parts": 35,
-      "triangles": 5412,
-      "dimensions": [
-        25.395000457763672,
-        6.478269457817078,
-        5.425000190734863
-      ]
-    },
-    {
-      "key": "tank_ind",
-      "parts": 1140,
-      "triangles": 29764,
-      "dimensions": [
-        10.39800009727478,
-        3.4976777786016466,
-        3.75
-      ]
-    },
-    {
-      "key": "ifv_ind",
-      "parts": 585,
-      "triangles": 12088,
-      "dimensions": [
-        7.486629486083984,
-        3.6236543011665345,
-        3.700000047683716
-      ]
-    },
-    {
-      "key": "arty_ind",
-      "parts": 617,
-      "triangles": 12166,
-      "dimensions": [
-        10.823888397216797,
-        4.444605291187763,
-        3.700000047683716
-      ]
-    },
-    {
-      "key": "rocket_ind",
-      "parts": 386,
-      "triangles": 9108,
-      "dimensions": [
-        9.952499866485596,
-        3.801541795713229,
-        3.5850000381469727
-      ]
-    },
-    {
-      "key": "aa_ind",
-      "parts": 398,
-      "triangles": 8120,
-      "dimensions": [
-        9.752500057220459,
-        4.535000026226044,
-        3.5850000381469727
-      ]
-    },
-    {
-      "key": "heli_ind",
-      "parts": 145,
-      "triangles": 4980,
-      "dimensions": [
-        9.979999785423278,
-        3.240000038146973,
-        8.4399995803833
-      ]
-    },
-    {
-      "key": "fighter_ind",
-      "parts": 96,
-      "triangles": 3568,
-      "dimensions": [
-        9.77750015258789,
-        2.309999942779541,
-        7.048999786376953
-      ]
-    },
-    {
-      "key": "destroyer_ind",
-      "parts": 266,
-      "triangles": 7822,
-      "dimensions": [
-        25,
-        7.489999771118164,
-        3.3815999031066895
-      ]
-    },
-    {
-      "key": "carrier_ind",
-      "parts": 314,
-      "triangles": 8670,
-      "dimensions": [
-        32,
-        8.559999942779541,
-        7.744999885559082
-      ]
-    },
-    {
-      "key": "submarine_ind",
-      "parts": 30,
-      "triangles": 5352,
-      "dimensions": [
-        16.395000457763672,
-        5.019041180610657,
-        3.5
-      ]
-    },
-    {
-      "key": "tank_kor",
-      "parts": 1209,
-      "triangles": 31060,
-      "dimensions": [
-        10.797999954223632,
-        3.587677740454674,
-        3.8499999046325684
-      ]
-    },
-    {
-      "key": "ifv_kor",
-      "parts": 654,
-      "triangles": 13324,
-      "dimensions": [
-        7.486629486083984,
-        3.9436543011665344,
-        3.700000047683716
-      ]
-    },
-    {
-      "key": "arty_kor",
-      "parts": 617,
-      "triangles": 12166,
-      "dimensions": [
-        10.823888397216797,
-        4.444605291187763,
-        3.700000047683716
-      ]
-    },
-    {
-      "key": "rocket_kor",
-      "parts": 386,
-      "triangles": 9108,
-      "dimensions": [
-        10.252500057220459,
-        3.801541795713229,
-        3.5850000381469727
-      ]
-    },
-    {
-      "key": "aa_kor",
-      "parts": 579,
-      "triangles": 11308,
-      "dimensions": [
-        7.8060996532440186,
-        4.118334943652153,
-        3.700000047683716
-      ]
-    },
-    {
-      "key": "heli_kor",
-      "parts": 12,
-      "triangles": 220711,
-      "dimensions": [
-        11.059866552975482,
-        3.588741034269333,
-        8.90522050857544
-      ]
-    },
-    {
-      "key": "fighter_kor",
-      "parts": 122,
-      "triangles": 3548,
-      "dimensions": [
-        10.02750015258789,
-        2.074999988079071,
-        6.814000129699707
-      ]
-    },
-    {
-      "key": "destroyer_kor",
-      "parts": 276,
-      "triangles": 7456,
-      "dimensions": [
-        26,
-        7.690000057220459,
-        3.767662763595581
-      ]
-    },
-    {
-      "key": "carrier_kor",
-      "parts": 441,
-      "triangles": 9734,
-      "dimensions": [
-        27,
-        7.509999752044678,
-        6.554999828338623
-      ]
-    },
-    {
-      "key": "submarine_kor",
-      "parts": 35,
-      "triangles": 5412,
-      "dimensions": [
-        19.395000457763672,
-        6.166525602340698,
-        4.900000095367432
-      ]
-    },
-    {
-      "key": "tank_imp",
-      "parts": 651,
-      "triangles": 16904,
-      "dimensions": [
-        10.188776016235352,
-        4.208661743104458,
-        3.9040000438690186
-      ]
-    },
-    {
-      "key": "ifv_imp",
-      "parts": 532,
-      "triangles": 9596,
-      "dimensions": [
-        7.28321647644043,
-        2.7951359167695045,
-        3.799999952316284
-      ]
-    },
-    {
-      "key": "arty_imp",
-      "parts": 532,
-      "triangles": 9596,
-      "dimensions": [
-        9.22160816192627,
-        3.2201358690857886,
-        3.799999952316284
-      ]
-    },
-    {
-      "key": "rocket_imp",
-      "parts": 83,
-      "triangles": 2820,
-      "dimensions": [
-        7,
-        3.473203958570957,
-        3.140000104904175
-      ]
-    },
-    {
-      "key": "aa_imp",
-      "parts": 539,
-      "triangles": 9628,
-      "dimensions": [
-        7.28321647644043,
-        4.269105972349644,
-        3.799999952316284
-      ]
-    },
-    {
-      "key": "heli_imp",
-      "parts": 15,
-      "triangles": 804,
-      "dimensions": [
-        9.400000095367432,
-        2.237500016763806,
-        5.699999809265137
-      ]
-    },
-    {
-      "key": "fighter_imp",
-      "parts": 10,
-      "triangles": 488,
-      "dimensions": [
-        12.485000133514404,
-        1.1600000262260437,
-        11.199999809265137
-      ]
-    },
-    {
-      "key": "destroyer_imp",
-      "parts": 72,
-      "triangles": 1188,
-      "dimensions": [
-        24,
-        6.199999928474426,
-        3.4000000953674316
-      ]
-    },
-    {
-      "key": "carrier_imp",
-      "parts": 52,
-      "triangles": 844,
-      "dimensions": [
-        30,
-        6.199999928474426,
-        7
-      ]
-    },
-    {
-      "key": "submarine_imp",
-      "parts": 3,
-      "triangles": 192,
+      "key": "frigate_chn",
+      "parts": 143,
+      "triangles": 3956,
       "dimensions": [
         20,
-        2.75,
-        4
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "patrol_boat_chn",
+      "parts": 94,
+      "triangles": 2996,
+      "dimensions": [
+        11.03499984741211,
+        5,
+        3.299999952316284
+      ]
+    },
+    {
+      "key": "missile_boat_chn",
+      "parts": 98,
+      "triangles": 2680,
+      "dimensions": [
+        11.03499984741211,
+        5,
+        3.299999952316284
+      ]
+    },
+    {
+      "key": "shore_bombardment_chn",
+      "parts": 148,
+      "triangles": 4304,
+      "dimensions": [
+        24.598999900817873,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "air_defense_ship_chn",
+      "parts": 174,
+      "triangles": 4352,
+      "dimensions": [
+        24,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "repair_ship_chn",
+      "parts": 156,
+      "triangles": 4192,
+      "dimensions": [
+        24,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "recon_boat_chn",
+      "parts": 113,
+      "triangles": 3608,
+      "dimensions": [
+        11.03499984741211,
+        5.352499723434448,
+        3.742000102996826
+      ]
+    },
+    {
+      "key": "heli_chn",
+      "parts": 135,
+      "triangles": 4996,
+      "dimensions": [
+        10.059999804496766,
+        3.240000038146973,
+        8.039862394332886
+      ]
+    },
+    {
+      "key": "jet_chn",
+      "parts": 12,
+      "triangles": 616,
+      "dimensions": [
+        13.525000095367432,
+        1.1600000262260437,
+        13
+      ]
+    },
+    {
+      "key": "fighter_chn",
+      "parts": 120,
+      "triangles": 3388,
+      "dimensions": [
+        12.827499866485596,
+        2.325000047683716,
+        7.900000095367432
+      ]
+    },
+    {
+      "key": "recon_drone_chn",
+      "parts": 38,
+      "triangles": 1696,
+      "dimensions": [
+        8.300000190734863,
+        2.209858477115631,
+        16.200000762939453
+      ]
+    },
+    {
+      "key": "attack_drone_chn",
+      "parts": 58,
+      "triangles": 2284,
+      "dimensions": [
+        8.300000190734863,
+        2.4673584699630737,
+        12.399999618530273
+      ]
+    },
+    {
+      "key": "interceptor_chn",
+      "parts": 55,
+      "triangles": 2408,
+      "dimensions": [
+        11,
+        2.6060166358947754,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "close_support_aircraft_chn",
+      "parts": 55,
+      "triangles": 2632,
+      "dimensions": [
+        9.328999996185303,
+        2.3500000834465027,
+        11.600000381469727
+      ]
+    },
+    {
+      "key": "heavy_bomber_chn",
+      "parts": 20,
+      "triangles": 572,
+      "dimensions": [
+        10,
+        1.012499988079071,
+        20
+      ]
+    },
+    {
+      "key": "early_warning_aircraft_chn",
+      "parts": 87,
+      "triangles": 3188,
+      "dimensions": [
+        12,
+        3.8299999237060547,
+        15.399999618530273
+      ]
+    },
+    {
+      "key": "escort_helicopter_chn",
+      "parts": 76,
+      "triangles": 3092,
+      "dimensions": [
+        9.699999809265137,
+        3.7599999845027923,
+        5.782876968383789
       ]
     },
     {
@@ -611,16 +351,6 @@
       ]
     },
     {
-      "key": "orbital_interceptor_chn",
-      "parts": 281,
-      "triangles": 4772,
-      "dimensions": [
-        9.742499828338623,
-        1.8199999928474426,
-        5.317999839782715
-      ]
-    },
-    {
       "key": "orbital_chn",
       "parts": 286,
       "triangles": 5740,
@@ -631,213 +361,83 @@
       ]
     },
     {
-      "key": "asat_chn",
-      "parts": 134,
-      "triangles": 4828,
-      "dimensions": [
-        7.575000047683716,
-        6.298999942839146,
-        3.5
-      ]
-    },
-    {
-      "key": "satellite_usa",
-      "parts": 71,
-      "triangles": 2200,
-      "dimensions": [
-        5.120499849319458,
-        2.5100000500679016,
-        10.618000030517578
-      ]
-    },
-    {
-      "key": "orbital_interceptor_usa",
-      "parts": 284,
-      "triangles": 5160,
+      "key": "orbital_interceptor_chn",
+      "parts": 281,
+      "triangles": 4772,
       "dimensions": [
         9.742499828338623,
+        1.8199999928474426,
+        5.317999839782715
+      ]
+    },
+    {
+      "key": "orbital_sniper_chn",
+      "parts": 170,
+      "triangles": 4192,
+      "dimensions": [
+        11.920000076293945,
+        2.350000023841858,
+        8.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_point_defense_chn",
+      "parts": 101,
+      "triangles": 3196,
+      "dimensions": [
+        5.263999938964844,
         2.2700000405311584,
-        5.317999839782715
+        7.013999938964844
       ]
     },
     {
-      "key": "orbital_usa",
-      "parts": 268,
-      "triangles": 5380,
-      "dimensions": [
-        11.042500019073486,
-        3.5425000190734863,
-        11.868000030517578
-      ]
-    },
-    {
-      "key": "asat_usa",
-      "parts": 134,
-      "triangles": 4828,
-      "dimensions": [
-        7.575000047683716,
-        6.298999942839146,
-        3.5
-      ]
-    },
-    {
-      "key": "satellite_rus",
-      "parts": 61,
-      "triangles": 2236,
-      "dimensions": [
-        4.828499794006348,
-        2.5100000500679016,
-        10.618000030517578
-      ]
-    },
-    {
-      "key": "orbital_interceptor_rus",
-      "parts": 304,
-      "triangles": 5460,
-      "dimensions": [
-        9.742499828338623,
-        1.7499999403953552,
-        5.317999839782715
-      ]
-    },
-    {
-      "key": "orbital_rus",
-      "parts": 249,
-      "triangles": 5044,
-      "dimensions": [
-        11.042500019073486,
-        3.5425000190734863,
-        11.868000030517578
-      ]
-    },
-    {
-      "key": "asat_rus",
-      "parts": 142,
-      "triangles": 5392,
-      "dimensions": [
-        7.575000047683716,
-        6.298999942839146,
-        3.5
-      ]
-    },
-    {
-      "key": "satellite_ind",
-      "parts": 63,
-      "triangles": 2140,
-      "dimensions": [
-        4.170499920845032,
-        2.7320316433906555,
-        10.618000030517578
-      ]
-    },
-    {
-      "key": "orbital_interceptor_ind",
-      "parts": 292,
-      "triangles": 5056,
-      "dimensions": [
-        9.742499828338623,
-        2.050000011920929,
-        5.317999839782715
-      ]
-    },
-    {
-      "key": "orbital_ind",
-      "parts": 275,
-      "triangles": 5500,
-      "dimensions": [
-        11.492499828338623,
-        3.5425000190734863,
-        11.868000030517578
-      ]
-    },
-    {
-      "key": "asat_ind",
-      "parts": 134,
-      "triangles": 4880,
-      "dimensions": [
-        7.575000047683716,
-        6.298999942839146,
-        3.5
-      ]
-    },
-    {
-      "key": "satellite_kor",
-      "parts": 64,
-      "triangles": 2220,
-      "dimensions": [
-        4.170499920845032,
-        2.5100000500679016,
-        10.618000030517578
-      ]
-    },
-    {
-      "key": "orbital_interceptor_kor",
-      "parts": 282,
-      "triangles": 4780,
-      "dimensions": [
-        9.742499828338623,
-        1.729999989271164,
-        5.317999839782715
-      ]
-    },
-    {
-      "key": "orbital_kor",
-      "parts": 248,
-      "triangles": 4908,
-      "dimensions": [
-        11.042500019073486,
-        3.5425000190734863,
-        11.868000030517578
-      ]
-    },
-    {
-      "key": "asat_kor",
-      "parts": 151,
-      "triangles": 5968,
-      "dimensions": [
-        7.575000047683716,
-        6.298999942839146,
-        3.5
-      ]
-    },
-    {
-      "key": "satellite_imp",
-      "parts": 64,
-      "triangles": 2128,
-      "dimensions": [
-        4.170499920845032,
-        3.1600000262260437,
-        10.618000030517578
-      ]
-    },
-    {
-      "key": "orbital_interceptor_imp",
-      "parts": 287,
+      "key": "orbital_bombardment_chn",
+      "parts": 165,
       "triangles": 4848,
       "dimensions": [
-        10.042500019073486,
-        3.3000000715255737,
-        5.317999839782715
+        9.184999942779541,
+        2.8950001001358032,
+        8.513999938964844
       ]
     },
     {
-      "key": "orbital_imp",
-      "parts": 643,
-      "triangles": 11516,
+      "key": "orbital_siege_chn",
+      "parts": 106,
+      "triangles": 2256,
       "dimensions": [
-        15.742499828338623,
-        6.237500190734863,
-        7.349999904632568
+        11.602499961853027,
+        2.600000023841858,
+        8.71399974822998
       ]
     },
     {
-      "key": "asat_imp",
-      "parts": 136,
-      "triangles": 4860,
+      "key": "orbital_repair_chn",
+      "parts": 103,
+      "triangles": 3708,
       "dimensions": [
-        7.575000047683716,
-        6.298999942839146,
-        3.5
+        11.135000228881836,
+        2.5000000596046448,
+        14.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_mapper_chn",
+      "parts": 101,
+      "triangles": 2452,
+      "dimensions": [
+        7.513999819755554,
+        3.9524999856948853,
+        12.11400032043457
+      ]
+    },
+    {
+      "key": "orbital_raider_chn",
+      "parts": 78,
+      "triangles": 1708,
+      "dimensions": [
+        7.984999895095825,
+        2.5000000596046448,
+        5.714000225067139
       ]
     },
     {
@@ -942,8 +542,8 @@
     },
     {
       "key": "sam_chn",
-      "parts": 77,
-      "triangles": 1492,
+      "parts": 80,
+      "triangles": 1528,
       "dimensions": [
         8,
         5.1543379789590835,
@@ -1008,6 +608,446 @@
         8,
         5.599999905228615,
         8.119999885559082
+      ]
+    },
+    {
+      "key": "infantry_usa",
+      "parts": 21,
+      "triangles": 720,
+      "dimensions": [
+        2.2450000643730164,
+        1.629000049084425,
+        2.8499999046325684
+      ]
+    },
+    {
+      "key": "tank_usa",
+      "parts": 1304,
+      "triangles": 34128,
+      "dimensions": [
+        10.3979998588562,
+        3.7176778835058215,
+        3.950000047683716
+      ]
+    },
+    {
+      "key": "ifv_usa",
+      "parts": 650,
+      "triangles": 13384,
+      "dimensions": [
+        7.587645053863525,
+        4.07397489219904,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "arty_usa",
+      "parts": 613,
+      "triangles": 11950,
+      "dimensions": [
+        9.62440619468689,
+        4.37999997317791,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "rocket_usa",
+      "parts": 294,
+      "triangles": 6780,
+      "dimensions": [
+        7.852499723434448,
+        3.7855588531087645,
+        3.5850000381469727
+      ]
+    },
+    {
+      "key": "aa_usa",
+      "parts": 377,
+      "triangles": 8568,
+      "dimensions": [
+        7.099999904632568,
+        3.314999924041331,
+        3.5299999713897705
+      ]
+    },
+    {
+      "key": "asat_usa",
+      "parts": 134,
+      "triangles": 4828,
+      "dimensions": [
+        7.575000047683716,
+        6.298999942839146,
+        3.5
+      ]
+    },
+    {
+      "key": "harvester_usa",
+      "parts": 86,
+      "triangles": 2856,
+      "dimensions": [
+        7.400000095367432,
+        3.0100000515580176,
+        3.200000047683716
+      ]
+    },
+    {
+      "key": "antitank_team_usa",
+      "parts": 95,
+      "triangles": 5620,
+      "dimensions": [
+        2.8949999809265137,
+        1.830000001937151,
+        3.003214955329895
+      ]
+    },
+    {
+      "key": "machinegun_team_usa",
+      "parts": 77,
+      "triangles": 4208,
+      "dimensions": [
+        3.8389999866485596,
+        1.4300000257790089,
+        2.016430079936981
+      ]
+    },
+    {
+      "key": "recon_vehicle_usa",
+      "parts": 79,
+      "triangles": 3220,
+      "dimensions": [
+        5.740000009536743,
+        3.970000185072422,
+        3.240000009536743
+      ]
+    },
+    {
+      "key": "repair_vehicle_usa",
+      "parts": 131,
+      "triangles": 4028,
+      "dimensions": [
+        8.435793161392212,
+        3.7994086399674414,
+        3.3399999141693115
+      ]
+    },
+    {
+      "key": "mortar_team_usa",
+      "parts": 66,
+      "triangles": 3720,
+      "dimensions": [
+        2.9850000143051147,
+        1.8500000052154064,
+        3.2082149982452393
+      ]
+    },
+    {
+      "key": "assault_team_usa",
+      "parts": 111,
+      "triangles": 6072,
+      "dimensions": [
+        2.708999991416931,
+        1.830000001937151,
+        2.6664299964904785
+      ]
+    },
+    {
+      "key": "destroyer_usa",
+      "parts": 6,
+      "triangles": 49381,
+      "dimensions": [
+        24,
+        8.341902172044326,
+        3.8606098026224815
+      ]
+    },
+    {
+      "key": "carrier_usa",
+      "parts": 268,
+      "triangles": 7908,
+      "dimensions": [
+        36,
+        8.40999984741211,
+        8.59499979019165
+      ]
+    },
+    {
+      "key": "submarine_usa",
+      "parts": 30,
+      "triangles": 5352,
+      "dimensions": [
+        23.395000457763672,
+        5.855125427246094,
+        4.375
+      ]
+    },
+    {
+      "key": "frigate_usa",
+      "parts": 149,
+      "triangles": 4548,
+      "dimensions": [
+        20,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "patrol_boat_usa",
+      "parts": 100,
+      "triangles": 3588,
+      "dimensions": [
+        11.03499984741211,
+        5,
+        3.299999952316284
+      ]
+    },
+    {
+      "key": "missile_boat_usa",
+      "parts": 104,
+      "triangles": 3272,
+      "dimensions": [
+        11.03499984741211,
+        5,
+        3.299999952316284
+      ]
+    },
+    {
+      "key": "shore_bombardment_usa",
+      "parts": 154,
+      "triangles": 4896,
+      "dimensions": [
+        24.598999900817873,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "air_defense_ship_usa",
+      "parts": 180,
+      "triangles": 4944,
+      "dimensions": [
+        24,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "repair_ship_usa",
+      "parts": 162,
+      "triangles": 4784,
+      "dimensions": [
+        24,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "recon_boat_usa",
+      "parts": 119,
+      "triangles": 4200,
+      "dimensions": [
+        11.03499984741211,
+        5.352499723434448,
+        3.742000102996826
+      ]
+    },
+    {
+      "key": "heli_usa",
+      "parts": 12,
+      "triangles": 220711,
+      "dimensions": [
+        11.059866552975482,
+        3.588741034269333,
+        8.90522050857544
+      ]
+    },
+    {
+      "key": "jet_usa",
+      "parts": 12,
+      "triangles": 512,
+      "dimensions": [
+        10.61299991607666,
+        1.1600000262260437,
+        10.199999809265137
+      ]
+    },
+    {
+      "key": "fighter_usa",
+      "parts": 124,
+      "triangles": 3536,
+      "dimensions": [
+        10.02750015258789,
+        2.074999988079071,
+        6.814000129699707
+      ]
+    },
+    {
+      "key": "recon_drone_usa",
+      "parts": 38,
+      "triangles": 1696,
+      "dimensions": [
+        8.300000190734863,
+        2.209858477115631,
+        16.200000762939453
+      ]
+    },
+    {
+      "key": "attack_drone_usa",
+      "parts": 58,
+      "triangles": 2284,
+      "dimensions": [
+        8.300000190734863,
+        2.4673584699630737,
+        12.399999618530273
+      ]
+    },
+    {
+      "key": "interceptor_usa",
+      "parts": 55,
+      "triangles": 2408,
+      "dimensions": [
+        11,
+        2.6060166358947754,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "close_support_aircraft_usa",
+      "parts": 55,
+      "triangles": 2632,
+      "dimensions": [
+        9.328999996185303,
+        2.3500000834465027,
+        11.600000381469727
+      ]
+    },
+    {
+      "key": "heavy_bomber_usa",
+      "parts": 20,
+      "triangles": 572,
+      "dimensions": [
+        10,
+        1.012499988079071,
+        20
+      ]
+    },
+    {
+      "key": "early_warning_aircraft_usa",
+      "parts": 87,
+      "triangles": 3188,
+      "dimensions": [
+        12,
+        3.8299999237060547,
+        15.399999618530273
+      ]
+    },
+    {
+      "key": "escort_helicopter_usa",
+      "parts": 76,
+      "triangles": 3092,
+      "dimensions": [
+        9.699999809265137,
+        3.7599999845027923,
+        5.782876968383789
+      ]
+    },
+    {
+      "key": "satellite_usa",
+      "parts": 71,
+      "triangles": 2200,
+      "dimensions": [
+        5.120499849319458,
+        2.5100000500679016,
+        10.618000030517578
+      ]
+    },
+    {
+      "key": "orbital_usa",
+      "parts": 268,
+      "triangles": 5380,
+      "dimensions": [
+        11.042500019073486,
+        3.5425000190734863,
+        11.868000030517578
+      ]
+    },
+    {
+      "key": "orbital_interceptor_usa",
+      "parts": 284,
+      "triangles": 5160,
+      "dimensions": [
+        9.742499828338623,
+        2.2700000405311584,
+        5.317999839782715
+      ]
+    },
+    {
+      "key": "orbital_sniper_usa",
+      "parts": 176,
+      "triangles": 4784,
+      "dimensions": [
+        11.920000076293945,
+        2,
+        8.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_point_defense_usa",
+      "parts": 107,
+      "triangles": 3788,
+      "dimensions": [
+        5.263999938964844,
+        1.8700000166893005,
+        7.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_bombardment_usa",
+      "parts": 171,
+      "triangles": 5440,
+      "dimensions": [
+        9.184999942779541,
+        2.3950001001358032,
+        8.513999938964844
+      ]
+    },
+    {
+      "key": "orbital_siege_usa",
+      "parts": 112,
+      "triangles": 2848,
+      "dimensions": [
+        11.602499961853027,
+        2.0799999237060547,
+        8.71399974822998
+      ]
+    },
+    {
+      "key": "orbital_repair_usa",
+      "parts": 109,
+      "triangles": 4300,
+      "dimensions": [
+        11.135000228881836,
+        2.0109673142433167,
+        14.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_mapper_usa",
+      "parts": 107,
+      "triangles": 3044,
+      "dimensions": [
+        7.513999819755554,
+        3.9524999856948853,
+        12.11400032043457
+      ]
+    },
+    {
+      "key": "orbital_raider_usa",
+      "parts": 84,
+      "triangles": 2300,
+      "dimensions": [
+        7.984999895095825,
+        1.9799999594688416,
+        5.714000225067139
       ]
     },
     {
@@ -1112,8 +1152,8 @@
     },
     {
       "key": "sam_usa",
-      "parts": 77,
-      "triangles": 1492,
+      "parts": 80,
+      "triangles": 1528,
       "dimensions": [
         8,
         5.1543379789590835,
@@ -1178,6 +1218,446 @@
         8,
         5.599999905228615,
         8.119999885559082
+      ]
+    },
+    {
+      "key": "infantry_rus",
+      "parts": 21,
+      "triangles": 720,
+      "dimensions": [
+        2.2450000643730164,
+        1.629000049084425,
+        2.8499999046325684
+      ]
+    },
+    {
+      "key": "tank_rus",
+      "parts": 23,
+      "triangles": 122516,
+      "dimensions": [
+        10.175956033646846,
+        3.053650867648636,
+        3.8822288513183594
+      ]
+    },
+    {
+      "key": "ifv_rus",
+      "parts": 588,
+      "triangles": 12332,
+      "dimensions": [
+        7.486629486083984,
+        3.6236543011665345,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "arty_rus",
+      "parts": 609,
+      "triangles": 11902,
+      "dimensions": [
+        10.924275970458984,
+        4.813661828935146,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "rocket_rus",
+      "parts": 374,
+      "triangles": 8964,
+      "dimensions": [
+        9.952499866485596,
+        4.277840980309994,
+        3.3499999046325684
+      ]
+    },
+    {
+      "key": "aa_rus",
+      "parts": 505,
+      "triangles": 11848,
+      "dimensions": [
+        9.752500057220459,
+        5.3950000214576725,
+        3.5850000381469727
+      ]
+    },
+    {
+      "key": "asat_rus",
+      "parts": 142,
+      "triangles": 5392,
+      "dimensions": [
+        7.575000047683716,
+        6.298999942839146,
+        3.5
+      ]
+    },
+    {
+      "key": "harvester_rus",
+      "parts": 86,
+      "triangles": 2856,
+      "dimensions": [
+        7.400000095367432,
+        3.0100000515580176,
+        3.200000047683716
+      ]
+    },
+    {
+      "key": "antitank_team_rus",
+      "parts": 95,
+      "triangles": 5620,
+      "dimensions": [
+        2.8949999809265137,
+        1.830000001937151,
+        3.003214955329895
+      ]
+    },
+    {
+      "key": "machinegun_team_rus",
+      "parts": 77,
+      "triangles": 4208,
+      "dimensions": [
+        3.8389999866485596,
+        1.4300000257790089,
+        2.016430079936981
+      ]
+    },
+    {
+      "key": "recon_vehicle_rus",
+      "parts": 72,
+      "triangles": 2564,
+      "dimensions": [
+        5.740000009536743,
+        3.970000185072422,
+        3.240000009536743
+      ]
+    },
+    {
+      "key": "repair_vehicle_rus",
+      "parts": 124,
+      "triangles": 3372,
+      "dimensions": [
+        8.435793161392212,
+        3.7994086399674414,
+        3.3399999141693115
+      ]
+    },
+    {
+      "key": "mortar_team_rus",
+      "parts": 66,
+      "triangles": 3720,
+      "dimensions": [
+        2.9850000143051147,
+        1.8500000052154064,
+        3.2082149982452393
+      ]
+    },
+    {
+      "key": "assault_team_rus",
+      "parts": 111,
+      "triangles": 6072,
+      "dimensions": [
+        2.708999991416931,
+        1.830000001937151,
+        2.6664299964904785
+      ]
+    },
+    {
+      "key": "destroyer_rus",
+      "parts": 234,
+      "triangles": 7124,
+      "dimensions": [
+        21,
+        7.489999771118164,
+        2.690000057220459
+      ]
+    },
+    {
+      "key": "carrier_rus",
+      "parts": 52,
+      "triangles": 844,
+      "dimensions": [
+        30,
+        6.199999928474426,
+        7
+      ]
+    },
+    {
+      "key": "submarine_rus",
+      "parts": 35,
+      "triangles": 5412,
+      "dimensions": [
+        25.395000457763672,
+        6.478269457817078,
+        5.425000190734863
+      ]
+    },
+    {
+      "key": "frigate_rus",
+      "parts": 142,
+      "triangles": 3892,
+      "dimensions": [
+        20,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "patrol_boat_rus",
+      "parts": 93,
+      "triangles": 2932,
+      "dimensions": [
+        11.03499984741211,
+        5,
+        3.299999952316284
+      ]
+    },
+    {
+      "key": "missile_boat_rus",
+      "parts": 97,
+      "triangles": 2616,
+      "dimensions": [
+        11.03499984741211,
+        5,
+        3.299999952316284
+      ]
+    },
+    {
+      "key": "shore_bombardment_rus",
+      "parts": 147,
+      "triangles": 4240,
+      "dimensions": [
+        24.598999900817873,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "air_defense_ship_rus",
+      "parts": 173,
+      "triangles": 4288,
+      "dimensions": [
+        24,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "repair_ship_rus",
+      "parts": 155,
+      "triangles": 4128,
+      "dimensions": [
+        24,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "recon_boat_rus",
+      "parts": 112,
+      "triangles": 3544,
+      "dimensions": [
+        11.03499984741211,
+        5.352499723434448,
+        3.742000102996826
+      ]
+    },
+    {
+      "key": "heli_rus",
+      "parts": 121,
+      "triangles": 4884,
+      "dimensions": [
+        9.58,
+        3.819999969005585,
+        7.977001667022705
+      ]
+    },
+    {
+      "key": "jet_rus",
+      "parts": 10,
+      "triangles": 488,
+      "dimensions": [
+        14.77299976348877,
+        1.1600000262260437,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "fighter_rus",
+      "parts": 118,
+      "triangles": 3936,
+      "dimensions": [
+        12.329999923706055,
+        1.9044702053070068,
+        8.84000015258789
+      ]
+    },
+    {
+      "key": "recon_drone_rus",
+      "parts": 39,
+      "triangles": 1708,
+      "dimensions": [
+        8.300000190734863,
+        2.209858477115631,
+        16.200000762939453
+      ]
+    },
+    {
+      "key": "attack_drone_rus",
+      "parts": 59,
+      "triangles": 2296,
+      "dimensions": [
+        8.300000190734863,
+        2.4673584699630737,
+        12.399999618530273
+      ]
+    },
+    {
+      "key": "interceptor_rus",
+      "parts": 56,
+      "triangles": 2420,
+      "dimensions": [
+        11,
+        2.6060166358947754,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "close_support_aircraft_rus",
+      "parts": 56,
+      "triangles": 2644,
+      "dimensions": [
+        9.328999996185303,
+        2.3500000834465027,
+        11.600000381469727
+      ]
+    },
+    {
+      "key": "heavy_bomber_rus",
+      "parts": 21,
+      "triangles": 584,
+      "dimensions": [
+        10,
+        1.012499988079071,
+        20
+      ]
+    },
+    {
+      "key": "early_warning_aircraft_rus",
+      "parts": 87,
+      "triangles": 3188,
+      "dimensions": [
+        12,
+        3.8299999237060547,
+        15.399999618530273
+      ]
+    },
+    {
+      "key": "escort_helicopter_rus",
+      "parts": 77,
+      "triangles": 3104,
+      "dimensions": [
+        9.699999809265137,
+        3.7599999845027923,
+        5.782876968383789
+      ]
+    },
+    {
+      "key": "satellite_rus",
+      "parts": 61,
+      "triangles": 2236,
+      "dimensions": [
+        4.828499794006348,
+        2.5100000500679016,
+        10.618000030517578
+      ]
+    },
+    {
+      "key": "orbital_rus",
+      "parts": 249,
+      "triangles": 5044,
+      "dimensions": [
+        11.042500019073486,
+        3.5425000190734863,
+        11.868000030517578
+      ]
+    },
+    {
+      "key": "orbital_interceptor_rus",
+      "parts": 304,
+      "triangles": 5460,
+      "dimensions": [
+        9.742499828338623,
+        1.7499999403953552,
+        5.317999839782715
+      ]
+    },
+    {
+      "key": "orbital_sniper_rus",
+      "parts": 169,
+      "triangles": 4128,
+      "dimensions": [
+        11.920000076293945,
+        2.25,
+        8.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_point_defense_rus",
+      "parts": 100,
+      "triangles": 3132,
+      "dimensions": [
+        5.263999938964844,
+        2.1700000166893005,
+        7.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_bombardment_rus",
+      "parts": 164,
+      "triangles": 4784,
+      "dimensions": [
+        9.184999942779541,
+        2.7950000762939453,
+        8.513999938964844
+      ]
+    },
+    {
+      "key": "orbital_siege_rus",
+      "parts": 105,
+      "triangles": 2192,
+      "dimensions": [
+        11.602499961853027,
+        2.5,
+        8.71399974822998
+      ]
+    },
+    {
+      "key": "orbital_repair_rus",
+      "parts": 102,
+      "triangles": 3644,
+      "dimensions": [
+        11.135000228881836,
+        2.400000035762787,
+        14.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_mapper_rus",
+      "parts": 100,
+      "triangles": 2388,
+      "dimensions": [
+        7.513999819755554,
+        3.9524999856948853,
+        12.11400032043457
+      ]
+    },
+    {
+      "key": "orbital_raider_rus",
+      "parts": 77,
+      "triangles": 1644,
+      "dimensions": [
+        7.984999895095825,
+        2.400000035762787,
+        5.714000225067139
       ]
     },
     {
@@ -1282,8 +1762,8 @@
     },
     {
       "key": "sam_rus",
-      "parts": 77,
-      "triangles": 1492,
+      "parts": 80,
+      "triangles": 1528,
       "dimensions": [
         8,
         5.1543379789590835,
@@ -1348,6 +1828,446 @@
         8,
         5.599999905228615,
         8.119999885559082
+      ]
+    },
+    {
+      "key": "infantry_ind",
+      "parts": 21,
+      "triangles": 720,
+      "dimensions": [
+        2.2450000643730164,
+        1.629000049084425,
+        2.8499999046325684
+      ]
+    },
+    {
+      "key": "tank_ind",
+      "parts": 1140,
+      "triangles": 29764,
+      "dimensions": [
+        10.39800009727478,
+        3.4976777786016466,
+        3.75
+      ]
+    },
+    {
+      "key": "ifv_ind",
+      "parts": 585,
+      "triangles": 12088,
+      "dimensions": [
+        7.486629486083984,
+        3.6236543011665345,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "arty_ind",
+      "parts": 617,
+      "triangles": 12166,
+      "dimensions": [
+        10.823888397216797,
+        4.444605291187763,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "rocket_ind",
+      "parts": 386,
+      "triangles": 9108,
+      "dimensions": [
+        9.952499866485596,
+        3.801541795713229,
+        3.5850000381469727
+      ]
+    },
+    {
+      "key": "aa_ind",
+      "parts": 398,
+      "triangles": 8120,
+      "dimensions": [
+        9.752500057220459,
+        4.535000026226044,
+        3.5850000381469727
+      ]
+    },
+    {
+      "key": "asat_ind",
+      "parts": 134,
+      "triangles": 4880,
+      "dimensions": [
+        7.575000047683716,
+        6.298999942839146,
+        3.5
+      ]
+    },
+    {
+      "key": "harvester_ind",
+      "parts": 86,
+      "triangles": 2856,
+      "dimensions": [
+        7.400000095367432,
+        3.0100000515580176,
+        3.200000047683716
+      ]
+    },
+    {
+      "key": "antitank_team_ind",
+      "parts": 95,
+      "triangles": 5620,
+      "dimensions": [
+        2.8949999809265137,
+        1.830000001937151,
+        3.003214955329895
+      ]
+    },
+    {
+      "key": "machinegun_team_ind",
+      "parts": 77,
+      "triangles": 4208,
+      "dimensions": [
+        3.8389999866485596,
+        1.4300000257790089,
+        2.016430079936981
+      ]
+    },
+    {
+      "key": "recon_vehicle_ind",
+      "parts": 79,
+      "triangles": 3220,
+      "dimensions": [
+        5.740000009536743,
+        3.970000185072422,
+        3.240000009536743
+      ]
+    },
+    {
+      "key": "repair_vehicle_ind",
+      "parts": 131,
+      "triangles": 4028,
+      "dimensions": [
+        8.435793161392212,
+        3.7994086399674414,
+        3.3399999141693115
+      ]
+    },
+    {
+      "key": "mortar_team_ind",
+      "parts": 66,
+      "triangles": 3720,
+      "dimensions": [
+        2.9850000143051147,
+        1.8500000052154064,
+        3.2082149982452393
+      ]
+    },
+    {
+      "key": "assault_team_ind",
+      "parts": 111,
+      "triangles": 6072,
+      "dimensions": [
+        2.708999991416931,
+        1.830000001937151,
+        2.6664299964904785
+      ]
+    },
+    {
+      "key": "destroyer_ind",
+      "parts": 266,
+      "triangles": 7822,
+      "dimensions": [
+        25,
+        7.489999771118164,
+        3.3815999031066895
+      ]
+    },
+    {
+      "key": "carrier_ind",
+      "parts": 314,
+      "triangles": 8670,
+      "dimensions": [
+        32,
+        8.559999942779541,
+        7.744999885559082
+      ]
+    },
+    {
+      "key": "submarine_ind",
+      "parts": 30,
+      "triangles": 5352,
+      "dimensions": [
+        16.395000457763672,
+        5.019041180610657,
+        3.5
+      ]
+    },
+    {
+      "key": "frigate_ind",
+      "parts": 149,
+      "triangles": 4548,
+      "dimensions": [
+        20,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "patrol_boat_ind",
+      "parts": 100,
+      "triangles": 3588,
+      "dimensions": [
+        11.03499984741211,
+        5,
+        3.299999952316284
+      ]
+    },
+    {
+      "key": "missile_boat_ind",
+      "parts": 104,
+      "triangles": 3272,
+      "dimensions": [
+        11.03499984741211,
+        5,
+        3.299999952316284
+      ]
+    },
+    {
+      "key": "shore_bombardment_ind",
+      "parts": 154,
+      "triangles": 4896,
+      "dimensions": [
+        24.598999900817873,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "air_defense_ship_ind",
+      "parts": 180,
+      "triangles": 4944,
+      "dimensions": [
+        24,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "repair_ship_ind",
+      "parts": 162,
+      "triangles": 4784,
+      "dimensions": [
+        24,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "recon_boat_ind",
+      "parts": 119,
+      "triangles": 4200,
+      "dimensions": [
+        11.03499984741211,
+        5.352499723434448,
+        3.742000102996826
+      ]
+    },
+    {
+      "key": "heli_ind",
+      "parts": 145,
+      "triangles": 4980,
+      "dimensions": [
+        9.979999785423278,
+        3.240000038146973,
+        8.4399995803833
+      ]
+    },
+    {
+      "key": "jet_ind",
+      "parts": 12,
+      "triangles": 504,
+      "dimensions": [
+        9.676999568939209,
+        1.1600000262260437,
+        8.600000381469727
+      ]
+    },
+    {
+      "key": "fighter_ind",
+      "parts": 96,
+      "triangles": 3568,
+      "dimensions": [
+        9.77750015258789,
+        2.309999942779541,
+        7.048999786376953
+      ]
+    },
+    {
+      "key": "recon_drone_ind",
+      "parts": 39,
+      "triangles": 1708,
+      "dimensions": [
+        8.300000190734863,
+        2.209858477115631,
+        16.200000762939453
+      ]
+    },
+    {
+      "key": "attack_drone_ind",
+      "parts": 59,
+      "triangles": 2296,
+      "dimensions": [
+        8.300000190734863,
+        2.4673584699630737,
+        12.399999618530273
+      ]
+    },
+    {
+      "key": "interceptor_ind",
+      "parts": 56,
+      "triangles": 2420,
+      "dimensions": [
+        11,
+        2.6060166358947754,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "close_support_aircraft_ind",
+      "parts": 56,
+      "triangles": 2644,
+      "dimensions": [
+        9.328999996185303,
+        2.3500000834465027,
+        11.600000381469727
+      ]
+    },
+    {
+      "key": "heavy_bomber_ind",
+      "parts": 21,
+      "triangles": 584,
+      "dimensions": [
+        10,
+        1.012499988079071,
+        20
+      ]
+    },
+    {
+      "key": "early_warning_aircraft_ind",
+      "parts": 87,
+      "triangles": 3188,
+      "dimensions": [
+        12,
+        3.8299999237060547,
+        15.399999618530273
+      ]
+    },
+    {
+      "key": "escort_helicopter_ind",
+      "parts": 77,
+      "triangles": 3104,
+      "dimensions": [
+        9.699999809265137,
+        3.7599999845027923,
+        5.782876968383789
+      ]
+    },
+    {
+      "key": "satellite_ind",
+      "parts": 63,
+      "triangles": 2140,
+      "dimensions": [
+        4.170499920845032,
+        2.7320316433906555,
+        10.618000030517578
+      ]
+    },
+    {
+      "key": "orbital_ind",
+      "parts": 275,
+      "triangles": 5500,
+      "dimensions": [
+        11.492499828338623,
+        3.5425000190734863,
+        11.868000030517578
+      ]
+    },
+    {
+      "key": "orbital_interceptor_ind",
+      "parts": 292,
+      "triangles": 5056,
+      "dimensions": [
+        9.742499828338623,
+        2.050000011920929,
+        5.317999839782715
+      ]
+    },
+    {
+      "key": "orbital_sniper_ind",
+      "parts": 176,
+      "triangles": 4784,
+      "dimensions": [
+        11.920000076293945,
+        2,
+        8.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_point_defense_ind",
+      "parts": 107,
+      "triangles": 3788,
+      "dimensions": [
+        5.263999938964844,
+        1.8700000166893005,
+        7.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_bombardment_ind",
+      "parts": 171,
+      "triangles": 5440,
+      "dimensions": [
+        9.184999942779541,
+        2.3950001001358032,
+        8.513999938964844
+      ]
+    },
+    {
+      "key": "orbital_siege_ind",
+      "parts": 112,
+      "triangles": 2848,
+      "dimensions": [
+        11.602499961853027,
+        2.0799999237060547,
+        8.71399974822998
+      ]
+    },
+    {
+      "key": "orbital_repair_ind",
+      "parts": 109,
+      "triangles": 4300,
+      "dimensions": [
+        11.135000228881836,
+        2.0109673142433167,
+        14.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_mapper_ind",
+      "parts": 107,
+      "triangles": 3044,
+      "dimensions": [
+        7.513999819755554,
+        3.9524999856948853,
+        12.11400032043457
+      ]
+    },
+    {
+      "key": "orbital_raider_ind",
+      "parts": 84,
+      "triangles": 2300,
+      "dimensions": [
+        7.984999895095825,
+        1.9799999594688416,
+        5.714000225067139
       ]
     },
     {
@@ -1452,8 +2372,8 @@
     },
     {
       "key": "sam_ind",
-      "parts": 77,
-      "triangles": 1492,
+      "parts": 80,
+      "triangles": 1528,
       "dimensions": [
         8,
         5.1543379789590835,
@@ -1518,6 +2438,446 @@
         8,
         5.599999905228615,
         8.119999885559082
+      ]
+    },
+    {
+      "key": "infantry_kor",
+      "parts": 21,
+      "triangles": 720,
+      "dimensions": [
+        2.2450000643730164,
+        1.629000049084425,
+        2.8499999046325684
+      ]
+    },
+    {
+      "key": "tank_kor",
+      "parts": 1209,
+      "triangles": 31060,
+      "dimensions": [
+        10.797999954223632,
+        3.587677740454674,
+        3.8499999046325684
+      ]
+    },
+    {
+      "key": "ifv_kor",
+      "parts": 654,
+      "triangles": 13324,
+      "dimensions": [
+        7.486629486083984,
+        3.9436543011665344,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "arty_kor",
+      "parts": 617,
+      "triangles": 12166,
+      "dimensions": [
+        10.823888397216797,
+        4.444605291187763,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "rocket_kor",
+      "parts": 386,
+      "triangles": 9108,
+      "dimensions": [
+        10.252500057220459,
+        3.801541795713229,
+        3.5850000381469727
+      ]
+    },
+    {
+      "key": "aa_kor",
+      "parts": 579,
+      "triangles": 11308,
+      "dimensions": [
+        7.8060996532440186,
+        4.118334943652153,
+        3.700000047683716
+      ]
+    },
+    {
+      "key": "asat_kor",
+      "parts": 151,
+      "triangles": 5968,
+      "dimensions": [
+        7.575000047683716,
+        6.298999942839146,
+        3.5
+      ]
+    },
+    {
+      "key": "harvester_kor",
+      "parts": 86,
+      "triangles": 2856,
+      "dimensions": [
+        7.400000095367432,
+        3.0100000515580176,
+        3.200000047683716
+      ]
+    },
+    {
+      "key": "antitank_team_kor",
+      "parts": 95,
+      "triangles": 5620,
+      "dimensions": [
+        2.8949999809265137,
+        1.830000001937151,
+        3.003214955329895
+      ]
+    },
+    {
+      "key": "machinegun_team_kor",
+      "parts": 77,
+      "triangles": 4208,
+      "dimensions": [
+        3.8389999866485596,
+        1.4300000257790089,
+        2.016430079936981
+      ]
+    },
+    {
+      "key": "recon_vehicle_kor",
+      "parts": 72,
+      "triangles": 2564,
+      "dimensions": [
+        5.740000009536743,
+        3.970000185072422,
+        3.240000009536743
+      ]
+    },
+    {
+      "key": "repair_vehicle_kor",
+      "parts": 124,
+      "triangles": 3372,
+      "dimensions": [
+        8.435793161392212,
+        3.7994086399674414,
+        3.3399999141693115
+      ]
+    },
+    {
+      "key": "mortar_team_kor",
+      "parts": 66,
+      "triangles": 3720,
+      "dimensions": [
+        2.9850000143051147,
+        1.8500000052154064,
+        3.2082149982452393
+      ]
+    },
+    {
+      "key": "assault_team_kor",
+      "parts": 111,
+      "triangles": 6072,
+      "dimensions": [
+        2.708999991416931,
+        1.830000001937151,
+        2.6664299964904785
+      ]
+    },
+    {
+      "key": "destroyer_kor",
+      "parts": 276,
+      "triangles": 7456,
+      "dimensions": [
+        26,
+        7.690000057220459,
+        3.767662763595581
+      ]
+    },
+    {
+      "key": "carrier_kor",
+      "parts": 441,
+      "triangles": 9734,
+      "dimensions": [
+        27,
+        7.509999752044678,
+        6.554999828338623
+      ]
+    },
+    {
+      "key": "submarine_kor",
+      "parts": 35,
+      "triangles": 5412,
+      "dimensions": [
+        19.395000457763672,
+        6.166525602340698,
+        4.900000095367432
+      ]
+    },
+    {
+      "key": "frigate_kor",
+      "parts": 142,
+      "triangles": 3892,
+      "dimensions": [
+        20,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "patrol_boat_kor",
+      "parts": 93,
+      "triangles": 2932,
+      "dimensions": [
+        11.03499984741211,
+        5,
+        3.299999952316284
+      ]
+    },
+    {
+      "key": "missile_boat_kor",
+      "parts": 97,
+      "triangles": 2616,
+      "dimensions": [
+        11.03499984741211,
+        5,
+        3.299999952316284
+      ]
+    },
+    {
+      "key": "shore_bombardment_kor",
+      "parts": 147,
+      "triangles": 4240,
+      "dimensions": [
+        24.598999900817873,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "air_defense_ship_kor",
+      "parts": 173,
+      "triangles": 4288,
+      "dimensions": [
+        24,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "repair_ship_kor",
+      "parts": 155,
+      "triangles": 4128,
+      "dimensions": [
+        24,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "recon_boat_kor",
+      "parts": 112,
+      "triangles": 3544,
+      "dimensions": [
+        11.03499984741211,
+        5.352499723434448,
+        3.742000102996826
+      ]
+    },
+    {
+      "key": "heli_kor",
+      "parts": 12,
+      "triangles": 220711,
+      "dimensions": [
+        11.059866552975482,
+        3.588741034269333,
+        8.90522050857544
+      ]
+    },
+    {
+      "key": "jet_kor",
+      "parts": 10,
+      "triangles": 488,
+      "dimensions": [
+        11.236999988555908,
+        1.1600000262260437,
+        10
+      ]
+    },
+    {
+      "key": "fighter_kor",
+      "parts": 122,
+      "triangles": 3548,
+      "dimensions": [
+        10.02750015258789,
+        2.074999988079071,
+        6.814000129699707
+      ]
+    },
+    {
+      "key": "recon_drone_kor",
+      "parts": 38,
+      "triangles": 1696,
+      "dimensions": [
+        8.300000190734863,
+        2.209858477115631,
+        16.200000762939453
+      ]
+    },
+    {
+      "key": "attack_drone_kor",
+      "parts": 58,
+      "triangles": 2284,
+      "dimensions": [
+        8.300000190734863,
+        2.4673584699630737,
+        12.399999618530273
+      ]
+    },
+    {
+      "key": "interceptor_kor",
+      "parts": 55,
+      "triangles": 2408,
+      "dimensions": [
+        11,
+        2.6060166358947754,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "close_support_aircraft_kor",
+      "parts": 55,
+      "triangles": 2632,
+      "dimensions": [
+        9.328999996185303,
+        2.3500000834465027,
+        11.600000381469727
+      ]
+    },
+    {
+      "key": "heavy_bomber_kor",
+      "parts": 20,
+      "triangles": 572,
+      "dimensions": [
+        10,
+        1.012499988079071,
+        20
+      ]
+    },
+    {
+      "key": "early_warning_aircraft_kor",
+      "parts": 87,
+      "triangles": 3188,
+      "dimensions": [
+        12,
+        3.8299999237060547,
+        15.399999618530273
+      ]
+    },
+    {
+      "key": "escort_helicopter_kor",
+      "parts": 76,
+      "triangles": 3092,
+      "dimensions": [
+        9.699999809265137,
+        3.7599999845027923,
+        5.782876968383789
+      ]
+    },
+    {
+      "key": "satellite_kor",
+      "parts": 64,
+      "triangles": 2220,
+      "dimensions": [
+        4.170499920845032,
+        2.5100000500679016,
+        10.618000030517578
+      ]
+    },
+    {
+      "key": "orbital_kor",
+      "parts": 248,
+      "triangles": 4908,
+      "dimensions": [
+        11.042500019073486,
+        3.5425000190734863,
+        11.868000030517578
+      ]
+    },
+    {
+      "key": "orbital_interceptor_kor",
+      "parts": 282,
+      "triangles": 4780,
+      "dimensions": [
+        9.742499828338623,
+        1.729999989271164,
+        5.317999839782715
+      ]
+    },
+    {
+      "key": "orbital_sniper_kor",
+      "parts": 169,
+      "triangles": 4128,
+      "dimensions": [
+        11.920000076293945,
+        2.25,
+        8.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_point_defense_kor",
+      "parts": 100,
+      "triangles": 3132,
+      "dimensions": [
+        5.263999938964844,
+        2.1700000166893005,
+        7.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_bombardment_kor",
+      "parts": 164,
+      "triangles": 4784,
+      "dimensions": [
+        9.184999942779541,
+        2.7950000762939453,
+        8.513999938964844
+      ]
+    },
+    {
+      "key": "orbital_siege_kor",
+      "parts": 105,
+      "triangles": 2192,
+      "dimensions": [
+        11.602499961853027,
+        2.5,
+        8.71399974822998
+      ]
+    },
+    {
+      "key": "orbital_repair_kor",
+      "parts": 102,
+      "triangles": 3644,
+      "dimensions": [
+        11.135000228881836,
+        2.400000035762787,
+        14.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_mapper_kor",
+      "parts": 100,
+      "triangles": 2388,
+      "dimensions": [
+        7.513999819755554,
+        3.9524999856948853,
+        12.11400032043457
+      ]
+    },
+    {
+      "key": "orbital_raider_kor",
+      "parts": 77,
+      "triangles": 1644,
+      "dimensions": [
+        7.984999895095825,
+        2.400000035762787,
+        5.714000225067139
       ]
     },
     {
@@ -1622,8 +2982,8 @@
     },
     {
       "key": "sam_kor",
-      "parts": 77,
-      "triangles": 1492,
+      "parts": 80,
+      "triangles": 1528,
       "dimensions": [
         8,
         5.1543379789590835,
@@ -1688,6 +3048,446 @@
         8,
         5.599999905228615,
         8.119999885559082
+      ]
+    },
+    {
+      "key": "infantry_imp",
+      "parts": 21,
+      "triangles": 720,
+      "dimensions": [
+        2.2450000643730164,
+        1.629000049084425,
+        2.8499999046325684
+      ]
+    },
+    {
+      "key": "tank_imp",
+      "parts": 651,
+      "triangles": 16904,
+      "dimensions": [
+        10.188776016235352,
+        4.208661743104458,
+        3.9040000438690186
+      ]
+    },
+    {
+      "key": "ifv_imp",
+      "parts": 532,
+      "triangles": 9596,
+      "dimensions": [
+        7.28321647644043,
+        2.7951359167695045,
+        3.799999952316284
+      ]
+    },
+    {
+      "key": "arty_imp",
+      "parts": 532,
+      "triangles": 9596,
+      "dimensions": [
+        9.22160816192627,
+        3.2201358690857886,
+        3.799999952316284
+      ]
+    },
+    {
+      "key": "rocket_imp",
+      "parts": 83,
+      "triangles": 2820,
+      "dimensions": [
+        7,
+        3.473203958570957,
+        3.140000104904175
+      ]
+    },
+    {
+      "key": "aa_imp",
+      "parts": 539,
+      "triangles": 9628,
+      "dimensions": [
+        7.28321647644043,
+        4.269105972349644,
+        3.799999952316284
+      ]
+    },
+    {
+      "key": "asat_imp",
+      "parts": 136,
+      "triangles": 4860,
+      "dimensions": [
+        7.575000047683716,
+        6.298999942839146,
+        3.5
+      ]
+    },
+    {
+      "key": "harvester_imp",
+      "parts": 86,
+      "triangles": 2856,
+      "dimensions": [
+        7.400000095367432,
+        3.0100000515580176,
+        3.200000047683716
+      ]
+    },
+    {
+      "key": "antitank_team_imp",
+      "parts": 95,
+      "triangles": 5620,
+      "dimensions": [
+        2.8949999809265137,
+        1.830000001937151,
+        3.003214955329895
+      ]
+    },
+    {
+      "key": "machinegun_team_imp",
+      "parts": 77,
+      "triangles": 4208,
+      "dimensions": [
+        3.8389999866485596,
+        1.4300000257790089,
+        2.016430079936981
+      ]
+    },
+    {
+      "key": "recon_vehicle_imp",
+      "parts": 73,
+      "triangles": 2524,
+      "dimensions": [
+        5.740000009536743,
+        3.970000185072422,
+        3.240000009536743
+      ]
+    },
+    {
+      "key": "repair_vehicle_imp",
+      "parts": 125,
+      "triangles": 3332,
+      "dimensions": [
+        8.435793161392212,
+        3.7994086399674414,
+        3.3399999141693115
+      ]
+    },
+    {
+      "key": "mortar_team_imp",
+      "parts": 66,
+      "triangles": 3720,
+      "dimensions": [
+        2.9850000143051147,
+        1.8500000052154064,
+        3.2082149982452393
+      ]
+    },
+    {
+      "key": "assault_team_imp",
+      "parts": 111,
+      "triangles": 6072,
+      "dimensions": [
+        2.708999991416931,
+        1.830000001937151,
+        2.6664299964904785
+      ]
+    },
+    {
+      "key": "destroyer_imp",
+      "parts": 72,
+      "triangles": 1188,
+      "dimensions": [
+        24,
+        6.199999928474426,
+        3.4000000953674316
+      ]
+    },
+    {
+      "key": "carrier_imp",
+      "parts": 52,
+      "triangles": 844,
+      "dimensions": [
+        30,
+        6.199999928474426,
+        7
+      ]
+    },
+    {
+      "key": "submarine_imp",
+      "parts": 3,
+      "triangles": 192,
+      "dimensions": [
+        20,
+        2.75,
+        4
+      ]
+    },
+    {
+      "key": "frigate_imp",
+      "parts": 143,
+      "triangles": 3852,
+      "dimensions": [
+        20,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "patrol_boat_imp",
+      "parts": 94,
+      "triangles": 2892,
+      "dimensions": [
+        11.03499984741211,
+        5,
+        3.299999952316284
+      ]
+    },
+    {
+      "key": "missile_boat_imp",
+      "parts": 98,
+      "triangles": 2576,
+      "dimensions": [
+        11.03499984741211,
+        5,
+        3.299999952316284
+      ]
+    },
+    {
+      "key": "shore_bombardment_imp",
+      "parts": 148,
+      "triangles": 4200,
+      "dimensions": [
+        24.598999900817873,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "air_defense_ship_imp",
+      "parts": 174,
+      "triangles": 4248,
+      "dimensions": [
+        24,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "repair_ship_imp",
+      "parts": 156,
+      "triangles": 4088,
+      "dimensions": [
+        24,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "recon_boat_imp",
+      "parts": 113,
+      "triangles": 3504,
+      "dimensions": [
+        11.03499984741211,
+        5.352499723434448,
+        3.742000102996826
+      ]
+    },
+    {
+      "key": "heli_imp",
+      "parts": 15,
+      "triangles": 804,
+      "dimensions": [
+        9.400000095367432,
+        2.237500016763806,
+        5.699999809265137
+      ]
+    },
+    {
+      "key": "jet_imp",
+      "parts": 10,
+      "triangles": 488,
+      "dimensions": [
+        12.485000133514404,
+        1.1600000262260437,
+        11.199999809265137
+      ]
+    },
+    {
+      "key": "fighter_imp",
+      "parts": 10,
+      "triangles": 488,
+      "dimensions": [
+        12.485000133514404,
+        1.1600000262260437,
+        11.199999809265137
+      ]
+    },
+    {
+      "key": "recon_drone_imp",
+      "parts": 39,
+      "triangles": 1708,
+      "dimensions": [
+        8.300000190734863,
+        2.209858477115631,
+        16.200000762939453
+      ]
+    },
+    {
+      "key": "attack_drone_imp",
+      "parts": 59,
+      "triangles": 2296,
+      "dimensions": [
+        8.300000190734863,
+        2.4673584699630737,
+        12.399999618530273
+      ]
+    },
+    {
+      "key": "interceptor_imp",
+      "parts": 56,
+      "triangles": 2420,
+      "dimensions": [
+        11,
+        2.6060166358947754,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "close_support_aircraft_imp",
+      "parts": 56,
+      "triangles": 2644,
+      "dimensions": [
+        9.328999996185303,
+        2.3500000834465027,
+        11.600000381469727
+      ]
+    },
+    {
+      "key": "heavy_bomber_imp",
+      "parts": 21,
+      "triangles": 584,
+      "dimensions": [
+        10,
+        1.012499988079071,
+        20
+      ]
+    },
+    {
+      "key": "early_warning_aircraft_imp",
+      "parts": 87,
+      "triangles": 3188,
+      "dimensions": [
+        12,
+        3.8299999237060547,
+        15.399999618530273
+      ]
+    },
+    {
+      "key": "escort_helicopter_imp",
+      "parts": 77,
+      "triangles": 3104,
+      "dimensions": [
+        9.699999809265137,
+        3.7599999845027923,
+        5.782876968383789
+      ]
+    },
+    {
+      "key": "satellite_imp",
+      "parts": 64,
+      "triangles": 2128,
+      "dimensions": [
+        4.170499920845032,
+        3.1600000262260437,
+        10.618000030517578
+      ]
+    },
+    {
+      "key": "orbital_imp",
+      "parts": 643,
+      "triangles": 11516,
+      "dimensions": [
+        15.742499828338623,
+        6.237500190734863,
+        7.349999904632568
+      ]
+    },
+    {
+      "key": "orbital_interceptor_imp",
+      "parts": 287,
+      "triangles": 4848,
+      "dimensions": [
+        10.042500019073486,
+        3.3000000715255737,
+        5.317999839782715
+      ]
+    },
+    {
+      "key": "orbital_sniper_imp",
+      "parts": 170,
+      "triangles": 4088,
+      "dimensions": [
+        11.920000076293945,
+        2.350000023841858,
+        8.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_point_defense_imp",
+      "parts": 101,
+      "triangles": 3092,
+      "dimensions": [
+        5.263999938964844,
+        2.2700000405311584,
+        7.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_bombardment_imp",
+      "parts": 165,
+      "triangles": 4744,
+      "dimensions": [
+        9.184999942779541,
+        2.8950001001358032,
+        8.513999938964844
+      ]
+    },
+    {
+      "key": "orbital_siege_imp",
+      "parts": 106,
+      "triangles": 2152,
+      "dimensions": [
+        11.602499961853027,
+        2.600000023841858,
+        8.71399974822998
+      ]
+    },
+    {
+      "key": "orbital_repair_imp",
+      "parts": 103,
+      "triangles": 3604,
+      "dimensions": [
+        11.135000228881836,
+        2.5000000596046448,
+        14.013999938964844
+      ]
+    },
+    {
+      "key": "orbital_mapper_imp",
+      "parts": 101,
+      "triangles": 2348,
+      "dimensions": [
+        7.513999819755554,
+        3.9524999856948853,
+        12.11400032043457
+      ]
+    },
+    {
+      "key": "orbital_raider_imp",
+      "parts": 78,
+      "triangles": 1604,
+      "dimensions": [
+        7.984999895095825,
+        2.5000000596046448,
+        5.714000225067139
       ]
     },
     {
@@ -1792,8 +3592,8 @@
     },
     {
       "key": "sam_imp",
-      "parts": 82,
-      "triangles": 1560,
+      "parts": 85,
+      "triangles": 1596,
       "dimensions": [
         8,
         5.1543379789590835,
@@ -1858,86 +3658,6 @@
         8,
         5.599999905228615,
         8.119999885559082
-      ]
-    },
-    {
-      "key": "jet_chn",
-      "parts": 12,
-      "triangles": 616,
-      "dimensions": [
-        13.525000095367432,
-        1.1600000262260437,
-        13
-      ]
-    },
-    {
-      "key": "jet_usa",
-      "parts": 12,
-      "triangles": 512,
-      "dimensions": [
-        10.61299991607666,
-        1.1600000262260437,
-        10.199999809265137
-      ]
-    },
-    {
-      "key": "jet_rus",
-      "parts": 10,
-      "triangles": 488,
-      "dimensions": [
-        14.77299976348877,
-        1.1600000262260437,
-        10.399999618530273
-      ]
-    },
-    {
-      "key": "jet_ind",
-      "parts": 12,
-      "triangles": 504,
-      "dimensions": [
-        9.676999568939209,
-        1.1600000262260437,
-        8.600000381469727
-      ]
-    },
-    {
-      "key": "jet_kor",
-      "parts": 10,
-      "triangles": 488,
-      "dimensions": [
-        11.236999988555908,
-        1.1600000262260437,
-        10
-      ]
-    },
-    {
-      "key": "jet_imp",
-      "parts": 10,
-      "triangles": 488,
-      "dimensions": [
-        12.485000133514404,
-        1.1600000262260437,
-        11.199999809265137
-      ]
-    },
-    {
-      "key": "harvester_chn",
-      "parts": 86,
-      "triangles": 2856,
-      "dimensions": [
-        7.400000095367432,
-        3.0100000515580176,
-        3.200000047683716
-      ]
-    },
-    {
-      "key": "infantry_chn",
-      "parts": 21,
-      "triangles": 720,
-      "dimensions": [
-        2.2450000643730164,
-        1.629000049084425,
-        2.8499999046325684
       ]
     }
   ],
