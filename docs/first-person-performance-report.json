@@ -1,0 +1,32 @@
+{
+  "recordedAt": "2026-10-16T17:07:14.411Z",
+  "scope": "10-second real packaged full-screen first-person combat; controlled 65-entity initial fixture, active AI may produce more units. Includes world and foreground render counters. Not a long-session or maximum-population guarantee.",
+  "fullscreen": true,
+  "performance": {
+    "seconds": 10.001099999904632,
+    "frames": 468,
+    "meanFPS": 46.794852566663934,
+    "p95FrameMs": 22.399999999999636,
+    "initialEntities": 61,
+    "finalEntities": 58,
+    "observedShots": 24,
+    "peakEffects": 10,
+    "viewport": [
+      2752,
+      1152
+    ],
+    "dpr": 1.25,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "camera": "PerspectiveCamera",
+    "directActive": true,
+    "stats": {
+      "calls": 90,
+      "triangles": 1049774,
+      "visibleEntities": 58,
+      "geometries": 156,
+      "foregroundCalls": 4,
+      "foregroundTriangles": 3964
+    }
+  },
+  "errors": []
+}

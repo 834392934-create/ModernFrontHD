@@ -171,7 +171,7 @@
     for(const x of [start+.12,start+.8,start+1.33,start+1.79,start+3.3])t.cyl(.116,.035,x,axis,0,metal,'x',.116,24);
     t.cyl(.093,.15,end-.04,axis,0,metal,'x',.093,32);t.cyl(.062,.002,end+.037,axis,0,0x090c0c,'x',.062,24);
     t.box(.16,.13,.12,end-.30,axis+.11,0,c);
-    const group=new T.Group(),hull=b.finish(),turret=t.finish();hull.name='hull';turret.name='turret';turret.position.set(-.15,d.ring,0);group.add(hull,turret);
+    const group=new T.Group(),hull=b.finish(),turret=t.finish();hull.name='hull';turret.name='turret';turret.position.set(-.15,d.ring,0);group.add(hull,turret);const muzzle=new T.Object3D();muzzle.name='muzzle';muzzle.position.set(end+.038,axis,0);turret.add(muzzle);
     const references={chn:'https://www.mod.gov.cn/gfbw/jmsd/4806118.html',usa:'https://www.dvidshub.net/image/5852204/abram-tank-operations',rus:'https://warfiles.ru/231820-novejshaja-versija-tanka-t-90m-obzavelas-vydvizhnoj-sistemoj-nabljudenija.html',ind:'https://sputniknews.in/20250407/indian-army-to-procure-anti-drone-systems-for-t-72-and-t-90-tanks-8956117.html',kor:'https://www.hyundai-rotem.co.kr/en/business/defense/details.do?productCt03=defense0101'};
     group.userData={scale:6.6,parts:b.parts+t.parts,profile:d.name,evidenceStatus:'photo-referenced',reviewStage:'silhouette-rebuilt',referenceUrl:references[f],sourceReview:'docs/reviews/ground-reference-review.md'};
     return group;

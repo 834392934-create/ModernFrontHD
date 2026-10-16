@@ -274,6 +274,9 @@
       this.explored = new Uint8Array(COLS * ROWS);
       this._random = rng(this.map.seed + 17);
       this.pathBudget = 0;
+      this.directControl = null;
+      this.directFeedback = null;
+      this._directTeamAI = null;
       const keys = Object.keys(F),
         others = keys.filter(
           (k) => k !== this.options.faction && !F[k].fiction,
@@ -436,6 +439,22 @@
       return base*(d.damageBonuses?.[this.targetDomain(target.kind)]||1)*
         (d.targetBonuses?.[target.kind]??d.targetBonuses?.[family]??1);
     }
+    canHeal(source,target) {
+      const d=U[source.kind]||B[source.kind],family=U[target.kind]?.modelKind||target.kind;
+      return !!d.heal&&target.hp>0&&target.team===source.team&&!target.structure&&
+        (!d.healDomains||d.healDomains.includes(this.targetDomain(target.kind)))&&
+        (!d.healFamilies||d.healFamilies.includes(family));
+    }
+    cooldownMultiplier(e,controllers=this.entities) {
+      if(!(U[e.kind]||B[e.kind])?.damage)return 1;
+      let friendly=1,hostile=1;const domain=this.targetDomain(e.kind);
+      for(const source of controllers){const d=U[source.kind],field=d?.fireControl;
+        if(!field||!this.operational(source)||!field.domains.includes(domain)||dist(source,e)>d.range)continue;
+        if(field.enemy&&this.isEnemy(source.team,e.team))hostile=Math.max(hostile,field.multiplier);
+        else if(!field.enemy&&source.team===e.team)friendly=Math.min(friendly,field.multiplier);
+      }
+      return friendly*hostile;
+    }
     rangeProfile(e,preview=false) {
       const d=U[e.kind]||B[e.kind],structure=!!B[e.kind],power=(structure?this.power(e.team):0)+(preview?(d.power||0):0);
       const active=this.operational(e,power),reason=e.disabled>this.time?'EMP停机':!active?'供电不足':null;
@@ -443,8 +462,9 @@
       const attack=d.damage>0?(d.range||0)*(boosted?1.15:1):0;
       const zones=[];
       if(attack){zones.push({type:'attack',label:'攻击',radius:attack,min:d.minRange||0,domains:this.targetDomains(e.kind)});if(d.minRange)zones.push({type:'blind',label:'最小射程盲区',radius:d.minRange});}
-      if(e.kind==='ciws')zones.push({type:'intercept',label:'拦截火箭',radius:d.range});
-      if(d.heal)zones.push({type:'repair',label:'维修',radius:d.range,domains:d.healDomains||['ground','naval','air','space']});
+      if(e.kind==='ciws'||d.interceptRange)zones.push({type:'intercept',label:'拦截火箭',radius:d.interceptRange||d.range});
+      if(d.heal)zones.push({type:'repair',label:d.healFamilies?'步兵治疗':'维修',radius:d.range,domains:d.healDomains||['ground','naval','air','space']});
+      if(d.fireControl)zones.push({type:d.fireControl.enemy?'jam':'link',label:(d.fireControl.enemy?'敌方装填 +':'友方装填 −')+Math.round(Math.abs(d.fireControl.multiplier-1)*100)+'%',radius:d.range,domains:d.fireControl.domains});
       if(d.shield)zones.push({type:'shield',label:'护盾',radius:d.range});
       if(d.jam)zones.push({type:'jam',label:'电磁压制',radius:d.range});
       if(e.kind==='radar')zones.push({type:'link',label:'雷达联动',radius:450});
@@ -477,6 +497,100 @@
       if (s?.mobilityKmh) speed = (s.mobilityKmh / 3.6) * 3;
       if (e.kind === "fighter" && f === "ind") speed *= 1.8 / 1.6;
       return speed * F[f].speed;
+    }
+    beginDirectControl(id) {
+      const e=this.get(id);
+      if(this.result||!e||e.team!==0||e.structure||!U[e.kind])return false;
+      this.endDirectControl();
+      this.directFeedback=null;
+      this._directTeamAI={aiClock:this.teams[0].aiClock,attackAt:this.teams[0].attackAt};
+      this.teams[0].aiClock=0;
+      e.order=null;e.orderQueue=[];e.path=[];e.target=null;e.retreating=false;e.manualMove=true;
+      this.directControl={id:e.id,input:{forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null,aimX:e.x,aimY:e.y,aimHeight:U[e.kind].space?145:U[e.kind].air?65:5}};
+      return true;
+    }
+    endDirectControl() {
+      if(!this.directControl)return false;
+      const e=this.entities.find(o=>o.id===this.directControl.id);
+      if(e){e.manualMove=false;e.order=null;e.orderQueue=[];e.path=[];e.target=null;}
+      if(this._directTeamAI)Object.assign(this.teams[0],this._directTeamAI);
+      this.directControl=null;this._directTeamAI=null;
+      this.directFeedback=null;
+      return true;
+    }
+    setDirectInput(input={}) {
+      const e=this.get(this.directControl?.id);
+      if(!e||this.result)return false;
+      if(!input||typeof input!=='object')input={};
+      const finite=(v,fallback=0)=>Number.isFinite(v)?v:fallback;
+      if(e.disabled>this.time){e.target=null;this.directControl.input={forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null};return false;}
+      const yaw=finite(input.yaw,e.angle),d=U[e.kind];
+      this.directControl.input={
+        forward:clamp(finite(input.forward),-1,1),strafe:clamp(finite(input.strafe),-1,1),yaw,
+        fire:!!input.fire,targetId:Number.isInteger(input.targetId)?input.targetId:null,
+        aimX:clamp(finite(input.aimX,e.x+Math.cos(yaw)*(d.range||250)),0,W),
+        aimY:clamp(finite(input.aimY,e.y+Math.sin(yaw)*(d.range||250)),0,H),
+        aimHeight:clamp(finite(input.aimHeight,d.space?145:d.air?65:5),0,200),
+      };
+      return true;
+    }
+    directPositionFree(e,x,y) {
+      const d=U[e.kind],radius=e.r;
+      if(x<radius||x>W-radius||y<radius||y>H-radius)return false;
+      if(d.air)return true;
+      const blocked=d.naval?this.map.navalBlocked:(this.groundNavigation?.blocked||this.map.blocked);
+      for(let n=-1;n<8;n++){
+        const px=x+(n<0?0:Math.cos(n*Math.PI/4)*radius),py=y+(n<0?0:Math.sin(n*Math.PI/4)*radius);
+        if(blocked[Math.floor(py/T)*COLS+Math.floor(px/T)])return false;
+      }
+      for(const o of this.entities)if(o.structure&&o.hp>0&&Math.hypot(x-o.x,y-o.y)<radius+o.r+6)return false;
+      if(!d.naval&&(this.directObstacles||[]).some(o=>Math.hypot(x-o.x,y-o.y)<radius+o.r))return false;
+      return d.naval||!this.ore.some(o=>Math.hypot(x-o.x,y-o.y)<radius+48);
+    }
+    emitShot(e,target,aim) {
+      const d=U[e.kind]||B[e.kind];
+      if(!d.damage||e.cool>0)return false;
+      e.cool=d.reload;
+      let val=target?this.attackDamage(e.kind,target,d.damage):0;
+      if(target){
+        if(e.kind==='submarine'&&!U[target.kind]?.naval)val*=.2;
+        if(e.kind==='ifv'&&target.kind==='infantry')val*=1.7;
+        if(e.kind==='tank'&&target.kind==='ifv')val*=1.3;
+        if(e.kind==='aa')val*=U[target.kind]?.air?2:.45;
+      }
+      const destination=aim?.fixedImpact?aim:target||aim,travel=Math.max(.08,dist(e,destination)/(d.weaponFx==='torpedo'?220:e.kind==='rocket'?400:700));
+      this.effects.push({type:'shot',x:e.x,y:e.y,tx:destination.x,ty:destination.y,target:target?.id??null,from:e.team,
+        damage:val,baseDamage:target?d.damage:0,targetDomain:target?this.targetDomain(target.kind):null,splash:target?(d.splash||0):0,
+        ttl:travel,max:travel,rocket:!!d.rocket||['rocket','heli','asat','sam'].includes(e.kind),space:!!d.spaceWeapon,
+        sourceKind:e.kind,sourceId:e.id,sourceHeight:d.weaponFx==='torpedo'?2:d.space?145:d.air?65:e.structure?20:12,
+        targetHeight:aim?.fixedImpact?aim.height:d.weaponFx==='torpedo'?2:target?(U[target.kind]?.space?145:U[target.kind]?.air?65:5):(aim.height??5),
+        weaponFx:d.weaponFx||(e.kind==='orbital'?'orbital-beam':e.kind==='orbital_interceptor'?'interceptor-burst':e.kind==='asat'?'asat-missile':e.kind==='laser'?'laser-beam':'projectile'),
+        ...(!target?{miss:true}:{}),
+        ...(aim?.fixedImpact&&target?{directHitArea:{x:target.x,y:target.y,r:target.r}}:{}),
+      });
+      return true;
+    }
+    stepDirectControl(e,dt) {
+      const input=this.directControl.input,d=U[e.kind],yaw=input.yaw;
+      e.angle=yaw;e.turret=yaw;e.target=null;
+      const normal=Math.max(1,Math.hypot(input.forward,input.strafe)),speed=this.effectiveSpeed(e)*dt/normal;
+      const dx=(Math.cos(yaw)*input.forward-Math.sin(yaw)*input.strafe)*speed;
+      const dy=(Math.sin(yaw)*input.forward+Math.cos(yaw)*input.strafe)*speed;
+      const steps=Math.max(1,Math.ceil(Math.hypot(dx,dy)/8));
+      for(let n=0;n<steps;n++){
+        const x=e.x+dx/steps,y=e.y+dy/steps;
+        if(this.directPositionFree(e,x,y)){e.x=x;e.y=y;}
+        else if(this.directPositionFree(e,x,e.y))e.x=x;
+        else if(this.directPositionFree(e,e.x,y))e.y=y;
+      }
+      const range=this.rangeProfile(e).attack,candidate=this.get(input.targetId);
+      const target=candidate&&this.isEnemy(e.team,candidate.team)&&this.canTargetKind(e.kind,candidate.kind)&&
+        dist(e,candidate)<=range&&dist(e,candidate)>=(d.minRange||0)&&this.visibleAt(candidate.x,candidate.y)?candidate:null;
+      e.target=target?.id??null;
+      if(target)e.turret=Math.atan2(target.y-e.y,target.x-e.x);
+      if(!input.fire||!d.damage||e.cool>0)return;
+      let ax=input.aimX-e.x,ay=input.aimY-e.y,length=Math.hypot(ax,ay),factor=length>range?range/length:1;
+      this.emitShot(e,target,{x:e.x+ax*factor,y:e.y+ay*factor,height:input.aimHeight,fixedImpact:true});
     }
     train(team, kind) {
       const t = this.teams[team],
@@ -597,7 +711,7 @@
       return{x:e.x,y:e.y};
     }
     setRally(ids,x,y){for(const id of ids){const e=this.get(id);if(e?.structure&&Object.values(U).some(d=>d.producer===e.kind))e.rally={x:clamp(x,24,W-24),y:clamp(y,24,H-24)};}}
-    retreat(ids){for(const id of ids){const e=this.get(id);if(!e||e.structure||U[e.kind]?.naval||U[e.kind]?.space)continue;const base=this.teamEntities(e.team).filter(o=>o.kind==='repairhub'||o.kind==='hq').sort((a,b)=>dist(a,e)-dist(b,e))[0];if(base){this.command([id],base.x+90,base.y+90);e.retreating=true;}}}
+    retreat(ids){for(const id of ids){const e=this.get(id);if(!e||e.id===this.directControl?.id||e.structure||U[e.kind]?.naval||U[e.kind]?.space)continue;const base=this.teamEntities(e.team).filter(o=>o.kind==='repairhub'||o.kind==='hq').sort((a,b)=>dist(a,e)-dist(b,e))[0];if(base){this.command([id],base.x+90,base.y+90);e.retreating=true;}}}
     setAISpaceWeapons(allow){
       this.options.aiSpaceWeapons=!!allow;if(allow)return;
       for(const t of this.teams.slice(1)){for(const q of t.queue)if(U[q.kind]?.spaceWeapon)t.money+=this.cost(t.id,q.kind);t.queue=t.queue.filter(q=>!U[q.kind]?.spaceWeapon);}
@@ -608,7 +722,7 @@
       if(!Number.isFinite(x)||!Number.isFinite(y))return;
       const units = ids
         .map((id) => this.get(id))
-        .filter((e) => e && !e.structure);
+        .filter((e) => e && !e.structure && e.id!==this.directControl?.id);
       let n = 0;
       const formation=options.formation||this.formation||'line',cols=formation==='column'?1:Math.ceil(Math.sqrt(units.length)*1.6),spacing=formation==='spread'?65:40;
       for (const e of units) {
@@ -727,8 +841,8 @@
       for (let i = 0; i < this.visible.length; i++)
         if (this.visible[i]) this.explored[i] = 1;
     }
-    damage(e, value, from) {
-      if (e.hp <= 0) return;
+    damage(e, value, from, source=null) {
+      if (e.hp <= 0 || !Number.isFinite(value) || value<=0) return;
       let mul =
         (from === 0 && this.buffs.has("damage") ? 1.4 : 1) *
         (F[this.teams[from]?.faction]?.damage || 1);
@@ -742,9 +856,16 @@
           dist(v, e) < B[v.kind].range
         )
           shield = Math.max(shield, B[v.kind].shield);
-      e.hp -= value * mul * (1 - shield);
+      const applied=value*mul*(1-shield),actual=Math.min(e.hp,Math.max(0,applied));
+      if(actual<=0)return;
+      e.hp -= applied;
       e.lastHit = this.time;
+      e.lastHitSourceId=Number.isInteger(source?.sourceId)?source.sourceId:null;
+      e.lastHitFrom=Number.isFinite(source?.x)&&Number.isFinite(source?.y)?{x:source.x,y:source.y,sourceId:e.lastHitSourceId,time:this.time}:null;
+      if(e.lastHitSourceId===this.directControl?.id&&this.isEnemy(from,e.team))
+        this.directFeedback={hitAt:this.time,sourceId:e.lastHitSourceId,targetId:e.id,damage:actual};
       if (e.hp <= 0) {
+        if(e.id===this.directControl?.id)this.endDirectControl();
         const t = this.teams[e.team];
         t.lost++;
         if (this.teams[from]) this.teams[from].kills++;
@@ -780,8 +901,8 @@
       return best;
     }
     commandSupport(team,units) {
-      for(const support of units.filter(e=>U[e.kind].heal&&!e.retreating)){
-        const d=U[support.kind],allies=units.filter(e=>e.id!==support.id&&U[e.kind].damage&&(!d.healDomains||d.healDomains.includes(this.targetDomain(e.kind))));
+      for(const support of units.filter(e=>e.id!==this.directControl?.id&&(U[e.kind].heal||U[e.kind].fireControl)&&!e.retreating&&this.operational(e))){
+        const d=U[support.kind],allies=units.filter(e=>e.id!==support.id&&U[e.kind].damage&&(d.heal?this.canHeal(support,e):d.supportDomains.includes(this.targetDomain(e.kind))));
         allies.sort((a,b)=>(a.hp/a.maxHp-b.hp/b.maxHp)||dist(a,support)-dist(b,support));
         const ally=allies[0];if(!ally)continue;
         if(dist(support,ally)>d.range*.72)this.command([support.id],ally.x,ally.y,false);
@@ -850,7 +971,7 @@
             );
         }
       }
-      const units = es.filter((e) => !e.structure);
+      const units = es.filter((e) => !e.structure && e.id!==this.directControl?.id);
       this.commandSupport(t.id,units);
       for(const ship of units.filter(e=>U[e.kind].naval&&U[e.kind].damage&&!e.retreating)){
         if(ship.order&&(!ship.order.target||this.get(ship.order.target)?.hp>0))continue;
@@ -860,10 +981,10 @@
         const sea=this.navalApproach(ship,goal);
         if(sea&&dist(ship,sea)>35)this.command([ship.id],sea.x,sea.y,true,U[enemy?.kind]?.naval?enemy.id:null);
       }
-      if(!units.some(e=>e.kind==='harvester')&&!t.queue.some(q=>q.kind==='harvester'))this.train(t.id,'harvester');
+      if(!es.some(e=>e.kind==='harvester')&&!t.queue.some(q=>q.kind==='harvester'))this.train(t.id,'harvester');
       for(const e of units)if(e.hp<e.maxHp*.25&&!e.retreating&&!U[e.kind].space&&!U[e.kind].naval&&e.kind!=='harvester')this.retreat([e.id]);
       const capturers = units.filter(
-        (e) => (U[e.kind].capturePriority || U[e.kind].modelKind === 'infantry' || e.kind === 'infantry' || e.kind === 'ifv') && !e.order,
+        (e) => !U[e.kind].heal&&!U[e.kind].fireControl&&(U[e.kind].capturePriority || U[e.kind].modelKind === 'infantry' || e.kind === 'infantry' || e.kind === 'ifv') && !e.order,
       );
       for (const e of capturers) {
         let node = this.nodes
@@ -883,7 +1004,7 @@
         let dest = this.options.mode==='domination'?this.nodes.filter(n=>n.owner!==t.id).sort((a,b)=>dist(hq,a)-dist(hq,b))[0]||hqs[0]:hqs[0];
         if (dest) {
           let attack = units.filter(
-            (e) => e.kind!=='harvester'&&!U[e.kind].heal&&!e.retreating&&!U[e.kind].naval&&(e.kind !== "infantry" || this.random() > 0.4),
+            (e) => e.kind!=='harvester'&&!U[e.kind].heal&&!U[e.kind].fireControl&&!e.retreating&&!U[e.kind].naval&&(e.kind !== "infantry" || this.random() > 0.4),
           );
           this.command(
             attack.map((e) => e.id),
@@ -896,10 +1017,11 @@
       }
     }
     step(dt) {
-      if (this.result) return;
+      if (this.result || !Number.isFinite(dt) || dt<=0) return;
       dt = clamp(dt, 0, 0.1);
       this.time += dt;
       this.tick++;
+      if(this.directControl){const e=this.get(this.directControl.id);if(!e)this.endDirectControl();else if(e.disabled>this.time){e.target=null;this.directControl.input={forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null};}}
       this.pathBudget = 10;
       this.spatial.rebuild(this.entities);
       this.teamSight = this.teams.map((t) =>
@@ -962,14 +1084,15 @@
             t.buildQueue.shift();
           }
         }
-        if (t.id > 0) this.ai(t, dt);
+        if (t.id > 0 || (t.id===0&&this.directControl)) this.ai(t, dt);
       }
+      const fireControllers=this.entities.filter(e=>U[e.kind]?.fireControl&&this.operational(e));
       for (const e of this.entities) {
         if (e.hp <= 0 || e.disabled > this.time) continue;
         const d = U[e.kind] || B[e.kind];
-        if(e.kind==='harvester')this.harvest(e,dt);
+        if(e.kind==='harvester'&&e.id!==this.directControl?.id)this.harvest(e,dt);
         if(e.retreating&&this.time-e.lastHit>5){const base=this.teamEntities(e.team).some(o=>(o.kind==='hq'||o.kind==='repairhub')&&dist(e,o)<165);if(base){e.hp=Math.min(e.maxHp,e.hp+e.maxHp*.035*dt);if(e.hp>=e.maxHp)e.retreating=false;}}
-        e.cool -= dt;
+        e.cool -= dt / this.cooldownMultiplier(e,fireControllers);
         if (
           e.team === 0 &&
           this.buffs.has("regen") &&
@@ -980,7 +1103,7 @@
           continue;
         if (d.heal) {
           for (const a of this.spatial.query(e.x, e.y, d.range))
-            if (a.hp>0 && a.team === e.team && !a.structure && dist(e,a)<=d.range && (!d.healDomains||d.healDomains.includes(this.targetDomain(a.kind))))
+            if (this.canHeal(e,a) && dist(e,a)<=d.range)
               a.hp = Math.min(a.maxHp, a.hp + d.heal * dt);
         }
         if (d.jam) {
@@ -988,13 +1111,15 @@
             if (this.isEnemy(e.team, a.team) && !a.structure && dist(e,a)<=d.range)
               a.disabled = this.time + 0.15;
         }
+        if((e.kind==='ciws'||d.interceptRange)&&(e.interceptAt||0)<=this.time){
+          const interceptRange=d.interceptRange||d.range;
+          const rocket=this.effects.find(f=>f.type==='shot'&&f.rocket&&this.isEnemy(e.team,f.from)&&Math.hypot(f.x+(f.tx-f.x)*(1-f.ttl/f.max)-e.x,f.y+(f.ty-f.y)*(1-f.ttl/f.max)-e.y)<interceptRange);
+          if(rocket){rocket.type='intercepted';rocket.ttl=.12;rocket.max=.12;e.interceptAt=this.time+(d.interceptReload||.55);}
+        }
+        if(e.id===this.directControl?.id){this.stepDirectControl(e,dt);continue;}
         if (!d.damage && !e.order) continue;
         let target = this.get(e.target);
         let range = this.rangeProfile(e).attack;
-        if(e.kind==='ciws'&&(e.interceptAt||0)<=this.time){
-          const rocket=this.effects.find(f=>f.type==='shot'&&f.rocket&&this.isEnemy(e.team,f.from)&&Math.hypot(f.x+(f.tx-f.x)*(1-f.ttl/f.max)-e.x,f.y+(f.ty-f.y)*(1-f.ttl/f.max)-e.y)<d.range);
-          if(rocket){rocket.type='intercepted';rocket.ttl=.12;rocket.max=.12;e.interceptAt=this.time+.55;}
-        }
         const canHit = (t) =>
           d.damage > 0 &&
           this.isEnemy(e.team, t.team) &&
@@ -1032,38 +1157,7 @@
             dist(e, target) >= (d.minRange || 0) &&
             e.cool <= 0
           ) {
-            e.cool = d.reload;
-            let val = this.attackDamage(e.kind,target,d.damage);
-            if (e.kind === "submarine" && !U[target.kind]?.naval) val *= 0.2;
-            if (e.kind === "ifv" && target.kind === "infantry") val *= 1.7;
-            if (e.kind === "tank" && target.kind === "ifv") val *= 1.3;
-            if (e.kind === "aa") val *= U[target.kind]?.air ? 2 : 0.45;
-            const travel = Math.max(
-              0.08,
-              dist(e, target) / (e.kind === "rocket" ? 400 : 700),
-            );
-            this.effects.push({
-              type: "shot",
-              x: e.x,
-              y: e.y,
-              tx: target.x,
-              ty: target.y,
-              target: target.id,
-              from: e.team,
-              damage: val,
-              baseDamage: d.damage,
-              targetDomain: this.targetDomain(target.kind),
-              splash: d.splash || 0,
-              ttl: travel,
-              max: travel,
-              rocket: !!d.rocket || ["rocket", "heli", "asat", "sam"].includes(e.kind),
-              space: !!d.spaceWeapon,
-              sourceKind: e.kind,
-              sourceId: e.id,
-              sourceHeight: d.space ? 145 : d.air ? 65 : e.structure ? 20 : 12,
-              targetHeight: U[target.kind]?.space ? 145 : U[target.kind]?.air ? 65 : 5,
-              weaponFx: d.weaponFx || (e.kind === "orbital" ? "orbital-beam" : e.kind === "orbital_interceptor" ? "interceptor-burst" : e.kind === "asat" ? "asat-missile" : e.kind === "laser" ? "laser-beam" : "projectile"),
-            });
+            this.emitShot(e,target);
           }
         }
         if (e.structure) continue;
@@ -1181,10 +1275,11 @@
                       1 - dist(e, { x: fx.tx, y: fx.ty }) / (fx.splash + e.r),
                     ),
                   fx.from,
+                  fx,
                 );
           } else {
             const e = this.get(fx.target);
-            if (e) this.damage(e, fx.damage, fx.from);
+            if (e&&(!fx.directHitArea||dist(e,fx.directHitArea)<=Math.max(5,fx.directHitArea.r))) this.damage(e, fx.damage, fx.from, fx);
           }
           active.push({
             type: "impact",
@@ -1213,6 +1308,7 @@
               e,
               base * Math.max(0.35, 1 - dist(e, fx) / (fx.r + e.r)),
               fx.from || 0,
+              fx,
             );
           }
           active.push({
@@ -1256,8 +1352,10 @@
         for(const t of this.teams)if(t.alive){t.score=(t.score||0)+this.nodes.filter(n=>n.owner===t.id).length*dt;if(t.score>=this.options.scoreLimit){this.result=t.id===0?'victory':'defeat';this.message(F[t.faction].name+'取得据点积分胜利');break;}}
       }
       this.entities = this.entities.filter((e) => e.hp > 0);
+      if(this.directControl&&(!this.get(this.directControl.id)||this.result))this.endDirectControl();
     }
     harvest(e,dt){
+      if(e.id===this.directControl?.id)return;
       if(e.manualMove&&e.order)return;
       const refinery=this.teamEntities(e.team).filter(o=>o.kind==='refinery').sort((a,b)=>dist(e,a)-dist(e,b))[0];
       if(!refinery){e.order=null;return;}
@@ -1308,8 +1406,8 @@
         time: this.time,
         tick: this.tick,
         nextId: this.nextId,
-        entities: this.entities,
-        teams: this.teams,
+        entities: this.entities.map(e=>e.id===this.directControl?.id?{...e,manualMove:false,target:null}:e),
+        teams: this.teams.map(t=>t.id===0&&this._directTeamAI?{...t,...this._directTeamAI}:t),
         nodes: this.nodes,
         wealthGranted: !!this.wealthGranted,
         effects: this.effects,

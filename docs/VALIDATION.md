@@ -1,3 +1,30 @@
+# 3.0 第一人称与作战增援验证
+
+日期：2026-10-17（北京时间）。12种新职责单位、同一RTS战场第一人称接管、己方AI代管、近景武器与座舱。本轮保留真实型号的既有证据边界；模型和FPS画质未达到商业AAA。
+
+|检查|实际结果|证据|
+|---|---|---|
+|模拟回归|77/77通过：56类生产/存档、140种武装目标域场景、治疗与装填场、驾驶/碰撞/控制权/延迟弹着等|simulation-tests.txt|
+|全部单位接管|浏览器和实际EXE均逐个使用真实选择与E进入/退出56类；相机有限、自身外部模型隐藏、HUD身份正确|first-person-browser-report.json / first-person-desktop-report.json|
+|第一人称交互|WASD、鼠标观察、ADS、M晃动、暂停、一次Esc返回；AI经营与其他部队调度，退出停止新增AI调度|first-person-desktop-report.json|
+|射击一致性|真实点击造成74点伤害并得到相同sourceId确认；空射无确认；飞行期间移走目标不会隔空扣血；两类真实锚点+一类保守发射点遮挡均0伤害|first-person-desktop-report.json|
+|原生失焦|全屏true；关闭测试框架焦点仿真后，最小化产生trusted blur，锁鼠/移动/开火清空；恢复位置相同且不续射|first-person-desktop-report.json 的 nativeFocus|
+|增援模型|234角色变体几何、材质、武器锚点通过；最高29,760三角面/模型、最多3网格；不是写实程度判据|model-detail-report.json|
+|图鉴/头像|438槽位、800个横竖屏五视图检查；438张最终模型头像|gallery-report.json / gallery-framing-report.json / ../assets/portraits/|
+|扩兵与防御UI|真实生产/搜索/范围/EMP/放置/海陆空天动画；234角色变体；错误0|expanded-browser-report.json / expanded-desktop-report.json|
+|许可资产与离线|T-90M、伯克、AH-64三导入模块ready，原材质及署名保留；file协议零HTTP；原生全屏切换通过|desktop-report.json / upgrade-browser-report.json|
+|独立监督|增援12种结构/职责辨识；第一人称原生记录、截图与问题闭环，未授予写实终验|reviews/reinforcements-supervision.md / reviews/first-person-supervision.md|
+
+最终第一人称性能：ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)。物理3440×1440、CSS 2752×1152、DPR 1.25；实际EXE全屏，采样10.00秒，61→58实体，观察24次发射。平均 **46.8 FPS**，P95 **22.4 ms**；世界与近景合计90次绘制、1,049,774三角面。证据：[first-person-performance-report.json](first-person-performance-report.json) / [实际交战截图](../screenshots/fps-live-battle-desktop.png)。
+
+RTS短时性能：同机同原生全屏，混编82实体4秒平均46.4 FPS；5秒交火72→59实体，146次发射、4组防御圈，平均46.9 FPS，P95 22.4 ms。测试串行运行；以上是受控短时采样，不代表长局、极限人口或最低帧率承诺。
+
+第一人称射击是准星/炮口射线、延迟固定落点和圆形命中区近似，不是逐帧完整弹道；无炮口锚点的旧模型采用较低的保守发射点。空天保留RTS高度层，班组保持原单位语义；没有六自由度飞行、弹匣或完整人物骨骼动画。近景舱室是按军种设计的原创控制台，不冒称逐型号真实座舱。无DLSS、光追或破解组件。最后一次原生实战重测包含柔边火光/火花视觉修正。
+
+下文为历史版本记录，同名自动报告已更新到当前版本。
+
+---
+
 # 2.3 模型细化验证记录
 
 日期：2026-10-17（北京时间）。本轮修改27种原创职责模型及其六阵营变体；原参考目录未修改。

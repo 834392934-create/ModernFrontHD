@@ -1,0 +1,247 @@
+{
+  "recordedAt": "2026-10-16T16:37:17.594Z",
+  "models": [
+    {
+      "key": "tank_destroyer_chn",
+      "scale": 6.3,
+      "parts": 765,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "远射程反装甲 / 轻型8轮底盘 / 怕步兵近身",
+      "profile": "reinforcement-tank_destroyer-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "tank_destroyer",
+      "fiction": false,
+      "axles": 4,
+      "kind": "tank_destroyer",
+      "triangles": 18912,
+      "dimensions": [
+        8.09499979019165,
+        3.665516458749771,
+        3.244999885559082
+      ]
+    },
+    {
+      "key": "siege_howitzer_chn",
+      "scale": 6.5,
+      "parts": 640,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "超远程对地溅射 / 对建筑加成 / 盲区200、机动缓慢",
+      "profile": "reinforcement-siege_howitzer-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "siege_howitzer",
+      "fiction": false,
+      "roadWheelsPerSide": 7,
+      "kind": "siege_howitzer",
+      "triangles": 16640,
+      "dimensions": [
+        12.256414222717286,
+        4.675386234223843,
+        3.690000057220459
+      ]
+    },
+    {
+      "key": "field_medic_chn",
+      "scale": 5.7,
+      "parts": 107,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 仅治疗友方步兵 / 不能维修车辆与建筑",
+      "profile": "reinforcement-field_medic-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "field_medic",
+      "fiction": false,
+      "squadMembers": 3,
+      "unarmed": true,
+      "kind": "field_medic",
+      "triangles": 11436,
+      "dimensions": [
+        3.0749999284744263,
+        1.7549999665934592,
+        2.9174588918685913
+      ]
+    },
+    {
+      "key": "torpedo_boat_chn",
+      "scale": 5.4,
+      "parts": 138,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "仅对舰 / 近距离高单发 / 脆弱高速、需接近舰队",
+      "profile": "reinforcement-torpedo_boat-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "torpedo_boat",
+      "fiction": false,
+      "hullType": "fast-torpedo-hull",
+      "kind": "torpedo_boat",
+      "triangles": 7224,
+      "dimensions": [
+        13.064000129699707,
+        4.234999895095825,
+        3.134000062942505
+      ]
+    },
+    {
+      "key": "arsenal_ship_chn",
+      "scale": 4.4,
+      "parts": 524,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "陆海及基地远程导弹 / 盲区170 / 昂贵缓慢、需防空护航",
+      "profile": "reinforcement-arsenal_ship-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "arsenal_ship",
+      "fiction": false,
+      "hullType": "long-vls-hull",
+      "kind": "arsenal_ship",
+      "triangles": 10256,
+      "dimensions": [
+        29.06399917602539,
+        6.384999752044678,
+        6.5
+      ]
+    },
+    {
+      "key": "escort_corvette_chn",
+      "scale": 4.8,
+      "parts": 184,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "近距对舰防空 / 拦截250范围内敌方火箭 / 每0.8秒一次",
+      "profile": "reinforcement-escort_corvette-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "escort_corvette",
+      "fiction": false,
+      "hullType": "compact-escort-hull",
+      "kind": "escort_corvette",
+      "triangles": 10240,
+      "dimensions": [
+        19.06399917602539,
+        6.384999752044678,
+        4.5
+      ]
+    },
+    {
+      "key": "rescue_helicopter_chn",
+      "scale": 6.2,
+      "parts": 295,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 快速治疗地面步兵 / 怕防空、不维修车辆",
+      "profile": "original-rescue_helicopter-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "rescue_helicopter",
+      "fiction": false,
+      "unarmed": true,
+      "cabinOpening": true,
+      "kind": "rescue_helicopter",
+      "triangles": 15300,
+      "dimensions": [
+        10.625000076293945,
+        3.7654707860946655,
+        8.789999961853027
+      ]
+    },
+    {
+      "key": "naval_strike_aircraft_chn",
+      "scale": 6,
+      "parts": 366,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "仅攻击舰艇 / 高速远程导弹 / 无自卫对空火力",
+      "profile": "original-naval_strike_aircraft-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "naval_strike_aircraft",
+      "fiction": false,
+      "kind": "naval_strike_aircraft",
+      "triangles": 19444,
+      "dimensions": [
+        11.199999809265137,
+        2.9929476976394653,
+        12.199999809265137
+      ]
+    },
+    {
+      "key": "electronic_warfare_aircraft_chn",
+      "scale": 5.3,
+      "parts": 343,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无直接火力 / 260范围内敌方陆海空及建筑装填耗时+30% / 同类不叠加",
+      "profile": "original-electronic_warfare_aircraft-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "electronic_warfare_aircraft",
+      "fiction": false,
+      "unarmed": true,
+      "kind": "electronic_warfare_aircraft",
+      "triangles": 18924,
+      "dimensions": [
+        12.199999809265137,
+        3,
+        14.5600004196167
+      ]
+    },
+    {
+      "key": "orbital_escort_chn",
+      "scale": 6.3,
+      "parts": 148,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "近距空天连射 / 高耐久护航 / 不攻击地面和基地",
+      "profile": "original-orbital_escort-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "orbital_escort",
+      "fiction": true,
+      "kind": "orbital_escort",
+      "triangles": 7596,
+      "dimensions": [
+        6.497388124465942,
+        1.1864835619926453,
+        6
+      ]
+    },
+    {
+      "key": "orbital_relay_chn",
+      "scale": 5.8,
+      "parts": 93,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 280范围友方空天单位装填耗时-15% / 同类不叠加",
+      "profile": "original-orbital_relay-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "orbital_relay",
+      "fiction": true,
+      "unarmed": true,
+      "kind": "orbital_relay",
+      "triangles": 11048,
+      "dimensions": [
+        3.7991291284561157,
+        3.4150002002716064,
+        12.25
+      ]
+    },
+    {
+      "key": "orbital_jammer_chn",
+      "scale": 5.8,
+      "parts": 223,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无直接火力 / 360范围敌方太空装填耗时+35% / 受AI太空武器禁令约束",
+      "profile": "original-orbital_jammer-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "orbital_jammer",
+      "fiction": true,
+      "unarmed": true,
+      "kind": "orbital_jammer",
+      "triangles": 6940,
+      "dimensions": [
+        4.990000009536743,
+        5.175697326660156,
+        5.866127967834473
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

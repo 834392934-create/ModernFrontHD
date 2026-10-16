@@ -46,7 +46,7 @@
     if(kind==='antitank_team'){soldier(b,.2,0,c,'kneeling','launcher');soldier(b,-1.15,-1,c,'standing','rifle');soldier(b,-1.4,1,c,'kneeling','none');b.cyl(.17,1.15,-1.2,.26,1.35,c,'x');mx=.895;my=.98;mz=.25;}
     if(kind==='machinegun_team'){soldier(b,-.65,0,c,'kneeling','none');soldier(b,-1.5,1.05,c,'kneeling','rifle');b.box(.75,.18,.2,.05,.92,0,C.dark);gun(b,.4,.92,0,1.45,.052);for(const s of [-1,1])link(b,[.72,.86,0],[1.05,.1,s*.45],.025,C.metal);b.box(.4,.34,.3,-.1,.24,.56,c);for(let i=0;i<7;i++)b.cyl(.018,.13,-.3+i*.07,.6+i*.045,.21+i*.05,C.gold,'z',.018,6);mx=1.93;my=.92;}
     if(kind==='mortar_team'){soldier(b,-1,-.95,c,'kneeling','none');soldier(b,-1.25,1,c,'standing','none');b.cyl(.55,.12,.1,.1,0,C.metal);link(b,[.1,.2,0],[.65,1.65,0],.13,c);b.cyl(.145,.09,.65,1.65,0,C.dark,'y');for(const s of [-1,1]){link(b,[.45,1.1,0],[1.15,.1,s*.62],.035,C.metal);b.box(.35,.05,.2,1.15,.08,s*.62,C.dark);}link(b,[1.12,.5,-.4],[1.12,.5,.4],.035);b.box(.16,.2,.13,.48,1.25,.22,C.dark);b.box(.85,.28,.45,-.8,.16,1.55,c);mx=.65;my=1.7;}
-    if(kind==='assault_team'){for(const [x,z] of [[.4,0],[-.7,-.85],[-.7,.85]]){soldier(b,x,z,c,'standing','rifle');for(const side of [-1,1])b.sphere(.075,x,1.38,z+side*.235,0x4d5944,[1,.8,1]);}mx=1.51;my=1.34;mz=.17;}
+    if(kind==='assault_team'||kind==='infantry'){for(const [x,z] of [[.4,0],[-.7,-.85],[-.7,.85]]){soldier(b,x,z,c,'standing','rifle');for(const side of [-1,1])b.sphere(.075,x,1.38,z+side*.235,0x4d5944,[1,.8,1]);}mx=1.51;my=1.34;mz=.17;}
     const g=finish(kind,f,[part(b,'squad')],5.6,{squadMembers:kind==='machinegun_team'||kind==='mortar_team'?2:3});marker(g,mx,my,mz);return g;
   }
   function groundVehicle(kind,f){const b=new B(),t=new B(),c=M.colors[f],repair=kind==='repair_vehicle';const L=repair?7.6:5.7,w=repair?2.5:2.4;
@@ -144,5 +144,6 @@
     if(kind==='orbital_sniper'){for(const side of [-1,1]){b.box(1.8,.035,.04,-3.7,.68,side*.5,C.metal);for(let i=0;i<4;i++)b.box(.08,.03,.7,-4.3+i*.4,.68,0,C.dark);}}
     b.box(.6,.55,.65,kind==='orbital_repair'?-4.2:-1,.65,0,c);nationKit(b,f,kind==='orbital_repair'?-4.2:-1,.9,0,c,true);const g=finish(kind,f,[part(b,'spaceHull',true),part(l,'opticsAndThrusters',true,true),...moving],scale);if(D.U[kind].damage&&!g.getObjectByName('muzzle'))marker(g,mx,my,mz);if(kind==='orbital_repair')marker(g,0,.5,0,'servicePoint');return g;
   }
-  for(const kind of D.ROSTER.added)for(const f of factions)M.register(kind,f,()=>D.U[kind].unitGroup==='ground'?kind.endsWith('_team')?infantry(kind,f):groundVehicle(kind,f):D.U[kind].unitGroup==='naval'?ship(kind,f):D.U[kind].unitGroup==='air'?aircraft(kind,f):spacecraft(kind,f));
+  for(const f of factions)M.register('infantry',f,()=>infantry('infantry',f));
+  for(const kind of D.ROSTER.added.filter(k=>!D.ROSTER.reinforcements.includes(k)))for(const f of factions)M.register(kind,f,()=>D.U[kind].unitGroup==='ground'?kind.endsWith('_team')?infantry(kind,f):groundVehicle(kind,f):D.U[kind].unitGroup==='naval'?ship(kind,f):D.U[kind].unitGroup==='air'?aircraft(kind,f):spacecraft(kind,f));
 })(globalThis);

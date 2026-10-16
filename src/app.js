@@ -226,6 +226,7 @@
   $("#clear-buffs").onclick = () =>
     $$("#buffs input").forEach((i) => (i.checked = false));
   function startGame(opts) {
+    direct?.exit();
     try {
       game = new WarSim.Game(opts);
       enterGame();
@@ -807,7 +808,7 @@
   $("#close-modal").onclick = closeModal;
   function help() {
     openModal(
-      '<small>FIELD MANUAL / 01</small><h2>作战指南</h2><p>通过基地与补给站获得资金，扩建产能，组织兵种协同，摧毁所有敌方指挥中心获胜。指挥中心被摧毁即出局。</p><div class="help-grid"><div><strong>选择与指挥</strong>左键选择，拖动框选；Shift 追加。<br>右键移动 / 指定敌军集火。<br>Q 选全军，A 后左键攻击移动，S 停止。<br>Ctrl + 1–5 编组，数字键调用。</div><div><strong>镜头与节奏</strong>方向键 / W D 平移，中键拖动。<br>滚轮缩放，H 回到基地。<br>小地图左键定位，右键下达指令。<br>空格暂停，右上角调节 1–2 倍速。</div><div><strong>建设与经济</strong>右侧“建造”选建筑，左键放置。<br>建筑需在己方建筑 400 范围内。<br>靠近补给站并独占 7 秒即可占领。<br>低电力生产速度仅为 40%。</div><div><strong>兵种与支援</strong>坦克抗线，步战车清步兵。<br>火炮需要前线视野且有最小射程。<br>防空克制直升机与六代机。<br>支援需视野，侦察可揭示任意区域。</div><div><strong>尖端科技</strong>核打击延迟 6 秒，钻地弹延迟 4 秒。<br>六代机先建设陆航基地再生产。<br>默认尖端科技仅玩家可用。<br>全部均为游戏数值；本版无友军伤害。</div><div><strong>科幻阵营</strong>战锤·人类帝国为非官方同人。<br>生命 ×3、火力 ×2.6、生产 ×1.3。<br>专属轨道光矛，强度远高于现代军队。<br>开局可把它选为玩家或 AI。</div></div><p>F5 保存 / F9 读取；菜单中可导出与导入存档。桌面鼠标键盘是完整操作方式；窄屏支持基本查看和点选。</p>',
+      '<small>FIELD MANUAL / 01</small><h2>作战指南</h2><p>通过基地与补给站获得资金，扩建产能，组织兵种协同，摧毁所有敌方指挥中心获胜。指挥中心被摧毁即出局。</p><div class="help-grid"><div><strong>选择与指挥</strong>左键选择，拖动框选；Shift 追加。<br>右键移动 / 指定敌军集火。<br>Q 选全军，A 后左键攻击移动，S 停止。<br>Ctrl + 1–5 编组，数字键调用。</div><div><strong>镜头与节奏</strong>方向键 / W D 平移，中键拖动。<br>滚轮缩放，H 回到基地。<br>小地图左键定位，右键下达指令。<br>空格暂停，右上角调节 1–2 倍速。</div><div><strong>建设与经济</strong>右侧“建造”选建筑，左键放置。<br>建筑需在己方建筑 400 范围内。<br>靠近补给站并独占 7 秒即可占领。<br>低电力生产速度仅为 40%。</div><div><strong>兵种与支援</strong>坦克抗线，步战车清步兵。<br>火炮需要前线视野且有最小射程。<br>防空克制直升机与六代机。<br>支援需视野，侦察可揭示任意区域。</div><div><strong>第一人称驾驶</strong>选中己方单位，点击驾驶按钮或按 E。<br>WASD 移动，鼠标观察，左键开火、右键瞄准。<br>E / Esc 返回总指挥，其他部队由 AI 接管。<br>M 开关镜头/武器晃动，空格暂停。</div><div><strong>尖端科技</strong>核打击延迟 6 秒，钻地弹延迟 4 秒。<br>六代机先建设陆航基地再生产。<br>默认尖端科技仅玩家可用。<br>全部均为游戏数值；本版无友军伤害。</div><div><strong>科幻阵营</strong>战锤·人类帝国为非官方同人。<br>生命 ×3、火力 ×2.6、生产 ×1.3。<br>专属轨道光矛，强度远高于现代军队。<br>开局可把它选为玩家或 AI。</div></div><p>F5 保存 / F9 读取；菜单中可导出与导入存档。桌面鼠标键盘是完整操作方式；窄屏支持基本查看和点选。</p>',
     );
   }
   $("#help-menu").onclick = help;
@@ -826,6 +827,7 @@
   }
   $("#settings").onclick = openSettings;
   function returnMenu() {
+    direct?.exit();
     game = null;
     $("#modal").hidden = true;
     $("#hud").hidden = true;
@@ -853,6 +855,7 @@
         toast("还没有本地存档。");
         return;
       }
+      direct?.exit();
       game = WarSim.Game.load(s);
       enterGame();
       toast("存档已读取");
@@ -881,7 +884,9 @@
     i.onchange = async () => {
       try {
         if (i.files[0].size > 5000000) throw Error("文件不能超过 5 MB");
-        game = WarSim.Game.load(await i.files[0].text());
+        const loaded = WarSim.Game.load(await i.files[0].text());
+        direct?.exit();
+        game = loaded;
         enterGame();
         toast("外部存档已恢复");
       } catch (e) {
@@ -992,20 +997,22 @@
       $("#fps").textContent = fps + " FPS";
     }
     if (game) {
+      direct.update(raw,now/1000);
       if (!paused && !game.result) {
         acc += raw * speed;
         let steps = 0;
         while (acc >= 0.05 && steps < 8) {
+          direct.submit();
           game.step(0.05);
           acc -= 0.05;
           steps++;
         }
         if (steps === 8) acc = 0;
         const v = (raw * 650) / r.camera.zoom;
-        if (keys.has("arrowleft")) r.pan(-v, 0);
-        if (keys.has("arrowright") || keys.has("d")) r.pan(v, 0);
-        if (keys.has("arrowup") || keys.has("w")) r.pan(0, -v);
-        if (keys.has("arrowdown")) r.pan(0, v);
+        if (!direct.active&&keys.has("arrowleft")) r.pan(-v, 0);
+        if (!direct.active&&(keys.has("arrowright") || keys.has("d"))) r.pan(v, 0);
+        if (!direct.active&&(keys.has("arrowup") || keys.has("w"))) r.pan(0, -v);
+        if (!direct.active&&keys.has("arrowdown")) r.pan(0, v);
       }
       r.draw(
         game,
@@ -1205,6 +1212,9 @@
   const rangeButton=document.createElement('button');rangeButton.id='range-toggle';rangeButton.title='V 切换：选中与悬停 / 全部己方防线 / 关闭';rangeButton.textContent='范围：选中 V';rangeButton.onclick=toggleRanges;$('.command-buttons').append(rangeButton);
   const rangeReadout=document.createElement('div');rangeReadout.id='range-readout';rangeReadout.hidden=true;$('#hud').append(rangeReadout);
   function toggleRanges(){const modes=['selected','defenses','off'];rangeMode=modes[(modes.indexOf(rangeMode)+1)%modes.length];rangeButton.textContent='范围：'+({selected:'选中',defenses:'防线',off:'关闭'})[rangeMode]+' V';}
+  const direct=new WarDirectControl(r,{game:()=>game,paused:()=>paused,selection:()=>[...selection],canEnter:()=>!!game&&!game.result&&$('#modal').hidden,togglePause,toast,unitName,sound:()=>sound,onExit:()=>{keys.clear();drag=null;middle=null;updateHUD();}});
+  const driveButton=document.createElement('button');driveButton.id='drive-unit';driveButton.textContent='第一人称驾驶 E';driveButton.title='选择己方单位后进入驾驶；其他部队由AI接管';driveButton.onclick=()=>{keys.clear();drag=null;middle=null;setMode(null);direct.enter([...selection][0]);};$('.command-buttons').append(driveButton);
+  $('.bottom-status p').innerHTML+=' · E 驾驶选中单位';
   setupMenu();
   requestAnimationFrame(frame);
   // Read-only test bridge; automation can exercise the same public game methods as UI.
@@ -1212,6 +1222,7 @@
     get game() {
       return game;
     },
+    get direct(){return direct;},
     get renderer() {
       return r;
     },

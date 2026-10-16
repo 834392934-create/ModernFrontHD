@@ -1,20 +1,20 @@
 {
-  "recordedAt": "2026-10-16T16:08:01.377Z",
+  "recordedAt": "2026-10-16T16:58:01.211Z",
   "results": [
     {
       "size": {
         "width": 1200,
         "height": 800
       },
-      "views": 340,
-      "maxExtent": 0.8621328892573611
+      "views": 400,
+      "maxExtent": 0.8621450217370676
     },
     {
       "size": {
         "width": 700,
         "height": 900
       },
-      "views": 340,
+      "views": 400,
       "maxExtent": 0.9352822587975533
     }
   ]

@@ -1,4 +1,4 @@
-# 现代战线 HD · 2.3
+# 现代战线 HD · 3.0
 
 可离线运行的三维即时战略遭遇战。项目位于 `D:\现代战线HD`；原参考目录 `D:\红警\2024` 未修改。
 
@@ -9,6 +9,27 @@
 独立窗口使用Electron + Three.js WebGL；不是Unreal/DirectX引擎重写。资源全部本地加载，不要求账号、服务器或联网AI。浏览器兼容入口保留为 `play.ps1` 或 `index.html`。
 
 `release/ModernFrontHD-portable.zip` 是浏览器兼容包，不含独立版运行时；本机优先使用上面的EXE目录。
+
+## 3.0 第一人称接管与增援
+
+选中任意存活的己方单位，点击“第一人称驾驶”或按 **E**。相机进入该实体的真实位置；其他部队的建造、生产和战术调度交给己方 AI。按 **E / Esc** 返回总指挥。步兵显示持枪双手，医护显示医疗装具，装甲/舰艇/航空/轨道单位分别显示炮镜、舰桥或座舱仪表。自身外部模型隐藏，其他单位仍在同一个战场作战。
+
+- **WASD** 移动，鼠标观察，左键开火，右键瞄准；**空格** 暂停，**M** 关闭/开启晃动，**F11** 全屏。失焦和鼠标解锁立即清空移动及开火输入。
+- 手动射击沿准星与炮口双重射线检查遮挡（未标炮口的旧模型采用保守发射点），按固定弹着点及目标命中区域近似判断，移出区域不再追踪扣血；命中标记只在实际伤害结算后出现；冷却、射程、目标域、护盾、弹道延时和增益沿用 RTS 规则。无武装单位可驾驶，医疗/维修/电子支援继续自动工作。
+- 新增 12 种原创职责单位，现为 **56 类单位：陆军16、海军13、空军13、太空13，另加采矿车**。这12种在六阵营共享职责造型并使用阵营涂装，共72个新外观槽位，不冒称72种真实装备。
+
+|军种|新增单位|实际玩法|
+|---|---|---|
+|陆军|反坦克导弹车、重型攻城榴弹炮、战地医护|反装甲、远程攻坚与最小射程、仅治疗步兵|
+|海军|高速鱼雷艇、武库舰、护航轻型护卫舰|近程对舰鱼雷、远距对岸/舰火力、机炮与独立火箭拦截|
+|空军|救援直升机、对海攻击机、电子战飞机|救治地面步兵、专职反舰、延长敌方指定军种装填时间|
+|太空|轨道护航舰、轨道中继站、轨道干扰舰|空天近卫、缩短友军空天装填、干扰敌方轨道装填|
+
+同类电子场取最强效果，不重复累加；友方加成与敌方干扰可以同时作用。关闭 AI 太空武器也禁用攻击性轨道干扰舰，保留无武装维修/侦察/中继。
+
+这是现有 RTS 中的第一人称操控模式：空天单位保持原有高度层，没有六自由度飞行；步兵仍代表班组，不含完整人物骨骼动画、弹匣系统或室内关卡。材质、近景模型、阴影和反馈已针对近距离改善，但**没有达到《使命召唤》的资产与画质水平**。未集成 DLSS、光追或商业游戏组件。
+
+[实际EXE第一人称交战](screenshots/fps-live-battle-desktop.png) / [第一人称实现资料与独立监督](docs/reviews/first-person-supervision.md) / [新增12单位联图](screenshots/reinforcements-review-sheet.png) / [增援模型审查](docs/reviews/reinforcements-supervision.md)。
 
 ## 2.3 模型细化
 
@@ -21,18 +42,18 @@
 - 美国、俄罗斯、中国、印度、韩国、战锤人类帝国同人阵营；1玩家对1–4 AI，支持混战/敌方联盟。
 - 简单、标准、困难、极难四档AI；高难度包含经济补助，不能等同于公平经济下更聪明。
 - 三张地图、连通海域、陆路桥梁、矿山、补给据点；基地歼灭与据点积分胜利规则。
-- 44类单位：陆军13、海军10、空军10、太空10，另有采矿车、17类基地/防御设施、7类支援能力、8项玩家增益；本地保存和JSON导入导出。
+- 56类单位：陆军16、海军13、空军13、太空13，另有采矿车、17类基地/防御设施、7类支援能力、8项玩家增益；本地保存和JSON导入导出。
 - 每矿山初始24,000资源；采矿车容量500、装载65/秒，自动往返装车区和炼厂。采空后另寻矿源，炼厂损失时保留货物等待。矿体阻挡车辆，装车区可达。
 - 陆海空生产线分别推进；集结点、队形、排队路径、撤退维修、近防火箭拦截、雷达防御增益。
 - 尖端科技仅玩家可用与禁止AI太空武器独立设置；可在对局内更改，禁止后退还AI相关排队订单。轨道武器可攻击海陆空、轨道目标和基地。
 
-太空重平台保留海陆空天及基地攻击；新截击舰只打空中/太空，速度145、伤害95/0.95秒；重平台速度62、伤害200/3.2秒（均为游戏数值）。AI太空开关控制全部七种武装太空单位；侦察星、测绘星及维修站仍可用。
+太空重平台保留海陆空天及基地攻击；新截击舰只打空中/太空，速度145、伤害95/0.95秒；重平台速度62、伤害200/3.2秒（均为游戏数值）。AI太空开关控制全部武装太空单位和攻击性干扰舰；侦察星、测绘星、维修站及中继仍可用。
 
 新增27类按公开装备形态与原创职责设计，包含侦察、反装甲、维修、对空、对舰、岸轰与轨道攻城等；不是换名复制既有进口模型。生产界面可切四类并搜索名称/职责，尖端科技未开启时仍显示锁定卡片。AI按相同目标域战斗，维修跟随对应军种；舰队沿同一连通水域推进。
 
 防御提示：悬停或选中显示攻击、拦截、维修、雷达联动等范围；V循环选中/己方防线/关闭。建造时显示投影范围与建成后电力；EMP/缺电用虚线及文字提示。雷达增程只影响攻击，近防拦截半径维持330。全部距离为游戏单位。
 
-外观总览：[新增27角色](screenshots/expanded-review-sheet.png) / [建模监督](docs/reviews/expanded-model-supervision.md) / [参考来源](docs/reviews/expanded-model-references.md)。
+外观总览：[新增39职责角色](screenshots/expanded-review-sheet.png) / [建模监督](docs/reviews/expanded-model-supervision.md) / [参考来源](docs/reviews/expanded-model-references.md)。
 
 旧版总览：[太空24槽位](screenshots/space-review-sheet.png) / [17建筑](screenshots/buildings-review-sheet.png)。[监督审查](docs/reviews/space-supervision.md) / [Sketchfab候选](docs/reviews/sketchfab-candidates.md)。
 
@@ -51,6 +72,8 @@
 | 编组、调用 | Ctrl+1–5、1–5 |
 | 暂停、保存、读取 | 空格、F5、F9 |
 | 全屏、隐藏界面 | F11、Tab |
+| 进入 / 退出第一人称 | 选己方单位后 E；驾驶中 E / Esc 返回 |
+| 第一人称移动、开火、瞄准 | WASD、左键、右键；M 开关晃动 |
 | 攻击与支援范围 | V：选中/防线/关闭 |
 
 独占据点7秒开始产出；积分模式增加胜利积分。电力不足减慢生产并停用高能防御。大型打击需要侦察和可见目标。当前没有友军伤害。
@@ -80,6 +103,8 @@ node tests/gallery.cjs
 node tests/gallery-framing.cjs
 node tests/expanded-browser.cjs
 node tests/expanded-browser.cjs --desktop
+node tests/first-person-browser.cjs
+node tests/first-person-browser.cjs --desktop
 node tests/range-fallback.cjs
 node tests/space-browser.cjs --desktop
 node tests/upgrade.cjs
@@ -93,7 +118,7 @@ powershell -File build-desktop.ps1
 
 游戏运行不需要开发工具。报告见 [验证记录](docs/VALIDATION.md)，真实截图在 `screenshots/`。
 
-新版实时外观源为 `src/models-tanks.js`、`models-vehicles.js`、`models-air.js`、`models-naval.js`、`models-space.js`、`models-buildings.js`、`models-roster.js`。`models/`内STEP为早期CAD研究资产，**不等同于当前实时模型**。运行无需Fusion/FreeCAD/Python。
+新版实时外观源为 `src/models-tanks.js`、`models-vehicles.js`、`models-air.js`、`models-naval.js`、`models-space.js`、`models-buildings.js`、`models-roster.js`、`models-reinforcements-ground-naval.js`、`models-reinforcements-air-space.js`；近景源为 `fps-viewmodel.js`。`models/`内STEP为早期CAD研究资产，**不等同于当前实时模型**。运行无需Fusion/FreeCAD/Python。
 
 ## Git
 

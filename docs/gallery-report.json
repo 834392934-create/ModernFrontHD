@@ -2,12 +2,12 @@
   "reports": [
     {
       "key": "infantry_chn",
-      "parts": 21,
-      "triangles": 720,
+      "parts": 192,
+      "triangles": 29760,
       "dimensions": [
-        2.2450000643730164,
-        1.629000049084425,
-        2.8499999046325684
+        2.489000082015991,
+        1.754199953051284,
+        2.3655364513397217
       ]
     },
     {
@@ -141,6 +141,36 @@
       ]
     },
     {
+      "key": "tank_destroyer_chn",
+      "parts": 775,
+      "triangles": 19872,
+      "dimensions": [
+        8.09499979019165,
+        3.665516458749771,
+        3.244999885559082
+      ]
+    },
+    {
+      "key": "siege_howitzer_chn",
+      "parts": 640,
+      "triangles": 16640,
+      "dimensions": [
+        12.256414222717286,
+        4.675386234223843,
+        3.690000057220459
+      ]
+    },
+    {
+      "key": "field_medic_chn",
+      "parts": 125,
+      "triangles": 13236,
+      "dimensions": [
+        3,
+        1.7549999665934592,
+        2.9174588918685913
+      ]
+    },
+    {
       "key": "destroyer_chn",
       "parts": 266,
       "triangles": 7356,
@@ -238,6 +268,36 @@
         11.03499984741211,
         5.352499723434448,
         3.742000102996826
+      ]
+    },
+    {
+      "key": "torpedo_boat_chn",
+      "parts": 138,
+      "triangles": 7224,
+      "dimensions": [
+        13.064000129699707,
+        4.234999895095825,
+        3.134000062942505
+      ]
+    },
+    {
+      "key": "arsenal_ship_chn",
+      "parts": 486,
+      "triangles": 10080,
+      "dimensions": [
+        29.06399917602539,
+        6.384999752044678,
+        6.5
+      ]
+    },
+    {
+      "key": "escort_corvette_chn",
+      "parts": 184,
+      "triangles": 10240,
+      "dimensions": [
+        19.06399917602539,
+        6.384999752044678,
+        4.5
       ]
     },
     {
@@ -341,6 +401,36 @@
       ]
     },
     {
+      "key": "rescue_helicopter_chn",
+      "parts": 295,
+      "triangles": 15300,
+      "dimensions": [
+        10.625000076293945,
+        3.7654707860946655,
+        8.789999961853027
+      ]
+    },
+    {
+      "key": "naval_strike_aircraft_chn",
+      "parts": 366,
+      "triangles": 19444,
+      "dimensions": [
+        11.199999809265137,
+        2.9929476976394653,
+        12.199999809265137
+      ]
+    },
+    {
+      "key": "electronic_warfare_aircraft_chn",
+      "parts": 343,
+      "triangles": 18924,
+      "dimensions": [
+        12.199999809265137,
+        3,
+        14.5600004196167
+      ]
+    },
+    {
       "key": "satellite_chn",
       "parts": 62,
       "triangles": 2100,
@@ -438,6 +528,36 @@
         7.978691816329956,
         2.5040276050567627,
         5.789999961853027
+      ]
+    },
+    {
+      "key": "orbital_escort_chn",
+      "parts": 148,
+      "triangles": 7596,
+      "dimensions": [
+        6.497388124465942,
+        1.1864835619926453,
+        6
+      ]
+    },
+    {
+      "key": "orbital_relay_chn",
+      "parts": 93,
+      "triangles": 11048,
+      "dimensions": [
+        3.7991291284561157,
+        3.4150002002716064,
+        12.25
+      ]
+    },
+    {
+      "key": "orbital_jammer_chn",
+      "parts": 223,
+      "triangles": 6940,
+      "dimensions": [
+        4.990000009536743,
+        5.175697326660156,
+        5.866127967834473
       ]
     },
     {
@@ -612,12 +732,12 @@
     },
     {
       "key": "infantry_usa",
-      "parts": 21,
-      "triangles": 720,
+      "parts": 192,
+      "triangles": 29760,
       "dimensions": [
-        2.2450000643730164,
-        1.629000049084425,
-        2.8499999046325684
+        2.489000082015991,
+        1.754199953051284,
+        2.3655364513397217
       ]
     },
     {
@@ -751,6 +871,36 @@
       ]
     },
     {
+      "key": "tank_destroyer_usa",
+      "parts": 773,
+      "triangles": 19232,
+      "dimensions": [
+        8.09499979019165,
+        3.665516458749771,
+        3.244999885559082
+      ]
+    },
+    {
+      "key": "siege_howitzer_usa",
+      "parts": 638,
+      "triangles": 16000,
+      "dimensions": [
+        12.256414222717286,
+        4.675386234223843,
+        3.690000057220459
+      ]
+    },
+    {
+      "key": "field_medic_usa",
+      "parts": 125,
+      "triangles": 13236,
+      "dimensions": [
+        3,
+        1.7549999665934592,
+        2.9174588918685913
+      ]
+    },
+    {
       "key": "destroyer_usa",
       "parts": 6,
       "triangles": 49381,
@@ -848,6 +998,36 @@
         11.03499984741211,
         5.352499723434448,
         3.742000102996826
+      ]
+    },
+    {
+      "key": "torpedo_boat_usa",
+      "parts": 136,
+      "triangles": 6584,
+      "dimensions": [
+        13.064000129699707,
+        4.234999895095825,
+        3.134000062942505
+      ]
+    },
+    {
+      "key": "arsenal_ship_usa",
+      "parts": 484,
+      "triangles": 9440,
+      "dimensions": [
+        29.06399917602539,
+        6.384999752044678,
+        6.5
+      ]
+    },
+    {
+      "key": "escort_corvette_usa",
+      "parts": 182,
+      "triangles": 9600,
+      "dimensions": [
+        19.06399917602539,
+        6.384999752044678,
+        4.5
       ]
     },
     {
@@ -951,6 +1131,36 @@
       ]
     },
     {
+      "key": "rescue_helicopter_usa",
+      "parts": 293,
+      "triangles": 15276,
+      "dimensions": [
+        10.625000076293945,
+        3.7654707860946655,
+        8.789999961853027
+      ]
+    },
+    {
+      "key": "naval_strike_aircraft_usa",
+      "parts": 364,
+      "triangles": 19420,
+      "dimensions": [
+        11.199999809265137,
+        2.9929476976394653,
+        12.199999809265137
+      ]
+    },
+    {
+      "key": "electronic_warfare_aircraft_usa",
+      "parts": 341,
+      "triangles": 18900,
+      "dimensions": [
+        12.199999809265137,
+        3,
+        14.5600004196167
+      ]
+    },
+    {
       "key": "satellite_usa",
       "parts": 71,
       "triangles": 2200,
@@ -1048,6 +1258,36 @@
         7.978691816329956,
         1.9840275049209595,
         5.789999961853027
+      ]
+    },
+    {
+      "key": "orbital_escort_usa",
+      "parts": 146,
+      "triangles": 7572,
+      "dimensions": [
+        6.497388124465942,
+        1.1864835619926453,
+        6
+      ]
+    },
+    {
+      "key": "orbital_relay_usa",
+      "parts": 91,
+      "triangles": 11024,
+      "dimensions": [
+        3.7991291284561157,
+        3.4150002002716064,
+        12.25
+      ]
+    },
+    {
+      "key": "orbital_jammer_usa",
+      "parts": 221,
+      "triangles": 6916,
+      "dimensions": [
+        4.990000009536743,
+        5.175697326660156,
+        5.866127967834473
       ]
     },
     {
@@ -1222,12 +1462,12 @@
     },
     {
       "key": "infantry_rus",
-      "parts": 21,
-      "triangles": 720,
+      "parts": 192,
+      "triangles": 29760,
       "dimensions": [
-        2.2450000643730164,
-        1.629000049084425,
-        2.8499999046325684
+        2.489000082015991,
+        1.754199953051284,
+        2.3655364513397217
       ]
     },
     {
@@ -1361,6 +1601,36 @@
       ]
     },
     {
+      "key": "tank_destroyer_rus",
+      "parts": 772,
+      "triangles": 19156,
+      "dimensions": [
+        8.09499979019165,
+        3.665516458749771,
+        3.244999885559082
+      ]
+    },
+    {
+      "key": "siege_howitzer_rus",
+      "parts": 637,
+      "triangles": 15924,
+      "dimensions": [
+        12.256414222717286,
+        4.675386234223843,
+        3.690000057220459
+      ]
+    },
+    {
+      "key": "field_medic_rus",
+      "parts": 125,
+      "triangles": 13236,
+      "dimensions": [
+        3,
+        1.7549999665934592,
+        2.9174588918685913
+      ]
+    },
+    {
       "key": "destroyer_rus",
       "parts": 234,
       "triangles": 7124,
@@ -1458,6 +1728,36 @@
         11.03499984741211,
         5.352499723434448,
         3.742000102996826
+      ]
+    },
+    {
+      "key": "torpedo_boat_rus",
+      "parts": 135,
+      "triangles": 6508,
+      "dimensions": [
+        13.064000129699707,
+        4.234999895095825,
+        3.134000062942505
+      ]
+    },
+    {
+      "key": "arsenal_ship_rus",
+      "parts": 483,
+      "triangles": 9364,
+      "dimensions": [
+        29.06399917602539,
+        6.384999752044678,
+        6.5
+      ]
+    },
+    {
+      "key": "escort_corvette_rus",
+      "parts": 181,
+      "triangles": 9524,
+      "dimensions": [
+        19.06399917602539,
+        6.384999752044678,
+        4.5
       ]
     },
     {
@@ -1561,6 +1861,36 @@
       ]
     },
     {
+      "key": "rescue_helicopter_rus",
+      "parts": 294,
+      "triangles": 15288,
+      "dimensions": [
+        10.625000076293945,
+        3.7654707860946655,
+        8.789999961853027
+      ]
+    },
+    {
+      "key": "naval_strike_aircraft_rus",
+      "parts": 365,
+      "triangles": 19432,
+      "dimensions": [
+        11.199999809265137,
+        2.9929476976394653,
+        12.199999809265137
+      ]
+    },
+    {
+      "key": "electronic_warfare_aircraft_rus",
+      "parts": 342,
+      "triangles": 18912,
+      "dimensions": [
+        12.199999809265137,
+        3,
+        14.5600004196167
+      ]
+    },
+    {
       "key": "satellite_rus",
       "parts": 61,
       "triangles": 2236,
@@ -1658,6 +1988,36 @@
         7.978691816329956,
         2.404027581214905,
         5.789999961853027
+      ]
+    },
+    {
+      "key": "orbital_escort_rus",
+      "parts": 147,
+      "triangles": 7584,
+      "dimensions": [
+        6.497388124465942,
+        1.1864835619926453,
+        6
+      ]
+    },
+    {
+      "key": "orbital_relay_rus",
+      "parts": 92,
+      "triangles": 11036,
+      "dimensions": [
+        3.7991291284561157,
+        3.4150002002716064,
+        12.25
+      ]
+    },
+    {
+      "key": "orbital_jammer_rus",
+      "parts": 222,
+      "triangles": 6928,
+      "dimensions": [
+        4.990000009536743,
+        5.175697326660156,
+        5.866127967834473
       ]
     },
     {
@@ -1832,12 +2192,12 @@
     },
     {
       "key": "infantry_ind",
-      "parts": 21,
-      "triangles": 720,
+      "parts": 192,
+      "triangles": 29760,
       "dimensions": [
-        2.2450000643730164,
-        1.629000049084425,
-        2.8499999046325684
+        2.489000082015991,
+        1.754199953051284,
+        2.3655364513397217
       ]
     },
     {
@@ -1971,6 +2331,36 @@
       ]
     },
     {
+      "key": "tank_destroyer_ind",
+      "parts": 773,
+      "triangles": 19232,
+      "dimensions": [
+        8.09499979019165,
+        3.665516458749771,
+        3.244999885559082
+      ]
+    },
+    {
+      "key": "siege_howitzer_ind",
+      "parts": 638,
+      "triangles": 16000,
+      "dimensions": [
+        12.256414222717286,
+        4.675386234223843,
+        3.690000057220459
+      ]
+    },
+    {
+      "key": "field_medic_ind",
+      "parts": 125,
+      "triangles": 13236,
+      "dimensions": [
+        3,
+        1.7549999665934592,
+        2.9174588918685913
+      ]
+    },
+    {
       "key": "destroyer_ind",
       "parts": 266,
       "triangles": 7822,
@@ -2068,6 +2458,36 @@
         11.03499984741211,
         5.352499723434448,
         3.742000102996826
+      ]
+    },
+    {
+      "key": "torpedo_boat_ind",
+      "parts": 136,
+      "triangles": 6584,
+      "dimensions": [
+        13.064000129699707,
+        4.234999895095825,
+        3.134000062942505
+      ]
+    },
+    {
+      "key": "arsenal_ship_ind",
+      "parts": 484,
+      "triangles": 9440,
+      "dimensions": [
+        29.06399917602539,
+        6.384999752044678,
+        6.5
+      ]
+    },
+    {
+      "key": "escort_corvette_ind",
+      "parts": 182,
+      "triangles": 9600,
+      "dimensions": [
+        19.06399917602539,
+        6.384999752044678,
+        4.5
       ]
     },
     {
@@ -2171,6 +2591,36 @@
       ]
     },
     {
+      "key": "rescue_helicopter_ind",
+      "parts": 293,
+      "triangles": 15276,
+      "dimensions": [
+        10.625000076293945,
+        3.7654707860946655,
+        8.789999961853027
+      ]
+    },
+    {
+      "key": "naval_strike_aircraft_ind",
+      "parts": 364,
+      "triangles": 19420,
+      "dimensions": [
+        11.199999809265137,
+        2.9929476976394653,
+        12.199999809265137
+      ]
+    },
+    {
+      "key": "electronic_warfare_aircraft_ind",
+      "parts": 341,
+      "triangles": 18900,
+      "dimensions": [
+        12.199999809265137,
+        3,
+        14.5600004196167
+      ]
+    },
+    {
       "key": "satellite_ind",
       "parts": 63,
       "triangles": 2140,
@@ -2268,6 +2718,36 @@
         7.978691816329956,
         1.9840275049209595,
         5.789999961853027
+      ]
+    },
+    {
+      "key": "orbital_escort_ind",
+      "parts": 146,
+      "triangles": 7572,
+      "dimensions": [
+        6.497388124465942,
+        1.1864835619926453,
+        6
+      ]
+    },
+    {
+      "key": "orbital_relay_ind",
+      "parts": 91,
+      "triangles": 11024,
+      "dimensions": [
+        3.7991291284561157,
+        3.4150002002716064,
+        12.25
+      ]
+    },
+    {
+      "key": "orbital_jammer_ind",
+      "parts": 221,
+      "triangles": 6916,
+      "dimensions": [
+        4.990000009536743,
+        5.175697326660156,
+        5.866127967834473
       ]
     },
     {
@@ -2442,12 +2922,12 @@
     },
     {
       "key": "infantry_kor",
-      "parts": 21,
-      "triangles": 720,
+      "parts": 192,
+      "triangles": 29760,
       "dimensions": [
-        2.2450000643730164,
-        1.629000049084425,
-        2.8499999046325684
+        2.489000082015991,
+        1.754199953051284,
+        2.3655364513397217
       ]
     },
     {
@@ -2581,6 +3061,36 @@
       ]
     },
     {
+      "key": "tank_destroyer_kor",
+      "parts": 775,
+      "triangles": 19872,
+      "dimensions": [
+        8.09499979019165,
+        3.665516458749771,
+        3.244999885559082
+      ]
+    },
+    {
+      "key": "siege_howitzer_kor",
+      "parts": 640,
+      "triangles": 16640,
+      "dimensions": [
+        12.256414222717286,
+        4.675386234223843,
+        3.690000057220459
+      ]
+    },
+    {
+      "key": "field_medic_kor",
+      "parts": 125,
+      "triangles": 13236,
+      "dimensions": [
+        3,
+        1.7549999665934592,
+        2.9174588918685913
+      ]
+    },
+    {
       "key": "destroyer_kor",
       "parts": 276,
       "triangles": 7456,
@@ -2678,6 +3188,36 @@
         11.03499984741211,
         5.352499723434448,
         3.742000102996826
+      ]
+    },
+    {
+      "key": "torpedo_boat_kor",
+      "parts": 138,
+      "triangles": 7224,
+      "dimensions": [
+        13.064000129699707,
+        4.234999895095825,
+        3.134000062942505
+      ]
+    },
+    {
+      "key": "arsenal_ship_kor",
+      "parts": 486,
+      "triangles": 10080,
+      "dimensions": [
+        29.06399917602539,
+        6.384999752044678,
+        6.5
+      ]
+    },
+    {
+      "key": "escort_corvette_kor",
+      "parts": 184,
+      "triangles": 10240,
+      "dimensions": [
+        19.06399917602539,
+        6.384999752044678,
+        4.5
       ]
     },
     {
@@ -2781,6 +3321,36 @@
       ]
     },
     {
+      "key": "rescue_helicopter_kor",
+      "parts": 294,
+      "triangles": 15288,
+      "dimensions": [
+        10.625000076293945,
+        3.7654707860946655,
+        8.789999961853027
+      ]
+    },
+    {
+      "key": "naval_strike_aircraft_kor",
+      "parts": 365,
+      "triangles": 19432,
+      "dimensions": [
+        11.199999809265137,
+        2.9929476976394653,
+        12.199999809265137
+      ]
+    },
+    {
+      "key": "electronic_warfare_aircraft_kor",
+      "parts": 342,
+      "triangles": 18912,
+      "dimensions": [
+        12.199999809265137,
+        3,
+        14.5600004196167
+      ]
+    },
+    {
       "key": "satellite_kor",
       "parts": 64,
       "triangles": 2220,
@@ -2878,6 +3448,36 @@
         7.978691816329956,
         2.404027581214905,
         5.789999961853027
+      ]
+    },
+    {
+      "key": "orbital_escort_kor",
+      "parts": 147,
+      "triangles": 7584,
+      "dimensions": [
+        6.497388124465942,
+        1.1864835619926453,
+        6
+      ]
+    },
+    {
+      "key": "orbital_relay_kor",
+      "parts": 92,
+      "triangles": 11036,
+      "dimensions": [
+        3.7991291284561157,
+        3.4150002002716064,
+        12.25
+      ]
+    },
+    {
+      "key": "orbital_jammer_kor",
+      "parts": 222,
+      "triangles": 6928,
+      "dimensions": [
+        4.990000009536743,
+        5.175697326660156,
+        5.866127967834473
       ]
     },
     {
@@ -3052,12 +3652,12 @@
     },
     {
       "key": "infantry_imp",
-      "parts": 21,
-      "triangles": 720,
+      "parts": 192,
+      "triangles": 29760,
       "dimensions": [
-        2.2450000643730164,
-        1.629000049084425,
-        2.8499999046325684
+        2.489000082015991,
+        1.754199953051284,
+        2.3655364513397217
       ]
     },
     {
@@ -3191,6 +3791,36 @@
       ]
     },
     {
+      "key": "tank_destroyer_imp",
+      "parts": 773,
+      "triangles": 19184,
+      "dimensions": [
+        8.09499979019165,
+        3.665516458749771,
+        3.244999885559082
+      ]
+    },
+    {
+      "key": "siege_howitzer_imp",
+      "parts": 638,
+      "triangles": 15952,
+      "dimensions": [
+        12.256414222717286,
+        4.675386234223843,
+        3.690000057220459
+      ]
+    },
+    {
+      "key": "field_medic_imp",
+      "parts": 125,
+      "triangles": 13236,
+      "dimensions": [
+        3,
+        1.7549999665934592,
+        2.9174588918685913
+      ]
+    },
+    {
       "key": "destroyer_imp",
       "parts": 72,
       "triangles": 1188,
@@ -3288,6 +3918,36 @@
         11.03499984741211,
         5.352499723434448,
         3.742000102996826
+      ]
+    },
+    {
+      "key": "torpedo_boat_imp",
+      "parts": 136,
+      "triangles": 6536,
+      "dimensions": [
+        13.064000129699707,
+        4.234999895095825,
+        3.134000062942505
+      ]
+    },
+    {
+      "key": "arsenal_ship_imp",
+      "parts": 484,
+      "triangles": 9392,
+      "dimensions": [
+        29.06399917602539,
+        6.384999752044678,
+        6.5
+      ]
+    },
+    {
+      "key": "escort_corvette_imp",
+      "parts": 182,
+      "triangles": 9552,
+      "dimensions": [
+        19.06399917602539,
+        6.384999752044678,
+        4.5
       ]
     },
     {
@@ -3391,6 +4051,36 @@
       ]
     },
     {
+      "key": "rescue_helicopter_imp",
+      "parts": 296,
+      "triangles": 15036,
+      "dimensions": [
+        10.625000076293945,
+        3.7654707860946655,
+        8.789999961853027
+      ]
+    },
+    {
+      "key": "naval_strike_aircraft_imp",
+      "parts": 367,
+      "triangles": 19180,
+      "dimensions": [
+        11.199999809265137,
+        2.9929476976394653,
+        12.199999809265137
+      ]
+    },
+    {
+      "key": "electronic_warfare_aircraft_imp",
+      "parts": 344,
+      "triangles": 18660,
+      "dimensions": [
+        12.199999809265137,
+        3,
+        14.5600004196167
+      ]
+    },
+    {
       "key": "satellite_imp",
       "parts": 64,
       "triangles": 2128,
@@ -3488,6 +4178,36 @@
         7.978691816329956,
         2.5040276050567627,
         5.789999961853027
+      ]
+    },
+    {
+      "key": "orbital_escort_imp",
+      "parts": 149,
+      "triangles": 7332,
+      "dimensions": [
+        6.497388124465942,
+        1.3014835119247437,
+        6
+      ]
+    },
+    {
+      "key": "orbital_relay_imp",
+      "parts": 94,
+      "triangles": 10784,
+      "dimensions": [
+        3.7991291284561157,
+        3.4150002002716064,
+        12.25
+      ]
+    },
+    {
+      "key": "orbital_jammer_imp",
+      "parts": 224,
+      "triangles": 6676,
+      "dimensions": [
+        4.990000009536743,
+        5.175697326660156,
+        5.866127967834473
       ]
     },
     {

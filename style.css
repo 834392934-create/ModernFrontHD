@@ -1299,3 +1299,21 @@ kbd {
     bottom: 150px;
   }
 }
+/* First-person command handoff: world remains visible, tactical chrome is replaced. */
+body.direct-view #hud,body.direct-view #restore-hud{display:none!important}
+#direct-hud{position:fixed;inset:0;z-index:15;pointer-events:none;color:#e4e9df;font-family:"Segoe UI","Microsoft YaHei",sans-serif}
+#direct-hud[hidden]{display:none}
+#direct-hud button{pointer-events:auto;border:1px solid #c3d0bd55;background:#182322cc;color:#e4e9df;padding:10px 16px;font-size:12px;cursor:pointer}
+#direct-hud header{position:absolute;top:25px;left:35px;right:35px;display:flex;align-items:center;justify-content:space-between;letter-spacing:2px;font-size:11px;text-shadow:0 2px 5px #111}
+#direct-hud header b{color:#dcc89d;margin-left:12px}#direct-compass{font:18px Consolas,monospace;border-top:1px solid #e1e6db66;padding:12px 36px;min-width:160px;text-align:center}
+.direct-shade{position:absolute;inset:0;background:linear-gradient(#0b181e66,transparent 18%,transparent 73%,#071317bb);box-shadow:inset 0 0 130px #14222b33}
+.direct-orders{position:absolute;top:93px;left:36px;color:#b9d3c7;font-size:12px;letter-spacing:1px}.direct-orders i{display:inline-block;width:6px;height:6px;background:#abd4b0;margin-right:8px;border-radius:50%}#direct-economy{display:block;font:11px Consolas,"Microsoft YaHei";opacity:.8;margin:8px 0 0 14px}
+#direct-reticle{position:absolute;left:50%;top:50%;width:0;height:0;color:#edf0de;filter:drop-shadow(0 1px 2px #1c2428)}#direct-reticle i{position:absolute;background:currentColor}#direct-reticle i:nth-child(1){width:1px;height:7px;left:0;top:-16px}#direct-reticle i:nth-child(2){width:1px;height:7px;left:0;top:9px}#direct-reticle i:nth-child(3){width:7px;height:1px;left:-16px;top:0}#direct-reticle i:nth-child(4){width:7px;height:1px;left:9px;top:0}#direct-reticle b{position:absolute;width:2px;height:2px;border-radius:50%;background:currentColor;left:-.5px;top:-.5px}#direct-reticle.enemy{color:#ffb38d}#direct-reticle.ads i{opacity:.25}
+#direct-hit{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#f7d5a0;font:38px Consolas;opacity:0}#direct-target{position:absolute;top:calc(50% + 40px);left:calc(50% - 200px);width:400px;text-align:center;color:#e7c79c;font-size:11px;text-shadow:0 1px 3px #000}
+#direct-lock{position:absolute;top:calc(50% + 95px);left:50%;transform:translateX(-50%);min-width:260px}
+.direct-bottom{position:absolute;left:36px;right:36px;bottom:28px;display:flex;align-items:flex-end;justify-content:space-between;gap:28px}.direct-bottom section{width:270px;max-width:30%}.direct-bottom small{font-size:10px;letter-spacing:1px;color:#b4c2c0;display:block}.direct-bottom strong{font-size:23px;font-weight:500;margin:10px 0 16px;display:block}.direct-health,.direct-reload{height:4px;background:#bacac430;margin-bottom:9px}.direct-health i,.direct-reload i{display:block;height:100%;background:#b4d7c3}.direct-bottom span{font:11px Consolas,"Microsoft YaHei";letter-spacing:.4px}.direct-controls{font-size:11px;line-height:1.9;color:#bac7bf;text-align:center}.direct-weapon{text-align:right}.direct-reload{margin:12px 0}.direct-reload i{background:#dcc89d}#direct-role{line-height:1.6;letter-spacing:0}
+#direct-damage{position:absolute;inset:-35%;background:radial-gradient(ellipse at 50% 0,rgba(161,37,24,.55),transparent 42%);opacity:0;transition:opacity .08s;pointer-events:none}
+@media(max-width:850px){.direct-controls{display:none}#direct-hud header{left:18px;right:18px}.direct-bottom{left:18px;right:18px}.direct-bottom section{max-width:45%}.direct-bottom strong{font-size:17px}}
+
+/* Stable neutral contrast on sky, trees and dark armor, including ADS. */
+#direct-reticle i,#direct-reticle b{box-shadow:0 0 1px 1px #101817d9}#direct-reticle i:nth-child(1),#direct-reticle i:nth-child(2){width:2px}#direct-reticle i:nth-child(3),#direct-reticle i:nth-child(4){height:2px}#direct-reticle.ads i{opacity:.7}

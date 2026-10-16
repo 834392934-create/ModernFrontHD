@@ -22,11 +22,12 @@
     d.antiAir = d.targetDomains.includes("air");
     d.antiSpace = d.targetDomains.includes("space");
     if (d.targetDomains.length && d.targetDomains.every(domain => domain === "air" || domain === "space")) d.onlyAir = true;
-    if (group === "space" && d.damage > 0) {
+    if (group === "space" && (d.damage > 0 || d.fireControl?.enemy)) {
       d.spaceWeapon = true;
       d.advanced = true;
     }
     if (!d.damage && d.heal) d.combatRole = "repair";
+    else if (d.fireControl) d.combatRole = "support";
     else if (!d.damage) d.combatRole = "reconnaissance";
     U[kind] = d;
     added.push(kind);
@@ -195,12 +196,77 @@
     targetDomains: ["ground", "naval", "structure"], weaponFx: "interceptor-burst",
   });
 
+  // Reinforcement wave: role differences are implemented, not descriptive-only traits.
+  const waveStart=added.length;
+  add("tank_destroyer", "ground", "ifv", "missile-carrier", {
+    name:"反坦克歼击车",role:"远射程反装甲 / 轻型8轮底盘 / 怕步兵近身",
+    cost:980,hp:360,speed:90,damage:105,range:470,minRange:75,reload:4.2,sight:340,r:16,time:14,producer:"factory",icon:"↗",
+    targetDomains:["ground","structure"],targetBonuses:{tank:1.8,ifv:1.45,infantry:.42},rocket:true,
+  });
+  add("siege_howitzer", "ground", "arty", "siege", {
+    name:"重型攻城榴炮",role:"超远程对地溅射 / 对建筑加成 / 盲区200、机动缓慢",
+    cost:1950,hp:450,speed:42,damage:175,range:770,minRange:200,reload:6.5,sight:260,r:20,time:25,producer:"factory",icon:"⌁",splash:65,
+    targetDomains:["ground","structure"],damageBonuses:{structure:1.5},
+  });
+  add("field_medic", "ground", "infantry", "medic", {
+    name:"战地医疗组",role:"无武装 / 仅治疗友方步兵 / 不能维修车辆与建筑",
+    cost:260,hp:125,speed:70,damage:0,range:145,reload:1,sight:240,r:9,time:5,producer:"barracks",icon:"+",
+    heal:14,healDomains:["ground"],healFamilies:["infantry"],aiWeight:.45,
+  });
+  add("torpedo_boat", "naval", "destroyer", "torpedo", {
+    name:"高速鱼雷艇",role:"仅对舰 / 近距离高单发 / 脆弱高速、需接近舰队",
+    cost:680,hp:320,speed:137,damage:220,range:220,reload:4.1,sight:330,r:14,time:10,producer:"navalyard",icon:"»",
+    targetDomains:["naval"],weaponFx:"torpedo",
+  });
+  add("arsenal_ship", "naval", "destroyer", "arsenal", {
+    name:"导弹武库舰",role:"陆海及基地远程导弹 / 盲区170 / 昂贵缓慢、需防空护航",
+    cost:2800,hp:1450,speed:45,damage:190,range:820,minRange:170,reload:5.8,sight:380,r:29,time:31,producer:"navalyard",icon:"▦",splash:48,
+    targetDomains:["ground","naval","structure"],rocket:true,
+  });
+  add("escort_corvette", "naval", "destroyer", "ciws-escort", {
+    name:"近防护航舰",role:"近距对舰防空 / 拦截250范围内敌方火箭 / 每0.8秒一次",
+    cost:1250,hp:780,speed:88,damage:22,range:310,reload:.45,sight:410,r:20,time:16,producer:"navalyard",icon:"⌖",
+    targetDomains:["naval","air"],interceptRange:250,interceptReload:.8,
+  });
+  add("rescue_helicopter", "air", "heli", "rescue", {
+    name:"战场救援直升机",role:"无武装 / 快速治疗地面步兵 / 怕防空、不维修车辆",
+    cost:850,hp:290,speed:155,damage:0,range:190,reload:1,sight:380,r:18,time:12,producer:"airfield",icon:"+",
+    heal:22,healDomains:["ground"],healFamilies:["infantry"],aiWeight:.4,
+  });
+  add("naval_strike_aircraft", "air", "fighter", "antiship", {
+    name:"反舰攻击机",role:"仅攻击舰艇 / 高速远程导弹 / 无自卫对空火力",
+    cost:1600,hp:350,speed:185,damage:185,range:540,reload:4.6,sight:400,r:21,time:20,producer:"airfield",icon:"↗",
+    targetDomains:["naval"],rocket:true,
+  });
+  add("electronic_warfare_aircraft", "air", "fighter", "electronic", {
+    name:"战术电子战飞机",role:"无直接火力 / 260范围内敌方陆海空及建筑装填耗时+30% / 同类不叠加",
+    cost:1900,hp:380,speed:165,damage:0,range:260,reload:1,sight:510,r:22,time:23,producer:"airfield",icon:"≈",aiWeight:.4,
+    fireControl:{enemy:true,multiplier:1.3,domains:["ground","naval","air","structure"]},supportDomains:["ground","naval","air"],
+  });
+  add("orbital_escort", "space", "orbital_interceptor", "close-escort", {
+    name:"轨道护航舰（架空）",role:"近距空天连射 / 高耐久护航 / 不攻击地面和基地",
+    cost:2700,hp:1250,speed:105,damage:44,range:350,reload:.42,sight:500,r:24,time:26,producer:"spaceport",icon:"⌖",
+    targetDomains:["air","space"],weaponFx:"interceptor-burst",
+  });
+  add("orbital_relay", "space", "satellite", "command-relay", {
+    name:"轨道指挥中继站（架空）",role:"无武装 / 280范围友方空天单位装填耗时-15% / 同类不叠加",
+    cost:2200,hp:650,speed:65,damage:0,range:280,reload:1,sight:650,r:24,time:24,producer:"spaceport",icon:"⌁",aiWeight:.4,
+    fireControl:{enemy:false,multiplier:.85,domains:["air","space"]},supportDomains:["air","space"],
+  });
+  add("orbital_jammer", "space", "satellite", "electronic-denial", {
+    name:"轨道电子压制站（架空）",role:"无直接火力 / 360范围敌方太空装填耗时+35% / 受AI太空武器禁令约束",
+    cost:2900,hp:800,speed:75,damage:0,range:360,reload:1,sight:560,r:25,time:28,producer:"spaceport",icon:"≈",aiWeight:.4,
+    fireControl:{enemy:true,multiplier:1.35,domains:["space"]},supportDomains:["space"],
+  });
+  const reinforcements=added.slice(waveStart);
+
   D.UNIT_GROUPS = {
     ground: { name: "陆军", icon: "▰" }, naval: { name: "海军", icon: "⚓" },
     air: { name: "空军", icon: "✈" }, space: { name: "太空", icon: "✧" },
   };
   D.ROSTER = {
     added,
+    reinforcements,
     logistics: ["harvester"],
     groups: Object.fromEntries(Object.keys(D.UNIT_GROUPS).map(group => [group,
       Object.keys(U).filter(kind => U[kind].unitGroup === group && U[kind].combatRole !== "logistics"),

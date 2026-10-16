@@ -1,0 +1,88 @@
+{
+  "recordedAt": "2026-10-16T16:58:13.817Z",
+  "models": [
+    {
+      "key": "field_medic_chn",
+      "scale": 5.7,
+      "parts": 125,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 仅治疗友方步兵 / 不能维修车辆与建筑",
+      "profile": "reinforcement-field_medic-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "field_medic",
+      "fiction": false,
+      "squadMembers": 3,
+      "unarmed": true,
+      "kind": "field_medic",
+      "triangles": 13236,
+      "dimensions": [
+        3,
+        1.7549999665934592,
+        2.9174588918685913
+      ]
+    },
+    {
+      "key": "tank_destroyer_chn",
+      "scale": 6.3,
+      "parts": 775,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "远射程反装甲 / 轻型8轮底盘 / 怕步兵近身",
+      "profile": "reinforcement-tank_destroyer-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "tank_destroyer",
+      "fiction": false,
+      "axles": 4,
+      "kind": "tank_destroyer",
+      "triangles": 19872,
+      "dimensions": [
+        8.09499979019165,
+        3.665516458749771,
+        3.244999885559082
+      ]
+    },
+    {
+      "key": "arsenal_ship_chn",
+      "scale": 4.4,
+      "parts": 486,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "陆海及基地远程导弹 / 盲区170 / 昂贵缓慢、需防空护航",
+      "profile": "reinforcement-arsenal_ship-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "arsenal_ship",
+      "fiction": false,
+      "hullType": "long-vls-hull",
+      "kind": "arsenal_ship",
+      "triangles": 10080,
+      "dimensions": [
+        29.06399917602539,
+        6.384999752044678,
+        6.5
+      ]
+    },
+    {
+      "key": "infantry_chn",
+      "scale": 5.6,
+      "parts": 192,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "占点 / 近距离反装甲",
+      "profile": "role-infantry-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "infantry",
+      "squadMembers": 3,
+      "kind": "infantry",
+      "triangles": 29760,
+      "dimensions": [
+        2.489000082015991,
+        1.754199953051284,
+        2.3655364513397217
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

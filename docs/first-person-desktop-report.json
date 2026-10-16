@@ -1,0 +1,838 @@
+{
+  "recordedAt": "2026-10-16T17:00:17.683Z",
+  "environment": "Packaged Electron",
+  "checks": [
+    "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
+    "M toggles and restores the optional motion setting through keyboard input",
+    "Mouse look, right-button ADS narrows camera FOV, release restores aim, and Space freezes simulation and clears movement/fire",
+    "Escape exits driving and returns strategy camera without opening settings",
+    "All 56 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked",
+    "AI builds, trains and orders other units during possession, excludes the driver, and stops new AI calls after E exits",
+    "Real left-click mesh-target shot reduces enemy HP and confirms actual source damage; a subsequent sky miss produces no hit marker",
+    "A real manual projectile remains tied to its recorded impact area: relocating the target during flight causes no remote damage or hit marker",
+    "Camera sees target while model-muzzle or conservative-body origin hits cover: new missile vehicle, legacy Chinese tank and unanchored IMP tank all deal zero damage and no hit confirmation",
+    "Real packaged fullscreen=true; minimizing with W+fire held clears keys and simulation input; restoring/focusing does not resume movement or fire"
+  ],
+  "possession": [
+    {
+      "kind": "infantry",
+      "id": 38,
+      "domain": "ground",
+      "mode": "infantry",
+      "weaponProfile": "original-rifle",
+      "hudName": "战术步兵小组",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "tank",
+      "id": 41,
+      "domain": "ground",
+      "mode": "ground",
+      "weaponProfile": "original-ground-controls",
+      "hudName": "ZTZ-99A",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "ifv",
+      "id": 44,
+      "domain": "ground",
+      "mode": "ground",
+      "weaponProfile": "original-ground-controls",
+      "hudName": "ZBD-04A",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "arty",
+      "id": 47,
+      "domain": "ground",
+      "mode": "ground",
+      "weaponProfile": "original-ground-controls",
+      "hudName": "PLZ-05",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "rocket",
+      "id": 50,
+      "domain": "ground",
+      "mode": "ground",
+      "weaponProfile": "original-ground-controls",
+      "hudName": "PHL-191",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "aa",
+      "id": 53,
+      "domain": "ground",
+      "mode": "ground",
+      "weaponProfile": "original-ground-controls",
+      "hudName": "HQ-17",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "heli",
+      "id": 56,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "Z-10",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "jet",
+      "id": 59,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "下一代战机（技术推演）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "fighter",
+      "id": 62,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "J-20",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "destroyer",
+      "id": 65,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "055 型",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "carrier",
+      "id": 68,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "辽宁舰",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "submarine",
+      "id": 71,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "093 型",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "satellite",
+      "id": 74,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "天巡侦察星（原创架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital",
+      "id": 77,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "天环重型平台（原创架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_interceptor",
+      "id": 80,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "飞梭截击舰（原创架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "asat",
+      "id": 83,
+      "domain": "ground",
+      "mode": "ground",
+      "weaponProfile": "original-ground-controls",
+      "hudName": "望穹反轨车（原创架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "harvester",
+      "id": 86,
+      "domain": "ground",
+      "mode": "ground",
+      "weaponProfile": "original-ground-controls",
+      "hudName": "装甲采矿车",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "antitank_team",
+      "id": 89,
+      "domain": "ground",
+      "mode": "infantry",
+      "weaponProfile": "original-shoulder-launcher",
+      "hudName": "反坦克导弹班",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "machinegun_team",
+      "id": 92,
+      "domain": "ground",
+      "mode": "infantry",
+      "weaponProfile": "original-belt-fed-machinegun",
+      "hudName": "机枪火力班",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "recon_vehicle",
+      "id": 95,
+      "domain": "ground",
+      "mode": "ground",
+      "weaponProfile": "original-ground-controls",
+      "hudName": "轻型侦察车",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "repair_vehicle",
+      "id": 98,
+      "domain": "ground",
+      "mode": "ground",
+      "weaponProfile": "original-ground-controls",
+      "hudName": "装甲维修车",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "mortar_team",
+      "id": 101,
+      "domain": "ground",
+      "mode": "infantry",
+      "weaponProfile": "original-mortar-observation",
+      "hudName": "迫击炮班",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "assault_team",
+      "id": 104,
+      "domain": "ground",
+      "mode": "infantry",
+      "weaponProfile": "original-rifle",
+      "hudName": "重装突击班",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "frigate",
+      "id": 107,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "通用护卫舰",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "patrol_boat",
+      "id": 110,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "高速巡逻艇",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "missile_boat",
+      "id": 113,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "反舰导弹艇",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "shore_bombardment",
+      "id": 116,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "岸攻火力舰",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "air_defense_ship",
+      "id": 119,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "舰队防空舰",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "repair_ship",
+      "id": 122,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "舰队维修舰",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "recon_boat",
+      "id": 125,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "海上侦察艇",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "recon_drone",
+      "id": 128,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "侦察无人机",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "attack_drone",
+      "id": 131,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "察打一体无人机",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "interceptor",
+      "id": 134,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "远程截击机",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "close_support_aircraft",
+      "id": 137,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "近距支援机",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "heavy_bomber",
+      "id": 140,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "重型轰炸机",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "early_warning_aircraft",
+      "id": 143,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "空中预警机",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "escort_helicopter",
+      "id": 146,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "防空护航直升机",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_sniper",
+      "id": 149,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "反轨狙击舰（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_point_defense",
+      "id": 152,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "轨道近防护卫舰（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_bombardment",
+      "id": 155,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "轨道岸攻平台（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_siege",
+      "id": 158,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "轨道攻城舰（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_repair",
+      "id": 161,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "轨道维修站（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_mapper",
+      "id": 164,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "广域测绘星（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_raider",
+      "id": 167,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "轨道突袭舰（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "tank_destroyer",
+      "id": 170,
+      "domain": "ground",
+      "mode": "ground",
+      "weaponProfile": "original-ground-controls",
+      "hudName": "反坦克歼击车",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "siege_howitzer",
+      "id": 173,
+      "domain": "ground",
+      "mode": "ground",
+      "weaponProfile": "original-ground-controls",
+      "hudName": "重型攻城榴炮",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "field_medic",
+      "id": 176,
+      "domain": "ground",
+      "mode": "medical",
+      "weaponProfile": "original-medical-device",
+      "hudName": "战地医疗组",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "torpedo_boat",
+      "id": 179,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "高速鱼雷艇",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "arsenal_ship",
+      "id": 182,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "导弹武库舰",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "escort_corvette",
+      "id": 185,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "近防护航舰",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "rescue_helicopter",
+      "id": 188,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "战场救援直升机",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "naval_strike_aircraft",
+      "id": 191,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "反舰攻击机",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "electronic_warfare_aircraft",
+      "id": 194,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "战术电子战飞机",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_escort",
+      "id": 197,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "轨道护航舰（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_relay",
+      "id": 200,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "轨道指挥中继站（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_jammer",
+      "id": 203,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "轨道电子压制站（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    }
+  ],
+  "screenshots": [
+    "screenshots/fps-infantry-desktop.png",
+    "screenshots/fps-ads-desktop.png",
+    "screenshots/fps-tank-desktop.png",
+    "screenshots/fps-air-desktop.png",
+    "screenshots/fps-naval-desktop.png",
+    "screenshots/fps-space-desktop.png",
+    "screenshots/fps-antitank_team-desktop.png",
+    "screenshots/fps-machinegun_team-desktop.png",
+    "screenshots/fps-mortar_team-desktop.png",
+    "screenshots/fps-medical-desktop.png",
+    "screenshots/fps-hit-desktop.png",
+    "screenshots/fps-muzzle-cover-tank_destroyer-chn-desktop.png",
+    "screenshots/fps-muzzle-cover-tank-chn-desktop.png",
+    "screenshots/fps-muzzle-cover-tank-imp-desktop.png",
+    "screenshots/fps-failure-desktop.png",
+    "screenshots/fps-failure-desktop.png",
+    "screenshots/fps-failure-desktop.png",
+    "screenshots/fps-focus-restored-desktop.png"
+  ],
+  "errors": [],
+  "scope": "Deterministic small combat fixtures; real browser input, renderer, model raycasts and simulation. No claim of sustained combat performance or photorealism.",
+  "movement": [
+    {
+      "key": "KeyW",
+      "before": {
+        "x": 700,
+        "y": 800,
+        "yaw": 0,
+        "pitch": -0.025
+      },
+      "after": {
+        "x": 721.6000000000001,
+        "y": 800,
+        "yaw": 0,
+        "pitch": -0.025
+      }
+    },
+    {
+      "key": "KeyS",
+      "before": {
+        "x": 721.6000000000001,
+        "y": 800,
+        "yaw": 0,
+        "pitch": -0.025
+      },
+      "after": {
+        "x": 700,
+        "y": 800,
+        "yaw": 0,
+        "pitch": -0.025
+      }
+    },
+    {
+      "key": "KeyD",
+      "before": {
+        "x": 700,
+        "y": 800,
+        "yaw": 0,
+        "pitch": -0.025
+      },
+      "after": {
+        "x": 700,
+        "y": 821.6000000000001,
+        "yaw": 0,
+        "pitch": -0.025
+      }
+    },
+    {
+      "key": "KeyA",
+      "before": {
+        "x": 700,
+        "y": 821.6000000000001,
+        "yaw": 0,
+        "pitch": -0.025
+      },
+      "after": {
+        "x": 700,
+        "y": 800,
+        "yaw": 0,
+        "pitch": -0.025
+      }
+    }
+  ],
+  "ads": {
+    "hip": 70,
+    "active": true,
+    "fov": 48.04380718006361,
+    "view": "infantry"
+  },
+  "ai": {
+    "calls": 5,
+    "production": 2,
+    "construction": 1,
+    "othersOrdered": 1,
+    "controlledOrder": null
+  },
+  "aim": {
+    "target": 213,
+    "point": [
+      828.4683744545998,
+      13.859999811172484,
+      798.6121832091302
+    ],
+    "yaw": -0.010802369177204807,
+    "pitch": -0.03998618916331531
+  },
+  "combat": {
+    "targetHP": 576,
+    "feedback": {
+      "hitAt": 21.45000000000017,
+      "sourceId": 212,
+      "targetId": 213,
+      "damage": 74
+    },
+    "incoming": {
+      "x": 700,
+      "y": 800,
+      "sourceId": 212,
+      "time": 21.45000000000017
+    },
+    "hudConfirmed": true
+  },
+  "fixedImpact": {
+    "original": [
+      830,
+      800
+    ],
+    "impact": [
+      828.4683744545998,
+      798.6121832091302
+    ],
+    "health": 576,
+    "area": {
+      "x": 830,
+      "y": 800,
+      "r": 17
+    },
+    "relocated": [
+      1010,
+      880
+    ]
+  },
+  "cover": [
+    {
+      "kind": "tank_destroyer",
+      "faction": "chn",
+      "originMode": "model-muzzle",
+      "cameraTarget": 217,
+      "muzzleHitCover": true,
+      "aimTarget": null,
+      "center": [
+        720.89823744546,
+        17.687249981117247,
+        803.943618320913
+      ],
+      "size": 2.727692887095687,
+      "gap": 4.196450595531826,
+      "damage": 0
+    },
+    {
+      "kind": "tank",
+      "faction": "chn",
+      "originMode": "model-muzzle",
+      "cameraTarget": 221,
+      "muzzleHitCover": true,
+      "aimTarget": null,
+      "center": [
+        754.05855744546,
+        12.493799981117249,
+        799.861218320913
+      ],
+      "size": 2.8358315313926594,
+      "gap": 4.3628177406040916,
+      "damage": 0
+    },
+    {
+      "kind": "tank",
+      "faction": "imp",
+      "originMode": "conservative-body",
+      "cameraTarget": 225,
+      "muzzleHitCover": true,
+      "aimTarget": null,
+      "center": [
+        712.84683744546,
+        12.500999981117248,
+        799.861218320913
+      ],
+      "size": 3,
+      "gap": 5.980215943228312,
+      "damage": 0
+    }
+  ],
+  "renderEnvironment": {
+    "viewport": [
+      2752,
+      1152
+    ],
+    "dpr": 1.25,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "passed": true,
+  "nativeFocus": {
+    "recordedAt": "2026-10-16T17:03:52.696Z",
+    "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
+    "nativeBefore": {
+      "fullScreen": true,
+      "focused": true,
+      "minimized": false
+    },
+    "nativeBlurred": {
+      "focused": true,
+      "minimized": true
+    },
+    "blurred": {
+      "documentFocused": false,
+      "events": [
+        {
+          "trusted": true,
+          "at": 3287.0999999046326
+        }
+      ],
+      "locked": false,
+      "keys": 0,
+      "fire": false,
+      "input": {
+        "forward": 0,
+        "strafe": 0,
+        "yaw": 0,
+        "fire": false,
+        "targetId": null,
+        "aimX": 825,
+        "aimY": 800,
+        "aimHeight": 5
+      },
+      "position": [
+        700,
+        800
+      ]
+    },
+    "restored": {
+      "documentFocused": true,
+      "keys": 0,
+      "fire": false,
+      "input": {
+        "forward": 0,
+        "strafe": 0,
+        "yaw": 0,
+        "fire": false,
+        "targetId": null,
+        "aimX": 1111.9141630900672,
+        "aimY": 800,
+        "aimHeight": 0
+      },
+      "position": [
+        700,
+        800
+      ]
+    }
+  }
+}
