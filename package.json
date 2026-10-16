@@ -1,6 +1,6 @@
 {
   "name": "modern-front-hd",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "private": true,
   "scripts": {
     "test": "node --test tests/sim.test.cjs tests/tactics.test.cjs tests/space.test.cjs tests/expanded.test.cjs",

@@ -1,0 +1,65 @@
+{
+  "recordedAt": "2026-10-16T16:02:58.641Z",
+  "models": [
+    {
+      "key": "assault_team_chn",
+      "scale": 5.6,
+      "parts": 192,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "近距离突入 / 较高生命 / 射程短",
+      "profile": "role-assault_team-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "assault_team",
+      "squadMembers": 3,
+      "kind": "assault_team",
+      "triangles": 29760,
+      "dimensions": [
+        2.489000082015991,
+        1.754199953051284,
+        2.3655364513397217
+      ]
+    },
+    {
+      "key": "frigate_chn",
+      "scale": 4.5,
+      "parts": 236,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "低成本海域护航 / 兼顾防空 / 火力弱于驱逐舰",
+      "profile": "role-frigate-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "frigate",
+      "kind": "frigate",
+      "triangles": 7532,
+      "dimensions": [
+        20,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "interceptor_chn",
+      "scale": 6,
+      "parts": 326,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "只攻击飞机 / 高速远射程 / 装填较慢",
+      "profile": "role-interceptor-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "interceptor",
+      "kind": "interceptor",
+      "triangles": 17996,
+      "dimensions": [
+        11,
+        2.641016662120819,
+        10.399999618530273
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

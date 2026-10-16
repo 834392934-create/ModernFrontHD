@@ -1,18 +1,19 @@
 {
-  "recordedAt": "2026-10-16T15:15:16.971Z",
+  "recordedAt": "2026-10-16T16:06:10.175Z",
   "models": [
     {
       "key": "frigate_chn",
       "scale": 4.5,
-      "parts": 143,
+      "parts": 236,
       "original": true,
       "evidenceStatus": "original-role-variant",
       "designRole": "低成本海域护航 / 兼顾防空 / 火力弱于驱逐舰",
-      "profile": "role-frigate-chn-v1",
+      "profile": "role-frigate-chn-v2",
+      "detailPass": 2,
       "fiction": false,
       "modelFamily": "frigate",
       "kind": "frigate",
-      "triangles": 3956,
+      "triangles": 7532,
       "dimensions": [
         20,
         7.200000047683716,
@@ -20,148 +21,22 @@
       ]
     },
     {
-      "key": "air_defense_ship_chn",
-      "scale": 4.5,
-      "parts": 174,
-      "original": true,
-      "evidenceStatus": "original-role-variant",
-      "designRole": "仅对空 / 远程连射 / 无对舰和对地火力",
-      "profile": "role-air_defense_ship-chn-v1",
-      "fiction": false,
-      "modelFamily": "air_defense_ship",
-      "kind": "air_defense_ship",
-      "triangles": 4352,
-      "dimensions": [
-        24,
-        7.200000047683716,
-        5.400000095367432
-      ]
-    },
-    {
-      "key": "early_warning_aircraft_chn",
-      "scale": 5.2,
-      "parts": 91,
-      "original": true,
-      "evidenceStatus": "original-role-variant",
-      "designRole": "无武装 / 超大视野 / 较慢较昂贵；不提供额外伤害加成",
-      "profile": "role-early_warning_aircraft-chn-v1",
-      "fiction": false,
-      "modelFamily": "early_warning_aircraft",
-      "kind": "early_warning_aircraft",
-      "triangles": 3340,
-      "dimensions": [
-        12,
-        3.8299999237060547,
-        15.399999618530273
-      ]
-    },
-    {
-      "key": "orbital_bombardment_chn",
-      "scale": 6.2,
-      "parts": 165,
-      "original": true,
-      "evidenceStatus": "original-role-variant",
-      "designRole": "只攻击陆军和海军 / 集群溅射 / 不能攻击基地",
-      "profile": "role-orbital_bombardment-chn-v1",
-      "fiction": true,
-      "modelFamily": "orbital_bombardment",
-      "kind": "orbital_bombardment",
-      "triangles": 4848,
-      "dimensions": [
-        9.184999942779541,
-        2.8950001001358032,
-        8.513999938964844
-      ]
-    },
-    {
       "key": "orbital_mapper_chn",
       "scale": 6.2,
-      "parts": 101,
+      "parts": 90,
       "original": true,
       "evidenceStatus": "original-role-variant",
       "designRole": "无武装 / 超大视野 / 低机动低耐久",
-      "profile": "role-orbital_mapper-chn-v1",
+      "profile": "role-orbital_mapper-chn-v2",
+      "detailPass": 2,
       "fiction": true,
       "modelFamily": "orbital_mapper",
       "kind": "orbital_mapper",
-      "triangles": 2452,
+      "triangles": 2944,
       "dimensions": [
-        7.513999819755554,
+        7.5899999141693115,
         3.9524999856948853,
-        12.11400032043457
-      ]
-    },
-    {
-      "key": "orbital_sniper_chn",
-      "scale": 6.2,
-      "parts": 170,
-      "original": true,
-      "evidenceStatus": "original-role-variant",
-      "designRole": "只攻击太空 / 超远单体火力 / 低速慢装填",
-      "profile": "role-orbital_sniper-chn-v1",
-      "fiction": true,
-      "modelFamily": "orbital_sniper",
-      "kind": "orbital_sniper",
-      "triangles": 4192,
-      "dimensions": [
-        11.920000076293945,
-        2.350000023841858,
-        8.013999938964844
-      ]
-    },
-    {
-      "key": "repair_vehicle_chn",
-      "scale": 6.2,
-      "parts": 125,
-      "original": true,
-      "evidenceStatus": "original-role-variant",
-      "designRole": "无武装 / 近距维修友方陆军 / 不能修复基地",
-      "profile": "role-repair_vehicle-chn-v1",
-      "fiction": false,
-      "modelFamily": "repair_vehicle",
-      "kind": "repair_vehicle",
-      "triangles": 3436,
-      "dimensions": [
-        8.435793161392212,
-        3.7994086399674414,
-        3.3399999141693115
-      ]
-    },
-    {
-      "key": "mortar_team_chn",
-      "scale": 5.6,
-      "parts": 66,
-      "original": true,
-      "evidenceStatus": "original-role-variant",
-      "designRole": "廉价曲射溅射 / 最小射程 90 / 需要侦察",
-      "profile": "role-mortar_team-chn-v1",
-      "fiction": false,
-      "modelFamily": "mortar_team",
-      "squadMembers": 2,
-      "kind": "mortar_team",
-      "triangles": 3720,
-      "dimensions": [
-        2.9850000143051147,
-        1.8500000052154064,
-        3.2082149982452393
-      ]
-    },
-    {
-      "key": "heavy_bomber_chn",
-      "scale": 5.1,
-      "parts": 20,
-      "original": true,
-      "evidenceStatus": "original-role-variant",
-      "designRole": "对陆海及建筑大范围轰击 / 昂贵、慢速、慢装填",
-      "profile": "role-heavy_bomber-chn-v1",
-      "fiction": false,
-      "modelFamily": "heavy_bomber",
-      "kind": "heavy_bomber",
-      "triangles": 520,
-      "dimensions": [
-        10,
-        1.8525000214576721,
-        20
+        12.190000534057617
       ]
     }
   ],

@@ -1,116 +1,521 @@
 {
-  "recordedAt": "2026-10-16T15:12:02.763Z",
+  "recordedAt": "2026-10-16T16:08:20.071Z",
   "models": [
     {
       "key": "antitank_team_chn",
       "scale": 5.6,
-      "parts": 53,
+      "parts": 176,
       "original": true,
       "evidenceStatus": "original-role-variant",
       "designRole": "陆军反装甲 / 高单发、慢装填 / 脆弱步兵",
-      "profile": "role-antitank_team-chn-v1",
+      "profile": "role-antitank_team-chn-v2",
+      "detailPass": 2,
       "fiction": false,
       "modelFamily": "antitank_team",
       "squadMembers": 3,
       "kind": "antitank_team",
-      "triangles": 2176,
+      "triangles": 27888,
       "dimensions": [
-        2.9100000858306885,
-        1.8172000236809254,
-        2.9530036449432373
+        2.866999924182892,
+        1.754199953051284,
+        2.8527681827545166
       ]
     },
     {
       "key": "machinegun_team_chn",
       "scale": 5.6,
-      "parts": 49,
+      "parts": 130,
       "original": true,
       "evidenceStatus": "original-role-variant",
       "designRole": "中距反步兵 / 快速连射 / 对重装甲弱",
-      "profile": "role-machinegun_team-chn-v1",
+      "profile": "role-machinegun_team-chn-v2",
+      "detailPass": 2,
       "fiction": false,
       "modelFamily": "machinegun_team",
       "squadMembers": 2,
       "kind": "machinegun_team",
-      "triangles": 1912,
+      "triangles": 18980,
       "dimensions": [
-        3.853999972343445,
-        1.4172000475227833,
-        1.95453542470932
-      ]
-    },
-    {
-      "key": "mortar_team_chn",
-      "scale": 5.6,
-      "parts": 38,
-      "original": true,
-      "evidenceStatus": "original-role-variant",
-      "designRole": "廉价曲射溅射 / 最小射程 90 / 需要侦察",
-      "profile": "role-mortar_team-chn-v1",
-      "fiction": false,
-      "modelFamily": "mortar_team",
-      "squadMembers": 2,
-      "kind": "mortar_team",
-      "triangles": 1424,
-      "dimensions": [
-        3,
-        1.8372000269591808,
-        3.1580036878585815
-      ]
-    },
-    {
-      "key": "assault_team_chn",
-      "scale": 5.6,
-      "parts": 69,
-      "original": true,
-      "evidenceStatus": "original-role-variant",
-      "designRole": "近距离突入 / 较高生命 / 射程短",
-      "profile": "role-assault_team-chn-v1",
-      "fiction": false,
-      "modelFamily": "assault_team",
-      "squadMembers": 3,
-      "kind": "assault_team",
-      "triangles": 2628,
-      "dimensions": [
-        2.7239999771118164,
-        1.8172000236809254,
-        2.609999895095825
+        3.9935001134872437,
+        1.3541999768931419,
+        1.8542998433113098
       ]
     },
     {
       "key": "recon_vehicle_chn",
       "scale": 6.2,
-      "parts": 73,
+      "parts": 360,
       "original": true,
       "evidenceStatus": "original-role-variant",
       "designRole": "快速前出 / 大视野 / 弱自卫火力",
-      "profile": "role-recon_vehicle-chn-v1",
+      "profile": "role-recon_vehicle-chn-v2",
+      "detailPass": 2,
       "fiction": false,
       "modelFamily": "recon_vehicle",
       "kind": "recon_vehicle",
-      "triangles": 2628,
+      "triangles": 9988,
       "dimensions": [
         5.740000009536743,
-        3.970000185072422,
-        3.240000009536743
+        3.9775002114474773,
+        3.0450000762939453
       ]
     },
     {
       "key": "repair_vehicle_chn",
       "scale": 6.2,
-      "parts": 106,
+      "parts": 558,
       "original": true,
       "evidenceStatus": "original-role-variant",
       "designRole": "无武装 / 近距维修友方陆军 / 不能修复基地",
-      "profile": "role-repair_vehicle-chn-v1",
+      "profile": "role-repair_vehicle-chn-v2",
+      "detailPass": 2,
       "fiction": false,
       "modelFamily": "repair_vehicle",
       "kind": "repair_vehicle",
-      "triangles": 3160,
+      "triangles": 14784,
       "dimensions": [
         8.435793161392212,
-        3.7994086399674414,
-        3.3399999141693115
+        3.8069086663424967,
+        3.2300000190734863
+      ]
+    },
+    {
+      "key": "mortar_team_chn",
+      "scale": 5.6,
+      "parts": 116,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "廉价曲射溅射 / 最小射程 90 / 需要侦察",
+      "profile": "role-mortar_team-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "mortar_team",
+      "squadMembers": 2,
+      "kind": "mortar_team",
+      "triangles": 18456,
+      "dimensions": [
+        2.8895000219345093,
+        1.754199953051284,
+        3.0577681064605713
+      ]
+    },
+    {
+      "key": "assault_team_chn",
+      "scale": 5.6,
+      "parts": 192,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "近距离突入 / 较高生命 / 射程短",
+      "profile": "role-assault_team-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "assault_team",
+      "squadMembers": 3,
+      "kind": "assault_team",
+      "triangles": 29760,
+      "dimensions": [
+        2.489000082015991,
+        1.754199953051284,
+        2.3655364513397217
+      ]
+    },
+    {
+      "key": "frigate_chn",
+      "scale": 4.5,
+      "parts": 236,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "低成本海域护航 / 兼顾防空 / 火力弱于驱逐舰",
+      "profile": "role-frigate-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "frigate",
+      "kind": "frigate",
+      "triangles": 7532,
+      "dimensions": [
+        20,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "patrol_boat_chn",
+      "scale": 5.6,
+      "parts": 155,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "廉价近海炮艇 / 高速快射 / 射程短",
+      "profile": "role-patrol_boat-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "patrol_boat",
+      "kind": "patrol_boat",
+      "triangles": 5552,
+      "dimensions": [
+        11.03499984741211,
+        5,
+        3.299999952316284
+      ]
+    },
+    {
+      "key": "missile_boat_chn",
+      "scale": 5.6,
+      "parts": 159,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "只攻击海军 / 高单发远射程 / 低生命慢装填",
+      "profile": "role-missile_boat-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "missile_boat",
+      "kind": "missile_boat",
+      "triangles": 5284,
+      "dimensions": [
+        11.03499984741211,
+        5,
+        3.299999952316284
+      ]
+    },
+    {
+      "key": "shore_bombardment_chn",
+      "scale": 4.5,
+      "parts": 217,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "仅攻击陆军和建筑 / 远程溅射 / 最小射程 180",
+      "profile": "role-shore_bombardment-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "shore_bombardment",
+      "kind": "shore_bombardment",
+      "triangles": 7452,
+      "dimensions": [
+        24.598999900817873,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "air_defense_ship_chn",
+      "scale": 4.5,
+      "parts": 243,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "仅对空 / 远程连射 / 无对舰和对地火力",
+      "profile": "role-air_defense_ship-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "air_defense_ship",
+      "kind": "air_defense_ship",
+      "triangles": 9708,
+      "dimensions": [
+        24,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "repair_ship_chn",
+      "scale": 4.5,
+      "parts": 225,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 近距维修友方海军 / 需要护航",
+      "profile": "role-repair_ship-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "repair_ship",
+      "kind": "repair_ship",
+      "triangles": 6956,
+      "dimensions": [
+        24,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    },
+    {
+      "key": "recon_boat_chn",
+      "scale": 5.6,
+      "parts": 184,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "大范围海域侦察 / 高速脆弱 / 弱自卫火力",
+      "profile": "role-recon_boat-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "recon_boat",
+      "kind": "recon_boat",
+      "triangles": 7160,
+      "dimensions": [
+        11.03499984741211,
+        5.352499723434448,
+        3.742000102996826
+      ]
+    },
+    {
+      "key": "recon_drone_chn",
+      "scale": 5.6,
+      "parts": 132,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 高速侦察 / 低成本低生命",
+      "profile": "role-recon_drone-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "recon_drone",
+      "kind": "recon_drone",
+      "triangles": 7852,
+      "dimensions": [
+        8.300000190734863,
+        2.209858477115631,
+        16.200000762939453
+      ]
+    },
+    {
+      "key": "attack_drone_chn",
+      "scale": 5.6,
+      "parts": 127,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "对陆海及建筑单体打击 / 低成本 / 无制空能力",
+      "profile": "role-attack_drone-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "attack_drone",
+      "kind": "attack_drone",
+      "triangles": 6792,
+      "dimensions": [
+        8.300000190734863,
+        2.4673584699630737,
+        12.399999618530273
+      ]
+    },
+    {
+      "key": "interceptor_chn",
+      "scale": 6,
+      "parts": 352,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "只攻击飞机 / 高速远射程 / 装填较慢",
+      "profile": "role-interceptor-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "interceptor",
+      "kind": "interceptor",
+      "triangles": 19884,
+      "dimensions": [
+        11,
+        2.641016662120819,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "close_support_aircraft_chn",
+      "scale": 6,
+      "parts": 350,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "对陆军及建筑溅射 / 高耐久 / 短射程低速",
+      "profile": "role-close_support_aircraft-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "close_support_aircraft",
+      "kind": "close_support_aircraft",
+      "triangles": 19508,
+      "dimensions": [
+        9.328999996185303,
+        2.3500000834465027,
+        11.600000381469727
+      ]
+    },
+    {
+      "key": "heavy_bomber_chn",
+      "scale": 5.1,
+      "parts": 87,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "对陆海及建筑大范围轰击 / 昂贵、慢速、慢装填",
+      "profile": "role-heavy_bomber-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "heavy_bomber",
+      "kind": "heavy_bomber",
+      "triangles": 5052,
+      "dimensions": [
+        10,
+        1.0499999821186066,
+        20
+      ]
+    },
+    {
+      "key": "early_warning_aircraft_chn",
+      "scale": 5.2,
+      "parts": 466,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 超大视野 / 较慢较昂贵；不提供额外伤害加成",
+      "profile": "role-early_warning_aircraft-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "early_warning_aircraft",
+      "kind": "early_warning_aircraft",
+      "triangles": 25032,
+      "dimensions": [
+        12,
+        3.8299999237060547,
+        15.399999618530273
+      ]
+    },
+    {
+      "key": "escort_helicopter_chn",
+      "scale": 6.2,
+      "parts": 299,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "只攻击飞机 / 近距快射 / 保护慢速航空编队",
+      "profile": "role-escort_helicopter-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "escort_helicopter",
+      "kind": "escort_helicopter",
+      "triangles": 16080,
+      "dimensions": [
+        9.699999809265137,
+        3.7599999845027923,
+        5.782876968383789
+      ]
+    },
+    {
+      "key": "orbital_sniper_chn",
+      "scale": 6.2,
+      "parts": 218,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "只攻击太空 / 超远单体火力 / 低速慢装填",
+      "profile": "role-orbital_sniper-chn-v2",
+      "detailPass": 2,
+      "fiction": true,
+      "modelFamily": "orbital_sniper",
+      "kind": "orbital_sniper",
+      "triangles": 10456,
+      "dimensions": [
+        11.871084690093994,
+        2.350000023841858,
+        8.09000015258789
+      ]
+    },
+    {
+      "key": "orbital_point_defense_chn",
+      "scale": 6.2,
+      "parts": 141,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "只攻击大气层飞机 / 快速连射 / 无对轨和对地火力",
+      "profile": "role-orbital_point_defense-chn-v2",
+      "detailPass": 2,
+      "fiction": true,
+      "modelFamily": "orbital_point_defense",
+      "kind": "orbital_point_defense",
+      "triangles": 7356,
+      "dimensions": [
+        5.222692966461182,
+        2.2745020985603333,
+        7.090000152587891
+      ]
+    },
+    {
+      "key": "orbital_bombardment_chn",
+      "scale": 6.2,
+      "parts": 227,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "只攻击陆军和海军 / 集群溅射 / 不能攻击基地",
+      "profile": "role-orbital_bombardment-chn-v2",
+      "detailPass": 2,
+      "fiction": true,
+      "modelFamily": "orbital_bombardment",
+      "kind": "orbital_bombardment",
+      "triangles": 9552,
+      "dimensions": [
+        9.158909797668457,
+        2.8950001001358032,
+        8.59000015258789
+      ]
+    },
+    {
+      "key": "orbital_siege_chn",
+      "scale": 6.5,
+      "parts": 174,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "只攻击建筑 / 高单发 / 最小射程 220、机动低",
+      "profile": "role-orbital_siege-chn-v2",
+      "detailPass": 2,
+      "fiction": true,
+      "modelFamily": "orbital_siege",
+      "kind": "orbital_siege",
+      "triangles": 7728,
+      "dimensions": [
+        11.596191883087158,
+        2.600000023841858,
+        8.789999961853027
+      ]
+    },
+    {
+      "key": "orbital_repair_chn",
+      "scale": 6.2,
+      "parts": 147,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 近距维修友方太空单位 / 移动缓慢",
+      "profile": "role-orbital_repair-chn-v2",
+      "detailPass": 2,
+      "fiction": true,
+      "modelFamily": "orbital_repair",
+      "kind": "orbital_repair",
+      "triangles": 7996,
+      "dimensions": [
+        11.078476428985596,
+        2.5000000596046448,
+        14.09000015258789
+      ]
+    },
+    {
+      "key": "orbital_mapper_chn",
+      "scale": 6.2,
+      "parts": 90,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 超大视野 / 低机动低耐久",
+      "profile": "role-orbital_mapper-chn-v2",
+      "detailPass": 2,
+      "fiction": true,
+      "modelFamily": "orbital_mapper",
+      "kind": "orbital_mapper",
+      "triangles": 2944,
+      "dimensions": [
+        7.5899999141693115,
+        3.9524999856948853,
+        12.190000534057617
+      ]
+    },
+    {
+      "key": "orbital_raider_chn",
+      "scale": 6.5,
+      "parts": 152,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "海陆及基地近距离突袭 / 高机动 / 低耐久无对空能力",
+      "profile": "role-orbital_raider-chn-v2",
+      "detailPass": 2,
+      "fiction": true,
+      "modelFamily": "orbital_raider",
+      "kind": "orbital_raider",
+      "triangles": 6348,
+      "dimensions": [
+        7.978691816329956,
+        2.5040276050567627,
+        5.789999961853027
       ]
     }
   ],

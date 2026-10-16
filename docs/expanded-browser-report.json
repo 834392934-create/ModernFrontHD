@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-16T15:20:14.699Z",
+  "recordedAt": "2026-10-16T16:10:27.499Z",
   "environment": "Chromium",
   "checks": [
     "162 new faction-role models have valid geometry, truthful source metadata and appropriate weapon anchors",
@@ -18,9 +18,10 @@
     "airHeight": 65,
     "spaceHeight": 145
   },
+  "combat": null,
   "performance": {
     "frames": 201,
-    "durationMs": 4008.699999904633,
+    "durationMs": 4010.800000047684,
     "meanFPS": 50.1,
     "p95FrameMs": 20.200000000000728,
     "viewport": [
@@ -31,10 +32,10 @@
     "entities": 57,
     "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
     "calls": 104,
-    "triangles": 360942,
+    "triangles": 825094,
     "visibleEntities": 55,
     "geometries": 185
   },
-  "performanceScope": "54 added-role models + 3 buildings; warmed 4-second mixed-domain render with simulation running. Not sustained combat benchmark.",
+  "performanceScope": "57 live entities during the sample; fixture starts with 54 added-role models and 3 buildings, and existing production may complete. Warmed 4-second mixed-domain render; not sustained combat.",
   "errors": []
 }

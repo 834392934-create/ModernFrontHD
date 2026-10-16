@@ -1,0 +1,83 @@
+{
+  "recordedAt": "2026-10-16T16:01:56.162Z",
+  "models": [
+    {
+      "key": "orbital_siege_chn",
+      "scale": 6.5,
+      "parts": 174,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "只攻击建筑 / 高单发 / 最小射程 220、机动低",
+      "profile": "role-orbital_siege-chn-v2",
+      "detailPass": 2,
+      "fiction": true,
+      "modelFamily": "orbital_siege",
+      "kind": "orbital_siege",
+      "triangles": 7728,
+      "dimensions": [
+        11.596191883087158,
+        2.600000023841858,
+        8.789999961853027
+      ]
+    },
+    {
+      "key": "orbital_mapper_chn",
+      "scale": 6.2,
+      "parts": 90,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 超大视野 / 低机动低耐久",
+      "profile": "role-orbital_mapper-chn-v2",
+      "detailPass": 2,
+      "fiction": true,
+      "modelFamily": "orbital_mapper",
+      "kind": "orbital_mapper",
+      "triangles": 2944,
+      "dimensions": [
+        7.5899999141693115,
+        3.9524999856948853,
+        12.190000534057617
+      ]
+    },
+    {
+      "key": "orbital_point_defense_chn",
+      "scale": 6.2,
+      "parts": 141,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "只攻击大气层飞机 / 快速连射 / 无对轨和对地火力",
+      "profile": "role-orbital_point_defense-chn-v2",
+      "detailPass": 2,
+      "fiction": true,
+      "modelFamily": "orbital_point_defense",
+      "kind": "orbital_point_defense",
+      "triangles": 7356,
+      "dimensions": [
+        5.222692966461182,
+        2.2745020985603333,
+        7.090000152587891
+      ]
+    },
+    {
+      "key": "frigate_chn",
+      "scale": 4.5,
+      "parts": 224,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "低成本海域护航 / 兼顾防空 / 火力弱于驱逐舰",
+      "profile": "role-frigate-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "frigate",
+      "kind": "frigate",
+      "triangles": 7264,
+      "dimensions": [
+        20,
+        7.200000047683716,
+        5.400000095367432
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

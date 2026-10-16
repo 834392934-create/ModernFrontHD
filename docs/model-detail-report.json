@@ -1,0 +1,2163 @@
+{
+  "recordedAt": "2026-10-16T16:06:54.792Z",
+  "checks": [
+    "outward visible body and wing surfaces from above/below",
+    "162 role models retain valid batched geometry and PBR surfaces",
+    "real gallery camouflage input changes rendered clothing"
+  ],
+  "maxTriangles": 29760,
+  "maxMeshes": 3,
+  "rayChecks": [
+    {
+      "kind": "body",
+      "side": -1,
+      "hit": true,
+      "outward": 0.9937122048660457,
+      "height": 1
+    },
+    {
+      "kind": "body",
+      "side": 1,
+      "hit": true,
+      "outward": 0.9937122048660457,
+      "height": 1
+    },
+    {
+      "kind": "wing",
+      "side": -1,
+      "hit": true,
+      "outward": 0.998857020890334,
+      "height": 0.030962040557572124
+    },
+    {
+      "kind": "wing",
+      "side": 1,
+      "hit": true,
+      "outward": 0.9942828143413645,
+      "height": 0.08982019453947032
+    },
+    {
+      "kind": "flyingWing",
+      "side": -1,
+      "hit": true,
+      "outward": 0.9995015786102592,
+      "height": 0.19975121215385094
+    },
+    {
+      "kind": "flyingWing",
+      "side": 1,
+      "hit": true,
+      "outward": 0.9967882249319021,
+      "height": 0.29929479793716673
+    }
+  ],
+  "models": [
+    {
+      "key": "antitank_team_usa",
+      "triangles": 27888,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "machinegun_team_usa",
+      "triangles": 18980,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "key": "recon_vehicle_usa",
+      "triangles": 10820,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        0,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "repair_vehicle_usa",
+      "triangles": 15616,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        0,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "mortar_team_usa",
+      "triangles": 18456,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "key": "assault_team_usa",
+      "triangles": 29760,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "key": "frigate_usa",
+      "triangles": 8364,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "patrol_boat_usa",
+      "triangles": 6384,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "missile_boat_usa",
+      "triangles": 6116,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "shore_bombardment_usa",
+      "triangles": 8284,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "air_defense_ship_usa",
+      "triangles": 10540,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "repair_ship_usa",
+      "triangles": 7788,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "recon_boat_usa",
+      "triangles": 7992,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "recon_drone_usa",
+      "triangles": 7852,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "attack_drone_usa",
+      "triangles": 6792,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "interceptor_usa",
+      "triangles": 19884,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "close_support_aircraft_usa",
+      "triangles": 19508,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "heavy_bomber_usa",
+      "triangles": 5052,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "early_warning_aircraft_usa",
+      "triangles": 25032,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "escort_helicopter_usa",
+      "triangles": 16080,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "orbital_sniper_usa",
+      "triangles": 11288,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "orbital_point_defense_usa",
+      "triangles": 8188,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "orbital_bombardment_usa",
+      "triangles": 10384,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
+        1
+      ]
+    },
+    {
+      "key": "orbital_siege_usa",
+      "triangles": 8560,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
+        1
+      ]
+    },
+    {
+      "key": "orbital_repair_usa",
+      "triangles": 8828,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        5,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "orbital_mapper_usa",
+      "triangles": 3776,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        6,
+        0,
+        2,
+        5,
+        1
+      ]
+    },
+    {
+      "key": "orbital_raider_usa",
+      "triangles": 7180,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
+        1
+      ]
+    },
+    {
+      "key": "antitank_team_rus",
+      "triangles": 27888,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "machinegun_team_rus",
+      "triangles": 18980,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "key": "recon_vehicle_rus",
+      "triangles": 9828,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        0,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "repair_vehicle_rus",
+      "triangles": 14624,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        0,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "mortar_team_rus",
+      "triangles": 18456,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "key": "assault_team_rus",
+      "triangles": 29760,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "key": "frigate_rus",
+      "triangles": 7372,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "patrol_boat_rus",
+      "triangles": 5392,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "missile_boat_rus",
+      "triangles": 5124,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "shore_bombardment_rus",
+      "triangles": 7292,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "air_defense_ship_rus",
+      "triangles": 9548,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "repair_ship_rus",
+      "triangles": 6796,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "recon_boat_rus",
+      "triangles": 7000,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "recon_drone_rus",
+      "triangles": 7864,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "attack_drone_rus",
+      "triangles": 6804,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "interceptor_rus",
+      "triangles": 19896,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "close_support_aircraft_rus",
+      "triangles": 19520,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "heavy_bomber_rus",
+      "triangles": 5064,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "early_warning_aircraft_rus",
+      "triangles": 25032,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "escort_helicopter_rus",
+      "triangles": 16092,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "orbital_sniper_rus",
+      "triangles": 10296,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "orbital_point_defense_rus",
+      "triangles": 7196,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "orbital_bombardment_rus",
+      "triangles": 9392,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "key": "orbital_siege_rus",
+      "triangles": 7568,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "key": "orbital_repair_rus",
+      "triangles": 7836,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        5,
+        3
+      ]
+    },
+    {
+      "key": "orbital_mapper_rus",
+      "triangles": 2784,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        6,
+        0,
+        2,
+        5,
+        1
+      ]
+    },
+    {
+      "key": "orbital_raider_rus",
+      "triangles": 6188,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
+        1
+      ]
+    },
+    {
+      "key": "antitank_team_chn",
+      "triangles": 27888,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "machinegun_team_chn",
+      "triangles": 18980,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "key": "recon_vehicle_chn",
+      "triangles": 9988,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        0,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "repair_vehicle_chn",
+      "triangles": 14784,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        0,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "mortar_team_chn",
+      "triangles": 18456,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "key": "assault_team_chn",
+      "triangles": 29760,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "key": "frigate_chn",
+      "triangles": 7532,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "patrol_boat_chn",
+      "triangles": 5552,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "missile_boat_chn",
+      "triangles": 5284,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "shore_bombardment_chn",
+      "triangles": 7452,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "air_defense_ship_chn",
+      "triangles": 9708,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "repair_ship_chn",
+      "triangles": 6956,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "recon_boat_chn",
+      "triangles": 7160,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "recon_drone_chn",
+      "triangles": 7852,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "attack_drone_chn",
+      "triangles": 6792,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "interceptor_chn",
+      "triangles": 19884,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "close_support_aircraft_chn",
+      "triangles": 19508,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "heavy_bomber_chn",
+      "triangles": 5052,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "early_warning_aircraft_chn",
+      "triangles": 25032,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "escort_helicopter_chn",
+      "triangles": 16080,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "orbital_sniper_chn",
+      "triangles": 10456,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "orbital_point_defense_chn",
+      "triangles": 7356,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "orbital_bombardment_chn",
+      "triangles": 9552,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "key": "orbital_siege_chn",
+      "triangles": 7728,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "key": "orbital_repair_chn",
+      "triangles": 7996,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        5,
+        3
+      ]
+    },
+    {
+      "key": "orbital_mapper_chn",
+      "triangles": 2944,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        6,
+        0,
+        2,
+        5,
+        1
+      ]
+    },
+    {
+      "key": "orbital_raider_chn",
+      "triangles": 6348,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
+        1
+      ]
+    },
+    {
+      "key": "antitank_team_ind",
+      "triangles": 27888,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "machinegun_team_ind",
+      "triangles": 18980,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "key": "recon_vehicle_ind",
+      "triangles": 10820,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        0,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "repair_vehicle_ind",
+      "triangles": 15616,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        0,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "mortar_team_ind",
+      "triangles": 18456,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "key": "assault_team_ind",
+      "triangles": 29760,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "key": "frigate_ind",
+      "triangles": 8364,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "patrol_boat_ind",
+      "triangles": 6384,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "missile_boat_ind",
+      "triangles": 6116,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "shore_bombardment_ind",
+      "triangles": 8284,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "air_defense_ship_ind",
+      "triangles": 10540,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "repair_ship_ind",
+      "triangles": 7788,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "recon_boat_ind",
+      "triangles": 7992,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "recon_drone_ind",
+      "triangles": 7864,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "attack_drone_ind",
+      "triangles": 6804,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "interceptor_ind",
+      "triangles": 19896,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "close_support_aircraft_ind",
+      "triangles": 19520,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "heavy_bomber_ind",
+      "triangles": 5064,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "early_warning_aircraft_ind",
+      "triangles": 25032,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "escort_helicopter_ind",
+      "triangles": 16092,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "orbital_sniper_ind",
+      "triangles": 11288,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "orbital_point_defense_ind",
+      "triangles": 8188,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "orbital_bombardment_ind",
+      "triangles": 10384,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
+        1
+      ]
+    },
+    {
+      "key": "orbital_siege_ind",
+      "triangles": 8560,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
+        1
+      ]
+    },
+    {
+      "key": "orbital_repair_ind",
+      "triangles": 8828,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        5,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "orbital_mapper_ind",
+      "triangles": 3776,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        6,
+        0,
+        2,
+        5,
+        1
+      ]
+    },
+    {
+      "key": "orbital_raider_ind",
+      "triangles": 7180,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
+        1
+      ]
+    },
+    {
+      "key": "antitank_team_kor",
+      "triangles": 27888,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "machinegun_team_kor",
+      "triangles": 18980,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "key": "recon_vehicle_kor",
+      "triangles": 9828,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        0,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "repair_vehicle_kor",
+      "triangles": 14624,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        0,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "mortar_team_kor",
+      "triangles": 18456,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "key": "assault_team_kor",
+      "triangles": 29760,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "key": "frigate_kor",
+      "triangles": 7372,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "patrol_boat_kor",
+      "triangles": 5392,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "missile_boat_kor",
+      "triangles": 5124,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "shore_bombardment_kor",
+      "triangles": 7292,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "air_defense_ship_kor",
+      "triangles": 9548,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "repair_ship_kor",
+      "triangles": 6796,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "recon_boat_kor",
+      "triangles": 7000,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "recon_drone_kor",
+      "triangles": 7852,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "attack_drone_kor",
+      "triangles": 6792,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "interceptor_kor",
+      "triangles": 19884,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "close_support_aircraft_kor",
+      "triangles": 19508,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "heavy_bomber_kor",
+      "triangles": 5052,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "early_warning_aircraft_kor",
+      "triangles": 25032,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "escort_helicopter_kor",
+      "triangles": 16080,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "orbital_sniper_kor",
+      "triangles": 10296,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "orbital_point_defense_kor",
+      "triangles": 7196,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "orbital_bombardment_kor",
+      "triangles": 9392,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "key": "orbital_siege_kor",
+      "triangles": 7568,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "key": "orbital_repair_kor",
+      "triangles": 7836,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        5,
+        3
+      ]
+    },
+    {
+      "key": "orbital_mapper_kor",
+      "triangles": 2784,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        6,
+        0,
+        2,
+        5,
+        1
+      ]
+    },
+    {
+      "key": "orbital_raider_kor",
+      "triangles": 6188,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
+        1
+      ]
+    },
+    {
+      "key": "antitank_team_imp",
+      "triangles": 27888,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "machinegun_team_imp",
+      "triangles": 18980,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "key": "recon_vehicle_imp",
+      "triangles": 9788,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        0,
+        3,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "repair_vehicle_imp",
+      "triangles": 14584,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        0,
+        3,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "mortar_team_imp",
+      "triangles": 18456,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "key": "assault_team_imp",
+      "triangles": 29760,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "key": "frigate_imp",
+      "triangles": 7332,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "patrol_boat_imp",
+      "triangles": 5352,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "missile_boat_imp",
+      "triangles": 5084,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "shore_bombardment_imp",
+      "triangles": 7252,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "air_defense_ship_imp",
+      "triangles": 9508,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "repair_ship_imp",
+      "triangles": 6756,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "recon_boat_imp",
+      "triangles": 6960,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "recon_drone_imp",
+      "triangles": 7864,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "attack_drone_imp",
+      "triangles": 6804,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "interceptor_imp",
+      "triangles": 19896,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "close_support_aircraft_imp",
+      "triangles": 19520,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "heavy_bomber_imp",
+      "triangles": 5064,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "key": "early_warning_aircraft_imp",
+      "triangles": 25032,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "escort_helicopter_imp",
+      "triangles": 16092,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "orbital_sniper_imp",
+      "triangles": 10256,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "orbital_point_defense_imp",
+      "triangles": 7156,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "orbital_bombardment_imp",
+      "triangles": 9352,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "key": "orbital_siege_imp",
+      "triangles": 7528,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "key": "orbital_repair_imp",
+      "triangles": 7796,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        5,
+        3
+      ]
+    },
+    {
+      "key": "orbital_mapper_imp",
+      "triangles": 2744,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        6,
+        0,
+        2,
+        5,
+        1
+      ]
+    },
+    {
+      "key": "orbital_raider_imp",
+      "triangles": 6148,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
+        1
+      ]
+    }
+  ],
+  "errors": []
+}

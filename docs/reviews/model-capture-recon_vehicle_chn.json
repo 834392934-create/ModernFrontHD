@@ -1,0 +1,45 @@
+{
+  "recordedAt": "2026-10-16T16:05:37.538Z",
+  "models": [
+    {
+      "key": "recon_vehicle_chn",
+      "scale": 6.2,
+      "parts": 360,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "快速前出 / 大视野 / 弱自卫火力",
+      "profile": "role-recon_vehicle-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "recon_vehicle",
+      "kind": "recon_vehicle",
+      "triangles": 9988,
+      "dimensions": [
+        5.740000009536743,
+        3.9775002114474773,
+        3.0450000762939453
+      ]
+    },
+    {
+      "key": "heavy_bomber_chn",
+      "scale": 5.1,
+      "parts": 87,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "对陆海及建筑大范围轰击 / 昂贵、慢速、慢装填",
+      "profile": "role-heavy_bomber-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "heavy_bomber",
+      "kind": "heavy_bomber",
+      "triangles": 5052,
+      "dimensions": [
+        10,
+        1.0499999821186066,
+        20
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

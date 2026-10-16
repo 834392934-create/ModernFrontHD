@@ -1,58 +1,42 @@
 {
-  "recordedAt": "2026-10-16T15:16:00.477Z",
+  "recordedAt": "2026-10-16T16:04:49.111Z",
   "models": [
     {
       "key": "heavy_bomber_chn",
       "scale": 5.1,
-      "parts": 20,
+      "parts": 93,
       "original": true,
       "evidenceStatus": "original-role-variant",
       "designRole": "对陆海及建筑大范围轰击 / 昂贵、慢速、慢装填",
-      "profile": "role-heavy_bomber-chn-v1",
+      "profile": "role-heavy_bomber-chn-v2",
+      "detailPass": 2,
       "fiction": false,
       "modelFamily": "heavy_bomber",
       "kind": "heavy_bomber",
-      "triangles": 520,
+      "triangles": 5124,
       "dimensions": [
         10,
-        1.8525000214576721,
+        1.0499999821186066,
         20
       ]
     },
     {
-      "key": "early_warning_aircraft_chn",
-      "scale": 5.2,
-      "parts": 91,
-      "original": true,
-      "evidenceStatus": "original-role-variant",
-      "designRole": "无武装 / 超大视野 / 较慢较昂贵；不提供额外伤害加成",
-      "profile": "role-early_warning_aircraft-chn-v1",
-      "fiction": false,
-      "modelFamily": "early_warning_aircraft",
-      "kind": "early_warning_aircraft",
-      "triangles": 3340,
-      "dimensions": [
-        12,
-        3.8299999237060547,
-        15.399999618530273
-      ]
-    },
-    {
-      "key": "orbital_bombardment_chn",
+      "key": "recon_vehicle_chn",
       "scale": 6.2,
-      "parts": 165,
+      "parts": 341,
       "original": true,
       "evidenceStatus": "original-role-variant",
-      "designRole": "只攻击陆军和海军 / 集群溅射 / 不能攻击基地",
-      "profile": "role-orbital_bombardment-chn-v1",
-      "fiction": true,
-      "modelFamily": "orbital_bombardment",
-      "kind": "orbital_bombardment",
-      "triangles": 4848,
+      "designRole": "快速前出 / 大视野 / 弱自卫火力",
+      "profile": "role-recon_vehicle-chn-v2",
+      "detailPass": 2,
+      "fiction": false,
+      "modelFamily": "recon_vehicle",
+      "kind": "recon_vehicle",
+      "triangles": 9452,
       "dimensions": [
-        9.184999942779541,
-        2.8950001001358032,
-        8.513999938964844
+        5.740000009536743,
+        3.9775002114474773,
+        3.0450000762939453
       ]
     }
   ],
