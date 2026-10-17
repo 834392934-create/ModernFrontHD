@@ -1,0 +1,15 @@
+/* Native text/foreground regression after the support-control hint review fix. */
+const {_electron}=require(process.env.PLAYWRIGHT_MODULE||'C:/Users/Administrator/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const fs=require('fs'),path=require('path'),assert=require('node:assert/strict'),crypto=require('crypto');
+(async()=>{const host=await _electron.launch({executablePath:path.resolve('release/ModernFrontHD/ModernFrontHD.exe'),args:[],timeout:45000}),errors=[],rows=[];try{
+ const p=await host.firstWindow();p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error')errors.push(m.text());});await p.waitForFunction(()=>window.ModernFront);await p.evaluate(()=>Promise.all([WarImported.ready,WarImportedAir.ready,WarImportedGround.ready]));await p.locator('#enemies').selectOption('1');await p.locator('#start').click();await p.locator('#pause').click();
+ const kinds=await p.evaluate(()=>WarData.ROSTER.tacticalWave);assert.equal(kinds.length,8);
+ for(const kind of kinds){const id=await p.evaluate(k=>{const g=ModernFront.game,r=ModernFront.renderer;g.entities=[];g.effects=[];g.teams.forEach(t=>{t.aiClock=999999;t.queue=[];t.money=0;});g.spawn(0,'hq',300,300);g.spawn(1,'hq',2700,1800);const e=g.spawn(0,k,1000,WarData.U[k].naval?100:800);r.camera={x:e.x,y:e.y,zoom:1};return e.id;},kind);
+  await p.keyboard.press('q');assert.ok((await p.evaluate(()=>ModernFront.selection)).includes(id));await p.keyboard.press('e');await p.waitForFunction(id=>ModernFront.direct.active&&ModernFront.game.directControl?.id===id,id);
+  await p.waitForTimeout(100);const row=await p.evaluate(()=>({kind:ModernFront.game.get(ModernFront.direct.entityId).kind,armed:!!WarData.U[ModernFront.game.get(ModernFront.direct.entityId).kind].damage,controls:document.querySelector('.direct-controls').innerText,state:document.querySelector('#direct-weapon-state').innerText,profile:ModernFront.direct.view.weaponProfile}));
+  assert.equal(row.controls.includes('左键开火'),row.armed);if(!row.armed)assert.ok(row.controls.includes('支援自动运行'));if(kind==='orbital_shield')assert.match(row.state,/护盾自动运行/);rows.push(row);
+  if(['sniper_team','air_repair_drone','orbital_shield'].includes(kind)){const name={sniper_team:'sniper',air_repair_drone:'air-repair',orbital_shield:'shield'}[kind];await p.screenshot({path:'screenshots/fps-'+name+'-desktop.png'});}
+  await p.keyboard.press('e');await p.waitForFunction(()=>!ModernFront.direct.active&&!document.pointerLockElement);
+ }
+ const hash=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');assert.equal(hash('src/direct-control.js'),hash('release/ModernFrontHD/resources/app/src/direct-control.js'));assert.deepEqual(errors,[]);const report={recordedAt:new Date().toISOString(),environment:'Packaged Electron',rows,sourceHash:hash('src/direct-control.js'),errors};fs.writeFileSync('docs/tactical-controls-report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));
+ }finally{await host.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

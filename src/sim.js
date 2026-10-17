@@ -4,6 +4,7 @@
     { F, U, B, W, H, T, COLS, ROWS, ABILITIES } = D,
     clamp = (v, a, b) => Math.max(a, Math.min(b, v)),
     dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+  const maxShieldRange=Math.max(0,...Object.values({...U,...B}).filter(d=>d.shield).map(d=>d.range));
   function rng(seed) {
     return () => {
       seed |= 0;
@@ -465,7 +466,7 @@
       if(e.kind==='ciws'||d.interceptRange)zones.push({type:'intercept',label:'拦截火箭',radius:d.interceptRange||d.range});
       if(d.heal)zones.push({type:'repair',label:d.healFamilies?'步兵治疗':'维修',radius:d.range,domains:d.healDomains||['ground','naval','air','space']});
       if(d.fireControl)zones.push({type:d.fireControl.enemy?'jam':'link',label:(d.fireControl.enemy?'敌方装填 +':'友方装填 −')+Math.round(Math.abs(d.fireControl.multiplier-1)*100)+'%',radius:d.range,domains:d.fireControl.domains});
-      if(d.shield)zones.push({type:'shield',label:'护盾',radius:d.range});
+      if(d.shield)zones.push({type:'shield',label:'护盾',radius:d.range,domains:d.shieldDomains||['ground','naval','air','space','structure']});
       if(d.jam)zones.push({type:'jam',label:'电磁压制',radius:d.range});
       if(e.kind==='radar')zones.push({type:'link',label:'雷达联动',radius:450});
       if(e.kind==='radar'||(!d.damage&&!d.heal&&!structure))zones.push({type:'sight',label:'侦察',radius:this.sightRadius(e,power),active:true});
@@ -847,15 +848,12 @@
         (from === 0 && this.buffs.has("damage") ? 1.4 : 1) *
         (F[this.teams[from]?.faction]?.damage || 1);
       let shield = 0;
-      for (const v of this.spatial.query(e.x, e.y, 280))
-        if (
-          v.team === e.team &&
-          B[v.kind]?.shield &&
-          v.disabled <= this.time &&
-          this.power(e.team) >= 0 &&
-          dist(v, e) < B[v.kind].range
-        )
-          shield = Math.max(shield, B[v.kind].shield);
+      for (const v of this.spatial.query(e.x,e.y,maxShieldRange)) {
+        const d=U[v.kind]||B[v.kind];
+        if(v.team===e.team && d?.shield && this.operational(v) &&
+          (!d.shieldDomains || d.shieldDomains.includes(this.targetDomain(e.kind))) && dist(v,e)<d.range)
+          shield=Math.max(shield,d.shield);
+      }
       const applied=value*mul*(1-shield),actual=Math.min(e.hp,Math.max(0,applied));
       if(actual<=0)return;
       e.hp -= applied;
@@ -901,7 +899,7 @@
       return best;
     }
     commandSupport(team,units) {
-      for(const support of units.filter(e=>e.id!==this.directControl?.id&&(U[e.kind].heal||U[e.kind].fireControl)&&!e.retreating&&this.operational(e))){
+      for(const support of units.filter(e=>e.id!==this.directControl?.id&&(U[e.kind].heal||U[e.kind].fireControl||U[e.kind].shield)&&!e.retreating&&this.operational(e))){
         const d=U[support.kind],allies=units.filter(e=>e.id!==support.id&&U[e.kind].damage&&(d.heal?this.canHeal(support,e):d.supportDomains.includes(this.targetDomain(e.kind))));
         allies.sort((a,b)=>(a.hp/a.maxHp-b.hp/b.maxHp)||dist(a,support)-dist(b,support));
         const ally=allies[0];if(!ally)continue;
@@ -984,7 +982,7 @@
       if(!es.some(e=>e.kind==='harvester')&&!t.queue.some(q=>q.kind==='harvester'))this.train(t.id,'harvester');
       for(const e of units)if(e.hp<e.maxHp*.25&&!e.retreating&&!U[e.kind].space&&!U[e.kind].naval&&e.kind!=='harvester')this.retreat([e.id]);
       const capturers = units.filter(
-        (e) => !U[e.kind].heal&&!U[e.kind].fireControl&&(U[e.kind].capturePriority || U[e.kind].modelKind === 'infantry' || e.kind === 'infantry' || e.kind === 'ifv') && !e.order,
+        (e) => !U[e.kind].heal&&!U[e.kind].fireControl&&!U[e.kind].shield&&(U[e.kind].capturePriority || U[e.kind].modelKind === 'infantry' || e.kind === 'infantry' || e.kind === 'ifv') && !e.order,
       );
       for (const e of capturers) {
         let node = this.nodes
@@ -1004,7 +1002,7 @@
         let dest = this.options.mode==='domination'?this.nodes.filter(n=>n.owner!==t.id).sort((a,b)=>dist(hq,a)-dist(hq,b))[0]||hqs[0]:hqs[0];
         if (dest) {
           let attack = units.filter(
-            (e) => e.kind!=='harvester'&&!U[e.kind].heal&&!U[e.kind].fireControl&&!e.retreating&&!U[e.kind].naval&&(e.kind !== "infantry" || this.random() > 0.4),
+            (e) => e.kind!=='harvester'&&!U[e.kind].heal&&!U[e.kind].fireControl&&!U[e.kind].shield&&!e.retreating&&!U[e.kind].naval&&(e.kind !== "infantry" || this.random() > 0.4),
           );
           this.command(
             attack.map((e) => e.id),

@@ -27,7 +27,7 @@
       d.advanced = true;
     }
     if (!d.damage && d.heal) d.combatRole = "repair";
-    else if (d.fireControl) d.combatRole = "support";
+    else if (d.fireControl || d.shield) d.combatRole = "support";
     else if (!d.damage) d.combatRole = "reconnaissance";
     U[kind] = d;
     added.push(kind);
@@ -260,6 +260,50 @@
   });
   const reinforcements=added.slice(waveStart);
 
+  // Tactical wave: fills support gaps while retaining existing production and control rules.
+  const tacticalStart=added.length;
+  add("sniper_team","ground","infantry","precision",{
+    name:"狙击观察组",role:"远距反步兵 / 观察手协同 / 怕重装甲与近身突击",
+    cost:390,hp:85,speed:64,damage:42,range:430,minRange:60,reload:3.4,sight:490,r:8,time:7,producer:"barracks",icon:"⌖",
+    targetDomains:["ground"],targetBonuses:{infantry:2.2,tank:.15,ifv:.3,aa:.35},
+  });
+  add("mobile_ciws","ground","aa","mobile-interception",{
+    name:"机动近防车",role:"短程对空机炮 / 拦截220范围敌方火箭 / 不直接攻击地面",
+    cost:1100,hp:390,speed:78,damage:16,range:275,reload:.32,sight:370,r:16,time:16,producer:"factory",icon:"⌖",
+    targetDomains:["air"],interceptRange:220,interceptReload:.65,
+  });
+  add("fleet_command_ship","naval","carrier","fleet-command",{
+    name:"舰队指挥舰",role:"无武装 / 280范围友方舰艇装填耗时-20% / 同类不叠加",
+    cost:1700,hp:1120,speed:65,damage:0,range:280,reload:1,sight:570,r:26,time:22,producer:"navalyard",icon:"⌁",aiWeight:.4,
+    fireControl:{enemy:false,multiplier:.8,domains:["naval"]},supportDomains:["naval"],
+  });
+  add("electronic_warfare_ship","naval","destroyer","fleet-denial",{
+    name:"海上电子战舰",role:"无直接火力 / 320范围敌舰装填耗时+25% / 需要舰队护航",
+    cost:1650,hp:800,speed:81,damage:0,range:320,reload:1,sight:590,r:23,time:21,producer:"navalyard",icon:"≈",aiWeight:.4,
+    fireControl:{enemy:true,multiplier:1.25,domains:["naval"]},supportDomains:["naval"],
+  });
+  add("air_repair_drone","air","heli","aerial-maintenance",{
+    name:"空中维修无人机（概念）",role:"无武装 / 仅修复友方大气层飞机 / 不修陆海与轨道单位",
+    cost:900,hp:210,speed:160,damage:0,range:180,reload:1,sight:330,r:14,time:13,producer:"airfield",icon:"+",aiWeight:.45,
+    heal:18,healDomains:["air"],
+  });
+  add("interceptor_drone","air","fighter","light-interception",{
+    name:"轻型截击无人机（概念）",role:"廉价近程制空 / 高速脆弱 / 无对地对舰火力",
+    cost:720,hp:170,speed:245,damage:17,range:205,reload:.5,sight:390,r:13,time:10,producer:"airfield",icon:"⋈",
+    targetDomains:["air"],
+  });
+  add("orbital_shield","space","satellite","fleet-shield",{
+    name:"轨道护盾舰（架空）",role:"无武装 / 210范围友方太空减伤25%含自身 / 取最强护盾、不叠加、EMP停机",
+    cost:2800,hp:1150,speed:70,damage:0,range:210,reload:1,sight:470,r:26,time:28,producer:"spaceport",icon:"◈",aiWeight:.45,
+    shield:.25,shieldDomains:["space"],supportDomains:["space"],
+  });
+  add("orbital_missile_barge","space","orbital","missile-salvo",{
+    name:"轨道导弹驳船（架空）",role:"仅对轨道集群溅射 / 盲区120 / 导弹可被近防拦截",
+    cost:3300,hp:900,speed:57,damage:130,range:610,minRange:120,reload:4.8,sight:480,r:27,time:30,producer:"spaceport",icon:"▦",
+    targetDomains:["space"],splash:60,rocket:true,weaponFx:"orbital-missile",
+  });
+  const tacticalWave=added.slice(tacticalStart);
+
   D.UNIT_GROUPS = {
     ground: { name: "陆军", icon: "▰" }, naval: { name: "海军", icon: "⚓" },
     air: { name: "空军", icon: "✈" }, space: { name: "太空", icon: "✧" },
@@ -267,6 +311,7 @@
   D.ROSTER = {
     added,
     reinforcements,
+    tacticalWave,
     logistics: ["harvester"],
     groups: Object.fromEntries(Object.keys(D.UNIT_GROUPS).map(group => [group,
       Object.keys(U).filter(kind => U[kind].unitGroup === group && U[kind].combatRole !== "logistics"),

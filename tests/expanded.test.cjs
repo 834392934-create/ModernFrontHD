@@ -4,12 +4,12 @@ const {Game}=WarSim,{U,B,ROSTER}=WarData;
 function arena(){const g=new Game({faction:'chn',enemies:1,buffs:['vision'],playerOnlyTech:false,aiSpaceWeapons:true});g.entities=[];g.spawn(0,'hq',300,300);g.spawn(1,'hq',2700,1800);g.teams.forEach(t=>t.aiClock=999999);return g;}
 function step(g,s){for(let i=0;i<Math.ceil(s*20);i++)g.step(.05);}
 const targets={ground:'tank',naval:'destroyer',air:'fighter',space:'satellite',structure:'hq'};
-test('four groups have 16/13/13/13 roles, with harvester separately counted',()=>{
- assert.deepEqual(Object.fromEntries(Object.entries(ROSTER.groups).map(([k,v])=>[k,v.length])),{ground:16,naval:13,air:13,space:13});assert.equal(Object.keys(U).length,56);
- assert.equal(new Set(Object.values(ROSTER.groups).flat()).size,55);assert.ok(!Object.values(ROSTER.groups).flat().includes('harvester'));
+test('four groups have 18/15/15/15 roles, with harvester separately counted',()=>{
+ assert.deepEqual(Object.fromEntries(Object.entries(ROSTER.groups).map(([k,v])=>[k,v.length])),{ground:18,naval:15,air:15,space:15});assert.equal(Object.keys(U).length,64);
+ assert.equal(new Set(Object.values(ROSTER.groups).flat()).size,63);assert.ok(!Object.values(ROSTER.groups).flat().includes('harvester'));
  for(const k of ROSTER.added){assert.ok(B[U[k].producer],k);assert.equal(U[k].index,undefined);assert.match(WarData.EQUIPMENT.dossier('chn',k).status,/原创/);}
 });
-test('every added armed role really hits only its declared target domains (140 armed firing scenarios)',()=>{
+test('every added armed role really hits only its declared target domains (160 armed firing scenarios)',()=>{
  for(const k of ROSTER.added.filter(k=>U[k].damage))for(const [domain,kind] of Object.entries(targets)){
   const g=arena(),d=U[k],distance=Math.max(d.minRange||0,0)+Math.min(70,(d.range-(d.minRange||0))/2),a=g.spawn(0,k,1000,750),b=g.spawn(1,kind,1000+distance,750),hp=b.hp;
   b.disabled=999;g.command([a.id],a.x,a.y,true,b.id);step(g,distance/700+1);
@@ -34,7 +34,7 @@ test('support repairs only its own domain, never buildings or enemies, and never
   for(const s of samples)assert.equal(s.e.hp>s.hp,s.d===domain,kind+' repairs '+s.d);assert.equal(enemy.hp,hp);assert.ok(!g.effects.some(e=>e.sourceKind===kind));
  }
 });
-test('all 56 units can be trained, completed and loaded using their real production lanes',()=>{
+test('all 64 units can be trained, completed and loaded using their real production lanes',()=>{
  for(const k of Object.keys(U)){
   const g=arena();g.spawn(0,'power',450,450);g.spawn(0,'power',550,450);g.spawn(0,U[k].producer,U[k].naval?720:700,U[k].naval?120:600);g.teams[0].money=100000;
   assert.equal(g.train(0,k),true,k);const saved=Game.load(JSON.stringify(g.save()));assert.equal(saved.teams[0].queue[0].kind,k);step(saved,U[k].time+2);

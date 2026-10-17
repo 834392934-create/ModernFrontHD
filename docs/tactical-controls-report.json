@@ -1,0 +1,64 @@
+{
+  "recordedAt": "2026-10-17T02:33:05.687Z",
+  "environment": "Packaged Electron",
+  "rows": [
+    {
+      "kind": "sniper_team",
+      "armed": true,
+      "controls": "W A S D 移动 · 鼠标观察\n左键开火 · 右键瞄准 · 空格暂停 · M 晃动",
+      "state": "武器就绪",
+      "profile": "original-marksman-rifle"
+    },
+    {
+      "kind": "mobile_ciws",
+      "armed": true,
+      "controls": "W A S D 移动 · 鼠标观察\n左键开火 · 右键瞄准 · 空格暂停 · M 晃动",
+      "state": "武器就绪",
+      "profile": "original-ground-controls"
+    },
+    {
+      "kind": "fleet_command_ship",
+      "armed": false,
+      "controls": "W A S D 移动 · 鼠标观察\n支援自动运行 · 右键观察 · 空格暂停 · M 晃动",
+      "state": "区域支援自动运行",
+      "profile": "original-naval-controls"
+    },
+    {
+      "kind": "electronic_warfare_ship",
+      "armed": false,
+      "controls": "W A S D 移动 · 鼠标观察\n支援自动运行 · 右键观察 · 空格暂停 · M 晃动",
+      "state": "区域支援自动运行",
+      "profile": "original-naval-controls"
+    },
+    {
+      "kind": "air_repair_drone",
+      "armed": false,
+      "controls": "W A S D 移动 · 鼠标观察\n支援自动运行 · 右键观察 · 空格暂停 · M 晃动",
+      "state": "医疗 / 维修自动运行",
+      "profile": "original-air-controls"
+    },
+    {
+      "kind": "interceptor_drone",
+      "armed": true,
+      "controls": "W A S D 移动 · 鼠标观察\n左键开火 · 右键瞄准 · 空格暂停 · M 晃动",
+      "state": "武器就绪",
+      "profile": "original-air-controls"
+    },
+    {
+      "kind": "orbital_shield",
+      "armed": false,
+      "controls": "W A S D 移动 · 鼠标观察\n支援自动运行 · 右键观察 · 空格暂停 · M 晃动",
+      "state": "护盾自动运行",
+      "profile": "original-space-controls"
+    },
+    {
+      "kind": "orbital_missile_barge",
+      "armed": true,
+      "controls": "W A S D 移动 · 鼠标观察\n左键开火 · 右键瞄准 · 空格暂停 · M 晃动",
+      "state": "武器就绪",
+      "profile": "original-space-controls"
+    }
+  ],
+  "sourceHash": "4488b91a72f2d0ad82642afff37745fb70692fb03e5dd5ec9dd94885e09bf3f5",
+  "errors": []
+}

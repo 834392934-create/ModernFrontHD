@@ -1,12 +1,12 @@
 {
-  "recordedAt": "2026-10-16T16:57:24.532Z",
+  "recordedAt": "2026-10-17T02:30:24.910Z",
   "checks": [
     "outward visible body and wing surfaces from above/below",
-    "234 role models retain valid batched geometry and PBR surfaces",
+    "282 role models retain valid batched geometry and PBR surfaces",
     "real gallery camouflage input changes rendered clothing"
   ],
   "maxTriangles": 29760,
-  "maxMeshes": 3,
+  "maxMeshes": 5,
   "rayChecks": [
     {
       "kind": "body",
@@ -558,6 +558,112 @@
       ]
     },
     {
+      "key": "sniper_team_usa",
+      "triangles": 12700,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "mobile_ciws_usa",
+      "triangles": 14536,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "fleet_command_ship_usa",
+      "triangles": 9668,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "electronic_warfare_ship_usa",
+      "triangles": 10890,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "air_repair_drone_usa",
+      "triangles": 5212,
+      "drawMeshes": 5,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "interceptor_drone_usa",
+      "triangles": 8236,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "orbital_shield_usa",
+      "triangles": 8376,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        1,
+        3
+      ]
+    },
+    {
+      "key": "orbital_missile_barge_usa",
+      "triangles": 6564,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        3,
+        5,
+        1
+      ]
+    },
+    {
       "key": "antitank_team_rus",
       "triangles": 27888,
       "drawMeshes": 1,
@@ -1061,6 +1167,112 @@
       ]
     },
     {
+      "key": "sniper_team_rus",
+      "triangles": 12700,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "mobile_ciws_rus",
+      "triangles": 14568,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "fleet_command_ship_rus",
+      "triangles": 9700,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "electronic_warfare_ship_rus",
+      "triangles": 10922,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "air_repair_drone_rus",
+      "triangles": 5224,
+      "drawMeshes": 5,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "interceptor_drone_rus",
+      "triangles": 8248,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "orbital_shield_rus",
+      "triangles": 8388,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        1,
+        3
+      ]
+    },
+    {
+      "key": "orbital_missile_barge_rus",
+      "triangles": 6576,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        3,
+        5,
+        1
+      ]
+    },
+    {
       "key": "antitank_team_chn",
       "triangles": 27888,
       "drawMeshes": 1,
@@ -1560,6 +1772,112 @@
         2,
         6,
         3
+      ]
+    },
+    {
+      "key": "sniper_team_chn",
+      "triangles": 12700,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "mobile_ciws_chn",
+      "triangles": 15336,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "fleet_command_ship_chn",
+      "triangles": 10468,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "electronic_warfare_ship_chn",
+      "triangles": 11690,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "air_repair_drone_chn",
+      "triangles": 5236,
+      "drawMeshes": 5,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "interceptor_drone_chn",
+      "triangles": 8260,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "orbital_shield_chn",
+      "triangles": 8400,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        1,
+        3
+      ]
+    },
+    {
+      "key": "orbital_missile_barge_chn",
+      "triangles": 6588,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        3,
+        5,
+        1
       ]
     },
     {
@@ -2068,6 +2386,112 @@
       ]
     },
     {
+      "key": "sniper_team_ind",
+      "triangles": 12700,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "mobile_ciws_ind",
+      "triangles": 14536,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "fleet_command_ship_ind",
+      "triangles": 9668,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "electronic_warfare_ship_ind",
+      "triangles": 10890,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "air_repair_drone_ind",
+      "triangles": 5212,
+      "drawMeshes": 5,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "interceptor_drone_ind",
+      "triangles": 8236,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "orbital_shield_ind",
+      "triangles": 8376,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        1,
+        3
+      ]
+    },
+    {
+      "key": "orbital_missile_barge_ind",
+      "triangles": 6564,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        3,
+        5,
+        1
+      ]
+    },
+    {
       "key": "antitank_team_kor",
       "triangles": 27888,
       "drawMeshes": 1,
@@ -2568,6 +2992,112 @@
         2,
         6,
         3
+      ]
+    },
+    {
+      "key": "sniper_team_kor",
+      "triangles": 12700,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "mobile_ciws_kor",
+      "triangles": 15336,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "fleet_command_ship_kor",
+      "triangles": 10468,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "electronic_warfare_ship_kor",
+      "triangles": 11690,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "air_repair_drone_kor",
+      "triangles": 5224,
+      "drawMeshes": 5,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "interceptor_drone_kor",
+      "triangles": 8248,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "orbital_shield_kor",
+      "triangles": 8388,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        1,
+        3
+      ]
+    },
+    {
+      "key": "orbital_missile_barge_kor",
+      "triangles": 6576,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        3,
+        5,
+        1
       ]
     },
     {
@@ -3089,6 +3619,117 @@
         2,
         6,
         3
+      ]
+    },
+    {
+      "key": "sniper_team_imp",
+      "triangles": 12700,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        4,
+        3,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "mobile_ciws_imp",
+      "triangles": 14548,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "fleet_command_ship_imp",
+      "triangles": 9680,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "electronic_warfare_ship_imp",
+      "triangles": 10902,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "air_repair_drone_imp",
+      "triangles": 5236,
+      "drawMeshes": 5,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "interceptor_drone_imp",
+      "triangles": 8260,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "orbital_shield_imp",
+      "triangles": 8400,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        1,
+        3
+      ]
+    },
+    {
+      "key": "orbital_missile_barge_imp",
+      "triangles": 6588,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        3,
+        5,
+        1
       ]
     }
   ],

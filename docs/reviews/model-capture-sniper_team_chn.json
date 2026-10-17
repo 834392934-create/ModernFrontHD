@@ -1,0 +1,185 @@
+{
+  "recordedAt": "2026-10-17T02:24:26.824Z",
+  "models": [
+    {
+      "key": "sniper_team_chn",
+      "scale": 5.7,
+      "parts": 105,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "远距反步兵 / 观察手协同 / 怕重装甲与近身突击",
+      "profile": "prone-shooter-kneeling-tripod-observer-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "sniper_team",
+      "fiction": false,
+      "squadMembers": 2,
+      "personnelFamily": "infantry",
+      "poses": [
+        "prone",
+        "kneeling"
+      ],
+      "kind": "sniper_team",
+      "triangles": 12700,
+      "dimensions": [
+        4.031499862670898,
+        1.3173583126626909,
+        2.2049999833106995
+      ]
+    },
+    {
+      "key": "mobile_ciws_chn",
+      "scale": 6.2,
+      "parts": 579,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "短程对空机炮 / 拦截220范围敌方火箭 / 不直接攻击地面",
+      "profile": "six-wheel-autocannon-independent-search-radar-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "mobile_ciws",
+      "fiction": false,
+      "axles": 3,
+      "kind": "mobile_ciws",
+      "triangles": 15336,
+      "dimensions": [
+        6.430000066757202,
+        4.072499994784593,
+        2.924999952316284
+      ]
+    },
+    {
+      "key": "fleet_command_ship_chn",
+      "scale": 4.7,
+      "parts": 239,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 280范围友方舰艇装填耗时-20% / 同类不叠加",
+      "profile": "twin-hull-wide-bridge-communications-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "fleet_command_ship",
+      "fiction": false,
+      "unarmed": true,
+      "hullType": "catamaran-command",
+      "kind": "fleet_command_ship",
+      "triangles": 10468,
+      "dimensions": [
+        20.25,
+        6.760000027418137,
+        6.340000152587891
+      ]
+    },
+    {
+      "key": "electronic_warfare_ship_chn",
+      "scale": 4.6,
+      "parts": 239,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无直接火力 / 320范围敌舰装填耗时+25% / 需要舰队护航",
+      "profile": "single-hull-distributed-ew-array-trusses-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "electronic_warfare_ship",
+      "fiction": false,
+      "unarmed": true,
+      "hullType": "single-hull-ew",
+      "kind": "electronic_warfare_ship",
+      "triangles": 11690,
+      "dimensions": [
+        24.289999961853027,
+        6.333000183105469,
+        5.199999809265137
+      ]
+    },
+    {
+      "key": "air_repair_drone_chn",
+      "scale": 4.2,
+      "parts": 70,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 仅修复友方大气层飞机 / 不修陆海与轨道单位",
+      "profile": "original-air_repair_drone-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "air_repair_drone",
+      "fiction": false,
+      "referenceUrl": "https://www.nasa.gov/image-article/astronaut-megan-mcarthur-photographs-an-astrobee-robotic-free-flyer/",
+      "referenceUse": "Exterior shape inspiration only; not a reproduction of the referenced equipment.",
+      "unarmed": true,
+      "serviceDomain": "air",
+      "kind": "air_repair_drone",
+      "triangles": 5236,
+      "dimensions": [
+        5.180000066757202,
+        1.9775000214576721,
+        5.28000020980835
+      ]
+    },
+    {
+      "key": "interceptor_drone_chn",
+      "scale": 4.8,
+      "parts": 152,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "廉价近程制空 / 高速脆弱 / 无对地对舰火力",
+      "profile": "original-interceptor_drone-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "interceptor_drone",
+      "fiction": false,
+      "referenceUrl": "https://www.nasa.gov/aeronautics/x-48b/",
+      "referenceUse": "Exterior shape inspiration only; not a reproduction of the referenced equipment.",
+      "kind": "interceptor_drone",
+      "triangles": 8260,
+      "dimensions": [
+        5.47412896156311,
+        1.2695814073085785,
+        6.699999809265137
+      ]
+    },
+    {
+      "key": "orbital_shield_chn",
+      "scale": 5.4,
+      "parts": 112,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 210范围友方太空减伤25%含自身 / 取最强护盾、不叠加、EMP停机",
+      "profile": "original-orbital_shield-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "orbital_shield",
+      "fiction": true,
+      "referenceUrl": "https://www.esa.int/ESA_Multimedia/Images/2016/07/Shaker_test_of_radiator_panel",
+      "referenceUse": "Exterior shape inspiration only; not a reproduction of the referenced equipment.",
+      "unarmed": true,
+      "supportVisual": "four-projection-rings",
+      "kind": "orbital_shield",
+      "triangles": 8400,
+      "dimensions": [
+        4.420000076293945,
+        4.859138011932373,
+        7.150000095367432
+      ]
+    },
+    {
+      "key": "orbital_missile_barge_chn",
+      "scale": 5.7,
+      "parts": 171,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "仅对轨道集群溅射 / 盲区120 / 导弹可被近防拦截",
+      "profile": "original-orbital_missile_barge-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "orbital_missile_barge",
+      "fiction": true,
+      "referenceUrl": "https://www.esa.int/ESA_Multimedia/Images/2016/07/Shaker_test_of_radiator_panel",
+      "referenceUse": "Exterior shape inspiration only; not a reproduction of the referenced equipment.",
+      "weaponVisual": "forward-launch-racks-with-aft-storage",
+      "kind": "orbital_missile_barge",
+      "triangles": 6588,
+      "dimensions": [
+        7.015367746353149,
+        2.172765791416168,
+        7.75
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval.",
+  "revisedAt": "2026-10-17T02:29:42.875Z",
+  "revision": "Barge front launch racks and aft storage revised after independent visual review; refreshed five views."
+}

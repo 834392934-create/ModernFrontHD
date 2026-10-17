@@ -54,7 +54,7 @@
     setKind(kind,faction='chn'){if(this.disposed)return;if(this.kind===kind&&this.faction===faction)return;this._clear();this.kind=kind;this.faction=faction;const u=root.WarData?.U?.[kind]||{},infantry=kind==='infantry'||kind.endsWith('_team')||u.modelKind==='infantry',medical=infantry&&/medic|medical/.test(kind),space=!!u.space||u.unitGroup==='space'||kind.startsWith('orbital_'),air=!!u.air||u.unitGroup==='air'||/aircraft|helicopter|drone/.test(kind),naval=!!u.naval||u.unitGroup==='naval';this.mode=medical?'medical':infantry?'infantry':space?'space':air?'air':naval?'naval':'ground';this.armed=this.mode==='infantry';this.ads=0;this.recoil=0;this.flashTime=0;this.lastPulse=0;this.lastScreenTime=-Infinity;const b=new Batch(),cloth=new T.Color(root.WarModels?.colors?.[faction]||COLORS.cloth).lerp(new T.Color(COLORS.cloth),.65).getHex();
       this.weaponProfile=this.mode==='medical'?'original-medical-device':'original-'+this.mode+'-controls';
       if(this.mode==='infantry'){
-        this.weaponProfile=kind==='antitank_team'?'original-shoulder-launcher':kind==='mortar_team'?'original-mortar-observation':kind==='machinegun_team'?'original-belt-fed-machinegun':'original-rifle';
+        this.weaponProfile=kind==='antitank_team'?'original-shoulder-launcher':kind==='mortar_team'?'original-mortar-observation':kind==='machinegun_team'?'original-belt-fed-machinegun':kind==='sniper_team'?'original-marksman-rifle':'original-rifle';
         let muzzle={position:[0,.006,-.80],direction:[0,0,-1]};
         if(kind==='antitank_team')muzzle=shoulderLauncher(b,cloth);
         else if(kind==='mortar_team')muzzle=mortarStation(b,cloth);
@@ -70,6 +70,16 @@
           for(const side of [-1,1]){b.rod([side*.07,-.03,-.42],[side*.085,-.065,-.19],.01);b.box(.018,.012,.045,[side*.085,-.065,-.19],'rubber');}
           b.rod([.08,.055,-.19],[.08,.13,-.19],.009);b.rod([.08,.13,-.19],[.08,.13,-.075],.014,'rubber');b.rod([.08,.13,-.075],[.08,.055,-.075],.009);
         }else{b.box(.078,.155,.065,[0,-.118,-.095],'metal',0x485357,[-.12,0,0]);for(let i=0;i<4;i++)b.box(.081,.007,.067,[0,-.08-i*.024,-.095],'rubber');}
+        if(kind==='sniper_team'){
+          // Original long-range prop: extended barrel, folded bipod and offset optic.
+          b.rod([0,.006,-.69],[0,.006,-.96],.017);b.rod([0,.006,-.88],[0,.006,-1.01],.023);
+          for(const side of [-1,1])b.rod([side*.045,-.03,-.43],[side*.055,-.06,-.22],.009);
+          for(const z of [-.13,.035])b.box(.025,.05,.035,[.075,.13,z],'metal');
+          b.rod([.075,.18,.11],[.075,.18,-.27],.035,'rubber');
+          b.rod([.075,.18,-.22],[.075,.18,-.31],.045,'rubber');
+          b.add(new T.CircleGeometry(.027,16),'metal',0x547c82,[.075,.18,.112]);
+          muzzle={position:[0,.006,-1.08],direction:[0,0,-1]};
+        }
         // Open mechanical sights: narrow post and rear U, no opaque centre plate.
         b.box(.033,.074,.038,[0,.057,-.51],'paint');b.box(.008,.065,.012,[0,.127,-.51],'metal');for(const side of [-1,1])b.box(.009,.045,.018,[side*.022,.133,.03],'metal');b.box(.05,.01,.018,[0,.111,.03],'metal');
         b.box(.007,.034,.09,[.054,.014,.008],'rubber');b.box(.025,.012,.047,[.063,.018,.04],'metal');b.rod([.03,-.055,.07],[.03,-.086,.01],.007);b.rod([.03,-.086,.01],[.03,-.055,-.015],.007);grip(b,[.06,-.115,.08],false,cloth);grip(b,[-.065,-.073,-.29],true,cloth);

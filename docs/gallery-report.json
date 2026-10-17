@@ -171,6 +171,26 @@
       ]
     },
     {
+      "key": "sniper_team_chn",
+      "parts": 105,
+      "triangles": 12700,
+      "dimensions": [
+        4.031499862670898,
+        1.3173583126626909,
+        2.2049999833106995
+      ]
+    },
+    {
+      "key": "mobile_ciws_chn",
+      "parts": 579,
+      "triangles": 15336,
+      "dimensions": [
+        6.430000066757202,
+        4.072499994784593,
+        2.924999952316284
+      ]
+    },
+    {
       "key": "destroyer_chn",
       "parts": 266,
       "triangles": 7356,
@@ -298,6 +318,26 @@
         19.06399917602539,
         6.384999752044678,
         4.5
+      ]
+    },
+    {
+      "key": "fleet_command_ship_chn",
+      "parts": 239,
+      "triangles": 10468,
+      "dimensions": [
+        20.25,
+        6.760000027418137,
+        6.340000152587891
+      ]
+    },
+    {
+      "key": "electronic_warfare_ship_chn",
+      "parts": 239,
+      "triangles": 11690,
+      "dimensions": [
+        24.289999961853027,
+        6.333000183105469,
+        5.199999809265137
       ]
     },
     {
@@ -431,6 +471,26 @@
       ]
     },
     {
+      "key": "air_repair_drone_chn",
+      "parts": 70,
+      "triangles": 5236,
+      "dimensions": [
+        5.180000066757202,
+        1.9775000214576721,
+        5.28000020980835
+      ]
+    },
+    {
+      "key": "interceptor_drone_chn",
+      "parts": 152,
+      "triangles": 8260,
+      "dimensions": [
+        5.47412896156311,
+        1.2695814073085785,
+        6.699999809265137
+      ]
+    },
+    {
       "key": "satellite_chn",
       "parts": 62,
       "triangles": 2100,
@@ -558,6 +618,26 @@
         4.990000009536743,
         5.175697326660156,
         5.866127967834473
+      ]
+    },
+    {
+      "key": "orbital_shield_chn",
+      "parts": 112,
+      "triangles": 8400,
+      "dimensions": [
+        4.420000076293945,
+        4.859138011932373,
+        7.150000095367432
+      ]
+    },
+    {
+      "key": "orbital_missile_barge_chn",
+      "parts": 171,
+      "triangles": 6588,
+      "dimensions": [
+        7.015367746353149,
+        2.172765791416168,
+        7.75
       ]
     },
     {
@@ -901,6 +981,26 @@
       ]
     },
     {
+      "key": "sniper_team_usa",
+      "parts": 105,
+      "triangles": 12700,
+      "dimensions": [
+        4.031499862670898,
+        1.3173583126626909,
+        2.2049999833106995
+      ]
+    },
+    {
+      "key": "mobile_ciws_usa",
+      "parts": 575,
+      "triangles": 14536,
+      "dimensions": [
+        6.430000066757202,
+        4.072499994784593,
+        2.924999952316284
+      ]
+    },
+    {
       "key": "destroyer_usa",
       "parts": 6,
       "triangles": 49381,
@@ -1028,6 +1128,26 @@
         19.06399917602539,
         6.384999752044678,
         4.5
+      ]
+    },
+    {
+      "key": "fleet_command_ship_usa",
+      "parts": 235,
+      "triangles": 9668,
+      "dimensions": [
+        20.25,
+        6.760000027418137,
+        6.340000152587891
+      ]
+    },
+    {
+      "key": "electronic_warfare_ship_usa",
+      "parts": 235,
+      "triangles": 10890,
+      "dimensions": [
+        24.289999961853027,
+        6.333000183105469,
+        5.199999809265137
       ]
     },
     {
@@ -1161,6 +1281,26 @@
       ]
     },
     {
+      "key": "air_repair_drone_usa",
+      "parts": 68,
+      "triangles": 5212,
+      "dimensions": [
+        5.180000066757202,
+        1.9775000214576721,
+        5.28000020980835
+      ]
+    },
+    {
+      "key": "interceptor_drone_usa",
+      "parts": 150,
+      "triangles": 8236,
+      "dimensions": [
+        5.47412896156311,
+        1.2695814073085785,
+        6.699999809265137
+      ]
+    },
+    {
       "key": "satellite_usa",
       "parts": 71,
       "triangles": 2200,
@@ -1288,6 +1428,26 @@
         4.990000009536743,
         5.175697326660156,
         5.866127967834473
+      ]
+    },
+    {
+      "key": "orbital_shield_usa",
+      "parts": 110,
+      "triangles": 8376,
+      "dimensions": [
+        4.420000076293945,
+        4.859138011932373,
+        7.150000095367432
+      ]
+    },
+    {
+      "key": "orbital_missile_barge_usa",
+      "parts": 169,
+      "triangles": 6564,
+      "dimensions": [
+        7.015367746353149,
+        2.172765791416168,
+        7.75
       ]
     },
     {
@@ -1631,6 +1791,26 @@
       ]
     },
     {
+      "key": "sniper_team_rus",
+      "parts": 105,
+      "triangles": 12700,
+      "dimensions": [
+        4.031499862670898,
+        1.3173583126626909,
+        2.2049999833106995
+      ]
+    },
+    {
+      "key": "mobile_ciws_rus",
+      "parts": 575,
+      "triangles": 14568,
+      "dimensions": [
+        6.430000066757202,
+        4.072499994784593,
+        2.924999952316284
+      ]
+    },
+    {
       "key": "destroyer_rus",
       "parts": 234,
       "triangles": 7124,
@@ -1758,6 +1938,26 @@
         19.06399917602539,
         6.384999752044678,
         4.5
+      ]
+    },
+    {
+      "key": "fleet_command_ship_rus",
+      "parts": 235,
+      "triangles": 9700,
+      "dimensions": [
+        20.25,
+        6.760000027418137,
+        6.340000152587891
+      ]
+    },
+    {
+      "key": "electronic_warfare_ship_rus",
+      "parts": 235,
+      "triangles": 10922,
+      "dimensions": [
+        24.289999961853027,
+        6.333000183105469,
+        5.199999809265137
       ]
     },
     {
@@ -1891,6 +2091,26 @@
       ]
     },
     {
+      "key": "air_repair_drone_rus",
+      "parts": 69,
+      "triangles": 5224,
+      "dimensions": [
+        5.180000066757202,
+        1.9775000214576721,
+        5.28000020980835
+      ]
+    },
+    {
+      "key": "interceptor_drone_rus",
+      "parts": 151,
+      "triangles": 8248,
+      "dimensions": [
+        5.47412896156311,
+        1.2695814073085785,
+        6.699999809265137
+      ]
+    },
+    {
       "key": "satellite_rus",
       "parts": 61,
       "triangles": 2236,
@@ -2018,6 +2238,26 @@
         4.990000009536743,
         5.175697326660156,
         5.866127967834473
+      ]
+    },
+    {
+      "key": "orbital_shield_rus",
+      "parts": 111,
+      "triangles": 8388,
+      "dimensions": [
+        4.420000076293945,
+        4.859138011932373,
+        7.150000095367432
+      ]
+    },
+    {
+      "key": "orbital_missile_barge_rus",
+      "parts": 170,
+      "triangles": 6576,
+      "dimensions": [
+        7.015367746353149,
+        2.172765791416168,
+        7.75
       ]
     },
     {
@@ -2361,6 +2601,26 @@
       ]
     },
     {
+      "key": "sniper_team_ind",
+      "parts": 105,
+      "triangles": 12700,
+      "dimensions": [
+        4.031499862670898,
+        1.3173583126626909,
+        2.2049999833106995
+      ]
+    },
+    {
+      "key": "mobile_ciws_ind",
+      "parts": 575,
+      "triangles": 14536,
+      "dimensions": [
+        6.430000066757202,
+        4.072499994784593,
+        2.924999952316284
+      ]
+    },
+    {
       "key": "destroyer_ind",
       "parts": 266,
       "triangles": 7822,
@@ -2488,6 +2748,26 @@
         19.06399917602539,
         6.384999752044678,
         4.5
+      ]
+    },
+    {
+      "key": "fleet_command_ship_ind",
+      "parts": 235,
+      "triangles": 9668,
+      "dimensions": [
+        20.25,
+        6.760000027418137,
+        6.340000152587891
+      ]
+    },
+    {
+      "key": "electronic_warfare_ship_ind",
+      "parts": 235,
+      "triangles": 10890,
+      "dimensions": [
+        24.289999961853027,
+        6.333000183105469,
+        5.199999809265137
       ]
     },
     {
@@ -2621,6 +2901,26 @@
       ]
     },
     {
+      "key": "air_repair_drone_ind",
+      "parts": 68,
+      "triangles": 5212,
+      "dimensions": [
+        5.180000066757202,
+        1.9775000214576721,
+        5.28000020980835
+      ]
+    },
+    {
+      "key": "interceptor_drone_ind",
+      "parts": 150,
+      "triangles": 8236,
+      "dimensions": [
+        5.47412896156311,
+        1.2695814073085785,
+        6.699999809265137
+      ]
+    },
+    {
       "key": "satellite_ind",
       "parts": 63,
       "triangles": 2140,
@@ -2748,6 +3048,26 @@
         4.990000009536743,
         5.175697326660156,
         5.866127967834473
+      ]
+    },
+    {
+      "key": "orbital_shield_ind",
+      "parts": 110,
+      "triangles": 8376,
+      "dimensions": [
+        4.420000076293945,
+        4.859138011932373,
+        7.150000095367432
+      ]
+    },
+    {
+      "key": "orbital_missile_barge_ind",
+      "parts": 169,
+      "triangles": 6564,
+      "dimensions": [
+        7.015367746353149,
+        2.172765791416168,
+        7.75
       ]
     },
     {
@@ -3091,6 +3411,26 @@
       ]
     },
     {
+      "key": "sniper_team_kor",
+      "parts": 105,
+      "triangles": 12700,
+      "dimensions": [
+        4.031499862670898,
+        1.3173583126626909,
+        2.2049999833106995
+      ]
+    },
+    {
+      "key": "mobile_ciws_kor",
+      "parts": 579,
+      "triangles": 15336,
+      "dimensions": [
+        6.430000066757202,
+        4.072499994784593,
+        2.924999952316284
+      ]
+    },
+    {
       "key": "destroyer_kor",
       "parts": 276,
       "triangles": 7456,
@@ -3218,6 +3558,26 @@
         19.06399917602539,
         6.384999752044678,
         4.5
+      ]
+    },
+    {
+      "key": "fleet_command_ship_kor",
+      "parts": 239,
+      "triangles": 10468,
+      "dimensions": [
+        20.25,
+        6.760000027418137,
+        6.340000152587891
+      ]
+    },
+    {
+      "key": "electronic_warfare_ship_kor",
+      "parts": 239,
+      "triangles": 11690,
+      "dimensions": [
+        24.289999961853027,
+        6.333000183105469,
+        5.199999809265137
       ]
     },
     {
@@ -3351,6 +3711,26 @@
       ]
     },
     {
+      "key": "air_repair_drone_kor",
+      "parts": 69,
+      "triangles": 5224,
+      "dimensions": [
+        5.180000066757202,
+        1.9775000214576721,
+        5.28000020980835
+      ]
+    },
+    {
+      "key": "interceptor_drone_kor",
+      "parts": 151,
+      "triangles": 8248,
+      "dimensions": [
+        5.47412896156311,
+        1.2695814073085785,
+        6.699999809265137
+      ]
+    },
+    {
       "key": "satellite_kor",
       "parts": 64,
       "triangles": 2220,
@@ -3478,6 +3858,26 @@
         4.990000009536743,
         5.175697326660156,
         5.866127967834473
+      ]
+    },
+    {
+      "key": "orbital_shield_kor",
+      "parts": 111,
+      "triangles": 8388,
+      "dimensions": [
+        4.420000076293945,
+        4.859138011932373,
+        7.150000095367432
+      ]
+    },
+    {
+      "key": "orbital_missile_barge_kor",
+      "parts": 170,
+      "triangles": 6576,
+      "dimensions": [
+        7.015367746353149,
+        2.172765791416168,
+        7.75
       ]
     },
     {
@@ -3821,6 +4221,26 @@
       ]
     },
     {
+      "key": "sniper_team_imp",
+      "parts": 105,
+      "triangles": 12700,
+      "dimensions": [
+        4.031499862670898,
+        1.3173583126626909,
+        2.2049999833106995
+      ]
+    },
+    {
+      "key": "mobile_ciws_imp",
+      "parts": 576,
+      "triangles": 14548,
+      "dimensions": [
+        6.430000066757202,
+        4.072499994784593,
+        2.924999952316284
+      ]
+    },
+    {
       "key": "destroyer_imp",
       "parts": 72,
       "triangles": 1188,
@@ -3948,6 +4368,26 @@
         19.06399917602539,
         6.384999752044678,
         4.5
+      ]
+    },
+    {
+      "key": "fleet_command_ship_imp",
+      "parts": 236,
+      "triangles": 9680,
+      "dimensions": [
+        20.25,
+        6.760000027418137,
+        6.340000152587891
+      ]
+    },
+    {
+      "key": "electronic_warfare_ship_imp",
+      "parts": 236,
+      "triangles": 10902,
+      "dimensions": [
+        24.289999961853027,
+        6.333000183105469,
+        5.199999809265137
       ]
     },
     {
@@ -4081,6 +4521,26 @@
       ]
     },
     {
+      "key": "air_repair_drone_imp",
+      "parts": 70,
+      "triangles": 5236,
+      "dimensions": [
+        5.180000066757202,
+        1.9775000214576721,
+        5.28000020980835
+      ]
+    },
+    {
+      "key": "interceptor_drone_imp",
+      "parts": 152,
+      "triangles": 8260,
+      "dimensions": [
+        5.47412896156311,
+        1.2695814073085785,
+        6.699999809265137
+      ]
+    },
+    {
       "key": "satellite_imp",
       "parts": 64,
       "triangles": 2128,
@@ -4208,6 +4668,26 @@
         4.990000009536743,
         5.175697326660156,
         5.866127967834473
+      ]
+    },
+    {
+      "key": "orbital_shield_imp",
+      "parts": 112,
+      "triangles": 8400,
+      "dimensions": [
+        4.420000076293945,
+        4.859138011932373,
+        7.150000095367432
+      ]
+    },
+    {
+      "key": "orbital_missile_barge_imp",
+      "parts": 171,
+      "triangles": 6588,
+      "dimensions": [
+        7.015367746353149,
+        2.172765791416168,
+        7.75
       ]
     },
     {

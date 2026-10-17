@@ -1,12 +1,12 @@
 {
-  "recordedAt": "2026-10-16T16:59:28.464Z",
+  "recordedAt": "2026-10-17T02:27:25.716Z",
   "environment": "Chromium",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
     "M toggles and restores the optional motion setting through keyboard input",
     "Mouse look, right-button ADS narrows camera FOV, release restores aim, and Space freezes simulation and clears movement/fire",
     "Escape exits driving and returns strategy camera without opening settings",
-    "All 56 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked",
+    "All 64 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked",
     "AI builds, trains and orders other units during possession, excludes the driver, and stops new AI calls after E exits",
     "Real left-click mesh-target shot reduces enemy HP and confirms actual source damage; a subsequent sky miss produces no hit marker",
     "A real manual projectile remains tied to its recorded impact area: relocating the target during flight causes no remote damage or hit marker",
@@ -572,6 +572,86 @@
       "hudName": "轨道电子压制站（架空）",
       "finiteCamera": true,
       "ownModelHidden": true
+    },
+    {
+      "kind": "sniper_team",
+      "id": 206,
+      "domain": "ground",
+      "mode": "infantry",
+      "weaponProfile": "original-marksman-rifle",
+      "hudName": "狙击观察组",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "mobile_ciws",
+      "id": 209,
+      "domain": "ground",
+      "mode": "ground",
+      "weaponProfile": "original-ground-controls",
+      "hudName": "机动近防车",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "fleet_command_ship",
+      "id": 212,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "舰队指挥舰",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "electronic_warfare_ship",
+      "id": 215,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "海上电子战舰",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "air_repair_drone",
+      "id": 218,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "空中维修无人机（概念）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "interceptor_drone",
+      "id": 221,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "轻型截击无人机（概念）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_shield",
+      "id": 224,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "轨道护盾舰（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_missile_barge",
+      "id": 227,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "轨道导弹驳船（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
     }
   ],
   "screenshots": [
@@ -585,6 +665,9 @@
     "screenshots/fps-machinegun_team-browser.png",
     "screenshots/fps-mortar_team-browser.png",
     "screenshots/fps-medical-browser.png",
+    "screenshots/fps-sniper-browser.png",
+    "screenshots/fps-air-repair-browser.png",
+    "screenshots/fps-shield-browser.png",
     "screenshots/fps-hit-browser.png",
     "screenshots/fps-muzzle-cover-tank_destroyer-chn-browser.png",
     "screenshots/fps-muzzle-cover-tank-chn-browser.png",
@@ -602,7 +685,7 @@
         "pitch": -0.025
       },
       "after": {
-        "x": 739.6000000000003,
+        "x": 721.6000000000001,
         "y": 800,
         "yaw": 0,
         "pitch": -0.025
@@ -611,13 +694,13 @@
     {
       "key": "KeyS",
       "before": {
-        "x": 739.6000000000003,
+        "x": 721.6000000000001,
         "y": 800,
         "yaw": 0,
         "pitch": -0.025
       },
       "after": {
-        "x": 718.0000000000001,
+        "x": 700,
         "y": 800,
         "yaw": 0,
         "pitch": -0.025
@@ -626,13 +709,13 @@
     {
       "key": "KeyD",
       "before": {
-        "x": 718.0000000000001,
+        "x": 700,
         "y": 800,
         "yaw": 0,
         "pitch": -0.025
       },
       "after": {
-        "x": 718.0000000000001,
+        "x": 700,
         "y": 821.6000000000001,
         "yaw": 0,
         "pitch": -0.025
@@ -641,14 +724,14 @@
     {
       "key": "KeyA",
       "before": {
-        "x": 718.0000000000001,
+        "x": 700,
         "y": 821.6000000000001,
         "yaw": 0,
         "pitch": -0.025
       },
       "after": {
-        "x": 718.0000000000001,
-        "y": 800,
+        "x": 700,
+        "y": 796.4,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -657,7 +740,7 @@
   "ads": {
     "hip": 70,
     "active": true,
-    "fov": 48.04468320626871,
+    "fov": 48.04357125885182,
     "view": "infantry"
   },
   "ai": {
@@ -668,7 +751,7 @@
     "controlledOrder": null
   },
   "aim": {
-    "target": 213,
+    "target": 237,
     "point": [
       828.4683744545998,
       13.859999811172484,
@@ -680,16 +763,16 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 14.550000000000072,
-      "sourceId": 212,
-      "targetId": 213,
+      "hitAt": 19.050000000000136,
+      "sourceId": 236,
+      "targetId": 237,
       "damage": 74
     },
     "incoming": {
       "x": 700,
       "y": 800,
-      "sourceId": 212,
-      "time": 14.550000000000072
+      "sourceId": 236,
+      "time": 19.050000000000136
     },
     "hudConfirmed": true
   },
@@ -718,23 +801,23 @@
       "kind": "tank_destroyer",
       "faction": "chn",
       "originMode": "model-muzzle",
-      "cameraTarget": 217,
+      "cameraTarget": 241,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
-        720.8984359352268,
+        720.89823744546,
         17.687249981117247,
-        803.9803672661311
+        803.943618320913
       ],
-      "size": 2.751426141157029,
-      "gap": 4.232963294087737,
+      "size": 2.727692887095687,
+      "gap": 4.196450595531826,
       "damage": 0
     },
     {
       "kind": "tank",
       "faction": "chn",
       "originMode": "model-muzzle",
-      "cameraTarget": 221,
+      "cameraTarget": 245,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
@@ -750,7 +833,7 @@
       "kind": "tank",
       "faction": "imp",
       "originMode": "conservative-body",
-      "cameraTarget": 225,
+      "cameraTarget": 249,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [

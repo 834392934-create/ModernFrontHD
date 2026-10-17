@@ -1,0 +1,29 @@
+{
+  "recordedAt": "2026-10-17T02:29:42.875Z",
+  "models": [
+    {
+      "key": "orbital_missile_barge_chn",
+      "scale": 5.7,
+      "parts": 171,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "仅对轨道集群溅射 / 盲区120 / 导弹可被近防拦截",
+      "profile": "original-orbital_missile_barge-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "orbital_missile_barge",
+      "fiction": true,
+      "referenceUrl": "https://www.esa.int/ESA_Multimedia/Images/2016/07/Shaker_test_of_radiator_panel",
+      "referenceUse": "Exterior shape inspiration only; not a reproduction of the referenced equipment.",
+      "weaponVisual": "forward-launch-racks-with-aft-storage",
+      "kind": "orbital_missile_barge",
+      "triangles": 6588,
+      "dimensions": [
+        7.015367746353149,
+        2.172765791416168,
+        7.75
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

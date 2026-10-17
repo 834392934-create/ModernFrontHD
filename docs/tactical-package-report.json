@@ -1,0 +1,14 @@
+{
+  "recordedAt": "2026-10-17T02:34:59.581Z",
+  "version": "3.1.0",
+  "sha256Matches": 570,
+  "portraits": 486,
+  "executable": "release/ModernFrontHD/ModernFrontHD.exe",
+  "runtimeChecks": [
+    "desktop-report.json",
+    "expanded-desktop-report.json",
+    "first-person-desktop-report.json",
+    "tactical-controls-report.json"
+  ],
+  "mismatches": []
+}

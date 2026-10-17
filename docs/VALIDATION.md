@@ -1,3 +1,29 @@
+# 3.1 战术单位扩充验证
+
+日期：2026-10-17（北京时间）。新增8种职责，合计64类单位：陆18、海15、空15、天15，另采矿车1；6阵营384单位槽位，加17建筑的6阵营变体共486图鉴项。模型均为原创职责外观，不冒称真实型号。
+
+|检查|本轮实际结果|证据|
+|---|---|---|
+|模拟|85/85通过；64类生产/存档、160武装目标域场景，新护盾/空中维修/舰队支援/拦截/AI禁令|simulation-tests.txt|
+|模型与监督|282职责槽位几何/PBR/锚点有效；维修机5网格（机体+4旋翼），其余最多3；驳船发射口支撑遮挡返工闭环|model-detail-report.json / reviews/tactical-wave-supervision.md|
+|图鉴及生产头像|486项无错误；880个横竖屏视角取景通过；486张同源生产头像|gallery-report.json / gallery-framing-report.json / ../assets/portraits/|
+|生产及范围|新8种均通过真实点击加入队列；轨道护盾210范围仅作用于太空，EMP停机；维修机4副旋翼分别转动|expanded-browser-report.json / expanded-desktop-report.json|
+|64类第一人称|浏览器与实际EXE分别完成全部64类真实选择与E进入/退出；移动/瞄准/AI代管/伤害/遮挡回归通过|first-person-browser-report.json / first-person-desktop-report.json|
+|原生失焦|全屏true；真实最小化产生trusted blur，移动/开火输入清空，恢复后不续动续射|first-person-desktop-report.json 的 nativeFocus|
+|最终HUD提示|监督反馈后，无武装单位改为支援自动运行；新8类原生键盘进入/退出、提示及源文件SHA256再次验证|tactical-controls-report.json|
+|发布一致性|486头像、运行代码/资产与EXE包逐文件SHA256核对|tactical-package-report.json|
+|离线与许可|三授权导入模块ready、材质/署名保留，file启动零HTTP；实际EXE全屏/沉浸通过|desktop-report.json / upgrade-browser-report.json|
+
+实际 EXE 的 RTS 性能：NVIDIA GeForce RTX 3060 / ANGLE D3D11，物理3440×1440，CSS2752×1152、DPR1.25；4秒混编98实体平均46.5 FPS。5.006秒交战80→63实体，164次发射，51峰值效果，4组防御圈，平均46.34 FPS、P95帧耗时22.4ms。见 expanded-desktop-report.json 与 ../screenshots/expanded-combat-desktop.png。GPU测试串行运行，这是短时受控采样，不代表长局或极限人口性能。旧版第一人称10秒性能报告保留作历史记录，未冒称本轮重测。
+
+新增舰队增益、护盾和维修均为游戏规则。护盾取最强值、不叠加，含自身但仅友方太空单位；EMP/死亡立即失效；无武装护盾舰不受AI太空武器禁令限制，导弹驳船受限制。近防与导弹仍采用现有二维距离拦截近似，不能作为现实轨道反导仿真。人物、舰艇蒙皮、座舱和场景仍明显简化，没有达到商业AAA写实画质。
+
+复现：先 node server.cjs；运行 npm test、node tests/model-detail.cjs、node tests/gallery.cjs、node tests/gallery-framing.cjs、node tests/expanded-browser.cjs、node tests/first-person-browser.cjs；构建后串行运行 node tests/upgrade.cjs、node tests/expanded-browser.cjs --desktop、node tests/first-person-browser.cjs --desktop、node tests/tactical-controls.cjs。最后追加的改动仅为无武装操作文案，已经8类原生定向复测。
+
+下文为历史记录；同名自动报告已由当前版本更新。
+
+---
+
 # 3.0 第一人称与作战增援验证
 
 日期：2026-10-17（北京时间）。12种新职责单位、同一RTS战场第一人称接管、己方AI代管、近景武器与座舱。本轮保留真实型号的既有证据边界；模型和FPS画质未达到商业AAA。

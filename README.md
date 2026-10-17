@@ -1,4 +1,4 @@
-# 现代战线 HD · 3.0
+# 现代战线 HD · 3.1
 
 可离线运行的三维即时战略遭遇战。项目位于 `D:\现代战线HD`；原参考目录 `D:\红警\2024` 未修改。
 
@@ -10,13 +10,28 @@
 
 `release/ModernFrontHD-portable.zip` 是浏览器兼容包，不含独立版运行时；本机优先使用上面的EXE目录。
 
-## 3.0 第一人称接管与增援
+## 3.1 新增8种战术单位
+
+总计 **64类单位：陆军18、海军15、空军15、太空15，另有采矿车**。新增角色均接入生产、AI、存档、检视和第一人称驾驶，六阵营共享职责结构并采用阵营涂装。
+
+|军种|新增单位|实际作用（游戏参数）|
+|---|---|---|
+|陆军|狙击观察组、机动近防车|远距反步兵；短程对空与220范围火箭拦截|
+|海军|舰队指挥舰、海上电子战舰|友舰装填耗时−20%；敌舰装填耗时+25%，同类不叠加|
+|空军|空中维修无人机、轻型截击无人机|仅维修友方飞机；高速近程制空|
+|太空|轨道护盾舰、轨道导弹驳船|210范围友方太空减伤25%；只对轨道集群发射可拦截导弹|
+
+护盾包含自身，多个护盾取最强值，不叠加；EMP或摧毁立即失效。支援AI跟随对应军种。禁止AI太空武器时仍允许无武装护盾舰，禁止导弹驳船。空中维修和太空装备明确标为概念/架空，新增单位不是精确复原的真实型号。
+
+[新增8种外观](screenshots/tactical-review-sheet.png) · [建模监督](docs/reviews/tactical-wave-supervision.md) · [验证记录](docs/VALIDATION.md)
+
+## 3.0 第一人称接管与增援（沿用）
 
 选中任意存活的己方单位，点击“第一人称驾驶”或按 **E**。相机进入该实体的真实位置；其他部队的建造、生产和战术调度交给己方 AI。按 **E / Esc** 返回总指挥。步兵显示持枪双手，医护显示医疗装具，装甲/舰艇/航空/轨道单位分别显示炮镜、舰桥或座舱仪表。自身外部模型隐藏，其他单位仍在同一个战场作战。
 
 - **WASD** 移动，鼠标观察，左键开火，右键瞄准；**空格** 暂停，**M** 关闭/开启晃动，**F11** 全屏。失焦和鼠标解锁立即清空移动及开火输入。
 - 手动射击沿准星与炮口双重射线检查遮挡（未标炮口的旧模型采用保守发射点），按固定弹着点及目标命中区域近似判断，移出区域不再追踪扣血；命中标记只在实际伤害结算后出现；冷却、射程、目标域、护盾、弹道延时和增益沿用 RTS 规则。无武装单位可驾驶，医疗/维修/电子支援继续自动工作。
-- 新增 12 种原创职责单位，现为 **56 类单位：陆军16、海军13、空军13、太空13，另加采矿车**。这12种在六阵营共享职责造型并使用阵营涂装，共72个新外观槽位，不冒称72种真实装备。
+- 新增 12 种原创职责单位，该版为 **56 类单位：陆军16、海军13、空军13、太空13，另加采矿车**。这12种在六阵营共享职责造型并使用阵营涂装，共72个新外观槽位，不冒称72种真实装备。
 
 |军种|新增单位|实际玩法|
 |---|---|---|
@@ -42,18 +57,18 @@
 - 美国、俄罗斯、中国、印度、韩国、战锤人类帝国同人阵营；1玩家对1–4 AI，支持混战/敌方联盟。
 - 简单、标准、困难、极难四档AI；高难度包含经济补助，不能等同于公平经济下更聪明。
 - 三张地图、连通海域、陆路桥梁、矿山、补给据点；基地歼灭与据点积分胜利规则。
-- 56类单位：陆军16、海军13、空军13、太空13，另有采矿车、17类基地/防御设施、7类支援能力、8项玩家增益；本地保存和JSON导入导出。
+- 64类单位：陆军18、海军15、空军15、太空15，另有采矿车、17类基地/防御设施、7类支援能力、8项玩家增益；本地保存和JSON导入导出。
 - 每矿山初始24,000资源；采矿车容量500、装载65/秒，自动往返装车区和炼厂。采空后另寻矿源，炼厂损失时保留货物等待。矿体阻挡车辆，装车区可达。
 - 陆海空生产线分别推进；集结点、队形、排队路径、撤退维修、近防火箭拦截、雷达防御增益。
 - 尖端科技仅玩家可用与禁止AI太空武器独立设置；可在对局内更改，禁止后退还AI相关排队订单。轨道武器可攻击海陆空、轨道目标和基地。
 
-太空重平台保留海陆空天及基地攻击；新截击舰只打空中/太空，速度145、伤害95/0.95秒；重平台速度62、伤害200/3.2秒（均为游戏数值）。AI太空开关控制全部武装太空单位和攻击性干扰舰；侦察星、测绘星、维修站及中继仍可用。
+太空重平台保留海陆空天及基地攻击；新截击舰只打空中/太空，速度145、伤害95/0.95秒；重平台速度62、伤害200/3.2秒（均为游戏数值）。AI太空开关控制全部武装太空单位和攻击性干扰舰；侦察星、测绘星、维修站、中继及无武装护盾舰仍可用。
 
 新增27类按公开装备形态与原创职责设计，包含侦察、反装甲、维修、对空、对舰、岸轰与轨道攻城等；不是换名复制既有进口模型。生产界面可切四类并搜索名称/职责，尖端科技未开启时仍显示锁定卡片。AI按相同目标域战斗，维修跟随对应军种；舰队沿同一连通水域推进。
 
 防御提示：悬停或选中显示攻击、拦截、维修、雷达联动等范围；V循环选中/己方防线/关闭。建造时显示投影范围与建成后电力；EMP/缺电用虚线及文字提示。雷达增程只影响攻击，近防拦截半径维持330。全部距离为游戏单位。
 
-外观总览：[新增39职责角色](screenshots/expanded-review-sheet.png) / [建模监督](docs/reviews/expanded-model-supervision.md) / [参考来源](docs/reviews/expanded-model-references.md)。
+外观总览：[47职责角色](screenshots/expanded-review-sheet.png) / [建模监督](docs/reviews/expanded-model-supervision.md) / [参考来源](docs/reviews/expanded-model-references.md)。
 
 旧版总览：[太空24槽位](screenshots/space-review-sheet.png) / [17建筑](screenshots/buildings-review-sheet.png)。[监督审查](docs/reviews/space-supervision.md) / [Sketchfab候选](docs/reviews/sketchfab-candidates.md)。
 
@@ -105,6 +120,7 @@ node tests/expanded-browser.cjs
 node tests/expanded-browser.cjs --desktop
 node tests/first-person-browser.cjs
 node tests/first-person-browser.cjs --desktop
+node tests/tactical-controls.cjs
 node tests/range-fallback.cjs
 node tests/space-browser.cjs --desktop
 node tests/upgrade.cjs
@@ -118,7 +134,7 @@ powershell -File build-desktop.ps1
 
 游戏运行不需要开发工具。报告见 [验证记录](docs/VALIDATION.md)，真实截图在 `screenshots/`。
 
-新版实时外观源为 `src/models-tanks.js`、`models-vehicles.js`、`models-air.js`、`models-naval.js`、`models-space.js`、`models-buildings.js`、`models-roster.js`、`models-reinforcements-ground-naval.js`、`models-reinforcements-air-space.js`；近景源为 `fps-viewmodel.js`。`models/`内STEP为早期CAD研究资产，**不等同于当前实时模型**。运行无需Fusion/FreeCAD/Python。
+新版实时外观源为 `src/models-tanks.js`、`models-vehicles.js`、`models-air.js`、`models-naval.js`、`models-space.js`、`models-buildings.js`、`models-roster.js`、`models-reinforcements-ground-naval.js`、`models-reinforcements-air-space.js`、`models-tactical-ground-naval.js`、`models-tactical-air-space.js`；近景源为 `fps-viewmodel.js`。`models/`内STEP为早期CAD研究资产，**不等同于当前实时模型**。运行无需Fusion/FreeCAD/Python。
 
 ## Git
 

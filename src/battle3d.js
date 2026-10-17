@@ -137,6 +137,8 @@
         const jammer=o.getObjectByName('jammerHead');if(jammer)jammer.rotation.y=time*.18;
         const rotor=o.getObjectByName('rotor');if(rotor)rotor.rotation.y=time*27;
         const rotorCounter=o.getObjectByName('rotorCounter');if(rotorCounter)rotorCounter.rotation.y=-time*27;
+        const rotor2=o.getObjectByName('rotor2');if(rotor2)rotor2.rotation.y=time*27;
+        const rotorCounter2=o.getObjectByName('rotorCounter2');if(rotorCounter2)rotorCounter2.rotation.y=-time*27;
         const propeller=o.getObjectByName('propeller');if(propeller)propeller.rotation.x=time*35;
         const tailRotor=o.getObjectByName('tailRotor');if(tailRotor)tailRotor.rotation.z=time*38;
       }
