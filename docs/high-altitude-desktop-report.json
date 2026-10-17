@@ -1,0 +1,85 @@
+{
+  "recordedAt": "2026-10-17T17:27:39.295Z",
+  "environment": "desktop",
+  "checks": [
+    "Real mouse up descends, mouse down climbs; observed trusted relative input and entity altitude",
+    "400 km compressed orbit has actual 4000u camera, horizon backdrop, extended range and real-click ground strike",
+    "Maximum 1200 km display remains rendered with valid perspective camera",
+    "Strategy returns to selectable compressed proxy while preserving true orbital altitude",
+    "All eight new roles queue through real cards at zero balance with unlimited resources",
+    "Four detailed defense facilities place through real build UI at zero balance",
+    "Live modifier menu independently disables unlimited/rapid and production returns to budget checks"
+  ],
+  "errors": [],
+  "mouseUp": {
+    "desired": -0.39999999999999997,
+    "pitch": -0.37736919705382566,
+    "altitude": 865.2569339527901,
+    "events": [
+      {
+        "dy": -25,
+        "trusted": true
+      },
+      {
+        "dy": -25,
+        "trusted": true
+      },
+      {
+        "dy": -25,
+        "trusted": true
+      },
+      {
+        "dy": -25,
+        "trusted": true
+      },
+      {
+        "dy": -25,
+        "trusted": true
+      },
+      {
+        "dy": -25,
+        "trusted": true
+      },
+      {
+        "dy": -25,
+        "trusted": true
+      },
+      {
+        "dy": -25,
+        "trusted": true
+      }
+    ]
+  },
+  "mouseDown": {
+    "desired": 0.39999999999999997,
+    "pitch": 0.3822722085896927,
+    "altitude": 944.0699009883948
+  },
+  "orbit": {
+    "height": 4000,
+    "camera": 4007,
+    "hud": "高度 400 km · 压缩映射",
+    "backdrop": true,
+    "far": 100000,
+    "range": 1870,
+    "groundHit": true
+  },
+  "strategy": {
+    "screen": {
+      "x": 1376,
+      "y": 455.85561207592514
+    },
+    "physical": 12000,
+    "model": 169,
+    "pick": 41,
+    "id": 41,
+    "backdrop": false
+  },
+  "builds": [
+    "sonar_bastion",
+    "aerospace_array",
+    "plasma_bastion",
+    "repair_dome"
+  ],
+  "passed": true
+}

@@ -1,0 +1,45 @@
+{
+  "recordedAt": "2026-10-17T17:25:06.245Z",
+  "checks": [
+    "Real setup starts in selected owned tank; commander mode remains separate",
+    "J opens live roster, clears driving input and leaves simulation / AI running",
+    "Real roster cards transfer possession through naval, air, orbital and land vehicles",
+    "Search cannot leak shortcuts; new owned units appear automatically, enemy units excluded; submarine switch enters underwater view",
+    "Protection status is live; Esc closes roster; E exits possession and clears dedicated guard state; RTS can reopen roster"
+  ],
+  "errors": [],
+  "switches": [
+    "destroyer",
+    "fighter",
+    "satellite",
+    "ifv"
+  ],
+  "protection": {
+    "status": {
+      "protectedId": 37,
+      "playerThreats": 1,
+      "baseThreats": 0,
+      "guardIds": [
+        15,
+        7
+      ],
+      "escortIds": [],
+      "supportIds": [],
+      "critical": false,
+      "fallback": {
+        "x": 1176,
+        "y": 456,
+        "id": 13
+      },
+      "updatedAt": 4.449999999999992,
+      "summary": "基地威胁 0 · 玩家威胁 1 · 守卫 2 / 护卫 0 · 待补维修"
+    },
+    "text": "基地威胁 0 · 玩家威胁 1 · 守卫 2 / 护卫 0 · 待补维修",
+    "queue": [
+      "abyss_tender",
+      "frigate"
+    ],
+    "builds": []
+  },
+  "passed": true
+}

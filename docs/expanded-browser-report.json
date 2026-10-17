@@ -1,9 +1,9 @@
 {
-  "recordedAt": "2026-10-17T15:52:30.447Z",
+  "recordedAt": "2026-10-17T17:06:37.979Z",
   "environment": "Chromium",
   "checks": [
-    "306 new faction-role models have valid geometry, truthful source metadata and appropriate weapon anchors",
-    "four production filters expose 18 land + logistics / 17 navy / 16 air / 16 orbit",
+    "354 new faction-role models have valid geometry, truthful source metadata and appropriate weapon anchors",
+    "four production filters expose 20 land + logistics / 19 navy / 18 air / 18 orbit",
     "name search, no-match feedback, preserved focus, no shortcut leakage, and new production buttons work via real input",
     "All 8 tactical roles queue through real production cards",
     "Selected orbital shield displays its 210 range, space-only domain and live EMP shutdown",
@@ -11,7 +11,7 @@
     "placement footprint and projected-power defense range preview use the live build UI",
     "mixed new units render at their domain altitude; UAV propeller and all four maintenance rotors animate; immersive HUD toggles"
   ],
-  "models": 306,
+  "models": 354,
   "animation": {
     "rotorsBefore": [
       54,
@@ -34,22 +34,22 @@
   },
   "combat": null,
   "performance": {
-    "frames": 185,
-    "durationMs": 4008.600000190734,
-    "meanFPS": 46.2,
-    "p95FrameMs": 22.5,
+    "frames": 201,
+    "durationMs": 4012.5999999999985,
+    "meanFPS": 50.1,
+    "p95FrameMs": 20.100000000002183,
     "viewport": [
       1600,
       1000
     ],
     "dpr": 1,
-    "entities": 105,
+    "entities": 121,
     "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-    "calls": 185,
-    "triangles": 1387360,
-    "visibleEntities": 103,
-    "geometries": 225
+    "calls": 206,
+    "triangles": 1600756,
+    "visibleEntities": 119,
+    "geometries": 146
   },
-  "performanceScope": "105 live entities during the sample; fixture starts with 102 added-role models and 3 buildings, and existing production may complete. Warmed 4-second mixed-domain render; not sustained combat.",
+  "performanceScope": "121 live entities during the sample; fixture starts with 118 added-role models and 3 buildings, and existing production may complete. Warmed 4-second mixed-domain render; not sustained combat.",
   "errors": []
 }

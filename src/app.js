@@ -40,7 +40,7 @@
     audio = null,
     hadFocus = true;
   const lighting = r.is3D ? {available:true,enabled:true,night:false,output:{hidden:true},draw(){}} : new WarLighting($("#battle"));
-  r.camera = { x: 1550, y: 1000, zoom: 0.64 };
+  r.camera = { x: D.W / 2, y: D.H / 2, zoom: 0.32 };
   r.prepare(demo);
   function escapeHTML(v) {
     return String(v).replace(
@@ -173,7 +173,7 @@
       g.fillRect(0, 0, 172, 120);
       for (let i = 0; i < m.tiles.length; i++) {
         g.fillStyle =
-          m.tiles[i] === 3
+          (m.tiles[i] === 3 || m.tiles[i] === 6)
             ? "#365e6c"
             : m.tiles[i] === 4
               ? "#b9b492"
@@ -181,10 +181,10 @@
                 ? "#374746"
                 : def.palette[m.tiles[i] === 1 ? 1 : 0];
         g.fillRect(
-          ((i % 64) * 172) / 64,
-          (Math.floor(i / 64) * 120) / 44,
-          172 / 64 + 1,
-          120 / 44 + 1,
+          ((i % D.COLS) * 172) / D.COLS,
+          (Math.floor(i / D.COLS) * 120) / D.ROWS,
+          172 / D.COLS + 1,
+          120 / D.ROWS + 1,
         );
       }
       for (const n of m.nodes) {
@@ -230,7 +230,11 @@
     try {
       game = new WarSim.Game(opts);
       enterGame();
-      toast("部署完成。先占领补给站，扩大收入。");
+      if(opts.playerMode==='driver'){
+        const actor=game.entities.find(e=>e.team===0&&e.kind===(opts.initialVehicle||'tank'));
+        if(actor){selection=new Set([actor.id]);direct.enter(actor.id);}
+      }
+      toast(opts.playerMode==='driver'?'驾驶模式已开启。J 换乘己方载具，AI 接管建造生产与护卫。':'部署完成。先占领补给站，扩大收入。');
       beep(650, 0.2);
     } catch (e) {
       toast("启动失败：" + e.message);
@@ -264,6 +268,8 @@
     const opts = {
       faction,
       map,
+      playerMode: $('#player-mode').value,
+      initialVehicle: $('#initial-vehicle').value,
       enemies: Number($("#enemies").value),
       difficulty: $("#difficulty").value,
       allied: $("#allied").checked,
@@ -296,7 +302,7 @@
       unit = own.filter((e) => !e.structure);
     $("#team-name").innerHTML = flag(t.faction) + f.name;
     $("#side-faction").textContent = f.flag;
-    $("#money").textContent = Math.floor(t.money).toLocaleString();
+    $("#money").textContent = game.buffs.has("unlimited") ? "∞ 无限" : Math.floor(t.money).toLocaleString();
     $("#income").textContent =
       "+" + Math.round(t.income * (game.buffs.has("income") ? 2 : 1)) + "/s";
     $("#power").textContent = (t.power >= 0 ? "+" : "") + t.power;
@@ -322,7 +328,7 @@
             cost = game.cost(0, k),
             ready =
               technologyReady && prod &&
-              t.money >= cost &&
+              game.canAfford(0,cost) &&
               t.queue.length < 12 &&
               unit.length + t.queue.length < 100;
           return item(
@@ -354,7 +360,7 @@
               d.time +
               "s",
             d.cost,
-            t.money < d.cost || t.buildQueue.length >= 4,
+            !game.canAfford(0,d.cost) || t.buildQueue.length >= 4,
             "在己方建筑 400 范围内放置",
           ),
         )
@@ -380,7 +386,7 @@
                   : "⌖",
             cd ? "冷却 " + cd + "s" : d.desc,
             d.cost,
-            game.options.abilities === false || t.money < d.cost || cd > 0,
+            game.options.abilities === false || !game.canAfford(0,d.cost) || cd > 0,
             d.desc + " · 游戏单位范围 " + d.radius,
           );
         })
@@ -561,7 +567,8 @@
         target = enemyAt(p);
       const picked=r.pick?.(game,e.clientX,e.clientY,true)||target;
       if([...selection].some(id=>game.get(id)?.structure)){game.setRally([...selection],p.x,p.y);toast('集结点已设置，新生产单位自动前往');}
-      game.command([...selection], picked?.x||p.x, picked?.y||p.y, !!picked, picked?.id || null,{queue:e.shiftKey});
+      const result=game.command([...selection], picked?.x||p.x, picked?.y||p.y, !!picked, picked?.id || null,{queue:e.shiftKey});
+      if(result?.rejected.length)toast(WarCommandFeedback.format(result));
       beep(330, 0.06);
       return;
     }
@@ -573,7 +580,8 @@
       }
       const p = r.toWorld(e.clientX, e.clientY);
       if (mode === "attack") {
-        game.command([...selection], p.x, p.y, true,null,{queue:e.shiftKey});
+        const result=game.command([...selection], p.x, p.y, true,null,{queue:e.shiftKey});
+        if(result?.rejected.length)toast(WarCommandFeedback.format(result));
         setMode(null);
       } else if (B[mode]) {
         if (game.build(0, mode, p.x, p.y)) {
@@ -673,7 +681,8 @@
       y = ((e.clientY - rect.top) / rect.height) * D.H;
     if (e.button === 2) {
       e.preventDefault();
-      game.command([...selection], x, y, mode === "attack");
+      const result=game.command([...selection], x, y, mode === "attack");
+      if(result?.rejected.length)toast(WarCommandFeedback.format(result));
       setMode(null);
     } else {
       r.camera.x = x;
@@ -753,6 +762,7 @@
     else if (k === "a" && !e.ctrlKey) setMode("attack");
     else if (k === "s") stopUnits();
     else if (k === "h") home();
+    else if (k === "j") direct.vehicleMenu.show();
     else if (k === "r") {game.retreat([...selection]);toast('撤回基地，脱战后维修');}
     else if (k === "f") {const fs=['line','column','spread'];game.formation=fs[(fs.indexOf(game.formation)+1)%3];$('#formation').value=game.formation;toast('阵型已切换');}
     else if (k === "v") toggleRanges();
@@ -808,7 +818,7 @@
   $("#close-modal").onclick = closeModal;
   function help() {
     openModal(
-      '<small>FIELD MANUAL / 01</small><h2>作战指南</h2><p>通过基地与补给站获得资金，扩建产能，组织兵种协同，摧毁所有敌方指挥中心获胜。指挥中心被摧毁即出局。</p><div class="help-grid"><div><strong>选择与指挥</strong>左键选择，拖动框选；Shift 追加。<br>右键移动 / 指定敌军集火。<br>Q 选全军，A 后左键攻击移动，S 停止。<br>Ctrl + 1–5 编组，数字键调用。</div><div><strong>镜头与节奏</strong>方向键 / W D 平移，中键拖动。<br>滚轮缩放，H 回到基地。<br>小地图左键定位，右键下达指令。<br>空格暂停，右上角调节 1–2 倍速。</div><div><strong>建设与经济</strong>右侧“建造”选建筑，左键放置。<br>建筑需在己方建筑 400 范围内。<br>靠近补给站并独占 7 秒即可占领。<br>低电力生产速度仅为 40%。</div><div><strong>兵种与支援</strong>坦克抗线，步战车清步兵。<br>火炮需要前线视野且有最小射程。<br>防空克制直升机与六代机。<br>支援需视野，侦察可揭示任意区域。</div><div><strong>第一人称驾驶</strong>选中己方单位，点击驾驶按钮或按 E。<br>WASD 移动，鼠标观察，左键开火、右键瞄准。<br>E / Esc 返回总指挥，其他部队由 AI 接管。<br>M 开关镜头/武器晃动，空格暂停。</div><div><strong>尖端科技</strong>核打击延迟 6 秒，钻地弹延迟 4 秒。<br>六代机先建设陆航基地再生产。<br>默认尖端科技仅玩家可用。<br>全部均为游戏数值；本版无友军伤害。</div><div><strong>科幻阵营</strong>战锤·人类帝国为非官方同人。<br>生命 ×3、火力 ×2.6、生产 ×1.3。<br>专属轨道光矛，强度远高于现代军队。<br>开局可把它选为玩家或 AI。</div></div><p>F5 保存 / F9 读取；菜单中可导出与导入存档。桌面鼠标键盘是完整操作方式；窄屏支持基本查看和点选。</p>',
+      '<small>FIELD MANUAL / 01</small><h2>作战指南</h2><p>通过基地与补给站获得资金，扩建产能，组织兵种协同，摧毁所有敌方指挥中心获胜。指挥中心被摧毁即出局。</p><div class="help-grid"><div><strong>选择与指挥</strong>左键选择，拖动框选；Shift 追加。<br>右键移动 / 指定敌军集火。<br>Q 选全军，A 后左键攻击移动，S 停止。<br>Ctrl + 1–5 编组，数字键调用。<br>实线为已求路径，虚线为后续目标；跨岛陆军移动会提示不可达。</div><div><strong>镜头与节奏</strong>方向键 / W D 平移，中键拖动。<br>滚轮缩放，H 回到基地。<br>小地图左键定位，右键下达指令。<br>空格暂停，右上角调节 1–2 倍速。</div><div><strong>建设与经济</strong>右侧“建造”选建筑，左键放置。<br>建筑需在己方建筑 400 范围内。<br>靠近补给站并独占 7 秒即可占领。<br>低电力生产速度仅为 40%。</div><div><strong>兵种与支援</strong>坦克抗线，步战车清步兵。<br>火炮需要前线视野且有最小射程。<br>防空克制直升机与六代机。<br>支援需视野，侦察可揭示任意区域。</div><div><strong>第一人称驾驶</strong>选中己方单位，点击驾驶按钮或按 E。<br>WASD 移动，鼠标观察，左键开火、右键瞄准。<br>J 搜索并换乘存活己方单位；E / Esc 返回总指挥。<br>AI 接管建造、生产、基地留守与玩家护卫。<br>飞机鼠标上推下降、下拉爬升；W/S 油门。<br>M 开关晃动，空格暂停。</div><div><strong>尖端科技</strong>核打击延迟 6 秒，钻地弹延迟 4 秒。<br>六代机先建设陆航基地再生产。<br>默认尖端科技仅玩家可用。<br>全部均为游戏数值；本版无友军伤害。</div><div><strong>科幻阵营</strong>战锤·人类帝国为非官方同人。<br>生命 ×3、火力 ×2.6、生产 ×1.3。<br>专属轨道光矛，强度远高于现代军队。<br>开局可把它选为玩家或 AI。</div></div><p>F5 保存 / F9 读取；菜单中可导出与导入存档。桌面鼠标键盘是完整操作方式；窄屏支持基本查看和点选。</p>',
     );
   }
   $("#help-menu").onclick = help;
@@ -834,7 +844,7 @@
     $("#menu").hidden = false;
     paused = false;
     mode = null;
-    r.camera = { x: 1550, y: 1000, zoom: 0.64 };
+    r.camera = { x: D.W / 2, y: D.H / 2, zoom: 0.32 };
     r.prepare(demo);
     setupMenu();
   }
@@ -921,10 +931,10 @@
       for (const t of game.teams) {
         if (t.id === 0 && game.options.advanced) continue;
         for (const q of t.queue)
-          if (U[q.kind].advanced) t.money += game.cost(t.id, q.kind);
+          if (U[q.kind].advanced) t.money += q.paid ?? game.cost(t.id, q.kind);
         t.queue = t.queue.filter((q) => !U[q.kind].advanced);
         for (const q of t.buildQueue)
-          if (B[q.kind].advanced) t.money += game.cost(t.id, q.kind);
+          if (B[q.kind].advanced) t.money += q.paid ?? game.cost(t.id, q.kind);
         t.buildQueue = t.buildQueue.filter((q) => !B[q.kind].advanced);
       }
       game.entities = game.entities.filter(
@@ -951,7 +961,7 @@
         (game.options.advanced ? "checked" : "") +
         '>启用尖端科技</label><label><input id="live-player-only" type="checkbox" ' +
         (game.options.playerOnlyTech ? "checked" : "") +
-        '>尖端科技仅玩家可用</label></div><p>关闭科技后，对应单位、排队和未落地打击会被移除。开启仅玩家可用时同步移除 AI 的对应内容。装甲增益按比例调整已有单位；充裕资金每局最多额外发放一次。</p><button id="apply-buffs" class="primary">应用设置 →</button>',
+        '>尖端科技仅玩家可用</label></div><p>关闭科技后，对应单位、排队和未落地打击会被移除。开启仅玩家可用时同步移除 AI 的对应内容。装甲增益按比例调整已有单位；充裕资金每局最多额外发放一次。无限资源仅玩家免扣费，关闭后恢复有限余额；快速建造/生产为10倍速度，关闭后队列恢复常速。</p><button id="apply-buffs" class="primary">应用设置 →</button>',
     );
     $("#apply-buffs").onclick = applyBuffs;
   };
@@ -1029,7 +1039,7 @@
       }
       if (game.result) result();
     } else {
-      r.camera.x = 1550 + Math.sin(now / 60000) * 180;
+      r.camera.x = D.W / 2 + Math.sin(now / 60000) * 180;
       r.draw(demo, { demo: true }, now / 1000);
     }
     try {
@@ -1213,6 +1223,8 @@
   const rangeReadout=document.createElement('div');rangeReadout.id='range-readout';rangeReadout.hidden=true;$('#hud').append(rangeReadout);
   function toggleRanges(){const modes=['selected','defenses','off'];rangeMode=modes[(modes.indexOf(rangeMode)+1)%modes.length];rangeButton.textContent='范围：'+({selected:'选中',defenses:'防线',off:'关闭'})[rangeMode]+' V';}
   const direct=new WarDirectControl(r,{game:()=>game,paused:()=>paused,selection:()=>[...selection],canEnter:()=>!!game&&!game.result&&$('#modal').hidden,togglePause,toast,unitName,sound:()=>sound,onExit:()=>{keys.clear();drag=null;middle=null;updateHUD();}});
+  direct.vehicleMenu=new WarPlayerMode(direct);
+  const vehicleButton=document.createElement('button');vehicleButton.id='choose-vehicle';vehicleButton.textContent='换乘载具 J';vehicleButton.onclick=()=>direct.vehicleMenu.show();$('.command-buttons').append(vehicleButton);
   const driveButton=document.createElement('button');driveButton.id='drive-unit';driveButton.textContent='第一人称驾驶 E';driveButton.title='选择己方单位后进入驾驶；其他部队由AI接管';driveButton.onclick=()=>{keys.clear();drag=null;middle=null;setMode(null);direct.enter([...selection][0]);};$('.command-buttons').append(driveButton);
   $('.bottom-status p').innerHTML+=' · E 驾驶选中单位';
   setupMenu();

@@ -4,6 +4,7 @@
     { F, U, B, W, H, T, COLS, ROWS, ABILITIES } = D,
     clamp = (v, a, b) => Math.max(a, Math.min(b, v)),
     dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+  const PLAYER_PROTECTION_DEFAULTS=Object.freeze({tickSeconds:1,baseRadius:650,playerRadius:650,guardCount:2,escortCount:2,supportCount:1,respondersPerThreat:2,maxThreats:4,criticalRatio:.35,powerReserve:20,holdRadius:140,refreshDistance:80});
   const maxShieldRange=Math.max(0,...Object.values({...U,...B}).filter(d=>d.shield).map(d=>d.range));
   function rng(seed) {
     return () => {
@@ -15,6 +16,8 @@
     };
   }
   function makeMap(id = "river") {
+    if(!root.WarMapLayouts&&typeof module!=='undefined'&&typeof require==='function')require('./maps-large.js');
+    if(root.WarMapLayouts)return root.WarMapLayouts.makeMap(id,rng);
     const def = D.MAPS.find((m) => m.id === id) || D.MAPS[0],
       r = rng(def.seed),
       blocked = new Uint8Array(COLS * ROWS),
@@ -246,6 +249,11 @@
         scoreLimit: 600,
         ...options,
       };
+      this.options.playerProtection=Object.fromEntries(Object.entries(PLAYER_PROTECTION_DEFAULTS).map(([k,v])=>{
+        const value=options.playerProtection?.[k],limit=k==='tickSeconds'?[.5,5]:k==='criticalRatio'?[.1,.8]:k.endsWith('Count')||k==='respondersPerThreat'||k==='maxThreats'?[1,8]:[20,1500];
+        return [k,Number.isFinite(value)?clamp(value,...limit):v];
+      }));
+      this.protectionStatus=null;
       this.options.enemies = clamp(Number(this.options.enemies) || 1, 1, 4);
       if (!F[this.options.faction]) this.options.faction = "chn";
       this.map = makeMap(this.options.map);
@@ -325,16 +333,16 @@
           );
         for (let j = 0; j < 3; j++)
           this.spawn(i, "infantry", p.x - 90 + j * 28, p.y + 200 * dir);
-        const sea =
+        const sea = this.map.navalSpawns?.[i] || (
           i === 4
-            ? { x: 3000, y: p.y }
-            : { x: p.x, y: p.y > H / 2 ? 1992 : 120 };
+            ? { x: W-72, y: p.y }
+            : { x: p.x, y: p.y > H / 2 ? H-120 : 120 });
         this.spawn(i, "navalyard", sea.x, sea.y);
         this.spawn(
           i,
           "destroyer",
-          i === 4 ? sea.x : sea.x + 100,
-          i === 4 ? sea.y + 100 : sea.y,
+          this.map.navalUnitSpawns?.[i]?.x ?? (i === 4 ? sea.x : sea.x + 100),
+          this.map.navalUnitSpawns?.[i]?.y ?? (i === 4 ? sea.y + 100 : sea.y),
         );
         this.spawn(i, "fighter", p.x - 180, p.y + 40 * dir);
         this.spawn(i, "satellite", p.x + 40, p.y - 140 * dir);
@@ -413,18 +421,28 @@
     }
     entityAltitude(e) {
       if(Number.isFinite(e?.altitude))return e.altitude;
-      const d=U[e?.kind];return d?.underwater?-55:d?.space?145:d?.air?65:d?.naval?2:0;
+      const d=U[e?.kind];return d?.underwater?-55:d?.space?4000:d?.air?65:d?.naval?2:0;
     }
     hitHeightRadius(e) {
       const d=U[e.kind];return e.structure?Math.max(60,e.r*2):d?.naval?Math.max(30,e.r*2):d?.air?Math.max(12,e.r):Math.max(20,e.r);
     }
     distance3D(a,b) {return Math.hypot(a.x-b.x,a.y-b.y,this.entityAltitude(a)-this.entityAltitude(b));}
+    engagementDistance(a,b) {
+      // Space is a compressed orbital layer; only cross-layer weapons/sensors project onto the map.
+      return !!U[a.kind]?.space!==!!U[b.kind]?.space?dist(a,b):this.distance3D(a,b);
+    }
+    canAfford(team,cost) {return Number.isFinite(cost)&&cost>=0&&!!this.teams[team]&&((team===0&&this.buffs.has('unlimited'))||this.teams[team].money>=cost);}
+    spend(team,cost) {
+      if(!this.canAfford(team,cost))return null;
+      const paid=team===0&&this.buffs.has('unlimited')?0:cost;
+      this.teams[team].money-=paid;this.teams[team].spent+=paid;return paid;
+    }
     canDetect(team,e) {
       if(!e||e.hp<=0)return false;
       if(!this.isEnemy(team,e.team)||!U[e.kind]?.underwater)return true;
       // Explicit player vision cheat includes underwater contacts.
       if(team===0&&this.buffs.has('vision'))return true;
-      return this.entities.some(s=>s.team===team&&(U[s.kind]||B[s.kind])?.sonarRange&&this.operational(s)&&this.distance3D(s,e)<=(U[s.kind]||B[s.kind]).sonarRange);
+      return this.entities.some(s=>s.team===team&&(U[s.kind]||B[s.kind])?.sonarRange&&this.operational(s)&&this.engagementDistance(s,e)<=(U[s.kind]||B[s.kind]).sonarRange);
     }
     operational(e, power) {
       return e.hp!==0 && !(e.hp<0) && !(e.disabled>this.time) &&
@@ -466,7 +484,7 @@
       if(!(U[e.kind]||B[e.kind])?.damage)return 1;
       let friendly=1,hostile=1;const domain=this.targetDomain(e.kind);
       for(const source of controllers){const d=U[source.kind],field=d?.fireControl;
-        if(!field||!this.operational(source)||!field.domains.includes(domain)||this.distance3D(source,e)>d.range)continue;
+        if(!field||!this.operational(source)||!field.domains.includes(domain)||this.engagementDistance(source,e)>d.range)continue;
         if(field.enemy&&this.isEnemy(source.team,e.team))hostile=Math.max(hostile,field.multiplier);
         else if(!field.enemy&&source.team===e.team)friendly=Math.min(friendly,field.multiplier);
       }
@@ -491,7 +509,7 @@
     }
     availableUnitKinds(team) {
       const t=this.teams[team],own=this.teamEntities(team),producers=new Set(own.filter(e=>e.structure&&e.disabled<=this.time).map(e=>e.kind));
-      return Object.keys(U).filter(k=>{const d=U[k];return !d.logistics&&k!=='harvester'&&producers.has(d.producer)&&t.money>=this.cost(team,k)&&
+      return Object.keys(U).filter(k=>{const d=U[k];return !d.logistics&&k!=='harvester'&&producers.has(d.producer)&&this.canAfford(team,this.cost(team,k))&&
         !(d.advanced&&(!this.options.advanced||(team>0&&this.options.playerOnlyTech)))&&!(team>0&&d.spaceWeapon&&this.options.aiSpaceWeapons===false);});
     }
     chooseUnitKind(choices) {
@@ -532,6 +550,8 @@
       const e=this.entities.find(o=>o.id===this.directControl.id);
       if(e){e.manualMove=false;e.order=null;e.orderQueue=[];e.path=[];e.target=null;}
       if(this._directTeamAI)Object.assign(this.teams[0],this._directTeamAI);
+      for(const ally of this.entities)if(ally.protectionRole){delete ally.protectionRole;ally.order=null;ally.orderQueue=[];ally.path=[];ally.target=null;}
+      this.protectionStatus=null;
       this.directControl=null;this._directTeamAI=null;
       this.directFeedback=null;
       return true;
@@ -549,7 +569,7 @@
         fire:!!input.fire,targetId:Number.isInteger(input.targetId)?input.targetId:null,
         aimX:clamp(finite(input.aimX,e.x+Math.cos(yaw)*(d.range||250)),0,W),
         aimY:clamp(finite(input.aimY,e.y+Math.sin(yaw)*(d.range||250)),0,H),
-        aimHeight:clamp(finite(input.aimHeight,this.entityAltitude(this.get(input.targetId)||e)),-160,1000),
+        aimHeight:clamp(finite(input.aimHeight,this.entityAltitude(this.get(input.targetId)||e)),-160,14000),
       };
       return true;
     }
@@ -585,11 +605,11 @@
         if(e.kind==='tank'&&target.kind==='ifv')val*=1.3;
         if(e.kind==='aa')val*=U[target.kind]?.air?2:.45;
       }
-      const asw=U[target?.kind]?.underwater&&['destroyer','frigate'].includes(e.kind),weaponFx=asw?'torpedo':d.weaponFx;
-      const destination=aim?.fixedImpact?aim:target||aim,travel=Math.max(.08,Math.hypot(e.x-destination.x,e.y-destination.y,this.entityAltitude(e)-(aim?.fixedImpact?aim.height:target?this.entityAltitude(target):aim?.height??0))/(weaponFx==='torpedo'?220:e.kind==='rocket'?400:700));
+      const asw=U[target?.kind]?.underwater&&['destroyer','frigate','missile_sub'].includes(e.kind),weaponFx=asw?'torpedo':d.weaponFx;
+      const destination=aim?.fixedImpact?aim:target||aim,destinationHeight=aim?.fixedImpact?aim.height:target?this.entityAltitude(target):aim?.height??0,crossLayer=target?(!!U[e.kind]?.space!==!!U[target.kind]?.space):(!!U[e.kind]?.space!==(destinationHeight>=2000)),travel=Math.max(.08,Math.hypot(e.x-destination.x,e.y-destination.y,crossLayer?0:this.entityAltitude(e)-destinationHeight)/(weaponFx==='torpedo'?220:e.kind==='rocket'?400:700));
       this.effects.push({type:'shot',x:e.x,y:e.y,tx:destination.x,ty:destination.y,target:target?.id??null,from:e.team,
         damage:val,baseDamage:target?d.damage:0,targetDomain:target?this.targetDomain(target.kind):null,splash:target?(d.splash||0):0,
-        ttl:travel,max:travel,rocket:!!d.rocket||['rocket','heli','asat','sam'].includes(e.kind),space:!!d.spaceWeapon,
+        ttl:travel,max:travel,rocket:weaponFx!=='torpedo'&&(!!d.rocket||['rocket','heli','asat','sam'].includes(e.kind)),space:!!d.spaceWeapon,
         sourceKind:e.kind,sourceId:e.id,sourceHeight:this.entityAltitude(e)+(e.structure?20:!d.air&&!d.naval?12:0),
         targetHeight:aim?.fixedImpact?aim.height:target?this.entityAltitude(target):(aim?.height??5),
         weaponFx:weaponFx||(e.kind==='orbital'?'orbital-beam':e.kind==='orbital_interceptor'?'interceptor-burst':e.kind==='asat'?'asat-missile':e.kind==='laser'?'laser-beam':'projectile'),
@@ -614,14 +634,14 @@
             e.flightSpeed=clamp(e.flightSpeed+input.throttle*speed*.35*dt,speed*.35,speed*1.25);
             dx=Math.cos(e.angle)*Math.cos(e.pitch)*e.flightSpeed*dt;
             dy=Math.sin(e.angle)*Math.cos(e.pitch)*e.flightSpeed*dt;
-            e.altitude=clamp(this.entityAltitude(e)+Math.sin(e.pitch)*e.flightSpeed*dt,25,650);
+            e.altitude=clamp(this.entityAltitude(e)+Math.sin(e.pitch)*e.flightSpeed*dt,25,1800);
           }else{
             const norm=Math.max(1,Math.hypot(input.forward,input.strafe));
             dx=(Math.cos(e.angle)*input.forward-Math.sin(e.angle)*input.strafe)*speed*dt/norm;
             dy=(Math.sin(e.angle)*input.forward+Math.cos(e.angle)*input.strafe)*speed*dt/norm;
             e.flightSpeed=Math.hypot(dx,dy)/dt;
-            const climb=input.lift*(d.underwater?22:d.space?90:60)+(d.underwater?Math.sin(e.pitch)*e.flightSpeed:0);
-            e.altitude=clamp(this.entityAltitude(e)+climb*dt,d.underwater?-140:d.space?120:25,d.underwater?-22:d.space?900:650);
+            const climb=input.lift*(d.underwater?22:d.space?450:60)+(d.underwater?Math.sin(e.pitch)*e.flightSpeed:0);
+            e.altitude=clamp(this.entityAltitude(e)+climb*dt,d.underwater?-140:d.space?2000:25,d.underwater?-22:d.space?12000:1800);
           }
         }
       }else{
@@ -641,12 +661,12 @@
       }
       const range=this.rangeProfile(e).attack,candidate=this.get(input.targetId);
       const target=candidate&&this.isEnemy(e.team,candidate.team)&&this.canTargetKind(e.kind,candidate.kind)&&
-        this.distance3D(e,candidate)<=range&&dist(e,candidate)>=(d.minRange||0)&&this.canDetect(e.team,candidate)&&Math.abs(input.aimHeight-this.entityAltitude(candidate))<=this.hitHeightRadius(candidate)&&(U[candidate.kind]?.underwater||this.visibleAt(candidate.x,candidate.y))?candidate:null;
+        this.engagementDistance(e,candidate)<=range&&this.engagementDistance(e,candidate)>=(d.minRange||0)&&this.canDetect(e.team,candidate)&&Math.abs(input.aimHeight-this.entityAltitude(candidate))<=this.hitHeightRadius(candidate)&&(U[candidate.kind]?.underwater||this.visibleAt(candidate.x,candidate.y))?candidate:null;
       e.target=target?.id??null;
       if(target)e.turret=Math.atan2(target.y-e.y,target.x-e.x);
       if(!input.fire||!d.damage||e.cool>0)return;
-      let ax=input.aimX-e.x,ay=input.aimY-e.y,az=input.aimHeight-this.entityAltitude(e),length=Math.hypot(ax,ay,az),factor=length>range?range/length:1;
-      this.emitShot(e,target,{x:e.x+ax*factor,y:e.y+ay*factor,height:this.entityAltitude(e)+az*factor,fixedImpact:true});
+      let ax=input.aimX-e.x,ay=input.aimY-e.y,az=input.aimHeight-this.entityAltitude(e),crossLayer=candidate?(!!d.space!==!!U[candidate.kind]?.space):(!!d.space!==(input.aimHeight>=2000)),length=Math.hypot(ax,ay,crossLayer?0:az),factor=length>range?range/length:1;
+      this.emitShot(e,target,{x:e.x+ax*factor,y:e.y+ay*factor,height:crossLayer?input.aimHeight:this.entityAltitude(e)+az*factor,fixedImpact:true});
     }
     train(team, kind) {
       const t = this.teams[team],
@@ -668,20 +688,19 @@
         !this.entities.some(
           (e) => e.hp > 0 && e.team === team && e.kind === d.producer,
         ) ||
-        t.money < this.cost(team, kind)
+        !this.canAfford(team,this.cost(team, kind))
       )
         return false;
       const c = this.cost(team, kind);
-      t.money -= c;
-      t.spent += c;
-      t.queue.push({ kind, remaining: d.time, total: d.time });
+      const paid=this.spend(team,c);
+      t.queue.push({ kind, remaining: d.time, total: d.time, paid });
       return true;
     }
     cancel(team, index) {
       const t = this.teams[team];
       if (!t.queue[index]) return;
       const [q] = t.queue.splice(index, 1);
-      t.money += Math.round(this.cost(team, q.kind) * 0.75);
+      t.money += Math.round((q.paid??this.cost(team, q.kind)) * 0.75);
     }
     canBuild(team, kind, x, y) {
       const d = B[kind];
@@ -742,18 +761,18 @@
         !t?.alive ||
         t.buildQueue.length >= 4 ||
         !this.canBuild(team, kind, x, y) ||
-        t.money < this.cost(team, kind)
+        !this.canAfford(team,this.cost(team, kind))
       )
         return false;
       const c = this.cost(team, kind);
-      t.money -= c;
-      t.spent += c;
+      const paid=this.spend(team,c);
       t.buildQueue.push({
         kind,
         x,
         y,
         total: B[kind].time,
         remaining: B[kind].time,
+        paid,
       });
       return true;
     }
@@ -770,12 +789,14 @@
     retreat(ids){for(const id of ids){const e=this.get(id);if(!e||e.id===this.directControl?.id||e.structure||U[e.kind]?.naval||U[e.kind]?.space)continue;const base=this.teamEntities(e.team).filter(o=>o.kind==='repairhub'||o.kind==='hq').sort((a,b)=>dist(a,e)-dist(b,e))[0];if(base){this.command([id],base.x+90,base.y+90);e.retreating=true;}}}
     setAISpaceWeapons(allow){
       this.options.aiSpaceWeapons=!!allow;if(allow)return;
-      for(const t of this.teams.slice(1)){for(const q of t.queue)if(U[q.kind]?.spaceWeapon)t.money+=this.cost(t.id,q.kind);t.queue=t.queue.filter(q=>!U[q.kind]?.spaceWeapon);}
+      for(const t of this.teams.slice(1)){for(const q of t.queue)if(U[q.kind]?.spaceWeapon)t.money+=(q.paid??this.cost(t.id,q.kind));t.queue=t.queue.filter(q=>!U[q.kind]?.spaceWeapon);}
       this.entities=this.entities.filter(e=>e.team===0||!U[e.kind]?.spaceWeapon);
       this.effects=this.effects.filter(fx=>!(fx.from>0&&(fx.space||fx.type==='orbital')));
     }
     command(ids, x, y, attack = false, target = null, options = {}) {
-      if(!Number.isFinite(x)||!Number.isFinite(y))return;
+      if(!root.WarCommandFeedback&&typeof module!=='undefined'&&typeof require==='function')require('./command-feedback.js');
+      const report={accepted:[],rejected:[],queued:!!options.queue};
+      if(!Number.isFinite(x)||!Number.isFinite(y))return report;
       const units = ids
         .map((id) => this.get(id))
         .filter((e) => e && !e.structure && e.id!==this.directControl?.id);
@@ -786,7 +807,13 @@
         const p=this.destination(e,x+((n%cols)-(width-1)/2)*spacing,y+(Math.floor(n/cols)-(rows-1)/2)*spacing);
         const contact=this.get(target),tracked=contact&&this.canDetect(e.team,contact)?target:null;
         const order={x:p.x,y:p.y,attack,target:tracked};
-        if(options.queue&&e.order){e.orderQueue=e.orderQueue||[];if(e.orderQueue.length<16)e.orderQueue.push(order);n++;continue;}
+        // Movement connectivity is distinct from ranged fire: an explicit detected
+        // attack target can remain valid across a river or between islands.
+        const from=options.queue?(e.orderQueue?.at(-1)||e.order||e):e;
+        const access=tracked?null:root.WarCommandFeedback?.check(this.map,U[e.kind],from,p);
+        if(access?.reachable===false){report.rejected.push({id:e.id,reason:access.reason,domain:access.domain});n++;continue;}
+        if(options.queue&&e.order){e.orderQueue=e.orderQueue||[];if(e.orderQueue.length<16){e.orderQueue.push(order);report.accepted.push(e.id);}else report.rejected.push({id:e.id,reason:'queue-full'});n++;continue;}
+        report.accepted.push(e.id);
         e.orderQueue=[];e.retreating=false;
         if(e.kind==='harvester'){const ore=this.ore.filter(o=>o.amount>0).sort((a,b)=>dist(p,a)-dist(p,b))[0];e.oreId=ore&&dist(ore,p)<120?ore.id:null;e.manualMove=e.oreId===null;e.miningState=null;}
         e.order = order;
@@ -795,7 +822,8 @@
         e.repath = 0;
         n++;
       }
-      this.effects.push({ type: "command", x, y, ttl: 0.7, max: 0.7, attack });
+      if(report.accepted.length)this.effects.push({ type: "command", x, y, ttl: 0.7, max: 0.7, attack });
+      this.commandFeedback=report;return report;
     }
     visibleAt(x, y) {
       return (
@@ -827,11 +855,11 @@
         x > W ||
         y > H ||
         (this.cooldowns[key] || 0) > this.time ||
-        t.money < d.cost
+        !this.canAfford(team,d.cost)
       )
         return false;
       if (kind !== "recon" && team === 0 && !this.visibleAt(x, y)) return false;
-      t.money -= d.cost;
+      this.spend(team,d.cost);
       this.cooldowns[key] =
         this.time +
         d.cd * (team === 0 && this.buffs.has("cooldown") ? 0.25 : 1);
@@ -957,11 +985,94 @@
     commandSupport(team,units) {
       for(const support of units.filter(e=>e.id!==this.directControl?.id&&(U[e.kind].heal||U[e.kind].fireControl||U[e.kind].shield)&&!e.retreating&&this.operational(e))){
         const d=U[support.kind],allies=units.filter(e=>e.id!==support.id&&U[e.kind].damage&&(d.heal?this.canHeal(support,e):d.supportDomains.includes(this.targetDomain(e.kind))));
-        allies.sort((a,b)=>(a.hp/a.maxHp-b.hp/b.maxHp)||this.distance3D(a,support)-this.distance3D(b,support));
+        const supportDistance=(a,b)=>d.fireControl?this.engagementDistance(a,b):this.distance3D(a,b);
+        allies.sort((a,b)=>(a.hp/a.maxHp-b.hp/b.maxHp)||supportDistance(a,support)-supportDistance(b,support));
         const ally=allies[0];if(!ally)continue;
-        if(this.distance3D(support,ally)>d.range*.72)this.command([support.id],ally.x,ally.y,false);
+        if(supportDistance(support,ally)>d.range*.72)this.command([support.id],ally.x,ally.y,false);
         else if(support.order){support.order=null;support.path=[];support.orderQueue=[];}
       }
+    }
+    updatePlayerProtection(t,es,hq) {
+      const player=this.get(this.directControl?.id),cfg=this.options.playerProtection;
+      if(t.id!==0||!player)return null;
+      const own=es.filter(e=>!e.structure&&e.id!==player.id&&this.operational(e)&&!e.retreating),
+        armed=own.filter(e=>U[e.kind].damage>0&&e.hp/e.maxHp>.25),assets=es.filter(e=>e.structure),
+        observed=this.entities.filter(e=>this.isEnemy(0,e.team)&&this.operational(e)&&(U[e.kind]||B[e.kind]).damage>0&&this.canDetect(0,e)&&(U[e.kind]?.underwater||this.visibleAt(e.x,e.y))),
+        threatens=(enemy,ally,radius)=>this.canTargetKind(enemy.kind,ally.kind)&&this.engagementDistance(enemy,ally)<=Math.max(radius,((U[enemy.kind]||B[enemy.kind]).range||0)+100),
+        playerThreats=observed.filter(e=>threatens(e,player,cfg.playerRadius)).sort((a,b)=>this.engagementDistance(a,player)-this.engagementDistance(b,player)),
+        baseThreats=observed.filter(e=>assets.some(a=>threatens(e,a,cfg.baseRadius))).sort((a,b)=>dist(a,hq)-dist(b,hq)),
+        critical=player.hp/player.maxHp<cfg.criticalRatio,reserved=new Set(),assigned=new Set();
+      const reserve=(e,role)=>{reserved.add(e.id);e.protectionRole=role;};
+      if(!root.WarCommandFeedback&&typeof module!=='undefined'&&typeof require==='function')require('./command-feedback.js');
+      const reachable=(e,goal,allowFire=false)=>{
+        if(allowFire&&this.canTargetKind(e.kind,goal.kind)&&this.engagementDistance(e,goal)<=(U[e.kind].range||0))return true;
+        const destination=this.destination(e,goal.x,goal.y);
+        return root.WarCommandFeedback?.check(this.map,U[e.kind],e,destination)?.reachable!==false;
+      };
+      const guards=armed.filter(e=>reachable(e,hq)).sort((a,b)=>{
+        const useful=e=>baseThreats.some(threat=>this.canTargetKind(e.kind,threat.kind))?0:1;
+        return useful(a)-useful(b)||this.engagementDistance(a,hq)-this.engagementDistance(b,hq);
+      }).slice(0,cfg.guardCount);
+      guards.forEach(e=>reserve(e,'base-guard'));
+      const escorts=armed.filter(e=>!reserved.has(e.id)&&this.targetDomain(e.kind)===this.targetDomain(player.kind)&&reachable(e,player)).sort((a,b)=>this.distance3D(a,player)-this.distance3D(b,player)).slice(0,cfg.escortCount+(critical?1:0));
+      escorts.forEach(e=>reserve(e,'escort'));
+      const supports=own.filter(e=>U[e.kind].heal&&this.canHeal(e,player)&&reachable(e,player)&&
+        (this.targetDomain(e.kind)===this.targetDomain(player.kind)||Math.abs(this.entityAltitude(e)-this.entityAltitude(player))<U[e.kind].range*.65)).sort((a,b)=>this.distance3D(a,player)-this.distance3D(b,player)).slice(0,cfg.supportCount);
+      supports.forEach(e=>reserve(e,'repair'));
+      // Keep existing paths until the destination meaningfully moves.
+      const order=(e,goal,target=null,attack=!!target)=>{
+        if(target&&e.order?.target===target.id)return;
+        if(!target&&e.order&&!e.order.target&&e.order.attack===attack&&dist(e.order,goal)<cfg.refreshDistance)return;
+        this.command([e.id],goal.x,goal.y,attack,target?.id||null);
+      };
+      const alignAltitude=(e,goal)=>{
+        const domain=this.targetDomain(e.kind);
+        if(domain!==this.targetDomain(goal.kind)||!['air','space','underwater'].includes(domain))return;
+        const current=this.entityAltitude(e),step=({air:90,space:450,underwater:22})[domain]*cfg.tickSeconds;
+        e.altitude=current+clamp(this.entityAltitude(goal)-current,-step,step);
+        if(domain==='air')e.altitude=Math.max(e.altitude,this.flightFloor(e,e.x,e.y));
+      };
+      const respond=(threats,base)=>{
+        for(const threat of threats.slice(0,cfg.maxThreats)){
+          const candidates=armed.filter(e=>!assigned.has(e.id)&&this.canTargetKind(e.kind,threat.kind)&&(U[e.kind].naval||reachable(e,threat,true))&&
+            (base?!(playerThreats.length&&escorts.includes(e)):!guards.includes(e))).sort((a,b)=>this.engagementDistance(a,threat)-this.engagementDistance(b,threat));
+          for(const e of candidates.slice(0,cfg.respondersPerThreat)){
+            assigned.add(e.id);if(!reserved.has(e.id))reserve(e,base?'base-response':'player-response');
+            alignAltitude(e,threat);
+            const goal=U[e.kind].naval?this.navalApproach(e,threat):threat;
+            if(goal)order(e,goal,U[e.kind].naval&&!U[threat.kind]?.naval?null:threat,true);
+          }
+        }
+      };
+      respond(baseThreats,true);respond(playerThreats,false);
+      guards.forEach((e,i)=>{if(!assigned.has(e.id))order(e,{x:hq.x+Math.cos(i*Math.PI)*cfg.holdRadius,y:hq.y+cfg.holdRadius});});
+      escorts.forEach((e,i)=>{if(!assigned.has(e.id)){alignAltitude(e,player);order(e,{x:player.x+Math.cos(i*Math.PI)*cfg.holdRadius,y:player.y+cfg.holdRadius});}});
+      supports.forEach(e=>{alignAltitude(e,player);if(this.distance3D(e,player)>U[e.kind].range*.65)order(e,player);else {e.order=null;e.orderQueue=[];e.path=[];e.target=null;}});
+      for(const e of es)if(e.protectionRole&&!reserved.has(e.id)){delete e.protectionRole;e.order=null;e.orderQueue=[];e.path=[];e.target=null;}
+      const safe=assets.filter(e=>['hq','repairhub','repair_dome','navalyard','airfield','spaceport'].includes(e.kind)&&this.operational(e)&&!observed.some(threat=>threatens(threat,e,150))).sort((a,b)=>this.engagementDistance(player,a)-this.engagementDistance(player,b))[0];
+      const safePoint=safe&&(U[player.kind].naval?this.navalApproach(player,safe):safe);
+      const fallback=safePoint?{x:safePoint.x,y:safePoint.y,id:safe.id}:null;
+      const damagedBase=assets.find(e=>e.hp/e.maxHp<cfg.criticalRatio);
+      if(critical||damagedBase){const repairAt=critical?player:damagedBase;this.ability('repair',repairAt.x,repairAt.y,t.id);}
+      this.protectionStatus={protectedId:player.id,playerThreats:playerThreats.length,baseThreats:baseThreats.length,guardIds:guards.map(e=>e.id),escortIds:escorts.map(e=>e.id),supportIds:supports.map(e=>e.id),critical,fallback,updatedAt:this.time,
+        summary:`基地威胁 ${baseThreats.length} · 玩家威胁 ${playerThreats.length} · 守卫 ${guards.length} / 护卫 ${escorts.length} · ${supports.length?'维修支援中':'待补维修'}${critical?' · 严重受损，建议撤回'+(fallback?'安全基地':'脱离交火区'):''}`};
+      const choices=this.availableUnitKinds(0).filter(k=>!t.queue.some(q=>q.kind===k));
+      let productionKind=null;
+      for(const threat of [...playerThreats,...baseThreats]){
+        if(armed.some(e=>this.canTargetKind(e.kind,threat.kind)&&this.engagementDistance(e,threat)<cfg.baseRadius))continue;
+        productionKind=choices.filter(k=>U[k].damage>0&&this.canTargetKind(k,threat.kind)).sort((a,b)=>this.cost(0,a)-this.cost(0,b))[0];
+        if(productionKind)break;
+      }
+      if(!productionKind&&!supports.length&&player.hp<player.maxHp*.9)productionKind=choices.filter(k=>U[k].heal&&this.canHeal({team:0,kind:k},player)).sort((a,b)=>this.cost(0,a)-this.cost(0,b))[0];
+      if(!productionKind&&(guards.length<cfg.guardCount||escorts.length<cfg.escortCount))productionKind=choices.filter(k=>U[k].damage>0&&this.targetDomain(k)===this.targetDomain(player.kind)).sort((a,b)=>this.cost(0,a)-this.cost(0,b))[0];
+      const defenseFor={ground:'turret',naval:'sonar_bastion',underwater:'sonar_bastion',air:'sam',space:'aerospace_array'};
+      let buildKind=null;
+      for(const threat of baseThreats){
+        const candidate=defenseFor[this.targetDomain(threat.kind)];
+        if(candidate&&!(B[candidate].advanced&&!this.options.advanced)&&!es.some(e=>e.kind===candidate)&&!t.buildQueue.some(q=>q.kind===candidate)){buildKind=candidate;break;}
+      }
+      if(!buildKind&&player.hp<player.maxHp*.9&&!supports.length&&!es.some(e=>e.kind==='repairhub')&&!t.buildQueue.some(q=>q.kind==='repairhub'))buildKind='repairhub';
+      return {reserved,productionKind,buildKind};
     }
     ai(t, dt) {
       if (!t.alive) return;
@@ -969,14 +1080,16 @@
       if (t.aiClock > 0) return;
       const hard = ['hard','brutal'].includes(this.options.difficulty),
         easy = this.options.difficulty === "easy";
-      t.aiClock = easy ? 3.2 : hard ? 1.2 : 2;
+      const protecting=t.id===0&&!!this.directControl;
+      t.aiClock = protecting?this.options.playerProtection.tickSeconds:easy ? 3.2 : hard ? 1.2 : 2;
       let es = this.teamEntities(t.id),
         hq = es.find((e) => e.kind === "hq");
       if (!hq) return;
+      const protection=protecting?this.updatePlayerProtection(t,es,hq):null;
       const buildKind =
-        this.power(t.id) < 20
+        this.power(t.id) < (protecting?this.options.playerProtection.powerReserve:20)
           ? "power"
-          : !es.some((e) => e.kind === "airfield") && this.time > 35
+          : protection?.buildKind || (!es.some((e) => e.kind === "airfield") && this.time > 35
             ? "airfield"
             : !es.some((e) => e.kind === "spaceport") && this.time > 65
               ? "spaceport"
@@ -990,20 +1103,21 @@
                       ? "repairhub"
                       : !es.some((e) => e.kind === "radar")
                         ? "radar"
-                        : null;
-      if (buildKind && !t.buildQueue.length) {
+                        : null);
+      const urgentPower=protecting&&buildKind==='power'&&!t.buildQueue.some(q=>q.kind==='power');
+      if (buildKind && (!t.buildQueue.length||urgentPower)) {
         for (let a = 0; a < 20; a++) {
           const ang = this.random() * Math.PI * 2,
             rad = 190 + this.random() * 230,
             x = hq.x + Math.cos(ang) * rad,
             y = hq.y + Math.sin(ang) * rad;
-          if (this.build(t.id, buildKind, x, y)) break;
+          if (this.build(t.id, buildKind, x, y)) {if(urgentPower)t.buildQueue.unshift(t.buildQueue.pop());break;}
         }
       }
       const choices=this.availableUnitKinds(t.id);
       if(t.queue.length<3&&choices.length){
-        const kind=this.chooseUnitKind(choices);
-        if(kind)this.train(t.id,kind);
+        const kind=protection?.productionKind||this.chooseUnitKind(choices);
+        if(kind&&this.train(t.id,kind)&&protection?.productionKind)t.queue.unshift(t.queue.pop());
       }
       if (this.time > 100 && this.options.abilities !== false) {
         const observed = this.entities.filter(
@@ -1025,7 +1139,7 @@
             );
         }
       }
-      const units = es.filter((e) => !e.structure && e.id!==this.directControl?.id);
+      const units = es.filter((e) => !e.structure && e.id!==this.directControl?.id&&!protection?.reserved.has(e.id));
       this.commandSupport(t.id,units);
       for(const ship of units.filter(e=>U[e.kind].naval&&U[e.kind].damage&&!e.retreating)){
         if(ship.order&&(!ship.order.target||this.get(ship.order.target)?.hp>0))continue;
@@ -1110,7 +1224,7 @@
         let rate =
           (t.power < 0 ? 0.4 : 1) *
           F[t.faction].rate *
-          (t.id === 0 && this.buffs.has("rapid") ? 3 : 1);
+          (t.id === 0 && this.buffs.has("rapid") ? 10 : 1);
         const productionHeads=[...new Set(t.queue.map(q=>U[q.kind].producer))].map(producer=>t.queue.find(q=>U[q.kind].producer===producer));
         for (const q of productionHeads) {
           const prod = es.find(
@@ -1177,11 +1291,11 @@
         const canHit = (t) =>
           d.damage > 0 &&
           this.isEnemy(e.team, t.team) &&
-          this.canTargetKind(e.kind,t.kind) && this.canDetect(e.team,t) && dist(e,t)>=(d.minRange||0) &&
+          this.canTargetKind(e.kind,t.kind) && this.canDetect(e.team,t) && this.engagementDistance(e,t)>=(d.minRange||0) &&
           (U[t.kind]?.underwater ? true : e.team === 0
             ? this.visibleAt(t.x, t.y)
             : this.unitsInSight(t, this.teamSight[e.team]));
-        if (!target || !canHit(target) || this.distance3D(e, target) > range * 1.35)
+        if (!target || !canHit(target) || this.engagementDistance(e, target) > range * 1.35)
           target = null;
         // Player explicit movement suppresses auto-fire until arrival; attack move engages.
         if (
@@ -1191,7 +1305,7 @@
         ) {
           let best = Infinity;
           for (const o of this.spatial.query(e.x, e.y, range)) {
-            const delta = this.distance3D(e, o);
+            const delta = this.engagementDistance(e, o);
             if (
               canHit(o) &&
               delta < range &&
@@ -1207,8 +1321,8 @@
         if (target) {
           e.turret = Math.atan2(target.y - e.y, target.x - e.x);
           if (
-            this.distance3D(e, target) <= range &&
-            dist(e, target) >= (d.minRange || 0) &&
+            this.engagementDistance(e, target) <= range &&
+            this.engagementDistance(e, target) >= (d.minRange || 0) &&
             e.cool <= 0
           ) {
             this.emitShot(e,target);
@@ -1216,7 +1330,7 @@
         }
         if (e.structure) continue;
         const fight =
-          target && this.distance3D(e, target) <= range && dist(e,target)>=(d.minRange||0) && (!e.order || e.order.attack);
+          target && this.engagementDistance(e, target) <= range && this.engagementDistance(e,target)>=(d.minRange||0) && (!e.order || e.order.attack);
         if (fight) continue;
         if (e.order) {
           let goal = e.order;
@@ -1457,11 +1571,13 @@
     save() {
       return {
         version: D.version,
+        altitudeSchema: 2,
+        mapScaleVersion: 2,
         options: this.options,
         time: this.time,
         tick: this.tick,
         nextId: this.nextId,
-        entities: this.entities.map(e=>e.id===this.directControl?.id?{...e,manualMove:false,target:null}:e),
+        entities: this.entities.map(e=>e.protectionRole?{...e,protectionRole:undefined,order:null,orderQueue:[],path:[],target:null}:e.id===this.directControl?.id?{...e,manualMove:false,target:null}:e),
         teams: this.teams.map(t=>t.id===0&&this._directTeamAI?{...t,...this._directTeamAI}:t),
         nodes: this.nodes,
         wealthGranted: !!this.wealthGranted,
@@ -1476,11 +1592,27 @@
       };
     }
     static load(json) {
-      const s = typeof json === "string" ? JSON.parse(json) : json;
+      let s = typeof json === "string" ? JSON.parse(json) : json;
       const finite = (v) => typeof v === "number" && Number.isFinite(v);
+      if(s&&s.mapScaleVersion===undefined){
+        if(!Array.isArray(s.explored)||s.explored.length!==64*44)throw Error('旧地图存档尺寸不明，无法安全迁移；请使用匹配版本存档或新开遭遇战');
+        // Clone before migration so loading an object twice never doubles coordinates again.
+        s=structuredClone(s);const scaled=new WeakSet();
+        const point=p=>{if(!p||typeof p!=='object'||scaled.has(p))return;scaled.add(p);if(finite(p.x))p.x*=2;if(finite(p.y))p.y*=2;};
+        for(const e of Array.isArray(s.entities)?s.entities:[]){point(e);point(e.order);point(e.rally);for(const p of Array.isArray(e.path)?e.path:[])point(p);for(const p of Array.isArray(e.orderQueue)?e.orderQueue:[])point(p);}
+        for(const t of Array.isArray(s.teams)?s.teams:[])for(const q of Array.isArray(t.buildQueue)?t.buildQueue:[])point(q);
+        for(const list of [s.nodes,s.ore,s.reveals])for(const p of Array.isArray(list)?list:[])point(p);
+        for(const fx of Array.isArray(s.effects)?s.effects:[]){point(fx);if(finite(fx.tx))fx.tx*=2;if(finite(fx.ty))fx.ty*=2;point(fx.directHitArea);}
+        const explored=new Array(COLS*ROWS).fill(0);
+        for(let y=0;y<44;y++)for(let x=0;x<64;x++)for(let dy=0;dy<2;dy++)for(let dx=0;dx<2;dx++)explored[(y*2+dy)*COLS+x*2+dx]=s.explored[y*64+x];
+        s.explored=explored;s.mapScaleVersion=2;
+      }
+
       if (
         !s ||
         s.version !== D.version ||
+        s.mapScaleVersion!==2 ||
+        (s.altitudeSchema!==undefined&&s.altitudeSchema!==2) ||
         !s.options ||
         !Array.isArray(s.entities) ||
         s.entities.length > 1000 ||
@@ -1523,11 +1655,12 @@
           !finite(t.money) ||
           !Array.isArray(t.queue) ||
           !Array.isArray(t.buildQueue) ||
-          t.queue.some((q) => !U[q.kind] || !finite(q.remaining)) ||
+          t.queue.some((q) => !U[q.kind] || !finite(q.remaining) || (q.paid!==undefined&&(!finite(q.paid)||q.paid<0))) ||
           t.buildQueue.some(
             (q) =>
               !B[q.kind] ||
               !finite(q.remaining) ||
+              (q.paid!==undefined&&(!finite(q.paid)||q.paid<0)) ||
               !finite(q.x) ||
               !finite(q.y),
           )
@@ -1572,7 +1705,7 @@
       g.wealthGranted = !!s.wealthGranted;
       for(const t of g.teams){t.score=finite(t.score)?Math.max(0,t.score):0;t.harvested=finite(t.harvested)?Math.max(0,t.harvested):0;}
       for(const e of g.entities){if(e.rally&&(!finite(e.rally.x)||!finite(e.rally.y)))throw Error('集结点无效');if(e.orderQueue&&(!Array.isArray(e.orderQueue)||e.orderQueue.length>16||e.orderQueue.some(p=>!finite(p.x)||!finite(p.y))))throw Error('路径队列无效');e.cargo=finite(e.cargo)?clamp(e.cargo,0,500):0;}
-      for(const e of g.entities){e.altitude=g.entityAltitude(e);e.pitch=e.pitch??0;e.roll=e.roll??0;e.flightSpeed=e.flightSpeed??0;}
+      for(const e of g.entities){if(s.altitudeSchema===undefined&&U[e.kind]?.space&&finite(e.altitude)&&e.altitude>=120&&e.altitude<=900)e.altitude=4000;e.altitude=g.entityAltitude(e);e.pitch=e.pitch??0;e.roll=e.roll??0;e.flightSpeed=e.flightSpeed??0;}
       g.buffs = new Set(s.buffs);
       g.explored = Uint8Array.from(s.explored);
       g.effects = Array.isArray(s.effects) ? s.effects : [];
@@ -1584,6 +1717,13 @@
         )
       )
         throw Error("存档效果数据无效");
+      if(s.altitudeSchema===undefined)for(const fx of g.effects){
+        const legacy=v=>finite(v)&&v>=120&&v<=900;
+        if(U[fx.sourceKind]?.space&&legacy(fx.sourceHeight))fx.sourceHeight=4000;
+        const target=g.get(fx.target);
+        if((U[target?.kind]?.space||fx.targetDomain==='space')&&legacy(fx.targetHeight))fx.targetHeight=4000;
+        if(U[target?.kind]?.space&&fx.directHitArea&&legacy(fx.directHitArea.altitude))fx.directHitArea.altitude=4000;
+      }
       g.spatial.rebuild(g.entities);
       if(g.options.aiSpaceWeapons===false)g.setAISpaceWeapons(false);
       g.updateFog();
@@ -1591,5 +1731,5 @@
       return g;
     }
   }
-  root.WarSim = { Game, makeMap, findPath, rng, Spatial, dist };
+  root.WarSim = { PLAYER_PROTECTION_DEFAULTS, Game, makeMap, findPath, rng, Spatial, dist };
 })(typeof globalThis !== "undefined" ? globalThis : this);

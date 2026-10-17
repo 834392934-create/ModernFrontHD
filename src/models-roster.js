@@ -145,5 +145,5 @@
     b.box(.6,.55,.65,kind==='orbital_repair'?-4.2:-1,.65,0,c);nationKit(b,f,kind==='orbital_repair'?-4.2:-1,.9,0,c,true);const g=finish(kind,f,[part(b,'spaceHull',true),part(l,'opticsAndThrusters',true,true),...moving],scale);if(D.U[kind].damage&&!g.getObjectByName('muzzle'))marker(g,mx,my,mz);if(kind==='orbital_repair')marker(g,0,.5,0,'servicePoint');return g;
   }
   for(const f of factions)M.register('infantry',f,()=>infantry('infantry',f));
-  for(const kind of D.ROSTER.added.filter(k=>!D.ROSTER.reinforcements.includes(k)&&!D.ROSTER.tacticalWave.includes(k)&&!D.ROSTER.depthWave?.includes(k)))for(const f of factions)M.register(kind,f,()=>D.U[kind].unitGroup==='ground'?kind.endsWith('_team')?infantry(kind,f):groundVehicle(kind,f):D.U[kind].unitGroup==='naval'?ship(kind,f):D.U[kind].unitGroup==='air'?aircraft(kind,f):spacecraft(kind,f));
+  for(const kind of D.ROSTER.added.filter(k=>!D.ROSTER.reinforcements.includes(k)&&!D.ROSTER.tacticalWave.includes(k)&&!D.ROSTER.depthWave?.includes(k)&&!D.ROSTER.altitudeWave?.includes(k)))for(const f of factions)M.register(kind,f,()=>D.U[kind].unitGroup==='ground'?kind.endsWith('_team')?infantry(kind,f):groundVehicle(kind,f):D.U[kind].unitGroup==='naval'?ship(kind,f):D.U[kind].unitGroup==='air'?aircraft(kind,f):spacecraft(kind,f));
 })(globalThis);

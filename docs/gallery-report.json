@@ -191,6 +191,26 @@
       ]
     },
     {
+      "key": "assault_gun_chn",
+      "parts": 238,
+      "triangles": 7424,
+      "dimensions": [
+        7.055578303337097,
+        3.05049995216541,
+        3.6700000762939453
+      ]
+    },
+    {
+      "key": "mobile_radar_chn",
+      "parts": 728,
+      "triangles": 17608,
+      "dimensions": [
+        8.264999866485596,
+        4.092499958276749,
+        3.700000047683716
+      ]
+    },
+    {
       "key": "destroyer_chn",
       "parts": 266,
       "triangles": 7356,
@@ -361,6 +381,26 @@
       ]
     },
     {
+      "key": "asw_patrol_ship_chn",
+      "parts": 181,
+      "triangles": 11844,
+      "dimensions": [
+        17.219873428344727,
+        5.945000171661377,
+        3.492000102996826
+      ]
+    },
+    {
+      "key": "missile_sub_chn",
+      "parts": 99,
+      "triangles": 3604,
+      "dimensions": [
+        19.81999999731779,
+        5.004999995231628,
+        4.199999809265137
+      ]
+    },
+    {
       "key": "heli_chn",
       "parts": 135,
       "triangles": 4996,
@@ -521,6 +561,26 @@
       ]
     },
     {
+      "key": "high_altitude_interceptor_chn",
+      "parts": 305,
+      "triangles": 16252,
+      "dimensions": [
+        15.199999809265137,
+        3.577244758605957,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "strategic_strike_aircraft_chn",
+      "parts": 322,
+      "triangles": 16232,
+      "dimensions": [
+        16.167999744415283,
+        3.8299999237060547,
+        18.600000381469727
+      ]
+    },
+    {
       "key": "satellite_chn",
       "parts": 62,
       "triangles": 2100,
@@ -678,6 +738,26 @@
         14.58749771118164,
         3.6200000643730164,
         13.170000076293945
+      ]
+    },
+    {
+      "key": "orbital_carrier_chn",
+      "parts": 300,
+      "triangles": 13944,
+      "dimensions": [
+        16.15673589706421,
+        4.773214101791382,
+        11.15999984741211
+      ]
+    },
+    {
+      "key": "orbital_sensor_chn",
+      "parts": 191,
+      "triangles": 5452,
+      "dimensions": [
+        6.707499861717224,
+        5.320000004768372,
+        8.859999656677246
       ]
     },
     {
@@ -848,6 +928,46 @@
         8,
         5.599999905228615,
         8.119999885559082
+      ]
+    },
+    {
+      "key": "sonar_bastion_chn",
+      "parts": 135,
+      "triangles": 9480,
+      "dimensions": [
+        9.88428544998169,
+        2.7450000542402266,
+        9.874285697937012
+      ]
+    },
+    {
+      "key": "aerospace_array_chn",
+      "parts": 121,
+      "triangles": 3480,
+      "dimensions": [
+        11.027143001556396,
+        5.826471888422966,
+        11.017143249511719
+      ]
+    },
+    {
+      "key": "plasma_bastion_chn",
+      "parts": 182,
+      "triangles": 7360,
+      "dimensions": [
+        11.312857151031494,
+        2.8300000256299973,
+        11.302857398986816
+      ]
+    },
+    {
+      "key": "repair_dome_chn",
+      "parts": 145,
+      "triangles": 8400,
+      "dimensions": [
+        11.598571300506592,
+        4.360000140070915,
+        11.588571548461914
       ]
     },
     {
@@ -1041,6 +1161,26 @@
       ]
     },
     {
+      "key": "assault_gun_usa",
+      "parts": 236,
+      "triangles": 7400,
+      "dimensions": [
+        7.055578303337097,
+        3.05049995216541,
+        3.6700000762939453
+      ]
+    },
+    {
+      "key": "mobile_radar_usa",
+      "parts": 726,
+      "triangles": 17584,
+      "dimensions": [
+        8.264999866485596,
+        4.092499958276749,
+        3.700000047683716
+      ]
+    },
+    {
       "key": "destroyer_usa",
       "parts": 6,
       "triangles": 49381,
@@ -1211,6 +1351,26 @@
       ]
     },
     {
+      "key": "asw_patrol_ship_usa",
+      "parts": 179,
+      "triangles": 11820,
+      "dimensions": [
+        17.219873428344727,
+        5.945000171661377,
+        3.492000102996826
+      ]
+    },
+    {
+      "key": "missile_sub_usa",
+      "parts": 97,
+      "triangles": 3580,
+      "dimensions": [
+        19.81999999731779,
+        5.004999995231628,
+        4.199999809265137
+      ]
+    },
+    {
       "key": "heli_usa",
       "parts": 12,
       "triangles": 220711,
@@ -1371,6 +1531,26 @@
       ]
     },
     {
+      "key": "high_altitude_interceptor_usa",
+      "parts": 303,
+      "triangles": 16228,
+      "dimensions": [
+        15.199999809265137,
+        3.577244758605957,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "strategic_strike_aircraft_usa",
+      "parts": 320,
+      "triangles": 16208,
+      "dimensions": [
+        16.167999744415283,
+        3.8299999237060547,
+        18.600000381469727
+      ]
+    },
+    {
       "key": "satellite_usa",
       "parts": 71,
       "triangles": 2200,
@@ -1528,6 +1708,26 @@
         14.58749771118164,
         3.6200000643730164,
         13.170000076293945
+      ]
+    },
+    {
+      "key": "orbital_carrier_usa",
+      "parts": 298,
+      "triangles": 13920,
+      "dimensions": [
+        16.15673589706421,
+        4.773214101791382,
+        11.15999984741211
+      ]
+    },
+    {
+      "key": "orbital_sensor_usa",
+      "parts": 189,
+      "triangles": 5428,
+      "dimensions": [
+        6.707499861717224,
+        5.320000004768372,
+        8.859999656677246
       ]
     },
     {
@@ -1698,6 +1898,46 @@
         8,
         5.599999905228615,
         8.119999885559082
+      ]
+    },
+    {
+      "key": "sonar_bastion_usa",
+      "parts": 135,
+      "triangles": 9480,
+      "dimensions": [
+        9.88428544998169,
+        2.7450000542402266,
+        9.874285697937012
+      ]
+    },
+    {
+      "key": "aerospace_array_usa",
+      "parts": 121,
+      "triangles": 3480,
+      "dimensions": [
+        11.027143001556396,
+        5.826471888422966,
+        11.017143249511719
+      ]
+    },
+    {
+      "key": "plasma_bastion_usa",
+      "parts": 182,
+      "triangles": 7360,
+      "dimensions": [
+        11.312857151031494,
+        2.8300000256299973,
+        11.302857398986816
+      ]
+    },
+    {
+      "key": "repair_dome_usa",
+      "parts": 145,
+      "triangles": 8400,
+      "dimensions": [
+        11.598571300506592,
+        4.360000140070915,
+        11.588571548461914
       ]
     },
     {
@@ -1891,6 +2131,26 @@
       ]
     },
     {
+      "key": "assault_gun_rus",
+      "parts": 237,
+      "triangles": 7412,
+      "dimensions": [
+        7.055578303337097,
+        3.05049995216541,
+        3.6700000762939453
+      ]
+    },
+    {
+      "key": "mobile_radar_rus",
+      "parts": 727,
+      "triangles": 17596,
+      "dimensions": [
+        8.264999866485596,
+        4.092499958276749,
+        3.700000047683716
+      ]
+    },
+    {
       "key": "destroyer_rus",
       "parts": 234,
       "triangles": 7124,
@@ -2061,6 +2321,26 @@
       ]
     },
     {
+      "key": "asw_patrol_ship_rus",
+      "parts": 180,
+      "triangles": 11832,
+      "dimensions": [
+        17.219873428344727,
+        5.945000171661377,
+        3.492000102996826
+      ]
+    },
+    {
+      "key": "missile_sub_rus",
+      "parts": 98,
+      "triangles": 3592,
+      "dimensions": [
+        19.81999999731779,
+        5.004999995231628,
+        4.199999809265137
+      ]
+    },
+    {
       "key": "heli_rus",
       "parts": 121,
       "triangles": 4884,
@@ -2221,6 +2501,26 @@
       ]
     },
     {
+      "key": "high_altitude_interceptor_rus",
+      "parts": 304,
+      "triangles": 16240,
+      "dimensions": [
+        15.199999809265137,
+        3.577244758605957,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "strategic_strike_aircraft_rus",
+      "parts": 321,
+      "triangles": 16220,
+      "dimensions": [
+        16.167999744415283,
+        3.8299999237060547,
+        18.600000381469727
+      ]
+    },
+    {
       "key": "satellite_rus",
       "parts": 61,
       "triangles": 2236,
@@ -2378,6 +2678,26 @@
         14.58749771118164,
         3.6200000643730164,
         13.170000076293945
+      ]
+    },
+    {
+      "key": "orbital_carrier_rus",
+      "parts": 299,
+      "triangles": 13932,
+      "dimensions": [
+        16.15673589706421,
+        4.773214101791382,
+        11.15999984741211
+      ]
+    },
+    {
+      "key": "orbital_sensor_rus",
+      "parts": 190,
+      "triangles": 5440,
+      "dimensions": [
+        6.707499861717224,
+        5.320000004768372,
+        8.859999656677246
       ]
     },
     {
@@ -2548,6 +2868,46 @@
         8,
         5.599999905228615,
         8.119999885559082
+      ]
+    },
+    {
+      "key": "sonar_bastion_rus",
+      "parts": 135,
+      "triangles": 9480,
+      "dimensions": [
+        9.88428544998169,
+        2.7450000542402266,
+        9.874285697937012
+      ]
+    },
+    {
+      "key": "aerospace_array_rus",
+      "parts": 121,
+      "triangles": 3480,
+      "dimensions": [
+        11.027143001556396,
+        5.826471888422966,
+        11.017143249511719
+      ]
+    },
+    {
+      "key": "plasma_bastion_rus",
+      "parts": 182,
+      "triangles": 7360,
+      "dimensions": [
+        11.312857151031494,
+        2.8300000256299973,
+        11.302857398986816
+      ]
+    },
+    {
+      "key": "repair_dome_rus",
+      "parts": 145,
+      "triangles": 8400,
+      "dimensions": [
+        11.598571300506592,
+        4.360000140070915,
+        11.588571548461914
       ]
     },
     {
@@ -2741,6 +3101,26 @@
       ]
     },
     {
+      "key": "assault_gun_ind",
+      "parts": 236,
+      "triangles": 7400,
+      "dimensions": [
+        7.055578303337097,
+        3.05049995216541,
+        3.6700000762939453
+      ]
+    },
+    {
+      "key": "mobile_radar_ind",
+      "parts": 726,
+      "triangles": 17584,
+      "dimensions": [
+        8.264999866485596,
+        4.092499958276749,
+        3.700000047683716
+      ]
+    },
+    {
       "key": "destroyer_ind",
       "parts": 266,
       "triangles": 7822,
@@ -2911,6 +3291,26 @@
       ]
     },
     {
+      "key": "asw_patrol_ship_ind",
+      "parts": 179,
+      "triangles": 11820,
+      "dimensions": [
+        17.219873428344727,
+        5.945000171661377,
+        3.492000102996826
+      ]
+    },
+    {
+      "key": "missile_sub_ind",
+      "parts": 97,
+      "triangles": 3580,
+      "dimensions": [
+        19.81999999731779,
+        5.004999995231628,
+        4.199999809265137
+      ]
+    },
+    {
       "key": "heli_ind",
       "parts": 145,
       "triangles": 4980,
@@ -3071,6 +3471,26 @@
       ]
     },
     {
+      "key": "high_altitude_interceptor_ind",
+      "parts": 303,
+      "triangles": 16228,
+      "dimensions": [
+        15.199999809265137,
+        3.577244758605957,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "strategic_strike_aircraft_ind",
+      "parts": 320,
+      "triangles": 16208,
+      "dimensions": [
+        16.167999744415283,
+        3.8299999237060547,
+        18.600000381469727
+      ]
+    },
+    {
       "key": "satellite_ind",
       "parts": 63,
       "triangles": 2140,
@@ -3228,6 +3648,26 @@
         14.58749771118164,
         3.6200000643730164,
         13.170000076293945
+      ]
+    },
+    {
+      "key": "orbital_carrier_ind",
+      "parts": 298,
+      "triangles": 13920,
+      "dimensions": [
+        16.15673589706421,
+        4.773214101791382,
+        11.15999984741211
+      ]
+    },
+    {
+      "key": "orbital_sensor_ind",
+      "parts": 189,
+      "triangles": 5428,
+      "dimensions": [
+        6.707499861717224,
+        5.320000004768372,
+        8.859999656677246
       ]
     },
     {
@@ -3398,6 +3838,46 @@
         8,
         5.599999905228615,
         8.119999885559082
+      ]
+    },
+    {
+      "key": "sonar_bastion_ind",
+      "parts": 135,
+      "triangles": 9480,
+      "dimensions": [
+        9.88428544998169,
+        2.7450000542402266,
+        9.874285697937012
+      ]
+    },
+    {
+      "key": "aerospace_array_ind",
+      "parts": 121,
+      "triangles": 3480,
+      "dimensions": [
+        11.027143001556396,
+        5.826471888422966,
+        11.017143249511719
+      ]
+    },
+    {
+      "key": "plasma_bastion_ind",
+      "parts": 182,
+      "triangles": 7360,
+      "dimensions": [
+        11.312857151031494,
+        2.8300000256299973,
+        11.302857398986816
+      ]
+    },
+    {
+      "key": "repair_dome_ind",
+      "parts": 145,
+      "triangles": 8400,
+      "dimensions": [
+        11.598571300506592,
+        4.360000140070915,
+        11.588571548461914
       ]
     },
     {
@@ -3591,6 +4071,26 @@
       ]
     },
     {
+      "key": "assault_gun_kor",
+      "parts": 237,
+      "triangles": 7412,
+      "dimensions": [
+        7.055578303337097,
+        3.05049995216541,
+        3.6700000762939453
+      ]
+    },
+    {
+      "key": "mobile_radar_kor",
+      "parts": 727,
+      "triangles": 17596,
+      "dimensions": [
+        8.264999866485596,
+        4.092499958276749,
+        3.700000047683716
+      ]
+    },
+    {
       "key": "destroyer_kor",
       "parts": 276,
       "triangles": 7456,
@@ -3761,6 +4261,26 @@
       ]
     },
     {
+      "key": "asw_patrol_ship_kor",
+      "parts": 180,
+      "triangles": 11832,
+      "dimensions": [
+        17.219873428344727,
+        5.945000171661377,
+        3.492000102996826
+      ]
+    },
+    {
+      "key": "missile_sub_kor",
+      "parts": 98,
+      "triangles": 3592,
+      "dimensions": [
+        19.81999999731779,
+        5.004999995231628,
+        4.199999809265137
+      ]
+    },
+    {
       "key": "heli_kor",
       "parts": 12,
       "triangles": 220711,
@@ -3921,6 +4441,26 @@
       ]
     },
     {
+      "key": "high_altitude_interceptor_kor",
+      "parts": 304,
+      "triangles": 16240,
+      "dimensions": [
+        15.199999809265137,
+        3.577244758605957,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "strategic_strike_aircraft_kor",
+      "parts": 321,
+      "triangles": 16220,
+      "dimensions": [
+        16.167999744415283,
+        3.8299999237060547,
+        18.600000381469727
+      ]
+    },
+    {
       "key": "satellite_kor",
       "parts": 64,
       "triangles": 2220,
@@ -4078,6 +4618,26 @@
         14.58749771118164,
         3.6200000643730164,
         13.170000076293945
+      ]
+    },
+    {
+      "key": "orbital_carrier_kor",
+      "parts": 299,
+      "triangles": 13932,
+      "dimensions": [
+        16.15673589706421,
+        4.773214101791382,
+        11.15999984741211
+      ]
+    },
+    {
+      "key": "orbital_sensor_kor",
+      "parts": 190,
+      "triangles": 5440,
+      "dimensions": [
+        6.707499861717224,
+        5.320000004768372,
+        8.859999656677246
       ]
     },
     {
@@ -4248,6 +4808,46 @@
         8,
         5.599999905228615,
         8.119999885559082
+      ]
+    },
+    {
+      "key": "sonar_bastion_kor",
+      "parts": 135,
+      "triangles": 9480,
+      "dimensions": [
+        9.88428544998169,
+        2.7450000542402266,
+        9.874285697937012
+      ]
+    },
+    {
+      "key": "aerospace_array_kor",
+      "parts": 121,
+      "triangles": 3480,
+      "dimensions": [
+        11.027143001556396,
+        5.826471888422966,
+        11.017143249511719
+      ]
+    },
+    {
+      "key": "plasma_bastion_kor",
+      "parts": 182,
+      "triangles": 7360,
+      "dimensions": [
+        11.312857151031494,
+        2.8300000256299973,
+        11.302857398986816
+      ]
+    },
+    {
+      "key": "repair_dome_kor",
+      "parts": 145,
+      "triangles": 8400,
+      "dimensions": [
+        11.598571300506592,
+        4.360000140070915,
+        11.588571548461914
       ]
     },
     {
@@ -4441,6 +5041,26 @@
       ]
     },
     {
+      "key": "assault_gun_imp",
+      "parts": 238,
+      "triangles": 7424,
+      "dimensions": [
+        7.055578303337097,
+        3.05049995216541,
+        3.6700000762939453
+      ]
+    },
+    {
+      "key": "mobile_radar_imp",
+      "parts": 728,
+      "triangles": 17608,
+      "dimensions": [
+        8.264999866485596,
+        4.092499958276749,
+        3.700000047683716
+      ]
+    },
+    {
       "key": "destroyer_imp",
       "parts": 72,
       "triangles": 1188,
@@ -4611,6 +5231,26 @@
       ]
     },
     {
+      "key": "asw_patrol_ship_imp",
+      "parts": 181,
+      "triangles": 11844,
+      "dimensions": [
+        17.219873428344727,
+        5.945000171661377,
+        3.492000102996826
+      ]
+    },
+    {
+      "key": "missile_sub_imp",
+      "parts": 99,
+      "triangles": 3604,
+      "dimensions": [
+        19.81999999731779,
+        5.004999995231628,
+        4.199999809265137
+      ]
+    },
+    {
       "key": "heli_imp",
       "parts": 15,
       "triangles": 804,
@@ -4771,6 +5411,26 @@
       ]
     },
     {
+      "key": "high_altitude_interceptor_imp",
+      "parts": 305,
+      "triangles": 16252,
+      "dimensions": [
+        15.199999809265137,
+        3.577244758605957,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "strategic_strike_aircraft_imp",
+      "parts": 322,
+      "triangles": 16232,
+      "dimensions": [
+        16.167999744415283,
+        3.8299999237060547,
+        18.600000381469727
+      ]
+    },
+    {
       "key": "satellite_imp",
       "parts": 64,
       "triangles": 2128,
@@ -4928,6 +5588,26 @@
         14.58749771118164,
         3.6200000643730164,
         13.170000076293945
+      ]
+    },
+    {
+      "key": "orbital_carrier_imp",
+      "parts": 300,
+      "triangles": 13944,
+      "dimensions": [
+        16.15673589706421,
+        4.773214101791382,
+        11.15999984741211
+      ]
+    },
+    {
+      "key": "orbital_sensor_imp",
+      "parts": 191,
+      "triangles": 5452,
+      "dimensions": [
+        6.707499861717224,
+        5.320000004768372,
+        8.859999656677246
       ]
     },
     {
@@ -5098,6 +5778,46 @@
         8,
         5.599999905228615,
         8.119999885559082
+      ]
+    },
+    {
+      "key": "sonar_bastion_imp",
+      "parts": 135,
+      "triangles": 9480,
+      "dimensions": [
+        9.88428544998169,
+        2.7450000542402266,
+        9.874285697937012
+      ]
+    },
+    {
+      "key": "aerospace_array_imp",
+      "parts": 121,
+      "triangles": 3480,
+      "dimensions": [
+        11.027143001556396,
+        5.826471888422966,
+        11.017143249511719
+      ]
+    },
+    {
+      "key": "plasma_bastion_imp",
+      "parts": 182,
+      "triangles": 7360,
+      "dimensions": [
+        11.312857151031494,
+        2.8300000256299973,
+        11.302857398986816
+      ]
+    },
+    {
+      "key": "repair_dome_imp",
+      "parts": 145,
+      "triangles": 8400,
+      "dimensions": [
+        11.598571300506592,
+        4.360000140070915,
+        11.588571548461914
       ]
     }
   ],

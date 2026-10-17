@@ -27,14 +27,17 @@ test("five factions, unique armored rosters", () => {
     5,
   );
 });
-test("all maps connect every HQ to the center and other spawns", () => {
+test("mainland maps connect all bases; island maps retain local objectives and separate shores", () => {
   for (const m of WarData.MAPS) {
-    const map = makeMap(m.id);
-    for (const p of map.spawns) {
-      let path = findPath(map, p.x, p.y, 1536, 1056);
-      assert.ok(path.length > 0, m.id);
-      for (const q of map.spawns)
-        assert.ok(findPath(map, p.x, p.y, q.x, q.y).length > 0);
+    const map=makeMap(m.id);
+    for(const p of map.spawns){
+      if(m.id==='archipelago'){
+        assert.ok(map.nodes.some(n=>findPath(map,p.x,p.y,n.x,n.y).length>0),'each island has a reachable objective');
+        for(const q of map.spawns)if(p!==q)assert.equal(findPath(map,p.x,p.y,q.x,q.y).length,0,'separate islands require sea/air transport');
+      }else{
+        assert.ok(findPath(map,p.x,p.y,WarData.W/2,WarData.H/2).length>0,m.id+' centre');
+        for(const q of map.spawns)assert.ok(findPath(map,p.x,p.y,q.x,q.y).length>0,m.id+' base route');
+      }
     }
   }
 });
@@ -52,11 +55,13 @@ test("queue spends money, requires producer, completes after simulation time", (
 });
 test("impassable river blocks a direct route and paths use bridges", () => {
   const m = makeMap("river");
-  const path = findPath(m, 1100, 400, 1900, 400);
+  const path = findPath(m, 2200, 1400, 3800, 1400);
   assert.ok(path.length > 0);
+  assert.equal(m.blocked[Math.floor(1400/48)*WarData.COLS+Math.floor(3072/48)],1);
+  assert.ok(path.some(p=>m.tiles[Math.floor(p.y/48)*WarData.COLS+Math.floor(p.x/48)]===4),"crosses a bridge");
   for (const p of path)
     assert.equal(
-      m.blocked[Math.floor(p.y / 48) * 64 + Math.floor(p.x / 48)],
+      m.blocked[Math.floor(p.y / 48) * WarData.COLS + Math.floor(p.x / 48)],
       0,
     );
 });
@@ -81,7 +86,7 @@ test("buffs, ability cost and cooldown are enforced", () => {
     g.entities.find((e) => e.team === 0 && e.kind === "hq").maxHp,
     4800,
   );
-  assert.equal(g.ability("strike", 720, 360), true);
+  assert.equal(g.ability("strike", g.map.spawns[0].x, g.map.spawns[0].y), true);
   assert.equal(g.ability("strike", 720, 360), false);
   assert.equal(g.teams[0].money, 24000);
 });
@@ -113,24 +118,25 @@ test("building placement rejects river, overlap and distant territory", () => {
 test("all maps have connected oceans and ships stay on water", () => {
   for (const def of WarData.MAPS) {
     const m = makeMap(def.id),
-      path = findPath({ blocked: m.navalBlocked }, 720, 120, 2352, 1992);
+      path = findPath({ blocked: m.navalBlocked }, m.navalUnitSpawns[0].x, m.navalUnitSpawns[0].y, m.navalUnitSpawns[1].x, m.navalUnitSpawns[1].y);
     assert.ok(path.length > 0);
     assert.ok(
       path.every(
         (p) =>
-          !m.navalBlocked[Math.floor(p.y / 48) * 64 + Math.floor(p.x / 48)],
+          !m.navalBlocked[Math.floor(p.y / 48) * WarData.COLS + Math.floor(p.x / 48)],
       ),
     );
   }
   const g = new Game({ enemies: 1, map: "desert" }),
     ship = g.entities.find((e) => e.team === 0 && e.kind === "destroyer");
-  g.command([ship.id], 1500, 120);
+  const oldX=ship.x;
+  g.command([ship.id], oldX+500, ship.y);
   for (let i = 0; i < 100; i++) g.step(0.05);
   assert.equal(
-    g.map.navalBlocked[Math.floor(ship.y / 48) * 64 + Math.floor(ship.x / 48)],
+    g.map.navalBlocked[Math.floor(ship.y / 48) * WarData.COLS + Math.floor(ship.x / 48)],
     0,
   );
-  assert.ok(ship.x > 820);
+  assert.ok(ship.x > oldX+100);
 });
 test("advanced technology rejects AI by default and allows opt-in", () => {
   const g = new Game({ enemies: 1 });
@@ -175,7 +181,7 @@ test("space units move independently, ground guns cannot hit orbit", () => {
   const g = new Game({ enemies: 1 }),
     sat = g.entities.find((e) => e.team === 0 && e.kind === "satellite"),
     old = sat.x;
-  g.command([sat.id], 1400, 700);
+  g.command([sat.id], old+500, sat.y);
   for (let i = 0; i < 40; i++) g.step(0.05);
   assert.ok(sat.x > old);
   const hostile = g.spawn(1, "satellite", sat.x + 25, sat.y);

@@ -364,10 +364,12 @@
       palette: ["#68756c", "#768175", "#56635c"],
     },
   ];
+  MAPS.push({id:'archipelago',name:'群岛海战',en:'ISLAND THEATRE',desc:'群岛海峡 · 岛内陆战 · 深海舰队与空天协同',seed:91827,palette:['#57796d','#6c8c76','#466b61']});
   const BUFFS = {
+    unlimited: { name: "无限资源", desc: "玩家建造、训练和能力不受资金限制且不扣余额；关闭恢复正常消费" },
     wealth: { name: "充裕资金", desc: "初始资金 25,000" },
     income: { name: "后勤补给", desc: "玩家收入 ×2" },
-    rapid: { name: "快速生产", desc: "玩家建造 / 训练 ×3" },
+    rapid: { name: "快速建造生产", desc: "玩家建筑 / 各训练产线速度 ×10；关闭立即恢复常速" },
     armor: { name: "强化装甲", desc: "玩家最大生命 +50%" },
     damage: { name: "高效火控", desc: "玩家伤害 +40%" },
     vision: { name: "全图侦察", desc: "玩家无战争迷雾" },
@@ -748,6 +750,12 @@
       defense: true,
     },
   });
+  Object.assign(B,{
+    sonar_bastion:{name:'岸基反潜堡垒（原创）',role:'声呐警戒 / 对舰反潜鱼雷 / 无陆空火力',hp:1600,cost:2600,r:34,power:-45,time:25,damage:160,range:1000,reload:3,sight:600,sonarRange:1200,targetDomains:['naval','underwater'],weaponFx:'torpedo',icon:'≋',defense:true},
+    aerospace_array:{name:'空天防御阵列（架空）',role:'远程空天导弹 / 跨层投影射程1800 / 无对地火力',hp:1800,cost:4200,r:38,power:-85,time:36,damage:180,range:1800,reload:3,sight:800,targetDomains:['air','space'],rocket:true,advanced:true,icon:'↟',defense:true},
+    plasma_bastion:{name:'重型等离子堡垒（架空）',role:'重装海陆及基地火力 / 无空天与水下能力',hp:2600,cost:3900,r:39,power:-90,time:34,damage:220,range:620,reload:3,sight:540,targetDomains:['ground','naval','structure'],weaponFx:'laser-beam',advanced:true,icon:'ϟ',defense:true},
+    repair_dome:{name:'综合维修穹顶（概念）',role:'近域修复海陆潜空 / 无武装 / 不修复轨道和建筑',hp:1900,cost:2800,r:40,power:-65,time:28,heal:50,range:320,healDomains:['ground','naval','underwater','air'],icon:'✚',defense:true},
+  });
   U.harvester={name:'装甲采矿车',role:'自动采矿 / 运回精炼厂 / 可右键指定矿区',cost:700,hp:720,speed:67,damage:0,range:0,reload:1,sight:230,r:18,time:10,producer:'factory',icon:'▣',ground:true,capacity:500,harvestRate:65};
   const D = {
     F,
@@ -757,11 +765,11 @@
     BUFFS,
     ABILITIES,
     EXTRA,
-    W: 3072,
-    H: 2112,
+    W: 6144,
+    H: 4224,
     T: 48,
-    COLS: 64,
-    ROWS: 44,
+    COLS: 128,
+    ROWS: 88,
     version: 1,
   };
   root.WarData = D;

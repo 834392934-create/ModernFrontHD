@@ -1,8 +1,8 @@
 {
-  "recordedAt": "2026-10-17T15:49:27.954Z",
+  "recordedAt": "2026-10-17T17:05:34.323Z",
   "checks": [
     "outward visible body and wing surfaces from above/below",
-    "306 role models retain valid batched geometry and PBR surfaces",
+    "354 role models retain valid batched geometry and PBR surfaces",
     "real gallery camouflage input changes rendered clothing"
   ],
   "maxTriangles": 29760,
@@ -716,6 +716,112 @@
       ]
     },
     {
+      "key": "assault_gun_usa",
+      "triangles": 7400,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        3,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "mobile_radar_usa",
+      "triangles": 17584,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        3,
+        0,
+        1
+      ]
+    },
+    {
+      "key": "asw_patrol_ship_usa",
+      "triangles": 11820,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "missile_sub_usa",
+      "triangles": 3580,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2
+      ]
+    },
+    {
+      "key": "high_altitude_interceptor_usa",
+      "triangles": 16228,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "strategic_strike_aircraft_usa",
+      "triangles": 16208,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "orbital_carrier_usa",
+      "triangles": 13920,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        6,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "orbital_sensor_usa",
+      "triangles": 5428,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        5,
+        3,
+        1
+      ]
+    },
+    {
       "key": "antitank_team_rus",
       "triangles": 27888,
       "drawMeshes": 1,
@@ -1377,6 +1483,112 @@
       ]
     },
     {
+      "key": "assault_gun_rus",
+      "triangles": 7412,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        3,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "mobile_radar_rus",
+      "triangles": 17596,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        3,
+        0,
+        1
+      ]
+    },
+    {
+      "key": "asw_patrol_ship_rus",
+      "triangles": 11832,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "missile_sub_rus",
+      "triangles": 3592,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2
+      ]
+    },
+    {
+      "key": "high_altitude_interceptor_rus",
+      "triangles": 16240,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "strategic_strike_aircraft_rus",
+      "triangles": 16220,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "orbital_carrier_rus",
+      "triangles": 13932,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        6,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "orbital_sensor_rus",
+      "triangles": 5440,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        5,
+        3,
+        1
+      ]
+    },
+    {
       "key": "antitank_team_chn",
       "triangles": 27888,
       "drawMeshes": 1,
@@ -2033,6 +2245,112 @@
         2,
         3,
         6,
+        1
+      ]
+    },
+    {
+      "key": "assault_gun_chn",
+      "triangles": 7424,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        3,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "mobile_radar_chn",
+      "triangles": 17608,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        3,
+        0,
+        1
+      ]
+    },
+    {
+      "key": "asw_patrol_ship_chn",
+      "triangles": 11844,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "missile_sub_chn",
+      "triangles": 3604,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2
+      ]
+    },
+    {
+      "key": "high_altitude_interceptor_chn",
+      "triangles": 16252,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "strategic_strike_aircraft_chn",
+      "triangles": 16232,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "orbital_carrier_chn",
+      "triangles": 13944,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        6,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "orbital_sensor_chn",
+      "triangles": 5452,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        5,
+        3,
         1
       ]
     },
@@ -2700,6 +3018,112 @@
       ]
     },
     {
+      "key": "assault_gun_ind",
+      "triangles": 7400,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        3,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "mobile_radar_ind",
+      "triangles": 17584,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        3,
+        0,
+        1
+      ]
+    },
+    {
+      "key": "asw_patrol_ship_ind",
+      "triangles": 11820,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "missile_sub_ind",
+      "triangles": 3580,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2
+      ]
+    },
+    {
+      "key": "high_altitude_interceptor_ind",
+      "triangles": 16228,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "strategic_strike_aircraft_ind",
+      "triangles": 16208,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "orbital_carrier_ind",
+      "triangles": 13920,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        6,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "orbital_sensor_ind",
+      "triangles": 5428,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        5,
+        3,
+        1
+      ]
+    },
+    {
       "key": "antitank_team_kor",
       "triangles": 27888,
       "drawMeshes": 1,
@@ -3357,6 +3781,112 @@
         2,
         3,
         6,
+        1
+      ]
+    },
+    {
+      "key": "assault_gun_kor",
+      "triangles": 7412,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        3,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "mobile_radar_kor",
+      "triangles": 17596,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        3,
+        0,
+        1
+      ]
+    },
+    {
+      "key": "asw_patrol_ship_kor",
+      "triangles": 11832,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "missile_sub_kor",
+      "triangles": 3592,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2
+      ]
+    },
+    {
+      "key": "high_altitude_interceptor_kor",
+      "triangles": 16240,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "strategic_strike_aircraft_kor",
+      "triangles": 16220,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "orbital_carrier_kor",
+      "triangles": 13932,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        6,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "orbital_sensor_kor",
+      "triangles": 5440,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        5,
+        3,
         1
       ]
     },
@@ -4044,6 +4574,118 @@
         2,
         3,
         6,
+        1
+      ]
+    },
+    {
+      "key": "assault_gun_imp",
+      "triangles": 7424,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        3,
+        0,
+        2,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "mobile_radar_imp",
+      "triangles": 17608,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        2,
+        3,
+        0,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "asw_patrol_ship_imp",
+      "triangles": 11844,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        1,
+        6
+      ]
+    },
+    {
+      "key": "missile_sub_imp",
+      "triangles": 3604,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        6
+      ]
+    },
+    {
+      "key": "high_altitude_interceptor_imp",
+      "triangles": 16252,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "key": "strategic_strike_aircraft_imp",
+      "triangles": 16232,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "key": "orbital_carrier_imp",
+      "triangles": 13944,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        6,
+        2,
+        1
+      ]
+    },
+    {
+      "key": "orbital_sensor_imp",
+      "triangles": 5452,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        6,
+        2,
+        5,
+        3,
         1
       ]
     }

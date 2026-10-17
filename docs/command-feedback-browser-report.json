@@ -1,0 +1,59 @@
+{
+  "recordedAt": "2026-10-17T17:17:56.569Z",
+  "checks": [
+    "Actual selected path is drawn as a terrain route; real Shift-click adds a numbered queued waypoint",
+    "Real minimap cross-island move is rejected with Chinese feedback and preserves active order and queued waypoint"
+  ],
+  "errors": [],
+  "routes": {
+    "draw": {
+      "id": 7,
+      "known": true,
+      "activePoints": 5,
+      "queuedPoints": 1
+    },
+    "order": {
+      "x": 1296,
+      "y": 1151.000015918112,
+      "attack": false,
+      "target": null
+    },
+    "queue": [
+      {
+        "x": 1248.6416524251301,
+        "y": 1219.106839365915,
+        "attack": false,
+        "target": null
+      }
+    ]
+  },
+  "rejected": {
+    "feedback": {
+      "accepted": [],
+      "rejected": [
+        {
+          "id": 7,
+          "reason": "separated-land",
+          "domain": "land"
+        }
+      ],
+      "queued": false
+    },
+    "order": {
+      "x": 1296,
+      "y": 1151.000015918112,
+      "attack": false,
+      "target": null
+    },
+    "queue": [
+      {
+        "x": 1248.6416524251301,
+        "y": 1219.106839365915,
+        "attack": false,
+        "target": null
+      }
+    ],
+    "toast": "1 个单位未接受：陆军无法跨越海域或断开的陆路。已保留原有命令。"
+  },
+  "passed": true
+}

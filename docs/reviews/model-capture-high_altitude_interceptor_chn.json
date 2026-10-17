@@ -1,0 +1,78 @@
+{
+  "recordedAt": "2026-10-17T17:04:51.446Z",
+  "models": [
+    {
+      "key": "high_altitude_interceptor_chn",
+      "scale": 5.8,
+      "parts": 305,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "detailPass": 2,
+      "profile": "slender-twin-engine-tall-tails-chn-v2",
+      "modelFamily": "high_altitude_interceptor",
+      "designRole": "先进科技 / 空天截击 / 跨层投影射程950 / 无对地武器",
+      "fiction": false,
+      "referenceUrl": "https://www.nasa.gov/image-article/sr-71/",
+      "referenceUse": "Public role/structural inspiration only. Not a reproduction of a real platform.",
+      "unarmed": false,
+      "weaponVisual": "long-wing-mounted-interceptor-missiles",
+      "kind": "high_altitude_interceptor",
+      "triangles": 16252,
+      "dimensions": [
+        15.199999809265137,
+        3.577244758605957,
+        10.399999618530273
+      ]
+    },
+    {
+      "key": "asw_patrol_ship_chn",
+      "scale": 4.4,
+      "parts": 181,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "detailPass": 2,
+      "profile": "narrow-patrol-aft-sonar-a-frame-torpedo-chn-v2",
+      "modelFamily": "asw_patrol_ship",
+      "designRole": "650范围声呐 / 对舰反潜鱼雷 / 无防空",
+      "fiction": false,
+      "referenceUrl": "https://www.kongsberg.com/what-we-do/defence-and-security/naval/st2400/",
+      "referenceUse": "Public role/structural inspiration only. Not a reproduction of a real platform.",
+      "unarmed": false,
+      "weaponVisual": "bow-torpedo-banks-aft-towed-sonar",
+      "kind": "asw_patrol_ship",
+      "triangles": 11844,
+      "dimensions": [
+        17.219873428344727,
+        5.945000171661377,
+        3.492000102996826
+      ]
+    },
+    {
+      "key": "orbital_carrier_chn",
+      "scale": 4.7,
+      "parts": 300,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "detailPass": 2,
+      "profile": "broad-capital-dual-gun-pod-long-arrays-chn-v2",
+      "modelFamily": "orbital_carrier",
+      "designRole": "远距制空天 / 多炮位齐射 / 轨道投影射程2300 / 无生产功能",
+      "fiction": true,
+      "referenceUrl": "https://www.esa.int/ESA_Multimedia/Images/2016/07/Shaker_test_of_radiator_panel",
+      "referenceUse": "Public role/structural inspiration only. Not a reproduction of a real platform.",
+      "unarmed": false,
+      "weaponVisual": "side-batteries-and-longitudinal-arrays",
+      "noAircraftProduction": true,
+      "openWeaponTroughs": 2,
+      "kind": "orbital_carrier",
+      "triangles": 13944,
+      "dimensions": [
+        16.15673589706421,
+        4.773214101791382,
+        11.15999984741211
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

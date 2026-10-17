@@ -1,0 +1,341 @@
+{
+  "recordedAt": "2026-10-17T17:27:49.958Z",
+  "environment": "desktop",
+  "checks": [
+    "Real deployment UI selects archipelago, five teams spawn with five land mines, five water harbours, five ships and six objectives on 6144x4224 terrain",
+    "Full terrain overview and live minimap captured from actual WebGL game",
+    "Actual left-click selects own ship and trusted right-click sea order moves it over 60 world units; no direct simulation command used"
+  ],
+  "errors": [],
+  "fixture": "AI clocks disabled; full vision selected in setup; overview camera framing only. All selection and movement orders use trusted pointer input.",
+  "packageSourceMatch": true,
+  "layout": {
+    "width": 6144,
+    "height": 4224,
+    "cols": 128,
+    "rows": 88,
+    "is3D": true,
+    "teams": 5,
+    "spawns": [
+      {
+        "x": 1176,
+        "y": 936
+      },
+      {
+        "x": 4872,
+        "y": 3288
+      },
+      {
+        "x": 4728,
+        "y": 936
+      },
+      {
+        "x": 1224,
+        "y": 3288
+      },
+      {
+        "x": 3096,
+        "y": 2136
+      }
+    ],
+    "mines": [
+      {
+        "id": 0,
+        "x": 1476,
+        "y": 1116,
+        "ground": true,
+        "amount": 24000
+      },
+      {
+        "id": 1,
+        "x": 5172,
+        "y": 3148,
+        "ground": true,
+        "amount": 23987
+      },
+      {
+        "id": 2,
+        "x": 5028,
+        "y": 1116,
+        "ground": true,
+        "amount": 24000
+      },
+      {
+        "id": 3,
+        "x": 1524,
+        "y": 3148,
+        "ground": true,
+        "amount": 23990.25
+      },
+      {
+        "id": 4,
+        "x": 2816,
+        "y": 1996,
+        "ground": true,
+        "amount": 24000
+      }
+    ],
+    "nodes": [
+      {
+        "x": 792,
+        "y": 1176
+      },
+      {
+        "x": 4488,
+        "y": 3048
+      },
+      {
+        "x": 4344,
+        "y": 1176
+      },
+      {
+        "x": 840,
+        "y": 3048
+      },
+      {
+        "x": 2760,
+        "y": 1896
+      },
+      {
+        "x": 3336,
+        "y": 2472
+      }
+    ],
+    "harbours": [
+      {
+        "id": 13,
+        "team": 0,
+        "x": 1176,
+        "y": 480,
+        "water": true
+      },
+      {
+        "id": 29,
+        "team": 1,
+        "x": 4872,
+        "y": 3744,
+        "water": true
+      },
+      {
+        "id": 45,
+        "team": 2,
+        "x": 4728,
+        "y": 480,
+        "water": true
+      },
+      {
+        "id": 61,
+        "team": 3,
+        "x": 1224,
+        "y": 3744,
+        "water": true
+      },
+      {
+        "id": 77,
+        "team": 4,
+        "x": 3552,
+        "y": 2136,
+        "water": true
+      }
+    ],
+    "ships": [
+      {
+        "id": 14,
+        "team": 0,
+        "x": 1176,
+        "y": 297.6,
+        "water": true
+      },
+      {
+        "id": 30,
+        "team": 1,
+        "x": 4854.796129669099,
+        "y": 3938.4427092316296,
+        "water": true
+      },
+      {
+        "id": 46,
+        "team": 2,
+        "x": 4711.238040008628,
+        "y": 302.62858799741116,
+        "water": true
+      },
+      {
+        "id": 62,
+        "team": 3,
+        "x": 1237.409567993096,
+        "y": 3922.377129602072,
+        "water": true
+      },
+      {
+        "id": 78,
+        "team": 4,
+        "x": 3743.3918895596166,
+        "y": 2123.154443486261,
+        "water": true
+      }
+    ],
+    "view": {
+      "width": 2752,
+      "height": 1152,
+      "dpr": 1.25
+    }
+  },
+  "canvasBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 2752,
+    "height": 1152
+  },
+  "order": {
+    "x": 1496.000092397529,
+    "y": 144.00001485736334,
+    "attack": false,
+    "target": null
+  },
+  "movement": {
+    "id": 14,
+    "from": {
+      "x": 1176,
+      "y": 297.6
+    },
+    "to": {
+      "x": 1230.0749783006318,
+      "y": 268.12838970136687
+    },
+    "distance": 61.58473099566397,
+    "input": [
+      {
+        "button": 0,
+        "trusted": true
+      },
+      {
+        "button": 2,
+        "trusted": true
+      }
+    ]
+  },
+  "desktop": {
+    "electron": "44.7.2",
+    "fullscreen": true,
+    "gpu": {
+      "auxAttributes": {
+        "amdSwitchable": false,
+        "canSupportThreadedTextureMailbox": false,
+        "directMLFeatureLevel": "Not supported",
+        "dx12FeatureLevel": "Not supported",
+        "glImplementationParts": "(gl=none,angle=none)",
+        "glResetNotificationStrategy": 0,
+        "inProcessGpu": true,
+        "initializationTime": 0,
+        "isAsan": false,
+        "isClangCoverage": false,
+        "jpegDecodeAcceleratorSupported": false,
+        "optimus": false,
+        "overlayInfo": {
+          "bgra8OverlaySupport": "NONE",
+          "directComposition": false,
+          "nv12OverlaySupport": "NONE",
+          "p010OverlaySupport": "NONE",
+          "rgb10a2OverlaySupport": "NONE",
+          "supportsOverlays": false,
+          "yuy2OverlaySupport": "NONE"
+        },
+        "passthroughCmdDecoder": false,
+        "sandboxed": false,
+        "skiaBackendType": "None",
+        "subpixelFontRendering": true,
+        "supportsD3dSharedImages": false,
+        "supportsDirectML": false,
+        "supportsDx12": false,
+        "supportsVulkan": false,
+        "targetCpuBits": 64,
+        "visibilityCallbackCallCount": 0,
+        "vulkanVersion": "Not supported"
+      },
+      "gpuDevice": [
+        {
+          "active": false,
+          "deviceId": 9476,
+          "deviceString": "NVIDIA GeForce RTX 3060",
+          "driverVersion": "32.0.15.9579",
+          "gpuPreference": 2,
+          "revision": 161,
+          "subSysId": 355864798,
+          "vendorId": 4318
+        },
+        {
+          "active": false,
+          "deviceId": 9476,
+          "deviceString": "NVIDIA GeForce RTX 3060",
+          "driverVersion": "32.0.15.9579",
+          "gpuPreference": 0,
+          "revision": 161,
+          "subSysId": 355864798,
+          "vendorId": 4318
+        },
+        {
+          "active": false,
+          "deviceId": 9476,
+          "deviceString": "NVIDIA GeForce RTX 3060",
+          "driverVersion": "32.0.15.9579",
+          "gpuPreference": 0,
+          "revision": 161,
+          "subSysId": 355864798,
+          "vendorId": 4318
+        },
+        {
+          "active": false,
+          "deviceId": 9476,
+          "deviceString": "NVIDIA GeForce RTX 3060",
+          "driverVersion": "32.0.15.9579",
+          "gpuPreference": 0,
+          "revision": 161,
+          "subSysId": 355864798,
+          "vendorId": 4318
+        },
+        {
+          "active": false,
+          "deviceId": 9476,
+          "deviceString": "NVIDIA GeForce RTX 3060",
+          "driverVersion": "32.0.15.9579",
+          "gpuPreference": 0,
+          "revision": 161,
+          "subSysId": 355864798,
+          "vendorId": 4318
+        },
+        {
+          "active": false,
+          "deviceId": 9476,
+          "deviceString": "NVIDIA GeForce RTX 3060",
+          "driverVersion": "32.0.15.9579",
+          "gpuPreference": 0,
+          "revision": 161,
+          "subSysId": 355864798,
+          "vendorId": 4318
+        },
+        {
+          "active": false,
+          "deviceId": 9476,
+          "deviceString": "NVIDIA GeForce RTX 3060",
+          "driverVersion": "32.0.15.9579",
+          "gpuPreference": 0,
+          "revision": 161,
+          "subSysId": 355864798,
+          "vendorId": 4318
+        },
+        {
+          "active": false,
+          "deviceId": 140,
+          "deviceString": "Microsoft Basic Render Driver",
+          "driverVersion": "10.0.26100.9278",
+          "gpuPreference": 0,
+          "revision": 0,
+          "subSysId": 0,
+          "vendorId": 5140
+        }
+      ]
+    }
+  },
+  "passed": true
+}

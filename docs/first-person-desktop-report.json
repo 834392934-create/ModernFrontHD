@@ -1,12 +1,12 @@
 {
-  "recordedAt": "2026-10-17T15:55:47.792Z",
+  "recordedAt": "2026-10-17T17:26:32.715Z",
   "environment": "Packaged Electron",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
     "M toggles and restores the optional motion setting through keyboard input",
     "Mouse look, right-button ADS narrows camera FOV, release restores aim, and Space freezes simulation and clears movement/fire",
     "Escape exits driving and returns strategy camera without opening settings",
-    "All 68 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked",
+    "All 76 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked",
     "AI builds, trains and orders other units during possession, excludes the driver, and stops new AI calls after E exits",
     "Real left-click mesh-target shot reduces enemy HP and confirms actual source damage; a subsequent sky miss produces no hit marker",
     "A real manual projectile remains tied to its recorded impact area: relocating the target during flight causes no remote damage or hit marker",
@@ -693,6 +693,86 @@
       "hudName": "寰宇全域无畏舰（架空）",
       "finiteCamera": true,
       "ownModelHidden": true
+    },
+    {
+      "kind": "assault_gun",
+      "id": 242,
+      "domain": "ground",
+      "mode": "ground",
+      "weaponProfile": "original-ground-controls",
+      "hudName": "重装突击炮（原创）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "mobile_radar",
+      "id": 245,
+      "domain": "ground",
+      "mode": "ground",
+      "weaponProfile": "original-ground-controls",
+      "hudName": "机动火控雷达车（原创）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "asw_patrol_ship",
+      "id": 248,
+      "domain": "naval",
+      "mode": "naval",
+      "weaponProfile": "original-naval-controls",
+      "hudName": "反潜巡逻舰（原创）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "missile_sub",
+      "id": 251,
+      "domain": "naval",
+      "mode": "underwater",
+      "weaponProfile": "original-underwater-controls",
+      "hudName": "巡航导弹潜艇（原创）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "high_altitude_interceptor",
+      "id": 254,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "高空截击机（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "strategic_strike_aircraft",
+      "id": 257,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "重型远程突击机（原创）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_carrier",
+      "id": 260,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "轨道火力母舰（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "orbital_sensor",
+      "id": 263,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "轨道预警阵列（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
     }
   ],
   "screenshots": [
@@ -742,7 +822,7 @@
         "pitch": -0.025
       },
       "after": {
-        "x": 696.4,
+        "x": 700,
         "y": 800,
         "yaw": 0,
         "pitch": -0.025
@@ -751,13 +831,13 @@
     {
       "key": "KeyD",
       "before": {
-        "x": 696.4,
+        "x": 700,
         "y": 800,
         "yaw": 0,
         "pitch": -0.025
       },
       "after": {
-        "x": 696.4,
+        "x": 700,
         "y": 821.6000000000001,
         "yaw": 0,
         "pitch": -0.025
@@ -766,13 +846,13 @@
     {
       "key": "KeyA",
       "before": {
-        "x": 696.4,
+        "x": 700,
         "y": 821.6000000000001,
         "yaw": 0,
         "pitch": -0.025
       },
       "after": {
-        "x": 696.4,
+        "x": 700,
         "y": 800,
         "yaw": 0,
         "pitch": -0.025
@@ -782,7 +862,7 @@
   "ads": {
     "hip": 70,
     "active": true,
-    "fov": 48.03374383494514,
+    "fov": 48.029642161780714,
     "view": "infantry"
   },
   "ai": {
@@ -793,7 +873,7 @@
     "controlledOrder": null
   },
   "aim": {
-    "target": 249,
+    "target": 273,
     "point": [
       828.4683744545998,
       13.859999811172484,
@@ -805,16 +885,16 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 26.600000000000243,
-      "sourceId": 248,
-      "targetId": 249,
+      "hitAt": 22.90000000000019,
+      "sourceId": 272,
+      "targetId": 273,
       "damage": 74
     },
     "incoming": {
       "x": 700,
       "y": 800,
-      "sourceId": 248,
-      "time": 26.600000000000243
+      "sourceId": 272,
+      "time": 22.90000000000019
     },
     "hudConfirmed": true
   },
@@ -845,7 +925,7 @@
       "kind": "tank_destroyer",
       "faction": "chn",
       "originMode": "model-muzzle",
-      "cameraTarget": 253,
+      "cameraTarget": 277,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
@@ -861,7 +941,7 @@
       "kind": "tank",
       "faction": "chn",
       "originMode": "model-muzzle",
-      "cameraTarget": 257,
+      "cameraTarget": 281,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
@@ -877,7 +957,7 @@
       "kind": "tank",
       "faction": "imp",
       "originMode": "conservative-body",
-      "cameraTarget": 261,
+      "cameraTarget": 285,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
@@ -891,7 +971,7 @@
     }
   ],
   "nativeFocus": {
-    "recordedAt": "2026-10-17T15:56:45.964Z",
+    "recordedAt": "2026-10-17T17:27:24.765Z",
     "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
     "nativeBefore": {
       "fullScreen": true,
@@ -907,7 +987,7 @@
       "events": [
         {
           "trusted": true,
-          "at": 57221.800000190735
+          "at": 51090.09999990463
         }
       ],
       "locked": false,

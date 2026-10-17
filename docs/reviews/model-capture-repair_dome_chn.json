@@ -1,0 +1,30 @@
+{
+  "recordedAt": "2026-10-17T16:58:32.370Z",
+  "models": [
+    {
+      "key": "repair_dome_chn",
+      "scale": 7,
+      "parts": 145,
+      "profile": "open-half-arch-two-arm-service-yard-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "repair_dome",
+      "original": true,
+      "evidenceStatus": "original-concept-facility",
+      "fiction": true,
+      "unarmed": true,
+      "reviewStatus": "needs-visual-review",
+      "referenceUse": "Original integrated facility. Public components inform visible supports only; no real system/performance claim.",
+      "referenceUrl": "https://www.nasa.gov/isam/robotic-servicing-arm/",
+      "supportVisual": "open-repair-lane-under-half-arch",
+      "kind": "repair_dome",
+      "triangles": 8400,
+      "dimensions": [
+        11.598571300506592,
+        4.360000140070915,
+        11.588571548461914
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

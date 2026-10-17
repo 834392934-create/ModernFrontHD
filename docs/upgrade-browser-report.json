@@ -15,9 +15,9 @@
   "errors": [],
   "stats": {
     "fps": 13,
-    "calls": 29,
-    "triangles": 321410,
+    "calls": 28,
+    "triangles": 353654,
     "visibleEntities": 16,
-    "geometries": 143
+    "geometries": 138
   }
 }

@@ -94,11 +94,11 @@ async function nativeFocusCheck(){
   await exit('Escape');assert.equal(await p.locator('#modal').isVisible(),false);report.checks.push('Escape exits driving and returns strategy camera without opening settings');
 
   // All supported unit kinds must be possessable through real keyboard selection/E.
-  const kinds=await p.evaluate(()=>Object.keys(WarData.U));assert.equal(kinds.length,68);
+  const kinds=await p.evaluate(()=>Object.keys(WarData.U));assert.equal(kinds.length,76);
   const screenshots={sniper_team:'sniper',orbital_shield:'shield',air_repair_drone:'air-repair',tank:'tank',destroyer:'naval',fighter:'air',orbital:'space',field_medic:'medical',antitank_team:'antitank_team',mortar_team:'mortar_team',machinegun_team:'machinegun_team'};
   const profiles={sniper_team:'original-marksman-rifle',antitank_team:'original-shoulder-launcher',mortar_team:'original-mortar-observation',machinegun_team:'original-belt-fed-machinegun'};
   for(const kind of kinds){state=await fixture(kind);await enter(state);await p.waitForTimeout(40);const detail=await p.evaluate(()=>{const d=ModernFront.direct,g=ModernFront.game,e=g.get(d.entityId);return{kind:e.kind,id:e.id,domain:WarData.U[e.kind].unitGroup,mode:d.view?.mode,weaponProfile:d.view?.weaponProfile,hudName:d.el('name').textContent,finiteCamera:d.camera.position.toArray().every(Number.isFinite),ownModelHidden:ModernFront.renderer.objects.get(e.id)?.visible===false};});assert.ok(detail.finiteCamera&&detail.ownModelHidden,kind);assert.ok(detail.hudName);if(profiles[kind]){assert.equal(detail.weaponProfile,profiles[kind]);assert.equal(detail.mode,'infantry');}report.possession.push(detail);if(screenshots[kind]){await paused(false);await lock();await p.waitForTimeout(120);await shot(screenshots[kind]);await paused(true);}await exit();}
-  assert.equal(report.possession.find(e=>e.kind==='field_medic').mode,'medical');report.checks.push('All 68 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked');
+  assert.equal(report.possession.find(e=>e.kind==='field_medic').mode,'medical');report.checks.push('All 76 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked');
 
   // AI uses the existing unmodified method; wrapper only counts calls.
   state=await fixture('tank');await p.evaluate(()=>{const g=ModernFront.game;g.teams[0].money=50000;g.spawn(0,'barracks',500,400);g.spawn(0,'factory',500,520);g.spawn(0,'ifv',1000,1000);g.__fpsAICalls=0;const ai=g.ai.bind(g);g.ai=(team,dt)=>{if(team.id===0)g.__fpsAICalls++;return ai(team,dt);};});

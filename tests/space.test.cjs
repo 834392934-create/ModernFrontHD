@@ -24,8 +24,8 @@ test('interceptor build and movement order survive save/load',()=>{
  const g=arena();g.spawn(0,'spaceport',600,500);g.teams[0].money=99999;assert.equal(g.train(0,'orbital_interceptor'),true);const e=g.spawn(0,'orbital_interceptor',700,600);g.command([e.id],1200,800);const copy=Game.load(JSON.stringify(g.save()));assert.equal(copy.get(e.id).kind,e.kind);assert.equal(copy.get(e.id).order.x,1200);assert.equal(copy.teams[0].queue[0].kind,'orbital_interceptor');
 });
 test('space shot styles preserve origin and target layer including impact',()=>{
- for(const [kind,style,height] of [['orbital','orbital-beam',145],['orbital_interceptor','interceptor-burst',145],['asat','asat-missile',12]]){const g=arena();g.spawn(0,kind,700,600);g.spawn(1,'satellite',1000,600);let shot;for(let n=0;n<25&&!shot;n++){g.step(.05);shot=g.effects.find(f=>f.type==='shot'&&f.from===0);}
-  assert.ok(shot,kind);assert.equal(shot.weaponFx,style);assert.equal(shot.sourceHeight,height);assert.equal(shot.targetHeight,145);step(g,shot.ttl+.05);assert.ok(g.effects.some(f=>f.type==='impact'&&f.height===145),kind+' impact');
+ for(const [kind,style,height] of [['orbital','orbital-beam',4000],['orbital_interceptor','interceptor-burst',4000],['asat','asat-missile',12]]){const g=arena();g.spawn(0,kind,700,600);g.spawn(1,'satellite',1000,600);let shot;for(let n=0;n<25&&!shot;n++){g.step(.05);shot=g.effects.find(f=>f.type==='shot'&&f.from===0);}
+  assert.ok(shot,kind);assert.equal(shot.weaponFx,style);assert.equal(shot.sourceHeight,height);assert.equal(shot.targetHeight,4000);step(g,shot.ttl+.05);assert.ok(g.effects.some(f=>f.type==='impact'&&f.height===4000),kind+' impact');
  }
 });
 test('player-only technology remains separate from AI orbital permission',()=>{

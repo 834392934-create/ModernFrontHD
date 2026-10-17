@@ -34,8 +34,8 @@ test('domination victory and contested capture rule',()=>{
  const g2=new Game({enemies:1});g2.teams.forEach(t=>t.aiClock=999);let n=g2.nodes[0];g2.spawn(0,'infantry',n.x,n.y);g2.spawn(1,'infantry',n.x+10,n.y);advance(g2,.2);assert.equal(n.progress,0);
 });
 test('blocked destination is resolved to accessible ground',()=>{
- const g=new Game({enemies:1,map:'river'}),e=g.entities.find(e=>e.team===0&&e.kind==='tank');g.command([e.id],1500,700);
- const k=Math.floor(e.order.y/48)*64+Math.floor(e.order.x/48);assert.equal(g.map.blocked[k],0);
+ const g=new Game({enemies:1,map:'river'}),e=g.entities.find(e=>e.team===0&&e.kind==='tank');assert.equal(g.map.blocked[Math.floor(1400/48)*WarData.COLS+Math.floor(3000/48)],1);g.command([e.id],3000,1400);
+ const k=Math.floor(e.order.y/48)*WarData.COLS+Math.floor(e.order.x/48);assert.equal(g.map.blocked[k],0);
 });
 test('all land vehicle classes and air reach an ordered point on all three maps',()=>{
  for(const map of ['river','desert','industry'])for(const kind of ['infantry','tank','ifv','arty','rocket','aa','heli','fighter','jet','satellite','orbital','orbital_interceptor','asat']){

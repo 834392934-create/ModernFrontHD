@@ -15,7 +15,7 @@ const fs=require('node:fs'),assert=require('node:assert/strict');
   }
   return {units,facilities:Object.entries(WarData.B).map(([key,b])=>({key,name:b.name,category:WarModels.create(key,'chn').userData.evidenceStatus,referenceUrl:WarModels.create(key,'chn').userData.referenceUrl||null,variants:Object.keys(WarData.F).length})),abilities:Object.entries(WarData.ABILITIES).map(([key,a])=>({key,name:a.name,category:'abstract-effect-no-specific-exterior-model'}))};
  });
- const known=inventory.units.filter(u=>u.category==='known-photo-reference');assert.equal(known.length,49);assert.equal(inventory.units.length,408);assert.equal(inventory.abilities.length,7);assert.ok(known.every(u=>u.referenceUrl),'Each known exterior needs its own photo source');
+ const known=inventory.units.filter(u=>u.category==='known-photo-reference');assert.equal(known.length,49);assert.equal(inventory.units.length,456);assert.equal(inventory.abilities.length,7);assert.ok(known.every(u=>u.referenceUrl),'Each known exterior needs its own photo source');
  const report={recordedAt:new Date().toISOString(),scope:'Coverage and source inventory; not a visual acceptance certificate.',knownSlotCount:known.length,conceptGenerationAllowed:false,authorizedExceptions:{unitKinds:['satellite','orbital_interceptor','orbital','asat'],rosterRoleVariants:true,allBuildingKinds:true,reason:'Explicit user instructions 2026-10-16 and reinforcement and tactical-wave authorization 2026-10-17'},policy:'ACCEPTANCE_POLICY.md',...inventory};
  fs.writeFileSync('docs/reviews/model-inventory.json',JSON.stringify(report,null,2));
  const rows=known.map(u=>`|${u.key}|${u.name}|[实图](${u.referenceUrl})|${u.assetSource?'授权外部美术':'原创程序网格'}|终验待完成|`).join('\n');

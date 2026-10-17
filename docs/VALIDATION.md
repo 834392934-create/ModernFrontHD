@@ -1,3 +1,33 @@
+# 3.3 群岛、轨道、Warzone 参考与玩家驾驶验证
+
+日期：2026-10-18（北京时间）。76 类单位（陆军20、海军19、空军18、太空18，另采矿车1）、21 类建筑、六阵营582个图鉴/头像项目。四图6144×4224，面积为旧版4倍。以下均为游戏参数与本机验证，不认证真实武器性能。
+
+|检查|本版结果|证据|
+|---|---|---|
+|完整模拟|164/164通过，0失败|simulation-tests.txt|
+|地图|16项；四图20座矿真实采集返厂，每队至少500矿；五岛陆地隔离与五港72u保守船体余量连通|../tests/maps-large.test.cjs / LARGE_MAPS.md|
+|群岛实际操作|浏览器与独立EXE均通过真实菜单开局、5队/5矿/5港/6据点、点船和右键移动|maps-browser/browser-report.json / maps-browser/desktop-report.json|
+|高空与资源|20项模拟；浏览器与EXE各7组：真实鼠标反向俯仰、4000u相机与真实地面点击命中、12000u显示、8角色/4设施UI、无限与10倍开关|../tests/high-altitude.test.cjs / high-altitude-browser-report.json / high-altitude-desktop-report.json|
+|Warzone参考|官方固定提交研究；13项CPU验证静态连通缓存、拒绝保留原命令、混选/Shift/队列满、隔海直接火力；浏览器与EXE各2组真实路径/右键反馈|reviews/warzone2100-reference.md / command-feedback-browser-report.json / command-feedback-desktop-report.json|
+|玩家模式|浏览器与EXE各5组：开局接管、J换乘、海陆空天/水下、搜索、敌军排除、新单位自动加入、AI时间推进、保护HUD、退出清理|player-mode-browser-report.json / player-mode-desktop-report.json|
+|保护AI|11项：正确目标域、基地留守、玩家护卫、维修实回血、资金科技、缺电插队、探测/EMP、退出与存档、应急维修、群岛与舰炮|../tests/player-protection.test.cjs / PLAYER_MODE.md|
+|驾驶回归|76类真实选择/E进入退出，手动射击、遮挡、失焦清输入、AI经营；原生水下/飞行7组|first-person-desktop-report.json / depth-flight-desktop-report.json|
+|模型与取景|354职责变体几何/PBR有效，582图鉴，1040横竖屏五视图取景；582同源头像|model-detail-report.json / gallery-report.json / gallery-framing-report.json|
+|离线与原生|实际EXE：导入模型ready、CC-BY-4.0来源及材质、离线零HTTP、全屏/沉浸切换|desktop-report.json / upgrade-browser-report.json|
+|包一致性|发布代码、资产与582头像逐文件SHA256核对|altitude-package-report.json|
+
+本版独立EXE短时性能：RTX 3060，物理3440×1440、CSS2752×1152、DPR1.25。122实体混编4.012秒平均46.4 FPS、P95帧耗时22.4ms；5.018秒交战98→74实体、177次发射、76峰值效果、4组防御圈，平均46.64 FPS、P95帧耗时22.3ms。测试串行运行；短时受控采样不代表长局或极限人口。证据：expanded-desktop-report.json。
+
+独立监督亲看新单位/防御结构、轨道与玩家菜单截图，并独立运行专项CPU；详见 reviews/high-altitude-supervision.md。发现的截击机挂架悬空、平板船底、母舰纵深、地图预览格数和搜索框被挤压均已修正。高空平面战场与装饰球面仍能看出边界，列为画质限制；不是无缝星球。
+
+保护AI每秒评估已知威胁，不提供无敌，受兵力/视野/资金/目标域限制。跨岛地面部队没有运输登陆机制，海空与轨道负责跨岛打击。中央岛有两个据点，未宣称竞技平衡。轨道1u=0.1km仅用于该层压缩HUD；飞机为简化三维运动，未模拟真实气动/轨道力学。程序模型和背景仍为风格化画面，未接入DLSS、光追或破解组件。
+
+复现：启动node server.cjs，npm test；GPU测试务必串行。运行tests/player-mode-browser.cjs、tests/command-feedback-browser.cjs、tests/high-altitude-browser.cjs、tests/maps-browser.cjs；build-desktop.ps1后给这些脚本加--desktop。再运行tests/upgrade.cjs、tests/expanded-browser.cjs --desktop、tests/first-person-browser.cjs --desktop、tests/depth-flight-browser.cjs --desktop以及tests/package-consistency.cjs。
+
+下文为历史版本记录；同名自动报告更新为最新验证结果。
+
+---
+
 # 3.2 水下作战、三维飞行与全域平台验证
 
 日期：2026-10-17（北京时间）。4种新角色；合计68类单位（陆18、海17、空16、天16、采矿车1），6阵营408单位外观槽位，加建筑共510图鉴项。新全域平台为架空游戏装备，数值不代表现实性能。

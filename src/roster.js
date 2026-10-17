@@ -331,6 +331,47 @@
   });
   const depthWave=added.slice(depthStart);
 
+  // Orbital weapons use a compressed cross-layer projection range; same-layer height still matters.
+  for(const d of Object.values(U))if(d.space&&d.damage>0){
+    d.range=Math.min(d===U.omni_dreadnought?2800:2400,Math.max(1250,Math.round(d.range*2.2)));
+    d.role+=' / 跨层使用轨道投影射程';
+  }
+  U.asat.range=1400;
+  const altitudeStart=added.length;
+  add('assault_gun','ground','tank','assault-casemate',{
+    name:'重装突击炮（原创）',role:'近程对地 / 对建筑加成 / 厚装甲低机动',cost:1550,hp:1250,speed:48,damage:150,range:260,reload:3.2,sight:300,r:21,time:22,producer:'factory',icon:'▰',
+    targetDomains:['ground','structure'],damageBonuses:{structure:1.7},splash:28,
+  });
+  add('mobile_radar','ground','ifv','mobile-fire-control',{
+    name:'机动火控雷达车（原创）',role:'无武装 / 300范围友方陆军装填耗时-15% / 同类不叠加',cost:1200,hp:380,speed:86,damage:0,range:300,reload:1,sight:620,r:18,time:18,producer:'factory',icon:'◉',aiWeight:.4,
+    targetDomains:[],fireControl:{enemy:false,multiplier:.85,domains:['ground']},supportDomains:['ground'],
+  });
+  add('asw_patrol_ship','naval','destroyer','asw-patrol',{
+    name:'反潜巡逻舰（原创）',role:'650范围声呐 / 对舰反潜鱼雷 / 无防空',cost:1750,hp:1050,speed:95,damage:170,range:610,reload:3.2,sight:430,r:23,time:23,producer:'navalyard',icon:'≋',
+    sonarRange:650,targetDomains:['naval','underwater'],weaponFx:'torpedo',
+  });
+  add('missile_sub','naval','submarine','cruise-missile',{
+    name:'巡航导弹潜艇（原创）',role:'潜航远程对岸对舰 / 对潜鱼雷 / 无空天火力',cost:3600,hp:1250,speed:60,damage:260,range:1000,minRange:120,reload:6,sight:350,r:26,time:38,producer:'navalyard',icon:'↗',
+    underwater:true,sonarRange:480,targetDomains:['ground','naval','underwater','structure'],rocket:true,splash:40,
+  });
+  add('high_altitude_interceptor','air','fighter','high-altitude-interception',{
+    name:'高空截击机（架空）',role:'先进科技 / 空天截击 / 跨层投影射程950 / 无对地武器',cost:4100,hp:800,speed:260,damage:150,range:950,reload:2.4,sight:650,r:23,time:36,producer:'airfield',icon:'↟',advanced:true,
+    targetDomains:['air','space'],rocket:true,
+  });
+  add('strategic_strike_aircraft','air','fighter','strategic-strike',{
+    name:'重型远程突击机（原创）',role:'远程海陆及基地打击 / 慢速高耐久 / 无自卫对空火力',cost:4600,hp:1450,speed:135,damage:280,range:1000,minRange:150,reload:5.2,sight:580,r:30,time:42,producer:'airfield',icon:'✈',
+    targetDomains:['ground','naval','structure'],splash:75,rocket:true,
+  });
+  add('orbital_carrier','space','orbital','orbital-fire-carrier',{
+    name:'轨道火力母舰（架空）',role:'远距制空天 / 多炮位齐射 / 轨道投影射程2300 / 无生产功能',cost:8500,hp:3100,speed:52,damage:260,range:2300,minRange:180,reload:2.8,sight:950,r:34,time:60,producer:'spaceport',icon:'✧',
+    targetDomains:['air','space'],weaponFx:'interceptor-burst',splash:42,aiWeight:.3,
+  });
+  add('orbital_sensor','space','satellite','orbital-early-warning',{
+    name:'轨道预警阵列（架空）',role:'无武装 / 投影600范围友方空天装填耗时-20% / 同类不叠加',cost:3200,hp:900,speed:70,damage:0,range:600,reload:1,sight:1350,r:28,time:31,producer:'spaceport',icon:'◉',aiWeight:.4,
+    targetDomains:[],fireControl:{enemy:false,multiplier:.8,domains:['air','space']},supportDomains:['air','space'],
+  });
+  const altitudeWave=added.slice(altitudeStart);
+
   D.UNIT_GROUPS = {
     ground: { name: "陆军", icon: "▰" }, naval: { name: "海军", icon: "⚓" },
     air: { name: "空军", icon: "✈" }, space: { name: "太空", icon: "✧" },
@@ -340,6 +381,7 @@
     reinforcements,
     tacticalWave,
     depthWave,
+    altitudeWave,
     logistics: ["harvester"],
     groups: Object.fromEntries(Object.keys(D.UNIT_GROUPS).map(group => [group,
       Object.keys(U).filter(kind => U[kind].unitGroup === group && U[kind].combatRole !== "logistics"),

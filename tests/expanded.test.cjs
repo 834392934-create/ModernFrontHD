@@ -4,12 +4,12 @@ const {Game}=WarSim,{U,B,ROSTER}=WarData;
 function arena(){const g=new Game({faction:'chn',enemies:1,buffs:['vision'],playerOnlyTech:false,aiSpaceWeapons:true});g.entities=[];g.spawn(0,'hq',300,300);g.spawn(1,'hq',2700,1800);g.teams.forEach(t=>t.aiClock=999999);return g;}
 function step(g,s){for(let i=0;i<Math.ceil(s*20);i++)g.step(.05);}
 const targets={underwater:'submarine',ground:'tank',naval:'destroyer',air:'fighter',space:'satellite',structure:'hq'};
-test('four groups have 18/17/16/16 roles, with harvester separately counted',()=>{
- assert.deepEqual(Object.fromEntries(Object.entries(ROSTER.groups).map(([k,v])=>[k,v.length])),{ground:18,naval:17,air:16,space:16});assert.equal(Object.keys(U).length,68);
- assert.equal(new Set(Object.values(ROSTER.groups).flat()).size,67);assert.ok(!Object.values(ROSTER.groups).flat().includes('harvester'));
+test('four groups have 20/19/18/18 roles, with harvester separately counted',()=>{
+ assert.deepEqual(Object.fromEntries(Object.entries(ROSTER.groups).map(([k,v])=>[k,v.length])),{ground:20,naval:19,air:18,space:18});assert.equal(Object.keys(U).length,76);
+ assert.equal(new Set(Object.values(ROSTER.groups).flat()).size,75);assert.ok(!Object.values(ROSTER.groups).flat().includes('harvester'));
  for(const k of ROSTER.added){assert.ok(B[U[k].producer],k);assert.equal(U[k].index,undefined);assert.match(WarData.EQUIPMENT.dossier('chn',k).status,/原创/);}
 });
-test('every added armed role really hits only its declared target domains (210 armed firing scenarios)',()=>{
+test('every added armed role really hits only its declared target domains (246 armed firing scenarios)',()=>{
  for(const k of ROSTER.added.filter(k=>U[k].damage))for(const [domain,kind] of Object.entries(targets)){
   const g=arena(),d=U[k],distance=Math.max(d.minRange||0,0)+Math.min(70,(d.range-(d.minRange||0))/2),a=g.spawn(0,k,1000,750),b=g.spawn(1,kind,1000+distance,750),hp=b.hp;
   b.disabled=999;g.command([a.id],a.x,a.y,true,b.id);step(g,distance/700+1);
@@ -34,7 +34,7 @@ test('support repairs only its own domain, never buildings or enemies, and never
   for(const s of samples)assert.equal(s.e.hp>s.hp,s.d===domain,kind+' repairs '+s.d);assert.equal(enemy.hp,hp);assert.ok(!g.effects.some(e=>e.sourceKind===kind));
  }
 });
-test('all 68 units can be trained, completed and loaded using their real production lanes',()=>{
+test('all 76 units can be trained, completed and loaded using their real production lanes',()=>{
  for(const k of Object.keys(U)){
   const g=arena();g.spawn(0,'power',450,450);g.spawn(0,'power',550,450);g.spawn(0,U[k].producer,U[k].naval?720:700,U[k].naval?120:600);g.teams[0].money=100000;
   assert.equal(g.train(0,k),true,k);const saved=Game.load(JSON.stringify(g.save()));assert.equal(saved.teams[0].queue[0].kind,k);step(saved,U[k].time+2);
@@ -86,16 +86,16 @@ test('range hints do not expose hidden enemies; off mode and unarmed sight work'
 });
 
 test('AI fleet attacks eligible ships and support follows friendly ships instead of enemies',()=>{
- const g=arena();g.time=100;g.spawn(1,'navalyard',2300,1992);const missile=g.spawn(1,'missile_boat',2100,1992),repair=g.spawn(1,'repair_ship',2600,1992),enemy=g.spawn(0,'destroyer',1700,1992);g.spawn(1,'recon_boat',2000,1992);
+ const g=arena();g.time=100;g.spawn(1,'navalyard',2300,WarData.H-240);const missile=g.spawn(1,'missile_boat',2100,WarData.H-240),repair=g.spawn(1,'repair_ship',2600,WarData.H-240),enemy=g.spawn(0,'destroyer',1700,WarData.H-240);g.spawn(1,'recon_boat',2000,WarData.H-240);
  g.teams[1].money=0;g.teams[1].aiClock=0;g.ai(g.teams[1],.05);
  assert.equal(missile.order?.target,enemy.id);assert.ok(repair.order);assert.notEqual(repair.order.target,enemy.id);assert.equal(repair.order.attack,false);
- const idx=Math.floor(missile.order.y/48)*64+Math.floor(missile.order.x/48);assert.equal(g.map.navalBlocked[idx],0);
+ const idx=Math.floor(missile.order.y/48)*WarData.COLS+Math.floor(missile.order.x/48);assert.equal(g.map.navalBlocked[idx],0);
  step(g,3);assert.ok(enemy.hp<enemy.maxHp);assert.ok(repair.x<2600);
 });
 test('AI coast approach stays on water on every map',()=>{
- for(const map of ['river','desert','industry']){const g=new Game({map,enemies:1}),ship=g.entities.find(e=>e.team===1&&U[e.kind]?.naval),hq=g.entities.find(e=>e.team===0&&e.kind==='hq'),p=g.navalApproach(ship,hq);assert.ok(p);assert.equal(g.map.navalBlocked[Math.floor(p.y/48)*64+Math.floor(p.x/48)],0);}
+ for(const map of ['river','desert','industry']){const g=new Game({map,enemies:1}),ship=g.entities.find(e=>e.team===1&&U[e.kind]?.naval),hq=g.entities.find(e=>e.team===0&&e.kind==='hq'),p=g.navalApproach(ship,hq);assert.ok(p);assert.equal(g.map.navalBlocked[Math.floor(p.y/48)*WarData.COLS+Math.floor(p.x/48)],0);}
 });
 
 test('AI naval approach rejects disconnected river pockets behind bridges',()=>{
- const g=new Game({map:'river',enemies:1}),ship=g.spawn(1,'shore_bombardment',2352,1992),p=g.navalApproach(ship,{x:1300,y:900});assert.ok(p);assert.ok(WarSim.findPath({blocked:g.map.navalBlocked},ship.x,ship.y,p.x,p.y).length>0);
+ const g=new Game({map:'river',enemies:1}),ship=g.spawn(1,'shore_bombardment',4704,WarData.H-240),p=g.navalApproach(ship,{x:2600,y:1800});assert.ok(p);assert.ok(WarSim.findPath({blocked:g.map.navalBlocked},ship.x,ship.y,p.x,p.y).length>0);
 });

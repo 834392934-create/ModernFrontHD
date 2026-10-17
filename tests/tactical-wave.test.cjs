@@ -5,7 +5,7 @@ function arena(){const g=new Game({faction:'chn',enemies:1,buffs:['vision'],play
 function tick(g,s){for(let i=0;i<s*20;i++)g.step(.05);}
 function hit(g,e){g.spatial.rebuild(g.entities);const before=e.hp;g.damage(e,100,0);return before-e.hp;}
 test('eight tactical roles add two units per domain without inheriting real equipment names',()=>{
- assert.equal(ROSTER.tacticalWave.length,8);for(const domain of ['ground','naval','air','space'])assert.equal(ROSTER.tacticalWave.filter(k=>U[k].unitGroup===domain).length,2);assert.equal(Object.keys(U).length,68);for(const k of ROSTER.tacticalWave){assert.equal(U[k].index,undefined);assert.equal(U[k].roleVariant,true);}assert.equal(U.orbital_shield.combatRole,'support');
+ assert.equal(ROSTER.tacticalWave.length,8);for(const domain of ['ground','naval','air','space'])assert.equal(ROSTER.tacticalWave.filter(k=>U[k].unitGroup===domain).length,2);assert.equal(Object.keys(U).length,76);for(const k of ROSTER.tacticalWave){assert.equal(U[k].index,undefined);assert.equal(U[k].roleVariant,true);}assert.equal(U.orbital_shield.combatRole,'support');
 });
 test('mobile shield protects only friendly orbit, includes itself, never stacks and stops on EMP/death',()=>{
  const g=arena(),a=g.spawn(1,'orbital_shield',1000,750),b=g.spawn(1,'orbital_shield',1020,750),orbit=g.spawn(1,'orbital',1040,750),plane=g.spawn(1,'fighter',1040,760),tank=g.spawn(1,'tank',1040,770),enemy=g.spawn(0,'orbital',1040,780);
@@ -13,9 +13,10 @@ test('mobile shield protects only friendly orbit, includes itself, never stacks 
  a.disabled=999;b.hp=0;assert.equal(hit(g,orbit),100);a.disabled=0;orbit.x=1300;assert.equal(hit(g,orbit),100);orbit.x=1040;assert.equal(hit(g,orbit),75);
  const profile=g.rangeProfile(a);assert.deepEqual(profile.zones.find(z=>z.type==='shield').domains,['space']);a.disabled=999;assert.equal(g.rangeProfile(a).active,false);
 });
-test('mobile and powered base shields choose the strongest eligible field without stacking',()=>{
- const g=arena(),mobile=g.spawn(1,'orbital_shield',1000,750),base=g.spawn(1,'shield',1040,750),e=g.spawn(1,'orbital',1070,750);g.spawn(1,'power',1500,750);g.spawn(1,'power',1600,750);assert.ok(g.power(1)>=0);assert.ok(Math.abs(hit(g,e)-100*(1-WarData.B.shield.shield))<1e-8);base.disabled=999;assert.equal(hit(g,e),75);mobile.disabled=999;assert.equal(hit(g,e),100);
+test('mobile and powered base shields remain local to separated orbital and ground layers',()=>{
+ const g=arena(),mobile=g.spawn(1,'orbital_shield',1000,750),base=g.spawn(1,'shield',1040,750),orbit=g.spawn(1,'orbital',1070,750),tank=g.spawn(1,'tank',1070,750);g.spawn(1,'power',1500,750);g.spawn(1,'power',1600,750);assert.ok(g.power(1)>=0);assert.equal(hit(g,orbit),75);assert.ok(Math.abs(hit(g,tank)-100*(1-WarData.B.shield.shield))<1e-8);mobile.disabled=999;assert.equal(hit(g,orbit),100);assert.ok(Math.abs(hit(g,tank)-100*(1-WarData.B.shield.shield))<1e-8);base.disabled=999;assert.equal(hit(g,tank),100);
 });
+
 test('aerial maintenance heals aircraft but never land, sea or orbit, including direct control and save/load',()=>{
  const g=arena(),repair=g.spawn(0,'air_repair_drone',1000,750),samples=['fighter','tank','destroyer','orbital'].map((k,i)=>{const e=g.spawn(0,k,1030+i*3,750);e.hp-=80;e.disabled=999;return e;});const hp=samples.map(e=>e.hp);g.beginDirectControl(repair.id);tick(g,.5);samples.forEach((e,i)=>assert.equal(e.hp>hp[i],i===0));assert.ok(!g.effects.some(e=>e.sourceId===repair.id));const copy=Game.load(JSON.stringify(g.save()));assert.ok(copy.get(repair.id));assert.equal(copy.directControl,null);
 });

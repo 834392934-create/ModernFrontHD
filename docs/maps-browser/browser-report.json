@@ -1,0 +1,218 @@
+{
+  "recordedAt": "2026-10-17T17:08:06.140Z",
+  "environment": "browser",
+  "checks": [
+    "Real deployment UI selects archipelago, five teams spawn with five land mines, five water harbours, five ships and six objectives on 6144x4224 terrain",
+    "Full terrain overview and live minimap captured from actual WebGL game",
+    "Actual left-click selects own ship and trusted right-click sea order moves it over 60 world units; no direct simulation command used"
+  ],
+  "errors": [],
+  "fixture": "AI clocks disabled; full vision selected in setup; overview camera framing only. All selection and movement orders use trusted pointer input.",
+  "layout": {
+    "width": 6144,
+    "height": 4224,
+    "cols": 128,
+    "rows": 88,
+    "is3D": true,
+    "teams": 5,
+    "spawns": [
+      {
+        "x": 1176,
+        "y": 936
+      },
+      {
+        "x": 4872,
+        "y": 3288
+      },
+      {
+        "x": 4728,
+        "y": 936
+      },
+      {
+        "x": 1224,
+        "y": 3288
+      },
+      {
+        "x": 3096,
+        "y": 2136
+      }
+    ],
+    "mines": [
+      {
+        "id": 0,
+        "x": 1476,
+        "y": 1116,
+        "ground": true,
+        "amount": 24000
+      },
+      {
+        "id": 1,
+        "x": 5172,
+        "y": 3148,
+        "ground": true,
+        "amount": 23993.5
+      },
+      {
+        "id": 2,
+        "x": 5028,
+        "y": 1116,
+        "ground": true,
+        "amount": 24000
+      },
+      {
+        "id": 3,
+        "x": 1524,
+        "y": 3148,
+        "ground": true,
+        "amount": 23996.75
+      },
+      {
+        "id": 4,
+        "x": 2816,
+        "y": 1996,
+        "ground": true,
+        "amount": 24000
+      }
+    ],
+    "nodes": [
+      {
+        "x": 792,
+        "y": 1176
+      },
+      {
+        "x": 4488,
+        "y": 3048
+      },
+      {
+        "x": 4344,
+        "y": 1176
+      },
+      {
+        "x": 840,
+        "y": 3048
+      },
+      {
+        "x": 2760,
+        "y": 1896
+      },
+      {
+        "x": 3336,
+        "y": 2472
+      }
+    ],
+    "harbours": [
+      {
+        "id": 13,
+        "team": 0,
+        "x": 1176,
+        "y": 480,
+        "water": true
+      },
+      {
+        "id": 29,
+        "team": 1,
+        "x": 4872,
+        "y": 3744,
+        "water": true
+      },
+      {
+        "id": 45,
+        "team": 2,
+        "x": 4728,
+        "y": 480,
+        "water": true
+      },
+      {
+        "id": 61,
+        "team": 3,
+        "x": 1224,
+        "y": 3744,
+        "water": true
+      },
+      {
+        "id": 77,
+        "team": 4,
+        "x": 3552,
+        "y": 2136,
+        "water": true
+      }
+    ],
+    "ships": [
+      {
+        "id": 14,
+        "team": 0,
+        "x": 1176,
+        "y": 297.6,
+        "water": true
+      },
+      {
+        "id": 30,
+        "team": 1,
+        "x": 4860.530753112733,
+        "y": 3934.4284728210864,
+        "water": true
+      },
+      {
+        "id": 46,
+        "team": 2,
+        "x": 4717.942824005177,
+        "y": 300.6171527984467,
+        "water": true
+      },
+      {
+        "id": 62,
+        "team": 3,
+        "x": 1230.704783996548,
+        "y": 3924.388564801036,
+        "water": true
+      },
+      {
+        "id": 78,
+        "team": 4,
+        "x": 3738.8959447798084,
+        "y": 2129.5772217431304,
+        "water": true
+      }
+    ],
+    "view": {
+      "width": 1600,
+      "height": 1000,
+      "dpr": 1
+    }
+  },
+  "canvasBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1600,
+    "height": 1000
+  },
+  "order": {
+    "x": 1496,
+    "y": 144.00001089239308,
+    "attack": false,
+    "target": null
+  },
+  "movement": {
+    "id": 14,
+    "from": {
+      "x": 1176,
+      "y": 297.6
+    },
+    "to": {
+      "x": 1230.0749783006318,
+      "y": 268.12838970136687
+    },
+    "distance": 61.58473099566397,
+    "input": [
+      {
+        "button": 0,
+        "trusted": true
+      },
+      {
+        "button": 2,
+        "trusted": true
+      }
+    ]
+  },
+  "passed": true
+}

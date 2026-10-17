@@ -1,0 +1,18 @@
+{
+  "recordedAt": "2026-10-17T17:29:14.733Z",
+  "version": "3.3.0",
+  "sha256Matches": 674,
+  "portraits": 582,
+  "executable": "release/ModernFrontHD/ModernFrontHD.exe",
+  "runtimeChecks": [
+    "desktop-report.json",
+    "expanded-desktop-report.json",
+    "first-person-desktop-report.json",
+    "depth-flight-desktop-report.json",
+    "high-altitude-desktop-report.json",
+    "maps-browser/desktop-report.json",
+    "command-feedback-desktop-report.json",
+    "player-mode-desktop-report.json"
+  ],
+  "mismatches": []
+}
