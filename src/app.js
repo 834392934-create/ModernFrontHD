@@ -21,6 +21,7 @@
     catalogHTML = null,
     paused = false,
     modalWasPaused = false,
+    modalReturnFocus = null,
     speed = 1,
     mode = null,
     selection = new Set(),
@@ -547,14 +548,30 @@
     );
   }
   const canvas = $("#battle");
+  function strategyPointerAvailable() {
+    return !!game && !game.result && !direct.active && !direct.vehicleMenu.open &&
+      $("#modal").hidden && !document.pointerLockElement;
+  }
+  function captureStrategyPointer(pointerId) {
+    // Pointer lock and pointer capture are mutually exclusive. The state gate above
+    // handles FPS; a pointer that expired before capture is a cancelled gesture.
+    if (document.pointerLockElement) return false;
+    try {
+      canvas.setPointerCapture(pointerId);
+      return true;
+    } catch (error) {
+      if (error.name === "NotFoundError") { drag = null; middle = null; return false; }
+      throw error;
+    }
+  }
   canvas.addEventListener("contextmenu", (e) => e.preventDefault());
   canvas.addEventListener("pointerdown", (e) => {
-    if (!game || !$("#modal").hidden) return;
+    if (!strategyPointerAvailable()) { drag = null; middle = null; return; }
     pointer = { x: e.clientX, y: e.clientY };
     if (e.button === 1) {
-      middle = pointer;
       e.preventDefault();
-      canvas.setPointerCapture(e.pointerId);
+      if (!captureStrategyPointer(e.pointerId)) return;
+      middle = pointer;
       return;
     }
     if (e.button === 2) {
@@ -596,10 +613,11 @@
       updateHUD();
       return;
     }
+    if (!captureStrategyPointer(e.pointerId)) return;
     drag = { x: e.clientX, y: e.clientY, shift: e.shiftKey };
-    canvas.setPointerCapture(e.pointerId);
   });
   canvas.addEventListener("pointermove", (e) => {
+    if (!strategyPointerAvailable()) { drag = null; middle = null; return; }
     pointer = { x: e.clientX, y: e.clientY };
     if (middle) {
       r.pan(
@@ -616,6 +634,7 @@
     }
   });
   canvas.addEventListener("pointerup", (e) => {
+    if (!strategyPointerAvailable()) { drag = null; middle = null; return; }
     if (e.button === 1) {
       middle = null;
       return;
@@ -653,8 +672,12 @@
     drag = null;
     middle = null;
   });
+  canvas.addEventListener("lostpointercapture", () => {
+    drag = null;
+    middle = null;
+  });
   canvas.addEventListener("dblclick", (e) => {
-    if (!game) return;
+    if (!strategyPointerAvailable()) return;
     const hit = r.pick?.(game,e.clientX,e.clientY)||selectable(r.toWorld(e.clientX, e.clientY));
     if (hit && !hit.structure) {
       selection = new Set(
@@ -668,19 +691,20 @@
   canvas.addEventListener(
     "wheel",
     (e) => {
-      if (!game) return;
+      if (!strategyPointerAvailable()) return;
       e.preventDefault();
       r.zoomAt(Math.exp(-e.deltaY * 0.001), e.clientX, e.clientY);
     },
     { passive: false },
   );
   $("#minimap").addEventListener("pointerdown", (e) => {
-    if (!game) return;
+    if (!strategyPointerAvailable()) return;
     const rect = e.currentTarget.getBoundingClientRect(),
       x = ((e.clientX - rect.left) / rect.width) * D.W,
       y = ((e.clientY - rect.top) / rect.height) * D.H;
     if (e.button === 2) {
       e.preventDefault();
+      if (paused) return;
       const result=game.command([...selection], x, y, mode === "attack");
       if(result?.rejected.length)toast(WarCommandFeedback.format(result));
       setMode(null);
@@ -754,7 +778,7 @@
     if ([" ", "arrowup", "arrowdown", "arrowleft", "arrowright"].includes(k))
       e.preventDefault();
     if (e.repeat) return;
-    if (k === " ") {
+    if (k === " " || k === "p") {
       togglePause();
       return;
     }
@@ -762,7 +786,12 @@
     else if (k === "a" && !e.ctrlKey) setMode("attack");
     else if (k === "s") stopUnits();
     else if (k === "h") home();
-    else if (k === "j") direct.vehicleMenu.show();
+    else if (k === "j") {
+      // Focus moves into search synchronously; consume the opener before text insertion.
+      e.preventDefault();
+      e.stopPropagation();
+      direct.vehicleMenu.show();
+    }
     else if (k === "r") {game.retreat([...selection]);toast('撤回基地，脱战后维修');}
     else if (k === "f") {const fs=['line','column','spread'];game.formation=fs[(fs.indexOf(game.formation)+1)%3];$('#formation').value=game.formation;toast('阵型已切换');}
     else if (k === "v") toggleRanges();
@@ -796,29 +825,44 @@
   });
   addEventListener("focus", () => {
     if (!hadFocus && game) {
-      toast("切回窗口，当前已暂停。按空格继续。");
+      toast(direct.active?"切回窗口，当前已暂停。按 P 或点击继续驾驶。":"切回窗口，当前已暂停。按 P / 空格继续。");
       hadFocus = true;
     }
   });
   addEventListener("resize", () => r.resize());
   function openModal(html) {
-    modalWasPaused = paused;
+    if ($("#modal").hidden) {
+      modalWasPaused = paused;
+      modalReturnFocus = document.activeElement;
+    }
     paused = true;
-    keys.clear();
+    clearStrategyInput();
+    direct.clearInput();
+    if (document.pointerLockElement) document.exitPointerLock();
     $("#modal-content").innerHTML = html;
     $("#modal").hidden = false;
+    $("#close-modal").focus();
     if (game) updateHUD();
   }
   function closeModal() {
     if (game?.result) return;
     $("#modal").hidden = true;
+    if ($("#modal").contains(document.activeElement)) document.activeElement.blur();
+    if (modalReturnFocus?.isConnected && !$("#modal").contains(modalReturnFocus)) modalReturnFocus.focus();
+    clearStrategyInput();
     paused = modalWasPaused;
     updateHUD();
   }
+  // Dialog focus is handled before either RTS shortcuts or the driver's capture listener.
+  addEventListener('keydown',e=>{
+    const modal=$('#modal');if(modal.hidden)return;
+    if(e.key==='Escape'){e.preventDefault();e.stopImmediatePropagation();closeModal();return;}
+    if(e.key==='Tab'){const items=[...modal.querySelectorAll('button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),a[href]')].filter(el=>!el.hidden);if(!items.length)return;const at=items.indexOf(document.activeElement),next=at<0?(e.shiftKey?items.length-1:0):(at+(e.shiftKey?-1:1)+items.length)%items.length;e.preventDefault();e.stopImmediatePropagation();items[next].focus();}
+  },true);
   $("#close-modal").onclick = closeModal;
   function help() {
     openModal(
-      '<small>FIELD MANUAL / 01</small><h2>作战指南</h2><p>通过基地与补给站获得资金，扩建产能，组织兵种协同，摧毁所有敌方指挥中心获胜。指挥中心被摧毁即出局。</p><div class="help-grid"><div><strong>选择与指挥</strong>左键选择，拖动框选；Shift 追加。<br>右键移动 / 指定敌军集火。<br>Q 选全军，A 后左键攻击移动，S 停止。<br>Ctrl + 1–5 编组，数字键调用。<br>实线为已求路径，虚线为后续目标；跨岛陆军移动会提示不可达。</div><div><strong>镜头与节奏</strong>方向键 / W D 平移，中键拖动。<br>滚轮缩放，H 回到基地。<br>小地图左键定位，右键下达指令。<br>空格暂停，右上角调节 1–2 倍速。</div><div><strong>建设与经济</strong>右侧“建造”选建筑，左键放置。<br>建筑需在己方建筑 400 范围内。<br>靠近补给站并独占 7 秒即可占领。<br>低电力生产速度仅为 40%。</div><div><strong>兵种与支援</strong>坦克抗线，步战车清步兵。<br>火炮需要前线视野且有最小射程。<br>防空克制直升机与六代机。<br>支援需视野，侦察可揭示任意区域。</div><div><strong>第一人称驾驶</strong>选中己方单位，点击驾驶按钮或按 E。<br>WASD 移动，鼠标观察，左键开火、右键瞄准。<br>J 搜索并换乘存活己方单位；E / Esc 返回总指挥。<br>AI 接管建造、生产、基地留守与玩家护卫。<br>飞机鼠标上推下降、下拉爬升；W/S 油门。<br>M 开关晃动，空格暂停。</div><div><strong>尖端科技</strong>核打击延迟 6 秒，钻地弹延迟 4 秒。<br>六代机先建设陆航基地再生产。<br>默认尖端科技仅玩家可用。<br>全部均为游戏数值；本版无友军伤害。</div><div><strong>科幻阵营</strong>战锤·人类帝国为非官方同人。<br>生命 ×3、火力 ×2.6、生产 ×1.3。<br>专属轨道光矛，强度远高于现代军队。<br>开局可把它选为玩家或 AI。</div></div><p>F5 保存 / F9 读取；菜单中可导出与导入存档。桌面鼠标键盘是完整操作方式；窄屏支持基本查看和点选。</p>',
+      '<small>FIELD MANUAL / 01</small><h2>作战指南</h2><p>通过基地与补给站获得资金，扩建产能，组织兵种协同，摧毁所有敌方指挥中心获胜。指挥中心被摧毁即出局。</p><div class="help-grid"><div><strong>选择与指挥</strong>左键选择，拖动框选；Shift 追加。<br>右键移动 / 指定敌军集火。<br>Q 选全军，A 后左键攻击移动，S 停止。<br>Ctrl + 1–5 编组，数字键调用。<br>实线为已求路径，虚线为后续目标；跨岛陆军移动会提示不可达。</div><div><strong>镜头与节奏</strong>方向键 / W D 平移，中键拖动。<br>滚轮缩放，H 回到基地。<br>小地图左键定位，右键下达指令。<br>P / 空格暂停，右上角调节 1–2 倍速。</div><div><strong>建设与经济</strong>右侧“建造”选建筑，左键放置。<br>建筑需在己方建筑 400 范围内。<br>靠近补给站并独占 7 秒即可占领。<br>低电力生产速度仅为 40%。</div><div><strong>兵种与支援</strong>坦克抗线，步战车清步兵。<br>火炮需要前线视野且有最小射程。<br>防空克制直升机与六代机。<br>支援需视野，侦察可揭示任意区域。</div><div><strong>第一人称驾驶</strong>选中己方单位，点击驾驶按钮或按 E。<br>WASD 移动，鼠标观察，左键开火、右键瞄准。<br>J 搜索并换乘存活己方单位；E / Esc 返回总指挥。<br>AI 接管建造、生产、基地留守与玩家护卫。<br>飞机鼠标上推下降、下拉爬升；W/S 油门。<br>人员空格跳跃；所有 FPS 单元 P 暂停，非人员也兼容空格暂停。<br>M 开关晃动；驾驶小地图常驻只读，保留迷雾与声呐。</div><div><strong>尖端科技</strong>核打击延迟 6 秒，钻地弹延迟 4 秒。<br>六代机先建设陆航基地再生产。<br>默认尖端科技仅玩家可用。<br>全部均为游戏数值；本版无友军伤害。</div><div><strong>科幻阵营</strong>战锤·人类帝国为非官方同人。<br>生命 ×3、火力 ×2.6、生产 ×1.3。<br>专属轨道光矛，强度远高于现代军队。<br>开局可把它选为玩家或 AI。</div></div><p>F5 保存 / F9 读取；菜单中可导出与导入存档。桌面鼠标键盘是完整操作方式；窄屏支持基本查看和点选。</p>',
     );
   }
   $("#help-menu").onclick = help;
@@ -865,8 +909,9 @@
         toast("还没有本地存档。");
         return;
       }
+      const loaded = WarSim.Game.load(s);
       direct?.exit();
-      game = WarSim.Game.load(s);
+      game = loaded;
       enterGame();
       toast("存档已读取");
     } catch (e) {
@@ -893,6 +938,7 @@
     i.accept = ".json";
     i.onchange = async () => {
       try {
+        if (!i.files?.length) return;
         if (i.files[0].size > 5000000) throw Error("文件不能超过 5 MB");
         const loaded = WarSim.Game.load(await i.files[0].text());
         direct?.exit();
@@ -1019,16 +1065,17 @@
         }
         if (steps === 8) acc = 0;
         const v = (raw * 650) / r.camera.zoom;
-        if (!direct.active&&keys.has("arrowleft")) r.pan(-v, 0);
-        if (!direct.active&&(keys.has("arrowright") || keys.has("d"))) r.pan(v, 0);
-        if (!direct.active&&(keys.has("arrowup") || keys.has("w"))) r.pan(0, -v);
-        if (!direct.active&&keys.has("arrowdown")) r.pan(0, v);
+        if (!direct.active&&!direct.vehicleMenu.open&&keys.has("arrowleft")) r.pan(-v, 0);
+        if (!direct.active&&!direct.vehicleMenu.open&&(keys.has("arrowright") || keys.has("d"))) r.pan(v, 0);
+        if (!direct.active&&!direct.vehicleMenu.open&&(keys.has("arrowup") || keys.has("w"))) r.pan(0, -v);
+        if (!direct.active&&!direct.vehicleMenu.open&&keys.has("arrowdown")) r.pan(0, v);
       }
       r.draw(
         game,
         { selection, hover: r.hover, pointer, mode, drag, rangeMode },
         now / 1000,
       );
+      direct.vehicleMenu.drawMinimap(now / 1000);
       const rangeFocus=(r.rangeOverlays||[]).find(v=>v.preview)||(r.rangeOverlays||[]).find(v=>v.focus);
       $('#range-readout').hidden=!rangeFocus||!$('#modal').hidden;
       if(rangeFocus)$('#range-readout').textContent=(rangeFocus.preview?'建造预览 · ':'')+rangeFocus.label;
@@ -1222,7 +1269,8 @@
   const rangeButton=document.createElement('button');rangeButton.id='range-toggle';rangeButton.title='V 切换：选中与悬停 / 全部己方防线 / 关闭';rangeButton.textContent='范围：选中 V';rangeButton.onclick=toggleRanges;$('.command-buttons').append(rangeButton);
   const rangeReadout=document.createElement('div');rangeReadout.id='range-readout';rangeReadout.hidden=true;$('#hud').append(rangeReadout);
   function toggleRanges(){const modes=['selected','defenses','off'];rangeMode=modes[(modes.indexOf(rangeMode)+1)%modes.length];rangeButton.textContent='范围：'+({selected:'选中',defenses:'防线',off:'关闭'})[rangeMode]+' V';}
-  const direct=new WarDirectControl(r,{game:()=>game,paused:()=>paused,selection:()=>[...selection],canEnter:()=>!!game&&!game.result&&$('#modal').hidden,togglePause,toast,unitName,sound:()=>sound,onExit:()=>{keys.clear();drag=null;middle=null;updateHUD();}});
+  function clearStrategyInput(){keys.clear();drag=null;middle=null;}
+  const direct=new WarDirectControl(r,{game:()=>game,paused:()=>paused,selection:()=>[...selection],canEnter:()=>!!game&&!game.result&&$('#modal').hidden,togglePause,toast,unitName,sound:()=>sound,clearStrategyInput,onEnter:()=>{clearStrategyInput();setMode(null);},onExit:()=>{clearStrategyInput();updateHUD();}});
   direct.vehicleMenu=new WarPlayerMode(direct);
   const vehicleButton=document.createElement('button');vehicleButton.id='choose-vehicle';vehicleButton.textContent='换乘载具 J';vehicleButton.onclick=()=>direct.vehicleMenu.show();$('.command-buttons').append(vehicleButton);
   const driveButton=document.createElement('button');driveButton.id='drive-unit';driveButton.textContent='第一人称驾驶 E';driveButton.title='选择己方单位后进入驾驶；其他部队由AI接管';driveButton.onclick=()=>{keys.clear();drag=null;middle=null;setMode(null);direct.enter([...selection][0]);};$('.command-buttons').append(driveButton);

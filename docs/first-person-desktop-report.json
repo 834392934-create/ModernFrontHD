@@ -1,10 +1,10 @@
 {
-  "recordedAt": "2026-10-17T17:26:32.715Z",
+  "recordedAt": "2026-10-17T18:27:02.660Z",
   "environment": "Packaged Electron",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
     "M toggles and restores the optional motion setting through keyboard input",
-    "Mouse look, right-button ADS narrows camera FOV, release restores aim, and Space freezes simulation and clears movement/fire",
+    "Mouse look, right-button ADS narrows camera FOV, release restores aim, and P freezes simulation and clears movement/fire",
     "Escape exits driving and returns strategy camera without opening settings",
     "All 76 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked",
     "AI builds, trains and orders other units during possession, excludes the driver, and stops new AI calls after E exits",
@@ -853,7 +853,7 @@
       },
       "after": {
         "x": 700,
-        "y": 800,
+        "y": 796.4,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -862,7 +862,7 @@
   "ads": {
     "hip": 70,
     "active": true,
-    "fov": 48.029642161780714,
+    "fov": 48.041579103956934,
     "view": "infantry"
   },
   "ai": {
@@ -885,7 +885,7 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 22.90000000000019,
+      "hitAt": 24.20000000000021,
       "sourceId": 272,
       "targetId": 273,
       "damage": 74
@@ -894,7 +894,7 @@
       "x": 700,
       "y": 800,
       "sourceId": 272,
-      "time": 22.90000000000019
+      "time": 24.20000000000021
     },
     "hudConfirmed": true
   },
@@ -971,7 +971,7 @@
     }
   ],
   "nativeFocus": {
-    "recordedAt": "2026-10-17T17:27:24.765Z",
+    "recordedAt": "2026-10-17T18:27:55.921Z",
     "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
     "nativeBefore": {
       "fullScreen": true,
@@ -987,7 +987,7 @@
       "events": [
         {
           "trusted": true,
-          "at": 51090.09999990463
+          "at": 52277.90000009537
         }
       ],
       "locked": false,
@@ -997,19 +997,20 @@
         "forward": 0,
         "strafe": 0,
         "yaw": 0,
-        "pitch": 0,
+        "pitch": -0.025,
         "turn": 0,
         "lift": 0,
         "throttle": 0,
         "flightEnabled": false,
         "fire": false,
+        "jump": false,
         "targetId": null,
-        "aimX": 825,
+        "aimX": 828.6,
         "aimY": 800,
         "aimHeight": 0
       },
       "position": [
-        700,
+        703.6,
         800
       ]
     },
@@ -1027,13 +1028,14 @@
         "throttle": 0,
         "flightEnabled": false,
         "fire": false,
+        "jump": false,
         "targetId": null,
-        "aimX": 1111.9141635668075,
+        "aimX": 1115.5141635668074,
         "aimY": 800,
         "aimHeight": -0.800000011920929
       },
       "position": [
-        700,
+        703.6,
         800
       ]
     }

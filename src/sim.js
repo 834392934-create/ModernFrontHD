@@ -5,6 +5,7 @@
     clamp = (v, a, b) => Math.max(a, Math.min(b, v)),
     dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
   const PLAYER_PROTECTION_DEFAULTS=Object.freeze({tickSeconds:1,baseRadius:650,playerRadius:650,guardCount:2,escortCount:2,supportCount:1,respondersPerThreat:2,maxThreats:4,criticalRatio:.35,powerReserve:20,holdRadius:140,refreshDistance:80});
+  const PLAYER_JUMP_DEFAULTS=Object.freeze({impulse:32,gravity:80});
   const maxShieldRange=Math.max(0,...Object.values({...U,...B}).filter(d=>d.shield).map(d=>d.range));
   function rng(seed) {
     return () => {
@@ -253,6 +254,9 @@
         const value=options.playerProtection?.[k],limit=k==='tickSeconds'?[.5,5]:k==='criticalRatio'?[.1,.8]:k.endsWith('Count')||k==='respondersPerThreat'||k==='maxThreats'?[1,8]:[20,1500];
         return [k,Number.isFinite(value)?clamp(value,...limit):v];
       }));
+      this.options.playerJump=Object.fromEntries(Object.entries(PLAYER_JUMP_DEFAULTS).map(([k,v])=>{
+        const value=options.playerJump?.[k];return [k,Number.isFinite(value)?clamp(value,...(k==='impulse'?[12,50]:[40,160])):v];
+      }));
       this.protectionStatus=null;
       this.options.enemies = clamp(Number(this.options.enemies) || 1, 1, 4);
       if (!F[this.options.faction]) this.options.faction = "chn";
@@ -420,8 +424,12 @@
       return B[kind]?'structure':d?.space?'space':d?.underwater?'underwater':d?.naval?'naval':d?.air?'air':'ground';
     }
     entityAltitude(e) {
-      if(Number.isFinite(e?.altitude))return e.altitude;
-      const d=U[e?.kind];return d?.underwater?-55:d?.space?4000:d?.air?65:d?.naval?2:0;
+      const d=U[e?.kind],base=Number.isFinite(e?.altitude)?e.altitude:d?.underwater?-55:d?.space?4000:d?.air?65:d?.naval?2:0;
+      return base+((d?.modelKind||e?.kind)==='infantry'&&Number.isFinite(e?.jumpHeight)?Math.max(0,e.jumpHeight):0);
+    }
+    resetJump(e) {
+      if(e){e.jumpHeight=0;e.jumpVelocity=0;}
+      if(this.directControl){this.directControl.jumpHeld=false;this.directControl.jumpPending=false;}
     }
     hitHeightRadius(e) {
       const d=U[e.kind];return e.structure?Math.max(60,e.r*2):d?.naval?Math.max(30,e.r*2):d?.air?Math.max(12,e.r):Math.max(20,e.r);
@@ -541,6 +549,7 @@
       this.directFeedback=null;
       this._directTeamAI={aiClock:this.teams[0].aiClock,attackAt:this.teams[0].attackAt};
       this.teams[0].aiClock=0;
+      this.resetJump(e);
       e.order=null;e.orderQueue=[];e.path=[];e.target=null;e.retreating=false;e.manualMove=true;
       this.directControl={id:e.id,input:{forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null,aimX:e.x,aimY:e.y,aimHeight:this.entityAltitude(e),pitch:e.pitch,turn:0,lift:0,throttle:0,flightEnabled:false}};
       return true;
@@ -548,7 +557,7 @@
     endDirectControl() {
       if(!this.directControl)return false;
       const e=this.entities.find(o=>o.id===this.directControl.id);
-      if(e){e.manualMove=false;e.order=null;e.orderQueue=[];e.path=[];e.target=null;}
+      if(e){this.resetJump(e);e.manualMove=false;e.order=null;e.orderQueue=[];e.path=[];e.target=null;}
       if(this._directTeamAI)Object.assign(this.teams[0],this._directTeamAI);
       for(const ally of this.entities)if(ally.protectionRole){delete ally.protectionRole;ally.order=null;ally.orderQueue=[];ally.path=[];ally.target=null;}
       this.protectionStatus=null;
@@ -561,12 +570,17 @@
       if(!e||this.result)return false;
       if(!input||typeof input!=='object')input={};
       const finite=(v,fallback=0)=>Number.isFinite(v)?v:fallback;
-      if(e.disabled>this.time){e.target=null;this.directControl.input={forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null};return false;}
+      if(e.disabled>this.time){this.resetJump(e);e.target=null;this.directControl.input={forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null};return false;}
       const yaw=finite(input.yaw,e.angle),d=U[e.kind];
+      const pressed=input.jump===true;
+      // Capture edges when input arrives: a press/release can happen between fixed simulation ticks.
+      if(input.cancelJump===true)this.directControl.jumpPending=false;
+      else if(pressed&&!this.directControl.jumpHeld&&!(e.jumpHeight>0)&&(d.modelKind||e.kind)==='infantry')this.directControl.jumpPending=true;
+      this.directControl.jumpHeld=pressed;
       this.directControl.input={
         forward:clamp(finite(input.forward),-1,1),strafe:clamp(finite(input.strafe),-1,1),yaw,
         pitch:clamp(finite(input.pitch),-1.15,1.15),turn:clamp(finite(input.turn),-1,1),lift:clamp(finite(input.lift),-1,1),throttle:clamp(finite(input.throttle),-1,1),flightEnabled:input.flightEnabled===true,
-        fire:!!input.fire,targetId:Number.isInteger(input.targetId)?input.targetId:null,
+        fire:!!input.fire,jump:input.jump===true,targetId:Number.isInteger(input.targetId)?input.targetId:null,
         aimX:clamp(finite(input.aimX,e.x+Math.cos(yaw)*(d.range||250)),0,W),
         aimY:clamp(finite(input.aimY,e.y+Math.sin(yaw)*(d.range||250)),0,H),
         aimHeight:clamp(finite(input.aimHeight,this.entityAltitude(this.get(input.targetId)||e)),-160,14000),
@@ -620,6 +634,15 @@
     }
     stepDirectControl(e,dt) {
       const input=this.directControl.input,d=U[e.kind],yaw=input.yaw;
+      if((d.modelKind||e.kind)==='infantry'){
+        const cfg=this.options.playerJump;
+        if(this.directControl.jumpPending&&!(e.jumpHeight>0))e.jumpVelocity=cfg.impulse;
+        this.directControl.jumpPending=false;
+        if(e.jumpHeight>0||e.jumpVelocity>0){
+          e.jumpHeight=Math.max(0,(e.jumpHeight||0)+e.jumpVelocity*dt-.5*cfg.gravity*dt*dt);
+          e.jumpVelocity=e.jumpHeight>0?e.jumpVelocity-cfg.gravity*dt:0;
+        }
+      }
       e.target=null;
       let dx=0,dy=0;
       if(d.air||d.underwater){
@@ -745,6 +768,7 @@
           )
             return false;
       return (
+        !this.ore.some(o=>dist(o,{x,y})<48+d.r+6) &&
         !this.entities.some(
           (e) => e.hp > 0 && e.structure && dist(e, { x, y }) < e.r + d.r + 20,
         ) &&
@@ -1189,7 +1213,7 @@
       dt = clamp(dt, 0, 0.1);
       this.time += dt;
       this.tick++;
-      if(this.directControl){const e=this.get(this.directControl.id);if(!e)this.endDirectControl();else if(e.disabled>this.time){e.target=null;this.directControl.input={forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null};}}
+      if(this.directControl){const e=this.get(this.directControl.id);if(!e)this.endDirectControl();else if(e.disabled>this.time){this.resetJump(e);e.target=null;this.directControl.input={forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null};}}
       this.pathBudget = 10;
       this.spatial.rebuild(this.entities);
       this.teamSight = this.teams.map((t) =>
@@ -1569,7 +1593,7 @@
       return null;
     }
     save() {
-      return {
+      return structuredClone({
         version: D.version,
         altitudeSchema: 2,
         mapScaleVersion: 2,
@@ -1577,7 +1601,7 @@
         time: this.time,
         tick: this.tick,
         nextId: this.nextId,
-        entities: this.entities.map(e=>e.protectionRole?{...e,protectionRole:undefined,order:null,orderQueue:[],path:[],target:null}:e.id===this.directControl?.id?{...e,manualMove:false,target:null}:e),
+        entities: this.entities.map(e=>e.protectionRole?{...e,protectionRole:undefined,order:null,orderQueue:[],path:[],target:null}:e.id===this.directControl?.id?{...e,manualMove:false,target:null,jumpHeight:0,jumpVelocity:0}:e),
         teams: this.teams.map(t=>t.id===0&&this._directTeamAI?{...t,...this._directTeamAI}:t),
         nodes: this.nodes,
         wealthGranted: !!this.wealthGranted,
@@ -1589,15 +1613,15 @@
         result: this.result,
         ore: this.ore,
         formation: this.formation,
-      };
+      });
     }
     static load(json) {
-      let s = typeof json === "string" ? JSON.parse(json) : json;
+      let s = typeof json === "string" ? JSON.parse(json) : structuredClone(json);
       const finite = (v) => typeof v === "number" && Number.isFinite(v);
       if(s&&s.mapScaleVersion===undefined){
         if(!Array.isArray(s.explored)||s.explored.length!==64*44)throw Error('旧地图存档尺寸不明，无法安全迁移；请使用匹配版本存档或新开遭遇战');
         // Clone before migration so loading an object twice never doubles coordinates again.
-        s=structuredClone(s);const scaled=new WeakSet();
+        const scaled=new WeakSet();
         const point=p=>{if(!p||typeof p!=='object'||scaled.has(p))return;scaled.add(p);if(finite(p.x))p.x*=2;if(finite(p.y))p.y*=2;};
         for(const e of Array.isArray(s.entities)?s.entities:[]){point(e);point(e.order);point(e.rally);for(const p of Array.isArray(e.path)?e.path:[])point(p);for(const p of Array.isArray(e.orderQueue)?e.orderQueue:[])point(p);}
         for(const t of Array.isArray(s.teams)?s.teams:[])for(const q of Array.isArray(t.buildQueue)?t.buildQueue:[])point(q);
@@ -1679,7 +1703,7 @@
           e.y > H ||
           !finite(e.hp) ||
           !finite(e.maxHp) ||
-          ["altitude","pitch","roll","flightSpeed"].some(k=>e[k]!==undefined&&!finite(e[k])) ||
+          ["altitude","pitch","roll","flightSpeed","jumpHeight","jumpVelocity"].some(k=>e[k]!==undefined&&!finite(e[k])) ||
           !Number.isInteger(e.id) ||
           e.maxHp <= 0 ||
           !Array.isArray(e.path) ||
@@ -1687,6 +1711,7 @@
           (e.order && (!finite(e.order.x) || !finite(e.order.y)))
         )
           throw Error("存档实体数据无效");
+      if(new Set(s.entities.map(e=>e.id)).size!==s.entities.length||s.entities.some(e=>e.id<1||e.id>=s.nextId))throw Error('存档实体标识冲突');
       const g = new Game(s.options);
       if(s.ore){if(!Array.isArray(s.ore)||s.ore.length>20||s.ore.some(o=>!finite(o.x)||!finite(o.y)||!finite(o.amount)||o.amount<0))throw Error('矿区存档无效');g.ore=s.ore;}
       g.formation=['line','column','spread'].includes(s.formation)?s.formation:'line';
@@ -1705,7 +1730,7 @@
       g.wealthGranted = !!s.wealthGranted;
       for(const t of g.teams){t.score=finite(t.score)?Math.max(0,t.score):0;t.harvested=finite(t.harvested)?Math.max(0,t.harvested):0;}
       for(const e of g.entities){if(e.rally&&(!finite(e.rally.x)||!finite(e.rally.y)))throw Error('集结点无效');if(e.orderQueue&&(!Array.isArray(e.orderQueue)||e.orderQueue.length>16||e.orderQueue.some(p=>!finite(p.x)||!finite(p.y))))throw Error('路径队列无效');e.cargo=finite(e.cargo)?clamp(e.cargo,0,500):0;}
-      for(const e of g.entities){if(s.altitudeSchema===undefined&&U[e.kind]?.space&&finite(e.altitude)&&e.altitude>=120&&e.altitude<=900)e.altitude=4000;e.altitude=g.entityAltitude(e);e.pitch=e.pitch??0;e.roll=e.roll??0;e.flightSpeed=e.flightSpeed??0;}
+      for(const e of g.entities){g.resetJump(e);if(s.altitudeSchema===undefined&&U[e.kind]?.space&&finite(e.altitude)&&e.altitude>=120&&e.altitude<=900)e.altitude=4000;e.altitude=g.entityAltitude(e);e.pitch=e.pitch??0;e.roll=e.roll??0;e.flightSpeed=e.flightSpeed??0;}
       g.buffs = new Set(s.buffs);
       g.explored = Uint8Array.from(s.explored);
       g.effects = Array.isArray(s.effects) ? s.effects : [];
@@ -1731,5 +1756,5 @@
       return g;
     }
   }
-  root.WarSim = { PLAYER_PROTECTION_DEFAULTS, Game, makeMap, findPath, rng, Spatial, dist };
+  root.WarSim = { PLAYER_PROTECTION_DEFAULTS, PLAYER_JUMP_DEFAULTS, Game, makeMap, findPath, rng, Spatial, dist };
 })(typeof globalThis !== "undefined" ? globalThis : this);

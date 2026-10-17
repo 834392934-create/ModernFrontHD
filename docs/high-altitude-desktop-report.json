@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-17T17:27:39.295Z",
+  "recordedAt": "2026-10-17T18:28:10.887Z",
   "environment": "desktop",
   "checks": [
     "Real mouse up descends, mouse down climbs; observed trusted relative input and entity altitude",
@@ -52,8 +52,8 @@
   },
   "mouseDown": {
     "desired": 0.39999999999999997,
-    "pitch": 0.3822722085896927,
-    "altitude": 944.0699009883948
+    "pitch": 0.38186986051615096,
+    "altitude": 943.6935401103924
   },
   "orbit": {
     "height": 4000,

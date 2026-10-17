@@ -1,0 +1,596 @@
+{
+  "recordedAt": "2026-10-17T18:25:54.176Z",
+  "environment": "browser",
+  "checks": [
+    "Default stationary infantry camera, body and foreground remain unchanged without input",
+    "Real Space jumps once while held; P freezes airborne physics; paused mouse clicks never enter RTS capture; resumes to ground",
+    "FPS minimap stays visible and updates detection; hidden enemy omitted, revealed enemy drawn, own heading marker distinct",
+    "Invalid local save through the real load API leaves the current FPS session intact",
+    "Roster refresh preserves focused card; Tab stays inside; closing search restores RTS Space shortcut",
+    "Real help dialog traps Tab and Escape restores the preceding pause state",
+    "Trusted aircraft mouse right turns left; mouse left turns right; up descends and down climbs",
+    "J clears aircraft movement and desired turn; relock does not restore an obsolete target heading",
+    "Live FPS minimap respects sonar-only submarine contact and hides it after EMP"
+  ],
+  "errors": [],
+  "idle": {
+    "x": 700,
+    "y": 700,
+    "height": 0,
+    "jump": 0,
+    "camera": [
+      700,
+      9.5,
+      700
+    ],
+    "rotation": [
+      -0.008838604588641337,
+      -0.7070515391885698,
+      -0.008838604588641337,
+      0.7070515391885698
+    ],
+    "view": [
+      0.26,
+      -0.29,
+      -0.62
+    ],
+    "angle": 0,
+    "yaw": 0,
+    "pitch": -0.025,
+    "motion": false
+  },
+  "jump": {
+    "airborne": {
+      "x": 700,
+      "y": 700,
+      "height": 3.9,
+      "jump": 3.9,
+      "camera": [
+        700,
+        13.4,
+        700
+      ],
+      "rotation": [
+        -0.008838604588641337,
+        -0.7070515391885698,
+        -0.008838604588641337,
+        0.7070515391885698
+      ],
+      "view": [
+        0.26,
+        -0.29,
+        -0.62
+      ],
+      "angle": 0,
+      "yaw": 0,
+      "pitch": -0.025,
+      "motion": false
+    },
+    "landed": {
+      "x": 700,
+      "y": 700,
+      "height": 0,
+      "jump": 0,
+      "camera": [
+        700,
+        9.5,
+        700
+      ],
+      "rotation": [
+        -0.008838604588641337,
+        -0.7070515391885698,
+        -0.008838604588641337,
+        0.7070515391885698
+      ],
+      "view": [
+        0.26,
+        -0.29,
+        -0.62
+      ],
+      "angle": 0,
+      "yaw": 0,
+      "pitch": -0.025,
+      "motion": false
+    },
+    "frozen": {
+      "x": 700,
+      "y": 700,
+      "height": 2.8000000000000003,
+      "jump": 2.8000000000000003,
+      "camera": [
+        700,
+        12.3,
+        700
+      ],
+      "rotation": [
+        -0.008838604588641337,
+        -0.7070515391885698,
+        -0.008838604588641337,
+        0.7070515391885698
+      ],
+      "view": [
+        0.26,
+        -0.29,
+        -0.62
+      ],
+      "angle": 0,
+      "yaw": 0,
+      "pitch": -0.025,
+      "motion": false
+    }
+  },
+  "minimap": {
+    "hidden": [
+      17,
+      25,
+      28,
+      255
+    ],
+    "seen": [
+      241,
+      163,
+      138,
+      255
+    ],
+    "ownPixel": [
+      255,
+      227,
+      154,
+      255
+    ]
+  },
+  "flightProbe": {
+    "before": {
+      "x": 1010.9069829702604,
+      "y": 800.7377981375629,
+      "height": 497.8714086123149,
+      "jump": 0,
+      "camera": [
+        1010.9069829702604,
+        504.8714086123149,
+        800.7377981375629
+      ],
+      "rotation": [
+        -0.15434053252054922,
+        -0.720927390116685,
+        -0.02614383157867116,
+        0.6750993988082085
+      ],
+      "view": [
+        0,
+        0,
+        0
+      ],
+      "angle": 0.09000000000000001,
+      "yaw": 0.09000000000000001,
+      "pitch": -0.24864000000000003,
+      "motion": false
+    },
+    "right": {
+      "x": 1071.086835079247,
+      "y": 801.8067418103495,
+      "height": 482.5737794101632,
+      "jump": 0,
+      "camera": [
+        1071.086835079247,
+        489.5737794101632,
+        801.8067418103495
+      ],
+      "rotation": [
+        -0.048406793633807337,
+        -0.6887678275543484,
+        -0.12861399780527003,
+        0.711838536203754
+      ],
+      "view": [
+        0,
+        0,
+        0
+      ],
+      "angle": -0.04800545739513821,
+      "yaw": -0.14999999999999997,
+      "pitch": -0.24864000000000003,
+      "motion": false
+    },
+    "events": [
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      }
+    ]
+  },
+  "flight": {
+    "before": {
+      "x": 1010.9069829702604,
+      "y": 800.7377981375629,
+      "height": 497.8714086123149,
+      "jump": 0,
+      "camera": [
+        1010.9069829702604,
+        504.8714086123149,
+        800.7377981375629
+      ],
+      "rotation": [
+        -0.15434053252054922,
+        -0.720927390116685,
+        -0.02614383157867116,
+        0.6750993988082085
+      ],
+      "view": [
+        0,
+        0,
+        0
+      ],
+      "angle": 0.09000000000000001,
+      "yaw": 0.09000000000000001,
+      "pitch": -0.24864000000000003,
+      "motion": false
+    },
+    "right": {
+      "x": 1071.086835079247,
+      "y": 801.8067418103495,
+      "height": 482.5737794101632,
+      "jump": 0,
+      "camera": [
+        1071.086835079247,
+        489.5737794101632,
+        801.8067418103495
+      ],
+      "rotation": [
+        -0.048406793633807337,
+        -0.6887678275543484,
+        -0.12861399780527003,
+        0.711838536203754
+      ],
+      "view": [
+        0,
+        0,
+        0
+      ],
+      "angle": -0.04800545739513821,
+      "yaw": -0.14999999999999997,
+      "pitch": -0.24864000000000003,
+      "motion": false
+    },
+    "left": {
+      "x": 1131.307740821424,
+      "y": 800.8628489489239,
+      "height": 467.2761502080115,
+      "jump": 0,
+      "camera": [
+        1131.307740821424,
+        474.2761502080115,
+        800.8628489489239
+      ],
+      "rotation": [
+        -0.11224538058027053,
+        -0.7069074996448329,
+        -0.06363399060195246,
+        0.6954376152641957
+      ],
+      "view": [
+        0,
+        0,
+        0
+      ],
+      "angle": 0.02541880937357881,
+      "yaw": 0.09000000000000002,
+      "pitch": -0.24864000000000003,
+      "motion": false
+    },
+    "up": {
+      "x": 1147.6231669487725,
+      "y": 801.456125882727,
+      "height": 462.7118365896602,
+      "jump": 0,
+      "camera": [
+        1147.6231669487725,
+        469.7118365896602,
+        801.456125882727
+      ],
+      "rotation": [
+        -0.12378329713837263,
+        -0.7102692225530077,
+        -0.08060411521886349,
+        0.6882574398096134
+      ],
+      "view": [
+        0,
+        0,
+        0
+      ],
+      "angle": 0.04133348759845717,
+      "yaw": 0.09000000000000002,
+      "pitch": -0.40864000000000017,
+      "motion": false
+    },
+    "down": {
+      "x": 1169.1688065804424,
+      "y": 802.5633585204785,
+      "height": 455.96432468277953,
+      "jump": 0,
+      "camera": [
+        1169.1688065804424,
+        462.96432468277953,
+        802.5633585204785
+      ],
+      "rotation": [
+        -0.12080433255191005,
+        -0.7158710512144181,
+        -0.08887048716534057,
+        0.6819362050667545
+      ],
+      "view": [
+        0,
+        0,
+        0
+      ],
+      "angle": 0.056626958100581846,
+      "yaw": 0.09000000000000002,
+      "pitch": -0.24864000000000006,
+      "motion": false
+    },
+    "events": [
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": -15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": -15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": -15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": -15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": -15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": -15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": -15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": -15,
+        "dy": 0,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": -10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": -10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": -10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": -10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": -10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": -10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": -10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": -10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": 10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": 10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": 10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": 10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": 10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": 10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": 10,
+        "trusted": true,
+        "locked": true
+      },
+      {
+        "dx": 0,
+        "dy": 10,
+        "trusted": true,
+        "locked": true
+      }
+    ]
+  },
+  "sonar": {
+    "sonar": [
+      241,
+      163,
+      138,
+      255
+    ],
+    "sonarLost": [
+      28,
+      46,
+      51,
+      255
+    ]
+  },
+  "layout": {
+    "w": 700,
+    "h": 900,
+    "x": 27,
+    "y": 256,
+    "right": 199,
+    "bottom": 374.25,
+    "overflow": false
+  },
+  "passed": true
+}

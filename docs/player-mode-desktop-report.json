@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-17T17:25:17.558Z",
+  "recordedAt": "2026-10-17T18:26:52.605Z",
   "checks": [
     "Real setup starts in selected owned tank; commander mode remains separate",
     "J opens live roster, clears driving input and leaves simulation / AI running",
@@ -21,7 +21,7 @@
       "baseThreats": 0,
       "guardIds": [
         15,
-        39
+        7
       ],
       "escortIds": [],
       "supportIds": [],

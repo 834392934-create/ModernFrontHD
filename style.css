@@ -1331,3 +1331,13 @@ body.direct-view #hud,body.direct-view #restore-hud{display:none!important}
 @media(max-width:800px){#vehicle-menu{padding:12px}.vehicle-shell{padding:16px}#vehicle-list{grid-template-columns:1fr}.vehicle-shell h2{font-size:21px}#direct-compass{display:none}#direct-protection{max-width:220px;font-size:11px}#direct-hud header{gap:10px}#direct-hud header>span{display:none}}
 .vehicle-filters select{flex:0 0 210px;width:210px}.vehicle-filters input{width:auto;flex:1 1 240px;min-width:120px}
 @media(max-width:600px){.vehicle-filters{flex-direction:column}.vehicle-filters select,.vehicle-filters input{width:100%;flex:auto;min-height:42px}}
+
+/* Independent read-only FPS map: the RTS minimap keeps its own input handlers. */
+#direct-minimap-panel{position:absolute;left:36px;top:clamp(210px,25vh,270px);width:240px;padding:8px;background:#071b24df;border:1px solid #8faea977;box-shadow:0 6px 24px #0005;pointer-events:none}
+#direct-minimap-panel[hidden]{display:none}
+.direct-minimap-heading{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:#d8e9e1;margin-bottom:7px}
+.direct-minimap-heading span{color:#b4c9c1;font-size:10px}
+#direct-minimap{display:block;width:100%;height:auto;aspect-ratio:240/165;background:#071318;pointer-events:none}
+#direct-minimap-panel>small{display:block;font-size:10px;color:#acc5bd;line-height:1.5;margin-top:6px}
+@media(max-width:850px){#direct-minimap-panel{left:18px;width:190px}}
+@media(max-height:650px){#direct-minimap-panel{top:156px;width:160px}#direct-minimap-panel>small{display:none}#direct-protection{display:none}}

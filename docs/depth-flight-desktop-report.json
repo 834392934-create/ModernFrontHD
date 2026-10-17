@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-17T17:27:26.667Z",
+  "recordedAt": "2026-10-17T18:27:57.987Z",
   "environment": "desktop",
   "checks": [
     "Real Ctrl/Shift change submarine depth; camera follows below water with real seabed and sonar-only contact outside optical fog",
@@ -61,6 +61,7 @@
         "throttle": 0,
         "flightEnabled": false,
         "fire": false,
+        "jump": false,
         "targetId": 36,
         "aimX": 1372.8456999668224,
         "aimY": 99.99999999999997,
@@ -91,24 +92,25 @@
         "throttle": 0,
         "flightEnabled": true,
         "fire": false,
+        "jump": false,
         "targetId": null,
         "aimX": 6144,
         "aimY": 99.99999999999645,
-        "aimHeight": -64.19999999999999
+        "aimHeight": -63.099999999999994
       },
       "mode": "underwater"
     },
     "shallow": {
       "x": 1000,
       "y": 100,
-      "altitude": -57.199999999999996,
-      "pitch": 0.22198923338449075,
+      "altitude": -58.3,
+      "pitch": 0.16948923338449073,
       "roll": 0,
       "angle": 0,
       "speed": 0,
       "camera": [
         1000,
-        -53.199999999999996,
+        -54.3,
         100
       ],
       "input": {
@@ -117,14 +119,15 @@
         "yaw": 0,
         "pitch": 0,
         "turn": 0,
-        "lift": 1,
+        "lift": 0,
         "throttle": 0,
         "flightEnabled": true,
         "fire": false,
+        "jump": false,
         "targetId": 36,
-        "aimX": 1365.6535632380403,
-        "aimY": 99.99999999999996,
-        "aimHeight": -54.30000000000001
+        "aimX": 1365.9172381653036,
+        "aimY": 99.99999999999997,
+        "aimHeight": -55.40000000000001
       },
       "mode": "underwater"
     }
@@ -204,7 +207,7 @@
         "trusted": true
       }
     ],
-    "pitch": -0.3320000000000002
+    "pitch": 0.6739999999999999
   },
   "flight": {
     "base": {
@@ -230,6 +233,7 @@
         "throttle": 0,
         "flightEnabled": false,
         "fire": false,
+        "jump": false,
         "targetId": null,
         "aimX": 1290,
         "aimY": 700,
@@ -260,6 +264,7 @@
         "throttle": 1,
         "flightEnabled": true,
         "fire": false,
+        "jump": false,
         "targetId": null,
         "aimX": 6144,
         "aimY": 700,
@@ -268,62 +273,64 @@
       "mode": "air"
     },
     "turn": {
-      "x": 1196.1429582486091,
-      "y": 726.1066481705251,
+      "x": 1195.9505444669771,
+      "y": 726.6679555025908,
       "altitude": 217.62219210048642,
       "pitch": 0.03917484526780376,
-      "roll": -0.44073834987975286,
-      "angle": 0.5024202070756795,
+      "roll": -0.4487558183908214,
+      "angle": 0.5124247626442475,
       "speed": 153.44999999999993,
       "camera": [
-        1196.1429582486091,
+        1195.9505444669771,
         224.62219210048642,
-        726.1066481705251
+        726.6679555025908
       ],
       "input": {
         "forward": 0,
-        "strafe": 1,
-        "yaw": 0.52,
+        "strafe": 0,
+        "yaw": 0.5212800000000003,
         "pitch": 0,
-        "turn": 1,
+        "turn": 0,
         "lift": 0,
         "throttle": 0,
         "flightEnabled": true,
         "fire": false,
+        "jump": false,
         "targetId": null,
         "aimX": 6144,
         "aimY": 4224,
-        "aimHeight": 961.469523710058
+        "aimHeight": 961.4695237101437
       },
       "mode": "air"
     },
     "descended": {
-      "x": 1356.072134025367,
-      "y": 816.3051508562124,
-      "altitude": 191.1550971253123,
-      "pitch": -0.3336264438421526,
-      "roll": -0.003247432462790632,
-      "angle": 0.5187463602904824,
-      "speed": 98.58749999999999,
+      "x": 1355.6619728415533,
+      "y": 817.693082223191,
+      "altitude": 191.36167644113337,
+      "pitch": -0.28112644384215263,
+      "roll": -0.002074381731633411,
+      "angle": 0.520648520594403,
+      "speed": 101.475,
       "camera": [
-        1356.072134025367,
-        198.1550971253123,
-        816.3051508562124
+        1355.6619728415533,
+        198.36167644113337,
+        817.693082223191
       ],
       "input": {
-        "forward": -1,
+        "forward": 0,
         "strafe": 0,
-        "yaw": 0.52,
+        "yaw": 0.5212800000000003,
         "pitch": 0,
         "turn": 0,
-        "lift": -1,
-        "throttle": -1,
+        "lift": 0,
+        "throttle": 0,
         "flightEnabled": true,
         "fire": false,
+        "jump": false,
         "targetId": null,
-        "aimX": 1865.1271366461,
-        "aimY": 1106.7460680607203,
-        "aimHeight": -0.8000000119209574
+        "aimX": 1858.2054401937594,
+        "aimY": 1105.8211469129221,
+        "aimHeight": -0.800000011920929
       },
       "mode": "air"
     }
@@ -346,16 +353,17 @@
         "forward": 0,
         "strafe": 0,
         "yaw": 0,
-        "pitch": 0,
+        "pitch": 0.16729781250000003,
         "turn": 0,
         "lift": 0,
         "throttle": 0,
         "flightEnabled": false,
         "fire": false,
+        "jump": false,
         "targetId": null,
-        "aimX": 1312.7238199814424,
-        "aimY": 700,
-        "aimHeight": 182.6064711537166
+        "aimX": 6144,
+        "aimY": 700.0000000000035,
+        "aimHeight": 2342.9541351733237
       },
       "mode": "air"
     },
@@ -376,12 +384,13 @@
         "forward": 0,
         "strafe": 0,
         "yaw": 0,
-        "pitch": 0,
+        "pitch": 0.16729781250000003,
         "turn": 0,
         "lift": 0,
         "throttle": 0,
         "flightEnabled": false,
         "fire": false,
+        "jump": false,
         "targetId": null,
         "aimX": 6144,
         "aimY": 699.9999999999982,

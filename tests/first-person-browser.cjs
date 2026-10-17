@@ -7,7 +7,7 @@ const report=focusOnly?JSON.parse(fs.readFileSync('docs/first-person-'+suffix+'-
 fs.mkdirSync('screenshots',{recursive:true});fs.mkdirSync('docs',{recursive:true});
 let host,p;
 async function shot(label){const file='screenshots/fps-'+label+'-'+suffix+'.png';await p.screenshot({path:file});report.screenshots.push(file);}
-async function paused(value){if(await p.evaluate(()=>ModernFront.paused)!==value)await p.keyboard.press('Space');await p.waitForFunction(v=>ModernFront.paused===v,value);}
+async function paused(value){if(await p.evaluate(()=>ModernFront.paused)!==value)await p.keyboard.press(await p.evaluate(()=>ModernFront.direct.active?'KeyP':'Space'));await p.waitForFunction(v=>ModernFront.paused===v,value);}
 async function exit(key='KeyE'){if(await p.evaluate(()=>ModernFront.direct.active)){await p.keyboard.press(key);await p.waitForFunction(()=>!ModernFront.direct.active&&!ModernFront.game.directControl);await p.waitForFunction(()=>!document.pointerLockElement);}assert.equal(await p.evaluate(()=>ModernFront.renderer.cam===ModernFront.renderer.strategyCam),true);}
 async function fixture(kind,combat=false,faction='chn'){
  await exit();await paused(true);
@@ -84,13 +84,13 @@ async function nativeFocusCheck(){
    const before=await position();await p.keyboard.down(key);await p.waitForTimeout(300);await p.keyboard.up(key);const after=await position();assert.ok((after[axis]-before[axis])*sign>1,key+' moves in expected direction');movements.push({key,before,after});
   }
   report.movement=movements;report.checks.push('Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions');
-  const beforeLook=await position();await p.mouse.move(850,460);await p.waitForTimeout(100);const afterLook=await position();assert.ok(Math.abs(afterLook.yaw-beforeLook.yaw)+Math.abs(afterLook.pitch-beforeLook.pitch)>.001,'relative mouse look');
+  const beforeLook=await position();await p.mouse.move(850,460,{steps:8});await p.waitForTimeout(100);const afterLook=await position();assert.ok(Math.abs(afterLook.yaw-beforeLook.yaw)+Math.abs(afterLook.pitch-beforeLook.pitch)>.001,'relative mouse look');
   const motion=await p.evaluate(()=>ModernFront.direct.motion);await p.keyboard.press('KeyM');assert.equal(await p.evaluate(()=>ModernFront.direct.motion),!motion);await p.keyboard.press('KeyM');assert.equal(await p.evaluate(()=>ModernFront.direct.motion),motion);report.checks.push('M toggles and restores the optional motion setting through keyboard input');
   await p.evaluate(()=>{ModernFront.direct.yaw=0;ModernFront.direct.pitch=-.025;});await p.waitForTimeout(150);await shot('infantry');
   const hip=await p.evaluate(()=>ModernFront.direct.camera.fov);await p.mouse.down({button:'right'});await p.waitForTimeout(350);
   const ads=await p.evaluate(()=>({active:ModernFront.direct.ads,fov:ModernFront.direct.camera.fov,view:ModernFront.direct.view?.mode}));assert.equal(ads.active,true);assert.ok(ads.fov<hip-10);await shot('ads');await p.mouse.up({button:'right'});await p.waitForTimeout(250);assert.equal(await p.evaluate(()=>ModernFront.direct.ads),false);report.ads={hip,...ads};
   await paused(true);const stop=await position(),tick=await p.evaluate(()=>ModernFront.game.tick);await p.keyboard.down('KeyW');await p.mouse.down();await p.waitForTimeout(250);await p.mouse.up();await p.keyboard.up('KeyW');assert.equal(await p.evaluate(()=>ModernFront.game.tick),tick);assert.deepEqual(await position(),stop);await paused(false);
-  report.checks.push('Mouse look, right-button ADS narrows camera FOV, release restores aim, and Space freezes simulation and clears movement/fire');
+  report.checks.push('Mouse look, right-button ADS narrows camera FOV, release restores aim, and P freezes simulation and clears movement/fire');
   await exit('Escape');assert.equal(await p.locator('#modal').isVisible(),false);report.checks.push('Escape exits driving and returns strategy camera without opening settings');
 
   // All supported unit kinds must be possessable through real keyboard selection/E.

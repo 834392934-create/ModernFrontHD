@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-17T17:26:31.982Z",
+  "recordedAt": "2026-10-17T18:29:07.554Z",
   "environment": "Packaged Electron fullscreen",
   "checks": [
     "354 new faction-role models have valid geometry, truthful source metadata and appropriate weapon anchors",
@@ -36,9 +36,9 @@
   "combat": {
     "initialEntities": 98,
     "finalEntities": 74,
-    "seconds": 5.017600000095368,
-    "meanFPS": 46.6358418358483,
-    "p95FrameMs": 22.299999999999272,
+    "seconds": 5.005900000000001,
+    "meanFPS": 46.34531253121315,
+    "p95FrameMs": 22.5,
     "observedShots": 177,
     "peakEffects": 76,
     "shownRanges": 4,
@@ -50,8 +50,8 @@
   },
   "performance": {
     "frames": 186,
-    "durationMs": 4012.300000095369,
-    "meanFPS": 46.4,
+    "durationMs": 4021.5999999999985,
+    "meanFPS": 46.3,
     "p95FrameMs": 22.400000000001455,
     "viewport": [
       2752,
