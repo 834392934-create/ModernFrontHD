@@ -1317,3 +1317,5 @@ body.direct-view #hud,body.direct-view #restore-hud{display:none!important}
 
 /* Stable neutral contrast on sky, trees and dark armor, including ADS. */
 #direct-reticle i,#direct-reticle b{box-shadow:0 0 1px 1px #101817d9}#direct-reticle i:nth-child(1),#direct-reticle i:nth-child(2){width:2px}#direct-reticle i:nth-child(3),#direct-reticle i:nth-child(4){height:2px}#direct-reticle.ads i{opacity:.7}
+
+#direct-flight{position:absolute;right:28px;top:110px;display:grid;gap:7px;padding:16px 20px;background:#071d28cc;border-left:2px solid #82cabb;font:14px monospace;min-width:190px}#direct-flight[hidden]{display:none}#direct-flight b{color:#9fdbcd;letter-spacing:2px}#direct-flight small{font-size:10px;color:#92a9ae}

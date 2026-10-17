@@ -1,9 +1,9 @@
 {
   "name": "modern-front-hd",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "private": true,
   "scripts": {
-    "test": "node --test tests/sim.test.cjs tests/tactics.test.cjs tests/space.test.cjs tests/expanded.test.cjs tests/reinforcements.test.cjs tests/direct-control.test.cjs tests/tactical-wave.test.cjs",
+    "test": "node --test tests/sim.test.cjs tests/tactics.test.cjs tests/space.test.cjs tests/expanded.test.cjs tests/reinforcements.test.cjs tests/direct-control.test.cjs tests/tactical-wave.test.cjs tests/depth-flight.test.cjs",
     "start": "node server.cjs"
   }
 }

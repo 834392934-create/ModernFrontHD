@@ -1,9 +1,9 @@
 {
-  "recordedAt": "2026-10-17T02:31:43.507Z",
+  "recordedAt": "2026-10-17T15:55:47.079Z",
   "environment": "Packaged Electron fullscreen",
   "checks": [
-    "282 new faction-role models have valid geometry, truthful source metadata and appropriate weapon anchors",
-    "four production filters expose 18 land + logistics / 15 navy / 15 air / 15 orbit",
+    "306 new faction-role models have valid geometry, truthful source metadata and appropriate weapon anchors",
+    "four production filters expose 18 land + logistics / 17 navy / 16 air / 16 orbit",
     "name search, no-match feedback, preserved focus, no shortcut leakage, and new production buttons work via real input",
     "All 8 tactical roles queue through real production cards",
     "Selected orbital shield displays its 210 range, space-only domain and live EMP shutdown",
@@ -12,7 +12,7 @@
     "mixed new units render at their domain altitude; UAV propeller and all four maintenance rotors animate; immersive HUD toggles",
     "packaged 5-second combat: real shots, deaths, effects and multiple powered defense ranges"
   ],
-  "models": 282,
+  "models": 306,
   "animation": {
     "rotorsBefore": [
       54,
@@ -34,13 +34,13 @@
     "spaceHeight": 145
   },
   "combat": {
-    "initialEntities": 80,
-    "finalEntities": 63,
-    "seconds": 5.006000000047683,
-    "meanFPS": 46.34438673547546,
-    "p95FrameMs": 22.399999999997817,
-    "observedShots": 164,
-    "peakEffects": 51,
+    "initialEntities": 86,
+    "finalEntities": 65,
+    "seconds": 5.006100000047685,
+    "meanFPS": 47.94151135568884,
+    "p95FrameMs": 22.5,
+    "observedShots": 163,
+    "peakEffects": 57,
     "shownRanges": 4,
     "viewport": [
       2752,
@@ -50,21 +50,21 @@
   },
   "performance": {
     "frames": 186,
-    "durationMs": 4003.7000000476837,
-    "meanFPS": 46.5,
-    "p95FrameMs": 22.5,
+    "durationMs": 4020.999999904634,
+    "meanFPS": 46.3,
+    "p95FrameMs": 22.299999999999272,
     "viewport": [
       2752,
       1152
     ],
     "dpr": 1.25,
-    "entities": 98,
+    "entities": 106,
     "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-    "calls": 175,
-    "triangles": 1299400,
-    "visibleEntities": 97,
-    "geometries": 219
+    "calls": 190,
+    "triangles": 1391222,
+    "visibleEntities": 105,
+    "geometries": 226
   },
-  "performanceScope": "98 live entities during the sample; fixture starts with 94 added-role models and 3 buildings, and existing production may complete. Warmed 4-second mixed-domain render; not sustained combat.",
+  "performanceScope": "106 live entities during the sample; fixture starts with 102 added-role models and 3 buildings, and existing production may complete. Warmed 4-second mixed-domain render; not sustained combat.",
   "errors": []
 }

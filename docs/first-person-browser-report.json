@@ -1,12 +1,12 @@
 {
-  "recordedAt": "2026-10-17T02:27:25.716Z",
+  "recordedAt": "2026-10-17T15:54:02.104Z",
   "environment": "Chromium",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
     "M toggles and restores the optional motion setting through keyboard input",
     "Mouse look, right-button ADS narrows camera FOV, release restores aim, and Space freezes simulation and clears movement/fire",
     "Escape exits driving and returns strategy camera without opening settings",
-    "All 64 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked",
+    "All 68 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked",
     "AI builds, trains and orders other units during possession, excludes the driver, and stops new AI calls after E exits",
     "Real left-click mesh-target shot reduces enemy HP and confirms actual source damage; a subsequent sky miss produces no hit marker",
     "A real manual projectile remains tied to its recorded impact area: relocating the target during flight causes no remote damage or hit marker",
@@ -127,8 +127,8 @@
       "kind": "submarine",
       "id": 71,
       "domain": "naval",
-      "mode": "naval",
-      "weaponProfile": "original-naval-controls",
+      "mode": "underwater",
+      "weaponProfile": "original-underwater-controls",
       "hudName": "093 型",
       "finiteCamera": true,
       "ownModelHidden": true
@@ -652,6 +652,46 @@
       "hudName": "轨道导弹驳船（架空）",
       "finiteCamera": true,
       "ownModelHidden": true
+    },
+    {
+      "kind": "hunter_sub",
+      "id": 230,
+      "domain": "naval",
+      "mode": "underwater",
+      "weaponProfile": "original-underwater-controls",
+      "hudName": "深海猎潜艇（原创）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "abyss_tender",
+      "id": 233,
+      "domain": "naval",
+      "mode": "underwater",
+      "weaponProfile": "original-underwater-controls",
+      "hudName": "深海保障潜艇（概念）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "omni_striker",
+      "id": 236,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "寰宇全域突击机（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "omni_dreadnought",
+      "id": 239,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "寰宇全域无畏舰（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
     }
   ],
   "screenshots": [
@@ -740,18 +780,18 @@
   "ads": {
     "hip": 70,
     "active": true,
-    "fov": 48.04357125885182,
+    "fov": 48.04256352782999,
     "view": "infantry"
   },
   "ai": {
-    "calls": 5,
+    "calls": 6,
     "production": 2,
     "construction": 1,
     "othersOrdered": 1,
     "controlledOrder": null
   },
   "aim": {
-    "target": 237,
+    "target": 249,
     "point": [
       828.4683744545998,
       13.859999811172484,
@@ -763,16 +803,16 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 19.050000000000136,
-      "sourceId": 236,
-      "targetId": 237,
+      "hitAt": 19.40000000000014,
+      "sourceId": 248,
+      "targetId": 249,
       "damage": 74
     },
     "incoming": {
       "x": 700,
       "y": 800,
-      "sourceId": 236,
-      "time": 19.050000000000136
+      "sourceId": 248,
+      "time": 19.40000000000014
     },
     "hudConfirmed": true
   },
@@ -789,7 +829,9 @@
     "area": {
       "x": 830,
       "y": 800,
-      "r": 17
+      "altitude": 0,
+      "r": 17,
+      "verticalRadius": 20
     },
     "relocated": [
       1010,
@@ -801,7 +843,7 @@
       "kind": "tank_destroyer",
       "faction": "chn",
       "originMode": "model-muzzle",
-      "cameraTarget": 241,
+      "cameraTarget": 253,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
@@ -817,7 +859,7 @@
       "kind": "tank",
       "faction": "chn",
       "originMode": "model-muzzle",
-      "cameraTarget": 245,
+      "cameraTarget": 257,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
@@ -833,7 +875,7 @@
       "kind": "tank",
       "faction": "imp",
       "originMode": "conservative-body",
-      "cameraTarget": 249,
+      "cameraTarget": 261,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [

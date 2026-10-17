@@ -1,3 +1,32 @@
+# 3.2 水下作战、三维飞行与全域平台验证
+
+日期：2026-10-17（北京时间）。4种新角色；合计68类单位（陆18、海17、空16、天16、采矿车1），6阵营408单位外观槽位，加建筑共510图鉴项。新全域平台为架空游戏装备，数值不代表现实性能。
+
+|检查|本轮实际结果|证据|
+|---|---|---|
+|模拟|104/104通过；含19项深度/飞行、68类生产/存档、210武装目标域场景、科技与AI禁令|simulation-tests.txt / ../tests/depth-flight.test.cjs|
+|水下和飞行交互|浏览器6组、实际EXE7组均通过；Ctrl/Shift潜深、海床、声呐失联、左键鱼雷命中、真实鼠标/油门/升降/滚转、生产入队|depth-flight-browser-report.json / depth-flight-desktop-report.json|
+|失焦与暂停|原生全屏真实最小化产生trusted blur，W/Shift保持时失焦清空；恢复后XYZ完全相同且flightEnabled=false；暂停/指针解锁同样停止|depth-flight-desktop-report.json 的 nativeFlightFocus|
+|声呐一致性|关闭全图增益，optical=false仍显示有效声呐接触；EMP后模型/接触和小地图点一同消失|depth-flight-desktop-report.json 的 sonar|
+|海床与沿岸|实际垂直射线沿岸海底=-180；水面双面合批；潜深22–140且海军导航禁止穿陆|depth-flight-desktop-report.json 的 coastalFloor / depth-flight.test.cjs|
+|68类驾驶回归|浏览器和实际EXE各68类真实选择/E进入退出；射击、遮挡、AI代管、全屏/返回通过，错误0|first-person-browser-report.json / first-person-desktop-report.json|
+|模型与头像|306职责槽位几何/PBR有效；510图鉴项；920横竖屏五视图取景；510同源头像|model-detail-report.json / gallery-report.json / gallery-framing-report.json|
+|独立监督|监督agent独立35项CPU通过；实际看20模型图和两张原生图；保障艇支柱及小地图问题修复关闭|reviews/depth-flight-supervision.md|
+|离线和许可|实际EXE通过授权导入ready/材质/署名、file离线、全屏/沉浸与UI检查|desktop-report.json / upgrade-browser-report.json|
+|发布一致性|3.2.0运行代码/资产和510头像逐文件SHA256核对|depth-package-report.json / ../tests/package-consistency.cjs|
+
+实际EXE性能：ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)；物理3440×1440、CSS2752×1152、DPR1.25。106实体混编4秒平均46.3 FPS；5.006秒交战86→65实体，163次发射，57峰值效果、4组防御圈，平均47.94 FPS，P95帧耗时22.5ms。GPU测试全部串行；这是短时受控采样，不代表长局或极限人口。水下/飞行报告是功能检查，不作为稳定帧率测试。
+
+所有距离、速度、深度和武器参数采用游戏单位。固定翼有推进惯性/有限转弯/俯仰升降；不含真实气动、失速、真实座舱或完整碰撞损毁。海床为固定深度，海岸为简化垂直壁；水下雾色不是物理散射。射程/伤害区域、声呐和维修/护盾/火控采用3D距离，旧近防拦截仍为二维近似。画面仍是风格化程序模型，未达到商业AAA；未引入DLSS或光追。
+
+验证过程中：首先修复斜坡海床可能侵入靠岸潜艇空间。小地图在FPS隐藏时不会自动重画，因此像素检查显式调用同一RTS小地图绘制函数；没有伪造像素。一次单点鼠标移动断言未观察到俯仰变化，加入事件记录并改为连续8步真实鼠标移动，两端均收到trusted、locked且dy非0事件，俯仰改变；未据此宣称修复运行时鼠标bug。
+
+复现：先运行 node server.cjs；npm test；串行运行 node tests/model-detail.cjs、node tests/gallery.cjs、node tests/gallery-framing.cjs、node tests/expanded-browser.cjs、node tests/first-person-browser.cjs、node tests/depth-flight-browser.cjs。构建后串行运行 node tests/upgrade.cjs、node tests/expanded-browser.cjs --desktop、node tests/first-person-browser.cjs --desktop、node tests/depth-flight-browser.cjs --desktop、node tests/package-consistency.cjs。
+
+下文为历史记录；同名自动报告已由当前版本更新。
+
+---
+
 # 3.1 战术单位扩充验证
 
 日期：2026-10-17（北京时间）。新增8种职责，合计64类单位：陆18、海15、空15、天15，另采矿车1；6阵营384单位槽位，加17建筑的6阵营变体共486图鉴项。模型均为原创职责外观，不冒称真实型号。

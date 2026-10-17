@@ -48,10 +48,10 @@
     syncCamera(){if(this.firstPerson?.active){this.firstPerson.updateCamera();return;}this.cam=this.strategyCam;const z=this.camera.zoom,c=this.cam;Object.assign(c,{left:-this.width/2/z,right:this.width/2/z,top:this.height/2/z,bottom:-this.height/2/z});c.position.set(this.camera.x,2200*Math.sin(this.elevation),this.camera.y+2200*Math.cos(this.elevation));c.lookAt(this.camera.x,0,this.camera.y);c.updateProjectionMatrix();c.updateMatrixWorld();}
     toWorld(x,y){if(this.firstPerson?.active){const ray=new T.Raycaster();ray.setFromCamera(new T.Vector2(x/this.width*2-1,1-y/this.height*2),this.cam);const hit=ray.ray.intersectPlane(new T.Plane(new T.Vector3(0,1,0),0),new T.Vector3());return{x:hit?.x??this.camera.x,y:hit?.z??this.camera.y};}return{x:(x-this.width/2)/this.camera.zoom+this.camera.x,y:(y-this.height/2)/this.camera.zoom/Math.sin(this.elevation)+this.camera.y};}
     toScreen(x,y,height=0){if(this.firstPerson?.active){const p=new T.Vector3(x,height,y).project(this.cam);if(p.z< -1||p.z>1)return{x:Infinity,y:Infinity};return{x:(p.x+1)*this.width/2,y:(1-p.y)*this.height/2};}return{x:(x-this.camera.x)*this.camera.zoom+this.width/2,y:((y-this.camera.y)*Math.sin(this.elevation)-height*Math.cos(this.elevation))*this.camera.zoom+this.height/2};}
-    entityHeight(e){return U[e.kind]?.space?145:U[e.kind]?.air?65:U[e.kind]?.naval?2:0;}
-    entityScreen(e){return this.toScreen(e.x,e.y,this.entityHeight(e));}
+    entityHeight(e){return Number.isFinite(e.altitude)?e.altitude:U[e.kind]?.underwater?-55:U[e.kind]?.space?145:U[e.kind]?.air?65:U[e.kind]?.naval?2:0;}
+    entityScreen(e){return this.toScreen(e.x,e.y,U[e.kind]?.underwater&&!this.firstPerson?.active?0:this.entityHeight(e));}
     pick(game,x,y,enemy=false){
-      let best=null,score=Infinity;for(const e of game.entities){if(enemy?!game.isEnemy(0,e.team):e.team!==0)continue;if(enemy&&!game.visibleAt(e.x,e.y))continue;const p=this.entityScreen(e),d=Math.hypot(x-p.x,y-p.y);if(d<Math.max(16,e.r*this.camera.zoom+7)&&d<score){best=e;score=d;}}return best;
+      let best=null,score=Infinity;for(const e of game.entities){if(enemy?!game.isEnemy(0,e.team):e.team!==0)continue;if(enemy&&!(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))continue;const p=this.entityScreen(e),d=Math.hypot(x-p.x,y-p.y);if(d<Math.max(16,e.r*this.camera.zoom+7)&&d<score){best=e;score=d;}}return best;
     }
     pan(dx,dy){this.camera.x=clamp(this.camera.x+dx,0,W);this.camera.y=clamp(this.camera.y+dy/Math.sin(this.elevation),0,H);}
     zoomAt(f,x,y){let a=this.toWorld(x,y);this.camera.zoom=clamp(this.camera.zoom*f,.35,4.5);let b=this.toWorld(x,y);this.camera.x=clamp(this.camera.x+a.x-b.x,0,W);this.camera.y=clamp(this.camera.y+a.y-b.y,0,H);}
@@ -78,17 +78,30 @@
         groundMat.normalMap=normal;groundMat.normalScale=new T.Vector2(.65,.65);groundMat.userData.detailTexture=detail;
         const prev=groundMat.onBeforeCompile;groundMat.onBeforeCompile=s=>{prev(s);s.uniforms.groundDetail={value:detail};s.fragmentShader='uniform sampler2D groundDetail;\n'+s.fragmentShader;s.fragmentShader=s.fragmentShader.replace('#include <map_fragment>','#include <map_fragment>\ndiffuseColor.rgb *= mix(vec3(1.0), texture2D(groundDetail,vMapUv*vec2(38.0,26.0)).rgb*2.3, .60);');};
       }
-      const ground=new T.Mesh(new T.PlaneGeometry(W,H),groundMat);ground.rotation.x=-Math.PI/2;ground.position.set(W/2,-.8,H/2);ground.receiveShadow=true;this.world.add(ground);
+      // A real seabed replaces the opaque flat plane below ocean tiles.
+      const terrainVertices=[],terrainUV=[],wet=(x,y)=>x>=0&&y>=0&&x<COLS&&y<ROWS&&[3,6].includes(game.map.tiles[y*COLS+x]);
+      const face=(a,b,c,d)=>{for(const p of [a,b,c,a,c,d]){terrainVertices.push(...p);terrainUV.push(p[0]/W,1-p[2]/H);}};
+      // Flat navigable sea tiles and vertical shore faces keep deep boats above the seabed,
+      // including the last navigable coastal tile. A sloped visual floor could intersect them.
+      for(let y=0;y<ROWS;y++)for(let x=0;x<COLS;x++){const sea=wet(x,y),h=sea?-180:-.8,x0=x*48,x1=x0+48,z0=y*48,z1=z0+48;
+        face([x0,h,z0],[x0,h,z1],[x1,h,z1],[x1,h,z0]);
+        if(sea){if(y>0&&!wet(x,y-1))face([x0,-180,z0],[x1,-180,z0],[x1,-.8,z0],[x0,-.8,z0]);
+          if(y<ROWS-1&&!wet(x,y+1))face([x1,-180,z1],[x0,-180,z1],[x0,-.8,z1],[x1,-.8,z1]);
+          if(x>0&&!wet(x-1,y))face([x0,-180,z1],[x0,-180,z0],[x0,-.8,z0],[x0,-.8,z1]);
+          if(x<COLS-1&&!wet(x+1,y))face([x1,-180,z0],[x1,-180,z1],[x1,-.8,z1],[x1,-.8,z0]);}
+      }
+      const groundGeo=new T.BufferGeometry();groundGeo.setAttribute('position',new T.Float32BufferAttribute(terrainVertices,3));groundGeo.setAttribute('uv',new T.Float32BufferAttribute(terrainUV,2));groundGeo.computeVertexNormals();
+      const ground=new T.Mesh(groundGeo,groundMat);ground.name='terrain-with-seabed';ground.receiveShadow=true;this.world.add(ground);
       this.miniTerrain=c;this.terrain=c;
       const water=new root.WarModels.Builder(),rocks=new root.WarModels.Builder(),bridges=new root.WarModels.Builder();
       for(let y=0;y<ROWS;y++)for(let x=0;x<COLS;x++){
         const type=game.map.tiles[y*COLS+x],px=x*48+24,pz=y*48+24;
-        if(type===3||type===6){water.box(48,.5,48,px,0,pz,0x315e68);g.fillStyle='#31515a';g.fillRect(x*48*sx,y*48*sy,48*sx,48*sy);}
+        if(type===3||type===6){water.add(new T.PlaneGeometry(48,48),0x315e68,[px,0,pz],[-Math.PI/2,0,0]);g.fillStyle='#31515a';g.fillRect(x*48*sx,y*48*sy,48*sx,48*sy);}
         if(type===2)rocks.add(new T.DodecahedronGeometry(1,0),desert?0x9b8c70:0x697369,[px,8,pz],[rnd(),rnd(),rnd()],[25+rnd()*12,15+rnd()*22,25+rnd()*12]);
         if(type===5){rocks.box(40,28+rnd()*45,40,px,10,pz,0x687977);rocks.box(41,2,41,px,43,pz,0x4d5b5c);}
         if(type===4){bridges.box(48,2,48,px,1,pz,0x8d9082);if(![4].includes(game.map.tiles[(y-1)*COLS+x]))bridges.box(48,4,1,px,4,pz-23,0xa7a697);if(game.map.tiles[(y+1)*COLS+x]!==4)bridges.box(48,4,1,px,4,pz+23,0xa7a697);}
       }
-      for(const b of [water,rocks,bridges]){const mesh=b.finish();mesh.material=this.fogify(new T.MeshStandardMaterial({vertexColors:true,roughness:b===water?.32:.95,metalness:b===water?.25:0}));if(b===water){mesh.castShadow=false;this.water=mesh;}this.world.add(mesh);}
+      for(const b of [water,rocks,bridges]){const mesh=b.finish();mesh.material=this.fogify(new T.MeshStandardMaterial({vertexColors:true,roughness:b===water?.32:.95,metalness:b===water?.25:0}));if(b===water){mesh.castShadow=false;mesh.name='water-surface';mesh.material.side=T.DoubleSide;mesh.material.transparent=true;mesh.material.opacity=.66;mesh.material.depthWrite=false;this.water=mesh;}this.world.add(mesh);}
       const treeGeo=new T.IcosahedronGeometry(1,1),treeMat=this.fogify(new T.MeshStandardMaterial({color:desert?0x71704a:0x3c583b,roughness:1}));
       const trees=new T.InstancedMesh(treeGeo,treeMat,2500);trees.castShadow=trees.receiveShadow=true;const trunk=new T.InstancedMesh(new T.CylinderGeometry(1,2,1,5),this.fogify(new T.MeshStandardMaterial({color:0x65614a})),200);trunk.castShadow=true;
       const dummy=new T.Object3D();let ti=0,bi=0;
@@ -97,7 +110,7 @@
         if(game.map.tiles[idx]>1||Math.abs(y-1056)<75||[720,2352].some(a=>Math.abs(x-a)<85)||game.map.spawns.some(p=>Math.hypot(x-p.x,y-p.y)<330)||game.nodes.some(n=>Math.hypot(x-n.x,y-n.y)<120)||game.ore.some(o=>Math.hypot(x-o.x,y-o.y)<130))continue;
         const h=desert?12+rnd()*12:22+rnd()*22;dummy.position.set(x,h*.4,y);dummy.scale.set(2,h*.8,2);dummy.rotation.set(0,0,0);dummy.updateMatrix();trunk.setMatrixAt(bi++,dummy.matrix);
         for(let j=0;j<12;j++){const a=j*2.4,rad=8+rnd()*6;dummy.position.set(x+Math.cos(a)*rad,h+Math.sin(j*1.6)*8,y+Math.sin(a)*rad);dummy.scale.set(h*.23,h*.28,h*.22);dummy.rotation.set(rnd(),rnd(),rnd());dummy.updateMatrix();trees.setMatrixAt(ti,dummy.matrix);trees.setColorAt(ti++,new T.Color().setHSL(.25+rnd()*.07,.19+rnd()*.1,.63+rnd()*.2));}
-      }trees.count=ti;trunk.count=bi;trees.instanceMatrix.needsUpdate=true;trunk.instanceMatrix.needsUpdate=true;this.world.add(trees,trunk);trunk.userData.firstPersonOccluder=true;this.vegetationColliders=[];const trunkMatrix=new T.Matrix4();for(let n=0;n<bi;n++){trunk.getMatrixAt(n,trunkMatrix);const p=new T.Vector3().setFromMatrixPosition(trunkMatrix);this.vegetationColliders.push({x:p.x,y:p.z,r:4});}
+      }trees.count=ti;trunk.count=bi;trees.instanceMatrix.needsUpdate=true;trunk.instanceMatrix.needsUpdate=true;this.world.add(trees,trunk);trunk.userData.firstPersonOccluder=true;this.vegetationColliders=[];const trunkMatrix=new T.Matrix4();for(let n=0;n<bi;n++){trunk.getMatrixAt(n,trunkMatrix);const p=new T.Vector3().setFromMatrixPosition(trunkMatrix);this.vegetationColliders.push({x:p.x,y:p.z,r:4,height:p.y*2+20});}
       for(const n of game.nodes){const b=new root.WarModels.Builder();b.box(48,2,46,n.x,1,n.y,0x8c8b75);for(const side of [-1,1]){b.box(21,15,14,n.x+side*17,9,n.y,0x6b7763);for(let k=0;k<6;k++)b.box(1,14,14.2,n.x+side*17-9+k*3.4,9,n.y,0x7b8978);}b.cyl(1,40,n.x,22,n.y,0x9c9f8d);const m=b.finish();m.material=this.fogify(new T.MeshStandardMaterial({vertexColors:true,roughness:.9}));this.world.add(m);}
       this.oreObjects=[];
       for(const ore of game.ore||[]){
@@ -115,23 +128,23 @@
         b.box(18,13,17,x-65,8,z-29,0x737f6a);b.box(20,1.5,19,x-65,15,z-29,0x3c4b42);
         const m=b.finish();m.material=this.fogify(new T.MeshStandardMaterial({vertexColors:true,roughness:.96}));this.world.add(m);this.oreObjects.push({m,ore});
       }
-      this.syncCamera();
+      this.underwaterScene=root.WarUnderwater?.create(this,game);this.syncCamera();
     }
     updateFog(game,demo){
       if(this.lastFogTick===game.tick&&this.lastDemo===demo)return;this.lastFogTick=game.tick;this.lastDemo=demo;
       const im=this.fogCtx.createImageData(COLS,ROWS);for(let i=0;i<COLS*ROWS;i++){im.data[i*4]=14;im.data[i*4+1]=23;im.data[i*4+2]=26;im.data[i*4+3]=demo||game.buffs.has('vision')||game.visible[i]?0:game.explored[i]?155:248;}this.fogCtx.putImageData(im,0,0);this.fogTex.needsUpdate=true;this.fogEnabled.value=demo?0:1;
     }
     draw(game,ui={},time=0){
-      this.syncCamera();this.updateFog(game,!!ui.demo);const g=this.ctx;g.setTransform(this.dpr,0,0,this.dpr,0,0);g.clearRect(0,0,this.width,this.height);
+      this.syncCamera();this.updateFog(game,!!ui.demo);this.underwaterScene?.update(this.firstPerson?.underwater===true,time);const g=this.ctx;g.setTransform(this.dpr,0,0,this.dpr,0,0);g.clearRect(0,0,this.width,this.height);
       for(const {m,ore}of this.oreObjects||[])m.material.color.setHex(ore.amount>0?0xffffff:0x7a7e78);
       if(this.contextLost){g.fillStyle='#dbe3d8';g.fillText('图形设备正在恢复…',40,90);return;}
       const night=root.ModernFront?.lighting?.night;this.sun.intensity=night?1:this.firstPerson?.active?2.6:3;this.hemi.intensity=night?.6:this.firstPerson?.active?1.2:2;
       this.sun.position.set(this.camera.x-600,1400,this.camera.y+350);this.sun.target.position.set(this.camera.x,0,this.camera.y);this.sun.target.updateMatrixWorld();
       const alive=new Set();let visibleCount=0;
-      for(const e of game.entities){alive.add(e.id);let o=this.objects.get(e.id),p=this.entityScreen(e);const visible=(ui.demo||e.team===0||game.visibleAt(e.x,e.y))&&(this.firstPerson?.active?Math.hypot(e.x-this.camera.x,e.y-this.camera.y)<2600:p.x>-140&&p.x<this.width+140&&p.y>-160&&p.y<this.height+180);
+      for(const e of game.entities){alive.add(e.id);let o=this.objects.get(e.id),p=this.entityScreen(e);const visible=(ui.demo||e.team===0||(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))&&(this.firstPerson?.active?Math.hypot(e.x-this.camera.x,e.y-this.camera.y)<2600:p.x>-140&&p.x<this.width+140&&p.y>-160&&p.y<this.height+180);
         if(!visible){if(o)o.visible=false;continue;}
         if(!o){o=root.WarModels.create(e.kind,game.teams[e.team].faction);o.scale.setScalar(o.userData.scale);o.traverse(m=>{if(m.isMesh&&m.userData.preserveMaterial)for(const mat of Array.isArray(m.material)?m.material:[m.material])this.fogify(mat)});this.objects.set(e.id,o);this.scene.add(o);}
-        o.visible=e.id!==this.firstPerson?.entityId;visibleCount++;o.position.set(e.x,this.entityHeight(e),e.y);o.rotation.y=e.structure?0:-e.angle;
+        o.visible=e.id!==this.firstPerson?.entityId;visibleCount++;o.position.set(e.x,this.entityHeight(e),e.y);o.rotation.set(e.roll||0,e.structure?0:-e.angle,e.pitch||0,'YZX');
         for(const name of ['turret','turretRear']){const turret=o.getObjectByName(name);if(turret)turret.rotation.y=e.target?(e.structure?0:e.angle)-e.turret:0;}
         const radar=o.getObjectByName('radar');if(radar)radar.rotation.y=time*.45;
         const jammer=o.getObjectByName('jammerHead');if(jammer)jammer.rotation.y=time*.18;
@@ -150,7 +163,7 @@
       this.rangeOverlays=root.WarRanges?.collect(game,ui,this)||[];root.WarRanges?.draw(g,this,this.rangeOverlays);
       for(const ore of game.ore||[])if(!ui.demo&&game.visibleAt(ore.x,ore.y)){const p=this.toScreen(ore.x,ore.y);text('矿山 '+(ore.id+1)+' · '+(ore.amount>0?Math.ceil(ore.amount/1000)+'k':'已采空'),p.x,p.y+45,'#d9cd9a');}
       for(const n of game.nodes){const p=this.toScreen(n.x,n.y,48),color=n.owner<0?'#e5d5a6':n.owner===0?'#94d6d4':'#e59a7e';ring(n.x,n.y,65,color,1.4,.6);text(String.fromCharCode(65+n.id)+'  '+(n.owner<0?'补给据点':F[game.teams[n.owner].faction].name),p.x,p.y,color);if(n.progress>0){g.fillStyle='#0f2126';g.fillRect(p.x-24,p.y+6,48,4);g.fillStyle=color;g.fillRect(p.x-24,p.y+6,48*n.progress/7,4);}}
-      for(const e of game.entities){const o=this.objects.get(e.id);if(!o?.visible)continue;const p=this.entityScreen(e),selected=ui.selection?.has(e.id),color=e.team===0?'#a7e0d1':'#e89978';
+      for(const e of game.entities){const o=this.objects.get(e.id);if(!o?.visible)continue;const p=this.entityScreen(e),selected=ui.selection?.has(e.id),color=e.team===0?'#a7e0d1':'#e89978';if(U[e.kind]?.underwater)text('▽ 水下 '+Math.round(-this.entityHeight(e)),p.x,p.y-25,color);
         if(selected||ui.hover===e.id)ring(e.x,e.y,e.r+7,color,selected?2:1);
         if(!ui.demo&&(selected||e.hp<e.maxHp||ui.hover===e.id)){const yy=p.y-(e.structure?28:16)*Math.min(2,this.camera.zoom)-10;g.fillStyle='#112126dd';g.fillRect(p.x-23,yy,46,5);g.fillStyle=e.hp/e.maxHp>.35?'#9cceb0':'#ed9b6b';g.fillRect(p.x-22,yy+1,44*e.hp/e.maxHp,3);}
         if(selected&&e.order){const q=this.toScreen(e.order.x,e.order.y);g.strokeStyle='#d1dcc666';g.lineWidth=1;g.setLineDash([5,7]);g.beginPath();g.moveTo(p.x,p.y);g.lineTo(q.x,q.y);g.stroke();g.setLineDash([]);ring(e.order.x,e.order.y,8,color,1);}
@@ -186,7 +199,7 @@
       if(ui.drag){g.fillStyle='#abd1c41c';g.strokeStyle='#b1d6c9';g.lineWidth=1;g.fillRect(ui.drag.x,ui.drag.y,ui.pointer.x-ui.drag.x,ui.pointer.y-ui.drag.y);g.strokeRect(ui.drag.x,ui.drag.y,ui.pointer.x-ui.drag.x,ui.pointer.y-ui.drag.y);}
       if(!ui.demo)this.drawMinimap(game);
     }
-    drawMinimap(game){const c=this.mc,w=this.mini.width,h=this.mini.height;c.drawImage(this.miniTerrain,0,0,w,h);c.drawImage(this.fogCanvas,0,0,w,h);for(const n of game.nodes){c.fillStyle=n.owner<0?'#e1d5ad':n.owner===0?'#94d7c8':'#e89978';c.fillRect(n.x/W*w-2,n.y/H*h-2,4,4);}for(const e of game.entities){if(e.team!==0&&!game.visibleAt(e.x,e.y))continue;c.fillStyle=e.team===0?'#b5e7d7':'#f1a38a';let r=e.structure?3:1.5;c.fillRect(e.x/W*w-r,e.y/H*h-r,r*2,r*2);}const a=this.toWorld(0,70),b=this.toWorld(this.width-230,this.height-140);c.strokeStyle='#f0e4b9';c.strokeRect(a.x/W*w,a.y/H*h,(b.x-a.x)/W*w,(b.y-a.y)/H*h);}
+    drawMinimap(game){const c=this.mc,w=this.mini.width,h=this.mini.height;c.drawImage(this.miniTerrain,0,0,w,h);c.drawImage(this.fogCanvas,0,0,w,h);for(const n of game.nodes){c.fillStyle=n.owner<0?'#e1d5ad':n.owner===0?'#94d7c8':'#e89978';c.fillRect(n.x/W*w-2,n.y/H*h-2,4,4);}for(const e of game.entities){if(e.team!==0&&!(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))continue;c.fillStyle=e.team===0?'#b5e7d7':'#f1a38a';let r=e.structure?3:1.5;c.fillRect(e.x/W*w-r,e.y/H*h-r,r*2,r*2);}const a=this.toWorld(0,70),b=this.toWorld(this.width-230,this.height-140);c.strokeStyle='#f0e4b9';c.strokeRect(a.x/W*w,a.y/H*h,(b.x-a.x)/W*w,(b.y-a.y)/H*h);}
   }
   root.WarRenderer2D=Legacy;
   root.WarRenderer=function(canvas,mini){try{return new Battle3D(canvas,mini);}catch(e){console.warn('三维渲染不可用，启用兼容画面',e);document.querySelector('#battle-overlay')?.remove();const replacement=canvas.cloneNode();canvas.replaceWith(replacement);return new Legacy(replacement,mini);}};

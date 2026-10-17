@@ -390,6 +390,7 @@
         cargo: 0,
         anim: this.random() * 10,
       };
+      e.altitude=this.entityAltitude(e);e.pitch=0;e.roll=0;e.flightSpeed=0;
       this.entities.push(e);
       return e;
     }
@@ -408,7 +409,22 @@
     }
     targetDomain(kind) {
       const d=U[kind];
-      return B[kind]?'structure':d?.space?'space':d?.naval?'naval':d?.air?'air':'ground';
+      return B[kind]?'structure':d?.space?'space':d?.underwater?'underwater':d?.naval?'naval':d?.air?'air':'ground';
+    }
+    entityAltitude(e) {
+      if(Number.isFinite(e?.altitude))return e.altitude;
+      const d=U[e?.kind];return d?.underwater?-55:d?.space?145:d?.air?65:d?.naval?2:0;
+    }
+    hitHeightRadius(e) {
+      const d=U[e.kind];return e.structure?Math.max(60,e.r*2):d?.naval?Math.max(30,e.r*2):d?.air?Math.max(12,e.r):Math.max(20,e.r);
+    }
+    distance3D(a,b) {return Math.hypot(a.x-b.x,a.y-b.y,this.entityAltitude(a)-this.entityAltitude(b));}
+    canDetect(team,e) {
+      if(!e||e.hp<=0)return false;
+      if(!this.isEnemy(team,e.team)||!U[e.kind]?.underwater)return true;
+      // Explicit player vision cheat includes underwater contacts.
+      if(team===0&&this.buffs.has('vision'))return true;
+      return this.entities.some(s=>s.team===team&&(U[s.kind]||B[s.kind])?.sonarRange&&this.operational(s)&&this.distance3D(s,e)<=(U[s.kind]||B[s.kind]).sonarRange);
     }
     operational(e, power) {
       return e.hp!==0 && !(e.hp<0) && !(e.disabled>this.time) &&
@@ -450,7 +466,7 @@
       if(!(U[e.kind]||B[e.kind])?.damage)return 1;
       let friendly=1,hostile=1;const domain=this.targetDomain(e.kind);
       for(const source of controllers){const d=U[source.kind],field=d?.fireControl;
-        if(!field||!this.operational(source)||!field.domains.includes(domain)||dist(source,e)>d.range)continue;
+        if(!field||!this.operational(source)||!field.domains.includes(domain)||this.distance3D(source,e)>d.range)continue;
         if(field.enemy&&this.isEnemy(source.team,e.team))hostile=Math.max(hostile,field.multiplier);
         else if(!field.enemy&&source.team===e.team)friendly=Math.min(friendly,field.multiplier);
       }
@@ -464,9 +480,10 @@
       const zones=[];
       if(attack){zones.push({type:'attack',label:'攻击',radius:attack,min:d.minRange||0,domains:this.targetDomains(e.kind)});if(d.minRange)zones.push({type:'blind',label:'最小射程盲区',radius:d.minRange});}
       if(e.kind==='ciws'||d.interceptRange)zones.push({type:'intercept',label:'拦截火箭',radius:d.interceptRange||d.range});
+      if(d.sonarRange)zones.push({type:'sonar',label:'声呐探测',radius:d.sonarRange,domains:['underwater']});
       if(d.heal)zones.push({type:'repair',label:d.healFamilies?'步兵治疗':'维修',radius:d.range,domains:d.healDomains||['ground','naval','air','space']});
       if(d.fireControl)zones.push({type:d.fireControl.enemy?'jam':'link',label:(d.fireControl.enemy?'敌方装填 +':'友方装填 −')+Math.round(Math.abs(d.fireControl.multiplier-1)*100)+'%',radius:d.range,domains:d.fireControl.domains});
-      if(d.shield)zones.push({type:'shield',label:'护盾',radius:d.range,domains:d.shieldDomains||['ground','naval','air','space','structure']});
+      if(d.shield)zones.push({type:'shield',label:'护盾',radius:d.range,domains:d.shieldDomains||['ground','naval','underwater','air','space','structure']});
       if(d.jam)zones.push({type:'jam',label:'电磁压制',radius:d.range});
       if(e.kind==='radar')zones.push({type:'link',label:'雷达联动',radius:450});
       if(e.kind==='radar'||(!d.damage&&!d.heal&&!structure))zones.push({type:'sight',label:'侦察',radius:this.sightRadius(e,power),active:true});
@@ -507,7 +524,7 @@
       this._directTeamAI={aiClock:this.teams[0].aiClock,attackAt:this.teams[0].attackAt};
       this.teams[0].aiClock=0;
       e.order=null;e.orderQueue=[];e.path=[];e.target=null;e.retreating=false;e.manualMove=true;
-      this.directControl={id:e.id,input:{forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null,aimX:e.x,aimY:e.y,aimHeight:U[e.kind].space?145:U[e.kind].air?65:5}};
+      this.directControl={id:e.id,input:{forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null,aimX:e.x,aimY:e.y,aimHeight:this.entityAltitude(e),pitch:e.pitch,turn:0,lift:0,throttle:0,flightEnabled:false}};
       return true;
     }
     endDirectControl() {
@@ -528,17 +545,26 @@
       const yaw=finite(input.yaw,e.angle),d=U[e.kind];
       this.directControl.input={
         forward:clamp(finite(input.forward),-1,1),strafe:clamp(finite(input.strafe),-1,1),yaw,
+        pitch:clamp(finite(input.pitch),-1.15,1.15),turn:clamp(finite(input.turn),-1,1),lift:clamp(finite(input.lift),-1,1),throttle:clamp(finite(input.throttle),-1,1),flightEnabled:input.flightEnabled===true,
         fire:!!input.fire,targetId:Number.isInteger(input.targetId)?input.targetId:null,
         aimX:clamp(finite(input.aimX,e.x+Math.cos(yaw)*(d.range||250)),0,W),
         aimY:clamp(finite(input.aimY,e.y+Math.sin(yaw)*(d.range||250)),0,H),
-        aimHeight:clamp(finite(input.aimHeight,d.space?145:d.air?65:5),0,200),
+        aimHeight:clamp(finite(input.aimHeight,this.entityAltitude(this.get(input.targetId)||e)),-160,1000),
       };
       return true;
+    }
+    flightFloor(e,x,y) {
+      let floor=25;const clearance=Math.max(8,e.r*.35);
+      for(const o of this.entities)if(o.structure&&o.hp>0&&Math.hypot(x-o.x,y-o.y)<e.r+o.r+6)
+        floor=Math.max(floor,this.entityAltitude(o)+(B[o.kind].collisionHeight||60)+clearance);
+      for(const o of this.directObstacles||[])if(Math.hypot(x-o.x,y-o.y)<e.r+o.r)
+        floor=Math.max(floor,(o.height??50)+clearance);
+      return floor;
     }
     directPositionFree(e,x,y) {
       const d=U[e.kind],radius=e.r;
       if(x<radius||x>W-radius||y<radius||y>H-radius)return false;
-      if(d.air)return true;
+      if(d.air)return d.space||this.entityAltitude(e)>=this.flightFloor(e,x,y)-.001;
       const blocked=d.naval?this.map.navalBlocked:(this.groundNavigation?.blocked||this.map.blocked);
       for(let n=-1;n<8;n++){
         const px=x+(n<0?0:Math.cos(n*Math.PI/4)*radius),py=y+(n<0?0:Math.sin(n*Math.PI/4)*radius);
@@ -559,24 +585,53 @@
         if(e.kind==='tank'&&target.kind==='ifv')val*=1.3;
         if(e.kind==='aa')val*=U[target.kind]?.air?2:.45;
       }
-      const destination=aim?.fixedImpact?aim:target||aim,travel=Math.max(.08,dist(e,destination)/(d.weaponFx==='torpedo'?220:e.kind==='rocket'?400:700));
+      const asw=U[target?.kind]?.underwater&&['destroyer','frigate'].includes(e.kind),weaponFx=asw?'torpedo':d.weaponFx;
+      const destination=aim?.fixedImpact?aim:target||aim,travel=Math.max(.08,Math.hypot(e.x-destination.x,e.y-destination.y,this.entityAltitude(e)-(aim?.fixedImpact?aim.height:target?this.entityAltitude(target):aim?.height??0))/(weaponFx==='torpedo'?220:e.kind==='rocket'?400:700));
       this.effects.push({type:'shot',x:e.x,y:e.y,tx:destination.x,ty:destination.y,target:target?.id??null,from:e.team,
         damage:val,baseDamage:target?d.damage:0,targetDomain:target?this.targetDomain(target.kind):null,splash:target?(d.splash||0):0,
         ttl:travel,max:travel,rocket:!!d.rocket||['rocket','heli','asat','sam'].includes(e.kind),space:!!d.spaceWeapon,
-        sourceKind:e.kind,sourceId:e.id,sourceHeight:d.weaponFx==='torpedo'?2:d.space?145:d.air?65:e.structure?20:12,
-        targetHeight:aim?.fixedImpact?aim.height:d.weaponFx==='torpedo'?2:target?(U[target.kind]?.space?145:U[target.kind]?.air?65:5):(aim.height??5),
-        weaponFx:d.weaponFx||(e.kind==='orbital'?'orbital-beam':e.kind==='orbital_interceptor'?'interceptor-burst':e.kind==='asat'?'asat-missile':e.kind==='laser'?'laser-beam':'projectile'),
+        sourceKind:e.kind,sourceId:e.id,sourceHeight:this.entityAltitude(e)+(e.structure?20:!d.air&&!d.naval?12:0),
+        targetHeight:aim?.fixedImpact?aim.height:target?this.entityAltitude(target):(aim?.height??5),
+        weaponFx:weaponFx||(e.kind==='orbital'?'orbital-beam':e.kind==='orbital_interceptor'?'interceptor-burst':e.kind==='asat'?'asat-missile':e.kind==='laser'?'laser-beam':'projectile'),
         ...(!target?{miss:true}:{}),
-        ...(aim?.fixedImpact&&target?{directHitArea:{x:target.x,y:target.y,r:target.r}}:{}),
+        ...(aim?.fixedImpact&&target?{directHitArea:{x:target.x,y:target.y,altitude:this.entityAltitude(target),r:target.r,verticalRadius:this.hitHeightRadius(target)}}:{}),
       });
       return true;
     }
     stepDirectControl(e,dt) {
       const input=this.directControl.input,d=U[e.kind],yaw=input.yaw;
-      e.angle=yaw;e.turret=yaw;e.target=null;
-      const normal=Math.max(1,Math.hypot(input.forward,input.strafe)),speed=this.effectiveSpeed(e)*dt/normal;
-      const dx=(Math.cos(yaw)*input.forward-Math.sin(yaw)*input.strafe)*speed;
-      const dy=(Math.sin(yaw)*input.forward+Math.cos(yaw)*input.strafe)*speed;
+      e.target=null;
+      let dx=0,dy=0;
+      if(d.air||d.underwater){
+        if(input.flightEnabled){
+          const speed=this.effectiveSpeed(e),angleDelta=Math.atan2(Math.sin(yaw-e.angle),Math.cos(yaw-e.angle));
+          const fixedWing=d.air&&!d.space&&(d.modelKind||e.kind)!=='heli';
+          const turn=clamp(angleDelta*1.8+input.turn*.7,-.9,.9);
+          e.angle+=turn*dt;e.pitch+=(clamp(input.pitch+input.lift*.35,-1.05,1.05)-e.pitch)*Math.min(1,dt*3);
+          e.roll+=((fixedWing?-turn*.6:0)-e.roll)*Math.min(1,dt*4);
+          if(fixedWing){
+            if(!(e.flightSpeed>0))e.flightSpeed=speed*.65;
+            e.flightSpeed=clamp(e.flightSpeed+input.throttle*speed*.35*dt,speed*.35,speed*1.25);
+            dx=Math.cos(e.angle)*Math.cos(e.pitch)*e.flightSpeed*dt;
+            dy=Math.sin(e.angle)*Math.cos(e.pitch)*e.flightSpeed*dt;
+            e.altitude=clamp(this.entityAltitude(e)+Math.sin(e.pitch)*e.flightSpeed*dt,25,650);
+          }else{
+            const norm=Math.max(1,Math.hypot(input.forward,input.strafe));
+            dx=(Math.cos(e.angle)*input.forward-Math.sin(e.angle)*input.strafe)*speed*dt/norm;
+            dy=(Math.sin(e.angle)*input.forward+Math.cos(e.angle)*input.strafe)*speed*dt/norm;
+            e.flightSpeed=Math.hypot(dx,dy)/dt;
+            const climb=input.lift*(d.underwater?22:d.space?90:60)+(d.underwater?Math.sin(e.pitch)*e.flightSpeed:0);
+            e.altitude=clamp(this.entityAltitude(e)+climb*dt,d.underwater?-140:d.space?120:25,d.underwater?-22:d.space?900:650);
+          }
+        }
+      }else{
+        e.angle=yaw;
+        const normal=Math.max(1,Math.hypot(input.forward,input.strafe)),speed=this.effectiveSpeed(e)*dt/normal;
+        dx=(Math.cos(yaw)*input.forward-Math.sin(yaw)*input.strafe)*speed;
+        dy=(Math.sin(yaw)*input.forward+Math.cos(yaw)*input.strafe)*speed;
+      }
+      e.turret=yaw;
+      if(d.air&&!d.space&&input.flightEnabled)e.altitude=Math.max(this.entityAltitude(e),this.flightFloor(e,e.x,e.y));
       const steps=Math.max(1,Math.ceil(Math.hypot(dx,dy)/8));
       for(let n=0;n<steps;n++){
         const x=e.x+dx/steps,y=e.y+dy/steps;
@@ -586,12 +641,12 @@
       }
       const range=this.rangeProfile(e).attack,candidate=this.get(input.targetId);
       const target=candidate&&this.isEnemy(e.team,candidate.team)&&this.canTargetKind(e.kind,candidate.kind)&&
-        dist(e,candidate)<=range&&dist(e,candidate)>=(d.minRange||0)&&this.visibleAt(candidate.x,candidate.y)?candidate:null;
+        this.distance3D(e,candidate)<=range&&dist(e,candidate)>=(d.minRange||0)&&this.canDetect(e.team,candidate)&&Math.abs(input.aimHeight-this.entityAltitude(candidate))<=this.hitHeightRadius(candidate)&&(U[candidate.kind]?.underwater||this.visibleAt(candidate.x,candidate.y))?candidate:null;
       e.target=target?.id??null;
       if(target)e.turret=Math.atan2(target.y-e.y,target.x-e.x);
       if(!input.fire||!d.damage||e.cool>0)return;
-      let ax=input.aimX-e.x,ay=input.aimY-e.y,length=Math.hypot(ax,ay),factor=length>range?range/length:1;
-      this.emitShot(e,target,{x:e.x+ax*factor,y:e.y+ay*factor,height:input.aimHeight,fixedImpact:true});
+      let ax=input.aimX-e.x,ay=input.aimY-e.y,az=input.aimHeight-this.entityAltitude(e),length=Math.hypot(ax,ay,az),factor=length>range?range/length:1;
+      this.emitShot(e,target,{x:e.x+ax*factor,y:e.y+ay*factor,height:this.entityAltitude(e)+az*factor,fixedImpact:true});
     }
     train(team, kind) {
       const t = this.teams[team],
@@ -729,12 +784,13 @@
       for (const e of units) {
         const width=Math.min(cols,units.length),rows=Math.ceil(units.length/cols);
         const p=this.destination(e,x+((n%cols)-(width-1)/2)*spacing,y+(Math.floor(n/cols)-(rows-1)/2)*spacing);
-        const order={x:p.x,y:p.y,attack,target};
+        const contact=this.get(target),tracked=contact&&this.canDetect(e.team,contact)?target:null;
+        const order={x:p.x,y:p.y,attack,target:tracked};
         if(options.queue&&e.order){e.orderQueue=e.orderQueue||[];if(e.orderQueue.length<16)e.orderQueue.push(order);n++;continue;}
         e.orderQueue=[];e.retreating=false;
         if(e.kind==='harvester'){const ore=this.ore.filter(o=>o.amount>0).sort((a,b)=>dist(p,a)-dist(p,b))[0];e.oreId=ore&&dist(ore,p)<120?ore.id:null;e.manualMove=e.oreId===null;e.miningState=null;}
         e.order = order;
-        e.target = target;
+        e.target = tracked;
         e.path = [];
         e.repath = 0;
         n++;
@@ -851,7 +907,7 @@
       for (const v of this.spatial.query(e.x,e.y,maxShieldRange)) {
         const d=U[v.kind]||B[v.kind];
         if(v.team===e.team && d?.shield && this.operational(v) &&
-          (!d.shieldDomains || d.shieldDomains.includes(this.targetDomain(e.kind))) && dist(v,e)<d.range)
+          (!d.shieldDomains || d.shieldDomains.includes(this.targetDomain(e.kind))) && this.distance3D(v,e)<d.range)
           shield=Math.max(shield,d.shield);
       }
       const applied=value*mul*(1-shield),actual=Math.min(e.hp,Math.max(0,applied));
@@ -901,9 +957,9 @@
     commandSupport(team,units) {
       for(const support of units.filter(e=>e.id!==this.directControl?.id&&(U[e.kind].heal||U[e.kind].fireControl||U[e.kind].shield)&&!e.retreating&&this.operational(e))){
         const d=U[support.kind],allies=units.filter(e=>e.id!==support.id&&U[e.kind].damage&&(d.heal?this.canHeal(support,e):d.supportDomains.includes(this.targetDomain(e.kind))));
-        allies.sort((a,b)=>(a.hp/a.maxHp-b.hp/b.maxHp)||dist(a,support)-dist(b,support));
+        allies.sort((a,b)=>(a.hp/a.maxHp-b.hp/b.maxHp)||this.distance3D(a,support)-this.distance3D(b,support));
         const ally=allies[0];if(!ally)continue;
-        if(dist(support,ally)>d.range*.72)this.command([support.id],ally.x,ally.y,false);
+        if(this.distance3D(support,ally)>d.range*.72)this.command([support.id],ally.x,ally.y,false);
         else if(support.order){support.order=null;support.path=[];support.orderQueue=[];}
       }
     }
@@ -973,7 +1029,7 @@
       this.commandSupport(t.id,units);
       for(const ship of units.filter(e=>U[e.kind].naval&&U[e.kind].damage&&!e.retreating)){
         if(ship.order&&(!ship.order.target||this.get(ship.order.target)?.hp>0))continue;
-        const enemy=this.entities.filter(e=>e.hp>0&&this.isEnemy(t.id,e.team)&&this.canTargetKind(ship.kind,e.kind)&&this.unitsInSight(e,es)).sort((a,b)=>dist(ship,a)-dist(ship,b))[0];
+        const enemy=this.entities.filter(e=>e.hp>0&&this.isEnemy(t.id,e.team)&&this.canTargetKind(ship.kind,e.kind)&&this.canDetect(ship.team,e)&&(U[e.kind]?.underwater||this.unitsInSight(e,es))).sort((a,b)=>dist(ship,a)-dist(ship,b))[0];
         const goal=enemy||this.entities.filter(e=>e.hp>0&&e.kind==='hq'&&this.isEnemy(t.id,e.team)).sort((a,b)=>dist(ship,a)-dist(ship,b))[0];
         if(!goal)continue;
         const sea=this.navalApproach(ship,goal);
@@ -1101,7 +1157,7 @@
           continue;
         if (d.heal) {
           for (const a of this.spatial.query(e.x, e.y, d.range))
-            if (this.canHeal(e,a) && dist(e,a)<=d.range)
+            if (this.canHeal(e,a) && this.distance3D(e,a)<=d.range)
               a.hp = Math.min(a.maxHp, a.hp + d.heal * dt);
         }
         if (d.jam) {
@@ -1121,11 +1177,11 @@
         const canHit = (t) =>
           d.damage > 0 &&
           this.isEnemy(e.team, t.team) &&
-          this.canTargetKind(e.kind,t.kind) && dist(e,t)>=(d.minRange||0) &&
-          (e.team === 0
+          this.canTargetKind(e.kind,t.kind) && this.canDetect(e.team,t) && dist(e,t)>=(d.minRange||0) &&
+          (U[t.kind]?.underwater ? true : e.team === 0
             ? this.visibleAt(t.x, t.y)
             : this.unitsInSight(t, this.teamSight[e.team]));
-        if (!target || !canHit(target) || dist(e, target) > range * 1.35)
+        if (!target || !canHit(target) || this.distance3D(e, target) > range * 1.35)
           target = null;
         // Player explicit movement suppresses auto-fire until arrival; attack move engages.
         if (
@@ -1135,7 +1191,7 @@
         ) {
           let best = Infinity;
           for (const o of this.spatial.query(e.x, e.y, range)) {
-            const delta = dist(e, o);
+            const delta = this.distance3D(e, o);
             if (
               canHit(o) &&
               delta < range &&
@@ -1151,7 +1207,7 @@
         if (target) {
           e.turret = Math.atan2(target.y - e.y, target.x - e.x);
           if (
-            dist(e, target) <= range &&
+            this.distance3D(e, target) <= range &&
             dist(e, target) >= (d.minRange || 0) &&
             e.cool <= 0
           ) {
@@ -1160,12 +1216,12 @@
         }
         if (e.structure) continue;
         const fight =
-          target && dist(e, target) <= range && dist(e,target)>=(d.minRange||0) && (!e.order || e.order.attack);
+          target && this.distance3D(e, target) <= range && dist(e,target)>=(d.minRange||0) && (!e.order || e.order.attack);
         if (fight) continue;
         if (e.order) {
           let goal = e.order;
           const orderedTarget = goal.target ? this.get(goal.target) : null;
-          if (orderedTarget) {
+          if (orderedTarget && this.canDetect(e.team,orderedTarget)) {
             goal.x = orderedTarget.x;
             goal.y = orderedTarget.y;
           }
@@ -1264,7 +1320,8 @@
             for (const e of this.spatial.query(fx.tx, fx.ty, fx.splash))
               if (e.hp>0 && this.isEnemy(fx.from, e.team) &&
                 (fx.sourceKind?this.canTargetKind(fx.sourceKind,e.kind):!U[e.kind]?.air) &&
-                (['air','space'].includes(fx.targetDomain)?this.targetDomain(e.kind)===fx.targetDomain:!U[e.kind]?.air))
+                (['air','space','underwater'].includes(fx.targetDomain)?this.targetDomain(e.kind)===fx.targetDomain:!U[e.kind]?.air&&!U[e.kind]?.underwater) &&
+                Math.hypot(e.x-fx.tx,e.y-fx.ty,this.entityAltitude(e)-(fx.targetHeight??this.entityAltitude(e)))<=fx.splash+e.r)
                 this.damage(
                   e,
                   (fx.sourceKind&&fx.baseDamage!==undefined?this.attackDamage(fx.sourceKind,e,fx.baseDamage):fx.damage) *
@@ -1277,7 +1334,7 @@
                 );
           } else {
             const e = this.get(fx.target);
-            if (e&&(!fx.directHitArea||dist(e,fx.directHitArea)<=Math.max(5,fx.directHitArea.r))) this.damage(e, fx.damage, fx.from, fx);
+            if (e&&(!fx.directHitArea||Math.hypot((e.x-fx.directHitArea.x)/Math.max(5,fx.directHitArea.r),(e.y-fx.directHitArea.y)/Math.max(5,fx.directHitArea.r),(this.entityAltitude(e)-(fx.directHitArea.altitude??this.entityAltitude(e)))/(fx.directHitArea.verticalRadius??Math.max(5,fx.directHitArea.r)))<=1)) this.damage(e, fx.damage, fx.from, fx);
           }
           active.push({
             type: "impact",
@@ -1489,6 +1546,7 @@
           e.y > H ||
           !finite(e.hp) ||
           !finite(e.maxHp) ||
+          ["altitude","pitch","roll","flightSpeed"].some(k=>e[k]!==undefined&&!finite(e[k])) ||
           !Number.isInteger(e.id) ||
           e.maxHp <= 0 ||
           !Array.isArray(e.path) ||
@@ -1514,6 +1572,7 @@
       g.wealthGranted = !!s.wealthGranted;
       for(const t of g.teams){t.score=finite(t.score)?Math.max(0,t.score):0;t.harvested=finite(t.harvested)?Math.max(0,t.harvested):0;}
       for(const e of g.entities){if(e.rally&&(!finite(e.rally.x)||!finite(e.rally.y)))throw Error('集结点无效');if(e.orderQueue&&(!Array.isArray(e.orderQueue)||e.orderQueue.length>16||e.orderQueue.some(p=>!finite(p.x)||!finite(p.y))))throw Error('路径队列无效');e.cargo=finite(e.cargo)?clamp(e.cargo,0,500):0;}
+      for(const e of g.entities){e.altitude=g.entityAltitude(e);e.pitch=e.pitch??0;e.roll=e.roll??0;e.flightSpeed=e.flightSpeed??0;}
       g.buffs = new Set(s.buffs);
       g.explored = Uint8Array.from(s.explored);
       g.effects = Array.isArray(s.effects) ? s.effects : [];

@@ -3,13 +3,13 @@ require('../src/data.js');require('../src/roster.js');require('../src/equipment.
 const {Game}=WarSim,{U,B,ROSTER}=WarData;
 function arena(){const g=new Game({faction:'chn',enemies:1,buffs:['vision'],playerOnlyTech:false,aiSpaceWeapons:true});g.entities=[];g.spawn(0,'hq',300,300);g.spawn(1,'hq',2700,1800);g.teams.forEach(t=>t.aiClock=999999);return g;}
 function step(g,s){for(let i=0;i<Math.ceil(s*20);i++)g.step(.05);}
-const targets={ground:'tank',naval:'destroyer',air:'fighter',space:'satellite',structure:'hq'};
-test('four groups have 18/15/15/15 roles, with harvester separately counted',()=>{
- assert.deepEqual(Object.fromEntries(Object.entries(ROSTER.groups).map(([k,v])=>[k,v.length])),{ground:18,naval:15,air:15,space:15});assert.equal(Object.keys(U).length,64);
- assert.equal(new Set(Object.values(ROSTER.groups).flat()).size,63);assert.ok(!Object.values(ROSTER.groups).flat().includes('harvester'));
+const targets={underwater:'submarine',ground:'tank',naval:'destroyer',air:'fighter',space:'satellite',structure:'hq'};
+test('four groups have 18/17/16/16 roles, with harvester separately counted',()=>{
+ assert.deepEqual(Object.fromEntries(Object.entries(ROSTER.groups).map(([k,v])=>[k,v.length])),{ground:18,naval:17,air:16,space:16});assert.equal(Object.keys(U).length,68);
+ assert.equal(new Set(Object.values(ROSTER.groups).flat()).size,67);assert.ok(!Object.values(ROSTER.groups).flat().includes('harvester'));
  for(const k of ROSTER.added){assert.ok(B[U[k].producer],k);assert.equal(U[k].index,undefined);assert.match(WarData.EQUIPMENT.dossier('chn',k).status,/原创/);}
 });
-test('every added armed role really hits only its declared target domains (160 armed firing scenarios)',()=>{
+test('every added armed role really hits only its declared target domains (210 armed firing scenarios)',()=>{
  for(const k of ROSTER.added.filter(k=>U[k].damage))for(const [domain,kind] of Object.entries(targets)){
   const g=arena(),d=U[k],distance=Math.max(d.minRange||0,0)+Math.min(70,(d.range-(d.minRange||0))/2),a=g.spawn(0,k,1000,750),b=g.spawn(1,kind,1000+distance,750),hp=b.hp;
   b.disabled=999;g.command([a.id],a.x,a.y,true,b.id);step(g,distance/700+1);
@@ -34,7 +34,7 @@ test('support repairs only its own domain, never buildings or enemies, and never
   for(const s of samples)assert.equal(s.e.hp>s.hp,s.d===domain,kind+' repairs '+s.d);assert.equal(enemy.hp,hp);assert.ok(!g.effects.some(e=>e.sourceKind===kind));
  }
 });
-test('all 64 units can be trained, completed and loaded using their real production lanes',()=>{
+test('all 68 units can be trained, completed and loaded using their real production lanes',()=>{
  for(const k of Object.keys(U)){
   const g=arena();g.spawn(0,'power',450,450);g.spawn(0,'power',550,450);g.spawn(0,U[k].producer,U[k].naval?720:700,U[k].naval?120:600);g.teams[0].money=100000;
   assert.equal(g.train(0,k),true,k);const saved=Game.load(JSON.stringify(g.save()));assert.equal(saved.teams[0].queue[0].kind,k);step(saved,U[k].time+2);
@@ -71,7 +71,7 @@ test('defense profiles separate attack, interception, radar links and powered vi
 test('shown boosted defense range agrees with actual fire at its edge',()=>{
  for(const [radar,offset,expected] of [[true,-2,true],[true,2,false],[false,-2,true],[false,2,false]]){
   const g=arena();g.spawn(0,'power',450,450);const a=g.spawn(0,'ciws',1000,750);if(radar)g.spawn(0,'radar',1030,850);
-  const p=g.rangeProfile(a),b=g.spawn(1,'fighter',1000+p.attack+offset,750);b.disabled=999;const hp=b.hp;step(g,1.5);assert.equal(b.hp<hp,expected,JSON.stringify({radar,offset,p}));
+  const p=g.rangeProfile(a),b=g.spawn(1,'fighter',1000+Math.sqrt(p.attack*p.attack-65*65)+offset,750);b.disabled=999;const hp=b.hp;step(g,1.5);assert.equal(b.hp<hp,expected,JSON.stringify({radar,offset,p}));
  }
 });
 test('placement preview projects electrical load and min-range troops do not freeze attack-move',()=>{

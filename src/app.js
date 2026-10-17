@@ -536,7 +536,7 @@
     return game.entities.find(
       (e) =>
         game.isEnemy(0, e.team) &&
-        game.visibleAt(e.x, e.y) &&
+        (U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)) &&
         Math.hypot(p.x - e.x, p.y - e.y) < e.r + 12,
     );
   }

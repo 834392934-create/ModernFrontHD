@@ -965,7 +965,7 @@
             ((U[b.kind]?.air ? 10000 : 0) + b.y),
         );
       for (const e of sorted) {
-        if (e.team !== 0 && !ui.demo && !game.visibleAt(e.x, e.y)) continue;
+        if (e.team !== 0 && !ui.demo && !(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y))) continue;
         const chosen = ui.selection?.has(e.id),
           hover = ui.hover === e.id;
         const col = F[game.teams[e.team].faction].color;
@@ -1213,7 +1213,7 @@
         c.fillRect((n.x / W) * w - 2, (n.y / H) * h - 2, 4, 4);
       }
       for (const e of game.entities) {
-        if (e.team !== 0 && !game.visibleAt(e.x, e.y)) continue;
+        if (e.team !== 0 && (!game.visibleAt(e.x, e.y)||!game.canDetect(0,e))) continue;
         c.fillStyle = F[game.teams[e.team].faction].color;
         const r = e.structure ? 3 : 1.5;
         c.fillRect((e.x / W) * w - r, (e.y / H) * h - r, r * 2, r * 2);

@@ -1,8 +1,8 @@
 {
-  "recordedAt": "2026-10-17T02:30:24.910Z",
+  "recordedAt": "2026-10-17T15:49:27.954Z",
   "checks": [
     "outward visible body and wing surfaces from above/below",
-    "282 role models retain valid batched geometry and PBR surfaces",
+    "306 role models retain valid batched geometry and PBR surfaces",
     "real gallery camouflage input changes rendered clothing"
   ],
   "maxTriangles": 29760,
@@ -664,6 +664,58 @@
       ]
     },
     {
+      "key": "hunter_sub_usa",
+      "triangles": 7264,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2
+      ]
+    },
+    {
+      "key": "abyss_tender_usa",
+      "triangles": 9836,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "omni_striker_usa",
+      "triangles": 20168,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "omni_dreadnought_usa",
+      "triangles": 8756,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
+        1
+      ]
+    },
+    {
       "key": "antitank_team_rus",
       "triangles": 27888,
       "drawMeshes": 1,
@@ -1273,6 +1325,58 @@
       ]
     },
     {
+      "key": "hunter_sub_rus",
+      "triangles": 7276,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2
+      ]
+    },
+    {
+      "key": "abyss_tender_rus",
+      "triangles": 9848,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "omni_striker_rus",
+      "triangles": 20180,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "omni_dreadnought_rus",
+      "triangles": 8768,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
+        1
+      ]
+    },
+    {
       "key": "antitank_team_chn",
       "triangles": 27888,
       "drawMeshes": 1,
@@ -1877,6 +1981,58 @@
         2,
         3,
         5,
+        1
+      ]
+    },
+    {
+      "key": "hunter_sub_chn",
+      "triangles": 7288,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2
+      ]
+    },
+    {
+      "key": "abyss_tender_chn",
+      "triangles": 9860,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "omni_striker_chn",
+      "triangles": 20192,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "omni_dreadnought_chn",
+      "triangles": 8780,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
         1
       ]
     },
@@ -2492,6 +2648,58 @@
       ]
     },
     {
+      "key": "hunter_sub_ind",
+      "triangles": 7264,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2
+      ]
+    },
+    {
+      "key": "abyss_tender_ind",
+      "triangles": 9836,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "omni_striker_ind",
+      "triangles": 20168,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "omni_dreadnought_ind",
+      "triangles": 8756,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
+        1
+      ]
+    },
+    {
       "key": "antitank_team_kor",
       "triangles": 27888,
       "drawMeshes": 1,
@@ -3097,6 +3305,58 @@
         2,
         3,
         5,
+        1
+      ]
+    },
+    {
+      "key": "hunter_sub_kor",
+      "triangles": 7276,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2
+      ]
+    },
+    {
+      "key": "abyss_tender_kor",
+      "triangles": 9848,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "key": "omni_striker_kor",
+      "triangles": 20180,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "key": "omni_dreadnought_kor",
+      "triangles": 8768,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
         1
       ]
     },
@@ -3729,6 +3989,61 @@
         2,
         3,
         5,
+        1
+      ]
+    },
+    {
+      "key": "hunter_sub_imp",
+      "triangles": 7288,
+      "drawMeshes": 2,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        3,
+        2,
+        6
+      ]
+    },
+    {
+      "key": "abyss_tender_imp",
+      "triangles": 9860,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
+        1
+      ]
+    },
+    {
+      "key": "omni_striker_imp",
+      "triangles": 20192,
+      "drawMeshes": 3,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        1,
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "key": "omni_dreadnought_imp",
+      "triangles": 8780,
+      "drawMeshes": 1,
+      "preserved": true,
+      "valid": true,
+      "finishes": [
+        0,
+        2,
+        3,
+        6,
         1
       ]
     }

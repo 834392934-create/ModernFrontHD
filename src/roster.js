@@ -304,6 +304,33 @@
   });
   const tacticalWave=added.slice(tacticalStart);
 
+  // Depth / all-domain wave: original game roles, not claims about real weapon performance.
+  Object.assign(U.submarine,{underwater:true,sonarRange:400,targetDomains:['naval','underwater'],weaponFx:'torpedo',role:'水下隐蔽 / 声呐探测 / 对舰与反潜鱼雷'});
+  Object.assign(U.destroyer,{sonarRange:420,targetDomains:['ground','naval','underwater','air','structure']});
+  Object.assign(U.frigate,{sonarRange:460,targetDomains:['naval','underwater','air'],role:'舰队护航 / 声呐反潜 / 对舰防空'});
+  const depthStart=added.length;
+  add('hunter_sub','naval','submarine','deep-hunter',{
+    name:'深海猎潜艇（原创）',role:'水下隐蔽 / 500范围声呐 / 对舰与反潜重型鱼雷',
+    cost:2600,hp:1200,speed:76,damage:240,range:500,reload:4.2,sight:300,r:23,time:28,producer:'navalyard',icon:'◉',
+    underwater:true,sonarRange:500,targetDomains:['naval','underwater'],weaponFx:'torpedo',
+  });
+  add('abyss_tender','naval','submarine','deep-support',{
+    name:'深海保障潜艇（概念）',role:'无武装 / 仅维修友方水下单位 / 360范围声呐',
+    cost:2100,hp:1350,speed:58,damage:0,range:220,reload:1,sight:280,r:26,time:25,producer:'navalyard',icon:'+',
+    underwater:true,sonarRange:360,heal:35,healDomains:['underwater'],targetDomains:[],aiWeight:.35,
+  });
+  add('omni_striker','air','fighter','all-domain-assault',{
+    name:'寰宇全域突击机（架空）',role:'昂贵先进科技 / 陆海潜空天及基地攻击 / 700范围声呐',
+    cost:12000,hp:2600,speed:210,damage:220,range:600,reload:1.5,sight:650,r:28,time:65,producer:'airfield',icon:'✦',
+    advanced:true,sonarRange:700,targetDomains:['ground','naval','underwater','air','space','structure'],rocket:true,splash:40,aiWeight:.12,
+  });
+  add('omni_dreadnought','space','orbital','all-domain-dreadnought',{
+    name:'寰宇全域无畏舰（架空）',role:'极昂贵轨道旗舰 / 陆海潜空天及基地攻击 / 受AI太空武器禁令约束',
+    cost:20000,hp:6000,speed:60,damage:400,range:850,reload:2.5,sight:800,r:35,time:95,producer:'spaceport',icon:'✧',
+    advanced:true,sonarRange:950,targetDomains:['ground','naval','underwater','air','space','structure'],weaponFx:'orbital-beam',splash:60,aiWeight:.08,
+  });
+  const depthWave=added.slice(depthStart);
+
   D.UNIT_GROUPS = {
     ground: { name: "陆军", icon: "▰" }, naval: { name: "海军", icon: "⚓" },
     air: { name: "空军", icon: "✈" }, space: { name: "太空", icon: "✧" },
@@ -312,6 +339,7 @@
     added,
     reinforcements,
     tacticalWave,
+    depthWave,
     logistics: ["harvester"],
     groups: Object.fromEntries(Object.keys(D.UNIT_GROUPS).map(group => [group,
       Object.keys(U).filter(kind => U[kind].unitGroup === group && U[kind].combatRole !== "logistics"),

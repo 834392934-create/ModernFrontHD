@@ -1,12 +1,12 @@
 {
-  "recordedAt": "2026-10-17T02:31:44.194Z",
+  "recordedAt": "2026-10-17T15:55:47.792Z",
   "environment": "Packaged Electron",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
     "M toggles and restores the optional motion setting through keyboard input",
     "Mouse look, right-button ADS narrows camera FOV, release restores aim, and Space freezes simulation and clears movement/fire",
     "Escape exits driving and returns strategy camera without opening settings",
-    "All 64 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked",
+    "All 68 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked",
     "AI builds, trains and orders other units during possession, excludes the driver, and stops new AI calls after E exits",
     "Real left-click mesh-target shot reduces enemy HP and confirms actual source damage; a subsequent sky miss produces no hit marker",
     "A real manual projectile remains tied to its recorded impact area: relocating the target during flight causes no remote damage or hit marker",
@@ -128,8 +128,8 @@
       "kind": "submarine",
       "id": 71,
       "domain": "naval",
-      "mode": "naval",
-      "weaponProfile": "original-naval-controls",
+      "mode": "underwater",
+      "weaponProfile": "original-underwater-controls",
       "hudName": "093 型",
       "finiteCamera": true,
       "ownModelHidden": true
@@ -653,6 +653,46 @@
       "hudName": "轨道导弹驳船（架空）",
       "finiteCamera": true,
       "ownModelHidden": true
+    },
+    {
+      "kind": "hunter_sub",
+      "id": 230,
+      "domain": "naval",
+      "mode": "underwater",
+      "weaponProfile": "original-underwater-controls",
+      "hudName": "深海猎潜艇（原创）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "abyss_tender",
+      "id": 233,
+      "domain": "naval",
+      "mode": "underwater",
+      "weaponProfile": "original-underwater-controls",
+      "hudName": "深海保障潜艇（概念）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "omni_striker",
+      "id": 236,
+      "domain": "air",
+      "mode": "air",
+      "weaponProfile": "original-air-controls",
+      "hudName": "寰宇全域突击机（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
+    },
+    {
+      "kind": "omni_dreadnought",
+      "id": 239,
+      "domain": "space",
+      "mode": "space",
+      "weaponProfile": "original-space-controls",
+      "hudName": "寰宇全域无畏舰（架空）",
+      "finiteCamera": true,
+      "ownModelHidden": true
     }
   ],
   "screenshots": [
@@ -702,7 +742,7 @@
         "pitch": -0.025
       },
       "after": {
-        "x": 700,
+        "x": 696.4,
         "y": 800,
         "yaw": 0,
         "pitch": -0.025
@@ -711,14 +751,14 @@
     {
       "key": "KeyD",
       "before": {
-        "x": 700,
+        "x": 696.4,
         "y": 800,
         "yaw": 0,
         "pitch": -0.025
       },
       "after": {
-        "x": 700,
-        "y": 825.2000000000002,
+        "x": 696.4,
+        "y": 821.6000000000001,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -726,14 +766,14 @@
     {
       "key": "KeyA",
       "before": {
-        "x": 700,
-        "y": 825.2000000000002,
+        "x": 696.4,
+        "y": 821.6000000000001,
         "yaw": 0,
         "pitch": -0.025
       },
       "after": {
-        "x": 700,
-        "y": 803.6,
+        "x": 696.4,
+        "y": 800,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -742,7 +782,7 @@
   "ads": {
     "hip": 70,
     "active": true,
-    "fov": 48.02818522014845,
+    "fov": 48.03374383494514,
     "view": "infantry"
   },
   "ai": {
@@ -753,7 +793,7 @@
     "controlledOrder": null
   },
   "aim": {
-    "target": 237,
+    "target": 249,
     "point": [
       828.4683744545998,
       13.859999811172484,
@@ -765,16 +805,16 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 27.400000000000254,
-      "sourceId": 236,
-      "targetId": 237,
+      "hitAt": 26.600000000000243,
+      "sourceId": 248,
+      "targetId": 249,
       "damage": 74
     },
     "incoming": {
       "x": 700,
       "y": 800,
-      "sourceId": 236,
-      "time": 27.400000000000254
+      "sourceId": 248,
+      "time": 26.600000000000243
     },
     "hudConfirmed": true
   },
@@ -791,7 +831,9 @@
     "area": {
       "x": 830,
       "y": 800,
-      "r": 17
+      "altitude": 0,
+      "r": 17,
+      "verticalRadius": 20
     },
     "relocated": [
       1010,
@@ -803,23 +845,23 @@
       "kind": "tank_destroyer",
       "faction": "chn",
       "originMode": "model-muzzle",
-      "cameraTarget": 241,
+      "cameraTarget": 253,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
-        720.8984359352268,
+        720.89823744546,
         17.687249981117247,
-        803.9803672661311
+        803.943618320913
       ],
-      "size": 2.751426141157029,
-      "gap": 4.232963294087737,
+      "size": 2.727692887095687,
+      "gap": 4.196450595531826,
       "damage": 0
     },
     {
       "kind": "tank",
       "faction": "chn",
       "originMode": "model-muzzle",
-      "cameraTarget": 245,
+      "cameraTarget": 257,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
@@ -835,7 +877,7 @@
       "kind": "tank",
       "faction": "imp",
       "originMode": "conservative-body",
-      "cameraTarget": 249,
+      "cameraTarget": 261,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
@@ -849,7 +891,7 @@
     }
   ],
   "nativeFocus": {
-    "recordedAt": "2026-10-17T02:32:38.166Z",
+    "recordedAt": "2026-10-17T15:56:45.964Z",
     "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
     "nativeBefore": {
       "fullScreen": true,
@@ -865,7 +907,7 @@
       "events": [
         {
           "trusted": true,
-          "at": 52969.200000047684
+          "at": 57221.800000190735
         }
       ],
       "locked": false,
@@ -875,9 +917,14 @@
         "forward": 0,
         "strafe": 0,
         "yaw": 0,
+        "pitch": 0,
+        "turn": 0,
+        "lift": 0,
+        "throttle": 0,
+        "flightEnabled": false,
         "fire": false,
         "targetId": null,
-        "aimX": 1111.9141630900672,
+        "aimX": 825,
         "aimY": 800,
         "aimHeight": 0
       },
@@ -894,11 +941,16 @@
         "forward": 0,
         "strafe": 0,
         "yaw": 0,
+        "pitch": -0.025,
+        "turn": 0,
+        "lift": 0,
+        "throttle": 0,
+        "flightEnabled": false,
         "fire": false,
         "targetId": null,
-        "aimX": 1111.9141630900672,
+        "aimX": 1111.9141635668075,
         "aimY": 800,
-        "aimHeight": 0
+        "aimHeight": -0.800000011920929
       },
       "position": [
         700,

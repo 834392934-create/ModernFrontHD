@@ -1,0 +1,95 @@
+{
+  "recordedAt": "2026-10-17T15:48:01.097Z",
+  "models": [
+    {
+      "key": "hunter_sub_chn",
+      "scale": 4.4,
+      "parts": 124,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "水下隐蔽 / 500范围声呐 / 对舰与反潜重型鱼雷",
+      "profile": "tapered-single-hull-cruciform-pumpjet-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "hunter_sub",
+      "fiction": false,
+      "referenceUrl": "https://www.navy.mil/Resources/Fact-Files/Display-FactFiles/Article/2169558/attack-submarines-ssn/",
+      "referenceUse": "Structural inspiration only; original game role, not a replica or real performance claim.",
+      "underwaterVisual": true,
+      "kind": "hunter_sub",
+      "triangles": 7288,
+      "dimensions": [
+        15.035000324249268,
+        4.7200000286102295,
+        4.300000190734863
+      ]
+    },
+    {
+      "key": "abyss_tender_chn",
+      "scale": 4.6,
+      "parts": 122,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "无武装 / 仅维修友方水下单位 / 360范围声呐",
+      "profile": "twin-pressure-pod-open-tool-frame-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "abyss_tender",
+      "fiction": false,
+      "referenceUrl": "https://oceanexplorer.noaa.gov/technology/subs-deep-discoverer/",
+      "referenceUse": "Structural inspiration only; original game role, not a replica or real performance claim.",
+      "unarmed": true,
+      "underwaterVisual": true,
+      "kind": "abyss_tender",
+      "triangles": 9860,
+      "dimensions": [
+        9.580843448638916,
+        2.9649999737739563,
+        4.949999809265137
+      ]
+    },
+    {
+      "key": "omni_striker_chn",
+      "scale": 5.9,
+      "parts": 344,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "昂贵先进科技 / 陆海潜空天及基地攻击 / 700范围声呐",
+      "profile": "swept-wing-twin-engine-liftfan-striker-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "omni_striker",
+      "fiction": true,
+      "referenceUrl": "https://ntrs.nasa.gov/citations/20220017632",
+      "referenceUse": "Structural inspiration only; original game role, not a replica or real performance claim.",
+      "kind": "omni_striker",
+      "triangles": 20192,
+      "dimensions": [
+        10.900000095367432,
+        2.5518910884857178,
+        11.800000190734863
+      ]
+    },
+    {
+      "key": "omni_dreadnought_chn",
+      "scale": 5,
+      "parts": 188,
+      "original": true,
+      "evidenceStatus": "original-role-variant",
+      "designRole": "极昂贵轨道旗舰 / 陆海潜空天及基地攻击 / 受AI太空武器禁令约束",
+      "profile": "armoured-spinal-capital-ship-radiator-outriggers-chn-v2",
+      "detailPass": 2,
+      "modelFamily": "omni_dreadnought",
+      "fiction": true,
+      "referenceUrl": "https://www.esa.int/ESA_Multimedia/Images/2016/07/Shaker_test_of_radiator_panel",
+      "referenceUse": "Structural inspiration only; original game role, not a replica or real performance claim.",
+      "weaponVisual": "spinal-launcher-with-side-mission-pods",
+      "kind": "omni_dreadnought",
+      "triangles": 8780,
+      "dimensions": [
+        14.58749771118164,
+        3.6200000643730164,
+        13.170000076293945
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

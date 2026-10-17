@@ -1,14 +1,14 @@
 /* Rendering-independent range hints. Simulation owns every radius and eligibility rule. */
 (function(root){
  'use strict';const {B,U}=root.WarData;
- const names={ground:'陆',naval:'海',air:'空',space:'天',structure:'建筑'};
+ const names={ground:'陆',naval:'海',air:'空',space:'天',underwater:'水下',structure:'建筑'};
  const fmt=n=>String(Number(n.toFixed(1)));
- const colors={attack:'#f2cd7c',blind:'#ec957e',intercept:'#9cd5ec',repair:'#89d6a4',shield:'#b7a3ed',jam:'#eea3b5',link:'#c5bd89',sight:'#8ac6da'};
+ const colors={attack:'#f2cd7c',blind:'#ec957e',intercept:'#9cd5ec',repair:'#89d6a4',shield:'#b7a3ed',sonar:'#79c9bc',jam:'#eea3b5',link:'#c5bd89',sight:'#8ac6da'};
  function describe(p){const scopes=p.zones.filter(z=>z.type!=='blind').map(z=>z.label+' '+fmt(z.radius)+(z.domains?.length?' ['+z.domains.map(d=>names[d]).join('/')+']':''));return (p.reason?p.reason+' · 标称范围 · ':'')+scopes.join(' · ')+(p.min?' · 盲区 '+p.min:'')+(p.boosted?' · 雷达 +15%':'')+(p.preview?' · 建成电力 '+p.power:'')+(scopes.length?'（游戏单位）':'');}
  function collect(game,ui,renderer){
   if(ui.demo||ui.rangeMode==='off')return [];
   const records=[],picked=new Map();
-  const choose=(e,focus=false)=>{if(!e||e.hp<=0||e.team!==0&&!game.visibleAt(e.x,e.y))return;const p=renderer.toScreen(e.x,e.y);if(p.x< -250||p.x>renderer.width+250||p.y< -250||p.y>renderer.height+250)return;const old=picked.get(e.id);picked.set(e.id,{e,focus:focus||old?.focus});};
+  const choose=(e,focus=false)=>{if(!e||e.hp<=0||e.team!==0&&!(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))return;const p=renderer.toScreen(e.x,e.y);if(p.x< -250||p.x>renderer.width+250||p.y< -250||p.y>renderer.height+250)return;const old=picked.get(e.id);picked.set(e.id,{e,focus:focus||old?.focus});};
   if(ui.rangeMode==='defenses')game.entities.filter(e=>e.team===0&&e.structure&&(B[e.kind].damage||B[e.kind].defense)).slice(0,16).forEach(e=>choose(e));
   [...(ui.selection||[])].slice(0,6).forEach(id=>choose(game.get(id),true));choose(game.get(ui.hover),true);
   for(const {e,focus} of picked.values()){const profile=game.rangeProfile(e);if(profile.zones.length)records.push({id:e.id,kind:e.kind,x:e.x,y:e.y,focus,profile,label:describe(profile)});}
