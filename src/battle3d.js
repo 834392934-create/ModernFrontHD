@@ -60,7 +60,8 @@
     removeObject(id){const o=this.objects.get(id);if(!o)return;root.WarPersonnelAnimation?.release(o);this.scene.remove(o);this.objects.delete(id);}
     clearObjects(){for(const id of this.objects.keys())this.removeObject(id);}
     disposeWorld(){
-      const geos=new Set(),mats=new Set();this.world.traverse(o=>{if(o.geometry)geos.add(o.geometry);if(o.material)mats.add(o.material);});
+      this.treeVisual=null;
+      const geos=new Set(),mats=new Set();this.world.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.geometry)geos.add(o.geometry);if(o.material)mats.add(o.material);});
       geos.forEach(g=>g.dispose());mats.forEach(m=>{m.map?.dispose();m.normalMap?.dispose();m.userData.detailTexture?.dispose();m.dispose();});this.world.clear();
       this.clearObjects();
     }
@@ -106,15 +107,7 @@
         if(type===4){bridges.box(48,2,48,px,1,pz,0x8d9082);if(![4].includes(game.map.tiles[(y-1)*COLS+x]))bridges.box(48,4,1,px,4,pz-23,0xa7a697);if(game.map.tiles[(y+1)*COLS+x]!==4)bridges.box(48,4,1,px,4,pz+23,0xa7a697);}
       }
       for(const b of [water,rocks,bridges]){const mesh=b.finish();mesh.material=this.fogify(new T.MeshStandardMaterial({vertexColors:true,roughness:b===water?.32:.95,metalness:b===water?.25:0}));if(b===water){mesh.castShadow=false;mesh.name='water-surface';mesh.material.side=T.DoubleSide;mesh.material.transparent=true;mesh.material.opacity=.66;mesh.material.depthWrite=false;this.water=mesh;}this.world.add(mesh);}
-      const treeGeo=new T.IcosahedronGeometry(1,1),treeMat=this.fogify(new T.MeshStandardMaterial({color:desert?0x71704a:0x3c583b,roughness:1}));
-      const trees=new T.InstancedMesh(treeGeo,treeMat,2500);trees.castShadow=trees.receiveShadow=true;const trunk=new T.InstancedMesh(new T.CylinderGeometry(1,2,1,5),this.fogify(new T.MeshStandardMaterial({color:0x65614a})),200);trunk.castShadow=true;
-      const dummy=new T.Object3D();let ti=0,bi=0;
-      for(let i=0;i<1800&&bi<170;i++){
-        const x=170+rnd()*(W-340),y=210+rnd()*(H-420),idx=Math.floor(y/48)*COLS+Math.floor(x/48);
-        if(game.map.tiles[idx]>1||Math.abs(y-H/2)<75||[720,2352].some(a=>Math.abs(x-a*W/3072)<85)||game.map.spawns.some(p=>Math.hypot(x-p.x,y-p.y)<330)||game.nodes.some(n=>Math.hypot(x-n.x,y-n.y)<120)||game.ore.some(o=>Math.hypot(x-o.x,y-o.y)<130))continue;
-        const h=desert?12+rnd()*12:22+rnd()*22;dummy.position.set(x,h*.4,y);dummy.scale.set(2,h*.8,2);dummy.rotation.set(0,0,0);dummy.updateMatrix();trunk.setMatrixAt(bi++,dummy.matrix);
-        for(let j=0;j<12;j++){const a=j*2.4,rad=8+rnd()*6;dummy.position.set(x+Math.cos(a)*rad,h+Math.sin(j*1.6)*8,y+Math.sin(a)*rad);dummy.scale.set(h*.23,h*.28,h*.22);dummy.rotation.set(rnd(),rnd(),rnd());dummy.updateMatrix();trees.setMatrixAt(ti,dummy.matrix);trees.setColorAt(ti++,new T.Color().setHSL(.25+rnd()*.07,.19+rnd()*.1,.63+rnd()*.2));}
-      }trees.count=ti;trunk.count=bi;trees.instanceMatrix.needsUpdate=true;trunk.instanceMatrix.needsUpdate=true;this.world.add(trees,trunk);trunk.userData.firstPersonOccluder=true;this.vegetationColliders=[];const trunkMatrix=new T.Matrix4();for(let n=0;n<bi;n++){trunk.getMatrixAt(n,trunkMatrix);const p=new T.Vector3().setFromMatrixPosition(trunkMatrix);this.vegetationColliders.push({x:p.x,y:p.z,r:4,height:p.y*2+20});}
+      this.treeVisual=root.WarTrees.createVisual(game,material=>this.fogify(material));this.world.add(...this.treeVisual.meshes);this.vegetationColliders=root.WarTrees.liveColliders(game);
       for(const n of game.nodes){const b=new root.WarModels.Builder();b.box(48,2,46,n.x,1,n.y,0x8c8b75);for(const side of [-1,1]){b.box(21,15,14,n.x+side*17,9,n.y,0x6b7763);for(let k=0;k<6;k++)b.box(1,14,14.2,n.x+side*17-9+k*3.4,9,n.y,0x7b8978);}b.cyl(1,40,n.x,22,n.y,0x9c9f8d);const m=b.finish();m.material=this.fogify(new T.MeshStandardMaterial({vertexColors:true,roughness:.9}));this.world.add(m);}
       this.oreObjects=[];
       for(const ore of game.ore||[]){
@@ -139,13 +132,14 @@
       const im=this.fogCtx.createImageData(COLS,ROWS);for(let i=0;i<COLS*ROWS;i++){im.data[i*4]=14;im.data[i*4+1]=23;im.data[i*4+2]=26;im.data[i*4+3]=demo||game.buffs.has('vision')||game.visible[i]?0:game.explored[i]?155:248;}this.fogCtx.putImageData(im,0,0);this.fogTex.needsUpdate=true;this.fogEnabled.value=demo?0:1;
     }
     draw(game,ui={},time=0){
+      this.treeVisual?.sync(game);
       this.syncCamera();this.updateFog(game,!!ui.demo);this.underwaterScene?.update(this.firstPerson?.underwater===true,time);if(this.altitudeScene&&!this.firstPerson?.active)this.altitudeScene.group.visible=false;const g=this.ctx;g.setTransform(this.dpr,0,0,this.dpr,0,0);g.clearRect(0,0,this.width,this.height);
       for(const {m,ore}of this.oreObjects||[])m.material.color.setHex(ore.amount>0?0xffffff:0x7a7e78);
       if(this.contextLost){g.fillStyle='#dbe3d8';g.fillText('图形设备正在恢复…',40,90);return;}
       const night=root.ModernFront?.lighting?.night;this.sun.intensity=night?1:this.firstPerson?.active?2.6:3;this.hemi.intensity=night?.6:this.firstPerson?.active?1.2:2;
       const lightHeight=this.firstPerson?.active?this.firstPerson.eye.y:0;this.sun.position.set(this.camera.x-600,lightHeight+1400,this.camera.y+350);this.sun.target.position.set(this.camera.x,lightHeight,this.camera.y);this.sun.target.updateMatrixWorld();
       const alive=new Set();let visibleCount=0;
-      for(const e of game.entities){alive.add(e.id);let o=this.objects.get(e.id),p=this.entityScreen(e);const visible=(ui.demo||e.team===0||(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))&&(this.firstPerson?.active?Math.hypot(e.x-this.camera.x,e.y-this.camera.y)<3200:p.x>-140&&p.x<this.width+140&&p.y>-160&&p.y<this.height+180);
+      for(const e of game.entities){alive.add(e.id);let o=this.objects.get(e.id),p=this.entityScreen(e);const visible=(ui.demo||e.team===0||(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))&&(this.firstPerson?.active?(this.firstPerson.orbitScope?.active||Math.hypot(e.x-this.camera.x,e.y-this.camera.y)<3200):p.x>-140&&p.x<this.width+140&&p.y>-160&&p.y<this.height+180);
         if(!visible){if(o)o.visible=false;continue;}
         if(!o){o=root.WarModels.create(e.kind,game.teams[e.team].faction);o.scale.setScalar(o.userData.scale);o.traverse(m=>{if(m.isMesh&&m.userData.preserveMaterial)for(const mat of Array.isArray(m.material)?m.material:[m.material])this.fogify(mat)});this.objects.set(e.id,o);this.scene.add(o);}
         o.visible=e.id!==this.firstPerson?.entityId;visibleCount++;o.position.set(e.x,this.entityHeight(e),e.y);o.rotation.set(e.roll||0,e.structure?0:-e.angle,e.pitch||0,'YZX');

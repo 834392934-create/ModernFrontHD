@@ -1,6 +1,7 @@
 (function (root) {
   "use strict";
   if(typeof module!=='undefined'&&typeof require==='function')require('./navigation-footprints.js');
+  if(typeof module!=='undefined'&&typeof require==='function')require('./destructible-trees.js');
   const D = root.WarData,
     { F, U, B, W, H, T, COLS, ROWS, ABILITIES } = D,
     clamp = (v, a, b) => Math.max(a, Math.min(b, v)),
@@ -353,6 +354,7 @@
         this.spawn(i, "satellite", p.x + 40, p.y - 140 * dir);
         if(i===0&&U.operator)this.spawn(i,'operator',p.x-160,p.y+205*dir);
       }
+      this.directObstacles=root.WarTrees.liveColliders(this);
       this.spatial.rebuild(this.entities);
       this.updateFog();
       this.message("行动开始。占领补给站，摧毁敌方指挥中心。");
@@ -547,6 +549,7 @@
     beginDirectControl(id) {
       const e=this.get(id);
       if(this.result||!e||e.team!==0||e.structure||!U[e.kind])return false;
+      if(this.vehiclePrepareDirect&&!this.vehiclePrepareDirect(id))return false;
       this.endDirectControl();
       this.directFeedback=null;
       this._directTeamAI={aiClock:this.teams[0].aiClock,attackAt:this.teams[0].attackAt};
@@ -586,6 +589,7 @@
         forward:clamp(finite(input.forward),-1,1),strafe:clamp(finite(input.strafe),-1,1),yaw,
         pitch:clamp(finite(input.pitch),-1.15,1.15),turn:clamp(finite(input.turn),-1,1),lift:clamp(finite(input.lift),-1,1),throttle:clamp(finite(input.throttle),-1,1),flightEnabled:input.flightEnabled===true,
         fire:!!input.fire,ads:!!input.ads,jump:input.jump===true,targetId:Number.isInteger(input.targetId)?input.targetId:null,
+        targetTreeId:typeof input.targetTreeId==='string'&&root.WarTrees.get(this,input.targetTreeId)?.hp>0?input.targetTreeId:null,
         aimX:clamp(finite(input.aimX,e.x+Math.cos(yaw)*(d.range||250)),0,W),
         aimY:clamp(finite(input.aimY,e.y+Math.sin(yaw)*(d.range||250)),0,H),
         aimHeight:clamp(finite(input.aimHeight,this.entityAltitude(this.get(input.targetId)||e)),-160,14000),
@@ -635,6 +639,8 @@
         ttl:travel,max:travel,rocket:weaponFx!=='torpedo'&&(!!d.rocket||['rocket','heli','asat','sam'].includes(e.kind)),space:!!d.spaceWeapon,
         sourceKind:e.kind,sourceId:e.id,sourceHeight:this.entityAltitude(e)+(e.structure?20:!d.air&&!d.naval?12:0),
         targetHeight:aim?.fixedImpact?aim.height:target?this.entityAltitude(target):(aim?.height??5),
+        // Environment impacts share projectile arrival, cooldown and ammunition, but do not turn a unit miss into a hit.
+        targetTreeId:aim?.targetTreeId??null,treeDamage:d.damage,treeSplash:d.splash||0,
         weaponFx:weaponFx||(e.kind==='orbital'?'orbital-beam':e.kind==='orbital_interceptor'?'interceptor-burst':e.kind==='asat'?'asat-missile':e.kind==='laser'?'laser-beam':'projectile'),
         ...(weapon?{operatorTargets:weapon.targets,weaponId:weapon.id}:{}),
         ...(!target?{miss:true}:{}),
@@ -714,7 +720,7 @@
       if(target)e.turret=Math.atan2(target.y-e.y,target.x-e.x);
       if(!input.fire||!d.damage||e.cool>0)return;
       let ax=input.aimX-e.x,ay=input.aimY-e.y,az=input.aimHeight-this.entityAltitude(e),crossLayer=candidate?(!!d.space!==!!U[candidate.kind]?.space):(!!d.space!==(input.aimHeight>=2000)),length=Math.hypot(ax,ay,crossLayer?0:az),factor=length>range?range/length:1;
-      this.emitShot(e,target,{x:e.x+ax*factor,y:e.y+ay*factor,height:crossLayer?input.aimHeight:this.entityAltitude(e)+az*factor,fixedImpact:true});
+      this.emitShot(e,target,{x:e.x+ax*factor,y:e.y+ay*factor,height:crossLayer?input.aimHeight:this.entityAltitude(e)+az*factor,targetTreeId:input.targetTreeId,fixedImpact:true});
     }
     train(team, kind) {
       const t = this.teams[team],
@@ -1027,6 +1033,7 @@
       if(e.lastHitSourceId===this.directControl?.id&&this.isEnemy(from,e.team))
         this.directFeedback={hitAt:this.time,sourceId:e.lastHitSourceId,targetId:e.id,damage:actual};
       if (e.hp <= 0) {
+        this.vehicleDestroyed?.(e,from);
         if(e.id===this.directControl?.id)this.endDirectControl();
         const t = this.teams[e.team];
         t.lost++;
@@ -1524,6 +1531,7 @@
           active.push(fx);
           continue;
         }
+        root.WarTrees.impact(this,fx);
         if (fx.type === "shot") {
           if (fx.splash) {
             for (const e of this.spatial.query(fx.tx, fx.ty, fx.splash))
@@ -1665,6 +1673,7 @@
         explored: Array.from(this.explored),
         result: this.result,
         ore: this.ore,
+        trees: root.WarTrees.serialize(this),
         formation: this.formation,
       });
     }
@@ -1802,6 +1811,9 @@
         if((U[target?.kind]?.space||fx.targetDomain==='space')&&legacy(fx.targetHeight))fx.targetHeight=4000;
         if(U[target?.kind]?.space&&fx.directHitArea&&legacy(fx.directHitArea.altitude))fx.directHitArea.altitude=4000;
       }
+      g.validateVehicleCrews?.();
+      root.WarTrees.restore(g,s.trees);
+      g.directObstacles=root.WarTrees.liveColliders(g);
       g.spatial.rebuild(g.entities);
       if(g.options.aiSpaceWeapons===false)g.setAISpaceWeapons(false);
       g.updateFog();
@@ -1811,4 +1823,5 @@
   }
   root.WarSim = { PLAYER_PROTECTION_DEFAULTS, PLAYER_JUMP_DEFAULTS, Game, makeMap, findPath, rng, Spatial, dist };
   if(typeof module!=='undefined'&&typeof require==='function')require('./operator-sim.js');
+  if(typeof module!=='undefined'&&typeof require==='function')require('./vehicle-interaction.js');
 })(typeof globalThis !== "undefined" ? globalThis : this);

@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-18T13:36:02.778Z",
+  "recordedAt": "2026-10-18T14:20:59.442Z",
   "environment": "Packaged Electron",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
@@ -36,7 +36,7 @@
     },
     {
       "kind": "ifv",
-      "id": 45,
+      "id": 46,
       "domain": "ground",
       "mode": "ground",
       "weaponProfile": "original-ground-controls",
@@ -46,7 +46,7 @@
     },
     {
       "kind": "arty",
-      "id": 48,
+      "id": 50,
       "domain": "ground",
       "mode": "ground",
       "weaponProfile": "original-ground-controls",
@@ -56,7 +56,7 @@
     },
     {
       "kind": "rocket",
-      "id": 51,
+      "id": 54,
       "domain": "ground",
       "mode": "ground",
       "weaponProfile": "original-ground-controls",
@@ -66,7 +66,7 @@
     },
     {
       "kind": "aa",
-      "id": 54,
+      "id": 58,
       "domain": "ground",
       "mode": "ground",
       "weaponProfile": "original-ground-controls",
@@ -76,7 +76,7 @@
     },
     {
       "kind": "heli",
-      "id": 57,
+      "id": 62,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -86,7 +86,7 @@
     },
     {
       "kind": "jet",
-      "id": 60,
+      "id": 66,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -96,7 +96,7 @@
     },
     {
       "kind": "fighter",
-      "id": 63,
+      "id": 70,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -106,7 +106,7 @@
     },
     {
       "kind": "destroyer",
-      "id": 66,
+      "id": 74,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -116,7 +116,7 @@
     },
     {
       "kind": "carrier",
-      "id": 69,
+      "id": 78,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -126,7 +126,7 @@
     },
     {
       "kind": "submarine",
-      "id": 72,
+      "id": 82,
       "domain": "naval",
       "mode": "underwater",
       "weaponProfile": "original-underwater-controls",
@@ -136,7 +136,7 @@
     },
     {
       "kind": "satellite",
-      "id": 75,
+      "id": 86,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -146,7 +146,7 @@
     },
     {
       "kind": "orbital",
-      "id": 78,
+      "id": 90,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -156,7 +156,7 @@
     },
     {
       "kind": "orbital_interceptor",
-      "id": 81,
+      "id": 94,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -166,7 +166,7 @@
     },
     {
       "kind": "asat",
-      "id": 84,
+      "id": 98,
       "domain": "ground",
       "mode": "ground",
       "weaponProfile": "original-ground-controls",
@@ -176,7 +176,7 @@
     },
     {
       "kind": "harvester",
-      "id": 87,
+      "id": 102,
       "domain": "ground",
       "mode": "ground",
       "weaponProfile": "original-ground-controls",
@@ -186,7 +186,7 @@
     },
     {
       "kind": "antitank_team",
-      "id": 90,
+      "id": 106,
       "domain": "ground",
       "mode": "infantry",
       "weaponProfile": "original-shoulder-launcher",
@@ -196,7 +196,7 @@
     },
     {
       "kind": "machinegun_team",
-      "id": 93,
+      "id": 109,
       "domain": "ground",
       "mode": "infantry",
       "weaponProfile": "original-belt-fed-machinegun",
@@ -206,7 +206,7 @@
     },
     {
       "kind": "recon_vehicle",
-      "id": 96,
+      "id": 112,
       "domain": "ground",
       "mode": "ground",
       "weaponProfile": "original-ground-controls",
@@ -216,7 +216,7 @@
     },
     {
       "kind": "repair_vehicle",
-      "id": 99,
+      "id": 116,
       "domain": "ground",
       "mode": "ground",
       "weaponProfile": "original-ground-controls",
@@ -226,7 +226,7 @@
     },
     {
       "kind": "mortar_team",
-      "id": 102,
+      "id": 120,
       "domain": "ground",
       "mode": "infantry",
       "weaponProfile": "original-mortar-observation",
@@ -236,7 +236,7 @@
     },
     {
       "kind": "assault_team",
-      "id": 105,
+      "id": 123,
       "domain": "ground",
       "mode": "infantry",
       "weaponProfile": "original-rifle",
@@ -246,7 +246,7 @@
     },
     {
       "kind": "frigate",
-      "id": 108,
+      "id": 126,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -256,7 +256,7 @@
     },
     {
       "kind": "patrol_boat",
-      "id": 111,
+      "id": 130,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -266,7 +266,7 @@
     },
     {
       "kind": "missile_boat",
-      "id": 114,
+      "id": 134,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -276,7 +276,7 @@
     },
     {
       "kind": "shore_bombardment",
-      "id": 117,
+      "id": 138,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -286,7 +286,7 @@
     },
     {
       "kind": "air_defense_ship",
-      "id": 120,
+      "id": 142,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -296,7 +296,7 @@
     },
     {
       "kind": "repair_ship",
-      "id": 123,
+      "id": 146,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -306,7 +306,7 @@
     },
     {
       "kind": "recon_boat",
-      "id": 126,
+      "id": 150,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -316,7 +316,7 @@
     },
     {
       "kind": "recon_drone",
-      "id": 129,
+      "id": 154,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -326,7 +326,7 @@
     },
     {
       "kind": "attack_drone",
-      "id": 132,
+      "id": 158,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -336,7 +336,7 @@
     },
     {
       "kind": "interceptor",
-      "id": 135,
+      "id": 162,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -346,7 +346,7 @@
     },
     {
       "kind": "close_support_aircraft",
-      "id": 138,
+      "id": 166,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -356,7 +356,7 @@
     },
     {
       "kind": "heavy_bomber",
-      "id": 141,
+      "id": 170,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -366,7 +366,7 @@
     },
     {
       "kind": "early_warning_aircraft",
-      "id": 144,
+      "id": 174,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -376,7 +376,7 @@
     },
     {
       "kind": "escort_helicopter",
-      "id": 147,
+      "id": 178,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -386,7 +386,7 @@
     },
     {
       "kind": "orbital_sniper",
-      "id": 150,
+      "id": 182,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -396,7 +396,7 @@
     },
     {
       "kind": "orbital_point_defense",
-      "id": 153,
+      "id": 186,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -406,7 +406,7 @@
     },
     {
       "kind": "orbital_bombardment",
-      "id": 156,
+      "id": 190,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -416,7 +416,7 @@
     },
     {
       "kind": "orbital_siege",
-      "id": 159,
+      "id": 194,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -426,7 +426,7 @@
     },
     {
       "kind": "orbital_repair",
-      "id": 162,
+      "id": 198,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -436,7 +436,7 @@
     },
     {
       "kind": "orbital_mapper",
-      "id": 165,
+      "id": 202,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -446,7 +446,7 @@
     },
     {
       "kind": "orbital_raider",
-      "id": 168,
+      "id": 206,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -456,7 +456,7 @@
     },
     {
       "kind": "tank_destroyer",
-      "id": 171,
+      "id": 210,
       "domain": "ground",
       "mode": "ground",
       "weaponProfile": "original-ground-controls",
@@ -466,7 +466,7 @@
     },
     {
       "kind": "siege_howitzer",
-      "id": 174,
+      "id": 214,
       "domain": "ground",
       "mode": "ground",
       "weaponProfile": "original-ground-controls",
@@ -476,7 +476,7 @@
     },
     {
       "kind": "field_medic",
-      "id": 177,
+      "id": 218,
       "domain": "ground",
       "mode": "medical",
       "weaponProfile": "original-medical-device",
@@ -486,7 +486,7 @@
     },
     {
       "kind": "torpedo_boat",
-      "id": 180,
+      "id": 221,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -496,7 +496,7 @@
     },
     {
       "kind": "arsenal_ship",
-      "id": 183,
+      "id": 225,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -506,7 +506,7 @@
     },
     {
       "kind": "escort_corvette",
-      "id": 186,
+      "id": 229,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -516,7 +516,7 @@
     },
     {
       "kind": "rescue_helicopter",
-      "id": 189,
+      "id": 233,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -526,7 +526,7 @@
     },
     {
       "kind": "naval_strike_aircraft",
-      "id": 192,
+      "id": 237,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -536,7 +536,7 @@
     },
     {
       "kind": "electronic_warfare_aircraft",
-      "id": 195,
+      "id": 241,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -546,7 +546,7 @@
     },
     {
       "kind": "orbital_escort",
-      "id": 198,
+      "id": 245,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -556,7 +556,7 @@
     },
     {
       "kind": "orbital_relay",
-      "id": 201,
+      "id": 249,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -566,7 +566,7 @@
     },
     {
       "kind": "orbital_jammer",
-      "id": 204,
+      "id": 253,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -576,7 +576,7 @@
     },
     {
       "kind": "sniper_team",
-      "id": 207,
+      "id": 257,
       "domain": "ground",
       "mode": "infantry",
       "weaponProfile": "original-marksman-rifle",
@@ -586,7 +586,7 @@
     },
     {
       "kind": "mobile_ciws",
-      "id": 210,
+      "id": 260,
       "domain": "ground",
       "mode": "ground",
       "weaponProfile": "original-ground-controls",
@@ -596,7 +596,7 @@
     },
     {
       "kind": "fleet_command_ship",
-      "id": 213,
+      "id": 264,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -606,7 +606,7 @@
     },
     {
       "kind": "electronic_warfare_ship",
-      "id": 216,
+      "id": 268,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -616,7 +616,7 @@
     },
     {
       "kind": "air_repair_drone",
-      "id": 219,
+      "id": 272,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -626,7 +626,7 @@
     },
     {
       "kind": "interceptor_drone",
-      "id": 222,
+      "id": 276,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -636,7 +636,7 @@
     },
     {
       "kind": "orbital_shield",
-      "id": 225,
+      "id": 280,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -646,7 +646,7 @@
     },
     {
       "kind": "orbital_missile_barge",
-      "id": 228,
+      "id": 284,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -656,7 +656,7 @@
     },
     {
       "kind": "hunter_sub",
-      "id": 231,
+      "id": 288,
       "domain": "naval",
       "mode": "underwater",
       "weaponProfile": "original-underwater-controls",
@@ -666,7 +666,7 @@
     },
     {
       "kind": "abyss_tender",
-      "id": 234,
+      "id": 292,
       "domain": "naval",
       "mode": "underwater",
       "weaponProfile": "original-underwater-controls",
@@ -676,7 +676,7 @@
     },
     {
       "kind": "omni_striker",
-      "id": 237,
+      "id": 296,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -686,7 +686,7 @@
     },
     {
       "kind": "omni_dreadnought",
-      "id": 240,
+      "id": 300,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -696,7 +696,7 @@
     },
     {
       "kind": "assault_gun",
-      "id": 243,
+      "id": 304,
       "domain": "ground",
       "mode": "ground",
       "weaponProfile": "original-ground-controls",
@@ -706,7 +706,7 @@
     },
     {
       "kind": "mobile_radar",
-      "id": 246,
+      "id": 308,
       "domain": "ground",
       "mode": "ground",
       "weaponProfile": "original-ground-controls",
@@ -716,7 +716,7 @@
     },
     {
       "kind": "asw_patrol_ship",
-      "id": 249,
+      "id": 312,
       "domain": "naval",
       "mode": "naval",
       "weaponProfile": "original-naval-controls",
@@ -726,7 +726,7 @@
     },
     {
       "kind": "missile_sub",
-      "id": 252,
+      "id": 316,
       "domain": "naval",
       "mode": "underwater",
       "weaponProfile": "original-underwater-controls",
@@ -736,7 +736,7 @@
     },
     {
       "kind": "high_altitude_interceptor",
-      "id": 255,
+      "id": 320,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -746,7 +746,7 @@
     },
     {
       "kind": "strategic_strike_aircraft",
-      "id": 258,
+      "id": 324,
       "domain": "air",
       "mode": "air",
       "weaponProfile": "original-air-controls",
@@ -756,7 +756,7 @@
     },
     {
       "kind": "orbital_carrier",
-      "id": 261,
+      "id": 328,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -766,7 +766,7 @@
     },
     {
       "kind": "orbital_sensor",
-      "id": 264,
+      "id": 332,
       "domain": "space",
       "mode": "space",
       "weaponProfile": "original-space-controls",
@@ -776,7 +776,7 @@
     },
     {
       "kind": "operator",
-      "id": 267,
+      "id": 336,
       "domain": "ground",
       "mode": "infantry",
       "weaponProfile": "original-operator-rifle",
@@ -848,7 +848,7 @@
       },
       "after": {
         "x": 700,
-        "y": 821.6000000000001,
+        "y": 825.2000000000002,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -857,13 +857,13 @@
       "key": "KeyA",
       "before": {
         "x": 700,
-        "y": 821.6000000000001,
+        "y": 825.2000000000002,
         "yaw": 0,
         "pitch": -0.025
       },
       "after": {
         "x": 700,
-        "y": 800,
+        "y": 803.6,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -872,7 +872,7 @@
   "ads": {
     "hip": 70,
     "active": true,
-    "fov": 48.02818522014845,
+    "fov": 48.03374383494514,
     "view": "infantry"
   },
   "ai": {
@@ -883,7 +883,7 @@
     "controlledOrder": null
   },
   "aim": {
-    "target": 277,
+    "target": 347,
     "point": [
       828.4683744545998,
       13.859999811172484,
@@ -895,16 +895,16 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 22.85000000000019,
-      "sourceId": 276,
-      "targetId": 277,
+      "hitAt": 24.20000000000021,
+      "sourceId": 346,
+      "targetId": 347,
       "damage": 74
     },
     "incoming": {
       "x": 700,
       "y": 800,
-      "sourceId": 276,
-      "time": 22.85000000000019
+      "sourceId": 346,
+      "time": 24.20000000000021
     },
     "hudConfirmed": true
   },
@@ -935,7 +935,7 @@
       "kind": "tank_destroyer",
       "faction": "chn",
       "originMode": "model-muzzle",
-      "cameraTarget": 281,
+      "cameraTarget": 352,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
@@ -951,7 +951,7 @@
       "kind": "tank",
       "faction": "chn",
       "originMode": "model-muzzle",
-      "cameraTarget": 285,
+      "cameraTarget": 357,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
@@ -967,7 +967,7 @@
       "kind": "tank",
       "faction": "imp",
       "originMode": "conservative-body",
-      "cameraTarget": 289,
+      "cameraTarget": 362,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
@@ -981,7 +981,7 @@
     }
   ],
   "nativeFocus": {
-    "recordedAt": "2026-10-18T13:36:55.305Z",
+    "recordedAt": "2026-10-18T14:21:53.828Z",
     "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
     "nativeBefore": {
       "fullScreen": true,
@@ -989,7 +989,7 @@
       "minimized": false
     },
     "nativeBlurred": {
-      "focused": true,
+      "focused": false,
       "minimized": true
     },
     "blurred": {
@@ -997,7 +997,7 @@
       "events": [
         {
           "trusted": true,
-          "at": 51517.59999990463
+          "at": 53358.09999990463
         }
       ],
       "locked": false,
@@ -1016,6 +1016,7 @@
         "ads": false,
         "jump": false,
         "targetId": null,
+        "targetTreeId": null,
         "aimX": 825,
         "aimY": 800,
         "aimHeight": 0
@@ -1042,6 +1043,7 @@
         "ads": false,
         "jump": false,
         "targetId": null,
+        "targetTreeId": null,
         "aimX": 1111.9141635668075,
         "aimY": 800,
         "aimHeight": -0.800000011920929

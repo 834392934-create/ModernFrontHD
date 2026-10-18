@@ -40,7 +40,7 @@
    const angle=this.random()*Math.PI*2,spread=Math.sqrt(this.random())*w.spread*(input.ads?.45:1)*Math.min(len,range),ox=Math.cos(angle)*spread,oy=Math.sin(angle)*spread;
    const target=valid&&Math.hypot(input.aimX+ox-candidate.x,input.aimY+oy-candidate.y)<=candidate.r?candidate:null;
    e.cool=0;
-   this.emitShot(e,target,{x:e.x+ax*factor+ox,y:e.y+ay*factor+oy,height:cross?input.aimHeight:this.entityAltitude(e)+az*factor,fixedImpact:true},{...w,reload:w.fireInterval,rocket:w.category==='launcher'});
+   this.emitShot(e,target,{x:e.x+ax*factor+ox,y:e.y+ay*factor+oy,height:cross?input.aimHeight:this.entityAltitude(e)+az*factor,targetTreeId:input.targetTreeId,fixedImpact:true},{...w,reload:w.fireInterval,rocket:w.category==='launcher'});
   }
   e.cool=w.fireInterval;
  };

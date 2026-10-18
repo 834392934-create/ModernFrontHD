@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-18T13:39:04.308Z",
+  "recordedAt": "2026-10-18T14:20:48.216Z",
   "checks": [
     "Real setup starts in selected owned tank; commander mode remains separate",
     "J opens live roster, clears driving input and leaves simulation / AI running",
@@ -16,7 +16,7 @@
   ],
   "protection": {
     "status": {
-      "protectedId": 37,
+      "protectedId": 41,
       "playerThreats": 1,
       "baseThreats": 0,
       "guardIds": [
@@ -36,6 +36,7 @@
     },
     "text": "基地威胁 0 · 玩家威胁 1 · 守卫 2 / 护卫 0 · 待补维修",
     "queue": [
+      "submarine",
       "hunter_sub",
       "frigate"
     ],

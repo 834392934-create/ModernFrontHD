@@ -1,0 +1,116 @@
+{
+  "recordedAt": "2026-10-18T14:23:36.072Z",
+  "environment": "desktop",
+  "checks": [
+    "Real mouse fire spends rifle ammo; three real F boarding/disembarking cycles preserve one crew ID, HP and spent ammo while remaining in FPS",
+    "Actual Three trunk instance ray resolves stable tree ID; real left-button rifle shots consume ammo and destroy it through projectile impacts; collider and standing ray occluder disappear and stump remains",
+    "Real E exits first person back to RTS",
+    "Real F5/F9 save/load and explicit world rebuild retain the dead tree, visible stump, absent collider/occluder and original crew state"
+  ],
+  "screenshots": [
+    "screenshots/vehicle-tree-aboard-desktop.png",
+    "screenshots/vehicle-tree-tree-before-desktop.png",
+    "screenshots/vehicle-tree-tree-stump-desktop.png",
+    "screenshots/vehicle-tree-tree-reloaded-desktop.png"
+  ],
+  "errors": [],
+  "scope": "Small deterministic interaction fixture; real keyboard/mouse input and rendered Three geometry. No sustained combat or performance claim.",
+  "assets": [
+    {
+      "status": "ready"
+    },
+    {
+      "status": "ready"
+    },
+    {
+      "status": "ready"
+    }
+  ],
+  "fixture": {
+    "crewId": 17,
+    "vehicleId": 34
+  },
+  "crewBeforeBoard": {
+    "id": 17,
+    "hp": 87,
+    "ammo": {
+      "ammo": 16,
+      "reserve": 23
+    },
+    "copies": 1,
+    "controlled": 17,
+    "active": true
+  },
+  "treeFixture": {
+    "id": "tree:1913c402:0",
+    "x": 413.74230216257274,
+    "y": 2677.89185617771,
+    "hp": 90,
+    "trunkHeight": 15.948338402062655
+  },
+  "ray": {
+    "treeId": "tree:1913c402:0",
+    "resolvedId": "tree:1913c402:0",
+    "instanceId": 0,
+    "point": [
+      411.35312290433546,
+      9.5,
+      2677.89185617771
+    ],
+    "distance": 62.61082074176272
+  },
+  "shots": [
+    {
+      "targetTreeId": "tree:1913c402:0",
+      "damage": 0,
+      "baseDamage": 33
+    },
+    {
+      "targetTreeId": "tree:1913c402:0",
+      "damage": 0,
+      "baseDamage": 33
+    },
+    {
+      "targetTreeId": "tree:1913c402:0",
+      "damage": 0,
+      "baseDamage": 33
+    }
+  ],
+  "treeAmmoSpent": 3,
+  "destroyed": {
+    "id": "tree:1913c402:0",
+    "hp": 0,
+    "stump": 12,
+    "trunk": 0,
+    "collider": false,
+    "directCollider": false,
+    "rayHits": 0
+  },
+  "loaded": {
+    "id": "tree:1913c402:0",
+    "hp": 0,
+    "stump": 12,
+    "trunk": 0,
+    "collider": false,
+    "directCollider": false,
+    "rayHits": 0
+  },
+  "rebuilt": {
+    "id": "tree:1913c402:0",
+    "hp": 0,
+    "stump": 12,
+    "trunk": 0,
+    "collider": false,
+    "directCollider": false,
+    "rayHits": 0
+  },
+  "renderEnvironment": {
+    "viewport": [
+      2752,
+      1152
+    ],
+    "dpr": 1.25,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "passed": true
+}

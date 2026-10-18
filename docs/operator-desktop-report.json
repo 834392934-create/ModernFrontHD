@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-18T13:34:52.207Z",
+  "recordedAt": "2026-10-18T14:20:37.662Z",
   "checks": [
     "Actual trigger consumes ammo; R reload transfers reserves; P freezes reload; minimap visible",
     "1/2 and actual wheel change weapons; held semi-automatic trigger fires once",

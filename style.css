@@ -1370,3 +1370,18 @@ body.direct-view #hud,body.direct-view #restore-hud{display:none!important}
 @media(max-width:850px){#operator-portrait{height:130px}}
 @media(max-width:570px){#operator-portrait{width:110px;height:90px;margin:0;flex:none;object-fit:cover}}
 @media(max-height:650px) and (min-width:571px){#operator-portrait{display:none}}
+
+/* Original orbital optical sight; telemetry and minimap remain visible. */
+#direct-orbit-panel{position:absolute;right:28px;top:300px;width:300px;max-width:calc(100vw - 36px);display:grid;gap:10px;padding:15px 17px;background:#091c23e8;border:1px solid #9abbb76b;border-left:2px solid #9cc7b9;box-shadow:0 6px 24px #0004;color:#dceae2;font:12px Consolas,"Microsoft YaHei",sans-serif;pointer-events:auto}
+#direct-orbit-panel[hidden]{display:none}
+#direct-orbit-panel>small{color:#a6c4bb;font-size:10px;letter-spacing:1.4px}
+#direct-orbit-panel>div{display:flex;gap:7px}
+#direct-orbit-panel button{flex:1;padding:8px 6px;min-width:0;background:#243b3b;border:1px solid #779b8e88;color:#e1ede7;font-size:11px;cursor:pointer}
+#direct-orbit-panel button:hover,#direct-orbit-panel button:focus-visible{background:#36584f;border-color:#c7dfc8;outline:1px solid #c7dfc8}
+#direct-orbit-zoom{font-size:12px;font-weight:400;color:#d5ddbf}
+#direct-orbit-contact{display:block;min-height:34px;line-height:1.6;color:#d8bd9b;overflow-wrap:anywhere}
+#direct-orbit-contact.can-fire{color:#c0e6cd}
+.orbit-scoped .direct-shade{opacity:.28}
+.orbit-scoped #direct-reticle:after{content:"";position:absolute;left:50%;top:50%;width:82px;height:82px;transform:translate(-50%,-50%);border:1px solid #b9d8cb66;border-radius:50%;pointer-events:none}
+@media(max-width:850px){#direct-orbit-panel{right:18px;width:238px;padding:11px 12px;gap:8px}#direct-orbit-panel>small{font-size:9px;letter-spacing:.7px}}
+@media(max-height:650px){#direct-orbit-panel{top:auto;bottom:155px;width:260px;padding:10px 12px;gap:6px}#direct-orbit-panel>small{display:none}}

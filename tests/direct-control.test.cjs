@@ -1,7 +1,8 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 require('../src/data.js');require('../src/roster.js');require('../src/sim.js');
 const {Game}=WarSim,{U,T,COLS,ROWS}=WarData;
-function arena(){const g=new Game({map:'desert',faction:'chn',enemies:1,buffs:['vision'],abilities:false,playerOnlyTech:false,aiSpaceWeapons:true});g.entities=[];g.spawn(0,'hq',300,300);g.spawn(1,'hq',2700,1800);g.ore=[];g.map.blocked.fill(0);g.map.navalBlocked.fill(1);g.teams.forEach(t=>{t.aiClock=999999;t.money=0;});return g;}
+// Deliberately empty collision arena; each case supplies its own terrain, resource or tree obstacle.
+function arena(){const g=new Game({map:'desert',faction:'chn',enemies:1,buffs:['vision'],abilities:false,playerOnlyTech:false,aiSpaceWeapons:true});g.entities=[];g.spawn(0,'hq',300,300);g.spawn(1,'hq',2700,1800);g.ore=[];g.directObstacles=[];g.map.blocked.fill(0);g.map.navalBlocked.fill(1);g.teams.forEach(t=>{t.aiClock=999999;t.money=0;});return g;}
 function step(g,seconds){for(let n=0;n<Math.ceil(seconds*20);n++)g.step(.05);}
 test('direct control only accepts living friendly units; entry clears orders and exit preserves position',()=>{
  const g=arena(),a=g.spawn(0,'tank',1000,750),enemy=g.spawn(1,'tank',1500,750),dead=g.spawn(0,'infantry',1050,700);dead.hp=0;

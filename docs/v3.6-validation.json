@@ -1,0 +1,68 @@
+{
+  "recordedAt": "2026-10-18T14:32:03.208Z",
+  "version": "3.6.0",
+  "cpu": {
+    "tests": 423,
+    "pass": 423,
+    "fail": 0
+  },
+  "native": [
+    {
+      "report": "docs/vehicle-tree-desktop-report.json",
+      "recordedAt": "2026-10-18T14:23:36.072Z",
+      "passed": true
+    },
+    {
+      "report": "docs/orbit-scope-desktop-report.json",
+      "recordedAt": "2026-10-18T14:30:37.344Z",
+      "passed": true
+    },
+    {
+      "report": "docs/operator-desktop-report.json",
+      "recordedAt": "2026-10-18T14:20:37.662Z",
+      "passed": true
+    },
+    {
+      "report": "docs/player-mode-desktop-report.json",
+      "recordedAt": "2026-10-18T14:20:48.216Z",
+      "passed": true
+    },
+    {
+      "report": "docs/first-person-desktop-report.json",
+      "recordedAt": "2026-10-18T14:20:59.442Z",
+      "passed": true
+    },
+    {
+      "report": "docs/crowd-desktop-report.json",
+      "recordedAt": "2026-10-18T14:23:47.760Z",
+      "passed": true
+    }
+  ],
+  "possessionKinds": 77,
+  "performance": {
+    "viewport": [
+      2752,
+      1152
+    ],
+    "dpr": 1.25,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "frames": 401,
+    "durationMs": 8007.700000000001,
+    "meanFPS": 50.076801078961495,
+    "p95FrameMs": 20.199999999999818,
+    "entities": 98,
+    "movingUnits": 96,
+    "progressed": 96,
+    "finite": true,
+    "calls": 299,
+    "triangles": 2252698,
+    "visibleEntities": 97,
+    "geometries": 128
+  },
+  "performanceScope": "96 moving mixed ground units, 8-second native fullscreen sample; CPU route completion covered separately.",
+  "notes": [
+    "Native GPU runs were serial on the local RTX 3060.",
+    "Performance is an 8-second 96-unit open-arena sample, not a sustained combat guarantee.",
+    "No new third-party assets or runtime dependencies."
+  ]
+}
