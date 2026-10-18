@@ -1,0 +1,177 @@
+{
+  "recordedAt": "2026-10-18T16:03:32.585Z",
+  "environment": "desktop",
+  "checks": [
+    "operator：五档真实变焦均可开火、射程未变、目标距离与小地图常驻",
+    "行动员未瞄准滚轮切枪，瞄准滚轮只变焦，1/2继续切枪",
+    "8秒真实持续射击性能样本：记录GPU、分辨率、实体数及帧间隔P95",
+    "tank：五档真实变焦均可开火、射程未变、目标距离与小地图常驻",
+    "destroyer：五档真实变焦均可开火、射程未变、目标距离与小地图常驻",
+    "submarine：五档真实变焦均可开火、射程未变、目标距离与小地图常驻",
+    "heli：五档真实变焦均可开火、射程未变、目标距离与小地图常驻",
+    "orbital：五档真实变焦均可开火、射程未变、目标距离与小地图常驻",
+    "超出射程显示真实限制且实际开火不扣目标血"
+  ],
+  "errors": [],
+  "domains": [
+    {
+      "kind": "operator",
+      "view": {
+        "position": [
+          1800,
+          1400,
+          0
+        ],
+        "fov": 5.011669276985761,
+        "zoom": 16,
+        "active": true,
+        "orbital": false,
+        "direction": [
+          0.9969028118543629,
+          0.02008198329101882,
+          0.07603616023948011
+        ],
+        "foreground": 0,
+        "range": 460,
+        "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 460 u · 射程内 · 可射击"
+      }
+    },
+    {
+      "kind": "tank",
+      "view": {
+        "position": [
+          1800,
+          1400,
+          0
+        ],
+        "fov": 5.011669276985761,
+        "zoom": 16,
+        "active": true,
+        "orbital": false,
+        "direction": [
+          0.9952905151834369,
+          -0.09659913155768363,
+          -0.008086913390798589
+        ],
+        "foreground": 22,
+        "range": 220,
+        "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 220 u · 射程内 · 可射击"
+      }
+    },
+    {
+      "kind": "destroyer",
+      "view": {
+        "position": [
+          1800,
+          100,
+          0
+        ],
+        "fov": 5.011669276985761,
+        "zoom": 16,
+        "active": true,
+        "orbital": false,
+        "direction": [
+          0.9959050392068929,
+          -0.07305984762198361,
+          0.053248582589302096
+        ],
+        "foreground": 37,
+        "range": 590,
+        "contact": "阿利·伯克级 · 实际距离 160 u / 射程 590 u · 射程内 · 装填中"
+      }
+    },
+    {
+      "kind": "submarine",
+      "view": {
+        "position": [
+          1800,
+          100,
+          -55
+        ],
+        "fov": 5.011669276985761,
+        "zoom": 16,
+        "active": true,
+        "orbital": false,
+        "direction": [
+          0.997395453071454,
+          0.025830460068866884,
+          -0.06734313272353476
+        ],
+        "foreground": 53,
+        "range": 440,
+        "contact": "弗吉尼亚级 · 实际距离 160 u / 射程 440 u · 射程内 · 装填中"
+      }
+    },
+    {
+      "kind": "heli",
+      "view": {
+        "position": [
+          1800,
+          1400,
+          130
+        ],
+        "fov": 5.011669276985761,
+        "zoom": 16,
+        "active": true,
+        "orbital": false,
+        "direction": [
+          0.9967393478943531,
+          0.0476485535632758,
+          0.06511749152468595
+        ],
+        "foreground": 57,
+        "range": 230,
+        "contact": "AH-64 Apache · 实际距离 160 u / 射程 230 u · 射程内 · 可射击"
+      }
+    },
+    {
+      "kind": "orbital",
+      "view": {
+        "position": [
+          1800,
+          1400,
+          4000
+        ],
+        "fov": 1.2536667529378764,
+        "zoom": 64,
+        "active": true,
+        "orbital": true,
+        "direction": [
+          0.001218749590362648,
+          -0.9999992084962913,
+          -0.000312499963004087
+        ],
+        "foreground": 70,
+        "range": 1342,
+        "contact": "M1A2 SEPv3 · 实际距离 4000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 装填中"
+      }
+    }
+  ],
+  "sustainedFire": {
+    "durationMs": 8016.5,
+    "frames": 399,
+    "frameP50Ms": 20,
+    "frameP95Ms": 20.10000000000582,
+    "frameMaxMs": 25,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "viewport": [
+      2752,
+      1152
+    ],
+    "drawingBuffer": [
+      3440,
+      1440
+    ],
+    "dpr": 1.25,
+    "entities": 5,
+    "visibleEntities": 3,
+    "drawCalls": 24,
+    "triangles": 820948,
+    "kind": "tank",
+    "zoom": 16,
+    "hpBefore": 9630,
+    "hpAfter": 9334,
+    "scope": "8-second small deterministic fixture with actual held primary mouse; frame intervals are RAF observations, not isolated GPU timings or long-battle guarantees"
+  },
+  "passed": true
+}

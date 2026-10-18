@@ -1,0 +1,101 @@
+{
+  "recordedAt": "2026-10-18T16:09:57.094Z",
+  "version": "3.7.0",
+  "cpu": {
+    "tests": 454,
+    "pass": 454,
+    "fail": 0
+  },
+  "native": [
+    {
+      "report": "docs/unified-aim-desktop-report.json",
+      "recordedAt": "2026-10-18T16:03:32.585Z",
+      "passed": true
+    },
+    {
+      "report": "docs/first-person-desktop-report.json",
+      "recordedAt": "2026-10-18T16:02:07.609Z",
+      "passed": true
+    },
+    {
+      "report": "docs/operator-desktop-report.json",
+      "recordedAt": "2026-10-18T16:07:23.490Z",
+      "passed": true
+    },
+    {
+      "report": "docs/vehicle-tree-desktop-report.json",
+      "recordedAt": "2026-10-18T16:07:33.646Z",
+      "passed": true
+    },
+    {
+      "report": "docs/orbit-scope-desktop-report.json",
+      "recordedAt": "2026-10-18T16:08:32.078Z",
+      "passed": true
+    }
+  ],
+  "possessionKinds": 77,
+  "opticsClasses": [
+    "operator",
+    "tank",
+    "destroyer",
+    "submarine",
+    "heli",
+    "orbital"
+  ],
+  "opticsCases": 30,
+  "orbitHeights": [
+    4000,
+    12000
+  ],
+  "upgrade": {
+    "browserChecks": 11,
+    "offline": true,
+    "licensedImportedModels": 4,
+    "errors": []
+  },
+  "performance": {
+    "durationMs": 8016.5,
+    "frames": 399,
+    "frameP50Ms": 20,
+    "frameP95Ms": 20.10000000000582,
+    "frameMaxMs": 25,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "viewport": [
+      2752,
+      1152
+    ],
+    "drawingBuffer": [
+      3440,
+      1440
+    ],
+    "dpr": 1.25,
+    "entities": 5,
+    "visibleEntities": 3,
+    "drawCalls": 24,
+    "triangles": 820948,
+    "kind": "tank",
+    "zoom": 16,
+    "hpBefore": 9630,
+    "hpAfter": 9334,
+    "scope": "8-second small deterministic fixture with actual held primary mouse; frame intervals are RAF observations, not isolated GPU timings or long-battle guarantees"
+  },
+  "sourceSHA256": {
+    "src/sim.js": "377b3fdf49da65132a11572dd1866f1e8b38732132ebcb7ed652d5d62e9685ce",
+    "src/operator-sim.js": "86ed899fa550f38e99e5f5c2bdfc8ead3d953875ffe48d40c34e5638daddce81",
+    "src/direct-control.js": "8bac6ec1124c62b24c5aecf4ed6033cb3823bb6a57da5cdcbb51c1809fe07588",
+    "src/app.js": "b8faf9d59eb8a00b415a2ae2275ca31725be083a5f8ffb01a3dede9160a091e6",
+    "style.css": "0b1dc35f52df0f631ecceb8d556dc7ba4cfa348e1b0432c6b7c2ab85b54324b9"
+  },
+  "notes": [
+    "Actual packaged Electron tests were run serially.",
+    "5-entity, 8-second native fullscreen scoped-fire sample is not a large-battle performance guarantee.",
+    "No new dependencies or third-party assets.",
+    "Local commit only; remote push remains with the user."
+  ],
+  "package": {
+    "sha256Matches": 689,
+    "portraits": 588,
+    "mismatches": [],
+    "executable": "release/ModernFrontHD/ModernFrontHD.exe"
+  }
+}

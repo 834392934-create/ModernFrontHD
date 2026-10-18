@@ -1383,5 +1383,8 @@ body.direct-view #hud,body.direct-view #restore-hud{display:none!important}
 #direct-orbit-contact.can-fire{color:#c0e6cd}
 .orbit-scoped .direct-shade{opacity:.28}
 .orbit-scoped #direct-reticle:after{content:"";position:absolute;left:50%;top:50%;width:82px;height:82px;transform:translate(-50%,-50%);border:1px solid #b9d8cb66;border-radius:50%;pointer-events:none}
+.optics-scoped .direct-shade{opacity:.28}
+.optics-scoped #direct-reticle:after{content:"";position:absolute;left:50%;top:50%;width:82px;height:82px;transform:translate(-50%,-50%);border:1px solid #b9d8cb66;border-radius:50%;pointer-events:none}
+#direct-orbit-ground[hidden]{display:none}
 @media(max-width:850px){#direct-orbit-panel{right:18px;width:238px;padding:11px 12px;gap:8px}#direct-orbit-panel>small{font-size:9px;letter-spacing:.7px}}
 @media(max-height:650px){#direct-orbit-panel{top:auto;bottom:155px;width:260px;padding:10px 12px;gap:6px}#direct-orbit-panel>small{display:none}}

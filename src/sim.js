@@ -438,6 +438,40 @@
     hitHeightRadius(e) {
       const d=U[e.kind];return e.structure?Math.max(60,e.r*2):d?.naval?Math.max(30,e.r*2):d?.air?Math.max(12,e.r):Math.max(20,e.r);
     }
+    directAimValid(target,options={}) {
+      if(!target)return false;
+      const b=root.WarNavigationFootprints?.bounds[target.kind+'_'+this.teams[target.team]?.faction],r=this.hitHeightRadius(target),height=options.aimHeight??options.aimPoint?.y;
+      const x=options.aimX??options.aimPoint?.x,y=options.aimY??options.aimPoint?.z,hasHeight=Number.isFinite(height),hasXY=Number.isFinite(x)&&Number.isFinite(y);
+      const dx=hasXY?x-target.x:0,dz=hasXY?y-target.y:0,dy=hasHeight?height-this.entityAltitude(target):0;
+      // Keep the old combat volume; model additions must be inside the rotated measured box.
+      if((!hasHeight||Math.abs(dy)<=r+2)&&(!hasXY||Math.hypot(dx,dz)<=target.r+2))return true;
+      if(!b||b.length<7)return false;
+      const angle=target.structure?0:target.angle||0,c=Math.cos(angle),s=Math.sin(angle),cp=Math.cos(target.pitch||0),sp=Math.sin(target.pitch||0),cr=Math.cos(target.roll||0),sr=Math.sin(target.roll||0);
+      if(!hasXY){
+        const contributions=[[sp,b[3],b[4]],[cp*cr,b[1],b[2]],[-cp*sr,b[5],b[6]]];
+        const min=contributions.reduce((n,[a,lo,hi])=>n+Math.min(a*lo,a*hi),0),max=contributions.reduce((n,[a,lo,hi])=>n+Math.max(a*lo,a*hi),0);
+        return dy>=min-2&&dy<=max+2;
+      }
+      // Renderer Euler(roll,-yaw,pitch,'YZX') = Ry(-yaw) Rz(pitch) Rx(roll).
+      // Invert in reverse order without depending on THREE in the simulation.
+      const yawX=c*dx+s*dz,yawZ=-s*dx+c*dz,lx=cp*yawX+sp*dy,pitchY=-sp*yawX+cp*dy,ly=cr*pitchY+sr*yawZ,lz=-sr*pitchY+cr*yawZ;
+      return lx>=b[3]-2&&lx<=b[4]+2&&ly>=b[1]-2&&ly<=b[2]+2&&lz>=b[5]-2&&lz<=b[6]+2;
+    }
+    directFireStatus(e,target,options={}) {
+      const d=U[e?.kind]||B[e?.kind],weapon=e?.kind==='operator'?this.operatorWeapon(e):null,state=weapon?this.operatorState(e):null;
+      const profile=d?this.rangeProfile(e):null,armed=!!((weapon||d)?.damage>0),range=profile?.attack||0,minRange=profile?.min||0;
+      const x=options.aimX??options.aimPoint?.x,y=options.aimY??options.aimPoint?.z,height=options.aimHeight??options.aimPoint?.y;
+      const point=target?{x:target.x,y:target.y,height:this.entityAltitude(target)}:Number.isFinite(x)&&Number.isFinite(y)?{x,y,height:Number.isFinite(height)?height:this.entityAltitude(e)}:null;
+      const projected=!!point&&(!!d?.space!==(target?!!U[target.kind]?.space:point.height>=2000));
+      const actualDistance=e&&point?Math.hypot(point.x-e.x,point.y-e.y,point.height-this.entityAltitude(e)):null;
+      const distance=e&&point?(projected?Math.hypot(point.x-e.x,point.y-e.y):actualDistance):null;
+      const inRange=armed&&distance!==null&&distance<=range&&distance>=minRange,rangeState=distance===null?'none':distance<minRange?'min':distance>range?'out':'in';
+      const domainAllowed=!target||!!(weapon?this.operatorCanTarget(e,target):d&&this.canTargetKind(e.kind,target.kind));
+      const detected=!target||!!(e&&this.canDetect(e.team,target)&&(U[target.kind]?.underwater||e.team!==0||this.visibleAt(target.x,target.y)));
+      const ammo=weapon?state.stash[weapon.id].ammo:null,reloading=!!state?.reloadRemaining,cooldown=Math.max(0,e?.cool||0),aimValid=!target||this.directAimValid(target,options);
+      const reason=!e||e.hp<=0?'dead':!armed?'unarmed':e.disabled>this.time?'emp':!profile.active?'inactive':!point?'no-target':options.blocked?'blocked':target&&!this.isEnemy(e.team,target.team)?'friendly':!domainAllowed?'domain':!detected?'undetected':!aimValid?'aim-miss':rangeState==='min'?'min-range':rangeState==='out'?'out-of-range':reloading?'reloading':ammo===0?'no-ammo':cooldown>0?'cooldown':'ready';
+      return{armed,range,minRange,distance,actualDistance,inRange,rangeState,domainAllowed,detected,canFire:reason==='ready',reason,projected,ammo,reloading,aimValid,cooldown};
+    }
     distance3D(a,b) {return Math.hypot(a.x-b.x,a.y-b.y,this.entityAltitude(a)-this.entityAltitude(b));}
     engagementDistance(a,b) {
       // Space is a compressed orbital layer; only cross-layer weapons/sensors project onto the map.
@@ -577,7 +611,7 @@
       if(!input||typeof input!=='object')input={};
       const finite=(v,fallback=0)=>Number.isFinite(v)?v:fallback;
       if(e.disabled>this.time){this.resetJump(e);e.target=null;this.directControl.firePending=null;this.directControl.input={forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null};return false;}
-      const yaw=finite(input.yaw,e.angle),d=U[e.kind];
+      const yaw=finite(input.yaw,e.angle),d=U[e.kind],aimTarget=Number.isInteger(input.targetId)?this.get(input.targetId):null;
       const pressed=input.jump===true;
       // Capture edges when input arrives: a press/release can happen between fixed simulation ticks.
       if(input.cancelJump===true)this.directControl.jumpPending=false;
@@ -590,11 +624,11 @@
         pitch:clamp(finite(input.pitch),-1.15,1.15),turn:clamp(finite(input.turn),-1,1),lift:clamp(finite(input.lift),-1,1),throttle:clamp(finite(input.throttle),-1,1),flightEnabled:input.flightEnabled===true,
         fire:!!input.fire,ads:!!input.ads,jump:input.jump===true,targetId:Number.isInteger(input.targetId)?input.targetId:null,
         targetTreeId:typeof input.targetTreeId==='string'&&root.WarTrees.get(this,input.targetTreeId)?.hp>0?input.targetTreeId:null,
-        aimX:clamp(finite(input.aimX,e.x+Math.cos(yaw)*(d.range||250)),0,W),
-        aimY:clamp(finite(input.aimY,e.y+Math.sin(yaw)*(d.range||250)),0,H),
-        aimHeight:clamp(finite(input.aimHeight,this.entityAltitude(this.get(input.targetId)||e)),-160,14000),
+        aimX:clamp(finite(input.aimX,aimTarget?.x??e.x+Math.cos(yaw)*(d.range||250)),0,W),
+        aimY:clamp(finite(input.aimY,aimTarget?.y??e.y+Math.sin(yaw)*(d.range||250)),0,H),
+        aimHeight:clamp(finite(input.aimHeight,this.entityAltitude(aimTarget||e)),-160,14000),
       };
-      if(e.kind==='operator'&&trigger)this.directControl.firePending={...this.directControl.input};
+      if(trigger&&input.cancelJump!==true)this.directControl.firePending={...this.directControl.input};
       return true;
     }
     flightFloor(e,x,y) {
@@ -713,14 +747,14 @@
         else if(this.directPositionFree(e,e.x,y))e.y=y;
       }
       if(e.kind==='operator'&&this.stepOperator){this.stepOperator(e,dt,input);return;}
-      const range=this.rangeProfile(e).attack,candidate=this.get(input.targetId);
-      const target=candidate&&this.isEnemy(e.team,candidate.team)&&this.canTargetKind(e.kind,candidate.kind)&&
-        this.engagementDistance(e,candidate)<=range&&this.engagementDistance(e,candidate)>=(d.minRange||0)&&this.canDetect(e.team,candidate)&&Math.abs(input.aimHeight-this.entityAltitude(candidate))<=this.hitHeightRadius(candidate)&&(U[candidate.kind]?.underwater||this.visibleAt(candidate.x,candidate.y))?candidate:null;
+      const fireInput=this.directControl.firePending||input;this.directControl.firePending=null;
+      const candidate=this.get(fireInput.targetId),status=this.directFireStatus(e,candidate,fireInput),range=status.range;
+      const target=candidate&&status.inRange&&status.domainAllowed&&status.detected&&status.aimValid&&this.isEnemy(e.team,candidate.team)?candidate:null;
       e.target=target?.id??null;
       if(target)e.turret=Math.atan2(target.y-e.y,target.x-e.x);
-      if(!input.fire||!d.damage||e.cool>0)return;
-      let ax=input.aimX-e.x,ay=input.aimY-e.y,az=input.aimHeight-this.entityAltitude(e),crossLayer=candidate?(!!d.space!==!!U[candidate.kind]?.space):(!!d.space!==(input.aimHeight>=2000)),length=Math.hypot(ax,ay,crossLayer?0:az),factor=length>range?range/length:1;
-      this.emitShot(e,target,{x:e.x+ax*factor,y:e.y+ay*factor,height:crossLayer?input.aimHeight:this.entityAltitude(e)+az*factor,targetTreeId:input.targetTreeId,fixedImpact:true});
+      if(!fireInput.fire||!status.armed||e.cool>0||e.disabled>this.time)return;
+      let ax=fireInput.aimX-e.x,ay=fireInput.aimY-e.y,az=fireInput.aimHeight-this.entityAltitude(e),crossLayer=status.projected,length=Math.hypot(ax,ay,crossLayer?0:az),factor=length>range?range/length:1;
+      this.emitShot(e,target,{x:e.x+ax*factor,y:e.y+ay*factor,height:crossLayer?fireInput.aimHeight:this.entityAltitude(e)+az*factor,targetTreeId:fireInput.targetTreeId,fixedImpact:true});
     }
     train(team, kind) {
       const t = this.teams[team],

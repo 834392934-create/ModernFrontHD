@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-18T14:20:59.442Z",
+  "recordedAt": "2026-10-18T16:02:07.609Z",
   "environment": "Packaged Electron",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
@@ -848,7 +848,7 @@
       },
       "after": {
         "x": 700,
-        "y": 825.2000000000002,
+        "y": 821.6000000000001,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -857,13 +857,13 @@
       "key": "KeyA",
       "before": {
         "x": 700,
-        "y": 825.2000000000002,
+        "y": 821.6000000000001,
         "yaw": 0,
         "pitch": -0.025
       },
       "after": {
         "x": 700,
-        "y": 803.6,
+        "y": 796.4,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -872,7 +872,7 @@
   "ads": {
     "hip": 70,
     "active": true,
-    "fov": 48.03374383494514,
+    "fov": 50.046805678477824,
     "view": "infantry"
   },
   "ai": {
@@ -895,7 +895,7 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 24.20000000000021,
+      "hitAt": 24.500000000000213,
       "sourceId": 346,
       "targetId": 347,
       "damage": 74
@@ -904,7 +904,7 @@
       "x": 700,
       "y": 800,
       "sourceId": 346,
-      "time": 24.20000000000021
+      "time": 24.500000000000213
     },
     "hudConfirmed": true
   },
@@ -971,17 +971,17 @@
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
-        712.84683744546,
+        712.2335864043127,
         12.500999981117248,
-        799.861218320913
+        799.8189007105931
       ],
       "size": 3,
-      "gap": 5.980215943228312,
+      "gap": 5.97972547597273,
       "damage": 0
     }
   ],
   "nativeFocus": {
-    "recordedAt": "2026-10-18T14:21:53.828Z",
+    "recordedAt": "2026-10-18T16:03:05.547Z",
     "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
     "nativeBefore": {
       "fullScreen": true,
@@ -997,7 +997,7 @@
       "events": [
         {
           "trusted": true,
-          "at": 53358.09999990463
+          "at": 56588
         }
       ],
       "locked": false,
@@ -1006,8 +1006,8 @@
       "input": {
         "forward": 0,
         "strafe": 0,
-        "yaw": 0,
-        "pitch": -0.025,
+        "yaw": 0.908,
+        "pitch": -0.237,
         "turn": 0,
         "lift": 0,
         "throttle": 0,
@@ -1017,13 +1017,13 @@
         "jump": false,
         "targetId": null,
         "targetTreeId": null,
-        "aimX": 825,
-        "aimY": 800,
-        "aimHeight": 0
+        "aimX": 728.454499631607,
+        "aimY": 836.4523056100581,
+        "aimHeight": -0.8000000119209281
       },
       "position": [
-        700,
-        800
+        702.2151647023279,
+        802.8377888120084
       ]
     },
     "restored": {
@@ -1033,8 +1033,8 @@
       "input": {
         "forward": 0,
         "strafe": 0,
-        "yaw": 0,
-        "pitch": -0.025,
+        "yaw": 0.908,
+        "pitch": -0.237,
         "turn": 0,
         "lift": 0,
         "throttle": 0,
@@ -1044,13 +1044,13 @@
         "jump": false,
         "targetId": null,
         "targetTreeId": null,
-        "aimX": 1111.9141635668075,
-        "aimY": 800,
-        "aimHeight": -0.800000011920929
+        "aimX": 728.454499631607,
+        "aimY": 836.4523056100581,
+        "aimHeight": -0.8000000119209281
       },
       "position": [
-        700,
-        800
+        702.2151647023279,
+        802.8377888120084
       ]
     }
   },

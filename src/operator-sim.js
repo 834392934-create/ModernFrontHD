@@ -33,12 +33,12 @@
   const s=this.operatorState(e),w=this.operatorWeapon(e),a=s.stash[w.id],pending=this.directControl.firePending,pressed=!!pending||(!!input.fire&&!s.fireHeld);this.directControl.firePending=null;s.fireHeld=!!input.fire;if(pending)input=pending;
   if(s.reloadRemaining>0){s.reloadRemaining=Math.max(0,s.reloadRemaining-dt);if(!s.reloadRemaining){const n=Math.min(w.magazine-a.ammo,a.reserve);a.ammo+=n;a.reserve-=n;}return;}
   if(!input.fire||(!w.automatic&&!pressed)||e.cool>0||a.ammo<=0)return;
-  const candidate=this.get(input.targetId),range=w.range,valid=candidate&&this.isEnemy(e.team,candidate.team)&&this.operatorCanTarget(e,candidate)&&this.engagementDistance(e,candidate)<=range&&this.canDetect(e.team,candidate)&&Math.abs(input.aimHeight-this.entityAltitude(candidate))<=this.hitHeightRadius(candidate)&&(U[candidate.kind]?.underwater||this.visibleAt(candidate.x,candidate.y));
+  const candidate=this.get(input.targetId),status=this.directFireStatus(e,candidate,input),range=status.range,valid=candidate&&status.inRange&&status.domainAllowed&&status.detected&&status.aimValid&&this.isEnemy(e.team,candidate.team);
   const ax=input.aimX-e.x,ay=input.aimY-e.y,az=input.aimHeight-this.entityAltitude(e),cross=U[candidate?.kind]?.space||input.aimHeight>=2000,len=Math.hypot(ax,ay,cross?0:az),factor=len>range?range/len:1;
   a.ammo--;e.target=valid?candidate.id:null;
   for(let n=0;n<w.pellets;n++){
    const angle=this.random()*Math.PI*2,spread=Math.sqrt(this.random())*w.spread*(input.ads?.45:1)*Math.min(len,range),ox=Math.cos(angle)*spread,oy=Math.sin(angle)*spread;
-   const target=valid&&Math.hypot(input.aimX+ox-candidate.x,input.aimY+oy-candidate.y)<=candidate.r?candidate:null;
+   const target=valid&&this.directAimValid(candidate,{aimX:input.aimX+ox,aimY:input.aimY+oy,aimHeight:input.aimHeight})?candidate:null;
    e.cool=0;
    this.emitShot(e,target,{x:e.x+ax*factor+ox,y:e.y+ay*factor+oy,height:cross?input.aimHeight:this.entityAltitude(e)+az*factor,targetTreeId:input.targetTreeId,fixedImpact:true},{...w,reload:w.fireInterval,rocket:w.category==='launcher'});
   }

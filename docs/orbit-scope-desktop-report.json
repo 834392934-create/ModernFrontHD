@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-18T14:30:37.344Z",
+  "recordedAt": "2026-10-18T16:08:32.078Z",
   "environment": "desktop",
   "checks": [
     "4000u真实V/G/滚轮变焦、地面命中、位置/高度/射程保持、小地图与状态HUD常驻",
@@ -30,7 +30,7 @@
         ],
         "foreground": 0,
         "range": 1342,
-        "contact": "保持当前轨道高度 · G 快速对地俯视"
+        "contact": "自由瞄点 · 实际距离 15997 u / 射程 1342 u · 判定 14737 u 投影 · 超出射程"
       },
       "wide": {
         "position": [
@@ -48,7 +48,7 @@
         ],
         "foreground": 0,
         "range": 1342,
-        "contact": "M1A2 SEPv3 · 0 / 1342 u 投影射程 · 可射击"
+        "contact": "M1A2 SEPv3 · 实际距离 4000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 可射击"
       },
       "narrow": {
         "position": [
@@ -66,7 +66,7 @@
         ],
         "foreground": 0,
         "range": 1342,
-        "contact": "M1A2 SEPv3 · 0 / 1342 u 投影射程 · 可射击"
+        "contact": "M1A2 SEPv3 · 实际距离 4000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 可射击"
       }
     },
     {
@@ -87,7 +87,7 @@
         ],
         "foreground": 13,
         "range": 1342,
-        "contact": "保持当前轨道高度 · G 快速对地俯视"
+        "contact": "自由瞄点 · 实际距离 15997 u / 射程 1342 u · 超出射程"
       },
       "wide": {
         "position": [
@@ -105,7 +105,7 @@
         ],
         "foreground": 13,
         "range": 1342,
-        "contact": "M1A2 SEPv3 · 0 / 1342 u 投影射程 · 可射击"
+        "contact": "M1A2 SEPv3 · 实际距离 12000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 可射击"
       },
       "narrow": {
         "position": [
@@ -123,7 +123,7 @@
         ],
         "foreground": 13,
         "range": 1342,
-        "contact": "M1A2 SEPv3 · 0 / 1342 u 投影射程 · 可射击"
+        "contact": "M1A2 SEPv3 · 实际距离 12000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 可射击"
       }
     }
   ],
