@@ -20,11 +20,14 @@
  let obj,key='tank_chn',yaw=.8,pitch=.29,distance=20,target=new T.Vector3(0,1,0),auto=false,wire=false,drag=null,parts=0;
  const material=WarModels.createMaterial();
  function load(value){
-   key=value;const at=value.lastIndexOf('_'),kind=value.slice(0,at),f=value.slice(at+1);if(obj)scene.remove(obj);obj=WarModels.create(kind,f);parts=obj.userData.parts||0;let triangles=0;obj.traverse(m=>{if(m.isMesh){if(!m.userData.preserveMaterial)m.material=material;triangles+=(m.geometry.index?.count||m.geometry.attributes.position.count)/3;}});scene.add(obj);
+   key=value;const at=value.lastIndexOf('_'),kind=value.slice(0,at),f=value.slice(at+1);if(obj){window.WarPersonnelAnimation?.release(obj);scene.remove(obj);}obj=WarModels.create(kind,f);parts=obj.userData.parts||0;let triangles=0;obj.traverse(m=>{if(m.isMesh){if(!m.userData.preserveMaterial)m.material=material;triangles+=(m.geometry.index?.count||m.geometry.attributes.position.count)/3;}});scene.add(obj);
    let bounds=new T.Box3().setFromObject(obj);obj.position.y-=bounds.min.y;bounds=new T.Box3().setFromObject(obj);const size=bounds.getSize(new T.Vector3());target=bounds.getCenter(new T.Vector3());modelSize.copy(size);modelRadius=size.length()/2;modelSpan=Math.max(size.x,size.y,size.z);distance=perspectiveDistance();pitch=.28;view='perspective';camera=new T.PerspectiveCamera(38,innerWidth/innerHeight,.05,500);
+   // Fit the actual bind-pose geometry before adding conservative animated bounds.
+   window.WarPersonnelAnimation?.update(obj,{kind,x:0,y:0,angle:0,jumpHeight:0},0);
    $('#model-name').textContent=select.selectedOptions[0].textContent;$('#stats').textContent=parts+' 个外观部件 · '+Math.round(triangles).toLocaleString()+' 三角面 · 与战场同一模型';$('#loading').hidden=true;
    $('#reference-note').textContent=obj.userData.evidenceStatus==='original-role-variant'?'新增原创职责模型：借鉴公开装备结构；未标为具体型号复刻，性能为游戏设定。':obj.userData.evidenceStatus==='space-concept-original'?'原创架空太空单元：影视结构与公开航天设备借鉴，性能为游戏设定。':obj.userData.evidenceStatus==='photo-inspired-facility'?'实物设备外观借鉴的游戏阵地：非该国某型号的精确复刻。':obj.userData.evidenceStatus==='original-concept-facility'?'原创概念设施：参考公开雷达、光电与供能结构，能力为架空设定。':obj.userData.evidenceStatus==='original-game-facility'?'原创游戏建筑：按生产、后勤和防御职责细化。':obj.userData.evidenceStatus==='photo-referenced'?'已依据实物图重建外形 · 正在按多视角复核；不等于精确复刻。':kind==='jet'||f==='imp'||['orbital','laser','shield'].includes(kind)?'旧版概念占位：本轮暂缓生成，待已知实物装备复核后再细化。':'通用游戏外观：不作为已核验的真实型号复刻。';
    if(obj.userData.author)$('#reference-note').textContent+=' 模型：'+obj.userData.author+' / '+obj.userData.license+'，离线美术资产。';
+   if(obj.userData.personnelRig)$('#reference-note').textContent='原创人员关节模型：与战场相同装具及骨架；此处展示静止姿态，行走由战场实际位移驱动。';
    applyWireframe();
    window.Armory={scene,modelRoot:obj,renderer,camera,key,parts,triangles,setView,load};
  }

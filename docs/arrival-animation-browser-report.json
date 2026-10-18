@@ -1,0 +1,47 @@
+{
+  "recordedAt": "2026-10-18T13:10:25.469Z",
+  "checks": [
+    "All 462 runtime models, including ready GLB assets, fit their navigation envelopes",
+    "Land, sea, underwater, air and orbital three-batch arrivals settle with model clearance",
+    "Eight personnel kinds render independent 13-bone gait and freeze at paused simulation time"
+  ],
+  "errors": [],
+  "models": {
+    "count": 462,
+    "failures": []
+  },
+  "arrivals": [
+    {
+      "kind": "tank",
+      "arrived": true,
+      "separated": true
+    },
+    {
+      "kind": "destroyer",
+      "arrived": true,
+      "separated": true
+    },
+    {
+      "kind": "submarine",
+      "arrived": true,
+      "separated": true
+    },
+    {
+      "kind": "fighter",
+      "arrived": true,
+      "separated": true
+    },
+    {
+      "kind": "orbital",
+      "arrived": true,
+      "separated": true
+    }
+  ],
+  "animation": {
+    "units": 8,
+    "moving": true,
+    "frozen": true,
+    "meshes": 38
+  },
+  "passed": true
+}

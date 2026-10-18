@@ -68,7 +68,7 @@
     const accepted=Array.isArray(report.accepted)?report.accepted.length:(report.accepted||0),rejected=report.rejected||[];
     if(!rejected.length)return '';
     const reasons=new Set(rejected.map(item=>item.reason));
-    const descriptions={'separated-land':'陆军无法跨越海域或断开的陆路','separated-water':'舰船无法进入不连通的海域','out-of-bounds':'目的地超出地图','queue-full':'路线队列已满（最多 16 个后续点）'};
+    const descriptions={'separated-land':'陆军无法跨越海域或断开的陆路','separated-water':'舰船无法进入不连通的海域','out-of-bounds':'目的地超出地图','queue-full':'路线队列已满（最多 16 个后续点）','no-free-berth':'附近没有足够的可通行停位，请选择更开阔的位置'};
     const detail=[...reasons].map(reason=>descriptions[reason]||'目的地不可达').join('；');
     return `${accepted?`${accepted} 个单位${report.queued?'已加入路线':'接受指令'}；`:''}${rejected.length} 个单位未接受：${detail}。已保留原有命令。`;
   }

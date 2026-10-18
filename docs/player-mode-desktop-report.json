@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-18T11:10:37.457Z",
+  "recordedAt": "2026-10-18T13:39:04.308Z",
   "checks": [
     "Real setup starts in selected owned tank; commander mode remains separate",
     "J opens live roster, clears driving input and leaves simulation / AI running",
@@ -36,7 +36,6 @@
     },
     "text": "基地威胁 0 · 玩家威胁 1 · 守卫 2 / 护卫 0 · 待补维修",
     "queue": [
-      "abyss_tender",
       "hunter_sub",
       "frigate"
     ],

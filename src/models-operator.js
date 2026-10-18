@@ -1,7 +1,14 @@
 /* Original single-person operator. No commercial character geometry or textures. */
 (function(root){
  'use strict';
- const T=root.THREE,M=root.WarModels,D=root.WarDetail,B=D.Builder;
+ const T=root.THREE,M=root.WarModels,D=root.WarDetail;
+ // Per-part bind tags let the optional personnel animator preserve this exterior
+ // while skinning independent limbs; ordinary static previews remain unchanged.
+ class B extends D.Builder{
+  constructor(){super();this.rigPart=0;this.rigParts=[];}
+  add(...args){const first=this.p.length/3;super.add(...args);for(let i=first;i<this.p.length/3;i++)this.rigParts.push(this.rigPart);}
+  finish(){const mesh=super.finish();mesh.geometry.setAttribute('rigPart',new T.Uint8BufferAttribute(this.rigParts,1));return mesh;}
+ }
  const C={rubber:0x202528,metal:0x58646a,glass:0x325a70,skin:0x887b64};
  const kits={
   chn:{cloth:0x4d5944,patch:0xb49a55,visor:0x325a70,pack:.20,antenna:.30},
@@ -18,15 +25,17 @@
   // +X is forward; raw height follows the 1.75-unit standing roster soldier.
   // Legs remain one person, with a slight stagger to read clearly from RTS view.
   for(const side of [-1,1]){
+   const joint=side===-1?1:4;b.rigPart=joint;
    const z=side*.135,step=side*.045,knee=[step+.025,.48,z],ankle=[step-.015,.135,z];
-   link(b,[0,.88,z],knee,.092,kit.cloth,.105);link(b,knee,ankle,.067,kit.cloth,.087);
+   link(b,[0,.88,z],knee,.092,kit.cloth,.105);b.rigPart=joint+1;link(b,knee,ankle,.067,kit.cloth,.087);
    b.sphere(.085,...knee,kit.cloth,[1,1.12,1]);box(b,.065,.15,.135,knee[0]+.075,.48,z,armor,.02);
    for(const y of [.44,.53])b.box(.11,.025,.15,knee[0]+.015,y,z,C.rubber);
-   box(b,.24,.12,.17,ankle[0]+.055,.085,z,C.rubber,.025);
+   b.rigPart=joint+2;box(b,.24,.12,.17,ankle[0]+.055,.085,z,C.rubber,.025);
    b.box(.25,.035,.18,ankle[0]+.055,.026,z,C.rubber);
    for(let i=0;i<3;i++)b.box(.02,.012,.12,ankle[0]+.015+i*.035,.149,z,C.metal);
-   box(b,.105,.16,.09,-.025,.68,z+side*.09,kit.cloth);
+   b.rigPart=joint;box(b,.105,.16,.09,-.025,.68,z+side*.09,kit.cloth);
   }
+  b.rigPart=0;
   b.sphere(.25,0,.94,0,kit.cloth,[.65,.52,.95]);
   b.sphere(.25,0,1.20,0,kit.cloth,[.65,1.05,.91]);
   box(b,.29,.35,.37,.015,1.205,0,armor,.03);
@@ -64,13 +73,15 @@
   const gunY=1.335,gunZ=.17;
   for(const side of [-1,1]){
    const shoulder=[0,1.385,side*.235],elbow=[.13,1.115,side*.25],hand=[side===1?.31:.53,1.275,gunZ];
+   const joint=side===-1?7:10;b.rigPart=joint;
    link(b,shoulder,elbow,.072,kit.cloth,.082);b.sphere(.075,...elbow,kit.cloth);
    box(b,.12,.17,.075,.015,1.34,side*.26,armor,.02);
    b.box(.07,.07,.015,.015,1.35,side*.304,kit.patch);
-   link(b,elbow,hand,.054,kit.cloth,.064);box(b,.065,.075,.09,hand[0]-.045,hand[1]-.012,hand[2],C.rubber);
+   b.rigPart=joint+1;link(b,elbow,hand,.054,kit.cloth,.064);b.rigPart=joint+2;box(b,.065,.075,.09,hand[0]-.045,hand[1]-.012,hand[2],C.rubber);
    b.sphere(.052,...hand,C.rubber,[1.14,.82,.80]);
    for(const offset of [-.025,0,.025])b.box(.045,.018,.012,hand[0]+.028,hand[1],hand[2]+offset,armor);
   }
+  b.rigPart=0;
   box(w,.28,.095,.075,.37,gunY,gunZ,C.rubber);
   box(w,.18,.09,.073,.15,gunY-.005,gunZ,armor);
   w.box(.035,.12,.08,.045,gunY-.017,gunZ,C.rubber);
@@ -95,4 +106,5 @@
   return g;
  }
  for(const f of Object.keys(kits))M.register('operator',f,()=>build(f));
+ root.WarOperatorModel={build};
 })(globalThis);

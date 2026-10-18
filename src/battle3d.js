@@ -23,7 +23,7 @@
       this.hover=null;this.is3D=true;this.resize();
       canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();this.contextLost=true;});
       canvas.addEventListener('webglcontextrestored',()=>{this.contextLost=false;this.fogTex.needsUpdate=true;});
-      addEventListener('war-models-ready',()=>{for(const o of this.objects.values())this.scene.remove(o);this.objects.clear()});
+      addEventListener('war-models-ready',()=>this.clearObjects());
       // Compatibility sprites for the 2D fallback and existing asset diagnostics.
       this.sprites={};for(const k of ['tank','tank_chn']){const i=new Image();i.src='assets/sprites/'+k+'.png';this.sprites[k]=i;}
     }
@@ -57,10 +57,12 @@
     }
     pan(dx,dy){this.camera.x=clamp(this.camera.x+dx,0,W);this.camera.y=clamp(this.camera.y+dy/Math.sin(this.elevation),0,H);}
     zoomAt(f,x,y){let a=this.toWorld(x,y);this.camera.zoom=clamp(this.camera.zoom*f,.18,4.5);let b=this.toWorld(x,y);this.camera.x=clamp(this.camera.x+a.x-b.x,0,W);this.camera.y=clamp(this.camera.y+a.y-b.y,0,H);}
+    removeObject(id){const o=this.objects.get(id);if(!o)return;root.WarPersonnelAnimation?.release(o);this.scene.remove(o);this.objects.delete(id);}
+    clearObjects(){for(const id of this.objects.keys())this.removeObject(id);}
     disposeWorld(){
       const geos=new Set(),mats=new Set();this.world.traverse(o=>{if(o.geometry)geos.add(o.geometry);if(o.material)mats.add(o.material);});
       geos.forEach(g=>g.dispose());mats.forEach(m=>{m.map?.dispose();m.normalMap?.dispose();m.userData.detailTexture?.dispose();m.dispose();});this.world.clear();
-      for(const o of this.objects.values())this.scene.remove(o);this.objects.clear();
+      this.clearObjects();
     }
     prepare(game){
       this.disposeWorld();this.mapId=game.map.id;const rnd=root.WarSim.rng(game.map.seed),desert=game.map.id==='desert';
@@ -147,6 +149,7 @@
         if(!visible){if(o)o.visible=false;continue;}
         if(!o){o=root.WarModels.create(e.kind,game.teams[e.team].faction);o.scale.setScalar(o.userData.scale);o.traverse(m=>{if(m.isMesh&&m.userData.preserveMaterial)for(const mat of Array.isArray(m.material)?m.material:[m.material])this.fogify(mat)});this.objects.set(e.id,o);this.scene.add(o);}
         o.visible=e.id!==this.firstPerson?.entityId;visibleCount++;o.position.set(e.x,this.entityHeight(e),e.y);o.rotation.set(e.roll||0,e.structure?0:-e.angle,e.pitch||0,'YZX');
+        root.WarPersonnelAnimation?.update(o,e,game.time);
         for(const name of ['turret','turretRear']){const turret=o.getObjectByName(name);if(turret)turret.rotation.y=e.target?(e.structure?0:e.angle)-e.turret:0;}
         const radar=o.getObjectByName('radar');if(radar)radar.rotation.y=time*.45;
         const jammer=o.getObjectByName('jammerHead');if(jammer)jammer.rotation.y=time*.18;
@@ -157,7 +160,7 @@
         const propeller=o.getObjectByName('propeller');if(propeller)propeller.rotation.x=time*35;
         const tailRotor=o.getObjectByName('tailRotor');if(tailRotor)tailRotor.rotation.z=time*38;
       }
-      for(const [id,o]of this.objects)if(!alive.has(id)){this.scene.remove(o);this.objects.delete(id);}
+      for(const id of this.objects.keys())if(!alive.has(id))this.removeObject(id);
       this.gl.render(this.scene,this.cam);this.stats={calls:this.gl.info.render.calls,triangles:this.gl.info.render.triangles,visibleEntities:visibleCount,geometries:this.gl.info.memory.geometries};
       if(this.firstPerson?.active){this.rangeOverlays=[];this.firstPerson.drawOverlay(game,time);if(this.firstPerson.view){this.stats.foregroundCalls=this.gl.info.render.calls;this.stats.foregroundTriangles=this.gl.info.render.triangles;this.stats.calls+=this.stats.foregroundCalls;this.stats.triangles+=this.stats.foregroundTriangles;}return;}
       const ring=(x,y,rad,color,width=1,alpha=1)=>{const p=this.toScreen(x,y);g.globalAlpha=alpha;g.strokeStyle=color;g.lineWidth=width;g.beginPath();g.ellipse(p.x,p.y,rad*this.camera.zoom,rad*this.camera.zoom*Math.sin(this.elevation),0,0,7);g.stroke();g.globalAlpha=1;};

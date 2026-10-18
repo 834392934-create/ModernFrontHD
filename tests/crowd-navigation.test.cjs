@@ -10,13 +10,16 @@ function scenario(count,type='open'){
  if(type==='crossing')for(let i=0;i<count;i++)units.push(g.spawn(0,kinds[i%kinds.length],2300+(i%6)*55,950+Math.floor(i/6)*55));
  g.command(units.slice(0,count).map(e=>e.id),2400,1200);
  if(type==='crossing')g.command(units.slice(count).map(e=>e.id),900,1200);
- const goals=new Map(units.map(e=>[e.id,{...e.order}])),cost=[],positions=new Map();let maxOverlap=0,invalidTerrainSteps=0;
- for(let i=0;i<1200;i++){if(i===1100)for(const e of units)positions.set(e.id,{x:e.x,y:e.y});const t=performance.now();g.step(.05);cost.push(performance.now()-t);
+ const goals=new Map(units.map(e=>[e.id,{...e.order}])),cost=[],positions=new Map(),waiting=new Map(),resumed=new Set();let maxOverlap=0,invalidTerrainSteps=0,maxContinuousWaitSeconds=0;
+ // Preserve the legacy 55u overlapping model spawn layout. Full-size footprints
+ // and passable arrival aisles require longer travel than the former tiny circles.
+ for(let i=0;i<3600;i++){if(i===3500)for(const e of units)positions.set(e.id,{x:e.x,y:e.y});const t=performance.now();g.step(.05);cost.push(performance.now()-t);
+  if(i%20===0)for(const e of units){const previous=waiting.get(e.id),stopped=e.order&&previous&&Math.hypot(e.x-previous.x,e.y-previous.y)<2,seconds=stopped?previous.seconds+1:0;if(previous?.seconds>1&&!stopped)resumed.add(e.id);maxContinuousWaitSeconds=Math.max(maxContinuousWaitSeconds,seconds);waiting.set(e.id,{x:e.x,y:e.y,seconds});}
   for(let a=0;a<units.length;a++){const e=units[a];if(g.map.blocked[Math.floor(e.y/T)*COLS+Math.floor(e.x/T)])invalidTerrainSteps++;for(let b=a+1;b<units.length;b++){const o=units[b];maxOverlap=Math.max(maxOverlap,e.r+o.r-Math.hypot(e.x-o.x,e.y-o.y));}}
  }
  const arrived=units.filter(e=>!e.order&&Math.hypot(e.x-goals.get(e.id).x,e.y-goals.get(e.id).y)<35).length;
  const stuck=units.filter(e=>e.order&&Math.hypot(e.x-positions.get(e.id).x,e.y-positions.get(e.id).y)<8).length;
- cost.sort((a,b)=>a-b);return{game:g,units,goals,metrics:{type,count:units.length,arrived,stuck,maxOverlap,invalidTerrainSteps,stepMeanMs:cost.reduce((a,b)=>a+b,0)/cost.length,stepP95Ms:cost[Math.floor(cost.length*.95)]}};
+ cost.sort((a,b)=>a-b);return{game:g,units,goals,metrics:{type,count:units.length,seconds:180,arrived,stuck,maxOverlap,invalidTerrainSteps,maxContinuousWaitSeconds,resumedUnits:resumed.size,stepMeanMs:cost.reduce((a,b)=>a+b,0)/cost.length,stepP95Ms:cost[Math.floor(cost.length*.95)]}};
 }
 function stress(count){
  const g=arena(),units=[],kinds=['tank','ifv','arty','rocket','aa','assault_gun'];
@@ -34,13 +37,13 @@ function stress(count){
 if(process.env.CROWD_STRESS){for(const count of [200,400])console.log(JSON.stringify(stress(count)));}
 else if(process.env.CROWD_BASELINE){for(const [n,t]of [[24,'open'],[48,'open'],[48,'choke'],[24,'crossing'],[48,'obstacles']])console.log(JSON.stringify(scenario(n,t).metrics));}
 else {
- for(const [n,type]of [[24,'open'],[48,'open'],[48,'choke'],[24,'crossing'],[48,'obstacles']])test(`${type} ${n}: mixed vehicles reach distinct formation slots and settle`,()=>{const s=scenario(n,type);assert.equal(s.metrics.arrived,s.units.length,JSON.stringify(s.metrics));assert.equal(s.metrics.stuck,0);assert.equal(s.metrics.maxOverlap,0);assert.equal(s.metrics.invalidTerrainSteps,0);});
+ for(const [n,type]of [[24,'open'],[48,'open'],[48,'choke'],[24,'crossing'],[48,'obstacles']])test(`${type} ${n}: legacy 55u dense spawn recovers and all full-size vehicles settle within 180s`,()=>{const s=scenario(n,type);assert.equal(s.metrics.arrived,s.units.length,JSON.stringify(s.metrics));assert.equal(s.metrics.stuck,0);assert.equal(s.metrics.maxOverlap,0);assert.equal(s.metrics.invalidTerrainSteps,0);});
  test('repeated group orders keep the same slots and path instead of reshuffling or restarting A*',()=>{
   const g=arena(),units=Array.from({length:24},(_,i)=>g.spawn(0,'tank',800+(i%6)*55,950+Math.floor(i/6)*55)),ids=units.map(e=>e.id);
   g.command(ids,2400,1200);const goals=units.map(e=>({...e.order}));for(let i=0;i<60;i++)g.step(.05);const paths=units.map(e=>e.path);
   g.command(ids,2400,1200);assert.deepEqual(units.map(e=>e.order),goals);units.forEach((e,i)=>assert.equal(e.path,paths[i]));
   g.command([...ids,ids[0]],2400,1200);assert.equal(g.commandFeedback.accepted.length,24);
-  for(let i=0;i<1200;i++){if(i%10===0)g.command(ids,2400,1200);g.step(.05);}assert.ok(units.every(e=>!e.order));
+  for(let i=0;i<3600;i++){if(i%10===0)g.command(ids,2400,1200);g.step(.05);}assert.ok(units.every(e=>!e.order));
  });
  test('Shift keeps the final waypoint and group stops there without overlaps or residual motion',()=>{
   const g=arena(),units=Array.from({length:12},(_,i)=>g.spawn(0,'tank',800+(i%4)*60,1000+Math.floor(i/4)*60)),ids=units.map(e=>e.id);
@@ -56,7 +59,7 @@ else {
  });
  test('a formation ordered onto a factory settles around its actual footprint without entering the structure',()=>{
   const g=arena(),factory=g.spawn(0,'factory',1800,1200),units=Array.from({length:24},(_,i)=>g.spawn(0,'tank',800+(i%6)*55,950+Math.floor(i/6)*55));g.command(units.map(e=>e.id),factory.x,factory.y);
-  for(let i=0;i<1400;i++){g.step(.05);for(const e of units)assert.ok(Math.hypot(e.x-factory.x,e.y-factory.y)>=e.r+factory.r);}
+  for(let i=0;i<3600;i++){g.step(.05);for(const e of units)assert.ok(Math.hypot(e.x-factory.x,e.y-factory.y)>=e.r+factory.r);}
   assert.ok(units.every(e=>!e.order));
  });
  test('bottleneck waits for observed physical release: elapsed time never permits crossing a stationary player',()=>{
@@ -69,8 +72,19 @@ else {
  test('naval groups keep their full hull inside navigable water and never cross the opposite land shore',()=>{
   const g=arena();for(let y=8;y<19;y++)for(let x=8;x<80;x++)g.map.navalBlocked[y*COLS+x]=0;
   const units=Array.from({length:12},(_,i)=>g.spawn(0,'destroyer',700+(i%4)*110,500+Math.floor(i/4)*110));g.command(units.map(e=>e.id),2200,650);
-  for(let i=0;i<1200;i++){g.step(.05);for(const e of units)assert.ok(e.y-e.r>=8*T&&e.y+e.r<19*T);}
+  for(let i=0;i<3600;i++){g.step(.05);for(const e of units){
+   const b=WarNavigationFootprints.bounds[e.kind+'_'+g.teams[e.team].faction],c=Math.cos(e.angle),s=Math.sin(e.angle);
+   // The full measured hull, including its offset from entity origin, replaces
+   // the old combat-radius circle (which is wider but much shorter than a ship).
+   for(const x of [b[3],b[4]])for(const z of [b[5],b[6]]){const wx=e.x+c*x-s*z,wy=e.y+s*x+c*z;assert.equal(g.map.navalBlocked[Math.floor(wy/T)*COLS+Math.floor(wx/T)],0,'actual hull corner stays inside water');}
+  }}
   assert.ok(units.every(e=>!e.order));
+ });
+ test('long vehicle reverses out of a wall corner before turning, without crossing terrain or teleporting',()=>{
+  const g=arena();for(let y=0;y<ROWS;y++)for(let x=30;x<33;x++)if(y<23||y>26)g.map.blocked[y*COLS+x]=1;
+  const e=g.spawn(0,'ifv',1600.1493962283632,1067.2474280029624);e.angle=-1.6507613541257116;e.order={x:2084.1687927443377,y:374.95536573865854,attack:false,target:null};e.path=[{x:e.order.x,y:e.order.y}];let reversed=false;
+  for(let i=0;i<1000;i++){const x=e.x,y=e.y,angle=e.angle;g.step(.05);if((e.x-x)*Math.cos(angle)+(e.y-y)*Math.sin(angle)<-.01&&Math.abs(e.angle-angle)<.001)reversed=true;assert.equal(WarNavigationFootprints.terrain(g,e,e.x,e.y,e.angle),true);assert.ok(Math.hypot(e.x-x,e.y-y)<=g.effectiveSpeed(e)*.05+1e-6);}
+  assert.ok(reversed,'a constrained hull backs out while preserving its orientation');assert.equal(e.order,null,'the original destination is eventually reached');
  });
  test('bounded FIFO replanning serves high-ID waiters without bypassing occupied bottlenecks',()=>{
   const g=arena(),waiters=[];g.map.blocked.fill(1);

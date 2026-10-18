@@ -1,7 +1,7 @@
 {
-  "recordedAt": "2026-10-18T11:14:38.343Z",
-  "version": "3.5.0",
-  "sha256Matches": 685,
+  "recordedAt": "2026-10-18T13:43:01.699Z",
+  "version": "3.5.1",
+  "sha256Matches": 687,
   "portraits": 588,
   "executable": "release/ModernFrontHD/ModernFrontHD.exe",
   "runtimeChecks": [
@@ -15,7 +15,8 @@
     "player-mode-desktop-report.json",
     "fps-upgrade-desktop-report.json",
     "operator-desktop-report.json",
-    "crowd-desktop-report.json"
+    "crowd-desktop-report.json",
+    "arrival-animation-desktop-report.json"
   ],
   "mismatches": []
 }

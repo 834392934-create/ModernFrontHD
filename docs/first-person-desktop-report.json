@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-18T11:10:47.443Z",
+  "recordedAt": "2026-10-18T13:36:02.778Z",
   "environment": "Packaged Electron",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
@@ -872,7 +872,7 @@
   "ads": {
     "hip": 70,
     "active": true,
-    "fov": 48.042258171033225,
+    "fov": 48.02818522014845,
     "view": "infantry"
   },
   "ai": {
@@ -895,7 +895,7 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 24.40000000000021,
+      "hitAt": 22.85000000000019,
       "sourceId": 276,
       "targetId": 277,
       "damage": 74
@@ -904,7 +904,7 @@
       "x": 700,
       "y": 800,
       "sourceId": 276,
-      "time": 24.40000000000021
+      "time": 22.85000000000019
     },
     "hudConfirmed": true
   },
@@ -981,7 +981,7 @@
     }
   ],
   "nativeFocus": {
-    "recordedAt": "2026-10-18T11:11:41.334Z",
+    "recordedAt": "2026-10-18T13:36:55.305Z",
     "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
     "nativeBefore": {
       "fullScreen": true,
@@ -997,7 +997,7 @@
       "events": [
         {
           "trusted": true,
-          "at": 52919.700000047684
+          "at": 51517.59999990463
         }
       ],
       "locked": false,

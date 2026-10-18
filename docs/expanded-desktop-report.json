@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-18T11:13:25.210Z",
+  "recordedAt": "2026-10-18T13:39:45.806Z",
   "environment": "Packaged Electron fullscreen",
   "checks": [
     "354 new faction-role models have valid geometry, truthful source metadata and appropriate weapon anchors",
@@ -36,11 +36,11 @@
   "combat": {
     "initialEntities": 98,
     "finalEntities": 74,
-    "seconds": 5.016300000095369,
-    "meanFPS": 46.24922751741109,
-    "p95FrameMs": 22.299999999999272,
-    "observedShots": 180,
-    "peakEffects": 76,
+    "seconds": 5.0065999999046324,
+    "meanFPS": 47.33751448178693,
+    "p95FrameMs": 22.400000000001455,
+    "observedShots": 183,
+    "peakEffects": 72,
     "shownRanges": 4,
     "viewport": [
       2752,
@@ -50,9 +50,9 @@
   },
   "performance": {
     "frames": 185,
-    "durationMs": 4006.7000000953667,
+    "durationMs": 4001.5,
     "meanFPS": 46.2,
-    "p95FrameMs": 22.400000000001455,
+    "p95FrameMs": 22.399999999997817,
     "viewport": [
       2752,
       1152
@@ -60,10 +60,10 @@
     "dpr": 1.25,
     "entities": 122,
     "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-    "calls": 209,
-    "triangles": 1602682,
+    "calls": 257,
+    "triangles": 1593514,
     "visibleEntities": 120,
-    "geometries": 231
+    "geometries": 236
   },
   "performanceScope": "122 live entities during the sample; fixture starts with 118 added-role models and 3 buildings, and existing production may complete. Warmed 4-second mixed-domain render; not sustained combat.",
   "errors": []

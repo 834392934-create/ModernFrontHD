@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-18T11:11:56.116Z",
+  "recordedAt": "2026-10-18T13:37:10.317Z",
   "environment": "desktop",
   "checks": [
     "Real mouse up descends, mouse down climbs; observed trusted relative input and entity altitude",
@@ -13,8 +13,8 @@
   "errors": [],
   "mouseUp": {
     "desired": -0.39999999999999997,
-    "pitch": -0.37736919705382566,
-    "altitude": 865.2569339527901,
+    "pitch": -0.3777715451273673,
+    "altitude": 864.9682052308901,
     "events": [
       {
         "dy": -25,
@@ -52,8 +52,8 @@
   },
   "mouseDown": {
     "desired": 0.39999999999999997,
-    "pitch": 0.3822722085896927,
-    "altitude": 944.0699009883948
+    "pitch": 0.38261420445220307,
+    "altitude": 944.4503607757877
   },
   "orbit": {
     "height": 4000,
@@ -71,8 +71,8 @@
     },
     "physical": 12000,
     "model": 169,
-    "pick": 42,
-    "id": 42,
+    "pick": 41,
+    "id": 41,
     "backdrop": false
   },
   "builds": [
