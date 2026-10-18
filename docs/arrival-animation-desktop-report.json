@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-18T13:42:06.833Z",
+  "recordedAt": "2026-10-18T17:22:10.697Z",
   "checks": [
     "All 462 runtime models, including ready GLB assets, fit their navigation envelopes",
     "Land, sea, underwater, air and orbital three-batch arrivals settle with model clearance",
@@ -42,7 +42,7 @@
     "units": 8,
     "moving": true,
     "frozen": true,
-    "meshes": 38
+    "meshes": 16
   },
   "coast": {
     "arrived": 6,

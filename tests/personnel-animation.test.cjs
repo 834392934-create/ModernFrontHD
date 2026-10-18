@@ -4,8 +4,8 @@ const A=WarPersonnelAnimation,T=THREE;
 test('registration covers every actual infantry-family unit in the game data',()=>{require('../src/data.js');require('../src/roster.js');const all=Object.keys(WarData.U).filter(k=>(WarData.U[k].modelKind||k)==='infantry');assert.deepEqual([...A.roles].sort(),all.sort());});
 function fixture(kind='operator',f='chn'){const model=WarModels.create(kind,f),e={id:1,kind,x:0,y:0,angle:0,jumpHeight:0};model.scale.setScalar(model.userData.scale);let time=0;const update=(dt,dx=0,dz=0)=>{time+=dt;e.x+=dx;e.y+=dz;model.position.set(e.x,e.jumpHeight,e.y);model.rotation.y=-e.angle;const state=A.update(model,e,time);model.updateMatrixWorld(true);return state;};update(0);return{model,e,update};}
 function pose(model){const state=A.state(model);return state.people.flatMap(p=>p.bones.flatMap(b=>[...b.position.toArray(),...b.quaternion.toArray()]));}
-test('all 48 personnel variants preserve role squad count, shared detail materials and independent articulated chains',()=>{
- const counts={infantry:3,antitank_team:3,machinegun_team:2,mortar_team:2,assault_team:3,field_medic:3,sniper_team:2,operator:1};
+test('all 48 personnel variants are individual soldiers with shared detail materials and independent articulated chains',()=>{
+ const counts={infantry:1,antitank_team:1,machinegun_team:1,mortar_team:1,assault_team:1,field_medic:1,sniper_team:1,operator:1};
  for(const kind of A.roles)for(const faction of Object.keys(WarModels.colors)){
   const {model,update}=fixture(kind,faction),state=update(1/60,.2);assert.equal(state.people.length,counts[kind]);let meshes=0,triangles=0;
   model.traverse(o=>{if(!o.isMesh)return;meshes++;assert.ok(o.isSkinnedMesh);assert.equal(o.userData.preserveMaterial,true);triangles+=o.geometry.attributes.position.count/3;for(const attr of ['skinIndex','skinWeight','position','normal'])assert.ok(o.geometry.attributes[attr].array.every(Number.isFinite));});
@@ -38,7 +38,7 @@ test('jump holds gait phase and avoids extra body bob, landing and teleport rein
  f.e.jumpHeight=0;f.update(1/60,.2);assert.equal(state.jumping,false);const lastDistance=state.distance;f.update(1/60,2000);assert.equal(state.teleports,1);assert.equal(state.distance,lastDistance);assert.equal(state.moving,false);f.update(1);assert.equal(state.teleports,2);
 });
 test('cached models share geometry but never skeleton state or pose',()=>{
- const a=fixture('infantry'),b=fixture('infantry');const sa=A.state(a.model),sb=A.state(b.model);assert.notEqual(sa.people[0].skeleton,sb.people[0].skeleton);assert.notEqual(sa.people[0].skeleton,sa.people[1].skeleton);assert.equal(a.model.getObjectByName('operatorBody').geometry,b.model.getObjectByName('operatorBody').geometry);const before=pose(b.model);a.update(1/60,.6);assert.deepEqual(pose(b.model),before);
+ const a=fixture('infantry'),b=fixture('infantry');const sa=A.state(a.model),sb=A.state(b.model);assert.equal(sa.people.length,1);assert.equal(sb.people.length,1);assert.notEqual(sa.people[0].skeleton,sb.people[0].skeleton);assert.equal(a.model.getObjectByName('operatorBody').geometry,b.model.getObjectByName('operatorBody').geometry);const before=pose(b.model);a.update(1/60,.6);assert.deepEqual(pose(b.model),before);
 });
 test('reverse and strafe retain finite IK, and non-personnel objects are untouched',()=>{
  for(const delta of [[-.3,0],[0,.3]]){const f=fixture();for(let i=0;i<80;i++){const s=f.update(1/60,...delta);assert.ok(pose(f.model).every(Number.isFinite));assert.ok(s.people[0].feet.every(foot=>foot.target.y>=.134));}}
@@ -72,5 +72,5 @@ test('battle renderer deletion and world/model-ready clearing release skeleton i
  require('../src/battle3d.js');const renderer=Object.create(Battle3D.prototype);renderer.scene=new T.Scene();renderer.world=new T.Group();renderer.objects=new Map();
  const a=fixture(),b=fixture('infantry');let count=0;for(const [id,f] of [[1,a],[2,b]]){renderer.objects.set(id,f.model);renderer.scene.add(f.model);for(const p of A.state(f.model).people){p.skeleton.computeBoneTexture();p.skeleton.boneTexture.addEventListener('dispose',()=>count++);}}
  renderer.removeObject(1);assert.equal(count,1);assert.equal(renderer.objects.has(1),false);assert.equal(a.model.parent,null);assert.ok(A.state(b.model));
- renderer.disposeWorld();assert.equal(count,4);assert.equal(renderer.objects.size,0);assert.equal(b.model.parent,null);assert.equal(A.state(b.model),undefined);renderer.clearObjects();assert.equal(count,4);
+ renderer.disposeWorld();assert.equal(count,2);assert.equal(renderer.objects.size,0);assert.equal(b.model.parent,null);assert.equal(A.state(b.model),undefined);renderer.clearObjects();assert.equal(count,2);
 });

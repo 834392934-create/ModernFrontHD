@@ -155,8 +155,13 @@
         const tailRotor=o.getObjectByName('tailRotor');if(tailRotor)tailRotor.rotation.z=time*38;
       }
       for(const id of this.objects.keys())if(!alive.has(id))this.removeObject(id);
-      this.gl.render(this.scene,this.cam);this.stats={calls:this.gl.info.render.calls,triangles:this.gl.info.render.triangles,visibleEntities:visibleCount,geometries:this.gl.info.memory.geometries};
-      if(this.firstPerson?.active){this.rangeOverlays=[];this.firstPerson.drawOverlay(game,time);if(this.firstPerson.view){this.stats.foregroundCalls=this.gl.info.render.calls;this.stats.foregroundTriangles=this.gl.info.render.triangles;this.stats.calls+=this.stats.foregroundCalls;this.stats.triangles+=this.stats.foregroundTriangles;}return;}
+      this.gl.render(this.scene,this.cam);this.stats={calls:this.gl.info.render.calls,triangles:this.gl.info.render.triangles,foregroundCalls:0,foregroundTriangles:0,visibleEntities:visibleCount,geometries:this.gl.info.memory.geometries};
+      if(this.firstPerson?.active){
+        this.rangeOverlays=[];const worldFrame=this.gl.info.render.frame;this.firstPerson.drawOverlay(game,time);
+        // Three resets draw counters per render. Scoped/disposed views skip their
+        // render entirely; clearDepth and canvas effects do not advance this frame.
+        if(this.gl.info.render.frame!==worldFrame){this.stats.foregroundCalls=this.gl.info.render.calls;this.stats.foregroundTriangles=this.gl.info.render.triangles;this.stats.calls+=this.stats.foregroundCalls;this.stats.triangles+=this.stats.foregroundTriangles;}return;
+      }
       const ring=(x,y,rad,color,width=1,alpha=1)=>{const p=this.toScreen(x,y);g.globalAlpha=alpha;g.strokeStyle=color;g.lineWidth=width;g.beginPath();g.ellipse(p.x,p.y,rad*this.camera.zoom,rad*this.camera.zoom*Math.sin(this.elevation),0,0,7);g.stroke();g.globalAlpha=1;};
       const text=(s,x,y,color='#d7e3d4')=>{g.font='12px "Microsoft YaHei"';g.textAlign='center';g.lineWidth=3;g.strokeStyle='#172229';g.strokeText(s,x,y);g.fillStyle=color;g.fillText(s,x,y);};
       this.commandPaths=[];

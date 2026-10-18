@@ -1,0 +1,244 @@
+{
+  "recordedAt": "2026-10-18T17:23:27.769Z",
+  "version": "3.8.0",
+  "cpu": {
+    "tests": 473,
+    "pass": 473,
+    "fail": 0
+  },
+  "native": [
+    {
+      "report": "docs/right-button-fire-desktop-report.json",
+      "recordedAt": "2026-10-18T17:16:20.731Z",
+      "passed": true
+    },
+    {
+      "report": "docs/single-soldier-desktop-report.json",
+      "recordedAt": "2026-10-18T17:15:37.952Z",
+      "passed": true
+    },
+    {
+      "report": "docs/render-pass-stats-desktop-report.json",
+      "recordedAt": "2026-10-18T17:21:11.661Z",
+      "passed": true
+    },
+    {
+      "report": "docs/first-person-desktop-report.json",
+      "recordedAt": "2026-10-18T17:21:16.416Z",
+      "passed": true
+    },
+    {
+      "report": "docs/arrival-animation-desktop-report.json",
+      "recordedAt": "2026-10-18T17:22:10.697Z",
+      "passed": true
+    },
+    {
+      "report": "docs/operator-desktop-report.json",
+      "recordedAt": "2026-10-18T17:22:23.253Z",
+      "passed": true
+    },
+    {
+      "report": "docs/crowd-desktop-report.json",
+      "recordedAt": "2026-10-18T17:22:33.588Z",
+      "passed": true
+    }
+  ],
+  "personnel": {
+    "variants": 48,
+    "roles": 8,
+    "factions": 6,
+    "peoplePerEntity": 1,
+    "bonesPerPerson": 13,
+    "updatedPortraits": 48,
+    "renderEnvironment": {
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "viewport": [
+        2752,
+        1152
+      ],
+      "drawingBuffer": [
+        3440,
+        1440
+      ],
+      "dpr": 1.25
+    }
+  },
+  "optics": {
+    "classes": [
+      "operator",
+      "tank",
+      "destroyer",
+      "submarine",
+      "heli",
+      "orbital"
+    ],
+    "cases": 30,
+    "input": "Actual held RMB and wheel; no V/G in RMB firing paths; real reload R; no injected ammo",
+    "focusBoundaryRecoveries": [
+      {
+        "label": "operator V observation on",
+        "needed": false
+      },
+      {
+        "label": "operator V observation off",
+        "needed": false
+      },
+      {
+        "label": "tank V observation on",
+        "needed": false
+      },
+      {
+        "label": "tank V observation off",
+        "needed": false
+      },
+      {
+        "label": "destroyer V observation on",
+        "needed": false
+      },
+      {
+        "label": "destroyer V observation off",
+        "needed": false
+      },
+      {
+        "label": "submarine V observation on",
+        "needed": false
+      },
+      {
+        "label": "submarine V observation off",
+        "needed": false
+      },
+      {
+        "label": "heli V observation on",
+        "needed": false
+      },
+      {
+        "label": "heli V observation off",
+        "needed": false
+      },
+      {
+        "label": "orbital V observation on",
+        "needed": false
+      },
+      {
+        "label": "orbital V observation off",
+        "needed": false
+      }
+    ]
+  },
+  "possessionKinds": 77,
+  "navigationModels": 462,
+  "renderPassSamples": [
+    {
+      "label": "ordinary FPS",
+      "passCount": 2,
+      "stats": {
+        "calls": 42,
+        "triangles": 478290,
+        "foregroundCalls": 6,
+        "foregroundTriangles": 3660,
+        "visibleEntities": 17,
+        "geometries": 142
+      }
+    },
+    {
+      "label": "V observation",
+      "passCount": 1,
+      "stats": {
+        "calls": 36,
+        "triangles": 474630,
+        "foregroundCalls": 0,
+        "foregroundTriangles": 0,
+        "visibleEntities": 17,
+        "geometries": 142
+      }
+    },
+    {
+      "label": "V released: foreground restored",
+      "passCount": 2,
+      "stats": {
+        "calls": 42,
+        "triangles": 478290,
+        "foregroundCalls": 6,
+        "foregroundTriangles": 3660,
+        "visibleEntities": 17,
+        "geometries": 142
+      }
+    },
+    {
+      "label": "RMB actual firing",
+      "passCount": 1,
+      "stats": {
+        "calls": 36,
+        "triangles": 474630,
+        "foregroundCalls": 0,
+        "foregroundTriangles": 0,
+        "visibleEntities": 17,
+        "geometries": 142
+      }
+    },
+    {
+      "label": "RMB released: foreground restored",
+      "passCount": 2,
+      "stats": {
+        "calls": 42,
+        "triangles": 478290,
+        "foregroundCalls": 6,
+        "foregroundTriangles": 3660,
+        "visibleEntities": 17,
+        "geometries": 142
+      }
+    },
+    {
+      "label": "RTS after E",
+      "passCount": 1,
+      "stats": {
+        "calls": 37,
+        "triangles": 500202,
+        "foregroundCalls": 0,
+        "foregroundTriangles": 0,
+        "visibleEntities": 17,
+        "geometries": 142
+      }
+    }
+  ],
+  "performance": {
+    "viewport": [
+      2752,
+      1152
+    ],
+    "dpr": 1.25,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "frames": 371,
+    "durationMs": 8018.199999952316,
+    "meanFPS": 46.26973635007936,
+    "p95FrameMs": 22.300000000000182,
+    "entities": 98,
+    "movingUnits": 96,
+    "progressed": 96,
+    "finite": true,
+    "calls": 203,
+    "triangles": 1891354,
+    "foregroundCalls": 0,
+    "foregroundTriangles": 0,
+    "visibleEntities": 97,
+    "geometries": 128
+  },
+  "sourceSHA256": {
+    "src/direct-control.js": "f760f57008c2c8540c93f1dacee11ecc25556279bd9ffec30b27e8758f98d2d6",
+    "src/battle3d.js": "25744d1c803d9c464696b3b5112098441c049f070504cf5b8758a1fb0162eea9",
+    "src/models-operator.js": "94f4be5b4d7428c8702705271d5b9a235bfcb75e7b258efdd4ff8e0b8b24dac1",
+    "src/personnel-animation.js": "1039b6a68383d585fb43dbf1594e76165811951f7249ad2d5eb6d88164f81111",
+    "src/navigation-footprints.js": "5bc6b0bd276688e4a9f719a8de1975bd2a5e372e5f3ad13d2920c96d9e96b5bc",
+    "src/data.js": "2922ea87e63ec36b9eb699bd078bc5f05a2cd6c634d0ea19b5fa7df39caa8f3e",
+    "src/roster.js": "0609dfb5f0cc07ab408d9675816e236b16a4d13ee6b1d4f209a94b3c8f5f0b81",
+    "src/app.js": "dea63355d8f4324a716d0a19a9f34bb89b78d167ebe8c203c6f36a0a9856364a"
+  },
+  "notes": [
+    "Actual packaged Electron GPU tests were run serially. Seven native reports were refreshed for 3.8; other reports checked by package consistency are historical coverage.",
+    "Native soldier gallery preserves material shader hooks and uses live battlefield lighting. Photos informed original procedural kits; not scanned assets or exact current issued equipment.",
+    "The user analysis PDF/MD was reviewed as source data; no industrial program was executed. Render statistics fix implemented; idle IK caching, diagnostics and reservation scheduling remain proposals.",
+    "Correct render-pass accounting fixes inflated scoped calls/triangles, not real FPS. Historical scoped draw counters may be doubled; RAF timing measurements are independent.",
+    "An initial native V test timed out after pointer-lock loss; its origin could not be proven from that log. Final test logs focus and application unlock calls, restores focus only at observation boundaries, and never resumes the RMB shooting sequence automatically.",
+    "Performance is a short controlled 96-unit moving sample, not a long-battle or maximum-population guarantee."
+  ]
+}

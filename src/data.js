@@ -137,7 +137,7 @@
   };
   const U = {
     infantry: {
-      name: "步兵小组",
+      name: "步枪兵",
       role: "占点 / 近距离反装甲",
       cost: 140,
       hp: 105,

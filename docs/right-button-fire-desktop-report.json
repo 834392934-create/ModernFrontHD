@@ -1,0 +1,4504 @@
+{
+  "recordedAt": "2026-10-18T17:16:20.731Z",
+  "environment": "desktop",
+  "checks": [
+    "全部许可导入模型ready，真实来源/CC BY/署名/材质保留已核验",
+    "operator：无V，单RMB五倍率均真实伤害；松开后新弹停止、在途落点后HP稳定",
+    "operator LMB→RMB：释放一键后另一键仍产生真实射击与伤害",
+    "operator RMB→LMB：释放一键后另一键仍产生真实射击与伤害",
+    "tank：无V，单RMB五倍率均真实伤害；松开后新弹停止、在途落点后HP稳定",
+    "tank LMB→RMB：释放一键后另一键仍产生真实射击与伤害",
+    "tank RMB→LMB：释放一键后另一键仍产生真实射击与伤害",
+    "destroyer：无V，单RMB五倍率均真实伤害；松开后新弹停止、在途落点后HP稳定",
+    "submarine：无V，单RMB五倍率均真实伤害；松开后新弹停止、在途落点后HP稳定",
+    "heli：无V，单RMB五倍率均真实伤害；松开后新弹停止、在途落点后HP稳定",
+    "orbital：无V，单RMB五倍率均真实伤害；松开后新弹停止、在途落点后HP稳定"
+  ],
+  "errors": [],
+  "domains": [
+    {
+      "kind": "operator",
+      "ids": {
+        "actor": 37,
+        "target": 38,
+        "far": 39
+      },
+      "magnifications": [
+        {
+          "zoom": 1.5,
+          "before": {
+            "time": 8.14999999999998,
+            "count": 30,
+            "hp": 9406,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
+          "after": {
+            "time": 8.399999999999984,
+            "count": 32,
+            "hp": 9373,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              0
+            ],
+            "fov": 50.046805678477824,
+            "zoom": 1.5,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9969334162704879,
+              0.018998856853968966,
+              0.07591315407422194
+            ],
+            "foreground": 0,
+            "range": 460,
+            "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 460 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 2,
+          "before": {
+            "time": 14.550000000000072,
+            "count": 58,
+            "hp": 8482,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
+          "after": {
+            "time": 14.800000000000075,
+            "count": 60,
+            "hp": 8449,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              0
+            ],
+            "fov": 38.59068547066244,
+            "zoom": 2,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9969139737924326,
+              0.01999866669333105,
+              0.07591167359418538
+            ],
+            "foreground": 0,
+            "range": 460,
+            "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 460 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 4,
+          "before": {
+            "time": 20.900000000000162,
+            "count": 86,
+            "hp": 7558,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
+          "after": {
+            "time": 21.150000000000166,
+            "count": 88,
+            "hp": 7525,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              0
+            ],
+            "fov": 19.858259822877592,
+            "zoom": 4,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9968758933429714,
+              0.01999866669333153,
+              0.07641012107137168
+            ],
+            "foreground": 0,
+            "range": 460,
+            "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 460 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 8,
+          "before": {
+            "time": 27.300000000000253,
+            "count": 114,
+            "hp": 6634,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
+          "after": {
+            "time": 27.550000000000257,
+            "count": 116,
+            "hp": 6601,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              0
+            ],
+            "fov": 10.004239367041688,
+            "zoom": 8,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9969139737924326,
+              0.01999866669333105,
+              0.07591167359418538
+            ],
+            "foreground": 0,
+            "range": 460,
+            "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 460 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 16,
+          "before": {
+            "time": 33.650000000000226,
+            "count": 142,
+            "hp": 5710,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
+          "after": {
+            "time": 33.90000000000021,
+            "count": 144,
+            "hp": 5677,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              0
+            ],
+            "fov": 5.011669276985761,
+            "zoom": 16,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.996904477044855,
+              0.019998666693333104,
+              0.07603628724769074
+            ],
+            "foreground": 0,
+            "range": 460,
+            "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 460 u · 射程内 · 装填中"
+          }
+        }
+      ],
+      "stop": {
+        "settled": {
+          "time": 34.1000000000002,
+          "count": 144,
+          "hp": 5644,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        },
+        "landed": {
+          "time": 34.1000000000002,
+          "count": 144,
+          "hp": 5644,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        },
+        "after": {
+          "time": 35.35000000000013,
+          "count": 144,
+          "hp": 5644,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        }
+      },
+      "vOnly": {
+        "time": 36.90000000000004,
+        "count": 144,
+        "hp": 5644,
+        "fire": false,
+        "active": true,
+        "latched": true,
+        "zoom": 16,
+        "locked": true
+      }
+    },
+    {
+      "kind": "tank",
+      "ids": {
+        "actor": 43,
+        "target": 44,
+        "far": 45
+      },
+      "magnifications": [
+        {
+          "zoom": 1.5,
+          "before": {
+            "time": 57.09999999999889,
+            "count": 2,
+            "hp": 9852,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
+          "after": {
+            "time": 57.34999999999888,
+            "count": 3,
+            "hp": 9778,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              0
+            ],
+            "fov": 50.046805678477824,
+            "zoom": 1.5,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9952673381591937,
+              -0.09684795937846785,
+              -0.007962308568493892
+            ],
+            "foreground": 0,
+            "range": 220,
+            "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 220 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 2,
+          "before": {
+            "time": 61.299999999998654,
+            "count": 4,
+            "hp": 9704,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
+          "after": {
+            "time": 61.54999999999864,
+            "count": 5,
+            "hp": 9630,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              0
+            ],
+            "fov": 38.59068547066244,
+            "zoom": 2,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9952673381591937,
+              -0.09684795937846785,
+              -0.007962308568493892
+            ],
+            "foreground": 0,
+            "range": 220,
+            "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 220 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 4,
+          "before": {
+            "time": 65.49999999999842,
+            "count": 6,
+            "hp": 9556,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
+          "after": {
+            "time": 65.74999999999841,
+            "count": 7,
+            "hp": 9482,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              0
+            ],
+            "fov": 19.858259822877592,
+            "zoom": 4,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9953115304171247,
+              -0.09635029769942219,
+              -0.00846035176300497
+            ],
+            "foreground": 0,
+            "range": 220,
+            "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 220 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 8,
+          "before": {
+            "time": 69.64999999999819,
+            "count": 8,
+            "hp": 9408,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
+          "after": {
+            "time": 69.94999999999817,
+            "count": 9,
+            "hp": 9334,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              0
+            ],
+            "fov": 10.004239367041688,
+            "zoom": 8,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9952915182719004,
+              -0.09659913155767738,
+              -0.007962502013697638
+            ],
+            "foreground": 0,
+            "range": 220,
+            "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 220 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 16,
+          "before": {
+            "time": 70.39999999999814,
+            "count": 9,
+            "hp": 9334,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
+          "after": {
+            "time": 72.04999999999805,
+            "count": 10,
+            "hp": 9260,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              0
+            ],
+            "fov": 5.011669276985761,
+            "zoom": 16,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9952905151834369,
+              -0.09659913155768363,
+              -0.008086913390798589
+            ],
+            "foreground": 0,
+            "range": 220,
+            "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 220 u · 射程内 · 装填中"
+          }
+        }
+      ],
+      "screenshot": "screenshots/right-button-fire-tank-desktop.png",
+      "stop": {
+        "settled": {
+          "time": 72.79999999999801,
+          "count": 10,
+          "hp": 9260,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        },
+        "landed": {
+          "time": 72.79999999999801,
+          "count": 10,
+          "hp": 9260,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        },
+        "after": {
+          "time": 75.34999999999786,
+          "count": 10,
+          "hp": 9260,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        }
+      },
+      "vOnly": {
+        "time": 76.89999999999777,
+        "count": 10,
+        "hp": 9260,
+        "fire": false,
+        "active": true,
+        "latched": true,
+        "zoom": 16,
+        "locked": true
+      }
+    },
+    {
+      "kind": "destroyer",
+      "ids": {
+        "actor": 49,
+        "target": 50,
+        "far": 51
+      },
+      "magnifications": [
+        {
+          "zoom": 1.5,
+          "before": {
+            "time": 91.29999999999696,
+            "count": 2,
+            "hp": 9780,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
+          "after": {
+            "time": 93.19999999999685,
+            "count": 3,
+            "hp": 9670,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              100,
+              0
+            ],
+            "fov": 50.046805678477824,
+            "zoom": 1.5,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9959185848458133,
+              -0.07293518110673561,
+              0.05316607673733831
+            ],
+            "foreground": 0,
+            "range": 590,
+            "contact": "阿利·伯克级 · 实际距离 160 u / 射程 590 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 2,
+          "before": {
+            "time": 97.14999999999662,
+            "count": 4,
+            "hp": 9560,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
+          "after": {
+            "time": 98.89999999999652,
+            "count": 5,
+            "hp": 9450,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              100,
+              0
+            ],
+            "fov": 38.59068547066244,
+            "zoom": 2,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9958452554230443,
+              -0.07393248115597474,
+              0.05316216212244494
+            ],
+            "foreground": 0,
+            "range": 590,
+            "contact": "阿利·伯克级 · 实际距离 160 u / 射程 590 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 4,
+          "before": {
+            "time": 102.8999999999963,
+            "count": 6,
+            "hp": 9340,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
+          "after": {
+            "time": 104.5999999999962,
+            "count": 7,
+            "hp": 9230,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              100,
+              0
+            ],
+            "fov": 19.858259822877592,
+            "zoom": 4,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9959185848458133,
+              -0.07293518110673561,
+              0.05316607673733831
+            ],
+            "foreground": 0,
+            "range": 590,
+            "contact": "阿利·伯克级 · 实际距离 160 u / 射程 590 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 8,
+          "before": {
+            "time": 108.54999999999598,
+            "count": 8,
+            "hp": 9120,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
+          "after": {
+            "time": 110.29999999999588,
+            "count": 9,
+            "hp": 9010,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              100,
+              0
+            ],
+            "fov": 10.004239367041688,
+            "zoom": 8,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9959003458546325,
+              -0.07318451299568132,
+              0.053165103067786657
+            ],
+            "foreground": 0,
+            "range": 590,
+            "contact": "阿利·伯克级 · 实际距离 160 u / 射程 590 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 16,
+          "before": {
+            "time": 114.24999999999565,
+            "count": 10,
+            "hp": 8900,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
+          "after": {
+            "time": 115.99999999999555,
+            "count": 11,
+            "hp": 8790,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              100,
+              0
+            ],
+            "fov": 5.011669276985761,
+            "zoom": 16,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9958936924362958,
+              -0.07318451299567626,
+              0.05328959019533297
+            ],
+            "foreground": 0,
+            "range": 590,
+            "contact": "阿利·伯克级 · 实际距离 160 u / 射程 590 u · 射程内 · 装填中"
+          }
+        }
+      ],
+      "stop": {
+        "settled": {
+          "time": 116.19999999999554,
+          "count": 11,
+          "hp": 8790,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        },
+        "landed": {
+          "time": 116.19999999999554,
+          "count": 11,
+          "hp": 8790,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        },
+        "after": {
+          "time": 119.59999999999535,
+          "count": 11,
+          "hp": 8790,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        }
+      },
+      "vOnly": {
+        "time": 121.14999999999526,
+        "count": 11,
+        "hp": 8790,
+        "fire": false,
+        "active": true,
+        "latched": true,
+        "zoom": 16,
+        "locked": true
+      }
+    },
+    {
+      "kind": "submarine",
+      "ids": {
+        "actor": 55,
+        "target": 56,
+        "far": 57
+      },
+      "magnifications": [
+        {
+          "zoom": 1.5,
+          "before": {
+            "time": 125.34999999999502,
+            "count": 2,
+            "hp": 9720,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
+          "after": {
+            "time": 128.1499999999949,
+            "count": 3,
+            "hp": 9580,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              100,
+              -55
+            ],
+            "fov": 50.046805678477824,
+            "zoom": 1.5,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9973341779463053,
+              0.02666350628520741,
+              -0.0679234490639753
+            ],
+            "foreground": 0,
+            "range": 440,
+            "contact": "弗吉尼亚级 · 实际距离 160 u / 射程 440 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 2,
+          "before": {
+            "time": 131.94999999999575,
+            "count": 4,
+            "hp": 9440,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
+          "after": {
+            "time": 134.24999999999628,
+            "count": 5,
+            "hp": 9300,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              100,
+              -55
+            ],
+            "fov": 38.59068547066244,
+            "zoom": 2,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9973602811588321,
+              0.025663848654554414,
+              -0.06792522682340985
+            ],
+            "foreground": 0,
+            "range": 440,
+            "contact": "弗吉尼亚级 · 实际距离 160 u / 射程 440 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 4,
+          "before": {
+            "time": 138.04999999999714,
+            "count": 6,
+            "hp": 9160,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
+          "after": {
+            "time": 140.34999999999766,
+            "count": 7,
+            "hp": 9020,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              100,
+              -55
+            ],
+            "fov": 19.858259822877592,
+            "zoom": 4,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9973941191007963,
+              0.02566384865455207,
+              -0.06742653821295441
+            ],
+            "foreground": 0,
+            "range": 440,
+            "contact": "弗吉尼亚级 · 实际距离 160 u / 射程 440 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 8,
+          "before": {
+            "time": 144.09999999999852,
+            "count": 8,
+            "hp": 8880,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
+          "after": {
+            "time": 146.44999999999905,
+            "count": 9,
+            "hp": 8740,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              100,
+              -55
+            ],
+            "fov": 10.004239367041688,
+            "zoom": 8,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9974045119382463,
+              0.02591376550725731,
+              -0.06717675433112093
+            ],
+            "foreground": 0,
+            "range": 440,
+            "contact": "弗吉尼亚级 · 实际距离 160 u / 射程 440 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 16,
+          "before": {
+            "time": 150.24999999999991,
+            "count": 10,
+            "hp": 8600,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
+          "after": {
+            "time": 152.55000000000044,
+            "count": 11,
+            "hp": 8460,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              100,
+              -55
+            ],
+            "fov": 5.011669276985761,
+            "zoom": 16,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9973993311310146,
+              0.025788807282375953,
+              -0.06730164692158158
+            ],
+            "foreground": 0,
+            "range": 440,
+            "contact": "弗吉尼亚级 · 实际距离 160 u / 射程 440 u · 射程内 · 装填中"
+          }
+        }
+      ],
+      "stop": {
+        "settled": {
+          "time": 152.70000000000047,
+          "count": 11,
+          "hp": 8460,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        },
+        "landed": {
+          "time": 152.70000000000047,
+          "count": 11,
+          "hp": 8460,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        },
+        "after": {
+          "time": 156.3000000000013,
+          "count": 11,
+          "hp": 8460,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        }
+      },
+      "vOnly": {
+        "time": 157.80000000000163,
+        "count": 11,
+        "hp": 8460,
+        "fire": false,
+        "active": true,
+        "latched": true,
+        "zoom": 16,
+        "locked": true
+      }
+    },
+    {
+      "kind": "heli",
+      "ids": {
+        "actor": 61,
+        "target": 62,
+        "far": 63
+      },
+      "magnifications": [
+        {
+          "zoom": 1.5,
+          "before": {
+            "time": 164.05000000000305,
+            "count": 6,
+            "hp": 9772,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
+          "after": {
+            "time": 165.05000000000328,
+            "count": 7,
+            "hp": 9734,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              130
+            ],
+            "fov": 50.046805678477824,
+            "zoom": 1.5,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9967013108773609,
+              0.04797427647659404,
+              0.06545964934139148
+            ],
+            "foreground": 0,
+            "range": 230,
+            "contact": "AH-64 Apache · 实际距离 160 u / 射程 230 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 2,
+          "before": {
+            "time": 171.65000000000478,
+            "count": 13,
+            "hp": 9544,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
+          "after": {
+            "time": 172.600000000005,
+            "count": 14,
+            "hp": 9506,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              130
+            ],
+            "fov": 38.59068547066244,
+            "zoom": 2,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9956866456229142,
+              0.017994149013076055,
+              -0.09101820877980848
+            ],
+            "foreground": 0,
+            "range": 230,
+            "contact": "AH-64 Apache · 实际距离 160 u / 射程 230 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 4,
+          "before": {
+            "time": 178.45000000000633,
+            "count": 19,
+            "hp": 9354,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
+          "after": {
+            "time": 179.2500000000065,
+            "count": 20,
+            "hp": 9316,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              130
+            ],
+            "fov": 19.858259822877592,
+            "zoom": 4,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9942531734788833,
+              0.10480172361235138,
+              -0.021845497363301217
+            ],
+            "foreground": 0,
+            "range": 230,
+            "contact": "AH-64 Apache · 实际距离 160 u / 射程 230 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 8,
+          "before": {
+            "time": 181.350000000007,
+            "count": 22,
+            "hp": 9278,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
+          "after": {
+            "time": 182.45000000000724,
+            "count": 23,
+            "hp": 9240,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              130
+            ],
+            "fov": 10.004239367041688,
+            "zoom": 8,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.9942661877980341,
+              0.10456106495237369,
+              -0.022399363776457015
+            ],
+            "foreground": 0,
+            "range": 230,
+            "contact": "AH-64 Apache · 实际距离 160 u / 射程 230 u · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 16,
+          "before": {
+            "time": 190.45000000000906,
+            "count": 30,
+            "hp": 9012,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
+          "after": {
+            "time": 191.45000000000928,
+            "count": 31,
+            "hp": 8974,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              130
+            ],
+            "fov": 5.011669276985761,
+            "zoom": 16,
+            "active": true,
+            "orbital": false,
+            "direction": [
+              0.996719081836745,
+              0.047606803260804145,
+              0.06545734630890167
+            ],
+            "foreground": 0,
+            "range": 230,
+            "contact": "AH-64 Apache · 实际距离 160 u / 射程 230 u · 射程内 · 装填中"
+          }
+        }
+      ],
+      "stop": {
+        "settled": {
+          "time": 191.70000000000934,
+          "count": 31,
+          "hp": 8974,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        },
+        "landed": {
+          "time": 191.70000000000934,
+          "count": 31,
+          "hp": 8974,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        },
+        "after": {
+          "time": 193.05000000000965,
+          "count": 31,
+          "hp": 8974,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 16,
+          "locked": true
+        }
+      },
+      "vOnly": {
+        "time": 194.60000000001,
+        "count": 31,
+        "hp": 8974,
+        "fire": false,
+        "active": true,
+        "latched": true,
+        "zoom": 16,
+        "locked": true
+      }
+    },
+    {
+      "kind": "orbital",
+      "ids": {
+        "actor": 67,
+        "target": 68,
+        "far": 69
+      },
+      "magnifications": [
+        {
+          "zoom": 4,
+          "before": {
+            "time": 206.75000000001276,
+            "count": 4,
+            "hp": 9600,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
+          "after": {
+            "time": 208.00000000001305,
+            "count": 5,
+            "hp": 9400,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              4000
+            ],
+            "fov": 19.858259822877592,
+            "zoom": 4,
+            "active": true,
+            "orbital": true,
+            "direction": [
+              0.0009659188411144655,
+              -0.9999995241865857,
+              -0.00013648221363005136
+            ],
+            "foreground": 0,
+            "range": 1342,
+            "contact": "M1A2 SEPv3 · 实际距离 4000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 8,
+          "before": {
+            "time": 215.55000000001476,
+            "count": 7,
+            "hp": 9000,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
+          "after": {
+            "time": 217.75000000001526,
+            "count": 8,
+            "hp": 8800,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              4000
+            ],
+            "fov": 10.004239367041688,
+            "zoom": 8,
+            "active": true,
+            "orbital": true,
+            "direction": [
+              0.001261636968529489,
+              -0.9999991495991895,
+              -0.00033026210473829915
+            ],
+            "foreground": 0,
+            "range": 1342,
+            "contact": "M1A2 SEPv3 · 实际距离 4000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 16,
+          "before": {
+            "time": 225.30000000001698,
+            "count": 10,
+            "hp": 8400,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
+          "after": {
+            "time": 227.50000000001748,
+            "count": 11,
+            "hp": 8200,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              4000
+            ],
+            "fov": 5.011669276985761,
+            "zoom": 16,
+            "active": true,
+            "orbital": true,
+            "direction": [
+              0.0011392624827113451,
+              -0.9999992877623781,
+              -0.0003557467249407642
+            ],
+            "foreground": 0,
+            "range": 1342,
+            "contact": "M1A2 SEPv3 · 实际距离 4000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 32,
+          "before": {
+            "time": 235.0500000000192,
+            "count": 13,
+            "hp": 7800,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 32,
+            "locked": true
+          },
+          "after": {
+            "time": 237.2500000000197,
+            "count": 14,
+            "hp": 7600,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 32,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              4000
+            ],
+            "fov": 2.5070334741910445,
+            "zoom": 32,
+            "active": true,
+            "orbital": true,
+            "direction": [
+              0.001261636969100366,
+              -0.999999149599189,
+              -0.0003302621038705489
+            ],
+            "foreground": 0,
+            "range": 1342,
+            "contact": "M1A2 SEPv3 · 实际距离 4000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 装填中"
+          }
+        },
+        {
+          "zoom": 64,
+          "before": {
+            "time": 244.7500000000214,
+            "count": 16,
+            "hp": 7200,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 64,
+            "locked": true
+          },
+          "after": {
+            "time": 247.0000000000219,
+            "count": 17,
+            "hp": 7000,
+            "fire": true,
+            "active": true,
+            "latched": false,
+            "zoom": 64,
+            "locked": true
+          },
+          "view": {
+            "position": [
+              1800,
+              1400,
+              4000
+            ],
+            "fov": 1.2536667529378764,
+            "zoom": 64,
+            "active": true,
+            "orbital": true,
+            "direction": [
+              0.0012004497280393434,
+              -0.9999992206339073,
+              -0.00034300441472978616
+            ],
+            "foreground": 0,
+            "range": 1342,
+            "contact": "M1A2 SEPv3 · 实际距离 4000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 装填中"
+          }
+        }
+      ],
+      "screenshot": "screenshots/right-button-fire-orbital-desktop.png",
+      "stop": {
+        "settled": {
+          "time": 248.85000000002233,
+          "count": 17,
+          "hp": 7000,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 64,
+          "locked": true
+        },
+        "landed": {
+          "time": 248.85000000002233,
+          "count": 17,
+          "hp": 7000,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 64,
+          "locked": true
+        },
+        "after": {
+          "time": 252.7000000000232,
+          "count": 17,
+          "hp": 7000,
+          "fire": false,
+          "active": false,
+          "latched": false,
+          "zoom": 64,
+          "locked": true
+        }
+      },
+      "vOnly": {
+        "time": 254.20000000002355,
+        "count": 17,
+        "hp": 7000,
+        "fire": false,
+        "active": true,
+        "latched": true,
+        "zoom": 64,
+        "locked": true
+      }
+    }
+  ],
+  "shots": [
+    {
+      "kind": "operator",
+      "events": [
+        {
+          "sourceId": 37,
+          "time": 0.65,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 0.8000000000000002,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 0.9500000000000003,
+          "targetId": null,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 1.1000000000000003,
+          "targetId": null,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 1.2500000000000004,
+          "targetId": null,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 1.4000000000000006,
+          "targetId": null,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 1.5500000000000007,
+          "targetId": null,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 1.7000000000000008,
+          "targetId": null,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 1.850000000000001,
+          "targetId": null,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 2.000000000000001,
+          "targetId": null,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 2.1500000000000004,
+          "targetId": null,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 2.3,
+          "targetId": null,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 2.4499999999999993,
+          "targetId": null,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 2.5999999999999988,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 2.7499999999999982,
+          "targetId": null,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 2.8999999999999977,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 3.049999999999997,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 3.1999999999999966,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 3.349999999999996,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 3.4999999999999956,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 3.649999999999995,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 3.7999999999999945,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 3.949999999999994,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 4.099999999999993,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 4.249999999999993,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 4.399999999999992,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 4.549999999999992,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 4.699999999999991,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 4.849999999999991,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 4.99999999999999,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 8.199999999999982,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 8.349999999999984,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 8.499999999999986,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 8.649999999999988,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 8.79999999999999,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 8.949999999999992,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 9.099999999999994,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 9.249999999999996,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 9.399999999999999,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 9.55,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 9.700000000000003,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 9.850000000000005,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 10.000000000000007,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 10.15000000000001,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 10.300000000000011,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 10.450000000000014,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 10.600000000000016,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 10.750000000000018,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 10.90000000000002,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 11.050000000000022,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 11.200000000000024,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 11.350000000000026,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 11.500000000000028,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 11.65000000000003,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 11.800000000000033,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 11.950000000000035,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 12.100000000000037,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 12.250000000000039,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 14.600000000000072,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 14.750000000000075,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 14.900000000000077,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 15.050000000000079,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 15.200000000000081,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 15.350000000000083,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 15.500000000000085,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 15.650000000000087,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 15.80000000000009,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 15.950000000000092,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 16.100000000000094,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 16.250000000000096,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 16.400000000000098,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 16.5500000000001,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 16.700000000000102,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 16.850000000000104,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 17.000000000000107,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 17.15000000000011,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 17.30000000000011,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 17.450000000000113,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 17.600000000000115,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 17.750000000000117,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 17.90000000000012,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 18.05000000000012,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 18.200000000000124,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 18.350000000000126,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 18.500000000000128,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 18.65000000000013,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 20.950000000000163,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 21.100000000000165,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 21.250000000000167,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 21.40000000000017,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 21.55000000000017,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 21.700000000000173,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 21.850000000000176,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 22.000000000000178,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 22.15000000000018,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 22.300000000000182,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 22.450000000000184,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 22.600000000000186,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 22.75000000000019,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 22.90000000000019,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 23.050000000000193,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 23.200000000000195,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 23.350000000000197,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 23.5000000000002,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 23.6500000000002,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 23.800000000000203,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 23.950000000000205,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 24.100000000000207,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 24.25000000000021,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 24.40000000000021,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 24.550000000000214,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 24.700000000000216,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 24.850000000000218,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 25.00000000000022,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 27.350000000000254,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 27.500000000000256,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 27.650000000000258,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 27.80000000000026,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 27.950000000000262,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 28.100000000000264,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 28.250000000000266,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 28.40000000000027,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 28.55000000000027,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 28.700000000000273,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 28.850000000000275,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 29.000000000000277,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 29.15000000000028,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 29.30000000000028,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 29.450000000000284,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 29.600000000000286,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 29.750000000000288,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 29.90000000000029,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 30.050000000000292,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 30.200000000000294,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 30.350000000000296,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 30.5000000000003,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 30.6500000000003,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 30.800000000000303,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 30.950000000000305,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 31.100000000000307,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 31.25000000000031,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 31.40000000000031,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 33.70000000000022,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 33.850000000000215,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 36.95000000000004,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 37.10000000000003,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 37.25000000000002,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 37.40000000000001,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 37.550000000000004,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 37.699999999999996,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 37.84999999999999,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 37.99999999999998,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 38.14999999999997,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 38.29999999999996,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 38.44999999999995,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 38.599999999999945,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 38.749999999999936,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 38.89999999999993,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 39.04999999999992,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 39.19999999999991,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 39.3499999999999,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 39.49999999999989,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 39.649999999999885,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 39.799999999999876,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 39.94999999999987,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 40.09999999999986,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 40.24999999999985,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 40.39999999999984,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 40.549999999999834,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 40.699999999999825,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 40.84999999999982,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 43.09999999999969,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 43.24999999999968,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 44.79999999999959,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 44.949999999999584,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 45.099999999999575,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 45.24999999999957,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 45.39999999999956,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 45.54999999999955,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 45.69999999999954,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 45.84999999999953,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 45.999999999999524,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 46.149999999999515,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 46.29999999999951,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 46.4499999999995,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 46.59999999999949,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 46.74999999999948,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 46.89999999999947,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 47.049999999999464,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 47.199999999999456,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 47.34999999999945,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 47.49999999999944,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 47.64999999999943,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 47.79999999999942,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 47.94999999999941,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 48.099999999999405,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 48.249999999999396,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 48.39999999999939,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 48.54999999999938,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 48.69999999999937,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 51.04999999999924,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        },
+        {
+          "sourceId": 37,
+          "time": 51.19999999999923,
+          "targetId": 38,
+          "weaponId": "rifle_01"
+        }
+      ]
+    },
+    {
+      "kind": "tank",
+      "events": [
+        {
+          "sourceId": 43,
+          "time": 52.999999999999126,
+          "targetId": 44,
+          "weaponId": null
+        },
+        {
+          "sourceId": 43,
+          "time": 55.09999999999901,
+          "targetId": 44,
+          "weaponId": null
+        },
+        {
+          "sourceId": 43,
+          "time": 57.19999999999889,
+          "targetId": 44,
+          "weaponId": null
+        },
+        {
+          "sourceId": 43,
+          "time": 59.29999999999877,
+          "targetId": 44,
+          "weaponId": null
+        },
+        {
+          "sourceId": 43,
+          "time": 61.39999999999865,
+          "targetId": 44,
+          "weaponId": null
+        },
+        {
+          "sourceId": 43,
+          "time": 63.49999999999853,
+          "targetId": 44,
+          "weaponId": null
+        },
+        {
+          "sourceId": 43,
+          "time": 65.59999999999842,
+          "targetId": 44,
+          "weaponId": null
+        },
+        {
+          "sourceId": 43,
+          "time": 67.6999999999983,
+          "targetId": 44,
+          "weaponId": null
+        },
+        {
+          "sourceId": 43,
+          "time": 69.79999999999818,
+          "targetId": 44,
+          "weaponId": null
+        },
+        {
+          "sourceId": 43,
+          "time": 71.89999999999806,
+          "targetId": 44,
+          "weaponId": null
+        },
+        {
+          "sourceId": 43,
+          "time": 76.94999999999777,
+          "targetId": 44,
+          "weaponId": null
+        },
+        {
+          "sourceId": 43,
+          "time": 79.04999999999765,
+          "targetId": 44,
+          "weaponId": null
+        },
+        {
+          "sourceId": 43,
+          "time": 81.99999999999748,
+          "targetId": 44,
+          "weaponId": null
+        },
+        {
+          "sourceId": 43,
+          "time": 84.09999999999737,
+          "targetId": 44,
+          "weaponId": null
+        }
+      ]
+    },
+    {
+      "kind": "destroyer",
+      "events": [
+        {
+          "sourceId": 49,
+          "time": 87.29999999999718,
+          "targetId": 50,
+          "weaponId": null
+        },
+        {
+          "sourceId": 49,
+          "time": 90.14999999999702,
+          "targetId": 50,
+          "weaponId": null
+        },
+        {
+          "sourceId": 49,
+          "time": 92.99999999999686,
+          "targetId": 50,
+          "weaponId": null
+        },
+        {
+          "sourceId": 49,
+          "time": 95.8499999999967,
+          "targetId": 50,
+          "weaponId": null
+        },
+        {
+          "sourceId": 49,
+          "time": 98.69999999999654,
+          "targetId": 50,
+          "weaponId": null
+        },
+        {
+          "sourceId": 49,
+          "time": 101.54999999999637,
+          "targetId": 50,
+          "weaponId": null
+        },
+        {
+          "sourceId": 49,
+          "time": 104.39999999999621,
+          "targetId": 50,
+          "weaponId": null
+        },
+        {
+          "sourceId": 49,
+          "time": 107.24999999999605,
+          "targetId": 50,
+          "weaponId": null
+        },
+        {
+          "sourceId": 49,
+          "time": 110.09999999999589,
+          "targetId": 50,
+          "weaponId": null
+        },
+        {
+          "sourceId": 49,
+          "time": 112.94999999999573,
+          "targetId": 50,
+          "weaponId": null
+        },
+        {
+          "sourceId": 49,
+          "time": 115.79999999999556,
+          "targetId": 50,
+          "weaponId": null
+        }
+      ]
+    },
+    {
+      "kind": "submarine",
+      "events": [
+        {
+          "sourceId": 55,
+          "time": 121.44999999999524,
+          "targetId": 56,
+          "weaponId": null
+        },
+        {
+          "sourceId": 55,
+          "time": 124.49999999999507,
+          "targetId": 56,
+          "weaponId": null
+        },
+        {
+          "sourceId": 55,
+          "time": 127.5499999999949,
+          "targetId": 56,
+          "weaponId": null
+        },
+        {
+          "sourceId": 55,
+          "time": 130.59999999999545,
+          "targetId": 56,
+          "weaponId": null
+        },
+        {
+          "sourceId": 55,
+          "time": 133.64999999999614,
+          "targetId": 56,
+          "weaponId": null
+        },
+        {
+          "sourceId": 55,
+          "time": 136.69999999999683,
+          "targetId": 56,
+          "weaponId": null
+        },
+        {
+          "sourceId": 55,
+          "time": 139.74999999999753,
+          "targetId": 56,
+          "weaponId": null
+        },
+        {
+          "sourceId": 55,
+          "time": 142.79999999999822,
+          "targetId": 56,
+          "weaponId": null
+        },
+        {
+          "sourceId": 55,
+          "time": 145.84999999999891,
+          "targetId": 56,
+          "weaponId": null
+        },
+        {
+          "sourceId": 55,
+          "time": 148.8999999999996,
+          "targetId": 56,
+          "weaponId": null
+        },
+        {
+          "sourceId": 55,
+          "time": 151.9500000000003,
+          "targetId": 56,
+          "weaponId": null
+        }
+      ]
+    },
+    {
+      "kind": "heli",
+      "events": [
+        {
+          "sourceId": 61,
+          "time": 158.1500000000017,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 159.25000000000196,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 160.3500000000022,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 161.45000000000246,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 162.5500000000027,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 163.65000000000296,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 164.7500000000032,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 165.85000000000346,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 166.9500000000037,
+          "targetId": null,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 168.05000000000396,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 169.1500000000042,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 170.25000000000446,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 171.3500000000047,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 172.45000000000496,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 173.5500000000052,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 174.65000000000546,
+          "targetId": null,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 175.7500000000057,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 176.85000000000596,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 177.9500000000062,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 179.05000000000646,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 180.1500000000067,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 181.25000000000696,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 182.3500000000072,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 183.45000000000746,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 184.5500000000077,
+          "targetId": null,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 185.65000000000796,
+          "targetId": null,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 186.7500000000082,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 187.85000000000846,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 188.9500000000087,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 190.05000000000896,
+          "targetId": 62,
+          "weaponId": null
+        },
+        {
+          "sourceId": 61,
+          "time": 191.15000000000921,
+          "targetId": 62,
+          "weaponId": null
+        }
+      ]
+    },
+    {
+      "kind": "orbital",
+      "events": [
+        {
+          "sourceId": 67,
+          "time": 194.95000000001008,
+          "targetId": null,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 198.20000000001082,
+          "targetId": null,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 201.45000000001156,
+          "targetId": 68,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 204.7000000000123,
+          "targetId": 68,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 207.95000000001303,
+          "targetId": 68,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 211.20000000001377,
+          "targetId": 68,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 214.4500000000145,
+          "targetId": 68,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 217.70000000001525,
+          "targetId": 68,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 220.950000000016,
+          "targetId": 68,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 224.20000000001673,
+          "targetId": 68,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 227.45000000001747,
+          "targetId": 68,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 230.7000000000182,
+          "targetId": 68,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 233.95000000001895,
+          "targetId": 68,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 237.20000000001968,
+          "targetId": 68,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 240.45000000002042,
+          "targetId": 68,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 243.70000000002116,
+          "targetId": 68,
+          "weaponId": null
+        },
+        {
+          "sourceId": 67,
+          "time": 246.9500000000219,
+          "targetId": 68,
+          "weaponId": null
+        }
+      ]
+    }
+  ],
+  "requestedKinds": [
+    "operator",
+    "tank",
+    "destroyer",
+    "submarine",
+    "heli",
+    "orbital"
+  ],
+  "coverage": "full six-domain acceptance",
+  "imported": {
+    "ship": "ready",
+    "air": "ready",
+    "ground": "ready",
+    "errors": [],
+    "models": [
+      {
+        "key": "destroyer_usa",
+        "source": "https://sketchfab.com/3d-models/11-low-poly-us-navy-ddg-51-uss-arleigh-burke-17be09c31c6047e4a5969b68c29eba03",
+        "license": "CC-BY-4.0",
+        "author": "Yi Tsung Lee / WTigerTw",
+        "assetPath": "assets/models/burke.glb",
+        "meshes": 6,
+        "preserved": 6,
+        "textured": 6,
+        "materials": [
+          {
+            "name": "CIWS",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 0.5,
+            "metalness": 0,
+            "color": "ffffff"
+          },
+          {
+            "name": "DDG112",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 0.6948497893219999,
+            "metalness": 0.43340234329873717,
+            "color": "ffffff"
+          },
+          {
+            "name": "mk38",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 0.6705290966686731,
+            "metalness": 0.27531784105211315,
+            "color": "ffffff"
+          },
+          {
+            "name": "DDG112",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 0.6948497893219999,
+            "metalness": 0.43340234329873717,
+            "color": "ffffff"
+          },
+          {
+            "name": "RHIB.001",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 0.5,
+            "metalness": 0,
+            "color": "ffffff"
+          },
+          {
+            "name": "spg62",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 0.5,
+            "metalness": 0,
+            "color": "ffffff"
+          }
+        ]
+      },
+      {
+        "key": "heli_usa",
+        "source": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+        "license": "CC-BY-4.0",
+        "author": "Andrew Swihart / ArionDigital",
+        "assetPath": "assets/models/ah64.glb",
+        "meshes": 12,
+        "preserved": 12,
+        "textured": 0,
+        "materials": [
+          {
+            "name": "GreenishBlack",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.5,
+            "metalness": 0.4,
+            "color": "525252"
+          },
+          {
+            "name": "Front_point_of_bomb",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.86,
+            "metalness": 0.4,
+            "color": "525252"
+          },
+          {
+            "name": "Material.001",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0,
+            "metalness": 0,
+            "color": "000000"
+          },
+          {
+            "name": "Glass",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.16173999714401532,
+            "metalness": 0.0395178644912048,
+            "color": "000000"
+          },
+          {
+            "name": "Red_siran",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0,
+            "metalness": 0,
+            "color": "ffffff"
+          },
+          {
+            "name": "front_panel",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.5,
+            "metalness": 0.4,
+            "color": "525252"
+          },
+          {
+            "name": "Burner",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.9577051494623774,
+            "metalness": 1,
+            "color": "474747"
+          },
+          {
+            "name": "just",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.9577051494623774,
+            "metalness": 0,
+            "color": "6c6c6c"
+          },
+          {
+            "name": "MainBlade_photoDarkCoating",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.87,
+            "metalness": 0,
+            "color": "1d2226"
+          },
+          {
+            "name": "GreenishBlack",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.5,
+            "metalness": 0.4,
+            "color": "525252"
+          },
+          {
+            "name": "GreenishBlack",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.5,
+            "metalness": 0.4,
+            "color": "525252"
+          },
+          {
+            "name": "Material.002",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.14,
+            "metalness": 0.4,
+            "color": "525252"
+          }
+        ]
+      },
+      {
+        "key": "heli_kor",
+        "source": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+        "license": "CC-BY-4.0",
+        "author": "Andrew Swihart / ArionDigital",
+        "assetPath": "assets/models/ah64.glb",
+        "meshes": 12,
+        "preserved": 12,
+        "textured": 0,
+        "materials": [
+          {
+            "name": "GreenishBlack",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.5,
+            "metalness": 0.4,
+            "color": "525252"
+          },
+          {
+            "name": "Front_point_of_bomb",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.86,
+            "metalness": 0.4,
+            "color": "525252"
+          },
+          {
+            "name": "Material.001",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0,
+            "metalness": 0,
+            "color": "000000"
+          },
+          {
+            "name": "Glass",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.16173999714401532,
+            "metalness": 0.0395178644912048,
+            "color": "000000"
+          },
+          {
+            "name": "Red_siran",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0,
+            "metalness": 0,
+            "color": "ffffff"
+          },
+          {
+            "name": "front_panel",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.5,
+            "metalness": 0.4,
+            "color": "525252"
+          },
+          {
+            "name": "Burner",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.9577051494623774,
+            "metalness": 1,
+            "color": "474747"
+          },
+          {
+            "name": "just",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.9577051494623774,
+            "metalness": 0,
+            "color": "6c6c6c"
+          },
+          {
+            "name": "MainBlade_photoDarkCoating",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.87,
+            "metalness": 0,
+            "color": "1d2226"
+          },
+          {
+            "name": "GreenishBlack",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.5,
+            "metalness": 0.4,
+            "color": "525252"
+          },
+          {
+            "name": "GreenishBlack",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.5,
+            "metalness": 0.4,
+            "color": "525252"
+          },
+          {
+            "name": "Material.002",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 0.14,
+            "metalness": 0.4,
+            "color": "525252"
+          }
+        ]
+      },
+      {
+        "key": "tank_rus",
+        "source": "https://sketchfab.com/3d-models/t-90m-2e31a3cf16b04f0180b9387df5198c9a",
+        "license": "CC-BY-4.0",
+        "author": "minehffd",
+        "assetPath": "assets/models/t90m.glb",
+        "meshes": 23,
+        "preserved": 23,
+        "textured": 21,
+        "materials": [
+          {
+            "name": "Rear parts",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 1,
+            "color": "ffffff"
+          },
+          {
+            "name": "hull — olive exterior paint",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 0.05,
+            "color": "ceddb5"
+          },
+          {
+            "name": "Front hull ",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 0,
+            "color": "ffffff"
+          },
+          {
+            "name": "Lower hull",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 0.75,
+            "metalness": 1,
+            "color": "ffffff"
+          },
+          {
+            "name": "Front hull  — olive exterior paint",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 0.05,
+            "color": "ceddb5"
+          },
+          {
+            "name": "Rear parts",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 1,
+            "color": "ffffff"
+          },
+          {
+            "name": "Wheels",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 1,
+            "color": "ffffff"
+          },
+          {
+            "name": "Sideskirts",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 1,
+            "color": "ffffff"
+          },
+          {
+            "name": "Side baskets",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 1,
+            "color": "ffffff"
+          },
+          {
+            "name": "Lower hull — olive exterior paint",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 0.05,
+            "color": "ceddb5"
+          },
+          {
+            "name": "Lower hull — olive exterior paint",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 0.05,
+            "color": "ceddb5"
+          },
+          {
+            "name": "Implicit glTF default",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 1,
+            "metalness": 1,
+            "color": "ffffff"
+          },
+          {
+            "name": "Thread",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 1,
+            "color": "ffffff"
+          },
+          {
+            "name": "hull",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 1,
+            "color": "ffffff"
+          },
+          {
+            "name": "Turret parts",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 1,
+            "color": "ffffff"
+          },
+          {
+            "name": "Turret — olive exterior paint",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 0.05,
+            "color": "ceddb5"
+          },
+          {
+            "name": "Turret parts",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 1,
+            "color": "ffffff"
+          },
+          {
+            "name": "12.7mm Kord",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 1,
+            "color": "ffffff"
+          },
+          {
+            "name": "Turret basket",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 0,
+            "color": "ffffff"
+          },
+          {
+            "name": "Hatches",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 1,
+            "color": "ffffff"
+          },
+          {
+            "name": "Front turret ERA — olive exterior paint",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 0.05,
+            "color": "ceddb5"
+          },
+          {
+            "name": "Hatches",
+            "type": "MeshStandardMaterial",
+            "map": true,
+            "roughness": 1,
+            "metalness": 1,
+            "color": "ffffff"
+          },
+          {
+            "name": "Gun mantley — olive exterior paint",
+            "type": "MeshStandardMaterial",
+            "map": false,
+            "roughness": 1,
+            "metalness": 0.05,
+            "color": "7e8376"
+          }
+        ]
+      }
+    ]
+  },
+  "runtime": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.8.0 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36",
+    "viewport": [
+      2752,
+      1152
+    ],
+    "version": "现代战线 HD · 五强遭遇战"
+  },
+  "stage": "orbital V observation off",
+  "reloads": [
+    {
+      "actor": 37,
+      "before": {
+        "ammo": 0,
+        "reserve": 180,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "after": {
+        "ammo": 30,
+        "reserve": 150,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "input": "actual keyboard R; held mouse buttons unchanged"
+    },
+    {
+      "actor": 37,
+      "before": {
+        "ammo": 2,
+        "reserve": 150,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "after": {
+        "ammo": 30,
+        "reserve": 122,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "input": "actual keyboard R; held mouse buttons unchanged"
+    },
+    {
+      "actor": 37,
+      "before": {
+        "ammo": 2,
+        "reserve": 122,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "after": {
+        "ammo": 30,
+        "reserve": 94,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "input": "actual keyboard R; held mouse buttons unchanged"
+    },
+    {
+      "actor": 37,
+      "before": {
+        "ammo": 2,
+        "reserve": 94,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "after": {
+        "ammo": 30,
+        "reserve": 66,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "input": "actual keyboard R; held mouse buttons unchanged"
+    },
+    {
+      "actor": 37,
+      "before": {
+        "ammo": 2,
+        "reserve": 66,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "after": {
+        "ammo": 30,
+        "reserve": 38,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "input": "actual keyboard R; held mouse buttons unchanged"
+    },
+    {
+      "actor": 37,
+      "before": {
+        "ammo": 1,
+        "reserve": 38,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "after": {
+        "ammo": 30,
+        "reserve": 9,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "input": "actual keyboard R; held mouse buttons unchanged"
+    },
+    {
+      "actor": 37,
+      "before": {
+        "ammo": 1,
+        "reserve": 9,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "after": {
+        "ammo": 10,
+        "reserve": 0,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "input": "actual keyboard R; held mouse buttons unchanged"
+    }
+  ],
+  "focusBoundaryRecoveries": [
+    {
+      "label": "operator V observation on",
+      "needed": false
+    },
+    {
+      "label": "operator V observation off",
+      "needed": false
+    },
+    {
+      "label": "tank V observation on",
+      "needed": false
+    },
+    {
+      "label": "tank V observation off",
+      "needed": false
+    },
+    {
+      "label": "destroyer V observation on",
+      "needed": false
+    },
+    {
+      "label": "destroyer V observation off",
+      "needed": false
+    },
+    {
+      "label": "submarine V observation on",
+      "needed": false
+    },
+    {
+      "label": "submarine V observation off",
+      "needed": false
+    },
+    {
+      "label": "heli V observation on",
+      "needed": false
+    },
+    {
+      "label": "heli V observation off",
+      "needed": false
+    },
+    {
+      "label": "orbital V observation on",
+      "needed": false
+    },
+    {
+      "label": "orbital V observation off",
+      "needed": false
+    }
+  ],
+  "observationInputs": [
+    {
+      "label": "operator V observation on",
+      "before": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      },
+      "ready": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      },
+      "after": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      }
+    },
+    {
+      "label": "operator V observation off",
+      "before": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      },
+      "ready": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      },
+      "after": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      }
+    },
+    {
+      "label": "tank V observation on",
+      "before": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      },
+      "ready": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      },
+      "after": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      }
+    },
+    {
+      "label": "tank V observation off",
+      "before": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      },
+      "ready": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      },
+      "after": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      }
+    },
+    {
+      "label": "destroyer V observation on",
+      "before": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      },
+      "ready": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      },
+      "after": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      }
+    },
+    {
+      "label": "destroyer V observation off",
+      "before": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      },
+      "ready": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      },
+      "after": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      }
+    },
+    {
+      "label": "submarine V observation on",
+      "before": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      },
+      "ready": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      },
+      "after": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      }
+    },
+    {
+      "label": "submarine V observation off",
+      "before": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      },
+      "ready": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      },
+      "after": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      }
+    },
+    {
+      "label": "heli V observation on",
+      "before": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      },
+      "ready": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      },
+      "after": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      }
+    },
+    {
+      "label": "heli V observation off",
+      "before": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      },
+      "ready": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      },
+      "after": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      }
+    },
+    {
+      "label": "orbital V observation on",
+      "before": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      },
+      "ready": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      },
+      "after": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      }
+    },
+    {
+      "label": "orbital V observation off",
+      "before": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      },
+      "ready": {
+        "focused": true,
+        "locked": true,
+        "active": true,
+        "fire": false
+      },
+      "after": {
+        "focused": true,
+        "locked": true,
+        "active": false,
+        "fire": false
+      }
+    }
+  ],
+  "focusEvents": [
+    {
+      "name": "pointerlockchange",
+      "trusted": true,
+      "time": 3863.399999856949,
+      "focused": true,
+      "locked": true,
+      "kind": "operator"
+    },
+    {
+      "name": "KeyV",
+      "trusted": true,
+      "time": 38873.799999952316,
+      "focused": true,
+      "locked": true,
+      "kind": "operator"
+    },
+    {
+      "name": "KeyV",
+      "trusted": true,
+      "time": 40434.59999990463,
+      "focused": true,
+      "locked": true,
+      "kind": "operator"
+    },
+    {
+      "name": "exitPointerLock-call",
+      "trusted": false,
+      "time": 56238.700000047684,
+      "focused": true,
+      "locked": true,
+      "kind": "operator",
+      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:15:48)"
+    },
+    {
+      "name": "pointerlockchange",
+      "trusted": true,
+      "time": 56268.89999985695,
+      "focused": true,
+      "locked": false
+    },
+    {
+      "name": "pointerlockchange",
+      "trusted": true,
+      "time": 56374.09999990463,
+      "focused": true,
+      "locked": true,
+      "kind": "tank"
+    },
+    {
+      "name": "KeyV",
+      "trusted": true,
+      "time": 79037.89999985695,
+      "focused": true,
+      "locked": true,
+      "kind": "tank"
+    },
+    {
+      "name": "KeyV",
+      "trusted": true,
+      "time": 80573.29999995232,
+      "focused": true,
+      "locked": true,
+      "kind": "tank"
+    },
+    {
+      "name": "exitPointerLock-call",
+      "trusted": false,
+      "time": 90674.20000004768,
+      "focused": true,
+      "locked": true,
+      "kind": "tank",
+      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:15:48)"
+    },
+    {
+      "name": "pointerlockchange",
+      "trusted": true,
+      "time": 90710.09999990463,
+      "focused": true,
+      "locked": false
+    },
+    {
+      "name": "pointerlockchange",
+      "trusted": true,
+      "time": 90877,
+      "focused": true,
+      "locked": true,
+      "kind": "destroyer"
+    },
+    {
+      "name": "KeyV",
+      "trusted": true,
+      "time": 123857.89999985695,
+      "focused": true,
+      "locked": true,
+      "kind": "destroyer"
+    },
+    {
+      "name": "KeyV",
+      "trusted": true,
+      "time": 125396.59999990463,
+      "focused": true,
+      "locked": true,
+      "kind": "destroyer"
+    },
+    {
+      "name": "exitPointerLock-call",
+      "trusted": false,
+      "time": 125402.89999985695,
+      "focused": true,
+      "locked": true,
+      "kind": "destroyer",
+      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:15:48)"
+    },
+    {
+      "name": "pointerlockchange",
+      "trusted": true,
+      "time": 125411.89999985695,
+      "focused": true,
+      "locked": false,
+      "kind": "destroyer"
+    },
+    {
+      "name": "pointerlockchange",
+      "trusted": true,
+      "time": 125543.09999990463,
+      "focused": true,
+      "locked": true,
+      "kind": "submarine"
+    },
+    {
+      "name": "KeyV",
+      "trusted": true,
+      "time": 160704.39999985695,
+      "focused": true,
+      "locked": true,
+      "kind": "submarine"
+    },
+    {
+      "name": "KeyV",
+      "trusted": true,
+      "time": 162197.09999990463,
+      "focused": true,
+      "locked": true,
+      "kind": "submarine"
+    },
+    {
+      "name": "exitPointerLock-call",
+      "trusted": false,
+      "time": 162201.89999985695,
+      "focused": true,
+      "locked": true,
+      "kind": "submarine",
+      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:15:48)"
+    },
+    {
+      "name": "pointerlockchange",
+      "trusted": true,
+      "time": 162213.20000004768,
+      "focused": true,
+      "locked": false,
+      "kind": "submarine"
+    },
+    {
+      "name": "pointerlockchange",
+      "trusted": true,
+      "time": 162402.20000004768,
+      "focused": true,
+      "locked": true,
+      "kind": "heli"
+    },
+    {
+      "name": "KeyV",
+      "trusted": true,
+      "time": 203450.59999990463,
+      "focused": true,
+      "locked": true,
+      "kind": "heli"
+    },
+    {
+      "name": "KeyV",
+      "trusted": true,
+      "time": 204991.09999990463,
+      "focused": true,
+      "locked": true,
+      "kind": "heli"
+    },
+    {
+      "name": "exitPointerLock-call",
+      "trusted": false,
+      "time": 205035.09999990463,
+      "focused": true,
+      "locked": true,
+      "kind": "heli",
+      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:15:48)"
+    },
+    {
+      "name": "pointerlockchange",
+      "trusted": true,
+      "time": 205066.70000004768,
+      "focused": true,
+      "locked": false
+    },
+    {
+      "name": "pointerlockchange",
+      "trusted": true,
+      "time": 205227.09999990463,
+      "focused": true,
+      "locked": true,
+      "kind": "orbital"
+    },
+    {
+      "name": "KeyV",
+      "trusted": true,
+      "time": 264389,
+      "focused": true,
+      "locked": true,
+      "kind": "orbital"
+    },
+    {
+      "name": "KeyV",
+      "trusted": true,
+      "time": 265905.5,
+      "focused": true,
+      "locked": true,
+      "kind": "orbital"
+    },
+    {
+      "name": "exitPointerLock-call",
+      "trusted": false,
+      "time": 265910.5,
+      "focused": true,
+      "locked": true,
+      "kind": "orbital",
+      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:15:48)"
+    },
+    {
+      "name": "pointerlockchange",
+      "trusted": true,
+      "time": 265917.39999985695,
+      "focused": true,
+      "locked": false,
+      "kind": "orbital"
+    }
+  ],
+  "passed": true
+}

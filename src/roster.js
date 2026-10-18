@@ -34,13 +34,13 @@
   }
 
   add("antitank_team", "ground", "infantry", "antitank", {
-    name: "反坦克导弹班", role: "陆军反装甲 / 高单发、慢装填 / 脆弱步兵",
+    name: "反坦克导弹兵", role: "陆军反装甲 / 高单发、慢装填 / 脆弱步兵",
     cost: 260, hp: 115, speed: 58, damage: 48, range: 245, reload: 3,
     sight: 260, r: 8, time: 5, producer: "barracks", icon: "↗",
     targetDomains: ["ground", "structure"], targetBonuses: { tank: 1.7, ifv: 1.45, aa: 1.25 }, rocket: true,
   });
   add("machinegun_team", "ground", "infantry", "machinegun", {
-    name: "机枪火力班", role: "中距反步兵 / 快速连射 / 对重装甲弱",
+    name: "机枪手", role: "中距反步兵 / 快速连射 / 对重装甲弱",
     cost: 220, hp: 130, speed: 54, damage: 9, range: 205, reload: 0.32,
     sight: 270, r: 8, time: 4, producer: "barracks", icon: "⋯",
     targetDomains: ["ground", "structure"], targetBonuses: { infantry: 1.8, tank: 0.35, ifv: 0.45, aa: 0.7 },
@@ -58,13 +58,13 @@
     heal: 22, healDomains: ["ground"], aiWeight: 0.45,
   });
   add("mortar_team", "ground", "infantry", "mortar", {
-    name: "迫击炮班", role: "廉价曲射溅射 / 最小射程 90 / 需要侦察",
+    name: "轻型迫击炮手", role: "廉价曲射溅射 / 最小射程 90 / 需要侦察",
     cost: 340, hp: 100, speed: 48, damage: 52, range: 335, minRange: 90, reload: 3.4,
     sight: 215, r: 8, time: 6, producer: "barracks", icon: "⌁", splash: 35,
     targetDomains: ["ground", "structure"],
   });
   add("assault_team", "ground", "infantry", "assault", {
-    name: "重装突击班", role: "近距离突入 / 较高生命 / 射程短",
+    name: "重装突击兵", role: "近距离突入 / 较高生命 / 射程短",
     cost: 230, hp: 170, speed: 84, damage: 19, range: 100, reload: 0.65,
     sight: 230, r: 9, time: 4, producer: "barracks", icon: "◆",
     targetDomains: ["ground", "structure"],
@@ -209,7 +209,7 @@
     targetDomains:["ground","structure"],damageBonuses:{structure:1.5},
   });
   add("field_medic", "ground", "infantry", "medic", {
-    name:"战地医疗组",role:"无武装 / 仅治疗友方步兵 / 不能维修车辆与建筑",
+    name:"战地医护兵",role:"无武装 / 仅治疗友方步兵 / 不能维修车辆与建筑",
     cost:260,hp:125,speed:70,damage:0,range:145,reload:1,sight:240,r:9,time:5,producer:"barracks",icon:"+",
     heal:14,healDomains:["ground"],healFamilies:["infantry"],aiWeight:.45,
   });
@@ -263,7 +263,7 @@
   // Tactical wave: fills support gaps while retaining existing production and control rules.
   const tacticalStart=added.length;
   add("sniper_team","ground","infantry","precision",{
-    name:"狙击观察组",role:"远距反步兵 / 观察手协同 / 怕重装甲与近身突击",
+    name:"侦察狙击手",role:"远距反步兵 / 独立侦察 / 怕重装甲与近身突击",
     cost:390,hp:85,speed:64,damage:42,range:430,minRange:60,reload:3.4,sight:490,r:8,time:7,producer:"barracks",icon:"⌖",
     targetDomains:["ground"],targetBonuses:{infantry:2.2,tank:.15,ifv:.3,aa:.35},
   });

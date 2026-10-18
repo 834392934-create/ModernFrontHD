@@ -1,0 +1,1170 @@
+{
+  "recordedAt": "2026-10-18T17:15:37.952Z",
+  "environment": "desktop",
+  "checks": [
+    "48个最终模型均为独立单人、13骨骼、有限材质与归一化蒙皮权重",
+    "真实鼠标只选择并移动一个兵；其余兵静止、伤害生命独立、保存重载身份保持、暂停不漂移",
+    "实际r.draw验证八角色位移驱动、暂停姿态冻结和停步归位"
+  ],
+  "errors": [],
+  "screenshots": [
+    "screenshots/single-soldier-battle-desktop.png",
+    "screenshots/single-soldier-factions-desktop.png",
+    "screenshots/single-soldier-roles-desktop.png"
+  ],
+  "models": {
+    "roles": [
+      "infantry",
+      "antitank_team",
+      "machinegun_team",
+      "mortar_team",
+      "assault_team",
+      "field_medic",
+      "sniper_team",
+      "operator"
+    ],
+    "factions": [
+      "usa",
+      "rus",
+      "chn",
+      "ind",
+      "kor",
+      "imp"
+    ],
+    "models": [
+      {
+        "kind": "infantry",
+        "faction": "usa",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 28608,
+        "finite": true,
+        "unique": true,
+        "kit": "usa",
+        "pattern": "tan-organic",
+        "helmet": "covered-modular-rail"
+      },
+      {
+        "kind": "infantry",
+        "faction": "rus",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27804,
+        "finite": true,
+        "unique": true,
+        "kit": "rus",
+        "pattern": "olive-fine-pixel",
+        "helmet": "covered-rounded-generic"
+      },
+      {
+        "kind": "infantry",
+        "faction": "chn",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27984,
+        "finite": true,
+        "unique": true,
+        "kit": "chn",
+        "pattern": "grey-green-pixel",
+        "helmet": "covered-full-cut"
+      },
+      {
+        "kind": "infantry",
+        "faction": "ind",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 28020,
+        "finite": true,
+        "unique": true,
+        "kit": "ind",
+        "pattern": "olive-layered",
+        "helmet": "smooth-full-cut-brim"
+      },
+      {
+        "kind": "infantry",
+        "faction": "kor",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 28896,
+        "finite": true,
+        "unique": true,
+        "kit": "kor",
+        "pattern": "brown-green-pixel",
+        "helmet": "covered-medium-cut-generic"
+      },
+      {
+        "kind": "infantry",
+        "faction": "imp",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 29220,
+        "finite": true,
+        "unique": true,
+        "kit": "imp",
+        "pattern": "original-solid",
+        "helmet": "original-powered"
+      },
+      {
+        "kind": "antitank_team",
+        "faction": "usa",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27600,
+        "finite": true,
+        "unique": true,
+        "kit": "usa",
+        "pattern": "tan-organic",
+        "helmet": "covered-modular-rail"
+      },
+      {
+        "kind": "antitank_team",
+        "faction": "rus",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 26796,
+        "finite": true,
+        "unique": true,
+        "kit": "rus",
+        "pattern": "olive-fine-pixel",
+        "helmet": "covered-rounded-generic"
+      },
+      {
+        "kind": "antitank_team",
+        "faction": "chn",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 26976,
+        "finite": true,
+        "unique": true,
+        "kit": "chn",
+        "pattern": "grey-green-pixel",
+        "helmet": "covered-full-cut"
+      },
+      {
+        "kind": "antitank_team",
+        "faction": "ind",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27012,
+        "finite": true,
+        "unique": true,
+        "kit": "ind",
+        "pattern": "olive-layered",
+        "helmet": "smooth-full-cut-brim"
+      },
+      {
+        "kind": "antitank_team",
+        "faction": "kor",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27888,
+        "finite": true,
+        "unique": true,
+        "kit": "kor",
+        "pattern": "brown-green-pixel",
+        "helmet": "covered-medium-cut-generic"
+      },
+      {
+        "kind": "antitank_team",
+        "faction": "imp",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 28212,
+        "finite": true,
+        "unique": true,
+        "kit": "imp",
+        "pattern": "original-solid",
+        "helmet": "original-powered"
+      },
+      {
+        "kind": "machinegun_team",
+        "faction": "usa",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27528,
+        "finite": true,
+        "unique": true,
+        "kit": "usa",
+        "pattern": "tan-organic",
+        "helmet": "covered-modular-rail"
+      },
+      {
+        "kind": "machinegun_team",
+        "faction": "rus",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 26724,
+        "finite": true,
+        "unique": true,
+        "kit": "rus",
+        "pattern": "olive-fine-pixel",
+        "helmet": "covered-rounded-generic"
+      },
+      {
+        "kind": "machinegun_team",
+        "faction": "chn",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 26904,
+        "finite": true,
+        "unique": true,
+        "kit": "chn",
+        "pattern": "grey-green-pixel",
+        "helmet": "covered-full-cut"
+      },
+      {
+        "kind": "machinegun_team",
+        "faction": "ind",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 26940,
+        "finite": true,
+        "unique": true,
+        "kit": "ind",
+        "pattern": "olive-layered",
+        "helmet": "smooth-full-cut-brim"
+      },
+      {
+        "kind": "machinegun_team",
+        "faction": "kor",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27816,
+        "finite": true,
+        "unique": true,
+        "kit": "kor",
+        "pattern": "brown-green-pixel",
+        "helmet": "covered-medium-cut-generic"
+      },
+      {
+        "kind": "machinegun_team",
+        "faction": "imp",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 28140,
+        "finite": true,
+        "unique": true,
+        "kit": "imp",
+        "pattern": "original-solid",
+        "helmet": "original-powered"
+      },
+      {
+        "kind": "mortar_team",
+        "faction": "usa",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27456,
+        "finite": true,
+        "unique": true,
+        "kit": "usa",
+        "pattern": "tan-organic",
+        "helmet": "covered-modular-rail"
+      },
+      {
+        "kind": "mortar_team",
+        "faction": "rus",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 26652,
+        "finite": true,
+        "unique": true,
+        "kit": "rus",
+        "pattern": "olive-fine-pixel",
+        "helmet": "covered-rounded-generic"
+      },
+      {
+        "kind": "mortar_team",
+        "faction": "chn",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 26832,
+        "finite": true,
+        "unique": true,
+        "kit": "chn",
+        "pattern": "grey-green-pixel",
+        "helmet": "covered-full-cut"
+      },
+      {
+        "kind": "mortar_team",
+        "faction": "ind",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 26868,
+        "finite": true,
+        "unique": true,
+        "kit": "ind",
+        "pattern": "olive-layered",
+        "helmet": "smooth-full-cut-brim"
+      },
+      {
+        "kind": "mortar_team",
+        "faction": "kor",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27744,
+        "finite": true,
+        "unique": true,
+        "kit": "kor",
+        "pattern": "brown-green-pixel",
+        "helmet": "covered-medium-cut-generic"
+      },
+      {
+        "kind": "mortar_team",
+        "faction": "imp",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 28068,
+        "finite": true,
+        "unique": true,
+        "kit": "imp",
+        "pattern": "original-solid",
+        "helmet": "original-powered"
+      },
+      {
+        "kind": "assault_team",
+        "faction": "usa",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 28608,
+        "finite": true,
+        "unique": true,
+        "kit": "usa",
+        "pattern": "tan-organic",
+        "helmet": "covered-modular-rail"
+      },
+      {
+        "kind": "assault_team",
+        "faction": "rus",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27804,
+        "finite": true,
+        "unique": true,
+        "kit": "rus",
+        "pattern": "olive-fine-pixel",
+        "helmet": "covered-rounded-generic"
+      },
+      {
+        "kind": "assault_team",
+        "faction": "chn",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27984,
+        "finite": true,
+        "unique": true,
+        "kit": "chn",
+        "pattern": "grey-green-pixel",
+        "helmet": "covered-full-cut"
+      },
+      {
+        "kind": "assault_team",
+        "faction": "ind",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 28020,
+        "finite": true,
+        "unique": true,
+        "kit": "ind",
+        "pattern": "olive-layered",
+        "helmet": "smooth-full-cut-brim"
+      },
+      {
+        "kind": "assault_team",
+        "faction": "kor",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 28896,
+        "finite": true,
+        "unique": true,
+        "kit": "kor",
+        "pattern": "brown-green-pixel",
+        "helmet": "covered-medium-cut-generic"
+      },
+      {
+        "kind": "assault_team",
+        "faction": "imp",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 29220,
+        "finite": true,
+        "unique": true,
+        "kit": "imp",
+        "pattern": "original-solid",
+        "helmet": "original-powered"
+      },
+      {
+        "kind": "field_medic",
+        "faction": "usa",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 26292,
+        "finite": true,
+        "unique": true,
+        "kit": "usa",
+        "pattern": "tan-organic",
+        "helmet": "covered-modular-rail"
+      },
+      {
+        "kind": "field_medic",
+        "faction": "rus",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 25488,
+        "finite": true,
+        "unique": true,
+        "kit": "rus",
+        "pattern": "olive-fine-pixel",
+        "helmet": "covered-rounded-generic"
+      },
+      {
+        "kind": "field_medic",
+        "faction": "chn",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 25668,
+        "finite": true,
+        "unique": true,
+        "kit": "chn",
+        "pattern": "grey-green-pixel",
+        "helmet": "covered-full-cut"
+      },
+      {
+        "kind": "field_medic",
+        "faction": "ind",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 25704,
+        "finite": true,
+        "unique": true,
+        "kit": "ind",
+        "pattern": "olive-layered",
+        "helmet": "smooth-full-cut-brim"
+      },
+      {
+        "kind": "field_medic",
+        "faction": "kor",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 26580,
+        "finite": true,
+        "unique": true,
+        "kit": "kor",
+        "pattern": "brown-green-pixel",
+        "helmet": "covered-medium-cut-generic"
+      },
+      {
+        "kind": "field_medic",
+        "faction": "imp",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 26904,
+        "finite": true,
+        "unique": true,
+        "kit": "imp",
+        "pattern": "original-solid",
+        "helmet": "original-powered"
+      },
+      {
+        "kind": "sniper_team",
+        "faction": "usa",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27204,
+        "finite": true,
+        "unique": true,
+        "kit": "usa",
+        "pattern": "tan-organic",
+        "helmet": "covered-modular-rail"
+      },
+      {
+        "kind": "sniper_team",
+        "faction": "rus",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 26400,
+        "finite": true,
+        "unique": true,
+        "kit": "rus",
+        "pattern": "olive-fine-pixel",
+        "helmet": "covered-rounded-generic"
+      },
+      {
+        "kind": "sniper_team",
+        "faction": "chn",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 26580,
+        "finite": true,
+        "unique": true,
+        "kit": "chn",
+        "pattern": "grey-green-pixel",
+        "helmet": "covered-full-cut"
+      },
+      {
+        "kind": "sniper_team",
+        "faction": "ind",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 26616,
+        "finite": true,
+        "unique": true,
+        "kit": "ind",
+        "pattern": "olive-layered",
+        "helmet": "smooth-full-cut-brim"
+      },
+      {
+        "kind": "sniper_team",
+        "faction": "kor",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27492,
+        "finite": true,
+        "unique": true,
+        "kit": "kor",
+        "pattern": "brown-green-pixel",
+        "helmet": "covered-medium-cut-generic"
+      },
+      {
+        "kind": "sniper_team",
+        "faction": "imp",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27816,
+        "finite": true,
+        "unique": true,
+        "kit": "imp",
+        "pattern": "original-solid",
+        "helmet": "original-powered"
+      },
+      {
+        "kind": "operator",
+        "faction": "usa",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 28608,
+        "finite": true,
+        "unique": true,
+        "kit": "usa",
+        "pattern": "tan-organic",
+        "helmet": "covered-modular-rail"
+      },
+      {
+        "kind": "operator",
+        "faction": "rus",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27804,
+        "finite": true,
+        "unique": true,
+        "kit": "rus",
+        "pattern": "olive-fine-pixel",
+        "helmet": "covered-rounded-generic"
+      },
+      {
+        "kind": "operator",
+        "faction": "chn",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 27984,
+        "finite": true,
+        "unique": true,
+        "kit": "chn",
+        "pattern": "grey-green-pixel",
+        "helmet": "covered-full-cut"
+      },
+      {
+        "kind": "operator",
+        "faction": "ind",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 28020,
+        "finite": true,
+        "unique": true,
+        "kit": "ind",
+        "pattern": "olive-layered",
+        "helmet": "smooth-full-cut-brim"
+      },
+      {
+        "kind": "operator",
+        "faction": "kor",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 28896,
+        "finite": true,
+        "unique": true,
+        "kit": "kor",
+        "pattern": "brown-green-pixel",
+        "helmet": "covered-medium-cut-generic"
+      },
+      {
+        "kind": "operator",
+        "faction": "imp",
+        "people": 1,
+        "bones": 13,
+        "meshes": 2,
+        "skinned": 2,
+        "vertices": 29220,
+        "finite": true,
+        "unique": true,
+        "kit": "imp",
+        "pattern": "original-solid",
+        "helmet": "original-powered"
+      }
+    ],
+    "failures": []
+  },
+  "battle": {
+    "selected": [
+      36
+    ],
+    "people": 1,
+    "bones": 13,
+    "frozen": true,
+    "independentlyDamaged": true,
+    "independentPositions": true,
+    "saveIdentity": true,
+    "travel": 21.599999999999454
+  },
+  "roles": {
+    "count": 8,
+    "moving": true,
+    "paused": true,
+    "settled": true
+  },
+  "galleryMaterials": [
+    {
+      "mode": "factions",
+      "materials": [
+        {
+          "kind": "infantry",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "usa",
+          "material": "PersonnelFabric_usa",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-usa-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "usa",
+          "material": "PersonnelFabric_usa",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-usa-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "rus",
+          "material": "PersonnelFabric_rus",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-rus-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "rus",
+          "material": "PersonnelFabric_rus",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-rus-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "ind",
+          "material": "PersonnelFabric_ind",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-ind-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "ind",
+          "material": "PersonnelFabric_ind",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-ind-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "kor",
+          "material": "PersonnelFabric_kor",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-kor-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "kor",
+          "material": "PersonnelFabric_kor",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-kor-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "imp",
+          "material": "PersonnelFabric_imp",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-imp-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "imp",
+          "material": "PersonnelFabric_imp",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-imp-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "usa",
+          "material": "PersonnelFabric_usa",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-usa-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "usa",
+          "material": "PersonnelFabric_usa",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-usa-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "rus",
+          "material": "PersonnelFabric_rus",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-rus-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "rus",
+          "material": "PersonnelFabric_rus",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-rus-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "ind",
+          "material": "PersonnelFabric_ind",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-ind-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "ind",
+          "material": "PersonnelFabric_ind",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-ind-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "kor",
+          "material": "PersonnelFabric_kor",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-kor-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "kor",
+          "material": "PersonnelFabric_kor",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-kor-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "imp",
+          "material": "PersonnelFabric_imp",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-imp-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "imp",
+          "material": "PersonnelFabric_imp",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-imp-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "usa",
+          "material": "PersonnelFabric_usa",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-usa-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "usa",
+          "material": "PersonnelFabric_usa",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-usa-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "rus",
+          "material": "PersonnelFabric_rus",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-rus-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "rus",
+          "material": "PersonnelFabric_rus",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-rus-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "ind",
+          "material": "PersonnelFabric_ind",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-ind-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "ind",
+          "material": "PersonnelFabric_ind",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-ind-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "kor",
+          "material": "PersonnelFabric_kor",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-kor-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "kor",
+          "material": "PersonnelFabric_kor",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-kor-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "imp",
+          "material": "PersonnelFabric_imp",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-imp-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "imp",
+          "material": "PersonnelFabric_imp",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-imp-v2"
+        }
+      ]
+    },
+    {
+      "mode": "roles",
+      "materials": [
+        {
+          "kind": "infantry",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "infantry",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "antitank_team",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "antitank_team",
+          "faction": "chn",
+          "material": "RoleSurfaces_v2",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "role-detail-v2"
+        },
+        {
+          "kind": "machinegun_team",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "machinegun_team",
+          "faction": "chn",
+          "material": "RoleSurfaces_v2",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "role-detail-v2"
+        },
+        {
+          "kind": "mortar_team",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "mortar_team",
+          "faction": "chn",
+          "material": "RoleSurfaces_v2",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "role-detail-v2"
+        },
+        {
+          "kind": "assault_team",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "assault_team",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "field_medic",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "field_medic",
+          "faction": "chn",
+          "material": "RoleSurfaces_v2",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "role-detail-v2"
+        },
+        {
+          "kind": "sniper_team",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "sniper_team",
+          "faction": "chn",
+          "material": "RoleSurfaces_v2",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "role-detail-v2"
+        },
+        {
+          "kind": "operator",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        },
+        {
+          "kind": "operator",
+          "faction": "chn",
+          "material": "PersonnelFabric_chn",
+          "compileSame": true,
+          "cacheSame": true,
+          "programKey": "personnel-fabric-chn-v2"
+        }
+      ]
+    }
+  ],
+  "renderEnvironment": {
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "viewport": [
+      2752,
+      1152
+    ],
+    "drawingBuffer": [
+      3440,
+      1440
+    ],
+    "dpr": 1.25
+  },
+  "visualScope": "Contact sheets use the final WarModels.create geometry, original standard-material parameters and live battlefield light colors/intensities; isolated close views do not establish photographic realism.",
+  "passed": true
+}

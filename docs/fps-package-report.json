@@ -1,6 +1,6 @@
 {
-  "recordedAt": "2026-10-18T16:10:00.117Z",
-  "version": "3.7.0",
+  "recordedAt": "2026-10-18T17:23:30.675Z",
+  "version": "3.8.0",
   "sha256Matches": 689,
   "portraits": 588,
   "executable": "release/ModernFrontHD/ModernFrontHD.exe",
@@ -19,7 +19,10 @@
     "arrival-animation-desktop-report.json",
     "vehicle-tree-desktop-report.json",
     "orbit-scope-desktop-report.json",
-    "unified-aim-desktop-report.json"
+    "unified-aim-desktop-report.json",
+    "right-button-fire-desktop-report.json",
+    "single-soldier-desktop-report.json",
+    "render-pass-stats-desktop-report.json"
   ],
   "mismatches": []
 }

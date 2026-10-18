@@ -2,7 +2,7 @@
 (function(root){
  'use strict';
  const T=root.THREE,M=root.WarModels,D=root.WarDetail,states=new WeakMap(),appearances=new Map();
- const roles={infantry:{members:3,weapon:'rifle'},antitank_team:{members:3,weapon:'launcher'},machinegun_team:{members:2,weapon:'machinegun'},mortar_team:{members:2,weapon:'mortar'},assault_team:{members:3,weapon:'rifle'},field_medic:{members:3,weapon:'medical'},sniper_team:{members:2,weapon:'sniper'},operator:{members:1,weapon:'rifle'}};
+ const roles={infantry:{members:1,weapon:'rifle'},antitank_team:{members:1,weapon:'launcher'},machinegun_team:{members:1,weapon:'machinegun'},mortar_team:{members:1,weapon:'mortar'},assault_team:{members:1,weapon:'rifle'},field_medic:{members:1,weapon:'medical'},sniper_team:{members:1,weapon:'sniper'},operator:{members:1,weapon:'rifle'}};
  const names=['torso','hipL','kneeL','ankleL','hipR','kneeR','ankleR','shoulderL','elbowL','wristL','shoulderR','elbowR','wristR'];
  const parents=[-1,0,1,2,0,4,5,0,7,8,0,10,11];
  const rest=[[0,0,0],[0,.88,-.135],[-.020,.48,-.135],[-.060,.135,-.135],[0,.88,.135],[.070,.48,.135],[.030,.135,.135],[0,1.385,-.235],[.13,1.115,-.25],[.53,1.275,.17],[0,1.385,.235],[.13,1.115,.25],[.31,1.275,.17]].map(v=>new T.Vector3(...v));
@@ -10,13 +10,19 @@
  function skinGeometry(geo){const g=geo.clone(),count=g.attributes.position.count,indices=new Uint16Array(count*4),weights=new Float32Array(count*4),tags=g.attributes.rigPart;for(let i=0;i<count;i++){indices[i*4]=tags?tags.getX(i):0;weights[i*4]=1;}g.setAttribute('skinIndex',new T.Uint16BufferAttribute(indices,4));g.setAttribute('skinWeight',new T.Float32BufferAttribute(weights,4));return g;}
  function appearance(f){if(!appearances.has(f)){const original=root.WarOperatorModel.build(f),body=original.getObjectByName('operatorBody'),rifle=original.getObjectByName('operatorRifle');appearances.set(f,{body:skinGeometry(body.geometry),rifle:skinGeometry(rifle.geometry),material:body.material,parts:body.userData.parts,rifleParts:rifle.userData.parts});}return appearances.get(f);}
  function equipment(role,f,index){
-  const b=new D.Builder(),c=M.colors[f],dark=0x202528,metal=0x58646a;
-  let type=role.weapon;if(index>0&&type!=='medical')type=type==='mortar'?'mortarBase':'rifle';
+  const b=new D.Builder(),c=root.WarOperatorModel.kits[f].armor,dark=0x202528,metal=0x58646a;
+  const type=role.weapon;
   if(type==='rifle')return null;
-  if(type==='launcher'){b.cyl(.09,.95,.28,1.35,.17,c,'x',.09,16);for(const x of [-.21,.77])b.cyl(.11,.05,x,1.35,.17,dark,'x',.11,16);b.box(.18,.09,.11,.24,1.47,.17,dark);}
+  if(type==='launcher'){b.cyl(.09,.95,.28,1.35,.17,c,'x',.09,16);for(const x of [-.21,.77])b.cyl(.11,.05,x,1.35,.17,dark,'x',.11,16);b.box(.18,.09,.11,.24,1.47,.17,dark);b.box(.06,.12,.055,.31,1.25,.17,dark);b.box(.12,.04,.08,.53,1.275,.17,dark);for(const x of [.02,.57])b.cyl(.097,.035,x,1.35,.17,metal,'x',.097,16);b.cyl(.035,.14,.22,1.49,.17,dark,'x');b.cyl(.025,.008,.295,1.49,.17,0x325a70,'x');}
   if(type==='machinegun'||type==='sniper'){b.box(.40,.105,.09,.37,1.335,.17,dark);b.box(.22,.08,.08,.08,1.325,.17,c);b.cyl(.019,.70,.91,1.335,.17,metal,'x',.019,12);b.cyl(.035,.17,.41,1.445,.17,dark,'x',.035,12);b.cyl(.024,.012,.501,1.445,.17,0x325a70,'x');if(type==='machinegun')b.box(.15,.19,.16,.35,1.21,.24,c);else b.cyl(.04,.20,1.25,1.335,.17,dark,'x',.04,12);}
-  if(type==='mortar'){b.cyl(.085,.85,.48,1.22,.17,c,'x',.085,16);b.cyl(.11,.07,.93,1.22,.17,dark,'x',.11,16);b.box(.25,.1,.13,.45,1.12,.17,metal);}
-  if(type==='mortarBase'){b.cyl(.23,.045,-.40,1.20,0,c,'x',.23,16);for(const z of [-.13,.13])D.link(b,[-.43,.94,z],[-.43,1.41,z],.018,metal);}
+  if(type==='machinegun'||type==='sniper'){for(const z of [.11,.23])D.link(b,[.68,1.28,z],[1.09,1.23,z],.015,metal);b.box(.06,.12,.06,.31,1.26,.17,dark);b.box(.11,.04,.09,.53,1.275,.17,c);if(type==='machinegun')for(let i=0;i<6;i++)b.cyl(.012,.10,.37+i*.024,1.27,.29,metal,'z',.012,6);}
+  if(type==='mortar'){
+   // Original portable light mortar: one bearer retains the tube, folded support and baseplate.
+   D.link(b,[.48,.98,.17],[.94,1.60,.17],.074,c,.074,16);D.link(b,[.91,1.56,.17],[.965,1.635,.17],.086,dark,.086,16);
+   b.box(.07,.13,.06,.31,1.26,.17,dark);D.link(b,[.31,1.32,.17],[.67,1.24,.17],.02,metal);b.box(.14,.05,.10,.53,1.275,.17,dark);
+   b.cyl(.20,.045,-.40,1.20,0,c,'x',.20,16);for(const z of [-.13,.13])D.link(b,[-.43,.94,z],[-.43,1.41,z],.018,metal);
+   b.box(.10,.13,.08,.72,1.35,.28,dark);b.cyl(.022,.07,.76,1.36,.28,0x325a70,'x');
+  }
   if(type==='medical'){b.box(.15,.29,.3,-.43,1.15,0,0x797463);b.box(.02,.15,.11,-.515,1.15,0,0x7db7a1);b.box(.02,.045,.23,-.517,1.15,0,0x7db7a1);b.box(.18,.14,.18,.08,.96,.30,c);}
   const mesh=b.finish();mesh.geometry=skinGeometry(mesh.geometry);mesh.name='personnelEquipment';return mesh;
  }
@@ -27,8 +33,8 @@
    const extra=equipment(role,f,i);if(extra)person.add(extra);else{const rifle=new T.Mesh(a.rifle,a.material);rifle.name='operatorRifle';rifle.userData.preserveMaterial=true;rifle.userData.parts=a.rifleParts;person.add(rifle);}
    person.traverse(o=>{if(o.isMesh){o.castShadow=o.receiveShadow=true;triangles+=o.geometry.attributes.position.count/3;}});g.add(person);
   }
-  const marker=new T.Object3D();marker.name=kind==='field_medic'?'servicePoint':'muzzle';marker.position.set(kind==='sniper_team'?1.36:kind==='machinegun_team'?1.27:1.065,1.335,.17);g.children[0].add(marker);
-  let parts=0;g.traverse(o=>{if(o.isMesh)parts+=o.userData.parts||0;});g.userData={scale:5.6,parts,original:true,fiction:true,evidenceStatus:'original-articulated-personnel',modelFamily:kind,personnelFamily:'infantry',squadMembers:role.members,personnelRig:true,profile:`articulated-${kind}-${f}-v1`,gear:role.weapon,unarmed:kind==='field_medic',triangles,detailPass:2};return g;
+  const marker=new T.Object3D();marker.name=kind==='field_medic'?'servicePoint':'muzzle';marker.position.set(kind==='sniper_team'?1.36:kind==='machinegun_team'?1.27:kind==='antitank_team'?.805:kind==='mortar_team'?.98:1.065,kind==='mortar_team'?1.66:kind==='antitank_team'?1.35:1.335,.17);g.children[0].add(marker);
+  const kit=root.WarOperatorModel.kits[f];let parts=0;g.traverse(o=>{if(o.isMesh)parts+=o.userData.parts||0;});g.userData={scale:5.6,parts,original:true,fiction:true,evidenceStatus:'reference-informed-articulated-personnel',modelFamily:kind,personnelFamily:'infantry',squadMembers:1,personnelRig:true,personnelKit:f,uniformPattern:kit.pattern,helmetProfile:kit.helmetProfile,referenceStatus:f==='imp'?'original-fiction':'reference-informed-game-kit',profile:`single-${kind}-${f}-v2`,gear:role.weapon,unarmed:kind==='field_medic',triangles,detailPass:3};return g;
  }
  function attach(model){
   const people=[];for(const person of model.children.filter(x=>x.name.startsWith('personnel_'))){

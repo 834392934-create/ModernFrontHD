@@ -1,0 +1,244 @@
+{
+  "recordedAt": "2026-10-18T17:21:11.661Z",
+  "environment": "desktop",
+  "checks": [
+    "ordinary FPS: actual world/foreground calls and triangles exactly match published stats",
+    "V observation: actual world/foreground calls and triangles exactly match published stats",
+    "V released: foreground restored: actual world/foreground calls and triangles exactly match published stats",
+    "RMB actual firing: actual world/foreground calls and triangles exactly match published stats",
+    "RMB released: foreground restored: actual world/foreground calls and triangles exactly match published stats",
+    "RTS after E: actual world/foreground calls and triangles exactly match published stats"
+  ],
+  "samples": [
+    {
+      "label": "ordinary FPS",
+      "passes": [
+        {
+          "scene": "world",
+          "beforeFrame": 20,
+          "afterFrame": 21,
+          "calls": 36,
+          "triangles": 474630,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "scene": "foreground",
+          "beforeFrame": 21,
+          "afterFrame": 22,
+          "calls": 6,
+          "triangles": 3660,
+          "points": 0,
+          "lines": 0
+        }
+      ],
+      "stats": {
+        "calls": 42,
+        "triangles": 478290,
+        "foregroundCalls": 6,
+        "foregroundTriangles": 3660,
+        "visibleEntities": 17,
+        "geometries": 142
+      },
+      "autoReset": true,
+      "active": true,
+      "optical": false,
+      "locked": true,
+      "fire": false,
+      "frame": 22,
+      "restored": true
+    },
+    {
+      "label": "V observation",
+      "passes": [
+        {
+          "scene": "world",
+          "beforeFrame": 22,
+          "afterFrame": 23,
+          "calls": 36,
+          "triangles": 474630,
+          "points": 0,
+          "lines": 0
+        }
+      ],
+      "stats": {
+        "calls": 36,
+        "triangles": 474630,
+        "foregroundCalls": 0,
+        "foregroundTriangles": 0,
+        "visibleEntities": 17,
+        "geometries": 142
+      },
+      "autoReset": true,
+      "active": true,
+      "optical": true,
+      "locked": true,
+      "fire": false,
+      "frame": 23,
+      "restored": true
+    },
+    {
+      "label": "V released: foreground restored",
+      "passes": [
+        {
+          "scene": "world",
+          "beforeFrame": 24,
+          "afterFrame": 25,
+          "calls": 36,
+          "triangles": 474630,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "scene": "foreground",
+          "beforeFrame": 25,
+          "afterFrame": 26,
+          "calls": 6,
+          "triangles": 3660,
+          "points": 0,
+          "lines": 0
+        }
+      ],
+      "stats": {
+        "calls": 42,
+        "triangles": 478290,
+        "foregroundCalls": 6,
+        "foregroundTriangles": 3660,
+        "visibleEntities": 17,
+        "geometries": 142
+      },
+      "autoReset": true,
+      "active": true,
+      "optical": false,
+      "locked": true,
+      "fire": false,
+      "frame": 26,
+      "restored": true
+    },
+    {
+      "label": "RMB actual firing",
+      "passes": [
+        {
+          "scene": "world",
+          "beforeFrame": 28,
+          "afterFrame": 29,
+          "calls": 36,
+          "triangles": 474630,
+          "points": 0,
+          "lines": 0
+        }
+      ],
+      "stats": {
+        "calls": 36,
+        "triangles": 474630,
+        "foregroundCalls": 0,
+        "foregroundTriangles": 0,
+        "visibleEntities": 17,
+        "geometries": 142
+      },
+      "autoReset": true,
+      "active": true,
+      "optical": true,
+      "locked": true,
+      "fire": true,
+      "frame": 29,
+      "restored": true
+    },
+    {
+      "label": "RMB released: foreground restored",
+      "passes": [
+        {
+          "scene": "world",
+          "beforeFrame": 29,
+          "afterFrame": 30,
+          "calls": 36,
+          "triangles": 474630,
+          "points": 0,
+          "lines": 0
+        },
+        {
+          "scene": "foreground",
+          "beforeFrame": 30,
+          "afterFrame": 31,
+          "calls": 6,
+          "triangles": 3660,
+          "points": 0,
+          "lines": 0
+        }
+      ],
+      "stats": {
+        "calls": 42,
+        "triangles": 478290,
+        "foregroundCalls": 6,
+        "foregroundTriangles": 3660,
+        "visibleEntities": 17,
+        "geometries": 142
+      },
+      "autoReset": true,
+      "active": true,
+      "optical": false,
+      "locked": true,
+      "fire": false,
+      "frame": 31,
+      "restored": true
+    },
+    {
+      "label": "RTS after E",
+      "passes": [
+        {
+          "scene": "world",
+          "beforeFrame": 33,
+          "afterFrame": 34,
+          "calls": 37,
+          "triangles": 500202,
+          "points": 0,
+          "lines": 0
+        }
+      ],
+      "stats": {
+        "calls": 37,
+        "triangles": 500202,
+        "foregroundCalls": 0,
+        "foregroundTriangles": 0,
+        "visibleEntities": 17,
+        "geometries": 142
+      },
+      "autoReset": true,
+      "active": false,
+      "optical": false,
+      "locked": false,
+      "fire": false,
+      "frame": 34,
+      "restored": true
+    }
+  ],
+  "errors": [],
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD\\ModernFrontHD.exe",
+  "imported": {
+    "ship": "ready",
+    "air": "ready",
+    "ground": "ready",
+    "errors": []
+  },
+  "runtime": {
+    "title": "现代战线 HD · 五强遭遇战",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.8.0 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36",
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "viewport": [
+      2752,
+      1152
+    ],
+    "drawingBuffer": [
+      3440,
+      1440
+    ],
+    "dpr": 1.25,
+    "entities": 33
+  },
+  "ammunition": {
+    "before": 30,
+    "after": 29
+  },
+  "scope": "Correctness of render-pass accounting only; no FPS improvement claim or GPU performance benchmark.",
+  "passed": true
+}
