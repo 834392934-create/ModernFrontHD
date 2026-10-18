@@ -63,7 +63,7 @@
             </div>
             <div class="option-row player-mode-options">
               <label>玩家模式<select id="player-mode"><option value="commander">总指挥 · 自主调度</option><option value="driver">第一人称 · AI 建造与护卫</option></select></label>
-              <label>初始驾驶<select id="initial-vehicle"><option value="tank">主战坦克</option><option value="ifv">步兵战车</option><option value="destroyer">驱逐舰</option><option value="fighter">战斗机</option><option value="satellite">轨道侦察星</option></select></label>
+              <label>初始驾驶<select id="initial-vehicle"><option value="operator">前线行动员 · 64款军械</option><option value="tank">主战坦克</option><option value="ifv">步兵战车</option><option value="destroyer">驱逐舰</option><option value="fighter">战斗机</option><option value="satellite">轨道侦察星</option></select></label>
             </div>
             <p class="small-note">
               AI 阵营按其余四国轮换配置；全部采用公开装备题材。
@@ -201,7 +201,10 @@
     <script src="src/equipment.js"></script>
     <script src="src/maps-large.js"></script>
     <script src="src/command-feedback.js"></script>
+  <script src="src/operator-weapons.js"></script>
+  <script src="src/crowd-navigation.js"></script>
   <script src="src/sim.js"></script>
+  <script src="src/operator-sim.js"></script>
     <script src="src/render.js"></script>
     <script src="src/ranges.js"></script>
     <script src="src/models3d.js"></script>
@@ -220,6 +223,7 @@
     <script src="src/models-altitude-wave.js"></script>
   <script src="src/models-buildings.js"></script>
     <script src="src/models-defense-wave.js"></script>
+    <script src="src/models-operator.js"></script>
     <script src="assets/models/burke-data.js"></script>
     <script src="src/models-imported.js"></script>
     <script src="assets/models/ah64-data.js"></script>
@@ -233,6 +237,7 @@
     <script src="src/fps-viewmodel.js"></script>
     <script src="src/direct-control.js"></script>
     <script src="src/player-mode.js"></script>
+    <script src="src/operator-ui.js"></script>
     <script src="src/app.js"></script>
   </body>
 </html>

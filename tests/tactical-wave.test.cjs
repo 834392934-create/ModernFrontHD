@@ -5,7 +5,7 @@ function arena(){const g=new Game({faction:'chn',enemies:1,buffs:['vision'],play
 function tick(g,s){for(let i=0;i<s*20;i++)g.step(.05);}
 function hit(g,e){g.spatial.rebuild(g.entities);const before=e.hp;g.damage(e,100,0);return before-e.hp;}
 test('eight tactical roles add two units per domain without inheriting real equipment names',()=>{
- assert.equal(ROSTER.tacticalWave.length,8);for(const domain of ['ground','naval','air','space'])assert.equal(ROSTER.tacticalWave.filter(k=>U[k].unitGroup===domain).length,2);assert.equal(Object.keys(U).length,76);for(const k of ROSTER.tacticalWave){assert.equal(U[k].index,undefined);assert.equal(U[k].roleVariant,true);}assert.equal(U.orbital_shield.combatRole,'support');
+ assert.equal(ROSTER.tacticalWave.length,8);for(const domain of ['ground','naval','air','space'])assert.equal(ROSTER.tacticalWave.filter(k=>U[k].unitGroup===domain).length,2);assert.equal(Object.keys(U).length,77);for(const k of ROSTER.tacticalWave){assert.equal(U[k].index,undefined);assert.equal(U[k].roleVariant,true);}assert.equal(U.orbital_shield.combatRole,'support');
 });
 test('mobile shield protects only friendly orbit, includes itself, never stacks and stops on EMP/death',()=>{
  const g=arena(),a=g.spawn(1,'orbital_shield',1000,750),b=g.spawn(1,'orbital_shield',1020,750),orbit=g.spawn(1,'orbital',1040,750),plane=g.spawn(1,'fighter',1040,760),tank=g.spawn(1,'tank',1040,770),enemy=g.spawn(0,'orbital',1040,780);

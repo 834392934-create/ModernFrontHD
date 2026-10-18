@@ -350,6 +350,7 @@
         );
         this.spawn(i, "fighter", p.x - 180, p.y + 40 * dir);
         this.spawn(i, "satellite", p.x + 40, p.y - 140 * dir);
+        if(i===0&&U.operator)this.spawn(i,'operator',p.x-160,p.y+205*dir);
       }
       this.spatial.rebuild(this.entities);
       this.updateFog();
@@ -499,7 +500,7 @@
       return friendly*hostile;
     }
     rangeProfile(e,preview=false) {
-      const d=U[e.kind]||B[e.kind],structure=!!B[e.kind],power=(structure?this.power(e.team):0)+(preview?(d.power||0):0);
+      const base=U[e.kind]||B[e.kind],weapon=e.kind==='operator'?this.operatorWeapon?.(e):null,d=weapon?{...base,range:weapon.range,damage:weapon.damage}:base,structure=!!B[e.kind],power=(structure?this.power(e.team):0)+(preview?(d.power||0):0);
       const active=this.operational(e,power),reason=e.disabled>this.time?'EMP停机':!active?'供电不足':null;
       const boosted=structure&&d.damage>0&&power>=0&&this.teamEntities(e.team).some(r=>r.kind==='radar'&&this.operational(r,power)&&dist(e,r)<450);
       const attack=d.damage>0?(d.range||0)*(boosted?1.15:1):0;
@@ -517,7 +518,7 @@
     }
     availableUnitKinds(team) {
       const t=this.teams[team],own=this.teamEntities(team),producers=new Set(own.filter(e=>e.structure&&e.disabled<=this.time).map(e=>e.kind));
-      return Object.keys(U).filter(k=>{const d=U[k];return !d.logistics&&k!=='harvester'&&producers.has(d.producer)&&this.canAfford(team,this.cost(team,k))&&
+      return Object.keys(U).filter(k=>{const d=U[k];return !d.playerOnly&&!d.logistics&&k!=='harvester'&&producers.has(d.producer)&&this.canAfford(team,this.cost(team,k))&&
         !(d.advanced&&(!this.options.advanced||(team>0&&this.options.playerOnlyTech)))&&!(team>0&&d.spaceWeapon&&this.options.aiSpaceWeapons===false);});
     }
     chooseUnitKind(choices) {
@@ -558,6 +559,7 @@
       if(!this.directControl)return false;
       const e=this.entities.find(o=>o.id===this.directControl.id);
       if(e){this.resetJump(e);e.manualMove=false;e.order=null;e.orderQueue=[];e.path=[];e.target=null;}
+      if(e?.operatorState){e.operatorState.reloadRemaining=0;e.operatorState.fireHeld=false;}
       if(this._directTeamAI)Object.assign(this.teams[0],this._directTeamAI);
       for(const ally of this.entities)if(ally.protectionRole){delete ally.protectionRole;ally.order=null;ally.orderQueue=[];ally.path=[];ally.target=null;}
       this.protectionStatus=null;
@@ -570,21 +572,24 @@
       if(!e||this.result)return false;
       if(!input||typeof input!=='object')input={};
       const finite=(v,fallback=0)=>Number.isFinite(v)?v:fallback;
-      if(e.disabled>this.time){this.resetJump(e);e.target=null;this.directControl.input={forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null};return false;}
+      if(e.disabled>this.time){this.resetJump(e);e.target=null;this.directControl.firePending=null;this.directControl.input={forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null};return false;}
       const yaw=finite(input.yaw,e.angle),d=U[e.kind];
       const pressed=input.jump===true;
       // Capture edges when input arrives: a press/release can happen between fixed simulation ticks.
       if(input.cancelJump===true)this.directControl.jumpPending=false;
       else if(pressed&&!this.directControl.jumpHeld&&!(e.jumpHeight>0)&&(d.modelKind||e.kind)==='infantry')this.directControl.jumpPending=true;
       this.directControl.jumpHeld=pressed;
+      const trigger=!!input.fire&&!this.directControl.input.fire;
+      if(input.cancelJump===true)this.directControl.firePending=null;
       this.directControl.input={
         forward:clamp(finite(input.forward),-1,1),strafe:clamp(finite(input.strafe),-1,1),yaw,
         pitch:clamp(finite(input.pitch),-1.15,1.15),turn:clamp(finite(input.turn),-1,1),lift:clamp(finite(input.lift),-1,1),throttle:clamp(finite(input.throttle),-1,1),flightEnabled:input.flightEnabled===true,
-        fire:!!input.fire,jump:input.jump===true,targetId:Number.isInteger(input.targetId)?input.targetId:null,
+        fire:!!input.fire,ads:!!input.ads,jump:input.jump===true,targetId:Number.isInteger(input.targetId)?input.targetId:null,
         aimX:clamp(finite(input.aimX,e.x+Math.cos(yaw)*(d.range||250)),0,W),
         aimY:clamp(finite(input.aimY,e.y+Math.sin(yaw)*(d.range||250)),0,H),
         aimHeight:clamp(finite(input.aimHeight,this.entityAltitude(this.get(input.targetId)||e)),-160,14000),
       };
+      if(e.kind==='operator'&&trigger)this.directControl.firePending={...this.directControl.input};
       return true;
     }
     flightFloor(e,x,y) {
@@ -608,8 +613,9 @@
       if(!d.naval&&(this.directObstacles||[]).some(o=>Math.hypot(x-o.x,y-o.y)<radius+o.r))return false;
       return d.naval||!this.ore.some(o=>Math.hypot(x-o.x,y-o.y)<radius+48);
     }
-    emitShot(e,target,aim) {
-      const d=U[e.kind]||B[e.kind];
+    emitShot(e,target,aim,weapon) {
+      if(e.kind==='operator'&&!weapon&&this.operatorAutoFire)return this.operatorAutoFire(e,target);
+      const d=weapon||U[e.kind]||B[e.kind];
       if(!d.damage||e.cool>0)return false;
       e.cool=d.reload;
       let val=target?this.attackDamage(e.kind,target,d.damage):0;
@@ -622,11 +628,12 @@
       const asw=U[target?.kind]?.underwater&&['destroyer','frigate','missile_sub'].includes(e.kind),weaponFx=asw?'torpedo':d.weaponFx;
       const destination=aim?.fixedImpact?aim:target||aim,destinationHeight=aim?.fixedImpact?aim.height:target?this.entityAltitude(target):aim?.height??0,crossLayer=target?(!!U[e.kind]?.space!==!!U[target.kind]?.space):(!!U[e.kind]?.space!==(destinationHeight>=2000)),travel=Math.max(.08,Math.hypot(e.x-destination.x,e.y-destination.y,crossLayer?0:this.entityAltitude(e)-destinationHeight)/(weaponFx==='torpedo'?220:e.kind==='rocket'?400:700));
       this.effects.push({type:'shot',x:e.x,y:e.y,tx:destination.x,ty:destination.y,target:target?.id??null,from:e.team,
-        damage:val,baseDamage:target?d.damage:0,targetDomain:target?this.targetDomain(target.kind):null,splash:target?(d.splash||0):0,
+        damage:val,baseDamage:target||weapon?d.damage:0,targetDomain:target?this.targetDomain(target.kind):weapon?(destinationHeight>=2000?'space':destinationHeight>25?'air':destinationHeight< -15?'underwater':null):null,splash:target||weapon?(d.splash||0):0,
         ttl:travel,max:travel,rocket:weaponFx!=='torpedo'&&(!!d.rocket||['rocket','heli','asat','sam'].includes(e.kind)),space:!!d.spaceWeapon,
         sourceKind:e.kind,sourceId:e.id,sourceHeight:this.entityAltitude(e)+(e.structure?20:!d.air&&!d.naval?12:0),
         targetHeight:aim?.fixedImpact?aim.height:target?this.entityAltitude(target):(aim?.height??5),
         weaponFx:weaponFx||(e.kind==='orbital'?'orbital-beam':e.kind==='orbital_interceptor'?'interceptor-burst':e.kind==='asat'?'asat-missile':e.kind==='laser'?'laser-beam':'projectile'),
+        ...(weapon?{operatorTargets:weapon.targets,weaponId:weapon.id}:{}),
         ...(!target?{miss:true}:{}),
         ...(aim?.fixedImpact&&target?{directHitArea:{x:target.x,y:target.y,altitude:this.entityAltitude(target),r:target.r,verticalRadius:this.hitHeightRadius(target)}}:{}),
       });
@@ -682,6 +689,7 @@
         else if(this.directPositionFree(e,x,e.y))e.x=x;
         else if(this.directPositionFree(e,e.x,y))e.y=y;
       }
+      if(e.kind==='operator'&&this.stepOperator){this.stepOperator(e,dt,input);return;}
       const range=this.rangeProfile(e).attack,candidate=this.get(input.targetId);
       const target=candidate&&this.isEnemy(e.team,candidate.team)&&this.canTargetKind(e.kind,candidate.kind)&&
         this.engagementDistance(e,candidate)<=range&&this.engagementDistance(e,candidate)>=(d.minRange||0)&&this.canDetect(e.team,candidate)&&Math.abs(input.aimHeight-this.entityAltitude(candidate))<=this.hitHeightRadius(candidate)&&(U[candidate.kind]?.underwater||this.visibleAt(candidate.x,candidate.y))?candidate:null;
@@ -695,7 +703,7 @@
       const t = this.teams[team],
         d = U[kind];
       if (
-        !d ||
+        !d || (team>0&&d.playerOnly) ||
         !t?.alive ||
         (team > 0 && d.spaceWeapon && this.options.aiSpaceWeapons === false) ||
         (d.advanced &&
@@ -804,7 +812,11 @@
       x=clamp(x,24,W-24);y=clamp(y,24,H-24);
       if(U[e.kind]?.air)return{x,y};
       const blocked=U[e.kind]?.naval?this.map.navalBlocked:this.map.blocked;
-      const free=(px,py)=>px>=24&&px<W-24&&py>=24&&py<H-24&&!blocked[Math.floor(py/T)*COLS+Math.floor(px/T)]&&!this.entities.some(o=>o.structure&&o.hp>0&&Math.hypot(px-o.x,py-o.y)<o.r+e.r+6)&&(U[e.kind]?.naval||!this.ore.some(o=>Math.hypot(o.x-px,o.y-py)<52));
+      const free=(px,py)=>{
+        if(px<Math.max(24,e.r)||px>W-Math.max(24,e.r)||py<Math.max(24,e.r)||py>H-Math.max(24,e.r))return false;
+        for(let n=-1;n<8;n++){const sx=px+(n<0?0:Math.cos(n*Math.PI/4)*e.r),sy=py+(n<0?0:Math.sin(n*Math.PI/4)*e.r);if(blocked[Math.floor(sy/T)*COLS+Math.floor(sx/T)])return false;}
+        return !this.entities.some(o=>o.structure&&o.hp>0&&Math.hypot(px-o.x,py-o.y)<o.r+e.r+6)&&(U[e.kind]?.naval||!this.ore.some(o=>Math.hypot(o.x-px,o.y-py)<48+e.r+4));
+      };
       if(free(x,y))return{x,y};
       for(let r=24;r<Math.max(W,H);r+=24)for(let j=0;j<24;j++){const a=j*Math.PI/12,px=x+Math.cos(a)*r,py=y+Math.sin(a)*r;if(free(px,py))return{x:px,y:py};}
       return{x:e.x,y:e.y};
@@ -821,14 +833,31 @@
       if(!root.WarCommandFeedback&&typeof module!=='undefined'&&typeof require==='function')require('./command-feedback.js');
       const report={accepted:[],rejected:[],queued:!!options.queue};
       if(!Number.isFinite(x)||!Number.isFinite(y))return report;
-      const units = ids
+      const units = [...new Set(ids)]
         .map((id) => this.get(id))
         .filter((e) => e && !e.structure && e.id!==this.directControl?.id);
       let n = 0;
-      const formation=options.formation||this.formation||'line',cols=formation==='column'?1:Math.ceil(Math.sqrt(units.length)*1.6),spacing=formation==='spread'?65:40;
+      const formation=options.formation||this.formation||'line',cols=formation==='column'?1:Math.ceil(Math.sqrt(units.length)*1.6),spacing=Math.max(formation==='spread'?125:60,...units.map(e=>e.r*4+12));
+      const planKey=JSON.stringify([x,y,formation,...units.map(e=>e.id).sort((a,b)=>a-b)]);
+      this._formationPlans=this._formationPlans||new Map();
+      const cachedPlan=this._formationPlans.get(planKey),plan=new Map(),reserved=[];
+      const cx=units.reduce((sum,e)=>sum+e.x,0)/Math.max(1,units.length),cy=units.reduce((sum,e)=>sum+e.y,0)/Math.max(1,units.length),facing=Math.atan2(y-cy,x-cx),fx=Math.cos(facing),fy=Math.sin(facing),rx=-fy,ry=fx;
+      // The front rank receives the front destinations; rear vehicles do not have to pass stopped front ranks.
+      units.sort((a,b)=>Math.round((b.x*fx+b.y*fy)/spacing)-Math.round((a.x*fx+a.y*fy)/spacing)||(a.x*rx+a.y*ry)-(b.x*rx+b.y*ry)||a.id-b.id);
       for (const e of units) {
         const width=Math.min(cols,units.length),rows=Math.ceil(units.length/cols);
-        const p=this.destination(e,x+((n%cols)-(width-1)/2)*spacing,y+(Math.floor(n/cols)-(rows-1)/2)*spacing);
+        const side=((n%cols)-(width-1)/2)*spacing,front=((rows-1)/2-Math.floor(n/cols))*spacing;
+        const cached=cachedPlan?.get(e.id);let p=this.destination(e,cached?.x??x+rx*side+fx*front,cached?.y??y+ry*side+fy*front);
+        const domain=this.targetDomain(e.kind),vacant=q=>reserved.every(o=>o.domain!==domain||Math.hypot(q.x-o.x,q.y-o.y)>=e.r+o.r+14);
+        if(!U[e.kind].air&&!vacant(p)){
+          const original=p;let found=false;
+          for(let ring=1;ring<=8&&!found;ring++)for(let j=0;j<16;j++){
+            const a=j*Math.PI/8,q=this.destination(e,original.x+Math.cos(a)*spacing*ring,original.y+Math.sin(a)*spacing*ring);
+            if(vacant(q)){p=q;found=true;break;}
+          }
+        }
+        reserved.push({...p,r:e.r,domain});
+        plan.set(e.id,p);
         const contact=this.get(target),tracked=contact&&this.canDetect(e.team,contact)?target:null;
         const order={x:p.x,y:p.y,attack,target:tracked};
         // Movement connectivity is distinct from ranged fire: an explicit detected
@@ -839,13 +868,18 @@
         if(options.queue&&e.order){e.orderQueue=e.orderQueue||[];if(e.orderQueue.length<16){e.orderQueue.push(order);report.accepted.push(e.id);}else report.rejected.push({id:e.id,reason:'queue-full'});n++;continue;}
         report.accepted.push(e.id);
         e.orderQueue=[];e.retreating=false;
+        if(e.kind!=='harvester'&&e.order&&e.order.x===order.x&&e.order.y===order.y&&e.order.attack===attack&&e.order.target===tracked){n++;continue;}
         if(e.kind==='harvester'){const ore=this.ore.filter(o=>o.amount>0).sort((a,b)=>dist(p,a)-dist(p,b))[0];e.oreId=ore&&dist(ore,p)<120?ore.id:null;e.manualMove=e.oreId===null;e.miningState=null;}
         e.order = order;
         e.target = tracked;
         e.path = [];
         e.repath = 0;
+        e.crowdProgress=null;e.crowdDetourUntil=0;e.crowdWaiting=null;
+        this._crowdReplans?.delete(e.id);
         n++;
       }
+      this._formationPlans.set(planKey,plan);
+      if(this._formationPlans.size>32)this._formationPlans.delete(this._formationPlans.keys().next().value);
       if(report.accepted.length)this.effects.push({ type: "command", x, y, ttl: 0.7, max: 0.7, attack });
       this.commandFeedback=report;return report;
     }
@@ -1210,11 +1244,13 @@
     }
     step(dt) {
       if (this.result || !Number.isFinite(dt) || dt<=0) return;
+      if(!root.WarCrowdNavigation&&typeof module!=='undefined'&&typeof require==='function')require('./crowd-navigation.js');
       dt = clamp(dt, 0, 0.1);
       this.time += dt;
       this.tick++;
-      if(this.directControl){const e=this.get(this.directControl.id);if(!e)this.endDirectControl();else if(e.disabled>this.time){this.resetJump(e);e.target=null;this.directControl.input={forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null};}}
+      if(this.directControl){const e=this.get(this.directControl.id);if(!e)this.endDirectControl();else if(e.disabled>this.time){this.resetJump(e);e.target=null;this.directControl.firePending=null;if(e.operatorState){e.operatorState.reloadRemaining=0;e.operatorState.fireHeld=false;}this.directControl.input={forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null};}}
       this.pathBudget = 10;
+      this.crowdPathBudget = 2;
       this.spatial.rebuild(this.entities);
       this.teamSight = this.teams.map((t) =>
         this.entities.filter((e) => e.team === t.id && e.hp > 0),
@@ -1309,11 +1345,13 @@
           if(rocket){rocket.type='intercepted';rocket.ttl=.12;rocket.max=.12;e.interceptAt=this.time+(d.interceptReload||.55);}
         }
         if(e.id===this.directControl?.id){this.stepDirectControl(e,dt);continue;}
+        if(e.kind==='operator')this.operatorAutoTick(e,dt);
         if (!d.damage && !e.order) continue;
         let target = this.get(e.target);
-        let range = this.rangeProfile(e).attack;
+        let range = e.kind==='operator'?this.operatorWeapon(e).range:this.rangeProfile(e).attack;
         const canHit = (t) =>
           d.damage > 0 &&
+          (e.kind!=='operator'||this.operatorCanTarget(e,t)) &&
           this.isEnemy(e.team, t.team) &&
           this.canTargetKind(e.kind,t.kind) && this.canDetect(e.team,t) && this.engagementDistance(e,t)>=(d.minRange||0) &&
           (U[t.kind]?.underwater ? true : e.team === 0
@@ -1363,10 +1401,11 @@
             goal.x = orderedTarget.x;
             goal.y = orderedTarget.y;
           }
-          if (dist(e, goal) < 14) {
+          if (dist(e, goal) < (d.air?14:6)) {
             e.order = e.orderQueue?.shift() || null;
             e.manualMove=false;
             e.path = [];
+            e.crowdProgress=null;e.crowdDetourUntil=0;e.crowdWaiting=null;
             continue;
           }
           let dest = goal;
@@ -1388,11 +1427,20 @@
               this.pathBudget--;
             }
             if (!e.path.length) continue;
-            dest = e.path[0];
-            if (dist(e, dest) < 10) {
+            dest = root.WarCrowdNavigation?.waypoint(this,e)||e.path[0];
+            if (dist(e, dest) < (e.path.length===1?5:10)) {
               e.path.shift();
               continue;
             }
+          }
+          if(!d.air&&root.WarCrowdNavigation){
+            root.WarCrowdNavigation.move(this,e,dest,dt);
+            if(!e.crowdProgress)e.crowdProgress={distance:dist(e,goal),time:this.time};
+            if(this.time-e.crowdProgress.time>1.2&&!(e.crowdDetourUntil>this.time)){
+              if(e.crowdProgress.distance-dist(e,goal)<8)root.WarCrowdNavigation.enqueue(this,e);
+              else e.crowdProgress={distance:dist(e,goal),time:this.time};
+            }
+            continue;
           }
           let angle = Math.atan2(dest.y - e.y, dest.x - e.x),
             speed = this.effectiveSpeed(e);
@@ -1427,6 +1475,7 @@
           e.angle = angle;
         }
       }
+      root.WarCrowdNavigation?.process(this,findPath);
       for (const n of this.nodes) {
         const close = this.spatial
           .query(n.x, n.y, 100)
@@ -1457,7 +1506,7 @@
           if (fx.splash) {
             for (const e of this.spatial.query(fx.tx, fx.ty, fx.splash))
               if (e.hp>0 && this.isEnemy(fx.from, e.team) &&
-                (fx.sourceKind?this.canTargetKind(fx.sourceKind,e.kind):!U[e.kind]?.air) &&
+                (fx.operatorTargets?fx.operatorTargets.includes(this.operatorDomain(e)):(fx.sourceKind?this.canTargetKind(fx.sourceKind,e.kind):!U[e.kind]?.air)) &&
                 (['air','space','underwater'].includes(fx.targetDomain)?this.targetDomain(e.kind)===fx.targetDomain:!U[e.kind]?.air&&!U[e.kind]?.underwater) &&
                 Math.hypot(e.x-fx.tx,e.y-fx.ty,this.entityAltitude(e)-(fx.targetHeight??this.entityAltitude(e)))<=fx.splash+e.r)
                 this.damage(
@@ -1757,4 +1806,5 @@
     }
   }
   root.WarSim = { PLAYER_PROTECTION_DEFAULTS, PLAYER_JUMP_DEFAULTS, Game, makeMap, findPath, rng, Spatial, dist };
+  if(typeof module!=='undefined'&&typeof require==='function')require('./operator-sim.js');
 })(typeof globalThis !== "undefined" ? globalThis : this);

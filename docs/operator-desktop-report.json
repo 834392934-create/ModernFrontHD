@@ -1,0 +1,12 @@
+{
+  "recordedAt": "2026-10-18T11:09:43.594Z",
+  "checks": [
+    "Actual trigger consumes ammo; R reload transfers reserves; P freezes reload; minimap visible",
+    "1/2 and actual wheel change weapons; held semi-automatic trigger fires once",
+    "B opens 64-weapon armory; search, domain filter, random loadout and actual equip work; menu blocks camera/movement",
+    "Armory closes and restores controls; equipped launcher foreground and jump operate",
+    "Exit returns to RTS and closes operator UI"
+  ],
+  "errors": [],
+  "passed": true
+}

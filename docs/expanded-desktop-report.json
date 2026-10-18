@@ -1,9 +1,9 @@
 {
-  "recordedAt": "2026-10-17T18:29:07.554Z",
+  "recordedAt": "2026-10-18T11:13:25.210Z",
   "environment": "Packaged Electron fullscreen",
   "checks": [
     "354 new faction-role models have valid geometry, truthful source metadata and appropriate weapon anchors",
-    "four production filters expose 20 land + logistics / 19 navy / 18 air / 18 orbit",
+    "four production filters expose 21 land + logistics / 19 navy / 18 air / 18 orbit",
     "name search, no-match feedback, preserved focus, no shortcut leakage, and new production buttons work via real input",
     "All 8 tactical roles queue through real production cards",
     "Selected orbital shield displays its 210 range, space-only domain and live EMP shutdown",
@@ -36,10 +36,10 @@
   "combat": {
     "initialEntities": 98,
     "finalEntities": 74,
-    "seconds": 5.005900000000001,
-    "meanFPS": 46.34531253121315,
-    "p95FrameMs": 22.5,
-    "observedShots": 177,
+    "seconds": 5.016300000095369,
+    "meanFPS": 46.24922751741109,
+    "p95FrameMs": 22.299999999999272,
+    "observedShots": 180,
     "peakEffects": 76,
     "shownRanges": 4,
     "viewport": [
@@ -49,9 +49,9 @@
     "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)"
   },
   "performance": {
-    "frames": 186,
-    "durationMs": 4021.5999999999985,
-    "meanFPS": 46.3,
+    "frames": 185,
+    "durationMs": 4006.7000000953667,
+    "meanFPS": 46.2,
     "p95FrameMs": 22.400000000001455,
     "viewport": [
       2752,
@@ -63,7 +63,7 @@
     "calls": 209,
     "triangles": 1602682,
     "visibleEntities": 120,
-    "geometries": 229
+    "geometries": 231
   },
   "performanceScope": "122 live entities during the sample; fixture starts with 118 added-role models and 3 buildings, and existing production may complete. Warmed 4-second mixed-domain render; not sustained combat.",
   "errors": []

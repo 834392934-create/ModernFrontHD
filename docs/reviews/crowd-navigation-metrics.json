@@ -1,0 +1,166 @@
+{
+  "date": "2026-10-18",
+  "cpu": "12th Gen Intel(R) Core(TM) i5-12400F",
+  "node": "v24.14.0",
+  "dtSeconds": 0.05,
+  "scenarioSeconds": 60,
+  "stuckDefinition": "active order and net displacement less than 8 game units during final 5 seconds",
+  "before": [
+    {
+      "type": "open",
+      "count": 24,
+      "arrived": 14,
+      "stuck": 10,
+      "stepMeanMs": 0.11352699999999989,
+      "stepP95Ms": 0.301400000000001
+    },
+    {
+      "type": "open",
+      "count": 48,
+      "arrived": 35,
+      "stuck": 13,
+      "stepMeanMs": 0.18842674999999987,
+      "stepP95Ms": 0.442799999999977
+    },
+    {
+      "type": "choke",
+      "count": 48,
+      "arrived": 24,
+      "stuck": 24,
+      "stepMeanMs": 0.1575466666666675,
+      "stepP95Ms": 0.33960000000001855
+    },
+    {
+      "type": "crossing",
+      "count": 48,
+      "arrived": 28,
+      "stuck": 20,
+      "stepMeanMs": 0.13226608333333398,
+      "stepP95Ms": 0.28710000000000946
+    },
+    {
+      "type": "obstacles",
+      "count": 48,
+      "arrived": 23,
+      "stuck": 25,
+      "stepMeanMs": 0.16496725000000312,
+      "stepP95Ms": 0.345299999999952
+    }
+  ],
+  "after": [
+    {
+      "type": "open",
+      "count": 24,
+      "arrived": 24,
+      "stuck": 0,
+      "maxOverlap": 0,
+      "invalidTerrainSteps": 0,
+      "stepMeanMs": 0.17549358333333331,
+      "stepP95Ms": 0.5
+    },
+    {
+      "type": "open",
+      "count": 48,
+      "arrived": 48,
+      "stuck": 0,
+      "maxOverlap": 0,
+      "invalidTerrainSteps": 0,
+      "stepMeanMs": 0.42068574999999975,
+      "stepP95Ms": 0.9911000000000172
+    },
+    {
+      "type": "choke",
+      "count": 48,
+      "arrived": 48,
+      "stuck": 0,
+      "maxOverlap": 0,
+      "invalidTerrainSteps": 0,
+      "stepMeanMs": 0.4955917499999957,
+      "stepP95Ms": 1.1937000000000353
+    },
+    {
+      "type": "crossing",
+      "count": 48,
+      "arrived": 48,
+      "stuck": 0,
+      "maxOverlap": 0,
+      "invalidTerrainSteps": 0,
+      "stepMeanMs": 0.3328544999999987,
+      "stepP95Ms": 0.8252999999999702
+    },
+    {
+      "type": "obstacles",
+      "count": 48,
+      "arrived": 48,
+      "stuck": 0,
+      "maxOverlap": 0,
+      "invalidTerrainSteps": 0,
+      "stepMeanMs": 1.0739064166666723,
+      "stepP95Ms": 2.625999999999749
+    }
+  ],
+  "stressBeforeBudgetOptimization": [
+    {
+      "count": 200,
+      "seconds": 60,
+      "arrived": 74,
+      "crossedBottleneck": 198,
+      "maxOverlap": 0,
+      "overlapSamplingSeconds": 0.5,
+      "invalidTerrainSteps": 0,
+      "invalidNumbers": 0,
+      "maxSpeedExcess": 4.876099524153688e-13,
+      "minPathBudget": 0,
+      "stepMeanMs": 8.385563833333354,
+      "stepP95Ms": 23.02150000000006,
+      "stepWorstMs": 58.96569999999997
+    },
+    {
+      "count": 400,
+      "seconds": 60,
+      "arrived": 81,
+      "crossedBottleneck": 290,
+      "maxOverlap": 0,
+      "overlapSamplingSeconds": 0.5,
+      "invalidTerrainSteps": 0,
+      "invalidNumbers": 0,
+      "maxSpeedExcess": 4.951594689828198e-13,
+      "minPathBudget": 0,
+      "stepMeanMs": 19.055646083333347,
+      "stepP95Ms": 45.42229999999836,
+      "stepWorstMs": 98.20429999999942
+    }
+  ],
+  "stressAfterBudgetOptimization": [
+    {
+      "count": 200,
+      "seconds": 60,
+      "arrived": 73,
+      "crossedBottleneck": 199,
+      "maxOverlap": 0,
+      "overlapSamplingSeconds": 0.5,
+      "invalidTerrainSteps": 0,
+      "invalidNumbers": 0,
+      "maxSpeedExcess": 4.707345624410664e-13,
+      "minPathBudget": 0,
+      "stepMeanMs": 4.549578916666676,
+      "stepP95Ms": 8.725599999999986,
+      "stepWorstMs": 26.86979999999994
+    },
+    {
+      "count": 400,
+      "seconds": 60,
+      "arrived": 77,
+      "crossedBottleneck": 298,
+      "maxOverlap": 0,
+      "overlapSamplingSeconds": 0.5,
+      "invalidTerrainSteps": 0,
+      "invalidNumbers": 0,
+      "maxSpeedExcess": 4.747313653297169e-13,
+      "minPathBudget": 0,
+      "stepMeanMs": 10.623600916666684,
+      "stepP95Ms": 18.114199999999983,
+      "stepWorstMs": 41.76639999999861
+    }
+  ]
+}

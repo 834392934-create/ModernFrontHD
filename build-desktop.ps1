@@ -9,7 +9,7 @@ New-Item -ItemType Directory -Force -Path $appPath | Out-Null
 foreach($name in @('index.html','gallery.html','style.css','desktop.css','favicon.svg','src','assets','desktop','docs','README.md','LICENSE','THIRD_PARTY_NOTICES.md')){
  Copy-Item -LiteralPath (Join-Path $PSScriptRoot $name) -Destination $appPath -Recurse -Force
 }
-'{"name":"modern-front-hd","version":"3.4.0","main":"desktop/main.cjs","private":true}' | Set-Content -LiteralPath (Join-Path $appPath 'package.json') -Encoding utf8
+'{"name":"modern-front-hd","version":"3.5.0","main":"desktop/main.cjs","private":true}' | Set-Content -LiteralPath (Join-Path $appPath 'package.json') -Encoding utf8
 Copy-Item -LiteralPath (Join-Path $runtimePath 'electron.exe') -Destination (Join-Path $destinationPath 'ModernFrontHD.exe') -Force
 $duplicateExe=Join-Path ([System.IO.Path]::GetFullPath($destinationPath)) 'electron.exe'
 if(Test-Path -LiteralPath $duplicateExe){Remove-Item -LiteralPath $duplicateExe -Force}

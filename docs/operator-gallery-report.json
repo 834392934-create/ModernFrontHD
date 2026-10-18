@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "rows": [
+    {
+      "key": "operator_chn",
+      "triangles": 8128,
+      "parts": 104,
+      "dimensions": [
+        1.4615000188350677,
+        1.750099997036159,
+        0.659906268119812
+      ],
+      "original": true
+    },
+    {
+      "key": "operator_usa",
+      "triangles": 8128,
+      "parts": 104,
+      "dimensions": [
+        1.4755000174045563,
+        1.750099997036159,
+        0.659906268119812
+      ],
+      "original": true
+    },
+    {
+      "key": "operator_rus",
+      "triangles": 8128,
+      "parts": 104,
+      "dimensions": [
+        1.4895000159740448,
+        1.750099997036159,
+        0.659906268119812
+      ],
+      "original": true
+    },
+    {
+      "key": "operator_ind",
+      "triangles": 8128,
+      "parts": 104,
+      "dimensions": [
+        1.4475000202655792,
+        1.750099997036159,
+        0.659906268119812
+      ],
+      "original": true
+    },
+    {
+      "key": "operator_kor",
+      "triangles": 8128,
+      "parts": 104,
+      "dimensions": [
+        1.4545000195503235,
+        1.750099997036159,
+        0.659906268119812
+      ],
+      "original": true
+    },
+    {
+      "key": "operator_imp",
+      "triangles": 8452,
+      "parts": 107,
+      "dimensions": [
+        1.5035000145435333,
+        1.750099997036159,
+        0.659906268119812
+      ],
+      "original": true
+    }
+  ],
+  "errors": []
+}

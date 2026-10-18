@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-17T18:28:30.115Z",
+  "recordedAt": "2026-10-18T11:12:15.575Z",
   "checks": [
     "Actual selected path is drawn as a terrain route; real Shift-click adds a numbered queued waypoint",
     "Real minimap cross-island move is rejected with Chinese feedback and preserves active order and queued waypoint"

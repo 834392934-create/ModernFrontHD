@@ -372,6 +372,9 @@
   });
   const altitudeWave=added.slice(altitudeStart);
 
+  // A single original playable soldier, separate from the existing infantry squad.
+  U.operator={...U.infantry,name:'前线行动员（原创）',role:'独立玩家角色 / 64款军械 / B配装、R装填、1/2切换',modelKind:'infantry',unitGroup:'ground',ground:true,combatRole:'combat',playerOnly:true,roleVariant:true,aiWeight:0,cost:900,hp:240,speed:78,damage:33,range:460,reload:.115,sight:550,r:8,time:12,producer:'barracks',icon:'◎',targetDomains:['ground','structure','naval','underwater','air','space']};
+
   D.UNIT_GROUPS = {
     ground: { name: "陆军", icon: "▰" }, naval: { name: "海军", icon: "⚓" },
     air: { name: "空军", icon: "✈" }, space: { name: "太空", icon: "✧" },
