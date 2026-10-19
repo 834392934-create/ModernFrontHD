@@ -1,0 +1,380 @@
+{
+  "recordedAt": "2026-10-19T16:06:36.289Z",
+  "version": "3.8.2",
+  "baselineCommit": "0a15daf",
+  "request": "修复某些角度子弹乱飞；右键仅瞄准、左键开火；改善射击效果",
+  "confirmedCauses": [
+    "Off-map aim coordinates were independently clamped to map axes, changing the original 3D direction.",
+    "Untargeted high sky points were incorrectly classified as orbital engagements, preserving full height while shortening horizontal distance.",
+    "First-person trails used a fixed screen origin and interpolation of already projected endpoints, so old bullets reattached to the current view and perspective motion was wrong.",
+    "Valid targets at maximum centre-based range were shortened a second time from an offset model muzzle while retaining their damage target."
+  ],
+  "baseline": {
+    "probeCases": 80,
+    "examples": [
+      {
+        "kind": "operator",
+        "x": 2000,
+        "y": 1800,
+        "yaw": 0,
+        "pitch": 0.13,
+        "rawAim": [
+          17864.99029943661,
+          2083.6462819151193,
+          1800
+        ],
+        "inputAim": [
+          6144,
+          2083.6462819151193,
+          1800
+        ],
+        "projected": true,
+        "shotEnd": [
+          2460,
+          2083.6462819151193,
+          1800
+        ],
+        "sourceHeight": 12,
+        "screen": {
+          "x": 800,
+          "y": -1466.9207219653429
+        },
+        "elevation": 1.3525507448523553,
+        "errorDegrees": 70.04699792061511
+      },
+      {
+        "kind": "operator",
+        "x": 200,
+        "y": 200,
+        "yaw": 0,
+        "pitch": 0.05,
+        "rawAim": [
+          16180.004166319462,
+          809.1667083308544,
+          200.0000000000071
+        ],
+        "inputAim": [
+          6144,
+          809.1667083308544,
+          200.0000000000071
+        ],
+        "projected": false,
+        "shotEnd": [
+          655.7960192826052,
+          62.04827802712185,
+          200.00000000000054
+        ],
+        "sourceHeight": 12,
+        "screen": {
+          "x": 800.0000000000006,
+          "y": 453.67584448680066
+        },
+        "elevation": 0.11478226856323685,
+        "errorDegrees": 3.7117505759565033
+      },
+      {
+        "kind": "operator",
+        "x": 200,
+        "y": 200,
+        "yaw": 1.5707963267948966,
+        "pitch": 0.05,
+        "rawAim": [
+          200,
+          809.1667083308541,
+          16180.00416631946
+        ],
+        "inputAim": [
+          200,
+          809.1667083308541,
+          4224
+        ],
+        "projected": false,
+        "shotEnd": [
+          200,
+          90.6839310919262,
+          650.9727537686892
+        ],
+        "sourceHeight": 12,
+        "screen": {
+          "x": 800,
+          "y": 408.0148197463657
+        },
+        "elevation": 0.17811191521115816,
+        "errorDegrees": 7.3402720469372165
+      },
+      {
+        "kind": "operator",
+        "x": 200,
+        "y": 200,
+        "yaw": 3.141592653589793,
+        "pitch": 0.05,
+        "rawAim": [
+          -15780.004166319462,
+          809.1667083308544,
+          200.0000000000071
+        ],
+        "inputAim": [
+          0,
+          809.1667083308544,
+          200.0000000000071
+        ],
+        "projected": false,
+        "shotEnd": [
+          89.62434050750183,
+          446.5615453569598,
+          200.00000000000392
+        ],
+        "sourceHeight": 12,
+        "screen": {
+          "x": 799.9999999999792,
+          "y": -1830.111534800313
+        },
+        "elevation": 1.3234282135587339,
+        "errorDegrees": 72.96206214979952
+      }
+    ]
+  },
+  "fixes": [
+    "RMB exclusively controls temporary optics; LMB exclusively controls the trigger. V observation and zoom remain available.",
+    "Freeze validated model muzzle origin at input edge; clamp untargeted rays by a single 3D scale. Orbital projection requires a validated real target.",
+    "Validated target engagements preserve actual mesh impact coordinates under existing centre-based range rules; spread misses retain geometry without target damage.",
+    "Interpolate world-space shot progress, clip all six camera planes before projecting, distinguish continuous beams and bounded world-length tracers with a soft edge."
+  ],
+  "cpu": {
+    "command": "npm test",
+    "passed": 507,
+    "failed": 0,
+    "durationMs": 30150.5592,
+    "log": "docs/simulation-tests.txt",
+    "rayGrid": 525,
+    "projectionTests": 5
+  },
+  "native": {
+    "freshReports": [
+      {
+        "file": "docs/fps-ballistics-desktop-report.json",
+        "recordedAt": "2026-10-19T16:03:58.333Z",
+        "passed": true,
+        "checks": [
+          "1600×1000 与 1024×720 实际画布/准星中心误差均小于 1 px",
+          "operator：24 组真实左键发射，地图中心/西北边缘 × 3 朝向 × 4 俯仰，按公开散布阈值验证",
+          "发射端点保持冻结；转头前后世界插值弹头投影均与独立计算一致",
+          "infantry：24 组真实左键发射，地图中心/西北边缘 × 3 朝向 × 4 俯仰，按公开散布阈值验证"
+        ],
+        "cases": 48,
+        "appVersion": "3.8.2"
+      },
+      {
+        "file": "docs/right-button-fire-desktop-report.json",
+        "recordedAt": "2026-10-19T15:57:44.124Z",
+        "passed": true,
+        "checks": [
+          "全部许可导入模型ready，真实来源/CC BY/署名/材质保留已核验",
+          "operator：无V，单RMB五倍率均不发弹、不扣血、不耗弹；配合LMB真实伤害，松开LMB后停止新弹且保留瞄准",
+          "operator RMB→LMB：释放右键后左键仍产生真实射击与伤害",
+          "tank：无V，单RMB五倍率均不发弹、不扣血、不耗弹；配合LMB真实伤害，松开LMB后停止新弹且保留瞄准",
+          "tank RMB→LMB：释放右键后左键仍产生真实射击与伤害",
+          "destroyer：无V，单RMB五倍率均不发弹、不扣血、不耗弹；配合LMB真实伤害，松开LMB后停止新弹且保留瞄准",
+          "submarine：无V，单RMB五倍率均不发弹、不扣血、不耗弹；配合LMB真实伤害，松开LMB后停止新弹且保留瞄准",
+          "heli：无V，单RMB五倍率均不发弹、不扣血、不耗弹；配合LMB真实伤害，松开LMB后停止新弹且保留瞄准",
+          "orbital：无V，单RMB五倍率均不发弹、不扣血、不耗弹；配合LMB真实伤害，松开LMB后停止新弹且保留瞄准"
+        ],
+        "domains": 6
+      },
+      {
+        "file": "docs/first-person-desktop-report.json",
+        "recordedAt": "2026-10-19T16:04:34.563Z",
+        "passed": true,
+        "checks": [
+          "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
+          "M toggles and restores the optional motion setting through keyboard input",
+          "Mouse look, right-button ADS narrows camera FOV, release restores aim, and P freezes simulation and clears movement/fire",
+          "Escape exits driving and returns strategy camera without opening settings",
+          "All 77 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked",
+          "AI builds, trains and orders other units during possession, excludes the driver, and stops new AI calls after E exits",
+          "Real left-click mesh-target shot reduces enemy HP and confirms actual source damage; a subsequent sky miss produces no hit marker",
+          "A real manual projectile remains tied to its recorded impact area: relocating the target during flight causes no remote damage or hit marker",
+          "Camera sees target while model-muzzle or conservative-body origin hits cover: new missile vehicle, legacy Chinese tank and unanchored IMP tank all deal zero damage and no hit confirmation",
+          "Real packaged fullscreen=true; minimizing with W+fire held clears keys and simulation input; restoring/focusing does not resume movement or fire"
+        ],
+        "possessions": 77
+      },
+      {
+        "file": "docs/orbit-scope-desktop-report.json",
+        "recordedAt": "2026-10-19T16:05:30.290Z",
+        "passed": true,
+        "checks": [
+          "4000u真实V/G/滚轮变焦、地面命中、位置/高度/射程保持、小地图与状态HUD常驻",
+          "换乘菜单清除射击输入并阻止滚轮偷改倍率；V可收起瞄准",
+          "12000u真实V/G/滚轮变焦、地面命中、位置/高度/射程保持、小地图与状态HUD常驻",
+          "大于3200u模型可见但超射程不扣血；关闭全图视野后仍遵守战争迷雾",
+          "换乘菜单清除射击输入并阻止滚轮偷改倍率；V可收起瞄准",
+          "截击舰可观察地面但真实开火不能损伤不适配目标",
+          "F紧急离舱保持人员第一人称并解除光学模式，人员滚轮切枪继续可用"
+        ]
+      },
+      {
+        "file": "docs/desktop-report.json",
+        "recordedAt": "2026-10-19T16:06:22.222Z",
+        "passed": true,
+        "checks": [],
+        "appVersion": "3.8.2"
+      },
+      {
+        "file": "docs/upgrade-browser-report.json",
+        "recordedAt": "2026-10-19T16:06:11.700Z",
+        "passed": true,
+        "checks": [
+          "licensed T-90M, ship and AH-64 load from embedded GLB with preserved materials",
+          "desktop deployment, six factions, four AI difficulties, real WebGL battlefield",
+          "3D picking and right-click move through real pointer input",
+          "Shift appends waypoints",
+          "formation and retreat commands",
+          "production rally via selecting factory and right-click",
+          "independent live AI space permission",
+          "night, quality and immersive HUD restoration",
+          "narrow layout without horizontal overflow",
+          "offline file startup, embedded textures/models, zero HTTP requests",
+          "all factions start in new renderer"
+        ]
+      }
+    ],
+    "rayCases": 48,
+    "maximumDirectionErrorDegrees": 1.0741375791601182,
+    "zeroSpreadMaximumErrorDegrees": 9.242561864327494e-14,
+    "centres": [
+      {
+        "viewport": [
+          1600,
+          1000
+        ],
+        "canvas": [
+          0,
+          0,
+          1600,
+          1000
+        ],
+        "reticle": [
+          800,
+          500
+        ],
+        "error": 0,
+        "renderer": [
+          1600,
+          1000
+        ],
+        "aspect": 1.6,
+        "forwardPixel": [
+          800,
+          500
+        ]
+      },
+      {
+        "viewport": [
+          1024,
+          720
+        ],
+        "canvas": [
+          0,
+          0,
+          1024,
+          720
+        ],
+        "reticle": [
+          512,
+          360
+        ],
+        "error": 0,
+        "renderer": [
+          1024,
+          720
+        ],
+        "aspect": 1.4222222222222223,
+        "forwardPixel": [
+          512,
+          360
+        ]
+      }
+    ],
+    "frozenProjection": {
+      "before": [
+        3077.964,
+        2112.952,
+        7.475999999999999,
+        3202.8068749885047,
+        2112.944559777254,
+        13.741501516055138
+      ],
+      "after": [
+        3077.964,
+        2112.952,
+        7.475999999999999,
+        3202.8068749885047,
+        2112.944559777254,
+        13.741501516055138
+      ],
+      "original": {
+        "inside": true,
+        "segment": [
+          {
+            "x": 809.9061981320215,
+            "y": 524.136433981704
+          },
+          {
+            "x": 812.0246186708055,
+            "y": 529.2979618250228
+          }
+        ],
+        "expected": {
+          "x": 809.9061981320215,
+          "y": 524.136433981704
+        },
+        "error": 0
+      },
+      "turned": {
+        "inside": true,
+        "segment": [
+          {
+            "x": 752.6856099581718,
+            "y": 524.112163475139
+          },
+          {
+            "x": 754.791690537769,
+            "y": 529.2860158507406
+          }
+        ],
+        "expected": {
+          "x": 752.6856099581718,
+          "y": 524.112163475139
+        },
+        "error": 0
+      },
+      "progress": 0.5,
+      "trailLength": 12
+    },
+    "screenshot": "screenshots/fps-ballistics-desktop.png",
+    "scope": "Controlled clear geometry: original terrain retained, decorative world obstacles removed; no combat/AI/asset-fidelity claim"
+  },
+  "release": {
+    "executable": "D:/现代战线HD/release/ModernFrontHD-3.8.2/ModernFrontHD.exe",
+    "testProfile": "D:\\现代战线HD\\.tmp\\native-profile-v382",
+    "consistency": "docs/fps-package-report.json",
+    "userGameNotClosed": true
+  },
+  "sourceSha256": {
+    "src/direct-control.js": "d269e9ca5fc9040df6f3f4dfe4de83c101920fb4af5ce9050116ab422402c68a",
+    "src/sim.js": "8cf0daf43c999e9ad445984c080f87ad3d7365b25ce5114be40a00ad5aae81a5",
+    "src/operator-sim.js": "8f87ca0e28046d182f9745ea5492cc765601114e137f39ad3114ee34d6716135",
+    "src/app.js": "c0a61f9a31b5382641a81717c02961a48b541054bf660f2f18cff315686d16ad",
+    "tests/direct-shot-ray.test.cjs": "d65e9551657df82fa9cd528bb3adfa39f2aa4271acbc60ef8be8f4c7ea4e7ec3",
+    "tests/fps-projectile-projection.test.cjs": "3e6dd74cf39f87e4902179b2fc53ba56a088b656f5052508b3f644c4353db995",
+    "tests/right-button-fire-browser.cjs": "13f0bffa50c2f30f3319374e8b7655d5d7aa4373b2d0706abb89e16d95d85e42",
+    "tests/fps-ballistics-browser.cjs": "229c47b010ace089e5e56468ece3841631d90e0adbda5d9165c1f7d159e4aea6"
+  },
+  "limits": [
+    "Weapon dispersion remains intentional and bounded by the configured weapon spread; this is not a zero-spread cheat.",
+    "First-person world effects are still a canvas overlay; no depth-tested volumetric renderer, new model assets or AAA fidelity claim.",
+    "The 3.8.1 performance report is historical and is not a measured 3.8.2 FPS improvement.",
+    "Six-domain input acceptance preceded the additional target-range-edge guard and extreme-coordinate clipping guard; its input handlers are unchanged. Final native ballistic/possession/orbit/import runs validate the final sources."
+  ]
+}

@@ -1,8 +1,8 @@
-/* RMB-only native regression. Arrange fixtures, then control using actual mouse/keyboard events.
+/* RMB-only aiming and independent LMB firing regression using actual native input.
  * Surface probe / pointer-lock helpers adapted from unified-aim-browser.cjs. No runtime edits. */
 const {chromium,_electron}=require(process.env.PLAYWRIGHT_MODULE||'C:/Users/Administrator/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
-const desktop=process.argv.includes('--desktop'),suffix=desktop?'desktop':'browser',report={recordedAt:new Date().toISOString(),environment:suffix,checks:[],errors:[],domains:[],shots:[]};let host,p,cursor={x:700,y:420};
+const desktop=process.argv.includes('--desktop'),suffix=desktop?'desktop':'browser',report={recordedAt:new Date().toISOString(),environment:suffix,inputContract:'RMB aims only; LMB exclusively fires',checks:[],errors:[],domains:[],shots:[]};let host,p,cursor={x:700,y:420};
 const allDomains=[['operator',0],['tank',0],['destroyer',0],['submarine',-55],['heli',130],['orbital',4000]],requested=process.argv.find(a=>a.startsWith('--kinds='))?.slice(8).split(',').filter(Boolean),domainCases=requested?allDomains.filter(([kind])=>requested.includes(kind)):allDomains;
 if(requested&&(!domainCases.length||requested.some(k=>!allDomains.some(([kind])=>kind===k))))throw Error('Unknown --kinds value; allowed: '+allDomains.map(([k])=>k).join(','));
 report.requestedKinds=domainCases.map(([k])=>k);report.coverage=requested?'focused debug subset; not full six-domain acceptance':'full six-domain acceptance';
@@ -64,7 +64,7 @@ async function verifyImported(){
  for(const model of result.models){assert.match(model.source,/^https:\/\/sketchfab\.com\//);assert.equal(model.license,'CC-BY-4.0');assert.ok(model.author);assert.match(model.assetPath,/\.glb$/);assert.ok(model.meshes>0);assert.equal(model.preserved,model.meshes);assert.ok(model.materials.every(m=>m.type&&m.color));if(!model.key.startsWith('heli_'))assert.ok(model.textured>0,model.key+' textures must load');}
  report.imported=result;checked('全部许可导入模型ready，真实来源/CC BY/署名/材质保留已核验');
 }
-async function sample(ids){return p.evaluate(({actor,target})=>{const g=ModernFront.game,d=ModernFront.direct;return{time:g.time,count:window.__rightButtonShots.filter(s=>s.sourceId===actor).length,hp:g.get(target).hp,fire:g.directControl?.input.fire,active:d.opticalActive(),latched:d.scopeState().latched,zoom:d.scopeState().zoom,locked:document.pointerLockElement===d.r.canvas};},ids);}
+async function sample(ids){return p.evaluate(({actor,target})=>{const g=ModernFront.game,d=ModernFront.direct,s=g.get(actor).kind==='operator'?g.operatorStatus(actor):null;return{time:g.time,count:window.__rightButtonShots.filter(s=>s.sourceId===actor).length,hp:g.get(target).hp,ammo:s?s.slots[s.activeSlot].ammo:null,fire:g.directControl?.input.fire,active:d.opticalActive(),latched:d.scopeState().latched,zoom:d.scopeState().zoom,locked:document.pointerLockElement===d.r.canvas};},ids);}
 async function waitSim(seconds){const start=await p.evaluate(()=>ModernFront.game.time);await p.waitForFunction(({start,seconds})=>ModernFront.game.time>=start+seconds,{start,seconds},{timeout:Math.max(10000,seconds*4000)});}
 async function assertStopped(ids,label){
  await p.waitForFunction(()=>ModernFront.game.directControl.input.fire===false,null,{timeout:2000});
@@ -89,7 +89,7 @@ async function continuedAfterRelease(ids,releaseButton,label){
  await ensureAmmo(ids);
  const before=await sample(ids);await p.mouse.up({button:releaseButton});await p.waitForFunction(()=>ModernFront.game.directControl.input.fire===true,null,{timeout:2000});
  await p.waitForFunction(({id,count})=>window.__rightButtonShots.filter(s=>s.sourceId===id).length>count,{id:ids.actor,count:before.count},{timeout:15000});
- await p.waitForFunction(({id,hp})=>ModernFront.game.get(id).hp<hp,{id:ids.target,hp:before.hp},{timeout:15000});checked(label+'：释放一键后另一键仍产生真实射击与伤害');
+ await p.waitForFunction(({id,hp})=>ModernFront.game.get(id).hp<hp,{id:ids.target,hp:before.hp},{timeout:15000});checked(label+'：释放右键后左键仍产生真实射击与伤害');
 }
 (async()=>{try{
  fs.mkdirSync('.tmp',{recursive:true});fs.mkdirSync('screenshots',{recursive:true});fs.mkdirSync('docs',{recursive:true});
@@ -98,21 +98,21 @@ async function continuedAfterRelease(ids,releaseButton,label){
  report.runtime=await p.evaluate(()=>{window.__rmbFocusEvents=[];const record=(name,e)=>{window.__rmbFocusEvents.push({name,trusted:e.isTrusted,time:performance.now(),focused:document.hasFocus(),locked:!!document.pointerLockElement,kind:ModernFront.game.get(ModernFront.direct.entityId)?.kind});if(window.__rmbFocusEvents.length>80)window.__rmbFocusEvents.shift();};const originalExit=document.exitPointerLock;document.exitPointerLock=function(...args){record('exitPointerLock-call',{isTrusted:false});window.__rmbFocusEvents.at(-1).stack=new Error('Pointer unlock caller').stack;return originalExit.apply(this,args);};for(const name of ['blur','focus'])addEventListener(name,e=>record(name,e));document.addEventListener('pointerlockchange',e=>record('pointerlockchange',e));addEventListener('keydown',e=>{if(['KeyV','Escape'].includes(e.code))record(e.code,e);},true);return{userAgent:navigator.userAgent,viewport:[innerWidth,innerHeight],version:document.title};});
  for(const [kind,height]of domainCases){
   report.stage=kind+' fixture';const ids=await fixture(kind,height),initial=await state(),domain={kind,ids,magnifications:[]};assert.equal(initial.active,false);assert.equal(await p.evaluate(()=>ModernFront.direct.scopeState().latched),false);
-  // No V/G or synthetic orientation/input assignment in this path: RMB alone activates optics and firing.
-  await p.mouse.down({button:'right'});await p.waitForFunction(()=>ModernFront.direct.opticalActive()&&ModernFront.game.directControl.input.fire);const zooms=kind==='orbital'?[4,8,16,32,64]:[1.5,2,4,8,16];
+  // RMB must never launch a new shot. Every zoom then requires a real LMB hold to damage.
+  const beforeRMB=await sample(ids);await p.mouse.down({button:'right'});await p.waitForFunction(()=>ModernFront.direct.opticalActive()&&!ModernFront.game.directControl.input.fire);const zooms=kind==='orbital'?[4,8,16,32,64]:[1.5,2,4,8,16];
   for(let i=0;i<zooms.length;i++){
-   if(i)await p.mouse.wheel(0,-120);await p.waitForFunction(z=>ModernFront.direct.scopeState().zoom===z,zooms[i]);await aimAt(ids.target);await ensureAmmo(ids);const before=await sample(ids);
+   if(i)await p.mouse.wheel(0,-120);await p.waitForFunction(z=>ModernFront.direct.scopeState().zoom===z,zooms[i]);await aimAt(ids.target);await ensureAmmo(ids);const quiet=await sample(ids);if(i===0){assert.equal(quiet.count,beforeRMB.count,'initial RMB press launched a shot');assert.equal(quiet.hp,beforeRMB.hp,'initial RMB press damaged target');assert.equal(quiet.ammo,beforeRMB.ammo,'initial RMB press spent ammo');}await waitSim(1.2);const before=await sample(ids);assert.equal(before.fire,false);assert.equal(before.count,quiet.count,'RMB alone emitted a shot at '+zooms[i]+'x');assert.equal(before.hp,quiet.hp,'RMB alone damaged target');assert.equal(before.ammo,quiet.ammo,'RMB alone spent ammunition');await p.mouse.down({button:'left'});
    await p.waitForFunction(({id,count})=>window.__rightButtonShots.filter(s=>s.sourceId===id).length>count,{id:ids.actor,count:before.count},{timeout:15000});await p.waitForFunction(({id,hp})=>ModernFront.game.get(id).hp<hp,{id:ids.target,hp:before.hp},{timeout:15000});
-   const after=await sample(ids),view=await state();assert.equal(after.fire,true);assert.equal(after.latched,false,'RMB-only must not latch V');assert.equal(view.range,initial.range);assert.equal(after.zoom,zooms[i]);assert.ok(Math.abs(Math.tan(view.fov*Math.PI/360)*zooms[i]-Math.tan(70*Math.PI/360))<.0001);assert.match(view.contact,/实际距离.*射程.*射程内/);domain.magnifications.push({zoom:zooms[i],before,after,view});
+   const after=await sample(ids),view=await state();assert.equal(after.fire,true);assert.equal(after.latched,false,'RMB must not latch V');assert.equal(view.range,initial.range);assert.equal(after.zoom,zooms[i]);assert.ok(Math.abs(Math.tan(view.fov*Math.PI/360)*zooms[i]-Math.tan(70*Math.PI/360))<.0001);assert.match(view.contact,/实际距离.*射程.*射程内/);await p.mouse.up({button:'left'});const stop=await assertStopped(ids,kind+' LMB release with RMB held '+zooms[i]+'x');assert.equal(stop.after.active,true,'RMB must keep optics after LMB release');domain.magnifications.push({zoom:zooms[i],quiet,before,after,view,stop});
   }
   if(['tank','orbital'].includes(kind)){const screenshot=`screenshots/right-button-fire-${kind}-${suffix}.png`;await p.screenshot({path:screenshot});domain.screenshot=screenshot;}
-  await p.mouse.up({button:'right'});await p.waitForFunction(()=>!ModernFront.direct.opticalActive());domain.stop=await assertStopped(ids,kind+' RMB');checked(kind+'：无V，单RMB五倍率均真实伤害；松开后新弹停止、在途落点后HP稳定');
+  await p.mouse.up({button:'right'});await p.waitForFunction(()=>!ModernFront.direct.opticalActive());domain.stop=await assertStopped(ids,kind+' RMB');checked(kind+'：无V，单RMB五倍率均不发弹、不扣血、不耗弹；配合LMB真实伤害，松开LMB后停止新弹且保留瞄准');
   // V is an observation latch, not a fire button.
   report.stage=kind+' V observation on';const quiet=await sample(ids);await observationKey(true,report.stage);await waitSim(1.5);const vOnly=await sample(ids);assert.equal(vOnly.fire,false);assert.equal(vOnly.count,quiet.count);assert.equal(vOnly.hp,quiet.hp);report.stage=kind+' V observation off';await observationKey(false,report.stage);domain.vOnly=vOnly;
-  // Representative personnel/vehicle overlap paths; all six domains retain five real-damage RMB zoom checks.
+  // Representative personnel/vehicle chord paths; firing always follows LMB, aiming follows RMB.
   if(kind==='operator'||kind==='tank'){
   // Keep the other button down through each release; never synthesize d.fire or sim inputs.
-  await p.mouse.down({button:'left'});await p.mouse.down({button:'right'});await aimAt(ids.target);await continuedAfterRelease(ids,'left',kind+' LMB→RMB');await p.mouse.up({button:'right'});await assertStopped(ids,kind+' overlap right last');
+  await p.mouse.down({button:'left'});await p.mouse.down({button:'right'});await aimAt(ids.target);await p.mouse.up({button:'left'});await assertStopped(ids,kind+' LMB→RMB release left');assert.equal(await p.evaluate(()=>ModernFront.direct.opticalActive()),true);await p.mouse.up({button:'right'});await assertStopped(ids,kind+' overlap right last');
   await p.mouse.down({button:'right'});await p.mouse.down({button:'left'});await aimAt(ids.target);await continuedAfterRelease(ids,'right',kind+' RMB→LMB');await p.mouse.up({button:'left'});await assertStopped(ids,kind+' overlap left last');
   }
   assert.equal(await p.evaluate(()=>ModernFront.direct.scopeState().latched),false);report.domains.push(domain);report.shots.push({kind,events:await p.evaluate(()=>window.__rightButtonShots)});

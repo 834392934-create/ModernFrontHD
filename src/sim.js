@@ -462,7 +462,9 @@
       const profile=d?this.rangeProfile(e):null,armed=!!((weapon||d)?.damage>0),range=profile?.attack||0,minRange=profile?.min||0;
       const x=options.aimX??options.aimPoint?.x,y=options.aimY??options.aimPoint?.z,height=options.aimHeight??options.aimPoint?.y;
       const point=target?{x:target.x,y:target.y,height:this.entityAltitude(target)}:Number.isFinite(x)&&Number.isFinite(y)?{x,y,height:Number.isFinite(height)?height:this.entityAltitude(e)}:null;
-      const projected=!!point&&(!!d?.space!==(target?!!U[target.kind]?.space:point.height>=2000));
+      // A far sky aim point is not an orbital target. Projection belongs only
+      // to a real entity engagement across the compressed orbital layer.
+      const projected=!!target&&(!!d?.space!==!!U[target.kind]?.space);
       const actualDistance=e&&point?Math.hypot(point.x-e.x,point.y-e.y,point.height-this.entityAltitude(e)):null;
       const distance=e&&point?(projected?Math.hypot(point.x-e.x,point.y-e.y):actualDistance):null;
       const inRange=armed&&distance!==null&&distance<=range&&distance>=minRange,rangeState=distance===null?'none':distance<minRange?'min':distance>range?'out':'in';
@@ -471,6 +473,30 @@
       const ammo=weapon?state.stash[weapon.id].ammo:null,reloading=!!state?.reloadRemaining,cooldown=Math.max(0,e?.cool||0),aimValid=!target||this.directAimValid(target,options);
       const reason=!e||e.hp<=0?'dead':!armed?'unarmed':e.disabled>this.time?'emp':!profile.active?'inactive':!point?'no-target':options.blocked?'blocked':target&&!this.isEnemy(e.team,target.team)?'friendly':!domainAllowed?'domain':!detected?'undetected':!aimValid?'aim-miss':rangeState==='min'?'min-range':rangeState==='out'?'out-of-range':reloading?'reloading':ammo===0?'no-ammo':cooldown>0?'cooldown':'ready';
       return{armed,range,minRange,distance,actualDistance,inRange,rangeState,domainAllowed,detected,canFire:reason==='ready',reason,projected,ammo,reloading,aimValid,cooldown};
+    }
+    validDirectShotOrigin(e,p) {
+      if(!p||![p.x,p.y,p.height].every(Number.isFinite))return false;
+      // A model muzzle is local to its entity. Reject remote/overflowing API
+      // origins while allowing the full measured hull and moving attachments.
+      const radius=root.WarNavigationFootprints?.radius(this,e)||e.r||0,limit=Math.max(128,radius*4,this.hitHeightRadius(e)*4);
+      return Math.hypot(p.x-e.x,p.y-e.y,p.height-this.entityAltitude(e))<=limit;
+    }
+    directShotOrigin(e,input={}) {
+      const p=input.aimOrigin,d=U[e.kind]||B[e.kind];
+      return this.validDirectShotOrigin(e,p)?{x:p.x,y:p.y,height:p.height}:{x:e.x,y:e.y,height:this.entityAltitude(e)+(e.structure?20:!d.air&&!d.naval?12:0)};
+    }
+    directShotPoint(e,input,target,range) {
+      const origin=this.directShotOrigin(e,input),dx=input.aimX-origin.x,dy=input.aimY-origin.y,dz=input.aimHeight-origin.height,projected=!!target&&(!!U[e.kind]?.space!==!!U[target.kind]?.space);
+      // Scale before taking the norm so even very large finite API coordinates
+      // produce a finite bounded endpoint, without independently clamping axes.
+      const scale=Math.max(Math.abs(dx),Math.abs(dy),projected?0:Math.abs(dz)),norm=scale?Math.hypot(dx/scale,dy/scale,projected?0:dz/scale):0,distance=scale*norm;
+      let x=input.aimX,y=input.aimY,height=input.aimHeight;
+      // Callers pass only a validated engagement target: its HUD/simulation
+      // range is measured from entity centres. Do not shorten that legal hit
+      // again from an offset muzzle (nor its dispersed miss). Only free rays
+      // without a valid engagement are bounded by muzzle-to-endpoint distance.
+      if(!target&&distance>range){const step=range/norm;x=origin.x+dx/scale*step;y=origin.y+dy/scale*step;if(!projected)height=origin.height+dz/scale*step;}
+      return{x,y,height,origin,distance,projected};
     }
     distance3D(a,b) {return Math.hypot(a.x-b.x,a.y-b.y,this.entityAltitude(a)-this.entityAltitude(b));}
     engagementDistance(a,b) {
@@ -624,9 +650,10 @@
         pitch:clamp(finite(input.pitch),-1.15,1.15),turn:clamp(finite(input.turn),-1,1),lift:clamp(finite(input.lift),-1,1),throttle:clamp(finite(input.throttle),-1,1),flightEnabled:input.flightEnabled===true,
         fire:!!input.fire,ads:!!input.ads,jump:input.jump===true,targetId:Number.isInteger(input.targetId)?input.targetId:null,
         targetTreeId:typeof input.targetTreeId==='string'&&root.WarTrees.get(this,input.targetTreeId)?.hp>0?input.targetTreeId:null,
-        aimX:clamp(finite(input.aimX,aimTarget?.x??e.x+Math.cos(yaw)*(d.range||250)),0,W),
-        aimY:clamp(finite(input.aimY,aimTarget?.y??e.y+Math.sin(yaw)*(d.range||250)),0,H),
-        aimHeight:clamp(finite(input.aimHeight,this.entityAltitude(aimTarget||e)),-160,14000),
+        aimX:finite(input.aimX,aimTarget?.x??e.x+Math.cos(yaw)*(d.range||250)),
+        aimY:finite(input.aimY,aimTarget?.y??e.y+Math.sin(yaw)*(d.range||250)),
+        aimHeight:finite(input.aimHeight,this.entityAltitude(aimTarget||e)),
+        aimOrigin:this.validDirectShotOrigin(e,input.aimOrigin)?{x:input.aimOrigin.x,y:input.aimOrigin.y,height:input.aimOrigin.height}:null,
       };
       if(trigger&&input.cancelJump!==true)this.directControl.firePending={...this.directControl.input};
       return true;
@@ -667,11 +694,11 @@
         if(e.kind==='aa')val*=U[target.kind]?.air?2:.45;
       }
       const asw=U[target?.kind]?.underwater&&['destroyer','frigate','missile_sub'].includes(e.kind),weaponFx=asw?'torpedo':d.weaponFx;
-      const destination=aim?.fixedImpact?aim:target||aim,destinationHeight=aim?.fixedImpact?aim.height:target?this.entityAltitude(target):aim?.height??0,crossLayer=target?(!!U[e.kind]?.space!==!!U[target.kind]?.space):(!!U[e.kind]?.space!==(destinationHeight>=2000)),travel=Math.max(.08,Math.hypot(e.x-destination.x,e.y-destination.y,crossLayer?0:this.entityAltitude(e)-destinationHeight)/(weaponFx==='torpedo'?220:e.kind==='rocket'?400:700));
-      this.effects.push({type:'shot',x:e.x,y:e.y,tx:destination.x,ty:destination.y,target:target?.id??null,from:e.team,
+      const origin=aim?.origin||{x:e.x,y:e.y,height:this.entityAltitude(e)+(e.structure?20:!d.air&&!d.naval?12:0)},destination=aim?.fixedImpact?aim:target||aim,destinationHeight=aim?.fixedImpact?aim.height:target?this.entityAltitude(target):aim?.height??0,crossLayer=target?(!!U[e.kind]?.space!==!!U[target.kind]?.space):aim?.projected===true,travel=Math.max(.08,Math.hypot(origin.x-destination.x,origin.y-destination.y,crossLayer?0:(aim?.origin?origin.height:this.entityAltitude(e))-destinationHeight)/(weaponFx==='torpedo'?220:e.kind==='rocket'?400:700));
+      this.effects.push({type:'shot',x:origin.x,y:origin.y,tx:destination.x,ty:destination.y,target:target?.id??null,from:e.team,
         damage:val,baseDamage:target||weapon?d.damage:0,targetDomain:target?this.targetDomain(target.kind):weapon?(destinationHeight>=2000?'space':destinationHeight>25?'air':destinationHeight< -15?'underwater':null):null,splash:target||weapon?(d.splash||0):0,
         ttl:travel,max:travel,rocket:weaponFx!=='torpedo'&&(!!d.rocket||['rocket','heli','asat','sam'].includes(e.kind)),space:!!d.spaceWeapon,
-        sourceKind:e.kind,sourceId:e.id,sourceHeight:this.entityAltitude(e)+(e.structure?20:!d.air&&!d.naval?12:0),
+        sourceKind:e.kind,sourceId:e.id,sourceHeight:origin.height,
         targetHeight:aim?.fixedImpact?aim.height:target?this.entityAltitude(target):(aim?.height??5),
         // Environment impacts share projectile arrival, cooldown and ammunition, but do not turn a unit miss into a hit.
         targetTreeId:aim?.targetTreeId??null,treeDamage:d.damage,treeSplash:d.splash||0,
@@ -753,8 +780,8 @@
       e.target=target?.id??null;
       if(target)e.turret=Math.atan2(target.y-e.y,target.x-e.x);
       if(!fireInput.fire||!status.armed||e.cool>0||e.disabled>this.time)return;
-      let ax=fireInput.aimX-e.x,ay=fireInput.aimY-e.y,az=fireInput.aimHeight-this.entityAltitude(e),crossLayer=status.projected,length=Math.hypot(ax,ay,crossLayer?0:az),factor=length>range?range/length:1;
-      this.emitShot(e,target,{x:e.x+ax*factor,y:e.y+ay*factor,height:crossLayer?fireInput.aimHeight:this.entityAltitude(e)+az*factor,targetTreeId:fireInput.targetTreeId,fixedImpact:true});
+      const point=this.directShotPoint(e,fireInput,target,range);
+      this.emitShot(e,target,{...point,targetTreeId:fireInput.targetTreeId,fixedImpact:true});
     }
     train(team, kind) {
       const t = this.teams[team],

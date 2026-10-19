@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-19T01:56:50.186Z",
+  "recordedAt": "2026-10-19T16:04:34.563Z",
   "environment": "Packaged Electron",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
@@ -848,7 +848,7 @@
       },
       "after": {
         "x": 700,
-        "y": 821.6000000000001,
+        "y": 825.2000000000002,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -857,13 +857,13 @@
       "key": "KeyA",
       "before": {
         "x": 700,
-        "y": 821.6000000000001,
+        "y": 825.2000000000002,
         "yaw": 0,
         "pitch": -0.025
       },
       "after": {
         "x": 700,
-        "y": 800,
+        "y": 803.6,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -876,7 +876,7 @@
     "view": "infantry"
   },
   "ai": {
-    "calls": 5,
+    "calls": 4,
     "production": 2,
     "construction": 1,
     "othersOrdered": 1,
@@ -895,16 +895,16 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 23.150000000000194,
+      "hitAt": 23.800000000000203,
       "sourceId": 346,
       "targetId": 347,
       "damage": 74
     },
     "incoming": {
-      "x": 700,
+      "x": 745.7908,
       "y": 800,
       "sourceId": 346,
-      "time": 23.150000000000194
+      "time": 23.800000000000203
     },
     "hudConfirmed": true
   },
@@ -981,7 +981,7 @@
     }
   ],
   "nativeFocus": {
-    "recordedAt": "2026-10-19T01:57:44.192Z",
+    "recordedAt": "2026-10-19T16:05:28.547Z",
     "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
     "nativeBefore": {
       "fullScreen": true,
@@ -989,7 +989,7 @@
       "minimized": false
     },
     "nativeBlurred": {
-      "focused": false,
+      "focused": true,
       "minimized": true
     },
     "blurred": {
@@ -997,7 +997,7 @@
       "events": [
         {
           "trusted": true,
-          "at": 52998.09999990463
+          "at": 53025.60000014305
         }
       ],
       "locked": false,
@@ -1017,9 +1017,10 @@
         "jump": false,
         "targetId": null,
         "targetTreeId": null,
-        "aimX": 1111.9141635668075,
+        "aimX": 825,
         "aimY": 800,
-        "aimHeight": -0.800000011920929
+        "aimHeight": 0,
+        "aimOrigin": null
       },
       "position": [
         700,
@@ -1046,7 +1047,12 @@
         "targetTreeId": null,
         "aimX": 1111.9141635668075,
         "aimY": 800,
-        "aimHeight": -0.800000011920929
+        "aimHeight": -0.800000011920929,
+        "aimOrigin": {
+          "x": 705.964,
+          "y": 800.952,
+          "height": 7.475999999999999
+        }
       },
       "position": [
         700,

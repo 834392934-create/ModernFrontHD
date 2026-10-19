@@ -1,0 +1,3427 @@
+{
+  "recordedAt": "2026-10-19T16:03:58.333Z",
+  "environment": "desktop",
+  "scope": "Controlled clear geometry: original terrain retained, decorative world obstacles removed; no combat/AI/asset-fidelity claim",
+  "checks": [
+    "1600×1000 与 1024×720 实际画布/准星中心误差均小于 1 px",
+    "operator：24 组真实左键发射，地图中心/西北边缘 × 3 朝向 × 4 俯仰，按公开散布阈值验证",
+    "发射端点保持冻结；转头前后世界插值弹头投影均与独立计算一致",
+    "infantry：24 组真实左键发射，地图中心/西北边缘 × 3 朝向 × 4 俯仰，按公开散布阈值验证"
+  ],
+  "errors": [],
+  "cases": [
+    {
+      "position": "middle",
+      "yaw": 0,
+      "pitch": 0.05,
+      "shot": {
+        "fx": {
+          "x": 3077.964,
+          "y": 2112.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 3528.626108524482,
+          "ty": 2114.383741300038,
+          "targetHeight": 30.53304557908291,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            3077.964,
+            7.475999999999999,
+            2112.952
+          ],
+          "point": [
+            19052.004166319457,
+            809.1667083308997,
+            2112.0000000000073
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": 0.05,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3077.964,
+            "y": 2112.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 19052.004166319457,
+          "aimY": 2112.0000000000073,
+          "aimHeight": 809.1667083308997
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 0,
+        "pitch": 0.05,
+        "at": 1.5000000000000007,
+        "projected": false
+      },
+      "actualDistance": 451.25382357794837,
+      "expectedUnclippedDistance": 15994.144807813747,
+      "angleRadians": 0.0033756064968200428,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "middle",
+      "yaw": 0,
+      "pitch": 0.13,
+      "shot": {
+        "fx": {
+          "x": 3077.964,
+          "y": 2112.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 3534.1582777915005,
+          "ty": 2109.691946133534,
+          "targetHeight": 66.43490907300568,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            3077.964,
+            7.475999999999999,
+            2112.952
+          ],
+          "point": [
+            18936.99029943661,
+            2083.6462819151193,
+            2112
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": 0.13,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3077.964,
+            "y": 2112.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 18936.99029943661,
+          "aimY": 2112,
+          "aimHeight": 2083.6462819151193
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 0,
+        "pitch": 0.13,
+        "at": 1.7500000000000009,
+        "projected": false
+      },
+      "actualDistance": 460,
+      "expectedUnclippedDistance": 15994.348974310693,
+      "angleRadians": 0.0072176778333779895,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "middle",
+      "yaw": 0,
+      "pitch": -0.2,
+      "shot": {
+        "fx": {
+          "x": 3077.964,
+          "y": 2112.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 3122.216326628721,
+          "ty": 2111.6400992140716,
+          "targetHeight": -0.8000000119209272,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            3077.964,
+            7.475999999999999,
+            2112.952
+          ],
+          "point": [
+            3122.811495277349,
+            -0.8000000119209272,
+            2112
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": -0.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3077.964,
+            "y": 2112.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 3122.811495277349,
+          "aimY": 2112,
+          "aimHeight": -0.8000000119209272
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 0,
+        "pitch": -0.2,
+        "at": 2.000000000000001,
+        "projected": false
+      },
+      "actualDistance": 45.0386686295728,
+      "expectedUnclippedDistance": 45.61465019978953,
+      "angleRadians": 0.008601565689867226,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "middle",
+      "yaw": 0,
+      "pitch": 1.2,
+      "shot": {
+        "fx": {
+          "x": 3077.964,
+          "y": 2112.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 3247.893465867724,
+          "ty": 2113.17662860571,
+          "targetHeight": 434.9381926812937,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            3077.964,
+            7.475999999999999,
+            2112.952
+          ],
+          "point": [
+            8869.724071628,
+            14922.125375475147,
+            2112
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": 1.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3077.964,
+            "y": 2112.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 8869.724071628,
+          "aimY": 2112,
+          "aimHeight": 14922.125375475147
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 0,
+        "pitch": 1.2,
+        "at": 2.2,
+        "projected": false
+      },
+      "actualDistance": 460,
+      "expectedUnclippedDistance": 15999.726611007123,
+      "angleRadians": 0.007991837848793364,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "middle",
+      "yaw": 3.141592653589793,
+      "pitch": 0.05,
+      "shot": {
+        "fx": {
+          "x": 3066.036,
+          "y": 2111.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": 2606.693760430793,
+          "ty": 2102.4521617961123,
+          "targetHeight": 30.515498977149768,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            3066.036,
+            7.475999999999999,
+            2111.048
+          ],
+          "point": [
+            -12908.004166319457,
+            809.1667083308997,
+            2112.0000000000073
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": 0.05,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3066.036,
+            "y": 2111.048,
+            "height": 7.475999999999999
+          },
+          "aimX": -12908.004166319457,
+          "aimY": 2112.0000000000073,
+          "aimHeight": 809.1667083308997
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.141592653589793,
+        "pitch": 0.05,
+        "at": 2.4499999999999993,
+        "projected": false
+      },
+      "actualDistance": 460.0000000000001,
+      "expectedUnclippedDistance": 15994.144807813747,
+      "angleRadians": 0.01874723737574529,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "middle",
+      "yaw": 3.141592653589793,
+      "pitch": 0.13,
+      "shot": {
+        "fx": {
+          "x": 3066.036,
+          "y": 2111.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": 2614.3920870326515,
+          "ty": 2115.812855433426,
+          "targetHeight": 67.18698487440086,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            3066.036,
+            7.475999999999999,
+            2111.048
+          ],
+          "point": [
+            -12792.99029943661,
+            2083.6462819151193,
+            2112
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": 0.13,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3066.036,
+            "y": 2111.048,
+            "height": 7.475999999999999
+          },
+          "aimX": -12792.99029943661,
+          "aimY": 2112,
+          "aimHeight": 2083.6462819151193
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.141592653589793,
+        "pitch": 0.13,
+        "at": 2.6999999999999984,
+        "projected": false
+      },
+      "actualDistance": 455.5988692725547,
+      "expectedUnclippedDistance": 15994.348974310693,
+      "angleRadians": 0.010476614108754142,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "middle",
+      "yaw": 3.141592653589793,
+      "pitch": -0.2,
+      "shot": {
+        "fx": {
+          "x": 3066.036,
+          "y": 2111.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": 3021.878757183104,
+          "ty": 2112.1243392436036,
+          "targetHeight": -0.8000000119209272,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            3066.036,
+            7.475999999999999,
+            2111.048
+          ],
+          "point": [
+            3021.188504722651,
+            -0.8000000119209272,
+            2112
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": -0.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3066.036,
+            "y": 2111.048,
+            "height": 7.475999999999999
+          },
+          "aimX": 3021.188504722651,
+          "aimY": 2112,
+          "aimHeight": -0.8000000119209272
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.141592653589793,
+        "pitch": -0.2,
+        "at": 2.9499999999999975,
+        "projected": false
+      },
+      "actualDistance": 44.93898948079449,
+      "expectedUnclippedDistance": 45.61465019978953,
+      "angleRadians": 0.004155131199425542,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "middle",
+      "yaw": 3.141592653589793,
+      "pitch": 1.2,
+      "shot": {
+        "fx": {
+          "x": 3066.036,
+          "y": 2111.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": 2897.456070568328,
+          "ty": 2102.886378908623,
+          "targetHeight": 435.394444722792,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            3066.036,
+            7.475999999999999,
+            2111.048
+          ],
+          "point": [
+            -2725.7240716280003,
+            14922.125375475147,
+            2112
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": 1.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3066.036,
+            "y": 2111.048,
+            "height": 7.475999999999999
+          },
+          "aimX": -2725.7240716280003,
+          "aimY": 2112,
+          "aimHeight": 14922.125375475147
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.141592653589793,
+        "pitch": 1.2,
+        "at": 3.1999999999999966,
+        "projected": false
+      },
+      "actualDistance": 460,
+      "expectedUnclippedDistance": 15999.726611007123,
+      "angleRadians": 0.01845970540185848,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "middle",
+      "yaw": 3.9269908169872414,
+      "pitch": 0.05,
+      "shot": {
+        "fx": {
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "sourceHeight": 7.475999999999999,
+          "tx": 2751.3702443172156,
+          "ty": 1782.3892975492856,
+          "targetHeight": 30.533045579087442,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            3068.455980812693,
+            7.475999999999999,
+            2107.109649501314
+          ],
+          "point": [
+            -8227.569309393766,
+            809.1667083310573,
+            -9187.569309393764
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": 0.05,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3068.455980812693,
+            "y": 2107.109649501314,
+            "height": 7.475999999999999
+          },
+          "aimX": -8227.569309393766,
+          "aimY": -9187.569309393764,
+          "aimHeight": 809.1667083310573
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.9269908169872414,
+        "pitch": 0.05,
+        "at": 3.4499999999999957,
+        "projected": false
+      },
+      "actualDistance": 454.44284416366867,
+      "expectedUnclippedDistance": 15994.14480781375,
+      "angleRadians": 0.011955104645537019,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "middle",
+      "yaw": 3.9269908169872414,
+      "pitch": 0.13,
+      "shot": {
+        "fx": {
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "sourceHeight": 7.475999999999999,
+          "tx": 2743.2550559263727,
+          "ty": 1787.9878965528246,
+          "targetHeight": 67.18698487440594,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            3068.455980812693,
+            7.475999999999999,
+            2107.109649501314
+          ],
+          "point": [
+            -8146.242224190406,
+            2083.6462819152953,
+            -9106.242224190404
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": 0.13,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3068.455980812693,
+            "y": 2107.109649501314,
+            "height": 7.475999999999999
+          },
+          "aimX": -8146.242224190406,
+          "aimY": -9106.242224190404,
+          "aimHeight": 2083.6462819152953
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.9269908169872414,
+        "pitch": 0.13,
+        "at": 3.699999999999995,
+        "projected": false
+      },
+      "actualDistance": 459.52120350045453,
+      "expectedUnclippedDistance": 15994.348974310691,
+      "angleRadians": 0.009296273072843584,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "middle",
+      "yaw": 3.9269908169872414,
+      "pitch": -0.2,
+      "shot": {
+        "fx": {
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "sourceHeight": 7.475999999999999,
+          "tx": 3036.26582503767,
+          "ty": 2076.2476901928944,
+          "targetHeight": -0.800000011920929,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            3068.455980812693,
+            7.475999999999999,
+            2107.109649501314
+          ],
+          "point": [
+            3036.070847127151,
+            -0.800000011920929,
+            2076.070847127151
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": -0.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3068.455980812693,
+            "y": 2107.109649501314,
+            "height": 7.475999999999999
+          },
+          "aimX": 3036.070847127151,
+          "aimY": 2076.070847127151,
+          "aimHeight": -0.800000011920929
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.9269908169872414,
+        "pitch": -0.2,
+        "at": 3.949999999999994,
+        "projected": false
+      },
+      "actualDistance": 45.35591292623378,
+      "expectedUnclippedDistance": 45.6146501997996,
+      "angleRadians": 0.0010646113355250108,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "middle",
+      "yaw": 3.9269908169872414,
+      "pitch": 1.2,
+      "shot": {
+        "fx": {
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "sourceHeight": 7.475999999999999,
+          "tx": 2949.647810230635,
+          "ty": 1992.4537918093115,
+          "targetHeight": 436.27949642968775,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            3068.455980812693,
+            7.475999999999999,
+            2107.109649501314
+          ],
+          "point": [
+            -1027.6100064950288,
+            14922.125375476033,
+            -1987.610006495027
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": 1.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3068.455980812693,
+            "y": 2107.109649501314,
+            "height": 7.475999999999999
+          },
+          "aimX": -1027.6100064950288,
+          "aimY": -1987.610006495027,
+          "aimHeight": 14922.125375476033
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.9269908169872414,
+        "pitch": 1.2,
+        "at": 4.199999999999993,
+        "projected": false
+      },
+      "actualDistance": 459.49296583350355,
+      "expectedUnclippedDistance": 15999.726611007127,
+      "angleRadians": 0.006965221121109732,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "northwest",
+      "yaw": 0,
+      "pitch": 0.05,
+      "shot": {
+        "fx": {
+          "x": 125.964,
+          "y": 120.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 577.7665049340233,
+          "ty": 123.15415026952877,
+          "targetHeight": 30.533045579081282,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            125.964,
+            7.475999999999999,
+            120.952
+          ],
+          "point": [
+            16100.004166319462,
+            809.1667083308432,
+            120.0000000000071
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": 0.05,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 125.964,
+            "y": 120.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 16100.004166319462,
+          "aimY": 120.0000000000071,
+          "aimHeight": 809.1667083308432
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 0,
+        "pitch": 0.05,
+        "at": 4.449999999999992,
+        "projected": false
+      },
+      "actualDistance": 452.3958225727814,
+      "expectedUnclippedDistance": 15994.14480781375,
+      "angleRadians": 0.0049990877315165706,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "northwest",
+      "yaw": 0,
+      "pitch": 0.13,
+      "shot": {
+        "fx": {
+          "x": 125.964,
+          "y": 120.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 582.1302324751028,
+          "ty": 120.29534537631082,
+          "targetHeight": 66.73759932178322,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            125.964,
+            7.475999999999999,
+            120.952
+          ],
+          "point": [
+            15984.99029943661,
+            2083.6462819151193,
+            120
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": 0.13,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 125.964,
+            "y": 120.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 15984.99029943661,
+          "aimY": 120,
+          "aimHeight": 2083.6462819151193
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 0,
+        "pitch": 0.13,
+        "at": 4.6499999999999915,
+        "projected": false
+      },
+      "actualDistance": 460,
+      "expectedUnclippedDistance": 15994.348974310693,
+      "angleRadians": 0.0016857487287501715,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "northwest",
+      "yaw": 0,
+      "pitch": -0.2,
+      "shot": {
+        "fx": {
+          "x": 125.964,
+          "y": 120.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 574.8950824688399,
+          "ty": 115.19335913580949,
+          "targetHeight": -83.53178040001067,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            125.964,
+            7.475999999999999,
+            120.952
+          ],
+          "point": [
+            1054.8328489237167,
+            -180,
+            120.00000000000021
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": -0.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 125.964,
+            "y": 120.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 1054.8328489237167,
+          "aimY": 120.00000000000021,
+          "aimHeight": -180
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 0,
+        "pitch": -0.2,
+        "at": 4.899999999999991,
+        "projected": false
+      },
+      "actualDistance": 458.09900113903717,
+      "expectedUnclippedDistance": 947.5998603740244,
+      "angleRadians": 0.01159787082081996,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "northwest",
+      "yaw": 0,
+      "pitch": 1.2,
+      "shot": {
+        "fx": {
+          "x": 125.964,
+          "y": 120.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 286.108787904555,
+          "ty": 118.94814982863339,
+          "targetHeight": 436.2794964296756,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            125.964,
+            7.475999999999999,
+            120.952
+          ],
+          "point": [
+            5917.724071626813,
+            14922.125375475609,
+            120
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": 1.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 125.964,
+            "y": 120.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 5917.724071626813,
+          "aimY": 120,
+          "aimHeight": 14922.125375475609
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 0,
+        "pitch": 1.2,
+        "at": 5.14999999999999,
+        "projected": false
+      },
+      "actualDistance": 457.7366131945521,
+      "expectedUnclippedDistance": 15999.726611007127,
+      "angleRadians": 0.01367502601495647,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.141592653589793,
+      "pitch": 0.05,
+      "shot": {
+        "fx": {
+          "x": 114.036,
+          "y": 119.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": -341.79178715420073,
+          "ty": 123.53803070915781,
+          "targetHeight": 30.533045579081282,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            114.036,
+            7.475999999999999,
+            119.048
+          ],
+          "point": [
+            -15860.004166319462,
+            809.1667083308432,
+            120.0000000000071
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": 0.05,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 114.036,
+            "y": 119.048,
+            "height": 7.475999999999999
+          },
+          "aimX": -15860.004166319462,
+          "aimY": 120.0000000000071,
+          "aimHeight": 809.1667083308432
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.141592653589793,
+        "pitch": 0.05,
+        "at": 5.399999999999989,
+        "projected": false
+      },
+      "actualDistance": 456.4326448321815,
+      "expectedUnclippedDistance": 15994.14480781375,
+      "angleRadians": 0.009785824945233914,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.141592653589793,
+      "pitch": 0.13,
+      "shot": {
+        "fx": {
+          "x": 114.036,
+          "y": 119.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": -336.10399861719554,
+          "ty": 120.28404585221539,
+          "targetHeight": 67.18698487440086,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            114.036,
+            7.475999999999999,
+            119.048
+          ],
+          "point": [
+            -15744.99029943661,
+            2083.6462819151193,
+            120
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": 0.13,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 114.036,
+            "y": 119.048,
+            "height": 7.475999999999999
+          },
+          "aimX": -15744.99029943661,
+          "aimY": 120,
+          "aimHeight": 2083.6462819151193
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.141592653589793,
+        "pitch": 0.13,
+        "at": 5.649999999999988,
+        "projected": false
+      },
+      "actualDistance": 454.08473645246926,
+      "expectedUnclippedDistance": 15994.348974310693,
+      "angleRadians": 0.0031622470086979967,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.141592653589793,
+      "pitch": -0.2,
+      "shot": {
+        "fx": {
+          "x": 114.036,
+          "y": 119.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": -328.3026523324773,
+          "ty": 118.7164774211229,
+          "targetHeight": -83.8893756368299,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            114.036,
+            7.475999999999999,
+            119.048
+          ],
+          "point": [
+            -15561.065245459868,
+            -3169.2092927209796,
+            120.00000000000355
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": -0.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 114.036,
+            "y": 119.048,
+            "height": 7.475999999999999
+          },
+          "aimX": -15561.065245459868,
+          "aimY": 120.00000000000355,
+          "aimHeight": -3169.2092927209796
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.141592653589793,
+        "pitch": -0.2,
+        "at": 5.899999999999987,
+        "projected": false
+      },
+      "actualDistance": 451.6760178709863,
+      "expectedUnclippedDistance": 15993.752824484667,
+      "angleRadians": 0.0038196158273705724,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.141592653589793,
+      "pitch": 1.2,
+      "shot": {
+        "fx": {
+          "x": 114.036,
+          "y": 119.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": -53.01257648431735,
+          "ty": 118.71119094845139,
+          "targetHeight": 436.07214983598016,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            114.036,
+            7.475999999999999,
+            119.048
+          ],
+          "point": [
+            -5677.724071626813,
+            14922.125375475609,
+            120
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": 1.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 114.036,
+            "y": 119.048,
+            "height": 7.475999999999999
+          },
+          "aimX": -5677.724071626813,
+          "aimY": 120,
+          "aimHeight": 14922.125375475609
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.141592653589793,
+        "pitch": 1.2,
+        "at": 6.099999999999986,
+        "projected": false
+      },
+      "actualDistance": 460,
+      "expectedUnclippedDistance": 15999.726611007127,
+      "angleRadians": 0.0014733185894973955,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.9269908169872414,
+      "pitch": 0.05,
+      "shot": {
+        "fx": {
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "sourceHeight": 7.475999999999999,
+          "tx": -202.21968024228738,
+          "ty": -213.67433699671864,
+          "targetHeight": 30.533045579081435,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            116.45598081269303,
+            7.475999999999999,
+            115.10964950131384
+          ],
+          "point": [
+            -11179.569309393773,
+            809.1667083308486,
+            -11179.569309393775
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": 0.05,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 116.45598081269303,
+            "y": 115.10964950131384,
+            "height": 7.475999999999999
+          },
+          "aimX": -11179.569309393773,
+          "aimY": -11179.569309393775,
+          "aimHeight": 809.1667083308486
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.9269908169872414,
+        "pitch": 0.05,
+        "at": 6.349999999999985,
+        "projected": false
+      },
+      "actualDistance": 458.45906477809234,
+      "expectedUnclippedDistance": 15994.144807813751,
+      "angleRadians": 0.015651759164816644,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.9269908169872414,
+      "pitch": 0.13,
+      "shot": {
+        "fx": {
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "sourceHeight": 7.475999999999999,
+          "tx": -206.42199421783522,
+          "ty": -207.11020410331716,
+          "targetHeight": 66.84079750825153,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            116.45598081269303,
+            7.475999999999999,
+            115.10964950131384
+          ],
+          "point": [
+            -11098.242224190419,
+            2083.64628191513,
+            -11098.242224190422
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": 0.13,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 116.45598081269303,
+            "y": 115.10964950131384,
+            "height": 7.475999999999999
+          },
+          "aimX": -11098.242224190419,
+          "aimY": -11098.242224190422,
+          "aimHeight": 2083.64628191513
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.9269908169872414,
+        "pitch": 0.13,
+        "at": 6.5999999999999845,
+        "projected": false
+      },
+      "actualDistance": 460,
+      "expectedUnclippedDistance": 15994.348974310691,
+      "angleRadians": 0.0012175755295367938,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.9269908169872414,
+      "pitch": -0.2,
+      "shot": {
+        "fx": {
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "sourceHeight": 7.475999999999999,
+          "tx": -207.725687731888,
+          "ty": -198.4400431641752,
+          "targetHeight": -83.0382862150986,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            116.45598081269303,
+            7.475999999999999,
+            115.10964950131384
+          ],
+          "point": [
+            -10968.187571293369,
+            -3169.2092927209515,
+            -10968.187571293369
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": -0.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 116.45598081269303,
+            "y": 115.10964950131384,
+            "height": 7.475999999999999
+          },
+          "aimX": -10968.187571293369,
+          "aimY": -10968.187571293369,
+          "aimHeight": -3169.2092927209515
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.9269908169872414,
+        "pitch": -0.2,
+        "at": 6.849999999999984,
+        "projected": false
+      },
+      "actualDistance": 460,
+      "expectedUnclippedDistance": 15993.752824484667,
+      "angleRadians": 0.016390499217661867,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.9269908169872414,
+      "pitch": 1.2,
+      "shot": {
+        "fx": {
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "sourceHeight": 7.475999999999999,
+          "tx": -0.1393417286871852,
+          "ty": -6.972460145894985,
+          "targetHeight": 435.3795980984016,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 36
+        },
+        "aim": {
+          "origin": [
+            116.45598081269303,
+            7.475999999999999,
+            115.10964950131384
+          ],
+          "point": [
+            -3979.6100064958155,
+            14922.125375475604,
+            -3979.610006495812
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": 1.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 116.45598081269303,
+            "y": 115.10964950131384,
+            "height": 7.475999999999999
+          },
+          "aimX": -3979.6100064958155,
+          "aimY": -3979.610006495812,
+          "aimHeight": 14922.125375475604
+        },
+        "range": 460,
+        "spread": 0.02,
+        "weaponId": "rifle_01",
+        "kind": "operator",
+        "yaw": 3.9269908169872414,
+        "pitch": 1.2,
+        "at": 7.049999999999983,
+        "projected": false
+      },
+      "actualDistance": 460,
+      "expectedUnclippedDistance": 15999.726611007127,
+      "angleRadians": 0.009999583084658594,
+      "maxAngleRadians": 0.020002333573390492
+    },
+    {
+      "position": "middle",
+      "yaw": 0,
+      "pitch": 0.05,
+      "shot": {
+        "fx": {
+          "x": 3077.964,
+          "y": 2112.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 3202.8068749885047,
+          "ty": 2112.944559777254,
+          "targetHeight": 13.741501516055138,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            3077.964,
+            7.475999999999999,
+            2112.952
+          ],
+          "point": [
+            19052.004166319457,
+            809.1667083308997,
+            2112.0000000000073
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": 0.05,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3077.964,
+            "y": 2112.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 19052.004166319457,
+          "aimY": 2112.0000000000073,
+          "aimHeight": 809.1667083308997
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 0,
+        "pitch": 0.05,
+        "at": 7.499999999999981,
+        "projected": false
+      },
+      "actualDistance": 125.00000000000009,
+      "expectedUnclippedDistance": 15994.144807813747,
+      "angleRadians": 1.6131313585178021e-15,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "middle",
+      "yaw": 0,
+      "pitch": 0.13,
+      "shot": {
+        "fx": {
+          "x": 3077.964,
+          "y": 2112.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 3201.9064180761325,
+          "ty": 2112.944559872228,
+          "targetHeight": 23.701811107174148,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            3077.964,
+            7.475999999999999,
+            2112.952
+          ],
+          "point": [
+            18936.99029943661,
+            2083.6462819151193,
+            2112
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": 0.13,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3077.964,
+            "y": 2112.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 18936.99029943661,
+          "aimY": 2112,
+          "aimHeight": 2083.6462819151193
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 0,
+        "pitch": 0.13,
+        "at": 8.449999999999985,
+        "projected": false
+      },
+      "actualDistance": 125.00000000000009,
+      "expectedUnclippedDistance": 15994.348974310693,
+      "angleRadians": 2.6910243364029965e-16,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "middle",
+      "yaw": 0,
+      "pitch": -0.2,
+      "shot": {
+        "fx": {
+          "x": 3077.964,
+          "y": 2112.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 3122.811495277349,
+          "ty": 2112,
+          "targetHeight": -0.8000000119209272,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            3077.964,
+            7.475999999999999,
+            2112.952
+          ],
+          "point": [
+            3122.811495277349,
+            -0.8000000119209272,
+            2112
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": -0.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3077.964,
+            "y": 2112.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 3122.811495277349,
+          "aimY": 2112,
+          "aimHeight": -0.8000000119209272
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 0,
+        "pitch": -0.2,
+        "at": 9.399999999999999,
+        "projected": false
+      },
+      "actualDistance": 45.61465019978953,
+      "expectedUnclippedDistance": 45.61465019978953,
+      "angleRadians": 0,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "middle",
+      "yaw": 0,
+      "pitch": 1.2,
+      "shot": {
+        "fx": {
+          "x": 3077.964,
+          "y": 2112.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 3123.2128987190217,
+          "ty": 2112.944562372915,
+          "targetHeight": 123.99868924719085,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            3077.964,
+            7.475999999999999,
+            2112.952
+          ],
+          "point": [
+            8869.724071628,
+            14922.125375475147,
+            2112
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": 1.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3077.964,
+            "y": 2112.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 8869.724071628,
+          "aimY": 2112,
+          "aimHeight": 14922.125375475147
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 0,
+        "pitch": 1.2,
+        "at": 10.350000000000012,
+        "projected": false
+      },
+      "actualDistance": 124.99999999999997,
+      "expectedUnclippedDistance": 15999.726611007123,
+      "angleRadians": 8.93293298403895e-16,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "middle",
+      "yaw": 3.141592653589793,
+      "pitch": 0.05,
+      "shot": {
+        "fx": {
+          "x": 3066.036,
+          "y": 2111.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": 2941.1931250114953,
+          "ty": 2111.055440222746,
+          "targetHeight": 13.741501516055138,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            3066.036,
+            7.475999999999999,
+            2111.048
+          ],
+          "point": [
+            -12908.004166319457,
+            809.1667083308997,
+            2112.0000000000073
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": 0.05,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3066.036,
+            "y": 2111.048,
+            "height": 7.475999999999999
+          },
+          "aimX": -12908.004166319457,
+          "aimY": 2112.0000000000073,
+          "aimHeight": 809.1667083308997
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.141592653589793,
+        "pitch": 0.05,
+        "at": 11.300000000000026,
+        "projected": false
+      },
+      "actualDistance": 125.00000000000009,
+      "expectedUnclippedDistance": 15994.144807813747,
+      "angleRadians": 7.038353849128684e-16,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "middle",
+      "yaw": 3.141592653589793,
+      "pitch": 0.13,
+      "shot": {
+        "fx": {
+          "x": 3066.036,
+          "y": 2111.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": 2942.0935819238675,
+          "ty": 2111.055440127772,
+          "targetHeight": 23.701811107174148,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            3066.036,
+            7.475999999999999,
+            2111.048
+          ],
+          "point": [
+            -12792.99029943661,
+            2083.6462819151193,
+            2112
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": 0.13,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3066.036,
+            "y": 2111.048,
+            "height": 7.475999999999999
+          },
+          "aimX": -12792.99029943661,
+          "aimY": 2112,
+          "aimHeight": 2083.6462819151193
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.141592653589793,
+        "pitch": 0.13,
+        "at": 12.250000000000039,
+        "projected": false
+      },
+      "actualDistance": 125.00000000000009,
+      "expectedUnclippedDistance": 15994.348974310693,
+      "angleRadians": 2.6910243364029965e-16,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "middle",
+      "yaw": 3.141592653589793,
+      "pitch": -0.2,
+      "shot": {
+        "fx": {
+          "x": 3066.036,
+          "y": 2111.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": 3021.188504722651,
+          "ty": 2112,
+          "targetHeight": -0.8000000119209272,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            3066.036,
+            7.475999999999999,
+            2111.048
+          ],
+          "point": [
+            3021.188504722651,
+            -0.8000000119209272,
+            2112
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": -0.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3066.036,
+            "y": 2111.048,
+            "height": 7.475999999999999
+          },
+          "aimX": 3021.188504722651,
+          "aimY": 2112,
+          "aimHeight": -0.8000000119209272
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.141592653589793,
+        "pitch": -0.2,
+        "at": 13.200000000000053,
+        "projected": false
+      },
+      "actualDistance": 45.61465019978953,
+      "expectedUnclippedDistance": 45.61465019978953,
+      "angleRadians": 0,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "middle",
+      "yaw": 3.141592653589793,
+      "pitch": 1.2,
+      "shot": {
+        "fx": {
+          "x": 3066.036,
+          "y": 2111.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": 3020.7871012809783,
+          "ty": 2111.055437627085,
+          "targetHeight": 123.99868924719085,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            3066.036,
+            7.475999999999999,
+            2111.048
+          ],
+          "point": [
+            -2725.7240716280003,
+            14922.125375475147,
+            2112
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": 1.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3066.036,
+            "y": 2111.048,
+            "height": 7.475999999999999
+          },
+          "aimX": -2725.7240716280003,
+          "aimY": 2112,
+          "aimHeight": 14922.125375475147
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.141592653589793,
+        "pitch": 1.2,
+        "at": 14.150000000000066,
+        "projected": false
+      },
+      "actualDistance": 124.99999999999997,
+      "expectedUnclippedDistance": 15999.726611007123,
+      "angleRadians": 9.213027057027237e-16,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "middle",
+      "yaw": 3.9269908169872414,
+      "pitch": 0.05,
+      "shot": {
+        "fx": {
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "sourceHeight": 7.475999999999999,
+          "tx": 2980.17347629354,
+          "ty": 2018.837667046075,
+          "targetHeight": 13.74150151605637,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            3068.455980812693,
+            7.475999999999999,
+            2107.109649501314
+          ],
+          "point": [
+            -8227.569309393766,
+            809.1667083310573,
+            -9187.569309393764
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": 0.05,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3068.455980812693,
+            "y": 2107.109649501314,
+            "height": 7.475999999999999
+          },
+          "aimX": -8227.569309393766,
+          "aimY": -9187.569309393764,
+          "aimHeight": 809.1667083310573
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.9269908169872414,
+        "pitch": 0.05,
+        "at": 15.10000000000008,
+        "projected": false
+      },
+      "actualDistance": 124.99999999999993,
+      "expectedUnclippedDistance": 15994.14480781375,
+      "angleRadians": 1.224648298921214e-15,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "middle",
+      "yaw": 3.9269908169872414,
+      "pitch": 0.13,
+      "shot": {
+        "fx": {
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "sourceHeight": 7.475999999999999,
+          "tx": 2980.810195549601,
+          "ty": 2019.4743861678232,
+          "targetHeight": 23.701811107175526,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            3068.455980812693,
+            7.475999999999999,
+            2107.109649501314
+          ],
+          "point": [
+            -8146.242224190406,
+            2083.6462819152953,
+            -9106.242224190404
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": 0.13,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3068.455980812693,
+            "y": 2107.109649501314,
+            "height": 7.475999999999999
+          },
+          "aimX": -8146.242224190406,
+          "aimY": -9106.242224190404,
+          "aimHeight": 2083.6462819152953
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.9269908169872414,
+        "pitch": 0.13,
+        "at": 16.050000000000093,
+        "projected": false
+      },
+      "actualDistance": 125.00000000000011,
+      "expectedUnclippedDistance": 15994.348974310691,
+      "angleRadians": 1.2365789050314383e-15,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "middle",
+      "yaw": 3.9269908169872414,
+      "pitch": -0.2,
+      "shot": {
+        "fx": {
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "sourceHeight": 7.475999999999999,
+          "tx": 3036.070847127151,
+          "ty": 2076.070847127151,
+          "targetHeight": -0.800000011920929,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            3068.455980812693,
+            7.475999999999999,
+            2107.109649501314
+          ],
+          "point": [
+            3036.070847127151,
+            -0.800000011920929,
+            2076.070847127151
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": -0.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3068.455980812693,
+            "y": 2107.109649501314,
+            "height": 7.475999999999999
+          },
+          "aimX": 3036.070847127151,
+          "aimY": 2076.070847127151,
+          "aimHeight": -0.800000011920929
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.9269908169872414,
+        "pitch": -0.2,
+        "at": 17.000000000000107,
+        "projected": false
+      },
+      "actualDistance": 45.6146501997996,
+      "expectedUnclippedDistance": 45.6146501997996,
+      "angleRadians": 0,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "middle",
+      "yaw": 3.9269908169872414,
+      "pitch": 1.2,
+      "shot": {
+        "fx": {
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "sourceHeight": 7.475999999999999,
+          "tx": 3036.4549184907137,
+          "ty": 2075.1191055724307,
+          "targetHeight": 123.99868924719776,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            3068.455980812693,
+            7.475999999999999,
+            2107.109649501314
+          ],
+          "point": [
+            -1027.6100064950288,
+            14922.125375476033,
+            -1987.610006495027
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": 1.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 3068.455980812693,
+            "y": 2107.109649501314,
+            "height": 7.475999999999999
+          },
+          "aimX": -1027.6100064950288,
+          "aimY": -1987.610006495027,
+          "aimHeight": 14922.125375476033
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.9269908169872414,
+        "pitch": 1.2,
+        "at": 17.95000000000012,
+        "projected": false
+      },
+      "actualDistance": 125.00000000000006,
+      "expectedUnclippedDistance": 15999.726611007127,
+      "angleRadians": 1.4167448957494322e-15,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "northwest",
+      "yaw": 0,
+      "pitch": 0.05,
+      "shot": {
+        "fx": {
+          "x": 125.964,
+          "y": 120.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 250.80687498850466,
+          "ty": 120.94455977725417,
+          "targetHeight": 13.741501516054695,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            125.964,
+            7.475999999999999,
+            120.952
+          ],
+          "point": [
+            16100.004166319462,
+            809.1667083308432,
+            120.0000000000071
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": 0.05,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 125.964,
+            "y": 120.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 16100.004166319462,
+          "aimY": 120.0000000000071,
+          "aimHeight": 809.1667083308432
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 0,
+        "pitch": 0.05,
+        "at": 18.900000000000134,
+        "projected": false
+      },
+      "actualDistance": 125,
+      "expectedUnclippedDistance": 15994.14480781375,
+      "angleRadians": 2.4710135822014793e-17,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "northwest",
+      "yaw": 0,
+      "pitch": 0.13,
+      "shot": {
+        "fx": {
+          "x": 125.964,
+          "y": 120.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 249.90641807613247,
+          "ty": 120.94455987222793,
+          "targetHeight": 23.701811107174148,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            125.964,
+            7.475999999999999,
+            120.952
+          ],
+          "point": [
+            15984.99029943661,
+            2083.6462819151193,
+            120
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": 0.13,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 125.964,
+            "y": 120.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 15984.99029943661,
+          "aimY": 120,
+          "aimHeight": 2083.6462819151193
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 0,
+        "pitch": 0.13,
+        "at": 19.850000000000147,
+        "projected": false
+      },
+      "actualDistance": 125.00000000000001,
+      "expectedUnclippedDistance": 15994.348974310693,
+      "angleRadians": 2.2728792198934003e-17,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "northwest",
+      "yaw": 0,
+      "pitch": -0.2,
+      "shot": {
+        "fx": {
+          "x": 125.964,
+          "y": 120.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 248.4931507215247,
+          "ty": 120.82641956781947,
+          "targetHeight": -17.254375108698557,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            125.964,
+            7.475999999999999,
+            120.952
+          ],
+          "point": [
+            1054.8328489237167,
+            -180,
+            120.00000000000021
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": -0.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 125.964,
+            "y": 120.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 1054.8328489237167,
+          "aimY": 120.00000000000021,
+          "aimHeight": -180
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 0,
+        "pitch": -0.2,
+        "at": 20.80000000000016,
+        "projected": false
+      },
+      "actualDistance": 125,
+      "expectedUnclippedDistance": 947.5998603740244,
+      "angleRadians": 3.426964875090829e-17,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "northwest",
+      "yaw": 0,
+      "pitch": 1.2,
+      "shot": {
+        "fx": {
+          "x": 125.964,
+          "y": 120.952,
+          "sourceHeight": 7.475999999999999,
+          "tx": 171.21289871901257,
+          "ty": 120.94456237291466,
+          "targetHeight": 123.99868924719445,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            125.964,
+            7.475999999999999,
+            120.952
+          ],
+          "point": [
+            5917.724071626813,
+            14922.125375475609,
+            120
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 0,
+          "pitch": 1.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 125.964,
+            "y": 120.952,
+            "height": 7.475999999999999
+          },
+          "aimX": 5917.724071626813,
+          "aimY": 120,
+          "aimHeight": 14922.125375475609
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 0,
+        "pitch": 1.2,
+        "at": 21.750000000000174,
+        "projected": false
+      },
+      "actualDistance": 125,
+      "expectedUnclippedDistance": 15999.726611007127,
+      "angleRadians": 5.972224223051767e-17,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.141592653589793,
+      "pitch": 0.05,
+      "shot": {
+        "fx": {
+          "x": 114.036,
+          "y": 119.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": -10.80687498850466,
+          "ty": 119.05544022274594,
+          "targetHeight": 13.741501516054695,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            114.036,
+            7.475999999999999,
+            119.048
+          ],
+          "point": [
+            -15860.004166319462,
+            809.1667083308432,
+            120.0000000000071
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": 0.05,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 114.036,
+            "y": 119.048,
+            "height": 7.475999999999999
+          },
+          "aimX": -15860.004166319462,
+          "aimY": 120.0000000000071,
+          "aimHeight": 809.1667083308432
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.141592653589793,
+        "pitch": 0.05,
+        "at": 22.700000000000188,
+        "projected": false
+      },
+      "actualDistance": 125,
+      "expectedUnclippedDistance": 15994.14480781375,
+      "angleRadians": 4.570521454413918e-17,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.141592653589793,
+      "pitch": 0.13,
+      "shot": {
+        "fx": {
+          "x": 114.036,
+          "y": 119.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": -9.906418076132454,
+          "ty": 119.05544012777207,
+          "targetHeight": 23.701811107174148,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            114.036,
+            7.475999999999999,
+            119.048
+          ],
+          "point": [
+            -15744.99029943661,
+            2083.6462819151193,
+            120
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": 0.13,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 114.036,
+            "y": 119.048,
+            "height": 7.475999999999999
+          },
+          "aimX": -15744.99029943661,
+          "aimY": 120,
+          "aimHeight": 2083.6462819151193
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.141592653589793,
+        "pitch": 0.13,
+        "at": 23.6500000000002,
+        "projected": false
+      },
+      "actualDistance": 125,
+      "expectedUnclippedDistance": 15994.348974310693,
+      "angleRadians": 1.7448326621947268e-17,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.141592653589793,
+      "pitch": -0.2,
+      "shot": {
+        "fx": {
+          "x": 114.036,
+          "y": 119.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": -8.473562151221799,
+          "ty": 119.05544040509481,
+          "targetHeight": -17.351547727399428,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            114.036,
+            7.475999999999999,
+            119.048
+          ],
+          "point": [
+            -15561.065245459868,
+            -3169.2092927209796,
+            120.00000000000355
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": -0.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 114.036,
+            "y": 119.048,
+            "height": 7.475999999999999
+          },
+          "aimX": -15561.065245459868,
+          "aimY": 120.00000000000355,
+          "aimHeight": -3169.2092927209796
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.141592653589793,
+        "pitch": -0.2,
+        "at": 24.600000000000215,
+        "projected": false
+      },
+      "actualDistance": 125,
+      "expectedUnclippedDistance": 15993.752824484667,
+      "angleRadians": 2.978959578898802e-17,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.141592653589793,
+      "pitch": 1.2,
+      "shot": {
+        "fx": {
+          "x": 114.036,
+          "y": 119.048,
+          "sourceHeight": 7.475999999999999,
+          "tx": 68.78710128098743,
+          "ty": 119.05543762708534,
+          "targetHeight": 123.99868924719445,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            114.036,
+            7.475999999999999,
+            119.048
+          ],
+          "point": [
+            -5677.724071626813,
+            14922.125375475609,
+            120
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.141592653589793,
+          "pitch": 1.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 114.036,
+            "y": 119.048,
+            "height": 7.475999999999999
+          },
+          "aimX": -5677.724071626813,
+          "aimY": 120,
+          "aimHeight": 14922.125375475609
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.141592653589793,
+        "pitch": 1.2,
+        "at": 25.550000000000228,
+        "projected": false
+      },
+      "actualDistance": 125,
+      "expectedUnclippedDistance": 15999.726611007127,
+      "angleRadians": 5.972224223051767e-17,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.9269908169872414,
+      "pitch": 0.05,
+      "shot": {
+        "fx": {
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "sourceHeight": 7.475999999999999,
+          "tx": 28.17347629353982,
+          "ty": 26.837667046074912,
+          "targetHeight": 13.741501516054736,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            116.45598081269303,
+            7.475999999999999,
+            115.10964950131384
+          ],
+          "point": [
+            -11179.569309393773,
+            809.1667083308486,
+            -11179.569309393775
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": 0.05,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 116.45598081269303,
+            "y": 115.10964950131384,
+            "height": 7.475999999999999
+          },
+          "aimX": -11179.569309393773,
+          "aimY": -11179.569309393775,
+          "aimHeight": 809.1667083308486
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.9269908169872414,
+        "pitch": 0.05,
+        "at": 26.50000000000024,
+        "projected": false
+      },
+      "actualDistance": 125.00000000000001,
+      "expectedUnclippedDistance": 15994.144807813751,
+      "angleRadians": 5.913179834085486e-17,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.9269908169872414,
+      "pitch": 0.13,
+      "shot": {
+        "fx": {
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "sourceHeight": 7.475999999999999,
+          "tx": 28.810195549601147,
+          "ty": 27.474386167822985,
+          "targetHeight": 23.701811107174233,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            116.45598081269303,
+            7.475999999999999,
+            115.10964950131384
+          ],
+          "point": [
+            -11098.242224190419,
+            2083.64628191513,
+            -11098.242224190422
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": 0.13,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 116.45598081269303,
+            "y": 115.10964950131384,
+            "height": 7.475999999999999
+          },
+          "aimX": -11098.242224190419,
+          "aimY": -11098.242224190422,
+          "aimHeight": 2083.64628191513
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.9269908169872414,
+        "pitch": 0.13,
+        "at": 27.450000000000255,
+        "projected": false
+      },
+      "actualDistance": 124.99999999999999,
+      "expectedUnclippedDistance": 15994.348974310691,
+      "angleRadians": 6.002028205132514e-17,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.9269908169872414,
+      "pitch": -0.2,
+      "shot": {
+        "fx": {
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "sourceHeight": 7.475999999999999,
+          "tx": 29.823377494471984,
+          "ty": 28.487568504887392,
+          "targetHeight": -17.351547727399208,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            116.45598081269303,
+            7.475999999999999,
+            115.10964950131384
+          ],
+          "point": [
+            -10968.187571293369,
+            -3169.2092927209515,
+            -10968.187571293369
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": -0.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 116.45598081269303,
+            "y": 115.10964950131384,
+            "height": 7.475999999999999
+          },
+          "aimX": -10968.187571293369,
+          "aimY": -10968.187571293369,
+          "aimHeight": -3169.2092927209515
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.9269908169872414,
+        "pitch": -0.2,
+        "at": 28.40000000000027,
+        "projected": false
+      },
+      "actualDistance": 124.99999999999999,
+      "expectedUnclippedDistance": 15993.752824484667,
+      "angleRadians": 5.823039688282083e-17,
+      "maxAngleRadians": 0.000001
+    },
+    {
+      "position": "northwest",
+      "yaw": 3.9269908169872414,
+      "pitch": 1.2,
+      "shot": {
+        "fx": {
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "sourceHeight": 7.475999999999999,
+          "tx": 84.45491849070785,
+          "ty": 83.11910557242466,
+          "targetHeight": 123.9986892471944,
+          "space": false,
+          "weaponFx": "projectile",
+          "sourceId": 39
+        },
+        "aim": {
+          "origin": [
+            116.45598081269303,
+            7.475999999999999,
+            115.10964950131384
+          ],
+          "point": [
+            -3979.6100064958155,
+            14922.125375475604,
+            -3979.610006495812
+          ],
+          "targetId": null,
+          "observedId": null,
+          "originMode": "model-muzzle"
+        },
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "yaw": 3.9269908169872414,
+          "pitch": 1.2,
+          "turn": 0,
+          "lift": 0,
+          "throttle": 0,
+          "flightEnabled": false,
+          "jump": false,
+          "fire": true,
+          "ads": false,
+          "targetTreeId": null,
+          "aimOrigin": {
+            "x": 116.45598081269303,
+            "y": 115.10964950131384,
+            "height": 7.475999999999999
+          },
+          "aimX": -3979.6100064958155,
+          "aimY": -3979.610006495812,
+          "aimHeight": 14922.125375475604
+        },
+        "range": 125,
+        "spread": 0,
+        "weaponId": null,
+        "kind": "infantry",
+        "yaw": 3.9269908169872414,
+        "pitch": 1.2,
+        "at": 29.350000000000282,
+        "projected": false
+      },
+      "actualDistance": 125,
+      "expectedUnclippedDistance": 15999.726611007127,
+      "angleRadians": 6.000010875217216e-17,
+      "maxAngleRadians": 0.000001
+    }
+  ],
+  "centres": [
+    {
+      "viewport": [
+        1600,
+        1000
+      ],
+      "canvas": [
+        0,
+        0,
+        1600,
+        1000
+      ],
+      "reticle": [
+        800,
+        500
+      ],
+      "error": 0,
+      "renderer": [
+        1600,
+        1000
+      ],
+      "aspect": 1.6,
+      "forwardPixel": [
+        800,
+        500
+      ]
+    },
+    {
+      "viewport": [
+        1024,
+        720
+      ],
+      "canvas": [
+        0,
+        0,
+        1024,
+        720
+      ],
+      "reticle": [
+        512,
+        360
+      ],
+      "error": 0,
+      "renderer": [
+        1024,
+        720
+      ],
+      "aspect": 1.4222222222222223,
+      "forwardPixel": [
+        512,
+        360
+      ]
+    }
+  ],
+  "testProfile": "D:\\现代战线HD\\.tmp\\native-profile-v382",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.8.2\\ModernFrontHD.exe",
+  "packageVersion": "3.8.2",
+  "sourceHashes": {
+    "src/direct-control.js": "d269e9ca5fc9040df6f3f4dfe4de83c101920fb4af5ce9050116ab422402c68a",
+    "src/sim.js": "8cf0daf43c999e9ad445984c080f87ad3d7365b25ce5114be40a00ad5aae81a5",
+    "src/operator-sim.js": "8f87ca0e28046d182f9745ea5492cc765601114e137f39ad3114ee34d6716135",
+    "style.css": "0b1dc35f52df0f631ecceb8d556dc7ba4cfa348e1b0432c6b7c2ab85b54324b9"
+  },
+  "appVersion": "3.8.2",
+  "runtime": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.8.2 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36",
+    "title": "现代战线 HD · 五强遭遇战"
+  },
+  "imported": {
+    "statuses": [
+      "ready",
+      "ready",
+      "ready"
+    ],
+    "errors": [],
+    "models": [
+      {
+        "key": "tank_rus",
+        "source": "https://sketchfab.com/3d-models/t-90m-2e31a3cf16b04f0180b9387df5198c9a",
+        "author": "minehffd",
+        "license": "CC-BY-4.0",
+        "assetPath": "assets/models/t90m.glb",
+        "meshes": 23,
+        "preserved": 23,
+        "textures": 21,
+        "materialsValid": true
+      },
+      {
+        "key": "destroyer_usa",
+        "source": "https://sketchfab.com/3d-models/11-low-poly-us-navy-ddg-51-uss-arleigh-burke-17be09c31c6047e4a5969b68c29eba03",
+        "author": "Yi Tsung Lee / WTigerTw",
+        "license": "CC-BY-4.0",
+        "assetPath": "assets/models/burke.glb",
+        "meshes": 6,
+        "preserved": 6,
+        "textures": 6,
+        "materialsValid": true
+      },
+      {
+        "key": "heli_usa",
+        "source": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+        "author": "Andrew Swihart / ArionDigital",
+        "license": "CC-BY-4.0",
+        "assetPath": "assets/models/ah64.glb",
+        "meshes": 12,
+        "preserved": 12,
+        "textures": 0,
+        "materialsValid": true
+      },
+      {
+        "key": "heli_kor",
+        "source": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+        "author": "Andrew Swihart / ArionDigital",
+        "license": "CC-BY-4.0",
+        "assetPath": "assets/models/ah64.glb",
+        "meshes": 12,
+        "preserved": 12,
+        "textures": 0,
+        "materialsValid": true
+      }
+    ]
+  },
+  "stage": "{\"kind\":\"infantry\",\"position\":\"northwest\",\"yaw\":3.9269908169872414,\"pitch\":1.2}",
+  "frozenProjection": {
+    "before": [
+      3077.964,
+      2112.952,
+      7.475999999999999,
+      3202.8068749885047,
+      2112.944559777254,
+      13.741501516055138
+    ],
+    "after": [
+      3077.964,
+      2112.952,
+      7.475999999999999,
+      3202.8068749885047,
+      2112.944559777254,
+      13.741501516055138
+    ],
+    "original": {
+      "inside": true,
+      "segment": [
+        {
+          "x": 809.9061981320215,
+          "y": 524.136433981704
+        },
+        {
+          "x": 812.0246186708055,
+          "y": 529.2979618250228
+        }
+      ],
+      "expected": {
+        "x": 809.9061981320215,
+        "y": 524.136433981704
+      },
+      "error": 0
+    },
+    "turned": {
+      "inside": true,
+      "segment": [
+        {
+          "x": 752.6856099581718,
+          "y": 524.112163475139
+        },
+        {
+          "x": 754.791690537769,
+          "y": 529.2860158507406
+        }
+      ],
+      "expected": {
+        "x": 752.6856099581718,
+        "y": 524.112163475139
+      },
+      "error": 0
+    },
+    "progress": 0.5,
+    "trailLength": 12
+  },
+  "screenshotShot": [
+    {
+      "t": 0.2799999999999999,
+      "segment": [
+        {
+          "x": 816.6027267441153,
+          "y": 540.4525139347282
+        },
+        {
+          "x": 823.5249261953367,
+          "y": 557.3184404825062
+        }
+      ],
+      "pixels": 18.23119095280198
+    }
+  ],
+  "screenshot": "screenshots/fps-ballistics-desktop.png",
+  "passed": true
+}

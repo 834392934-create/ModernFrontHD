@@ -34,13 +34,16 @@
   if(s.reloadRemaining>0){s.reloadRemaining=Math.max(0,s.reloadRemaining-dt);if(!s.reloadRemaining){const n=Math.min(w.magazine-a.ammo,a.reserve);a.ammo+=n;a.reserve-=n;}return;}
   if(!input.fire||(!w.automatic&&!pressed)||e.cool>0||a.ammo<=0)return;
   const candidate=this.get(input.targetId),status=this.directFireStatus(e,candidate,input),range=status.range,valid=candidate&&status.inRange&&status.domainAllowed&&status.detected&&status.aimValid&&this.isEnemy(e.team,candidate.team);
-  const ax=input.aimX-e.x,ay=input.aimY-e.y,az=input.aimHeight-this.entityAltitude(e),cross=U[candidate?.kind]?.space||input.aimHeight>=2000,len=Math.hypot(ax,ay,cross?0:az),factor=len>range?range/len:1;
+  const point=this.directShotPoint(e,input,valid?candidate:null,range),len=point.distance;
   a.ammo--;e.target=valid?candidate.id:null;
   for(let n=0;n<w.pellets;n++){
    const angle=this.random()*Math.PI*2,spread=Math.sqrt(this.random())*w.spread*(input.ads?.45:1)*Math.min(len,range),ox=Math.cos(angle)*spread,oy=Math.sin(angle)*spread;
    const target=valid&&this.directAimValid(candidate,{aimX:input.aimX+ox,aimY:input.aimY+oy,aimHeight:input.aimHeight})?candidate:null;
    e.cool=0;
-   this.emitShot(e,target,{x:e.x+ax*factor+ox,y:e.y+ay*factor+oy,height:cross?input.aimHeight:this.entityAltitude(e)+az*factor,targetTreeId:input.targetTreeId,fixedImpact:true},{...w,reload:w.fireInterval,rocket:w.category==='launcher'});
+   // A dispersed miss still belongs to the same real cross-layer engagement;
+   // losing the hit must not pull its visual endpoint back down near the shooter.
+   const scattered=this.directShotPoint(e,{aimOrigin:point.origin,aimX:point.x+ox,aimY:point.y+oy,aimHeight:point.height},valid?candidate:null,range);
+   this.emitShot(e,target,{...scattered,targetTreeId:input.targetTreeId,fixedImpact:true},{...w,reload:w.fireInterval,rocket:w.category==='launcher'});
   }
   e.cool=w.fireInterval;
  };

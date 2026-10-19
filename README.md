@@ -1,14 +1,21 @@
-# 现代战线 HD · 3.8.1
+# 现代战线 HD · 3.8.2
 
 可离线运行的三维即时战略遭遇战。项目位于 `D:\现代战线HD`；原参考目录 `D:\红警\2024` 未修改。
 
 ## 启动
 
-双击 **启动独立版.cmd**，或 **启动游戏.cmd**。当前新版位于 `release/ModernFrontHD-3.8.1/ModernFrontHD.exe`，需保留整个同名目录；启动器优先新版，找不到时回退到原 `release/ModernFrontHD`。旧程序运行中可并列构建新版，正在进行的对局继续运行。默认全屏，F11切换全屏，Tab隐藏/恢复作战界面，无需另外安装 Node.js 或浏览器。
+双击 **启动独立版.cmd**，或 **启动游戏.cmd**。当前新版位于 `release/ModernFrontHD-3.8.2/ModernFrontHD.exe`，需保留整个同名目录；启动器优先新版，找不到时回退到原 `release/ModernFrontHD`。旧程序运行中可并列构建新版，正在进行的对局继续运行。默认全屏，F11切换全屏，Tab隐藏/恢复作战界面，无需另外安装 Node.js 或浏览器。
 
 独立窗口使用Electron + Three.js WebGL；不是Unreal/DirectX引擎重写。资源全部本地加载，不要求账号、服务器或联网AI。浏览器兼容入口保留为 `play.ps1` 或 `index.html`。
 
 `release/ModernFrontHD-portable.zip` 是浏览器兼容包，不含独立版运行时；本机优先使用上面的EXE目录。
+
+## 3.8.2 弹道与瞄准修复
+
+- 右键仅瞄准，左键才开火；松左键停止新发射，松右键仅退出临时瞄准。V 仍可锁定观察，滚轮变焦不变。
+- 修正地图边缘和仰角变化时弹道方向被改变：自由射击沿枪口到瞄点的完整三维方向截到射程，不将高空瞄点误当太空目标。
+- 弹迹保存发射时世界起点，在三维空间计算位置，再按当前相机裁剪和投影；转头不会拖动旧弹。区分连续光束与短曳光，改善光核和淡光边缘。
+- 操作与验证入口见 [瞄准说明](docs/UNIFIED_AIM.md)。
 
 ## 3.8.1 本机渲染计算优化
 
@@ -18,11 +25,11 @@
 
 RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU 绘制提交从 6.17 降到 3.98 ms，半数行走时从 5.66 降到 4.11 ms；两版帧率均约 50 FPS。492 项 CPU 测试及本轮原生回归通过。范围和完整证据见 [验证记录](docs/VALIDATION.md)；不将短样本外推到大型长局。
 
-本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.8.1`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
+本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.8.2`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
 
-## 3.8 右键瞄准开火与单兵作战
+## 第一人称瞄准与单兵作战
 
-- **按住右键即可瞄准并开火**，不需要先按 V；松开停止由右键触发的射击。瞄准时滚轮仍可变焦，V 保留为不自动射击的持续观察模式。左键仍能独立开火，左右同时按住时松开一键不打断另一键；半自动武器保留每次按下一发的规则。
+- **按住右键仅瞄准，左键才开火**，不需要先按 V。瞄准时滚轮可变焦，V 保留为持续观察模式。松开左键停止发射新弹；保持左键时松开右键只退出临时瞄准、继续开火。半自动武器每次按下左键发射一发。
 - 步枪兵、反坦克导弹兵、机枪手、轻型迫击炮手、重装突击兵、医护兵、侦察狙击手与行动员都以一个独立士兵显示、选择和移动；每次生产对应一个单位，不再一个图标捆绑多个人物。保留原兵种职责和游戏平衡参数。
 - 士兵模型按公开军人照片细化头盔、护甲、弹袋、背包及持枪装备；中国、美国、俄罗斯、印度、韩国区分服装与装具轮廓，帝国保持原创科幻风格。属于有资料参考的原创程序化模型，不宣称精确复刻现役型号。来源及边界见 [单兵参考说明](docs/reviews/single-soldier-models.md)。
 - Agent 已评估用户《分析》PDF/Markdown，将其中的调度、状态所有权和验证方法与当前代码逐项对照；据此修复开镜时重复计算世界绘制量的统计问题。后续候选与实施门槛见 [资料评估](docs/reviews/user-analysis-evaluation.md)，本修复不等同于实际帧率提升。
@@ -151,7 +158,7 @@ RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU
 
 选中任意存活的己方单位，点击“第一人称驾驶”或按 **E**。相机进入该实体的真实位置；其他部队的建造、生产和战术调度交给己方 AI。按 **E / Esc** 返回总指挥。步兵显示持枪双手，医护显示医疗装具，装甲/舰艇/航空/轨道单位分别显示炮镜、舰桥或座舱仪表。自身外部模型隐藏，其他单位仍在同一个战场作战。
 
-- **WASD** 移动，鼠标观察，左键开火，按住右键瞄准并开火；人员 **空格跳跃**、**P 暂停**，**M** 关闭/开启晃动（默认关闭），**F11** 全屏。失焦和鼠标解锁立即清空移动及开火输入。
+- **WASD** 移动，鼠标观察，左键开火，按住右键仅瞄准、左键开火；人员 **空格跳跃**、**P 暂停**，**M** 关闭/开启晃动（默认关闭），**F11** 全屏。失焦和鼠标解锁立即清空移动及开火输入。
 - 手动射击沿准星与炮口双重射线检查遮挡（未标炮口的旧模型采用保守发射点），按固定弹着点及目标命中区域近似判断，移出区域不再追踪扣血；命中标记只在实际伤害结算后出现；冷却、射程、目标域、护盾、弹道延时和增益沿用 RTS 规则。无武装单位可驾驶，医疗/维修/电子支援继续自动工作。
 - 新增 12 种原创职责单位，该版为 **56 类单位：陆军16、海军13、空军13、太空13，另加采矿车**。这12种在六阵营共享职责造型并使用阵营涂装，共72个新外观槽位，不冒称72种真实装备。
 
@@ -212,8 +219,8 @@ RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU
 | 全屏、隐藏界面 | F11、Tab |
 | 进入 / 退出第一人称 | 选己方单位后 E；驾驶中 E / Esc 返回 |
 | 人员上下车 | F：附近己方空载具登乘 / 离舱后继续人员第一人称 |
-| 全单位光学瞄准 | 按住右键瞄准并开火；滚轮 1.5–16 倍；V 可选观察 |
-| 太空光电瞄准 | 按住右键瞄准并开火；G 对地俯视；滚轮 4–64 倍；V 可选观察 |
+| 全单位光学瞄准 | 按住右键仅瞄准、左键开火；滚轮 1.5–16 倍；V 可选观察 |
+| 太空光电瞄准 | 按住右键仅瞄准、左键开火；G 对地俯视；滚轮 4–64 倍；V 可选观察 |
 | 第一人称地面/潜艇移动、开火、瞄准 | WASD、左键、右键；M 开关晃动 |
 | 飞机油门、转弯、机头 | W/S、A/D、鼠标 |
 | 飞机/潜艇升降 | Shift / Ctrl |
@@ -239,7 +246,7 @@ RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU
 npm test
 # 首次构建独立版需要联网下载官方运行时：
 powershell -File tools/fetch-desktop-runtime.ps1
-powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.8.1
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.8.2
 node server.cjs
 # 第二终端；需要已有Playwright或设置PLAYWRIGHT_MODULE：
 node tests/gallery.cjs
@@ -259,7 +266,7 @@ node tests/performance3d.cjs --desktop
 node tools/capture-model-review.cjs tank_chn tank_usa
 node tools/bake-portraits.cjs
 node tools/export-model-inventory.cjs
-powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.8.1
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.8.2
 ```
 
 游戏运行不需要开发工具。报告见 [验证记录](docs/VALIDATION.md)，真实截图在 `screenshots/`。

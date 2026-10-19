@@ -1,18 +1,17 @@
 {
-  "recordedAt": "2026-10-18T17:16:20.731Z",
+  "recordedAt": "2026-10-19T15:57:44.124Z",
   "environment": "desktop",
+  "inputContract": "RMB aims only; LMB exclusively fires",
   "checks": [
     "全部许可导入模型ready，真实来源/CC BY/署名/材质保留已核验",
-    "operator：无V，单RMB五倍率均真实伤害；松开后新弹停止、在途落点后HP稳定",
-    "operator LMB→RMB：释放一键后另一键仍产生真实射击与伤害",
-    "operator RMB→LMB：释放一键后另一键仍产生真实射击与伤害",
-    "tank：无V，单RMB五倍率均真实伤害；松开后新弹停止、在途落点后HP稳定",
-    "tank LMB→RMB：释放一键后另一键仍产生真实射击与伤害",
-    "tank RMB→LMB：释放一键后另一键仍产生真实射击与伤害",
-    "destroyer：无V，单RMB五倍率均真实伤害；松开后新弹停止、在途落点后HP稳定",
-    "submarine：无V，单RMB五倍率均真实伤害；松开后新弹停止、在途落点后HP稳定",
-    "heli：无V，单RMB五倍率均真实伤害；松开后新弹停止、在途落点后HP稳定",
-    "orbital：无V，单RMB五倍率均真实伤害；松开后新弹停止、在途落点后HP稳定"
+    "operator：无V，单RMB五倍率均不发弹、不扣血、不耗弹；配合LMB真实伤害，松开LMB后停止新弹且保留瞄准",
+    "operator RMB→LMB：释放右键后左键仍产生真实射击与伤害",
+    "tank：无V，单RMB五倍率均不发弹、不扣血、不耗弹；配合LMB真实伤害，松开LMB后停止新弹且保留瞄准",
+    "tank RMB→LMB：释放右键后左键仍产生真实射击与伤害",
+    "destroyer：无V，单RMB五倍率均不发弹、不扣血、不耗弹；配合LMB真实伤害，松开LMB后停止新弹且保留瞄准",
+    "submarine：无V，单RMB五倍率均不发弹、不扣血、不耗弹；配合LMB真实伤害，松开LMB后停止新弹且保留瞄准",
+    "heli：无V，单RMB五倍率均不发弹、不扣血、不耗弹；配合LMB真实伤害，松开LMB后停止新弹且保留瞄准",
+    "orbital：无V，单RMB五倍率均不发弹、不扣血、不耗弹；配合LMB真实伤害，松开LMB后停止新弹且保留瞄准"
   ],
   "errors": [],
   "domains": [
@@ -26,20 +25,33 @@
       "magnifications": [
         {
           "zoom": 1.5,
+          "quiet": {
+            "time": 5.749999999999988,
+            "count": 0,
+            "hp": 10000,
+            "ammo": 30,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
           "before": {
-            "time": 8.14999999999998,
-            "count": 30,
-            "hp": 9406,
-            "fire": true,
+            "time": 6.999999999999983,
+            "count": 0,
+            "hp": 10000,
+            "ammo": 30,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 1.5,
             "locked": true
           },
           "after": {
-            "time": 8.399999999999984,
-            "count": 32,
-            "hp": 9373,
+            "time": 7.249999999999982,
+            "count": 2,
+            "hp": 9967,
+            "ammo": 28,
             "fire": true,
             "active": true,
             "latched": false,
@@ -64,24 +76,72 @@
             "foreground": 0,
             "range": 460,
             "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 460 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 7.4499999999999815,
+              "count": 2,
+              "hp": 9934,
+              "ammo": 28,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            },
+            "landed": {
+              "time": 7.4499999999999815,
+              "count": 2,
+              "hp": 9934,
+              "ammo": 28,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            },
+            "after": {
+              "time": 8.649999999999988,
+              "count": 2,
+              "hp": 9934,
+              "ammo": 28,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 2,
+          "quiet": {
+            "time": 12.500000000000043,
+            "count": 2,
+            "hp": 9934,
+            "ammo": 28,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
           "before": {
-            "time": 14.550000000000072,
-            "count": 58,
-            "hp": 8482,
-            "fire": true,
+            "time": 13.70000000000006,
+            "count": 2,
+            "hp": 9934,
+            "ammo": 28,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 2,
             "locked": true
           },
           "after": {
-            "time": 14.800000000000075,
-            "count": 60,
-            "hp": 8449,
+            "time": 13.950000000000063,
+            "count": 4,
+            "hp": 9901,
+            "ammo": 26,
             "fire": true,
             "active": true,
             "latched": false,
@@ -106,24 +166,72 @@
             "foreground": 0,
             "range": 460,
             "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 460 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 14.100000000000065,
+              "count": 4,
+              "hp": 9868,
+              "ammo": 26,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            },
+            "landed": {
+              "time": 14.100000000000065,
+              "count": 4,
+              "hp": 9868,
+              "ammo": 26,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            },
+            "after": {
+              "time": 15.300000000000082,
+              "count": 4,
+              "hp": 9868,
+              "ammo": 26,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 4,
+          "quiet": {
+            "time": 19.150000000000137,
+            "count": 4,
+            "hp": 9868,
+            "ammo": 26,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
           "before": {
-            "time": 20.900000000000162,
-            "count": 86,
-            "hp": 7558,
-            "fire": true,
+            "time": 20.350000000000154,
+            "count": 4,
+            "hp": 9868,
+            "ammo": 26,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 4,
             "locked": true
           },
           "after": {
-            "time": 21.150000000000166,
-            "count": 88,
-            "hp": 7525,
+            "time": 20.600000000000158,
+            "count": 6,
+            "hp": 9835,
+            "ammo": 24,
             "fire": true,
             "active": true,
             "latched": false,
@@ -148,24 +256,72 @@
             "foreground": 0,
             "range": 460,
             "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 460 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 20.75000000000016,
+              "count": 6,
+              "hp": 9802,
+              "ammo": 24,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            },
+            "landed": {
+              "time": 20.75000000000016,
+              "count": 6,
+              "hp": 9802,
+              "ammo": 24,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            },
+            "after": {
+              "time": 21.950000000000177,
+              "count": 6,
+              "hp": 9802,
+              "ammo": 24,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 8,
+          "quiet": {
+            "time": 25.75000000000023,
+            "count": 6,
+            "hp": 9802,
+            "ammo": 24,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
           "before": {
-            "time": 27.300000000000253,
-            "count": 114,
-            "hp": 6634,
-            "fire": true,
+            "time": 26.950000000000248,
+            "count": 6,
+            "hp": 9802,
+            "ammo": 24,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 8,
             "locked": true
           },
           "after": {
-            "time": 27.550000000000257,
-            "count": 116,
-            "hp": 6601,
+            "time": 27.20000000000025,
+            "count": 8,
+            "hp": 9769,
+            "ammo": 22,
             "fire": true,
             "active": true,
             "latched": false,
@@ -190,15 +346,62 @@
             "foreground": 0,
             "range": 460,
             "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 460 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 27.350000000000254,
+              "count": 8,
+              "hp": 9736,
+              "ammo": 22,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            },
+            "landed": {
+              "time": 27.350000000000254,
+              "count": 8,
+              "hp": 9736,
+              "ammo": 22,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            },
+            "after": {
+              "time": 28.55000000000027,
+              "count": 8,
+              "hp": 9736,
+              "ammo": 22,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 16,
+          "quiet": {
+            "time": 32.4000000000003,
+            "count": 8,
+            "hp": 9736,
+            "ammo": 22,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
           "before": {
             "time": 33.650000000000226,
-            "count": 142,
-            "hp": 5710,
-            "fire": true,
+            "count": 8,
+            "hp": 9736,
+            "ammo": 22,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 16,
@@ -206,8 +409,9 @@
           },
           "after": {
             "time": 33.90000000000021,
-            "count": 144,
-            "hp": 5677,
+            "count": 10,
+            "hp": 9703,
+            "ammo": 20,
             "fire": true,
             "active": true,
             "latched": false,
@@ -232,14 +436,50 @@
             "foreground": 0,
             "range": 460,
             "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 460 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 34.1000000000002,
+              "count": 10,
+              "hp": 9670,
+              "ammo": 20,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            },
+            "landed": {
+              "time": 34.1000000000002,
+              "count": 10,
+              "hp": 9670,
+              "ammo": 20,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            },
+            "after": {
+              "time": 35.35000000000013,
+              "count": 10,
+              "hp": 9670,
+              "ammo": 20,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            }
           }
         }
       ],
       "stop": {
         "settled": {
-          "time": 34.1000000000002,
-          "count": 144,
-          "hp": 5644,
+          "time": 35.55000000000012,
+          "count": 10,
+          "hp": 9670,
+          "ammo": 20,
           "fire": false,
           "active": false,
           "latched": false,
@@ -247,9 +487,10 @@
           "locked": true
         },
         "landed": {
-          "time": 34.1000000000002,
-          "count": 144,
-          "hp": 5644,
+          "time": 35.55000000000012,
+          "count": 10,
+          "hp": 9670,
+          "ammo": 20,
           "fire": false,
           "active": false,
           "latched": false,
@@ -257,9 +498,10 @@
           "locked": true
         },
         "after": {
-          "time": 35.35000000000013,
-          "count": 144,
-          "hp": 5644,
+          "time": 36.80000000000005,
+          "count": 10,
+          "hp": 9670,
+          "ammo": 20,
           "fire": false,
           "active": false,
           "latched": false,
@@ -268,9 +510,10 @@
         }
       },
       "vOnly": {
-        "time": 36.90000000000004,
-        "count": 144,
-        "hp": 5644,
+        "time": 38.34999999999996,
+        "count": 10,
+        "hp": 9670,
+        "ammo": 20,
         "fire": false,
         "active": true,
         "latched": true,
@@ -288,20 +531,33 @@
       "magnifications": [
         {
           "zoom": 1.5,
+          "quiet": {
+            "time": 57.29999999999888,
+            "count": 0,
+            "hp": 10000,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
           "before": {
-            "time": 57.09999999999889,
-            "count": 2,
-            "hp": 9852,
-            "fire": true,
+            "time": 58.54999999999881,
+            "count": 0,
+            "hp": 10000,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 1.5,
             "locked": true
           },
           "after": {
-            "time": 57.34999999999888,
-            "count": 3,
-            "hp": 9778,
+            "time": 58.6999999999988,
+            "count": 1,
+            "hp": 9926,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -326,24 +582,72 @@
             "foreground": 0,
             "range": 220,
             "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 220 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 58.89999999999879,
+              "count": 1,
+              "hp": 9926,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            },
+            "landed": {
+              "time": 58.89999999999879,
+              "count": 1,
+              "hp": 9926,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            },
+            "after": {
+              "time": 61.449999999998646,
+              "count": 1,
+              "hp": 9926,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 2,
+          "quiet": {
+            "time": 65.29999999999843,
+            "count": 1,
+            "hp": 9926,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
           "before": {
-            "time": 61.299999999998654,
-            "count": 4,
-            "hp": 9704,
-            "fire": true,
+            "time": 66.54999999999836,
+            "count": 1,
+            "hp": 9926,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 2,
             "locked": true
           },
           "after": {
-            "time": 61.54999999999864,
-            "count": 5,
-            "hp": 9630,
+            "time": 66.69999999999835,
+            "count": 2,
+            "hp": 9852,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -368,24 +672,72 @@
             "foreground": 0,
             "range": 220,
             "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 220 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 66.89999999999834,
+              "count": 2,
+              "hp": 9852,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            },
+            "landed": {
+              "time": 66.89999999999834,
+              "count": 2,
+              "hp": 9852,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            },
+            "after": {
+              "time": 69.4499999999982,
+              "count": 2,
+              "hp": 9852,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 4,
+          "quiet": {
+            "time": 73.29999999999798,
+            "count": 2,
+            "hp": 9852,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
           "before": {
-            "time": 65.49999999999842,
-            "count": 6,
-            "hp": 9556,
-            "fire": true,
+            "time": 74.54999999999791,
+            "count": 2,
+            "hp": 9852,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 4,
             "locked": true
           },
           "after": {
-            "time": 65.74999999999841,
-            "count": 7,
-            "hp": 9482,
+            "time": 74.6999999999979,
+            "count": 3,
+            "hp": 9778,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -410,24 +762,72 @@
             "foreground": 0,
             "range": 220,
             "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 220 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 74.89999999999789,
+              "count": 3,
+              "hp": 9778,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            },
+            "landed": {
+              "time": 74.89999999999789,
+              "count": 3,
+              "hp": 9778,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            },
+            "after": {
+              "time": 77.44999999999774,
+              "count": 3,
+              "hp": 9778,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 8,
+          "quiet": {
+            "time": 81.29999999999752,
+            "count": 3,
+            "hp": 9778,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
           "before": {
-            "time": 69.64999999999819,
-            "count": 8,
-            "hp": 9408,
-            "fire": true,
+            "time": 82.54999999999745,
+            "count": 3,
+            "hp": 9778,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 8,
             "locked": true
           },
           "after": {
-            "time": 69.94999999999817,
-            "count": 9,
-            "hp": 9334,
+            "time": 82.69999999999744,
+            "count": 4,
+            "hp": 9704,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -452,24 +852,72 @@
             "foreground": 0,
             "range": 220,
             "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 220 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 82.89999999999743,
+              "count": 4,
+              "hp": 9704,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            },
+            "landed": {
+              "time": 82.89999999999743,
+              "count": 4,
+              "hp": 9704,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            },
+            "after": {
+              "time": 85.44999999999729,
+              "count": 4,
+              "hp": 9704,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 16,
+          "quiet": {
+            "time": 85.84999999999727,
+            "count": 4,
+            "hp": 9704,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
           "before": {
-            "time": 70.39999999999814,
-            "count": 9,
-            "hp": 9334,
-            "fire": true,
+            "time": 87.0999999999972,
+            "count": 4,
+            "hp": 9704,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 16,
             "locked": true
           },
           "after": {
-            "time": 72.04999999999805,
-            "count": 10,
-            "hp": 9260,
+            "time": 87.24999999999719,
+            "count": 5,
+            "hp": 9630,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -494,15 +942,51 @@
             "foreground": 0,
             "range": 220,
             "contact": "M1A2 SEPv3 · 实际距离 160 u / 射程 220 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 87.44999999999717,
+              "count": 5,
+              "hp": 9630,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            },
+            "landed": {
+              "time": 87.44999999999717,
+              "count": 5,
+              "hp": 9630,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            },
+            "after": {
+              "time": 89.99999999999703,
+              "count": 5,
+              "hp": 9630,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            }
           }
         }
       ],
       "screenshot": "screenshots/right-button-fire-tank-desktop.png",
       "stop": {
         "settled": {
-          "time": 72.79999999999801,
-          "count": 10,
-          "hp": 9260,
+          "time": 90.79999999999698,
+          "count": 5,
+          "hp": 9630,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -510,9 +994,10 @@
           "locked": true
         },
         "landed": {
-          "time": 72.79999999999801,
-          "count": 10,
-          "hp": 9260,
+          "time": 90.79999999999698,
+          "count": 5,
+          "hp": 9630,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -520,9 +1005,10 @@
           "locked": true
         },
         "after": {
-          "time": 75.34999999999786,
-          "count": 10,
-          "hp": 9260,
+          "time": 93.34999999999684,
+          "count": 5,
+          "hp": 9630,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -531,9 +1017,10 @@
         }
       },
       "vOnly": {
-        "time": 76.89999999999777,
-        "count": 10,
-        "hp": 9260,
+        "time": 94.89999999999675,
+        "count": 5,
+        "hp": 9630,
+        "ammo": null,
         "fire": false,
         "active": true,
         "latched": true,
@@ -551,20 +1038,33 @@
       "magnifications": [
         {
           "zoom": 1.5,
+          "quiet": {
+            "time": 109.9999999999959,
+            "count": 0,
+            "hp": 10000,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
           "before": {
-            "time": 91.29999999999696,
-            "count": 2,
-            "hp": 9780,
-            "fire": true,
+            "time": 111.24999999999582,
+            "count": 0,
+            "hp": 10000,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 1.5,
             "locked": true
           },
           "after": {
-            "time": 93.19999999999685,
-            "count": 3,
-            "hp": 9670,
+            "time": 111.49999999999581,
+            "count": 1,
+            "hp": 9890,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -589,24 +1089,72 @@
             "foreground": 0,
             "range": 590,
             "contact": "阿利·伯克级 · 实际距离 160 u / 射程 590 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 111.6999999999958,
+              "count": 1,
+              "hp": 9890,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            },
+            "landed": {
+              "time": 111.6999999999958,
+              "count": 1,
+              "hp": 9890,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            },
+            "after": {
+              "time": 115.0999999999956,
+              "count": 1,
+              "hp": 9890,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 2,
+          "quiet": {
+            "time": 118.94999999999538,
+            "count": 1,
+            "hp": 9890,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
           "before": {
-            "time": 97.14999999999662,
-            "count": 4,
-            "hp": 9560,
-            "fire": true,
+            "time": 120.19999999999531,
+            "count": 1,
+            "hp": 9890,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 2,
             "locked": true
           },
           "after": {
-            "time": 98.89999999999652,
-            "count": 5,
-            "hp": 9450,
+            "time": 120.4499999999953,
+            "count": 2,
+            "hp": 9780,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -631,24 +1179,72 @@
             "foreground": 0,
             "range": 590,
             "contact": "阿利·伯克级 · 实际距离 160 u / 射程 590 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 120.64999999999529,
+              "count": 2,
+              "hp": 9780,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            },
+            "landed": {
+              "time": 120.64999999999529,
+              "count": 2,
+              "hp": 9780,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            },
+            "after": {
+              "time": 124.0499999999951,
+              "count": 2,
+              "hp": 9780,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 4,
+          "quiet": {
+            "time": 127.89999999999488,
+            "count": 2,
+            "hp": 9780,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
           "before": {
-            "time": 102.8999999999963,
-            "count": 6,
-            "hp": 9340,
-            "fire": true,
+            "time": 129.0999999999951,
+            "count": 2,
+            "hp": 9780,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 4,
             "locked": true
           },
           "after": {
-            "time": 104.5999999999962,
-            "count": 7,
-            "hp": 9230,
+            "time": 129.34999999999516,
+            "count": 3,
+            "hp": 9670,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -673,24 +1269,72 @@
             "foreground": 0,
             "range": 590,
             "contact": "阿利·伯克级 · 实际距离 160 u / 射程 590 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 129.4999999999952,
+              "count": 3,
+              "hp": 9670,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            },
+            "landed": {
+              "time": 129.4999999999952,
+              "count": 3,
+              "hp": 9670,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            },
+            "after": {
+              "time": 132.89999999999597,
+              "count": 3,
+              "hp": 9670,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 8,
+          "quiet": {
+            "time": 136.79999999999686,
+            "count": 3,
+            "hp": 9670,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
           "before": {
-            "time": 108.54999999999598,
-            "count": 8,
-            "hp": 9120,
-            "fire": true,
+            "time": 137.99999999999713,
+            "count": 3,
+            "hp": 9670,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 8,
             "locked": true
           },
           "after": {
-            "time": 110.29999999999588,
-            "count": 9,
-            "hp": 9010,
+            "time": 138.2499999999972,
+            "count": 4,
+            "hp": 9560,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -715,24 +1359,72 @@
             "foreground": 0,
             "range": 590,
             "contact": "阿利·伯克级 · 实际距离 160 u / 射程 590 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 138.39999999999722,
+              "count": 4,
+              "hp": 9560,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            },
+            "landed": {
+              "time": 138.39999999999722,
+              "count": 4,
+              "hp": 9560,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            },
+            "after": {
+              "time": 141.799999999998,
+              "count": 4,
+              "hp": 9560,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 16,
+          "quiet": {
+            "time": 145.64999999999887,
+            "count": 4,
+            "hp": 9560,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
           "before": {
-            "time": 114.24999999999565,
-            "count": 10,
-            "hp": 8900,
-            "fire": true,
+            "time": 146.84999999999914,
+            "count": 4,
+            "hp": 9560,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 16,
             "locked": true
           },
           "after": {
-            "time": 115.99999999999555,
-            "count": 11,
-            "hp": 8790,
+            "time": 147.0999999999992,
+            "count": 5,
+            "hp": 9450,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -757,14 +1449,50 @@
             "foreground": 0,
             "range": 590,
             "contact": "阿利·伯克级 · 实际距离 160 u / 射程 590 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 147.24999999999923,
+              "count": 5,
+              "hp": 9450,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            },
+            "landed": {
+              "time": 147.24999999999923,
+              "count": 5,
+              "hp": 9450,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            },
+            "after": {
+              "time": 150.65,
+              "count": 5,
+              "hp": 9450,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            }
           }
         }
       ],
       "stop": {
         "settled": {
-          "time": 116.19999999999554,
-          "count": 11,
-          "hp": 8790,
+          "time": 150.80000000000004,
+          "count": 5,
+          "hp": 9450,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -772,9 +1500,10 @@
           "locked": true
         },
         "landed": {
-          "time": 116.19999999999554,
-          "count": 11,
-          "hp": 8790,
+          "time": 150.80000000000004,
+          "count": 5,
+          "hp": 9450,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -782,9 +1511,10 @@
           "locked": true
         },
         "after": {
-          "time": 119.59999999999535,
-          "count": 11,
-          "hp": 8790,
+          "time": 154.2000000000008,
+          "count": 5,
+          "hp": 9450,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -793,9 +1523,10 @@
         }
       },
       "vOnly": {
-        "time": 121.14999999999526,
-        "count": 11,
-        "hp": 8790,
+        "time": 155.70000000000115,
+        "count": 5,
+        "hp": 9450,
+        "ammo": null,
         "fire": false,
         "active": true,
         "latched": true,
@@ -813,20 +1544,33 @@
       "magnifications": [
         {
           "zoom": 1.5,
+          "quiet": {
+            "time": 159.9000000000021,
+            "count": 0,
+            "hp": 10000,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
           "before": {
-            "time": 125.34999999999502,
-            "count": 2,
-            "hp": 9720,
-            "fire": true,
+            "time": 161.10000000000238,
+            "count": 0,
+            "hp": 10000,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 1.5,
             "locked": true
           },
           "after": {
-            "time": 128.1499999999949,
-            "count": 3,
-            "hp": 9580,
+            "time": 161.75000000000253,
+            "count": 1,
+            "hp": 9860,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -851,24 +1595,72 @@
             "foreground": 0,
             "range": 440,
             "contact": "弗吉尼亚级 · 实际距离 160 u / 射程 440 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 161.90000000000256,
+              "count": 1,
+              "hp": 9860,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            },
+            "landed": {
+              "time": 161.90000000000256,
+              "count": 1,
+              "hp": 9860,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            },
+            "after": {
+              "time": 165.50000000000338,
+              "count": 1,
+              "hp": 9860,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 2,
+          "quiet": {
+            "time": 170.20000000000445,
+            "count": 1,
+            "hp": 9860,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
           "before": {
-            "time": 131.94999999999575,
-            "count": 4,
-            "hp": 9440,
-            "fire": true,
+            "time": 171.40000000000472,
+            "count": 1,
+            "hp": 9860,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 2,
             "locked": true
           },
           "after": {
-            "time": 134.24999999999628,
-            "count": 5,
-            "hp": 9300,
+            "time": 172.05000000000487,
+            "count": 2,
+            "hp": 9720,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -893,24 +1685,72 @@
             "foreground": 0,
             "range": 440,
             "contact": "弗吉尼亚级 · 实际距离 160 u / 射程 440 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 172.2000000000049,
+              "count": 2,
+              "hp": 9720,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            },
+            "landed": {
+              "time": 172.2000000000049,
+              "count": 2,
+              "hp": 9720,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            },
+            "after": {
+              "time": 175.80000000000572,
+              "count": 2,
+              "hp": 9720,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 4,
+          "quiet": {
+            "time": 179.50000000000657,
+            "count": 2,
+            "hp": 9720,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
           "before": {
-            "time": 138.04999999999714,
-            "count": 6,
-            "hp": 9160,
-            "fire": true,
+            "time": 180.70000000000684,
+            "count": 2,
+            "hp": 9720,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 4,
             "locked": true
           },
           "after": {
-            "time": 140.34999999999766,
-            "count": 7,
-            "hp": 9020,
+            "time": 181.350000000007,
+            "count": 3,
+            "hp": 9580,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -935,24 +1775,72 @@
             "foreground": 0,
             "range": 440,
             "contact": "弗吉尼亚级 · 实际距离 160 u / 射程 440 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 181.50000000000702,
+              "count": 3,
+              "hp": 9580,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            },
+            "landed": {
+              "time": 181.50000000000702,
+              "count": 3,
+              "hp": 9580,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            },
+            "after": {
+              "time": 185.10000000000784,
+              "count": 3,
+              "hp": 9580,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 8,
+          "quiet": {
+            "time": 188.75000000000867,
+            "count": 3,
+            "hp": 9580,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
           "before": {
-            "time": 144.09999999999852,
-            "count": 8,
-            "hp": 8880,
-            "fire": true,
+            "time": 189.95000000000894,
+            "count": 3,
+            "hp": 9580,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 8,
             "locked": true
           },
           "after": {
-            "time": 146.44999999999905,
-            "count": 9,
-            "hp": 8740,
+            "time": 190.6000000000091,
+            "count": 4,
+            "hp": 9440,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -977,24 +1865,72 @@
             "foreground": 0,
             "range": 440,
             "contact": "弗吉尼亚级 · 实际距离 160 u / 射程 440 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 190.75000000000912,
+              "count": 4,
+              "hp": 9440,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            },
+            "landed": {
+              "time": 190.75000000000912,
+              "count": 4,
+              "hp": 9440,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            },
+            "after": {
+              "time": 194.35000000000994,
+              "count": 4,
+              "hp": 9440,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 16,
+          "quiet": {
+            "time": 198.00000000001077,
+            "count": 4,
+            "hp": 9440,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
           "before": {
-            "time": 150.24999999999991,
-            "count": 10,
-            "hp": 8600,
-            "fire": true,
+            "time": 199.20000000001104,
+            "count": 4,
+            "hp": 9440,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 16,
             "locked": true
           },
           "after": {
-            "time": 152.55000000000044,
-            "count": 11,
-            "hp": 8460,
+            "time": 199.8500000000112,
+            "count": 5,
+            "hp": 9300,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -1019,14 +1955,50 @@
             "foreground": 0,
             "range": 440,
             "contact": "弗吉尼亚级 · 实际距离 160 u / 射程 440 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 200.00000000001123,
+              "count": 5,
+              "hp": 9300,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            },
+            "landed": {
+              "time": 200.00000000001123,
+              "count": 5,
+              "hp": 9300,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            },
+            "after": {
+              "time": 203.60000000001205,
+              "count": 5,
+              "hp": 9300,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            }
           }
         }
       ],
       "stop": {
         "settled": {
-          "time": 152.70000000000047,
-          "count": 11,
-          "hp": 8460,
+          "time": 203.75000000001208,
+          "count": 5,
+          "hp": 9300,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -1034,9 +2006,10 @@
           "locked": true
         },
         "landed": {
-          "time": 152.70000000000047,
-          "count": 11,
-          "hp": 8460,
+          "time": 203.75000000001208,
+          "count": 5,
+          "hp": 9300,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -1044,9 +2017,10 @@
           "locked": true
         },
         "after": {
-          "time": 156.3000000000013,
-          "count": 11,
-          "hp": 8460,
+          "time": 207.3500000000129,
+          "count": 5,
+          "hp": 9300,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -1055,9 +2029,10 @@
         }
       },
       "vOnly": {
-        "time": 157.80000000000163,
-        "count": 11,
-        "hp": 8460,
+        "time": 208.85000000001324,
+        "count": 5,
+        "hp": 9300,
+        "ammo": null,
         "fire": false,
         "active": true,
         "latched": true,
@@ -1075,20 +2050,33 @@
       "magnifications": [
         {
           "zoom": 1.5,
+          "quiet": {
+            "time": 213.45000000001428,
+            "count": 0,
+            "hp": 10000,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 1.5,
+            "locked": true
+          },
           "before": {
-            "time": 164.05000000000305,
-            "count": 6,
-            "hp": 9772,
-            "fire": true,
+            "time": 214.65000000001456,
+            "count": 0,
+            "hp": 10000,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 1.5,
             "locked": true
           },
           "after": {
-            "time": 165.05000000000328,
-            "count": 7,
-            "hp": 9734,
+            "time": 214.90000000001461,
+            "count": 1,
+            "hp": 9962,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -1106,31 +2094,79 @@
             "active": true,
             "orbital": false,
             "direction": [
-              0.9967013108773609,
-              0.04797427647659404,
-              0.06545964934139148
+              0.9941707695418363,
+              0.10513220641425518,
+              -0.02391025225847488
             ],
             "foreground": 0,
             "range": 230,
             "contact": "AH-64 Apache · 实际距离 160 u / 射程 230 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 215.15000000001467,
+              "count": 1,
+              "hp": 9962,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            },
+            "landed": {
+              "time": 215.15000000001467,
+              "count": 1,
+              "hp": 9962,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            },
+            "after": {
+              "time": 216.50000000001498,
+              "count": 1,
+              "hp": 9962,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 1.5,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 2,
+          "quiet": {
+            "time": 221.20000000001605,
+            "count": 1,
+            "hp": 9962,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 2,
+            "locked": true
+          },
           "before": {
-            "time": 171.65000000000478,
-            "count": 13,
-            "hp": 9544,
-            "fire": true,
+            "time": 222.40000000001632,
+            "count": 1,
+            "hp": 9962,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 2,
             "locked": true
           },
           "after": {
-            "time": 172.600000000005,
-            "count": 14,
-            "hp": 9506,
+            "time": 222.65000000001638,
+            "count": 2,
+            "hp": 9924,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -1148,31 +2184,79 @@
             "active": true,
             "orbital": false,
             "direction": [
-              0.9956866456229142,
-              0.017994149013076055,
-              -0.09101820877980848
+              0.9953492277679276,
+              0.017335637052780482,
+              -0.0947596457874581
             ],
             "foreground": 0,
             "range": 230,
             "contact": "AH-64 Apache · 实际距离 160 u / 射程 230 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 222.90000000001643,
+              "count": 2,
+              "hp": 9924,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            },
+            "landed": {
+              "time": 222.90000000001643,
+              "count": 2,
+              "hp": 9924,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            },
+            "after": {
+              "time": 224.25000000001674,
+              "count": 2,
+              "hp": 9924,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 2,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 4,
+          "quiet": {
+            "time": 229.3500000000179,
+            "count": 2,
+            "hp": 9924,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
           "before": {
-            "time": 178.45000000000633,
-            "count": 19,
-            "hp": 9354,
-            "fire": true,
+            "time": 230.55000000001817,
+            "count": 2,
+            "hp": 9924,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 4,
             "locked": true
           },
           "after": {
-            "time": 179.2500000000065,
-            "count": 20,
-            "hp": 9316,
+            "time": 230.85000000001824,
+            "count": 3,
+            "hp": 9886,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -1190,31 +2274,79 @@
             "active": true,
             "orbital": false,
             "direction": [
-              0.9942531734788833,
-              0.10480172361235138,
-              -0.021845497363301217
+              0.9970644643486685,
+              0.07376577349314346,
+              -0.020519858529271295
             ],
             "foreground": 0,
             "range": 230,
             "contact": "AH-64 Apache · 实际距离 160 u / 射程 230 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 231.1000000000183,
+              "count": 3,
+              "hp": 9886,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            },
+            "landed": {
+              "time": 231.1500000000183,
+              "count": 3,
+              "hp": 9886,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            },
+            "after": {
+              "time": 232.50000000001862,
+              "count": 3,
+              "hp": 9886,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 8,
+          "quiet": {
+            "time": 238.25000000001992,
+            "count": 3,
+            "hp": 9886,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
           "before": {
-            "time": 181.350000000007,
-            "count": 22,
-            "hp": 9278,
-            "fire": true,
+            "time": 239.4500000000202,
+            "count": 3,
+            "hp": 9886,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 8,
             "locked": true
           },
           "after": {
-            "time": 182.45000000000724,
-            "count": 23,
-            "hp": 9240,
+            "time": 239.70000000002025,
+            "count": 4,
+            "hp": 9848,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -1232,31 +2364,79 @@
             "active": true,
             "orbital": false,
             "direction": [
-              0.9942661877980341,
-              0.10456106495237369,
-              -0.022399363776457015
+              0.995757143604608,
+              0.01758374542353688,
+              -0.09032454183261784
             ],
             "foreground": 0,
             "range": 230,
             "contact": "AH-64 Apache · 实际距离 160 u / 射程 230 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 239.9500000000203,
+              "count": 4,
+              "hp": 9848,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            },
+            "landed": {
+              "time": 239.9500000000203,
+              "count": 4,
+              "hp": 9848,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            },
+            "after": {
+              "time": 241.30000000002062,
+              "count": 4,
+              "hp": 9848,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 16,
+          "quiet": {
+            "time": 248.7000000000223,
+            "count": 4,
+            "hp": 9848,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
           "before": {
-            "time": 190.45000000000906,
-            "count": 30,
-            "hp": 9012,
-            "fire": true,
+            "time": 249.90000000002257,
+            "count": 4,
+            "hp": 9848,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 16,
             "locked": true
           },
           "after": {
-            "time": 191.45000000000928,
-            "count": 31,
-            "hp": 8974,
+            "time": 250.20000000002264,
+            "count": 5,
+            "hp": 9810,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -1274,21 +2454,57 @@
             "active": true,
             "orbital": false,
             "direction": [
-              0.996719081836745,
-              0.047606803260804145,
-              0.06545734630890167
+              0.9942436614574124,
+              0.1046412406334705,
+              -0.0230163509368142
             ],
             "foreground": 0,
             "range": 230,
             "contact": "AH-64 Apache · 实际距离 160 u / 射程 230 u · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 250.4000000000227,
+              "count": 5,
+              "hp": 9810,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            },
+            "landed": {
+              "time": 250.4000000000227,
+              "count": 5,
+              "hp": 9810,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            },
+            "after": {
+              "time": 251.800000000023,
+              "count": 5,
+              "hp": 9810,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            }
           }
         }
       ],
       "stop": {
         "settled": {
-          "time": 191.70000000000934,
-          "count": 31,
-          "hp": 8974,
+          "time": 251.95000000002304,
+          "count": 5,
+          "hp": 9810,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -1296,9 +2512,10 @@
           "locked": true
         },
         "landed": {
-          "time": 191.70000000000934,
-          "count": 31,
-          "hp": 8974,
+          "time": 251.95000000002304,
+          "count": 5,
+          "hp": 9810,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -1306,9 +2523,10 @@
           "locked": true
         },
         "after": {
-          "time": 193.05000000000965,
-          "count": 31,
-          "hp": 8974,
+          "time": 253.30000000002335,
+          "count": 5,
+          "hp": 9810,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -1317,9 +2535,10 @@
         }
       },
       "vOnly": {
-        "time": 194.60000000001,
-        "count": 31,
-        "hp": 8974,
+        "time": 254.8000000000237,
+        "count": 5,
+        "hp": 9810,
+        "ammo": null,
         "fire": false,
         "active": true,
         "latched": true,
@@ -1337,20 +2556,33 @@
       "magnifications": [
         {
           "zoom": 4,
+          "quiet": {
+            "time": 265.70000000002614,
+            "count": 0,
+            "hp": 10000,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 4,
+            "locked": true
+          },
           "before": {
-            "time": 206.75000000001276,
-            "count": 4,
-            "hp": 9600,
-            "fire": true,
+            "time": 266.9000000000264,
+            "count": 0,
+            "hp": 10000,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 4,
             "locked": true
           },
           "after": {
-            "time": 208.00000000001305,
-            "count": 5,
-            "hp": 9400,
+            "time": 267.00000000002643,
+            "count": 1,
+            "hp": 9800,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -1368,31 +2600,79 @@
             "active": true,
             "orbital": true,
             "direction": [
-              0.0009659188411144655,
-              -0.9999995241865857,
-              -0.00013648221363005136
+              0.0010912801175756437,
+              -0.9999992438814304,
+              -0.0005668723600493752
             ],
             "foreground": 0,
             "range": 1342,
             "contact": "M1A2 SEPv3 · 实际距离 4000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 267.15000000002647,
+              "count": 1,
+              "hp": 9800,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            },
+            "landed": {
+              "time": 267.15000000002647,
+              "count": 1,
+              "hp": 9800,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            },
+            "after": {
+              "time": 271.00000000002734,
+              "count": 1,
+              "hp": 9800,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 4,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 8,
+          "quiet": {
+            "time": 278.350000000029,
+            "count": 1,
+            "hp": 9800,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 8,
+            "locked": true
+          },
           "before": {
-            "time": 215.55000000001476,
-            "count": 7,
-            "hp": 9000,
-            "fire": true,
+            "time": 279.5500000000293,
+            "count": 1,
+            "hp": 9800,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 8,
             "locked": true
           },
           "after": {
-            "time": 217.75000000001526,
-            "count": 8,
-            "hp": 8800,
+            "time": 279.6500000000293,
+            "count": 2,
+            "hp": 9600,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -1410,31 +2690,79 @@
             "active": true,
             "orbital": true,
             "direction": [
-              0.001261636968529489,
-              -0.9999991495991895,
-              -0.00033026210473829915
+              0.0010912801175764764,
+              -0.9999992438814305,
+              -0.000566872360048376
             ],
             "foreground": 0,
             "range": 1342,
             "contact": "M1A2 SEPv3 · 实际距离 4000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 279.80000000002934,
+              "count": 2,
+              "hp": 9600,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            },
+            "landed": {
+              "time": 279.80000000002934,
+              "count": 2,
+              "hp": 9600,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            },
+            "after": {
+              "time": 283.6500000000302,
+              "count": 2,
+              "hp": 9600,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 8,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 16,
+          "quiet": {
+            "time": 290.90000000003187,
+            "count": 2,
+            "hp": 9600,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 16,
+            "locked": true
+          },
           "before": {
-            "time": 225.30000000001698,
-            "count": 10,
-            "hp": 8400,
-            "fire": true,
+            "time": 292.10000000003214,
+            "count": 2,
+            "hp": 9600,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 16,
             "locked": true
           },
           "after": {
-            "time": 227.50000000001748,
-            "count": 11,
-            "hp": 8200,
+            "time": 292.20000000003216,
+            "count": 3,
+            "hp": 9400,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -1452,31 +2780,79 @@
             "active": true,
             "orbital": true,
             "direction": [
-              0.0011392624827113451,
-              -0.9999992877623781,
-              -0.0003557467249407642
+              0.0011944855770854579,
+              -0.9999992394418531,
+              -0.00030711548576156655
             ],
             "foreground": 0,
             "range": 1342,
             "contact": "M1A2 SEPv3 · 实际距离 4000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 292.3500000000322,
+              "count": 3,
+              "hp": 9400,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            },
+            "landed": {
+              "time": 292.3500000000322,
+              "count": 3,
+              "hp": 9400,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            },
+            "after": {
+              "time": 296.20000000003307,
+              "count": 3,
+              "hp": 9400,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 16,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 32,
+          "quiet": {
+            "time": 303.60000000003475,
+            "count": 3,
+            "hp": 9400,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 32,
+            "locked": true
+          },
           "before": {
-            "time": 235.0500000000192,
-            "count": 13,
-            "hp": 7800,
-            "fire": true,
+            "time": 304.800000000035,
+            "count": 3,
+            "hp": 9400,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 32,
             "locked": true
           },
           "after": {
-            "time": 237.2500000000197,
-            "count": 14,
-            "hp": 7600,
+            "time": 304.90000000003505,
+            "count": 4,
+            "hp": 9200,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -1494,31 +2870,79 @@
             "active": true,
             "orbital": true,
             "direction": [
-              0.001261636969100366,
-              -0.999999149599189,
-              -0.0003302621038705489
+              0.0012567574520219724,
+              -0.999999164744156,
+              -0.00030178087643850654
             ],
             "foreground": 0,
             "range": 1342,
             "contact": "M1A2 SEPv3 · 实际距离 4000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 305.0500000000351,
+              "count": 4,
+              "hp": 9200,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 32,
+              "locked": true
+            },
+            "landed": {
+              "time": 305.0500000000351,
+              "count": 4,
+              "hp": 9200,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 32,
+              "locked": true
+            },
+            "after": {
+              "time": 308.90000000003596,
+              "count": 4,
+              "hp": 9200,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 32,
+              "locked": true
+            }
           }
         },
         {
           "zoom": 64,
+          "quiet": {
+            "time": 316.2000000000376,
+            "count": 4,
+            "hp": 9200,
+            "ammo": null,
+            "fire": false,
+            "active": true,
+            "latched": false,
+            "zoom": 64,
+            "locked": true
+          },
           "before": {
-            "time": 244.7500000000214,
-            "count": 16,
-            "hp": 7200,
-            "fire": true,
+            "time": 317.4000000000379,
+            "count": 4,
+            "hp": 9200,
+            "ammo": null,
+            "fire": false,
             "active": true,
             "latched": false,
             "zoom": 64,
             "locked": true
           },
           "after": {
-            "time": 247.0000000000219,
-            "count": 17,
-            "hp": 7000,
+            "time": 317.5000000000379,
+            "count": 5,
+            "hp": 9000,
+            "ammo": null,
             "fire": true,
             "active": true,
             "latched": false,
@@ -1536,22 +2960,58 @@
             "active": true,
             "orbital": true,
             "direction": [
-              0.0012004497280393434,
-              -0.9999992206339073,
-              -0.00034300441472978616
+              0.0012282888056989183,
+              -0.9999991893446192,
+              -0.00033558413910095286
             ],
             "foreground": 0,
             "range": 1342,
             "contact": "M1A2 SEPv3 · 实际距离 4000 u / 射程 1342 u · 判定 0 u 投影 · 射程内 · 装填中"
+          },
+          "stop": {
+            "settled": {
+              "time": 317.65000000003795,
+              "count": 5,
+              "hp": 9000,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 64,
+              "locked": true
+            },
+            "landed": {
+              "time": 317.65000000003795,
+              "count": 5,
+              "hp": 9000,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 64,
+              "locked": true
+            },
+            "after": {
+              "time": 321.5000000000388,
+              "count": 5,
+              "hp": 9000,
+              "ammo": null,
+              "fire": false,
+              "active": true,
+              "latched": false,
+              "zoom": 64,
+              "locked": true
+            }
           }
         }
       ],
       "screenshot": "screenshots/right-button-fire-orbital-desktop.png",
       "stop": {
         "settled": {
-          "time": 248.85000000002233,
-          "count": 17,
-          "hp": 7000,
+          "time": 323.5500000000393,
+          "count": 5,
+          "hp": 9000,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -1559,9 +3019,10 @@
           "locked": true
         },
         "landed": {
-          "time": 248.85000000002233,
-          "count": 17,
-          "hp": 7000,
+          "time": 323.5500000000393,
+          "count": 5,
+          "hp": 9000,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -1569,9 +3030,10 @@
           "locked": true
         },
         "after": {
-          "time": 252.7000000000232,
-          "count": 17,
-          "hp": 7000,
+          "time": 327.40000000004017,
+          "count": 5,
+          "hp": 9000,
+          "ammo": null,
           "fire": false,
           "active": false,
           "latched": false,
@@ -1580,9 +3042,10 @@
         }
       },
       "vOnly": {
-        "time": 254.20000000002355,
-        "count": 17,
-        "hp": 7000,
+        "time": 328.9000000000405,
+        "count": 5,
+        "hp": 9000,
+        "ammo": null,
         "fire": false,
         "active": true,
         "latched": true,
@@ -1597,853 +3060,49 @@
       "events": [
         {
           "sourceId": 37,
-          "time": 0.65,
+          "time": 7.049999999999983,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 0.8000000000000002,
+          "time": 7.199999999999982,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 0.9500000000000003,
-          "targetId": null,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 1.1000000000000003,
-          "targetId": null,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 1.2500000000000004,
-          "targetId": null,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 1.4000000000000006,
-          "targetId": null,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 1.5500000000000007,
-          "targetId": null,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 1.7000000000000008,
-          "targetId": null,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 1.850000000000001,
-          "targetId": null,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 2.000000000000001,
-          "targetId": null,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 2.1500000000000004,
-          "targetId": null,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 2.3,
-          "targetId": null,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 2.4499999999999993,
-          "targetId": null,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 2.5999999999999988,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 2.7499999999999982,
-          "targetId": null,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 2.8999999999999977,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 3.049999999999997,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 3.1999999999999966,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 3.349999999999996,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 3.4999999999999956,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 3.649999999999995,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 3.7999999999999945,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 3.949999999999994,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 4.099999999999993,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 4.249999999999993,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 4.399999999999992,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 4.549999999999992,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 4.699999999999991,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 4.849999999999991,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 4.99999999999999,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 8.199999999999982,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 8.349999999999984,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 8.499999999999986,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 8.649999999999988,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 8.79999999999999,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 8.949999999999992,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 9.099999999999994,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 9.249999999999996,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 9.399999999999999,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 9.55,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 9.700000000000003,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 9.850000000000005,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 10.000000000000007,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 10.15000000000001,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 10.300000000000011,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 10.450000000000014,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 10.600000000000016,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 10.750000000000018,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 10.90000000000002,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 11.050000000000022,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 11.200000000000024,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 11.350000000000026,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 11.500000000000028,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 11.65000000000003,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 11.800000000000033,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 11.950000000000035,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 12.100000000000037,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 12.250000000000039,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 14.600000000000072,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 14.750000000000075,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 14.900000000000077,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 15.050000000000079,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 15.200000000000081,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 15.350000000000083,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 15.500000000000085,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 15.650000000000087,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 15.80000000000009,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 15.950000000000092,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 16.100000000000094,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 16.250000000000096,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 16.400000000000098,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 16.5500000000001,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 16.700000000000102,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 16.850000000000104,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 17.000000000000107,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 17.15000000000011,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 17.30000000000011,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 17.450000000000113,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 17.600000000000115,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 17.750000000000117,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 17.90000000000012,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 18.05000000000012,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 18.200000000000124,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 18.350000000000126,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 18.500000000000128,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 18.65000000000013,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 20.950000000000163,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 21.100000000000165,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 21.250000000000167,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 21.40000000000017,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 21.55000000000017,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 21.700000000000173,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 21.850000000000176,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 22.000000000000178,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 22.15000000000018,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 22.300000000000182,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 22.450000000000184,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 22.600000000000186,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 22.75000000000019,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 22.90000000000019,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 23.050000000000193,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 23.200000000000195,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 23.350000000000197,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 23.5000000000002,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 23.6500000000002,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 23.800000000000203,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 23.950000000000205,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 24.100000000000207,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 24.25000000000021,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 24.40000000000021,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 24.550000000000214,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 24.700000000000216,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 24.850000000000218,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 25.00000000000022,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 27.350000000000254,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 27.500000000000256,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 27.650000000000258,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 27.80000000000026,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 27.950000000000262,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 28.100000000000264,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 28.250000000000266,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 28.40000000000027,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 28.55000000000027,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 28.700000000000273,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 28.850000000000275,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 29.000000000000277,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 29.15000000000028,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 29.30000000000028,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 29.450000000000284,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 29.600000000000286,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 29.750000000000288,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 29.90000000000029,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 30.050000000000292,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 30.200000000000294,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 30.350000000000296,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 30.5000000000003,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 30.6500000000003,
+          "time": 13.75000000000006,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 30.800000000000303,
+          "time": 13.900000000000063,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 30.950000000000305,
+          "time": 20.400000000000155,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 31.100000000000307,
+          "time": 20.550000000000157,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 31.25000000000031,
+          "time": 27.00000000000025,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 31.40000000000031,
+          "time": 27.15000000000025,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
@@ -2461,349 +3120,133 @@
         },
         {
           "sourceId": 37,
-          "time": 36.95000000000004,
+          "time": 38.399999999999956,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 37.10000000000003,
+          "time": 38.54999999999995,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 37.25000000000002,
+          "time": 38.69999999999994,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 37.40000000000001,
+          "time": 38.84999999999993,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 37.550000000000004,
+          "time": 38.99999999999992,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 37.699999999999996,
+          "time": 39.14999999999991,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 37.84999999999999,
+          "time": 39.299999999999905,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 37.99999999999998,
+          "time": 39.449999999999896,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 38.14999999999997,
+          "time": 39.59999999999989,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 38.29999999999996,
+          "time": 39.74999999999988,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 38.44999999999995,
+          "time": 39.89999999999987,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 38.599999999999945,
+          "time": 40.04999999999986,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 38.749999999999936,
+          "time": 40.199999999999854,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 38.89999999999993,
+          "time": 40.349999999999845,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 39.04999999999992,
+          "time": 40.49999999999984,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 39.19999999999991,
+          "time": 40.64999999999983,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 39.3499999999999,
+          "time": 40.79999999999982,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 39.49999999999989,
+          "time": 40.94999999999981,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 39.649999999999885,
+          "time": 41.0999999999998,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 39.799999999999876,
+          "time": 41.249999999999794,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 39.94999999999987,
+          "time": 51.34999999999922,
           "targetId": 38,
           "weaponId": "rifle_01"
         },
         {
           "sourceId": 37,
-          "time": 40.09999999999986,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 40.24999999999985,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 40.39999999999984,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 40.549999999999834,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 40.699999999999825,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 40.84999999999982,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 43.09999999999969,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 43.24999999999968,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 44.79999999999959,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 44.949999999999584,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 45.099999999999575,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 45.24999999999957,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 45.39999999999956,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 45.54999999999955,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 45.69999999999954,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 45.84999999999953,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 45.999999999999524,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 46.149999999999515,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 46.29999999999951,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 46.4499999999995,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 46.59999999999949,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 46.74999999999948,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 46.89999999999947,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 47.049999999999464,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 47.199999999999456,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 47.34999999999945,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 47.49999999999944,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 47.64999999999943,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 47.79999999999942,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 47.94999999999941,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 48.099999999999405,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 48.249999999999396,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 48.39999999999939,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 48.54999999999938,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 48.69999999999937,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 51.04999999999924,
-          "targetId": 38,
-          "weaponId": "rifle_01"
-        },
-        {
-          "sourceId": 37,
-          "time": 51.19999999999923,
+          "time": 51.49999999999921,
           "targetId": 38,
           "weaponId": "rifle_01"
         }
@@ -2814,85 +3257,49 @@
       "events": [
         {
           "sourceId": 43,
-          "time": 52.999999999999126,
+          "time": 58.59999999999881,
           "targetId": 44,
           "weaponId": null
         },
         {
           "sourceId": 43,
-          "time": 55.09999999999901,
+          "time": 66.59999999999836,
           "targetId": 44,
           "weaponId": null
         },
         {
           "sourceId": 43,
-          "time": 57.19999999999889,
+          "time": 74.5999999999979,
           "targetId": 44,
           "weaponId": null
         },
         {
           "sourceId": 43,
-          "time": 59.29999999999877,
+          "time": 82.59999999999745,
           "targetId": 44,
           "weaponId": null
         },
         {
           "sourceId": 43,
-          "time": 61.39999999999865,
+          "time": 87.14999999999719,
           "targetId": 44,
           "weaponId": null
         },
         {
           "sourceId": 43,
-          "time": 63.49999999999853,
+          "time": 94.94999999999675,
           "targetId": 44,
           "weaponId": null
         },
         {
           "sourceId": 43,
-          "time": 65.59999999999842,
+          "time": 100.69999999999642,
           "targetId": 44,
           "weaponId": null
         },
         {
           "sourceId": 43,
-          "time": 67.6999999999983,
-          "targetId": 44,
-          "weaponId": null
-        },
-        {
-          "sourceId": 43,
-          "time": 69.79999999999818,
-          "targetId": 44,
-          "weaponId": null
-        },
-        {
-          "sourceId": 43,
-          "time": 71.89999999999806,
-          "targetId": 44,
-          "weaponId": null
-        },
-        {
-          "sourceId": 43,
-          "time": 76.94999999999777,
-          "targetId": 44,
-          "weaponId": null
-        },
-        {
-          "sourceId": 43,
-          "time": 79.04999999999765,
-          "targetId": 44,
-          "weaponId": null
-        },
-        {
-          "sourceId": 43,
-          "time": 81.99999999999748,
-          "targetId": 44,
-          "weaponId": null
-        },
-        {
-          "sourceId": 43,
-          "time": 84.09999999999737,
+          "time": 102.7999999999963,
           "targetId": 44,
           "weaponId": null
         }
@@ -2903,67 +3310,31 @@
       "events": [
         {
           "sourceId": 49,
-          "time": 87.29999999999718,
+          "time": 111.29999999999582,
           "targetId": 50,
           "weaponId": null
         },
         {
           "sourceId": 49,
-          "time": 90.14999999999702,
+          "time": 120.24999999999531,
           "targetId": 50,
           "weaponId": null
         },
         {
           "sourceId": 49,
-          "time": 92.99999999999686,
+          "time": 129.14999999999512,
           "targetId": 50,
           "weaponId": null
         },
         {
           "sourceId": 49,
-          "time": 95.8499999999967,
+          "time": 138.04999999999714,
           "targetId": 50,
           "weaponId": null
         },
         {
           "sourceId": 49,
-          "time": 98.69999999999654,
-          "targetId": 50,
-          "weaponId": null
-        },
-        {
-          "sourceId": 49,
-          "time": 101.54999999999637,
-          "targetId": 50,
-          "weaponId": null
-        },
-        {
-          "sourceId": 49,
-          "time": 104.39999999999621,
-          "targetId": 50,
-          "weaponId": null
-        },
-        {
-          "sourceId": 49,
-          "time": 107.24999999999605,
-          "targetId": 50,
-          "weaponId": null
-        },
-        {
-          "sourceId": 49,
-          "time": 110.09999999999589,
-          "targetId": 50,
-          "weaponId": null
-        },
-        {
-          "sourceId": 49,
-          "time": 112.94999999999573,
-          "targetId": 50,
-          "weaponId": null
-        },
-        {
-          "sourceId": 49,
-          "time": 115.79999999999556,
+          "time": 146.89999999999915,
           "targetId": 50,
           "weaponId": null
         }
@@ -2974,67 +3345,31 @@
       "events": [
         {
           "sourceId": 55,
-          "time": 121.44999999999524,
+          "time": 161.1500000000024,
           "targetId": 56,
           "weaponId": null
         },
         {
           "sourceId": 55,
-          "time": 124.49999999999507,
+          "time": 171.45000000000474,
           "targetId": 56,
           "weaponId": null
         },
         {
           "sourceId": 55,
-          "time": 127.5499999999949,
+          "time": 180.75000000000685,
           "targetId": 56,
           "weaponId": null
         },
         {
           "sourceId": 55,
-          "time": 130.59999999999545,
+          "time": 190.00000000000895,
           "targetId": 56,
           "weaponId": null
         },
         {
           "sourceId": 55,
-          "time": 133.64999999999614,
-          "targetId": 56,
-          "weaponId": null
-        },
-        {
-          "sourceId": 55,
-          "time": 136.69999999999683,
-          "targetId": 56,
-          "weaponId": null
-        },
-        {
-          "sourceId": 55,
-          "time": 139.74999999999753,
-          "targetId": 56,
-          "weaponId": null
-        },
-        {
-          "sourceId": 55,
-          "time": 142.79999999999822,
-          "targetId": 56,
-          "weaponId": null
-        },
-        {
-          "sourceId": 55,
-          "time": 145.84999999999891,
-          "targetId": 56,
-          "weaponId": null
-        },
-        {
-          "sourceId": 55,
-          "time": 148.8999999999996,
-          "targetId": 56,
-          "weaponId": null
-        },
-        {
-          "sourceId": 55,
-          "time": 151.9500000000003,
+          "time": 199.25000000001106,
           "targetId": 56,
           "weaponId": null
         }
@@ -3045,187 +3380,31 @@
       "events": [
         {
           "sourceId": 61,
-          "time": 158.1500000000017,
+          "time": 214.70000000001457,
           "targetId": 62,
           "weaponId": null
         },
         {
           "sourceId": 61,
-          "time": 159.25000000000196,
+          "time": 222.45000000001633,
           "targetId": 62,
           "weaponId": null
         },
         {
           "sourceId": 61,
-          "time": 160.3500000000022,
+          "time": 230.60000000001818,
           "targetId": 62,
           "weaponId": null
         },
         {
           "sourceId": 61,
-          "time": 161.45000000000246,
+          "time": 239.5000000000202,
           "targetId": 62,
           "weaponId": null
         },
         {
           "sourceId": 61,
-          "time": 162.5500000000027,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 163.65000000000296,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 164.7500000000032,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 165.85000000000346,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 166.9500000000037,
-          "targetId": null,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 168.05000000000396,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 169.1500000000042,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 170.25000000000446,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 171.3500000000047,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 172.45000000000496,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 173.5500000000052,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 174.65000000000546,
-          "targetId": null,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 175.7500000000057,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 176.85000000000596,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 177.9500000000062,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 179.05000000000646,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 180.1500000000067,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 181.25000000000696,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 182.3500000000072,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 183.45000000000746,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 184.5500000000077,
-          "targetId": null,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 185.65000000000796,
-          "targetId": null,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 186.7500000000082,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 187.85000000000846,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 188.9500000000087,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 190.05000000000896,
-          "targetId": 62,
-          "weaponId": null
-        },
-        {
-          "sourceId": 61,
-          "time": 191.15000000000921,
+          "time": 249.95000000002258,
           "targetId": 62,
           "weaponId": null
         }
@@ -3236,103 +3415,31 @@
       "events": [
         {
           "sourceId": 67,
-          "time": 194.95000000001008,
-          "targetId": null,
-          "weaponId": null
-        },
-        {
-          "sourceId": 67,
-          "time": 198.20000000001082,
-          "targetId": null,
-          "weaponId": null
-        },
-        {
-          "sourceId": 67,
-          "time": 201.45000000001156,
+          "time": 266.9500000000264,
           "targetId": 68,
           "weaponId": null
         },
         {
           "sourceId": 67,
-          "time": 204.7000000000123,
+          "time": 279.6000000000293,
           "targetId": 68,
           "weaponId": null
         },
         {
           "sourceId": 67,
-          "time": 207.95000000001303,
+          "time": 292.15000000003215,
           "targetId": 68,
           "weaponId": null
         },
         {
           "sourceId": 67,
-          "time": 211.20000000001377,
+          "time": 304.85000000003504,
           "targetId": 68,
           "weaponId": null
         },
         {
           "sourceId": 67,
-          "time": 214.4500000000145,
-          "targetId": 68,
-          "weaponId": null
-        },
-        {
-          "sourceId": 67,
-          "time": 217.70000000001525,
-          "targetId": 68,
-          "weaponId": null
-        },
-        {
-          "sourceId": 67,
-          "time": 220.950000000016,
-          "targetId": 68,
-          "weaponId": null
-        },
-        {
-          "sourceId": 67,
-          "time": 224.20000000001673,
-          "targetId": 68,
-          "weaponId": null
-        },
-        {
-          "sourceId": 67,
-          "time": 227.45000000001747,
-          "targetId": 68,
-          "weaponId": null
-        },
-        {
-          "sourceId": 67,
-          "time": 230.7000000000182,
-          "targetId": 68,
-          "weaponId": null
-        },
-        {
-          "sourceId": 67,
-          "time": 233.95000000001895,
-          "targetId": 68,
-          "weaponId": null
-        },
-        {
-          "sourceId": 67,
-          "time": 237.20000000001968,
-          "targetId": 68,
-          "weaponId": null
-        },
-        {
-          "sourceId": 67,
-          "time": 240.45000000002042,
-          "targetId": 68,
-          "weaponId": null
-        },
-        {
-          "sourceId": 67,
-          "time": 243.70000000002116,
-          "targetId": 68,
-          "weaponId": null
-        },
-        {
-          "sourceId": 67,
-          "time": 246.9500000000219,
+          "time": 317.4500000000379,
           "targetId": 68,
           "weaponId": null
         }
@@ -3829,7 +3936,7 @@
     ]
   },
   "runtime": {
-    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.8.0 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.8.2 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36",
     "viewport": [
       2752,
       1152
@@ -3837,120 +3944,6 @@
     "version": "现代战线 HD · 五强遭遇战"
   },
   "stage": "orbital V observation off",
-  "reloads": [
-    {
-      "actor": 37,
-      "before": {
-        "ammo": 0,
-        "reserve": 180,
-        "reloadRemaining": 0,
-        "weaponId": "rifle_01"
-      },
-      "after": {
-        "ammo": 30,
-        "reserve": 150,
-        "reloadRemaining": 0,
-        "weaponId": "rifle_01"
-      },
-      "input": "actual keyboard R; held mouse buttons unchanged"
-    },
-    {
-      "actor": 37,
-      "before": {
-        "ammo": 2,
-        "reserve": 150,
-        "reloadRemaining": 0,
-        "weaponId": "rifle_01"
-      },
-      "after": {
-        "ammo": 30,
-        "reserve": 122,
-        "reloadRemaining": 0,
-        "weaponId": "rifle_01"
-      },
-      "input": "actual keyboard R; held mouse buttons unchanged"
-    },
-    {
-      "actor": 37,
-      "before": {
-        "ammo": 2,
-        "reserve": 122,
-        "reloadRemaining": 0,
-        "weaponId": "rifle_01"
-      },
-      "after": {
-        "ammo": 30,
-        "reserve": 94,
-        "reloadRemaining": 0,
-        "weaponId": "rifle_01"
-      },
-      "input": "actual keyboard R; held mouse buttons unchanged"
-    },
-    {
-      "actor": 37,
-      "before": {
-        "ammo": 2,
-        "reserve": 94,
-        "reloadRemaining": 0,
-        "weaponId": "rifle_01"
-      },
-      "after": {
-        "ammo": 30,
-        "reserve": 66,
-        "reloadRemaining": 0,
-        "weaponId": "rifle_01"
-      },
-      "input": "actual keyboard R; held mouse buttons unchanged"
-    },
-    {
-      "actor": 37,
-      "before": {
-        "ammo": 2,
-        "reserve": 66,
-        "reloadRemaining": 0,
-        "weaponId": "rifle_01"
-      },
-      "after": {
-        "ammo": 30,
-        "reserve": 38,
-        "reloadRemaining": 0,
-        "weaponId": "rifle_01"
-      },
-      "input": "actual keyboard R; held mouse buttons unchanged"
-    },
-    {
-      "actor": 37,
-      "before": {
-        "ammo": 1,
-        "reserve": 38,
-        "reloadRemaining": 0,
-        "weaponId": "rifle_01"
-      },
-      "after": {
-        "ammo": 30,
-        "reserve": 9,
-        "reloadRemaining": 0,
-        "weaponId": "rifle_01"
-      },
-      "input": "actual keyboard R; held mouse buttons unchanged"
-    },
-    {
-      "actor": 37,
-      "before": {
-        "ammo": 1,
-        "reserve": 9,
-        "reloadRemaining": 0,
-        "weaponId": "rifle_01"
-      },
-      "after": {
-        "ammo": 10,
-        "reserve": 0,
-        "reloadRemaining": 0,
-        "weaponId": "rifle_01"
-      },
-      "input": "actual keyboard R; held mouse buttons unchanged"
-    }
-  ],
   "focusBoundaryRecoveries": [
     {
       "label": "operator V observation on",
@@ -4255,11 +4248,29 @@
       }
     }
   ],
+  "reloads": [
+    {
+      "actor": 37,
+      "before": {
+        "ammo": 0,
+        "reserve": 180,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "after": {
+        "ammo": 30,
+        "reserve": 150,
+        "reloadRemaining": 0,
+        "weaponId": "rifle_01"
+      },
+      "input": "actual keyboard R; held mouse buttons unchanged"
+    }
+  ],
   "focusEvents": [
     {
       "name": "pointerlockchange",
       "trusted": true,
-      "time": 3863.399999856949,
+      "time": 6387.700000047684,
       "focused": true,
       "locked": true,
       "kind": "operator"
@@ -4267,7 +4278,7 @@
     {
       "name": "KeyV",
       "trusted": true,
-      "time": 38873.799999952316,
+      "time": 42946.799999952316,
       "focused": true,
       "locked": true,
       "kind": "operator"
@@ -4275,7 +4286,7 @@
     {
       "name": "KeyV",
       "trusted": true,
-      "time": 40434.59999990463,
+      "time": 44493.799999952316,
       "focused": true,
       "locked": true,
       "kind": "operator"
@@ -4283,23 +4294,24 @@
     {
       "name": "exitPointerLock-call",
       "trusted": false,
-      "time": 56238.700000047684,
+      "time": 59155.799999952316,
       "focused": true,
       "locked": true,
       "kind": "operator",
-      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:15:48)"
+      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:15:48)"
     },
     {
       "name": "pointerlockchange",
       "trusted": true,
-      "time": 56268.89999985695,
+      "time": 59172.60000014305,
       "focused": true,
-      "locked": false
+      "locked": false,
+      "kind": "operator"
     },
     {
       "name": "pointerlockchange",
       "trusted": true,
-      "time": 56374.09999990463,
+      "time": 59276.299999952316,
       "focused": true,
       "locked": true,
       "kind": "tank"
@@ -4307,7 +4319,7 @@
     {
       "name": "KeyV",
       "trusted": true,
-      "time": 79037.89999985695,
+      "time": 99585.70000004768,
       "focused": true,
       "locked": true,
       "kind": "tank"
@@ -4315,7 +4327,7 @@
     {
       "name": "KeyV",
       "trusted": true,
-      "time": 80573.29999995232,
+      "time": 101120.29999995232,
       "focused": true,
       "locked": true,
       "kind": "tank"
@@ -4323,23 +4335,23 @@
     {
       "name": "exitPointerLock-call",
       "trusted": false,
-      "time": 90674.20000004768,
+      "time": 111885.5,
       "focused": true,
       "locked": true,
       "kind": "tank",
-      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:15:48)"
+      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:15:48)"
     },
     {
       "name": "pointerlockchange",
       "trusted": true,
-      "time": 90710.09999990463,
+      "time": 111908.40000009537,
       "focused": true,
       "locked": false
     },
     {
       "name": "pointerlockchange",
       "trusted": true,
-      "time": 90877,
+      "time": 112372.5,
       "focused": true,
       "locked": true,
       "kind": "destroyer"
@@ -4347,7 +4359,7 @@
     {
       "name": "KeyV",
       "trusted": true,
-      "time": 123857.89999985695,
+      "time": 161139,
       "focused": true,
       "locked": true,
       "kind": "destroyer"
@@ -4355,7 +4367,7 @@
     {
       "name": "KeyV",
       "trusted": true,
-      "time": 125396.59999990463,
+      "time": 162625.5,
       "focused": true,
       "locked": true,
       "kind": "destroyer"
@@ -4363,16 +4375,16 @@
     {
       "name": "exitPointerLock-call",
       "trusted": false,
-      "time": 125402.89999985695,
+      "time": 162635,
       "focused": true,
       "locked": true,
       "kind": "destroyer",
-      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:15:48)"
+      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:15:48)"
     },
     {
       "name": "pointerlockchange",
       "trusted": true,
-      "time": 125411.89999985695,
+      "time": 162642.70000004768,
       "focused": true,
       "locked": false,
       "kind": "destroyer"
@@ -4380,7 +4392,7 @@
     {
       "name": "pointerlockchange",
       "trusted": true,
-      "time": 125543.09999990463,
+      "time": 162841.10000014305,
       "focused": true,
       "locked": true,
       "kind": "submarine"
@@ -4388,7 +4400,7 @@
     {
       "name": "KeyV",
       "trusted": true,
-      "time": 160704.39999985695,
+      "time": 214395,
       "focused": true,
       "locked": true,
       "kind": "submarine"
@@ -4396,7 +4408,7 @@
     {
       "name": "KeyV",
       "trusted": true,
-      "time": 162197.09999990463,
+      "time": 215884.10000014305,
       "focused": true,
       "locked": true,
       "kind": "submarine"
@@ -4404,64 +4416,64 @@
     {
       "name": "exitPointerLock-call",
       "trusted": false,
-      "time": 162201.89999985695,
+      "time": 215889.90000009537,
       "focused": true,
       "locked": true,
       "kind": "submarine",
-      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:15:48)"
+      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:15:48)"
     },
     {
       "name": "pointerlockchange",
       "trusted": true,
-      "time": 162213.20000004768,
-      "focused": true,
-      "locked": false,
-      "kind": "submarine"
-    },
-    {
-      "name": "pointerlockchange",
-      "trusted": true,
-      "time": 162402.20000004768,
-      "focused": true,
-      "locked": true,
-      "kind": "heli"
-    },
-    {
-      "name": "KeyV",
-      "trusted": true,
-      "time": 203450.59999990463,
-      "focused": true,
-      "locked": true,
-      "kind": "heli"
-    },
-    {
-      "name": "KeyV",
-      "trusted": true,
-      "time": 204991.09999990463,
-      "focused": true,
-      "locked": true,
-      "kind": "heli"
-    },
-    {
-      "name": "exitPointerLock-call",
-      "trusted": false,
-      "time": 205035.09999990463,
-      "focused": true,
-      "locked": true,
-      "kind": "heli",
-      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:15:48)"
-    },
-    {
-      "name": "pointerlockchange",
-      "trusted": true,
-      "time": 205066.70000004768,
+      "time": 215923.79999995232,
       "focused": true,
       "locked": false
     },
     {
       "name": "pointerlockchange",
       "trusted": true,
-      "time": 205227.09999990463,
+      "time": 216300.40000009537,
+      "focused": true,
+      "locked": true,
+      "kind": "heli"
+    },
+    {
+      "name": "KeyV",
+      "trusted": true,
+      "time": 267152.2999999523,
+      "focused": true,
+      "locked": true,
+      "kind": "heli"
+    },
+    {
+      "name": "KeyV",
+      "trusted": true,
+      "time": 268652.2000000477,
+      "focused": true,
+      "locked": true,
+      "kind": "heli"
+    },
+    {
+      "name": "exitPointerLock-call",
+      "trusted": false,
+      "time": 268661,
+      "focused": true,
+      "locked": true,
+      "kind": "heli",
+      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:15:48)"
+    },
+    {
+      "name": "pointerlockchange",
+      "trusted": true,
+      "time": 268855.40000009537,
+      "focused": true,
+      "locked": false,
+      "kind": "heli"
+    },
+    {
+      "name": "pointerlockchange",
+      "trusted": true,
+      "time": 269146.10000014305,
       "focused": true,
       "locked": true,
       "kind": "orbital"
@@ -4469,7 +4481,7 @@
     {
       "name": "KeyV",
       "trusted": true,
-      "time": 264389,
+      "time": 342472.5,
       "focused": true,
       "locked": true,
       "kind": "orbital"
@@ -4477,7 +4489,7 @@
     {
       "name": "KeyV",
       "trusted": true,
-      "time": 265905.5,
+      "time": 343955.40000009537,
       "focused": true,
       "locked": true,
       "kind": "orbital"
@@ -4485,19 +4497,11 @@
     {
       "name": "exitPointerLock-call",
       "trusted": false,
-      "time": 265910.5,
+      "time": 343960.40000009537,
       "focused": true,
       "locked": true,
       "kind": "orbital",
-      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD/resources/app/src/direct-control.js:15:48)"
-    },
-    {
-      "name": "pointerlockchange",
-      "trusted": true,
-      "time": 265917.39999985695,
-      "focused": true,
-      "locked": false,
-      "kind": "orbital"
+      "stack": "Error: Pointer unlock caller\n    at document.exitPointerLock (eval at evaluate (:311:30), <anonymous>:1:507)\n    at DirectControl.exit (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:139:311)\n    at DirectControl.keyDown (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:109:48)\n    at HTMLDocument.<anonymous> (file:///D:/%E7%8E%B0%E4%BB%A3%E6%88%98%E7%BA%BFHD/release/ModernFrontHD-3.8.2/resources/app/src/direct-control.js:15:48)"
     }
   ],
   "passed": true
