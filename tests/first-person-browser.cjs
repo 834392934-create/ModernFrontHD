@@ -102,7 +102,10 @@ async function nativeFocusCheck(){
 
   // AI uses the existing unmodified method; wrapper only counts calls.
   state=await fixture('tank');await p.evaluate(()=>{const g=ModernFront.game;g.teams[0].money=50000;g.spawn(0,'barracks',500,400);g.spawn(0,'factory',500,520);g.spawn(0,'ifv',1000,1000);g.__fpsAICalls=0;const ai=g.ai.bind(g);g.ai=(team,dt)=>{if(team.id===0)g.__fpsAICalls++;return ai(team,dt);};});
-  await enter(state,false,true);await paused(false);await p.waitForTimeout(250);
+  await enter(state,false,true);await paused(false);
+  // AI plans on its own cadence and can reject a random building site on real
+  // terrain. Wait for observable work, not an assumed first 250 ms placement.
+  await p.waitForFunction(()=>{const g=ModernFront.game;return g.__fpsAICalls>0&&g.teams[0].queue.length>0&&g.teams[0].buildQueue.length>0&&g.entities.some(e=>e.team===0&&e.kind==='ifv'&&e.order);},null,{timeout:8000});
   report.ai=await p.evaluate(()=>{const g=ModernFront.game;return{calls:g.__fpsAICalls,production:g.teams[0].queue.length,construction:g.teams[0].buildQueue.length,othersOrdered:g.entities.filter(e=>e.team===0&&e.kind==='ifv'&&e.order).length,controlledOrder:g.get(g.directControl.id).order};});
   assert.ok(report.ai.calls>0&&report.ai.production>0&&report.ai.construction>0&&report.ai.othersOrdered>0);assert.equal(report.ai.controlledOrder,null);await exit();const aiCalls=await p.evaluate(()=>ModernFront.game.__fpsAICalls);await p.waitForTimeout(200);assert.equal(await p.evaluate(()=>ModernFront.game.__fpsAICalls),aiCalls);report.checks.push('AI builds, trains and orders other units during possession, excludes the driver, and stops new AI calls after E exits');
 

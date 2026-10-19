@@ -159,7 +159,7 @@
       for(const e of game.entities){alive.add(e.id);let o=this.objects.get(e.id),p=this.firstPerson?.active?null:this.entityScreen(e);const visible=(ui.demo||e.team===0||(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))&&(this.firstPerson?.active?(this.firstPerson.orbitScope?.active||Math.hypot(e.x-this.camera.x,e.y-this.camera.y)<3200):p.x>-140&&p.x<this.width+140&&p.y>-160&&p.y<this.height+180);
         if(!visible){if(o)o.visible=false;continue;}
         if(!o){o=root.WarModels.create(e.kind,game.teams[e.team].faction);o.scale.setScalar(o.userData.scale);o.traverse(m=>{if(m.isMesh&&m.userData.preserveMaterial)for(const mat of Array.isArray(m.material)?m.material:[m.material])this.fogify(mat)});this.objects.set(e.id,o);this.scene.add(o);}
-        o.visible=e.id!==this.firstPerson?.entityId;visibleCount++;o.position.set(e.x,this.entityHeight(e),e.y);o.rotation.set(e.roll||0,e.structure?0:-e.angle,e.pitch||0,'YZX');
+        o.visible=e.id!==this.firstPerson?.entityId||!!this.firstPerson?.exteriorActive();visibleCount++;o.position.set(e.x,this.entityHeight(e),e.y);o.rotation.set(e.roll||0,e.structure?0:-e.angle,e.pitch||0,'YZX');
         root.WarPersonnelAnimation?.update(o,e,game.time);
         const parts=animatedParts(o),turretAngle=e.target?(e.structure?0:e.angle)-e.turret:0;
         if(parts.turret)parts.turret.rotation.y=turretAngle;if(parts.turretRear)parts.turretRear.rotation.y=turretAngle;

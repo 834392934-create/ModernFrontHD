@@ -32,5 +32,35 @@
   }
   return true;
  }
- root.WarNavigationFootprints={bounds,radius,sameLayer,terrain,turningRoom};
+ function buildingSegmentClear(game,e,to){
+  const dx=to.x-e.x,dy=to.y-e.y,length2=dx*dx+dy*dy,r=radius(game,e);
+  // Querying a spatial circle as large as a distant destination visits thousands
+  // of empty buckets. Buildings are few and can be tested directly instead.
+  for(const o of game.entities){
+   if(!o.structure||o.hp<=0||o.id===e.id||!sameLayer(game,e,o))continue;
+   const t=Math.max(0,Math.min(1,((o.x-e.x)*dx+(o.y-e.y)*dy)/Math.max(1,length2))),safe=r+o.r+8;
+   if(Math.hypot(e.x+t*dx-o.x,e.y+t*dy-o.y)<safe)return false;
+  }
+  return true;
+ }
+ // Terrain keeps its oriented-box contract; only buildings are expanded to the
+ // same clearance used by local movement. All domains share this height test.
+ function pathGrid(game,e){
+  const {U,T,COLS,ROWS}=root.WarData,d=U[e.kind],r=radius(game,e);
+  const structures=game.entities.filter(o=>o.structure&&o.hp>0&&sameLayer(game,e,o));
+  const ore=!d.air&&!d.naval?game.ore:[];
+  // One immutable map per matching mover envelope/layer per simulation tick.
+  // Construction/destruction within the tick is part of the key as well.
+  if(game._buildingPaths?.tick!==game.tick||game._buildingPaths?.map!==game.map)game._buildingPaths={tick:game.tick,map:game.map,cache:new Map()};
+  const cache=game._buildingPaths.cache,key=(d.air?'air':d.naval?'naval':'ground')+':'+r+':'+structures.map(o=>[o.id,o.x,o.y,o.r].join(',')).join(';')+':'+ore.map(o=>[o.x,o.y].join(',')).join(';');
+  if(cache.has(key))return cache.get(key);
+  const blocked=d.air?new Uint8Array(COLS*ROWS):(d.naval?game.map.navalBlocked:game.map.blocked).slice();
+  const mark=(o,clearance)=>{
+   for(let y=Math.max(0,Math.floor((o.y-clearance)/T));y<=Math.min(ROWS-1,Math.floor((o.y+clearance)/T));y++)for(let x=Math.max(0,Math.floor((o.x-clearance)/T));x<=Math.min(COLS-1,Math.floor((o.x+clearance)/T));x++)if(Math.hypot((x+.5)*T-o.x,(y+.5)*T-o.y)<clearance)blocked[y*COLS+x]=1;
+  };
+  for(const o of structures)mark(o,o.r+r+10);
+  for(const o of ore)mark(o,45);
+  const result={blocked};cache.set(key,result);return result;
+ }
+ root.WarNavigationFootprints={bounds,radius,sameLayer,terrain,turningRoom,pathGrid,buildingSegmentClear};
 })(globalThis);

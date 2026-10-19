@@ -10,10 +10,12 @@
  function segment(game,e,to){
   const length=Math.hypot(to.x-e.x,to.y-e.y),steps=Math.max(1,Math.ceil(length/16));
   const heading=Math.atan2(to.y-e.y,to.x-e.x);
-  for(let i=1;i<=steps;i++)if(!clear(game,e,e.x+(to.x-e.x)*i/steps,e.y+(to.y-e.y)*i/steps,heading))return false;
+  if(U[e.kind].air){if(!clear(game,e,to.x,to.y,heading))return false;}
+  else for(let i=1;i<=steps;i++)if(!clear(game,e,e.x+(to.x-e.x)*i/steps,e.y+(to.y-e.y)*i/steps,heading))return false;
+  if(!root.WarNavigationFootprints.buildingSegmentClear(game,e,to))return false;
   if(e.crowdRouteOrder===e.order)for(const o of game.spatial.query(e.x,e.y,length+260)){
-   if(o.id===e.id||o.hp<=0||!game.navigationLayer(e,o))continue;
-   const dx=to.x-e.x,dy=to.y-e.y,t=Math.max(0,Math.min(1,((o.x-e.x)*dx+(o.y-e.y)*dy)/Math.max(1,length*length))),safe=game.navigationRadius(e)+(o.structure?o.r:game.navigationRadius(o))+2;
+   if(o.id===e.id||o.structure||o.hp<=0||!game.navigationLayer(e,o))continue;
+   const dx=to.x-e.x,dy=to.y-e.y,t=Math.max(0,Math.min(1,((o.x-e.x)*dx+(o.y-e.y)*dy)/Math.max(1,length*length))),safe=game.navigationRadius(e)+game.navigationRadius(o)+2;
    if(Math.hypot(e.x+t*dx-o.x,e.y+t*dy-o.y)<safe)return false;
   }
   return true;
@@ -78,7 +80,7 @@
  function detour(game,e,goal,findPath){
   const local=visibilityDetour(game,e,goal);
   if(local){e.path=local;e.crowdRouteOrder=e.order;e.crowdDetourUntil=game.time+2;return 1;}
-  const base=U[e.kind].air?new Uint8Array(COLS*ROWS):U[e.kind].naval?game.map.navalBlocked:game.groundNavigation.blocked,blocked=base.slice();
+  const base=root.WarNavigationFootprints.pathGrid(game,e).blocked,blocked=base.slice();
   for(const o of game.spatial.query(e.x,e.y,350)){
    if(o===e||o.structure||!game.navigationLayer(e,o))continue;
    const r=game.navigationRadius(e)+game.navigationRadius(o)+12;
@@ -95,6 +97,7 @@
  // cover the coarse A* start cell. It changes the route, never the order or position.
  function visibilityDetour(game,e,goal){
   const nearby=game.spatial.query(e.x,e.y,600).filter(o=>o.id!==e.id&&o.hp>0&&game.navigationLayer(e,o));
+  const structures=game.entities.filter(o=>o.structure&&o.hp>0&&game.navigationLayer(e,o));
   // Moving dense crowds invalidate visibility graphs before they can be used;
   // keep their existing bounded grid planner, then use the graph for parked obstacles.
   if(nearby.filter(o=>o.order).length>10)return null;
@@ -106,6 +109,9 @@
   const edge=(a,b)=>{
    const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy);if(len<.01)return true;
    for(const o of obstacles){const t=Math.max(0,Math.min(1,((o.x-a.x)*dx+(o.y-a.y)*dy)/(len*len))),near=Math.hypot(a.x+dx*t-o.x,a.y+dy*t-o.y),start=Math.hypot(a.x-o.x,a.y-o.y);if(near<o.r&&!(start<o.r&&t===0))return false;}
+   // The small local graph must not invent a shortcut through the unseen rest
+   // of a building wall. Fall back to the full map planner when it cannot pass.
+   for(const o of structures){const r=game.navigationRadius(e)+o.r+8,t=Math.max(0,Math.min(1,((o.x-a.x)*dx+(o.y-a.y)*dy)/(len*len)));if(Math.hypot(a.x+dx*t-o.x,a.y+dy*t-o.y)<r&&!(t===0&&Math.hypot(a.x-o.x,a.y-o.y)<r))return false;}
    const heading=Math.atan2(dy,dx),steps=Math.ceil(len/24);for(let i=1;i<=steps;i++)if(!clear(game,e,a.x+dx*i/steps,a.y+dy*i/steps,heading))return false;return true;
   };
   while(closed.size<points.length){let id=-1,best=Infinity;for(let i=0;i<points.length;i++)if(!closed.has(i)){const score=costs[i]+Math.hypot(points[i].x-goal.x,points[i].y-goal.y);if(score<best){id=i;best=score;}}if(id<0)return null;if(id===1){const path=[];for(let k=1;k!==0;k=parents[k])path.unshift(points[k]);return path;}

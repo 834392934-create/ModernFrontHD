@@ -899,7 +899,7 @@
       const heading=Math.atan2(y-e.y,x-e.x);
       const free=(px,py)=>budget.remaining-->0&&root.WarNavigationFootprints.terrain(this,e,px,py,heading)&&
         (!U[e.kind]?.naval||root.WarNavigationFootprints.turningRoom(this,e,px,py))&&
-        !this.entities.some(o=>o.structure&&o.hp>0&&this.navigationLayer(e,o)&&Math.hypot(px-o.x,py-o.y)<o.r+r+6)&&
+        !this.entities.some(o=>o.structure&&o.hp>0&&this.navigationLayer(e,o)&&Math.hypot(px-o.x,py-o.y)<o.r+r+10)&&
         (U[e.kind]?.air||U[e.kind]?.naval||!this.ore.some(o=>Math.hypot(o.x-px,o.y-py)<48+r+4));
       if(free(x,y))return{x,y};
       for(let radius=24;radius<Math.max(W,H)&&budget.remaining>0;radius+=24)for(let j=0;j<24&&budget.remaining>0;j++){const a=j*Math.PI/12,px=x+Math.cos(a)*radius,py=y+Math.sin(a)*radius;if(free(px,py))return{x:px,y:py};}
@@ -1492,6 +1492,12 @@
             goal.x = orderedTarget.x;
             goal.y = orderedTarget.y;
           }
+          // Construction can invalidate an already accepted move/rally order.
+          // Keep queued orders and attack targets; relocate only a blocked stop.
+          if(!orderedTarget&&this.tick%10===e.id%10&&this.entities.some(o=>o.structure&&o.hp>0&&this.navigationLayer(e,o)&&dist(o,goal)<o.r+this.navigationRadius(e)+8)){
+            const p=this.destination(e,goal.x,goal.y);
+            if(p){Object.assign(goal,p);e.path=[];e.repath=0;e.crowdRouteOrder=null;e.crowdDetourUntil=0;}
+          }
           if (dist(e, goal) < (d.air?14:6)) {
             e.order = e.orderQueue?.shift() || null;
             e.manualMove=false;
@@ -1500,14 +1506,14 @@
             continue;
           }
           let dest = goal;
-          if (!d.air || e.path.length) {
+          if (!d.air || e.path.length || !root.WarNavigationFootprints.buildingSegmentClear(this,e,goal)) {
             if (
               !e.path.length &&
               this.pathBudget > 0 &&
               (e.repath || 0) <= this.time
             ) {
               e.path = findPath(
-                d.naval ? { blocked: this.map.navalBlocked } : this.groundNavigation,
+                root.WarNavigationFootprints.pathGrid(this,e),
                 e.x,
                 e.y,
                 goal.x,
@@ -1700,8 +1706,20 @@
         else if(!e.order||e.miningState!=='return'){const p=this.destination(e,refinery.x,refinery.y);e.order=p?{...p,attack:false}:null;e.path=[];}
         e.miningState='return';
       }else if(ore){
-        const entrance={x:ore.x-75,y:ore.y+35};const changing=e.miningState!=='gather'||e.oreId!==ore.id;
+        const changing=e.miningState!=='gather'||e.oreId!==ore.id;
+        const valid=p=>p&&Math.hypot(p.x-ore.x,p.y-ore.y)<=160&&this.destination(e,p.x,p.y,{remaining:1});
+        let entrance=!changing&&valid(e.mineApproach)?e.mineApproach:null;
+        if(!entrance){
+          const preferred={x:ore.x-75,y:ore.y+35};
+          if(valid(preferred))entrance=preferred;
+          else for(let ring=0;ring<4&&!entrance;ring++){
+            const candidates=[];for(let i=0;i<24;i++){const a=i*Math.PI/12,r=84+24*ring,p={x:ore.x+Math.cos(a)*r,y:ore.y+Math.sin(a)*r};if(valid(p))candidates.push(p);}
+            candidates.sort((a,b)=>dist(e,a)-dist(e,b));entrance=candidates[0]||null;
+          }
+          e.mineApproach=entrance;e.path=[];e.order=null;
+        }
         e.oreId=ore.id;
+        if(!entrance){e.miningState='blocked';return;}
         if(dist(e,entrance)<32){e.order=null;e.path=[];let take=Math.min(U.harvester.harvestRate*dt,ore.amount,U.harvester.capacity-e.cargo);ore.amount-=take;e.cargo+=take;}
         else if(!e.order||changing){e.order={...entrance,attack:false};e.path=[];}
         e.miningState='gather';
@@ -1711,7 +1729,7 @@
       const e={kind,team:prod.team,r:U[kind].r,angle:.6},r=this.navigationRadius(e);
       for(let ring=0;ring<8;ring++)for(let i=0;i<24;i++){
         const a=i*Math.PI/12,rad=prod.r+r+12+ring*48,x=prod.x+Math.cos(a)*rad,y=prod.y+Math.sin(a)*rad;
-        if(root.WarNavigationFootprints.terrain(this,e,x,y)&&!this.entities.some(o=>o.hp>0&&this.navigationLayer(e,o)&&Math.hypot(o.x-x,o.y-y)<r+(o.structure?o.r:this.navigationRadius(o))+12))return{x,y};
+        if(root.WarNavigationFootprints.terrain(this,e,x,y)&&(U[kind].air||U[kind].naval||!this.ore.some(o=>Math.hypot(o.x-x,o.y-y)<48+r+4))&&!this.entities.some(o=>o.hp>0&&this.navigationLayer(e,o)&&Math.hypot(o.x-x,o.y-y)<r+(o.structure?o.r:this.navigationRadius(o))+12))return{x,y};
       }
       return null;
     }

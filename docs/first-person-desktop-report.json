@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-19T16:04:34.563Z",
+  "recordedAt": "2026-10-19T17:46:59.657Z",
   "environment": "Packaged Electron",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
@@ -848,7 +848,7 @@
       },
       "after": {
         "x": 700,
-        "y": 825.2000000000002,
+        "y": 821.6000000000001,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -857,13 +857,13 @@
       "key": "KeyA",
       "before": {
         "x": 700,
-        "y": 825.2000000000002,
+        "y": 821.6000000000001,
         "yaw": 0,
         "pitch": -0.025
       },
       "after": {
         "x": 700,
-        "y": 803.6,
+        "y": 800,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -876,7 +876,7 @@
     "view": "infantry"
   },
   "ai": {
-    "calls": 4,
+    "calls": 1,
     "production": 2,
     "construction": 1,
     "othersOrdered": 1,
@@ -895,7 +895,7 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 23.800000000000203,
+      "hitAt": 23.5500000000002,
       "sourceId": 346,
       "targetId": 347,
       "damage": 74
@@ -904,7 +904,7 @@
       "x": 745.7908,
       "y": 800,
       "sourceId": 346,
-      "time": 23.800000000000203
+      "time": 23.5500000000002
     },
     "hudConfirmed": true
   },
@@ -981,7 +981,7 @@
     }
   ],
   "nativeFocus": {
-    "recordedAt": "2026-10-19T16:05:28.547Z",
+    "recordedAt": "2026-10-19T17:47:52.775Z",
     "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
     "nativeBefore": {
       "fullScreen": true,
@@ -997,10 +997,10 @@
       "events": [
         {
           "trusted": true,
-          "at": 53025.60000014305
+          "at": 52176.09999990463
         }
       ],
-      "locked": false,
+      "locked": true,
       "keys": 0,
       "fire": false,
       "input": {

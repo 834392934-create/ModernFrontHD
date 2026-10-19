@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-18T17:22:33.588Z",
+  "recordedAt": "2026-10-19T17:48:46.983Z",
   "errors": [],
   "scope": "96 moving mixed ground units, 8-second native fullscreen sample; CPU route completion covered separately.",
   "setup": {
@@ -15,10 +15,10 @@
     ],
     "dpr": 1.25,
     "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-    "frames": 371,
-    "durationMs": 8018.199999952316,
-    "meanFPS": 46.26973635007936,
-    "p95FrameMs": 22.300000000000182,
+    "frames": 370,
+    "durationMs": 8016.200000000001,
+    "meanFPS": 46.15653302063321,
+    "p95FrameMs": 22.399999999999636,
     "entities": 98,
     "movingUnits": 96,
     "progressed": 96,

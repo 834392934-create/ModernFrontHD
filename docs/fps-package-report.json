@@ -1,9 +1,9 @@
 {
-  "recordedAt": "2026-10-19T16:06:39.608Z",
-  "version": "3.8.2",
-  "sha256Matches": 689,
+  "recordedAt": "2026-10-19T17:50:16.998Z",
+  "version": "3.9.0",
+  "sha256Matches": 690,
   "portraits": 588,
-  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.8.2\\ModernFrontHD.exe",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.9.0\\ModernFrontHD.exe",
   "runtimeChecks": [
     "desktop-report.json",
     "expanded-desktop-report.json",
@@ -24,7 +24,8 @@
     "single-soldier-desktop-report.json",
     "render-pass-stats-desktop-report.json",
     "render-cache-desktop-report.json",
-    "fps-ballistics-desktop-report.json"
+    "fps-ballistics-desktop-report.json",
+    "vehicle-camera-desktop-report.json"
   ],
   "mismatches": []
 }

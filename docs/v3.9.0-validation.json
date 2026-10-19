@@ -1,0 +1,129 @@
+{
+  "version": "3.9.0",
+  "recordedAt": "2026-10-19T17:50:16.100Z",
+  "cpu": {
+    "passed": 545,
+    "failed": 0,
+    "command": "npm test"
+  },
+  "camera": {
+    "vehicles": 69,
+    "personnel": 8,
+    "domains": 5,
+    "realRelativeMouse": true,
+    "muzzleOcclusion": true,
+    "boomOcclusion": true,
+    "nativeBlur": true,
+    "sourceHashes": {
+      "src/direct-control.js": "ec149be520ec7b201fae3740d061f6a6d90749409297554c3e14c9e932a2802f",
+      "src/vehicle-camera.js": "97eb37852c014549296515d246a10930cf591f88196362932fd1e84eda73cd2d",
+      "src/battle3d.js": "d1edae257cdd85505bfa9a53707dfa417bc68babbbac59a84786d3f55ed4256c",
+      "src/app.js": "85f93c42cc59fc47a4ef1959851e42fccf8ce01ec67121b2577a485c7f03e0fd",
+      "src/sim.js": "dbb1da3df3ac654cfee4d10cedcdf014e47150a0ae86ea3137a1e5bcf688e29f",
+      "src/navigation-footprints.js": "4775176fce696c5bcd82ac22db5ce321a82f340ee2d6e516247599b3a8ae815c",
+      "src/crowd-navigation.js": "9ff2ad94ca72ceb7af661529529533e19eb47af55b8ee53e93a4e5d4f1d83904",
+      "index.html": "0d103a180a86f9be3aa96536d550f5a89afed3fcdf2f9de21ce10161337b2177",
+      "style.css": "150c5842cb6fac70871c3b6c3bad4317dfb8f50390dbfac165ad1852c8cfb8a5"
+    }
+  },
+  "navigation": {
+    "rosterTypes": 77,
+    "newTests": 26,
+    "collisionPreserved": true,
+    "sealedTerrainNeedsPassage": true
+  },
+  "freshReports": {
+    "vehicle-camera-desktop-report.json": {
+      "recordedAt": "2026-10-19T17:41:12.370Z",
+      "passed": true,
+      "checks": [
+        "69 种载具 C 外视角与返回、完整模型投影；8 种人员保持第一人称",
+        "C 外视角真实相对鼠标右/上移动改变 yaw/pitch 与渲染相机方向；实测可信事件增量符合输入灵敏度",
+        "地面/水面/水下/空中/轨道：移动、独立开火、RMB/V临时光学、滚轮、长按C、暂停、失锁及F返回人员",
+        "外视角真实敌模型命中扣血；相机可见而枪口被遮挡时不穿透",
+        "真实世界遮挡几何使跟随相机收近且不进入墙内，移除后恢复距离",
+        "J 换乘、E 退出和死亡均复位；大舰窄屏/宽屏重新取景",
+        "真实原生最小化/恢复触发可信 blur；清除移动/开火/临时光学，保留外视角且不自动续行"
+      ],
+      "appVersion": "3.9.0"
+    },
+    "fps-ballistics-desktop-report.json": {
+      "recordedAt": "2026-10-19T17:43:44.219Z",
+      "passed": true,
+      "checks": [
+        "1600×1000 与 1024×720 实际画布/准星中心误差均小于 1 px",
+        "operator：24 组真实左键发射，地图中心/西北边缘 × 3 朝向 × 4 俯仰，按公开散布阈值验证",
+        "发射端点保持冻结；转头前后世界插值弹头投影均与独立计算一致",
+        "infantry：24 组真实左键发射，地图中心/西北边缘 × 3 朝向 × 4 俯仰，按公开散布阈值验证"
+      ],
+      "appVersion": "3.9.0"
+    },
+    "first-person-desktop-report.json": {
+      "recordedAt": "2026-10-19T17:46:59.657Z",
+      "passed": true,
+      "checks": [
+        "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
+        "M toggles and restores the optional motion setting through keyboard input",
+        "Mouse look, right-button ADS narrows camera FOV, release restores aim, and P freezes simulation and clears movement/fire",
+        "Escape exits driving and returns strategy camera without opening settings",
+        "All 77 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked",
+        "AI builds, trains and orders other units during possession, excludes the driver, and stops new AI calls after E exits",
+        "Real left-click mesh-target shot reduces enemy HP and confirms actual source damage; a subsequent sky miss produces no hit marker",
+        "A real manual projectile remains tied to its recorded impact area: relocating the target during flight causes no remote damage or hit marker",
+        "Camera sees target while model-muzzle or conservative-body origin hits cover: new missile vehicle, legacy Chinese tank and unanchored IMP tank all deal zero damage and no hit confirmation",
+        "Real packaged fullscreen=true; minimizing with W+fire held clears keys and simulation input; restoring/focusing does not resume movement or fire"
+      ]
+    },
+    "fps-upgrade-desktop-report.json": {
+      "recordedAt": "2026-10-19T17:47:54.437Z",
+      "passed": true,
+      "checks": [
+        "Default stationary infantry camera, body and foreground remain unchanged without input",
+        "Real Space jumps once while held; P freezes airborne physics; paused mouse clicks never enter RTS capture; resumes to ground",
+        "FPS minimap stays visible and updates detection; hidden enemy omitted, revealed enemy drawn, own heading marker distinct",
+        "Invalid local save through the real load API leaves the current FPS session intact",
+        "Roster refresh preserves focused card; Tab stays inside; closing search restores RTS Space shortcut",
+        "Real help dialog traps Tab and Escape restores the preceding pause state",
+        "真实锁定鼠标：右移右转、左移左转；上推下降、下拉爬升，HUD说明一致",
+        "J clears aircraft movement and desired turn; relock does not restore an obsolete target heading",
+        "Live FPS minimap respects sonar-only submarine contact and hides it after EMP"
+      ]
+    },
+    "orbit-scope-desktop-report.json": {
+      "recordedAt": "2026-10-19T17:48:10.767Z",
+      "passed": true,
+      "checks": [
+        "4000u真实V/G/滚轮变焦、地面命中、位置/高度/射程保持、小地图与状态HUD常驻",
+        "换乘菜单清除射击输入并阻止滚轮偷改倍率；V可收起瞄准",
+        "12000u真实V/G/滚轮变焦、地面命中、位置/高度/射程保持、小地图与状态HUD常驻",
+        "大于3200u模型可见但超射程不扣血；关闭全图视野后仍遵守战争迷雾",
+        "换乘菜单清除射击输入并阻止滚轮偷改倍率；V可收起瞄准",
+        "截击舰可观察地面但真实开火不能损伤不适配目标",
+        "F紧急离舱保持人员第一人称并解除光学模式，人员滚轮切枪继续可用"
+      ]
+    },
+    "arrival-animation-desktop-report.json": {
+      "recordedAt": "2026-10-19T17:48:33.808Z",
+      "passed": true,
+      "checks": [
+        "All 462 runtime models, including ready GLB assets, fit their navigation envelopes",
+        "Land, sea, underwater, air and orbital three-batch arrivals settle with model clearance",
+        "Eight personnel kinds render independent 13-bone gait and freeze at paused simulation time",
+        "Six mixed full-size ships settle by a coastal corner, with complete hulls on water"
+      ]
+    },
+    "crowd-desktop-report.json": {
+      "recordedAt": "2026-10-19T17:48:46.983Z",
+      "passed": true
+    },
+    "desktop-report.json": {
+      "passed": true,
+      "appVersion": "3.9.0"
+    }
+  },
+  "limits": [
+    "Precise enemy-mesh/cover aim is arranged programmatically; LMB and separate relative mouse movement use real input.",
+    "No new model geometry, no new rendering backend, no whole-game FPS improvement claim.",
+    "Native crowd sample is short; full route completion is checked in controlled CPU cases."
+  ]
+}

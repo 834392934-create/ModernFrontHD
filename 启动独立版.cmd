@@ -1,7 +1,7 @@
 @echo off
 cd /d "%~dp0"
-if exist "release\ModernFrontHD-3.8.2\ModernFrontHD.exe" (
- start "" "release\ModernFrontHD-3.8.2\ModernFrontHD.exe"
+if exist "release\ModernFrontHD-3.9.0\ModernFrontHD.exe" (
+ start "" "release\ModernFrontHD-3.9.0\ModernFrontHD.exe"
 ) else if exist "release\ModernFrontHD\ModernFrontHD.exe" (
  start "" "release\ModernFrontHD\ModernFrontHD.exe"
 ) else (

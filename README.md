@@ -1,14 +1,22 @@
-# 现代战线 HD · 3.8.2
+# 现代战线 HD · 3.9.0
 
 可离线运行的三维即时战略遭遇战。项目位于 `D:\现代战线HD`；原参考目录 `D:\红警\2024` 未修改。
 
 ## 启动
 
-双击 **启动独立版.cmd**，或 **启动游戏.cmd**。当前新版位于 `release/ModernFrontHD-3.8.2/ModernFrontHD.exe`，需保留整个同名目录；启动器优先新版，找不到时回退到原 `release/ModernFrontHD`。旧程序运行中可并列构建新版，正在进行的对局继续运行。默认全屏，F11切换全屏，Tab隐藏/恢复作战界面，无需另外安装 Node.js 或浏览器。
+双击 **启动独立版.cmd**，或 **启动游戏.cmd**。当前新版位于 `release/ModernFrontHD-3.9.0/ModernFrontHD.exe`，需保留整个同名目录；启动器优先新版，找不到时回退到原 `release/ModernFrontHD`。旧程序运行中可并列构建新版，正在进行的对局继续运行。默认全屏，F11切换全屏，Tab隐藏/恢复作战界面，无需另外安装 Node.js 或浏览器。
 
 独立窗口使用Electron + Three.js WebGL；不是Unreal/DirectX引擎重写。资源全部本地加载，不要求账号、服务器或联网AI。浏览器兼容入口保留为 `play.ps1` 或 `index.html`。
 
 `release/ModernFrontHD-portable.zip` 是浏览器兼容包，不含独立版运行时；本机优先使用上面的EXE目录。
+
+## 3.9.0 车外驾驶与建筑绕行
+
+- 驾驶载具时 **C** 切换第一人称 / 车外跟随；适用地面、水面、水下、航空、轨道及矿车。人员保留第一人称。
+- 车外按实际模型包络和窗口宽高取景，显示原战场载具、旋翼和炮塔；飞机跟随镜头保持地平线稳定。后方建筑、地形和存活树木遮挡时收近镜头，水下镜头限制在海面以下。
+- **右键仅瞄准、左键开火**。车外按住右键或 V 观察时进入原光学视角，收起后恢复车外；滚轮变焦、目标射程、枪口遮挡不变。F 上下车、J 换乘、E 返回和单位失效会复位内外视角。
+- 自动寻路按单位尺寸和高度层避让己方建筑；途中新建筑占据落点时重选邻近合法位置。矿车改选合法矿口、生产出口避开矿堆。完全封死的地形仍需留通道。
+- 本轮改善驾驶呈现与导航，不修改装备模型几何、不宣称新增真实装备还原或更高帧率。验收范围见 [验证记录](docs/VALIDATION.md)。
 
 ## 3.8.2 弹道与瞄准修复
 
@@ -25,7 +33,7 @@
 
 RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU 绘制提交从 6.17 降到 3.98 ms，半数行走时从 5.66 降到 4.11 ms；两版帧率均约 50 FPS。492 项 CPU 测试及本轮原生回归通过。范围和完整证据见 [验证记录](docs/VALIDATION.md)；不将短样本外推到大型长局。
 
-本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.8.2`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
+本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.9.0`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
 
 ## 第一人称瞄准与单兵作战
 
@@ -246,7 +254,7 @@ RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU
 npm test
 # 首次构建独立版需要联网下载官方运行时：
 powershell -File tools/fetch-desktop-runtime.ps1
-powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.8.2
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.9.0
 node server.cjs
 # 第二终端；需要已有Playwright或设置PLAYWRIGHT_MODULE：
 node tests/gallery.cjs
@@ -266,7 +274,7 @@ node tests/performance3d.cjs --desktop
 node tools/capture-model-review.cjs tank_chn tank_usa
 node tools/bake-portraits.cjs
 node tools/export-model-inventory.cjs
-powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.8.2
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.9.0
 ```
 
 游戏运行不需要开发工具。报告见 [验证记录](docs/VALIDATION.md)，真实截图在 `screenshots/`。
