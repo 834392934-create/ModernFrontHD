@@ -1,0 +1,37 @@
+{
+  "recordedAt": "2026-10-19T01:52:39.549Z",
+  "baseline": "2de5cd59e2cae1b066393e0f175a40c59464df47",
+  "node": "v24.14.0",
+  "cpu": "12th Gen Intel(R) Core(TM) i5-12400F",
+  "count": 2040,
+  "idleFrames": 20,
+  "movingFrames": 5,
+  "variants": 48,
+  "results": {
+    "baseline": {
+      "idle": {
+        "milliseconds": 1216.3622000000005,
+        "vectorClones": 1387200,
+        "ikRotations": 326400
+      },
+      "moving": {
+        "milliseconds": 324.4874,
+        "vectorClones": 346800,
+        "ikRotations": 81600
+      }
+    },
+    "optimized": {
+      "idle": {
+        "milliseconds": 18.547099999999773,
+        "vectorClones": 0,
+        "ikRotations": 0
+      },
+      "moving": {
+        "milliseconds": 131.53149999999914,
+        "vectorClones": 0,
+        "ikRotations": 81600
+      }
+    }
+  },
+  "scope": "CPU animation update only, single measured batch per case, clone/IK wrappers active; excludes construction, rendering, GPU, scene matrix uploads, and full-game simulation. Timings are observations, not FPS gains or a timing test threshold."
+}

@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-18T17:21:16.416Z",
+  "recordedAt": "2026-10-19T01:56:50.186Z",
   "environment": "Packaged Electron",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
@@ -895,7 +895,7 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 22.95000000000019,
+      "hitAt": 23.150000000000194,
       "sourceId": 346,
       "targetId": 347,
       "damage": 74
@@ -904,7 +904,7 @@
       "x": 700,
       "y": 800,
       "sourceId": 346,
-      "time": 22.95000000000019
+      "time": 23.150000000000194
     },
     "hudConfirmed": true
   },
@@ -981,7 +981,7 @@
     }
   ],
   "nativeFocus": {
-    "recordedAt": "2026-10-18T17:22:09.115Z",
+    "recordedAt": "2026-10-19T01:57:44.192Z",
     "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
     "nativeBefore": {
       "fullScreen": true,
@@ -989,7 +989,7 @@
       "minimized": false
     },
     "nativeBlurred": {
-      "focused": true,
+      "focused": false,
       "minimized": true
     },
     "blurred": {
@@ -997,7 +997,7 @@
       "events": [
         {
           "trusted": true,
-          "at": 51739.299999952316
+          "at": 52998.09999990463
         }
       ],
       "locked": false,
@@ -1017,9 +1017,9 @@
         "jump": false,
         "targetId": null,
         "targetTreeId": null,
-        "aimX": 825,
+        "aimX": 1111.9141635668075,
         "aimY": 800,
-        "aimHeight": 0
+        "aimHeight": -0.800000011920929
       },
       "position": [
         700,

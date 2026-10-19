@@ -1,0 +1,268 @@
+{
+  "recordedAt": "2026-10-19T02:02:44.418Z",
+  "version": "3.8.1",
+  "baselineCommit": "2de5cd59e2cae1b066393e0f175a40c59464df47",
+  "request": "只用本机，先吸收 StreamRender-H3 可落地的优化方法",
+  "implementation": [
+    "Stable idle skeleton reuse and scratch-vector reuse with state invalidation",
+    "Per-instance animated-part lookup cache; skip unused FPS tactical projection",
+    "Reuse fog pixel buffer, revision guard, upload only changed pixels",
+    "Versioned native release and isolated acceptance profile"
+  ],
+  "h3ModelInstalled": false,
+  "newRuntimeDependencies": [],
+  "cpu": {
+    "command": "npm test",
+    "tests": 492,
+    "passed": 492,
+    "failed": 0,
+    "durationMs": 30491.355,
+    "log": "docs/simulation-tests.txt"
+  },
+  "differential": {
+    "baseline": "2de5cd59e2cae1b066393e0f175a40c59464df47",
+    "variants": 48,
+    "trajectoryFrames": 199,
+    "comparisons": 5129424,
+    "maxError": 0,
+    "includes": "local bones, world bone matrices, uploaded skeleton matrices, foot target/world/start, gait state"
+  },
+  "animationMicrobenchmark": "docs/personnel-animation-cache-benchmark.json",
+  "freshReports": [
+    {
+      "file": "docs/first-person-desktop-report.json",
+      "recordedAt": "2026-10-19T01:56:50.186Z",
+      "passed": true,
+      "checks": [
+        "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
+        "M toggles and restores the optional motion setting through keyboard input",
+        "Mouse look, right-button ADS narrows camera FOV, release restores aim, and P freezes simulation and clears movement/fire",
+        "Escape exits driving and returns strategy camera without opening settings",
+        "All 77 unit kinds enter/exit through E (harvester uses real click selection); domain foreground and self-model hiding checked",
+        "AI builds, trains and orders other units during possession, excludes the driver, and stops new AI calls after E exits",
+        "Real left-click mesh-target shot reduces enemy HP and confirms actual source damage; a subsequent sky miss produces no hit marker",
+        "A real manual projectile remains tied to its recorded impact area: relocating the target during flight causes no remote damage or hit marker",
+        "Camera sees target while model-muzzle or conservative-body origin hits cover: new missile vehicle, legacy Chinese tank and unanchored IMP tank all deal zero damage and no hit confirmation",
+        "Real packaged fullscreen=true; minimizing with W+fire held clears keys and simulation input; restoring/focusing does not resume movement or fire"
+      ],
+      "possession": 77
+    },
+    {
+      "file": "docs/single-soldier-desktop-report.json",
+      "recordedAt": "2026-10-19T01:57:45.979Z",
+      "passed": true,
+      "checks": [
+        "48个最终模型均为独立单人、13骨骼、有限材质与归一化蒙皮权重",
+        "真实鼠标只选择并移动一个兵；其余兵静止、伤害生命独立、保存重载身份保持、暂停不漂移",
+        "实际r.draw验证八角色位移驱动、暂停姿态冻结和停步归位"
+      ],
+      "models": 48
+    },
+    {
+      "file": "docs/fps-upgrade-desktop-report.json",
+      "recordedAt": "2026-10-19T01:57:55.241Z",
+      "passed": true,
+      "checks": [
+        "Default stationary infantry camera, body and foreground remain unchanged without input",
+        "Real Space jumps once while held; P freezes airborne physics; paused mouse clicks never enter RTS capture; resumes to ground",
+        "FPS minimap stays visible and updates detection; hidden enemy omitted, revealed enemy drawn, own heading marker distinct",
+        "Invalid local save through the real load API leaves the current FPS session intact",
+        "Roster refresh preserves focused card; Tab stays inside; closing search restores RTS Space shortcut",
+        "Real help dialog traps Tab and Escape restores the preceding pause state",
+        "真实锁定鼠标：右移右转、左移左转；上推下降、下拉爬升，HUD说明一致",
+        "J clears aircraft movement and desired turn; relock does not restore an obsolete target heading",
+        "Live FPS minimap respects sonar-only submarine contact and hides it after EMP"
+      ]
+    },
+    {
+      "file": "docs/desktop-report.json",
+      "recordedAt": "2026-10-19T02:02:17.981Z",
+      "passed": true,
+      "checks": [],
+      "appVersion": "3.8.1"
+    },
+    {
+      "file": "docs/upgrade-browser-report.json",
+      "recordedAt": "2026-10-19T02:02:04.559Z",
+      "passed": true,
+      "checks": [
+        "licensed T-90M, ship and AH-64 load from embedded GLB with preserved materials",
+        "desktop deployment, six factions, four AI difficulties, real WebGL battlefield",
+        "3D picking and right-click move through real pointer input",
+        "Shift appends waypoints",
+        "formation and retreat commands",
+        "production rally via selecting factory and right-click",
+        "independent live AI space permission",
+        "night, quality and immersive HUD restoration",
+        "narrow layout without horizontal overflow",
+        "offline file startup, embedded textures/models, zero HTTP requests",
+        "all factions start in new renderer"
+      ]
+    },
+    {
+      "file": "docs/render-cache-desktop-report.json",
+      "recordedAt": "2026-10-19T01:55:37.009Z",
+      "passed": true,
+      "checks": []
+    }
+  ],
+  "performance": {
+    "report": "docs/render-cache-desktop-report.json",
+    "runtime": {
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "viewport": [
+        2752,
+        1152
+      ],
+      "drawingBuffer": [
+        3440,
+        1440
+      ],
+      "dpr": 1.25,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.8.1 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36"
+    },
+    "samples": [
+      {
+        "mode": "128-idle-personnel",
+        "before": {
+          "mode": "128-idle-personnel",
+          "durationMs": 8000.799999952316,
+          "frames": 401,
+          "meanFPS": 50.11998800149859,
+          "p95FrameMs": 20.199999999999818,
+          "meanDrawSubmitMs": 6.17107230885665,
+          "p95DrawSubmitMs": 11,
+          "animationMs": 279.4000012874603,
+          "animationCalls": 51328,
+          "vectorClones": 700672,
+          "fogUploads": 161,
+          "imageAllocations": 161,
+          "simulationTicks": 161,
+          "entities": 130,
+          "personnel": 128,
+          "finite": true,
+          "stats": {
+            "calls": 267,
+            "triangles": 1537520,
+            "foregroundCalls": 0,
+            "foregroundTriangles": 0,
+            "visibleEntities": 128,
+            "geometries": 131
+          }
+        },
+        "after": {
+          "mode": "128-idle-personnel",
+          "durationMs": 8004.2999998569485,
+          "frames": 401,
+          "meanFPS": 50.09807228704154,
+          "p95FrameMs": 20.100000000000364,
+          "meanDrawSubmitMs": 3.9783042321478637,
+          "p95DrawSubmitMs": 5.5,
+          "animationMs": 20.3999981880188,
+          "animationCalls": 51328,
+          "vectorClones": 0,
+          "fogUploads": 0,
+          "imageAllocations": 0,
+          "simulationTicks": 161,
+          "entities": 130,
+          "personnel": 128,
+          "finite": true,
+          "stats": {
+            "calls": 267,
+            "triangles": 1537520,
+            "foregroundCalls": 0,
+            "foregroundTriangles": 0,
+            "visibleEntities": 128,
+            "geometries": 131
+          }
+        }
+      },
+      {
+        "mode": "64-idle-64-moving-personnel",
+        "before": {
+          "mode": "64-idle-64-moving-personnel",
+          "durationMs": 8014.300000047682,
+          "frames": 401,
+          "meanFPS": 50.035561433639145,
+          "p95FrameMs": 20.100000000002183,
+          "meanDrawSubmitMs": 5.663840393175805,
+          "p95DrawSubmitMs": 10.199999809265137,
+          "animationMs": 239.10000944137573,
+          "animationCalls": 51328,
+          "vectorClones": 700672,
+          "fogUploads": 161,
+          "imageAllocations": 161,
+          "simulationTicks": 161,
+          "entities": 130,
+          "personnel": 128,
+          "finite": true,
+          "stats": {
+            "calls": 267,
+            "triangles": 1537520,
+            "foregroundCalls": 0,
+            "foregroundTriangles": 0,
+            "visibleEntities": 128,
+            "geometries": 131
+          }
+        },
+        "after": {
+          "mode": "64-idle-64-moving-personnel",
+          "durationMs": 8014.500000047683,
+          "frames": 401,
+          "meanFPS": 50.03431280773775,
+          "p95FrameMs": 20.100000000002183,
+          "meanDrawSubmitMs": 4.105236912011506,
+          "p95DrawSubmitMs": 6,
+          "animationMs": 137.7000002861023,
+          "animationCalls": 51328,
+          "vectorClones": 0,
+          "fogUploads": 27,
+          "imageAllocations": 0,
+          "simulationTicks": 161,
+          "entities": 130,
+          "personnel": 128,
+          "finite": true,
+          "stats": {
+            "calls": 267,
+            "triangles": 1537520,
+            "foregroundCalls": 0,
+            "foregroundTriangles": 0,
+            "visibleEntities": 128,
+            "geometries": 131
+          }
+        }
+      }
+    ],
+    "scope": "Two sequential fixed 8-second scenes after warmup; 128 personnel plus two bases; no lowering of quality, resolution, calls or triangle count. CPU draw-submit is not isolated GPU completion. Original player game and other GPU applications remained open, so this is not an isolated GPU benchmark. No measured FPS improvement and no sustained-combat claim."
+  },
+  "release": {
+    "executable": "D:/现代战线HD/release/ModernFrontHD-3.8.1/ModernFrontHD.exe",
+    "nativeVersion": "3.8.1",
+    "testProfile": "D:\\现代战线HD\\.tmp\\native-profile-v381-fresh-final",
+    "launchers": [
+      "启动独立版.cmd",
+      "启动游戏.cmd"
+    ],
+    "oldRunningGamePreserved": true,
+    "consistencyReport": "docs/fps-package-report.json"
+  },
+  "sourceSha256": {
+    "src/battle3d.js": "09c62030a8adb9c1389ae86ee130fd0f815ca771c92cb3181217bb4cf2cacfa2",
+    "src/personnel-animation.js": "eb6a241f32ff57664d5793b36377d30f43d1afbc29a7c5cf010527c5eda2df36",
+    "src/sim.js": "559defbd6da900f3a67054c18296f1b1781d60ea97252d77a5ad653697c4bbd6",
+    "desktop/main.cjs": "96d0875472e448019508974d78830f9602f6ea81ac9aa313641082a61c22d495",
+    "tests/fog-cache.test.cjs": "5178a644ffd98b3f29a0eaf777bf9ea0b7dfcb19ef805676204975a958905539",
+    "tests/personnel-animation-cache.test.cjs": "93e1fee7dadefb6c537de33355bc25494eaa7f594c1c8b0223d03e3a5aa2feb0",
+    "tests/render-object-cache.test.cjs": "c83595218f240bf25631dbeb767f49a525c525b22c0c6b11d7d6975da720bba7",
+    "tests/render-cache-desktop.cjs": "0f37672c68c32e21d49160a12e3c69cda7e6b01103fb90cc1708e697a98d3470",
+    "tests/desktop-path.cjs": "f266eba5028723cc2384ed4251be9ca6956662027dbc64cefa78fb45a5507c10",
+    "tests/package-consistency.cjs": "bde8c6ea627b6de13b861ef20f3756194219abcde92a0b6573acaf0abe2da254",
+    "tests/upgrade.cjs": "2f92656dddef4f983e9f6ff7c07cf8e99d069648589b2a30c068c1501dfcd399",
+    "build-desktop.ps1": "382c7a87ed85d4d1728b9ea604d8fcbcd9adf3d6a215cfda81004d954dd98b69"
+  },
+  "limits": [
+    "No H3 weights, AI upscaling, ray tracing or new art assets in this patch.",
+    "The differential development test reads a fixed prior commit and requires the repository Git history; the game itself does not require Git.",
+    "Package consistency also examines historical reports; only freshReports above were rerun this turn."
+  ]
+}

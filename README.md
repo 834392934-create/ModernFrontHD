@@ -1,14 +1,24 @@
-# 现代战线 HD · 3.8.0
+# 现代战线 HD · 3.8.1
 
 可离线运行的三维即时战略遭遇战。项目位于 `D:\现代战线HD`；原参考目录 `D:\红警\2024` 未修改。
 
 ## 启动
 
-双击 **启动独立版.cmd**，或 **启动游戏.cmd**。发布程序是 `release/ModernFrontHD/ModernFrontHD.exe`，需保留整个同名目录。默认全屏，无浏览器地址栏，无需另外安装Node.js或浏览器。F11切换全屏，Tab隐藏/恢复作战界面。
+双击 **启动独立版.cmd**，或 **启动游戏.cmd**。当前新版位于 `release/ModernFrontHD-3.8.1/ModernFrontHD.exe`，需保留整个同名目录；启动器优先新版，找不到时回退到原 `release/ModernFrontHD`。旧程序运行中可并列构建新版，正在进行的对局继续运行。默认全屏，F11切换全屏，Tab隐藏/恢复作战界面，无需另外安装 Node.js 或浏览器。
 
 独立窗口使用Electron + Three.js WebGL；不是Unreal/DirectX引擎重写。资源全部本地加载，不要求账号、服务器或联网AI。浏览器兼容入口保留为 `play.ps1` 或 `index.html`。
 
 `release/ModernFrontHD-portable.zip` 是浏览器兼容包，不含独立版运行时；本机优先使用上面的EXE目录。
+
+## 3.8.1 本机渲染计算优化
+
+- 按用户确认的本机路线，借鉴 StreamRender-H3 的缓存、减少重复分配和固定场景验证方法。没有下载或运行 H3 模型，没有增加网络依赖；本机仍使用 Three.js 绘制真实游戏模型。硬件、源码及适配边界见 [官方资料评估](docs/reviews/streamrender-h3-evaluation.md)。
+- 静止士兵完成停姿后复用骨骼结果，行走求解器复用临时向量；转向、起步、跳跃、传送和医疗兵特殊停姿正确失效。炮塔、雷达、旋翼部件按模型实例缓存查找，第一人称省去没有使用的战术投影。
+- 迷雾像素缓冲复用，只在实际像素变化后上传纹理；同一 tick 的侦察变化、增益、换局和读档能刷新，保持原有视野规则。
+
+RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU 绘制提交从 6.17 降到 3.98 ms，半数行走时从 5.66 降到 4.11 ms；两版帧率均约 50 FPS。492 项 CPU 测试及本轮原生回归通过。范围和完整证据见 [验证记录](docs/VALIDATION.md)；不将短样本外推到大型长局。
+
+本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.8.1`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
 
 ## 3.8 右键瞄准开火与单兵作战
 
@@ -229,7 +239,7 @@
 npm test
 # 首次构建独立版需要联网下载官方运行时：
 powershell -File tools/fetch-desktop-runtime.ps1
-powershell -File build-desktop.ps1
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.8.1
 node server.cjs
 # 第二终端；需要已有Playwright或设置PLAYWRIGHT_MODULE：
 node tests/gallery.cjs
@@ -249,7 +259,7 @@ node tests/performance3d.cjs --desktop
 node tools/capture-model-review.cjs tank_chn tank_usa
 node tools/bake-portraits.cjs
 node tools/export-model-inventory.cjs
-powershell -File build-desktop.ps1
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.8.1
 ```
 
 游戏运行不需要开发工具。报告见 [验证记录](docs/VALIDATION.md)，真实截图在 `screenshots/`。

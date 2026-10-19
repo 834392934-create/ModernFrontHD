@@ -1,5 +1,11 @@
 const {app,BrowserWindow,ipcMain,shell,Menu}=require('electron');
 const path=require('node:path'),fs=require('node:fs');
+// Native acceptance runs use a separate profile so tests cannot overwrite the
+// player's saves or settings while another copy of the game remains open.
+if(process.env.MODERN_FRONT_TEST_PROFILE){
+ const testProfile=path.resolve(process.env.MODERN_FRONT_TEST_PROFILE);
+ fs.mkdirSync(testProfile,{recursive:true});app.setPath('userData',testProfile);
+}
 app.setName('现代战线 HD');
 const root=path.resolve(__dirname,'..');
 const windowed=process.argv.includes('--windowed');

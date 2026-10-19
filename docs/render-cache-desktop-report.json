@@ -1,0 +1,190 @@
+{
+  "recordedAt": "2026-10-19T01:55:37.009Z",
+  "baseline": false,
+  "scenes": [
+    {
+      "mode": "128-idle-personnel",
+      "durationMs": 8004.2999998569485,
+      "frames": 401,
+      "meanFPS": 50.09807228704154,
+      "p95FrameMs": 20.100000000000364,
+      "meanDrawSubmitMs": 3.9783042321478637,
+      "p95DrawSubmitMs": 5.5,
+      "animationMs": 20.3999981880188,
+      "animationCalls": 51328,
+      "vectorClones": 0,
+      "fogUploads": 0,
+      "imageAllocations": 0,
+      "simulationTicks": 161,
+      "entities": 130,
+      "personnel": 128,
+      "finite": true,
+      "stats": {
+        "calls": 267,
+        "triangles": 1537520,
+        "foregroundCalls": 0,
+        "foregroundTriangles": 0,
+        "visibleEntities": 128,
+        "geometries": 131
+      }
+    },
+    {
+      "mode": "64-idle-64-moving-personnel",
+      "durationMs": 8014.500000047683,
+      "frames": 401,
+      "meanFPS": 50.03431280773775,
+      "p95FrameMs": 20.100000000002183,
+      "meanDrawSubmitMs": 4.105236912011506,
+      "p95DrawSubmitMs": 6,
+      "animationMs": 137.7000002861023,
+      "animationCalls": 51328,
+      "vectorClones": 0,
+      "fogUploads": 27,
+      "imageAllocations": 0,
+      "simulationTicks": 161,
+      "entities": 130,
+      "personnel": 128,
+      "finite": true,
+      "stats": {
+        "calls": 267,
+        "triangles": 1537520,
+        "foregroundCalls": 0,
+        "foregroundTriangles": 0,
+        "visibleEntities": 128,
+        "geometries": 131
+      }
+    }
+  ],
+  "errors": [],
+  "imported": [
+    "ready",
+    "ready",
+    "ready"
+  ],
+  "runtime": {
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "viewport": [
+      2752,
+      1152
+    ],
+    "drawingBuffer": [
+      3440,
+      1440
+    ],
+    "dpr": 1.25,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.8.1 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36"
+  },
+  "before": {
+    "recordedAt": "2026-10-19T01:46:45.640Z",
+    "baseline": true,
+    "scenes": [
+      {
+        "mode": "128-idle-personnel",
+        "durationMs": 8000.799999952316,
+        "frames": 401,
+        "meanFPS": 50.11998800149859,
+        "p95FrameMs": 20.199999999999818,
+        "meanDrawSubmitMs": 6.17107230885665,
+        "p95DrawSubmitMs": 11,
+        "animationMs": 279.4000012874603,
+        "animationCalls": 51328,
+        "vectorClones": 700672,
+        "fogUploads": 161,
+        "imageAllocations": 161,
+        "simulationTicks": 161,
+        "entities": 130,
+        "personnel": 128,
+        "finite": true,
+        "stats": {
+          "calls": 267,
+          "triangles": 1537520,
+          "foregroundCalls": 0,
+          "foregroundTriangles": 0,
+          "visibleEntities": 128,
+          "geometries": 131
+        }
+      },
+      {
+        "mode": "64-idle-64-moving-personnel",
+        "durationMs": 8014.300000047682,
+        "frames": 401,
+        "meanFPS": 50.035561433639145,
+        "p95FrameMs": 20.100000000002183,
+        "meanDrawSubmitMs": 5.663840393175805,
+        "p95DrawSubmitMs": 10.199999809265137,
+        "animationMs": 239.10000944137573,
+        "animationCalls": 51328,
+        "vectorClones": 700672,
+        "fogUploads": 161,
+        "imageAllocations": 161,
+        "simulationTicks": 161,
+        "entities": 130,
+        "personnel": 128,
+        "finite": true,
+        "stats": {
+          "calls": 267,
+          "triangles": 1537520,
+          "foregroundCalls": 0,
+          "foregroundTriangles": 0,
+          "visibleEntities": 128,
+          "geometries": 131
+        }
+      }
+    ],
+    "errors": [],
+    "imported": [
+      "ready",
+      "ready",
+      "ready"
+    ],
+    "runtime": {
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "viewport": [
+        2752,
+        1152
+      ],
+      "drawingBuffer": [
+        3440,
+        1440
+      ],
+      "dpr": 1.25,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.8.0 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36"
+    },
+    "scope": "Two sequential 8-second controlled native scenes, 128 personnel and two bases. Moving half uses a repeatable 12 u/s visual trajectory. JS draw-submit timings exclude isolated GPU completion. Counters wrap real functions identically before/after; no sustained-combat or AI-render claim.",
+    "passed": true
+  },
+  "comparison": [
+    {
+      "mode": "128-idle-personnel",
+      "animationMsBefore": 279.4000012874603,
+      "animationMsAfter": 20.3999981880188,
+      "clonesBefore": 700672,
+      "clonesAfter": 0,
+      "fogUploadsBefore": 161,
+      "fogUploadsAfter": 0,
+      "imageAllocationsBefore": 161,
+      "imageAllocationsAfter": 0,
+      "meanFPSBefore": 50.11998800149859,
+      "meanFPSAfter": 50.09807228704154,
+      "p95FrameMsBefore": 20.199999999999818,
+      "p95FrameMsAfter": 20.100000000000364
+    },
+    {
+      "mode": "64-idle-64-moving-personnel",
+      "animationMsBefore": 239.10000944137573,
+      "animationMsAfter": 137.7000002861023,
+      "clonesBefore": 700672,
+      "clonesAfter": 0,
+      "fogUploadsBefore": 161,
+      "fogUploadsAfter": 27,
+      "imageAllocationsBefore": 161,
+      "imageAllocationsAfter": 0,
+      "meanFPSBefore": 50.035561433639145,
+      "meanFPSAfter": 50.03431280773775,
+      "p95FrameMsBefore": 20.100000000002183,
+      "p95FrameMsAfter": 20.100000000002183
+    }
+  ],
+  "scope": "Two sequential 8-second controlled native scenes, 128 personnel and two bases. Moving half uses a repeatable 12 u/s visual trajectory. JS draw-submit timings exclude isolated GPU completion. Counters wrap real functions identically before/after; no sustained-combat or AI-render claim.",
+  "passed": true
+}

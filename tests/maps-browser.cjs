@@ -11,10 +11,10 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
     if(desktop){
       const digest=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
       for(const file of ['index.html','src/data.js','src/sim.js','src/maps-large.js'])
-        assert.equal(digest(path.join('release/ModernFrontHD/resources/app',file)),digest(file),'Stale packaged map source: '+file);
+        assert.equal(digest(path.join(require('./desktop-path.cjs').appRoot,file)),digest(file),'Stale packaged map source: '+file);
       report.packageSourceMatch=true;
     }
-    host=desktop?await _electron.launch({executablePath:path.resolve('release/ModernFrontHD/ModernFrontHD.exe'),args:[],timeout:45000}):await chromium.launch({headless:true,channel:'chromium'});
+    host=desktop?await _electron.launch({executablePath:require('./desktop-path.cjs').executable,args:[],timeout:45000}):await chromium.launch({headless:true,channel:'chromium'});
     page=desktop?await host.firstWindow():await host.newPage({viewport:{width:1600,height:1000}});
     page.on('pageerror',e=>report.errors.push(e.message));
     page.on('console',m=>{if(m.type()==='error')report.errors.push(m.text());});

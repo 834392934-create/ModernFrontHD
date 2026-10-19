@@ -38,6 +38,9 @@
  }
  function attach(model){
   const people=[];for(const person of model.children.filter(x=>x.name.startsWith('personnel_'))){
+   // A released instance may be used again. Reuse its immutable mesh assets,
+   // but remove the disposed skeleton before attaching independent new bones.
+   const previous=person.getObjectByName('personnelRig');if(previous){for(const src of [...previous.children])if(src.isSkinnedMesh){const mesh=new T.Mesh(src.geometry,src.material);mesh.name=src.name;mesh.userData={...src.userData};person.add(mesh);}const marker=previous.getObjectByName('muzzle')||previous.getObjectByName('servicePoint');if(marker)person.add(marker);person.remove(previous);}
    const rig=new T.Group();rig.name='personnelRig';const bones=rest.map((v,i)=>{const bone=new T.Bone();bone.name=names[i];bone.position.copy(v).sub(parents[i]<0?new T.Vector3():rest[parents[i]]);return bone;});
    bones.forEach((bone,i)=>{if(parents[i]<0)rig.add(bone);else bones[parents[i]].add(bone);});
    const meshes=[];for(const src of [...person.children]){if(!src.isMesh)continue;const mesh=new T.SkinnedMesh(src.geometry,src.material);mesh.name=src.name;mesh.userData={...src.userData};mesh.castShadow=mesh.receiveShadow=true;mesh.frustumCulled=false;
@@ -50,21 +53,24 @@
    const feet=[0,1].map(side=>({phase:0,planted:false,world:new T.Vector3(),start:new T.Vector3(),target:rest[side?6:3].clone(),stance:false}));
    people.push({person,bones,skeleton,feet});
   }
-  const state={people,x:null,y:null,time:null,phase:0,distance:0,moving:false,jumping:false,settle:1,teleports:0,scale:model.userData.scale||5.6};states.set(model,state);return state;
+  const scratch={delta:new T.Vector3(),bend:new T.Vector3(),thigh:new T.Vector3(),calf:new T.Vector3(),q1:new T.Quaternion(),q2:new T.Quaternion(),motion:new T.Vector3(),lead:new T.Vector3(),landing:new T.Vector3(),local:new T.Vector3(),hand:new T.Vector3()};
+  const state={people,scratch,poseStable:false,poseAngle:null,x:null,y:null,time:null,phase:0,distance:0,moving:false,jumping:false,settle:1,teleports:0,scale:model.userData.scale||5.6};states.set(model,state);return state;
  }
+ const chains=new Map([1,4,7,10].map(index=>{const u=rest[index+1].clone().sub(rest[index]),v=rest[index+2].clone().sub(rest[index+1]),L1=u.length(),L2=v.length();return[index,{u:u.normalize(),v:v.normalize(),L1,L2}];}));
+ const legHint=new T.Vector3(1,0,0),armHints=[new T.Vector3(0,-1,-1),new T.Vector3(0,-1,1)];
  // Two-bone inverse kinematics in model space, preserving independent hip/knee/ankle chains.
- function solve(bones,index,target,hint,bob=0){
-  const a=rest[index],b=rest[index+1],c=rest[index+2],u=b.clone().sub(a),v=c.clone().sub(b),L1=u.length(),L2=v.length();
-  const delta=target.clone().sub(a).add(new T.Vector3(0,-bob,0)),dist=clamp(delta.length(),.025,L1+L2-.0001),dir=delta.normalize();
-  const bend=hint.clone().addScaledVector(dir,-hint.dot(dir));if(bend.lengthSq()<.00001)bend.set(0,0,1);bend.normalize();
+ function solve(bones,index,target,hint,bob,scratch){
+  const {u,v,L1,L2}=chains.get(index),delta=scratch.delta.copy(target).sub(rest[index]);delta.y-=bob;
+  const dist=clamp(delta.length(),.025,L1+L2-.0001),dir=delta.normalize();
+  const bend=scratch.bend.copy(hint).addScaledVector(dir,-hint.dot(dir));if(bend.lengthSq()<.00001)bend.set(0,0,1);bend.normalize();
   const along=(dist*dist+L1*L1-L2*L2)/(2*dist),height=Math.sqrt(Math.max(0,L1*L1-along*along));
-  const thigh=dir.clone().multiplyScalar(along).addScaledVector(bend,height),calf=dir.clone().multiplyScalar(dist).sub(thigh);
-  const q1=new T.Quaternion().setFromUnitVectors(u.clone().normalize(),thigh.normalize()),worldQ2=new T.Quaternion().setFromUnitVectors(v.clone().normalize(),calf.normalize());
+  const thigh=scratch.thigh.copy(dir).multiplyScalar(along).addScaledVector(bend,height),calf=scratch.calf.copy(dir).multiplyScalar(dist).sub(thigh);
+  const q1=scratch.q1.setFromUnitVectors(u,thigh.normalize()),worldQ2=scratch.q2.setFromUnitVectors(v,calf.normalize());
   bones[index].quaternion.copy(q1);bones[index+1].quaternion.copy(q1).invert().multiply(worldQ2);bones[index+2].quaternion.copy(worldQ2).invert();
  }
- function toWorld(local,e,p,scale){const a=e.angle||0,c=Math.cos(a),s=Math.sin(a),x=(local.x+p.position.x)*scale,z=(local.z+p.position.z)*scale;return new T.Vector3(e.x+x*c-z*s,local.y*scale,e.y+x*s+z*c);}
- function toLocal(world,e,p,scale){const a=e.angle||0,c=Math.cos(a),s=Math.sin(a),x=(world.x-e.x)/scale,z=(world.z-e.y)/scale;return new T.Vector3(x*c+z*s-p.position.x,world.y/scale,-x*s+z*c-p.position.z);}
- function neutral(state,e){for(const p of state.people){for(const bone of p.bones)bone.quaternion.identity();p.bones[0].position.set(0,0,0);for(let side=0;side<2;side++){const foot=p.feet[side];foot.target.copy(rest[side?6:3]);foot.world.copy(toWorld(foot.target,e,p.person,state.scale));foot.start.copy(foot.world);foot.planted=false;foot.stance=false;}p.skeleton.update();}state.moving=false;state.jumping=false;state.settle=1;}
+ function toWorld(local,e,p,scale,out){const a=e.angle||0,c=Math.cos(a),s=Math.sin(a),x=(local.x+p.position.x)*scale,z=(local.z+p.position.z)*scale;return out.set(e.x+x*c-z*s,local.y*scale,e.y+x*s+z*c);}
+ function toLocal(world,e,p,scale,out){const a=e.angle||0,c=Math.cos(a),s=Math.sin(a),x=(world.x-e.x)/scale,z=(world.z-e.y)/scale;return out.set(x*c+z*s-p.position.x,world.y/scale,-x*s+z*c-p.position.z);}
+ function neutral(state,e){for(const p of state.people){for(const bone of p.bones)bone.quaternion.identity();p.bones[0].position.set(0,0,0);for(let side=0;side<2;side++){const foot=p.feet[side];foot.target.copy(rest[side?6:3]);toWorld(foot.target,e,p.person,state.scale,foot.world);foot.start.copy(foot.world);foot.planted=false;foot.stance=false;}p.skeleton.update();}state.moving=false;state.jumping=false;state.settle=1;state.poseStable=false;}
  function update(model,e,time){
   if(!model?.userData.personnelRig||!Number.isFinite(time))return null;
   const state=states.get(model)||attach(model);
@@ -79,29 +85,33 @@
   if(moving){state.distance+=distance;state.phase=fract(state.phase+distance/Math.max(.001,cycleLength));state.settle=0;}else state.settle=Math.min(1,state.settle+dt/.22);
   if(wasJump!==jump)for(const p of state.people)for(const foot of p.feet)foot.planted=false;
   state.moving=moving;state.jumping=jump;
-  const a=e.angle||0,localMotion=new T.Vector3(dx*Math.cos(a)+dz*Math.sin(a),0,-dx*Math.sin(a)+dz*Math.cos(a));if(localMotion.lengthSq())localMotion.normalize();else localMotion.set(1,0,0);
+  const a=e.angle||0,scratch=state.scratch;
+  // Cache only a pose actually solved for this role; medics have a distinct
+  // lowered-arm rest pose. Keep simulation bookkeeping above this fast path.
+  if(state.poseStable&&!moving&&!jump&&state.settle>=1&&a===state.poseAngle)return state;
+  const localMotion=scratch.motion.set(dx*Math.cos(a)+dz*Math.sin(a),0,-dx*Math.sin(a)+dz*Math.cos(a));if(localMotion.lengthSq())localMotion.normalize();else localMotion.set(1,0,0);
   for(const person of state.people){const bones=person.bones,memberPhase=fract(state.phase+person.person.userData.personnelIndex*.12),medical=model.userData.unarmed;
    const bob=jump?0:moving?-.065+.010*Math.cos(memberPhase*Math.PI*4):bones[0].position.y*(1-state.settle);bones[0].position.y=bob;
    for(let side=0;side<2;side++){
     const foot=person.feet[side],ankle=rest[side?6:3],phase=fract(memberPhase+side*.5),stance=moving&&phase<duty;
     if(jump){foot.target.set(ankle.x-.11,.26,ankle.z);foot.planted=false;foot.stance=false;}
     else if(moving){
-     const lead=new T.Vector3(0,.135,ankle.z).addScaledVector(localMotion,.26),landing=toWorld(lead,e,person.person,state.scale);
-     if(stance){if(!foot.planted||!foot.stance){foot.world.copy(landing);foot.planted=true;}foot.target.copy(toLocal(foot.world,e,person.person,state.scale));foot.start.copy(foot.world);}
-     else{if(!foot.planted){foot.start.copy(toWorld(ankle,e,person.person,state.scale));foot.planted=true;}const swing=(phase-duty)/(1-duty),blend=swing*swing*(3-2*swing);foot.world.copy(foot.start).lerp(landing,blend);foot.target.copy(toLocal(foot.world,e,person.person,state.scale));foot.target.y=.135+Math.sin(swing*Math.PI)*(speed>25?.23:.14);}
+     const lead=scratch.lead.set(0,.135,ankle.z).addScaledVector(localMotion,.26),landing=toWorld(lead,e,person.person,state.scale,scratch.landing);
+     if(stance){if(!foot.planted||!foot.stance){foot.world.copy(landing);foot.planted=true;}foot.target.copy(toLocal(foot.world,e,person.person,state.scale,scratch.local));foot.start.copy(foot.world);}
+     else{if(!foot.planted){toWorld(ankle,e,person.person,state.scale,foot.start);foot.planted=true;}const swing=(phase-duty)/(1-duty),blend=swing*swing*(3-2*swing);foot.world.copy(foot.start).lerp(landing,blend);foot.target.copy(toLocal(foot.world,e,person.person,state.scale,scratch.local));foot.target.y=.135+Math.sin(swing*Math.PI)*(speed>25?.23:.14);}
      foot.stance=stance;
     }else{foot.target.lerp(ankle,Math.min(1,dt*16));if(state.settle>=1)foot.target.copy(ankle);foot.planted=false;foot.stance=false;}
-    foot.phase=phase;solve(bones,side?4:1,foot.target,new T.Vector3(1,0,0),bob);
+    foot.phase=phase;solve(bones,side?4:1,foot.target,legHint,bob,scratch);
    }
    for(let side=0;side<2;side++){
-    const index=side?10:7,hand=rest[index+2].clone(),swing=moving?Math.sin((memberPhase+side*.5)*Math.PI*2):0;
+    const index=side?10:7,hand=scratch.hand.copy(rest[index+2]),swing=moving?Math.sin((memberPhase+side*.5)*Math.PI*2):0;
     if(medical){hand.set(.08+swing*.12,.97,side?.28:-.28);}else{hand.x+=swing*.007;hand.y+=Math.abs(swing)*.008;}
-    if(jump)hand.y+=.025;solve(bones,index,hand,new T.Vector3(0,-1,side?1:-1),bob);
+    if(jump)hand.y+=.025;solve(bones,index,hand,armHints[side],bob,scratch);
    }
    if(!moving&&!jump&&state.settle>=1&&!medical){for(const bone of bones)bone.quaternion.identity();bones[0].position.y=0;}
    person.person.updateMatrixWorld(true);person.skeleton.update();
   }
-  return state;
+  state.poseStable=!moving&&!jump&&state.settle>=1;state.poseAngle=a;return state;
  }
  for(const kind of Object.keys(roles))for(const f of Object.keys(M.colors))M.register(kind,f,()=>model(kind,f));
  function release(model){const state=states.get(model);if(!state)return false;for(const p of state.people)p.skeleton.dispose();states.delete(model);return true;}

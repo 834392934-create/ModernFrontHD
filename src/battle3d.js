@@ -3,6 +3,10 @@
   const T=root.THREE,D=root.WarData,{W,H,COLS,ROWS,U,B,F}=D,clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
   if(!T)return;
   const Legacy=root.WarRenderer;
+  // Parts belong to a model instance; replacement roots get a fresh cache and
+  // removed models can be collected without retaining their scene subtrees.
+  const partNames=['turret','turretRear','radar','jammerHead','rotor','rotorCounter','rotor2','rotorCounter2','propeller','tailRotor'],partCache=new WeakMap();
+  function animatedParts(model){let parts=partCache.get(model);if(!parts){parts=Object.fromEntries(partNames.map(name=>[name,model.getObjectByName(name)]));partCache.set(model,parts);}return parts;}
   class Battle3D {
     constructor(canvas,mini){
       this.canvas=canvas;this.mini=mini;this.mc=mini.getContext('2d');
@@ -128,8 +132,21 @@
       this.underwaterScene=root.WarUnderwater?.create(this,game);this.altitudeScene??=root.WarAltitudeScene?.create(this);this.syncCamera();
     }
     updateFog(game,demo){
-      if(this.lastFogTick===game.tick&&this.lastDemo===demo)return;this.lastFogTick=game.tick;this.lastDemo=demo;
-      const im=this.fogCtx.createImageData(COLS,ROWS);for(let i=0;i<COLS*ROWS;i++){im.data[i*4]=14;im.data[i*4+1]=23;im.data[i*4+2]=26;im.data[i*4+3]=demo||game.buffs.has('vision')||game.visible[i]?0:game.explored[i]?155:248;}this.fogCtx.putImageData(im,0,0);this.fogTex.needsUpdate=true;this.fogEnabled.value=demo?0:1;
+      const vision=game.buffs.has('vision'),revision=game.fogRevision??game.tick;
+      if(this.fogGame===game&&this.fogVisible===game.visible&&this.fogExplored===game.explored&&this.fogRevision===revision&&this.lastDemo===demo&&this.fogVision===vision)return;
+      this.fogGame=game;this.fogVisible=game.visible;this.fogExplored=game.explored;this.fogRevision=revision;this.lastDemo=demo;this.fogVision=vision;
+      let changed=!this.fogImage;
+      if(!this.fogImage){
+        this.fogImage=this.fogCtx.createImageData(COLS,ROWS);
+        for(let i=0;i<COLS*ROWS;i++){const p=i*4;this.fogImage.data[p]=14;this.fogImage.data[p+1]=23;this.fogImage.data[p+2]=26;}
+      }
+      const im=this.fogImage;
+      for(let i=0;i<COLS*ROWS;i++){
+        const p=i*4+3,alpha=demo||vision||game.visible[i]?0:game.explored[i]?155:248;
+        if(im.data[p]!==alpha){im.data[p]=alpha;changed=true;}
+      }
+      if(changed){this.fogCtx.putImageData(im,0,0);this.fogTex.needsUpdate=true;}
+      this.fogEnabled.value=demo?0:1;
     }
     draw(game,ui={},time=0){
       this.treeVisual?.sync(game);
@@ -139,20 +156,17 @@
       const night=root.ModernFront?.lighting?.night;this.sun.intensity=night?1:this.firstPerson?.active?2.6:3;this.hemi.intensity=night?.6:this.firstPerson?.active?1.2:2;
       const lightHeight=this.firstPerson?.active?this.firstPerson.eye.y:0;this.sun.position.set(this.camera.x-600,lightHeight+1400,this.camera.y+350);this.sun.target.position.set(this.camera.x,lightHeight,this.camera.y);this.sun.target.updateMatrixWorld();
       const alive=new Set();let visibleCount=0;
-      for(const e of game.entities){alive.add(e.id);let o=this.objects.get(e.id),p=this.entityScreen(e);const visible=(ui.demo||e.team===0||(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))&&(this.firstPerson?.active?(this.firstPerson.orbitScope?.active||Math.hypot(e.x-this.camera.x,e.y-this.camera.y)<3200):p.x>-140&&p.x<this.width+140&&p.y>-160&&p.y<this.height+180);
+      for(const e of game.entities){alive.add(e.id);let o=this.objects.get(e.id),p=this.firstPerson?.active?null:this.entityScreen(e);const visible=(ui.demo||e.team===0||(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))&&(this.firstPerson?.active?(this.firstPerson.orbitScope?.active||Math.hypot(e.x-this.camera.x,e.y-this.camera.y)<3200):p.x>-140&&p.x<this.width+140&&p.y>-160&&p.y<this.height+180);
         if(!visible){if(o)o.visible=false;continue;}
         if(!o){o=root.WarModels.create(e.kind,game.teams[e.team].faction);o.scale.setScalar(o.userData.scale);o.traverse(m=>{if(m.isMesh&&m.userData.preserveMaterial)for(const mat of Array.isArray(m.material)?m.material:[m.material])this.fogify(mat)});this.objects.set(e.id,o);this.scene.add(o);}
         o.visible=e.id!==this.firstPerson?.entityId;visibleCount++;o.position.set(e.x,this.entityHeight(e),e.y);o.rotation.set(e.roll||0,e.structure?0:-e.angle,e.pitch||0,'YZX');
         root.WarPersonnelAnimation?.update(o,e,game.time);
-        for(const name of ['turret','turretRear']){const turret=o.getObjectByName(name);if(turret)turret.rotation.y=e.target?(e.structure?0:e.angle)-e.turret:0;}
-        const radar=o.getObjectByName('radar');if(radar)radar.rotation.y=time*.45;
-        const jammer=o.getObjectByName('jammerHead');if(jammer)jammer.rotation.y=time*.18;
-        const rotor=o.getObjectByName('rotor');if(rotor)rotor.rotation.y=time*27;
-        const rotorCounter=o.getObjectByName('rotorCounter');if(rotorCounter)rotorCounter.rotation.y=-time*27;
-        const rotor2=o.getObjectByName('rotor2');if(rotor2)rotor2.rotation.y=time*27;
-        const rotorCounter2=o.getObjectByName('rotorCounter2');if(rotorCounter2)rotorCounter2.rotation.y=-time*27;
-        const propeller=o.getObjectByName('propeller');if(propeller)propeller.rotation.x=time*35;
-        const tailRotor=o.getObjectByName('tailRotor');if(tailRotor)tailRotor.rotation.z=time*38;
+        const parts=animatedParts(o),turretAngle=e.target?(e.structure?0:e.angle)-e.turret:0;
+        if(parts.turret)parts.turret.rotation.y=turretAngle;if(parts.turretRear)parts.turretRear.rotation.y=turretAngle;
+        if(parts.radar)parts.radar.rotation.y=time*.45;if(parts.jammerHead)parts.jammerHead.rotation.y=time*.18;
+        if(parts.rotor)parts.rotor.rotation.y=time*27;if(parts.rotorCounter)parts.rotorCounter.rotation.y=-time*27;
+        if(parts.rotor2)parts.rotor2.rotation.y=time*27;if(parts.rotorCounter2)parts.rotorCounter2.rotation.y=-time*27;
+        if(parts.propeller)parts.propeller.rotation.x=time*35;if(parts.tailRotor)parts.tailRotor.rotation.z=time*38;
       }
       for(const id of this.objects.keys())if(!alive.has(id))this.removeObject(id);
       this.gl.render(this.scene,this.cam);this.stats={calls:this.gl.info.render.calls,triangles:this.gl.info.render.triangles,foregroundCalls:0,foregroundTriangles:0,visibleEntities:visibleCount,geometries:this.gl.info.memory.geometries};

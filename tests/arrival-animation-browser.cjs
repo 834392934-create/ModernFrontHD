@@ -2,7 +2,7 @@ const {_electron,chromium}=require(process.env.PLAYWRIGHT_MODULE||'C:/Users/Admi
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 (async()=>{const desktop=process.argv.includes('--desktop'),suffix=desktop?'desktop':'browser',report={recordedAt:new Date().toISOString(),checks:[],errors:[]};let host,p;
 try{
- host=desktop?await _electron.launch({executablePath:path.resolve('release/ModernFrontHD/ModernFrontHD.exe'),args:['--windowed']}):await chromium.launch({headless:true,channel:'chromium'});
+ host=desktop?await _electron.launch({executablePath:require('./desktop-path.cjs').executable,args:['--windowed']}):await chromium.launch({headless:true,channel:'chromium'});
  p=desktop?await host.firstWindow():await host.newPage({viewport:{width:1600,height:1000}});p.on('pageerror',e=>report.errors.push(e.message));p.on('console',m=>{if(m.type()==='error')report.errors.push(m.text());});if(!desktop)await p.goto('http://127.0.0.1:8765');await p.waitForFunction(()=>window.ModernFront);
  report.models=await p.evaluate(async()=>{
   await Promise.all([WarImported.ready,WarImportedAir.ready,WarImportedGround.ready]);

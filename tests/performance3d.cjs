@@ -1,6 +1,6 @@
 const {chromium,_electron}=require(process.env.PLAYWRIGHT_MODULE||'C:/Users/Administrator/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const fs=require('node:fs'),path=require('node:path');
-(async()=>{const desktopMode=process.argv.includes('--desktop');const host=desktopMode?await _electron.launch({executablePath:path.resolve('release/ModernFrontHD/ModernFrontHD.exe'),args:[],timeout:45000}):await chromium.launch({headless:true,channel:'chromium'});
+(async()=>{const desktopMode=process.argv.includes('--desktop');const host=desktopMode?await _electron.launch({executablePath:require('./desktop-path.cjs').executable,args:[],timeout:45000}):await chromium.launch({headless:true,channel:'chromium'});
 try{const p=desktopMode?await host.firstWindow():await host.newPage({viewport:{width:1600,height:1000}});if(!desktopMode)await p.goto('http://127.0.0.1:8765');const errors=[];p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error')errors.push(m.text())});await p.waitForFunction(()=>window.ModernFront);await p.evaluate(()=>Promise.all([window.WarImported?.ready,window.WarImportedAir?.ready,window.WarImportedGround?.ready]));
 const samples=[];
 for(const scenario of [{faction:'chn',count:0},{faction:'chn',count:120},{faction:'usa',count:120},{faction:'rus',count:120}]){

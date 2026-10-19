@@ -41,11 +41,11 @@ try{
  const stats=await page.evaluate(()=>({fps:ModernFront.fps,...ModernFront.renderer.stats}));
  assert.equal(errors.length,0,errors.join('\n'));fs.writeFileSync('docs/upgrade-browser-report.json',JSON.stringify({checks,errors,stats},null,2));console.log(JSON.stringify({checks:checks.length,errors,stats}));
 }finally{await browser.close()}
-const exe=path.resolve('release/ModernFrontHD/ModernFrontHD.exe');
+const exe=require('./desktop-path.cjs').executable;
 const scripts=[...fs.readFileSync('index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]);
 for(const file of ['index.html','gallery.html','src/armory3d.js','desktop/main.cjs',...scripts]){
  const hash=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
- assert.equal(hash(path.join('release/ModernFrontHD/resources/app',file)),hash(file),'Packaged source is stale: '+file);
+ assert.equal(hash(path.join(require('./desktop-path.cjs').appRoot,file)),hash(file),'Packaged source is stale: '+file);
 }
 const desktop=await _electron.launch({executablePath:exe,args:['--windowed'],timeout:45000});
 try{
@@ -54,6 +54,6 @@ try{
  await win.keyboard.press('F11');await win.waitForTimeout(1000);assert.equal(await desktop.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFullScreen()),true);
  await win.screenshot({path:'screenshots/20-native-fullscreen.png'});await win.keyboard.press('Tab');await win.waitForTimeout(250);await win.screenshot({path:'screenshots/21-native-immersive.png'});
  await win.keyboard.press('Tab');await win.keyboard.press('F11');await win.waitForTimeout(600);assert.equal(await desktop.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFullScreen()),false);
- const report=await desktop.evaluate(async({app,BrowserWindow})=>({version:process.versions.electron,windows:BrowserWindow.getAllWindows().length,gpu:await app.getGPUInfo('basic'),fullscreenToggle:true}));assert.equal(nativeErrors.length,0,nativeErrors.join('\n'));fs.writeFileSync('docs/desktop-report.json',JSON.stringify({...report,packageSourceMatch:true,imported,errors:nativeErrors},null,2));console.log('Packaged Windows executable: licensed models, launch, 3D, fullscreen, immersion passed');
+ const report=await desktop.evaluate(async({app,BrowserWindow})=>({version:process.versions.electron,appVersion:app.getVersion(),userData:app.getPath('userData'),windows:BrowserWindow.getAllWindows().length,gpu:await app.getGPUInfo('basic'),fullscreenToggle:true}));assert.equal(report.appVersion,require('../package.json').version);if(process.env.MODERN_FRONT_TEST_PROFILE)assert.equal(path.resolve(report.userData),path.resolve(process.env.MODERN_FRONT_TEST_PROFILE));assert.equal(nativeErrors.length,0,nativeErrors.join('\n'));fs.writeFileSync('docs/desktop-report.json',JSON.stringify({...report,packageSourceMatch:true,imported,errors:nativeErrors},null,2));console.log('Packaged Windows executable: licensed models, launch, 3D, fullscreen, immersion and isolated test profile passed');
 }finally{await desktop.close()}
 })().catch(e=>{console.error(e);process.exitCode=1});

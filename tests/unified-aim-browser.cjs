@@ -49,7 +49,7 @@ async function sustainedFireSample(targetId){
 }
 (async()=>{try{
  fs.mkdirSync('.tmp',{recursive:true});fs.mkdirSync('screenshots',{recursive:true});
- host=desktop?await _electron.launch({executablePath:path.resolve(process.env.MODERN_FRONT_EXE||'release/ModernFrontHD/ModernFrontHD.exe'),args:[],timeout:45000}):await chromium.launch({headless:true,channel:'chromium'});
+ host=desktop?await _electron.launch({executablePath:require('./desktop-path.cjs').executable,args:[],timeout:45000}):await chromium.launch({headless:true,channel:'chromium'});
  p=desktop?await host.firstWindow():await host.newPage({viewport:{width:1600,height:1000}});p.on('pageerror',e=>report.errors.push(e.message));p.on('console',m=>{if(m.type()==='error')report.errors.push(m.text());});if(!desktop)await p.goto(process.env.GAME_URL||'http://127.0.0.1:8765');await p.waitForFunction(()=>window.ModernFront);await p.evaluate(()=>Promise.all([WarImported.ready,WarImportedAir.ready,WarImportedGround.ready]));await p.locator('#enemies').selectOption('1');await p.locator('#start').click();
  for(const [kind,height]of [['operator',0],['tank',0],['destroyer',0],['submarine',-55],['heli',130],['orbital',4000]]){
   const ids=await fixture(kind,height),before=await state();assert.ok(await p.locator('#direct-orbit-panel').isVisible());

@@ -26,7 +26,7 @@ async function sample(label,expectedPasses){
 async function ammo(){return p.evaluate(()=>{const s=ModernFront.game.operatorStatus(ModernFront.direct.entityId);return s.slots[s.activeSlot].ammo;});}
 (async()=>{try{
  for(const dir of ['.tmp','docs'])fs.mkdirSync(dir,{recursive:true});
- const executablePath=path.resolve(process.env.MODERN_FRONT_EXE||'release/ModernFrontHD/ModernFrontHD.exe');report.executable=desktop?executablePath:null;
+ const executablePath=require('./desktop-path.cjs').executable;report.executable=desktop?executablePath:null;
  host=desktop?await _electron.launch({executablePath,args:[],timeout:45000}):await chromium.launch({headless:true,channel:'chromium'});
  p=desktop?await host.firstWindow():await host.newPage({viewport:{width:1600,height:1000}});p.on('pageerror',e=>report.errors.push(e.message));p.on('console',m=>{if(m.type()==='error')report.errors.push(m.text());});if(!desktop)await p.goto(process.env.GAME_URL||'http://127.0.0.1:8765');await p.waitForFunction(()=>window.ModernFront);
  report.imported=await p.evaluate(async()=>{await Promise.all([WarImported.ready,WarImportedAir.ready,WarImportedGround.ready]);return{ship:WarImported.status,air:WarImportedAir.status,ground:WarImportedGround.status,errors:[...WarImported.errors,...WarImportedAir.errors,...WarImportedGround.errors]};});for(const k of ['ship','air','ground'])assert.equal(report.imported[k],'ready');assert.deepEqual(report.imported.errors,[]);

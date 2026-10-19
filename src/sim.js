@@ -1045,6 +1045,7 @@
       if (this.buffs.has("vision")) this.visible.fill(1);
       for (let i = 0; i < this.visible.length; i++)
         if (this.visible[i]) this.explored[i] = 1;
+      this.fogRevision = (this.fogRevision || 0) + 1;
     }
     damage(e, value, from, source=null) {
       if (e.hp <= 0 || !Number.isFinite(value) || value<=0) return;

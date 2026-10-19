@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-18T17:15:37.952Z",
+  "recordedAt": "2026-10-19T01:57:45.979Z",
   "environment": "desktop",
   "checks": [
     "48个最终模型均为独立单人、13骨骼、有限材质与归一化蒙皮权重",
@@ -717,7 +717,7 @@
     "independentlyDamaged": true,
     "independentPositions": true,
     "saveIdentity": true,
-    "travel": 21.599999999999454
+    "travel": 17.999999999999545
   },
   "roles": {
     "count": 8,
