@@ -24,11 +24,11 @@
   function windows(b,x,y,z,n,axis='x',spacing=.27){for(let i=0;i<n;i++)b.box(axis==='x'?.17:.025,.14,axis==='x'?.025:.17,x+(axis==='x'?i*spacing:0),y,z+(axis==='z'?i*spacing:0),C.glass);}
   function dome(b,x,y,z,r=.22){b.cyl(r*.8,.15,x,y,z,C.upper);b.sphere(r,x,y+.16,z,0xd5d7cc,[1,1.1,1]);}
   function launchDeck(b,x,z,rows,cols,y){b.box(rows*.38+.1,.06,cols*.34+.1,x,y,z,C.upper);for(let i=0;i<rows;i++)for(let j=0;j<cols;j++)b.box(.31,.035,.28,x+(i-(rows-1)/2)*.38,y+.045,z+(j-(cols-1)/2)*.34,0x626d6d);}
-  function gun(b,x,y,size=.8){b.cyl(size*.6,.20,x,y,0,C.hull);tapered(b,x,0,size*1.5,size*1.25,y+.1,size*.75,.54);b.cyl(.055,size*2,x+size*1.2,y+size*.55,0,C.upper,'x',.055,8);}
+  function gun(b,x,y,size=.8){b.cyl(size*.6,.20,x,y,0,C.hull);tapered(b,x,0,size*1.5,size*1.25,y+.1,size*.75,.54);b.cyl(.055,size*2,x+size*1.2,y+size*.55,0,C.upper,'x',.055,8);b.weaponMuzzle=[x+size*2.2+.002,y+size*.55,0];}
   function lattice(b,x,y,h,w=1.0){for(const s of[-1,1])line(b,[x-.30,y,s*w*.5],[x+.02,y+h,s*w*.13],.035,C.upper);for(let i=0;i<4;i++){const yy=y+i*h/4;line(b,[x,yy,-w*.45],[x,yy,w*.45],.025,C.upper);}b.cyl(.025,h+1.4,x,y+h*.5+.5,0,C.upper,'y',.025,6);for(const yy of[y+h*.5,y+h*.84])b.box(.07,.06,w*2.3,x,yy,0,C.upper);}
   function helicopter(b,x,y,z,s=.55){b.sphere(.4,x,y+.3,z,C.upper,[1.8,.8,.65]);b.box(s*2,.06,.07,x,y+.75,z,C.dark,[0,.3,0]);b.box(.06,.06,s*2,x,y+.75,z,C.dark,[0,.3,0]);b.box(.8,.09,.09,x-.65,y+.4,z,C.upper);}
   function markings(b,x,y,z,r=.9){for(let i=0;i<28;i++){let a=i/28*Math.PI*2,q=(i+1)/28*Math.PI*2;line(b,[x+Math.cos(a)*r,y,z+Math.sin(a)*r],[x+Math.cos(q)*r,y,z+Math.sin(q)*r],.018);}b.box(.07,.02,.6,x-.20,y,z,C.line);b.box(.07,.02,.6,x+.20,y,z,C.line);b.box(.4,.02,.07,x,y,z,C.line);}
-  function finish(b,name,status='photo-referenced',scale=5.4){const g=new T.Group();g.add(b.finish());g.userData={scale,parts:b.parts,profile:name,evidenceStatus:status};return g;}
+  function finish(b,name,status='photo-referenced',scale=5.4){const g=new T.Group();g.add(b.finish());g.userData={scale,parts:b.parts,profile:name,evidenceStatus:status};if(b.weaponMuzzle){const m=new T.Object3D();m.name='muzzle';m.position.fromArray(b.weaponMuzzle);m.userData.motionJointRole='turret';m.userData.source='existing-main-gun-tip';g.add(m);g.userData.muzzleFamily='navalGun';}return g;}
   const destroyers={usa:{name:'Arleigh Burke class exterior study',L:24,W:1.63,bridge:2.9,mast:'open',hangar:3.7},chn:{name:'Type 055 exterior study',L:27,W:1.92,bridge:3.4,mast:'integrated',hangar:4.8},rus:{name:'Admiral Gorshkov Project 22350 exterior study',L:21,W:1.30,bridge:2.7,mast:'pyramid',hangar:3.8},ind:{name:'Kolkata class exterior study',L:25,W:1.68,bridge:2.85,mast:'arraybox',hangar:4.0},kor:{name:'Sejong the Great Batch I exterior study',L:26,W:1.88,bridge:3.15,mast:'open',hangar:4.1}};
   function destroyer(f){const b=new B(),p=destroyers[f],{L,W}=p,H=1.12;hull(b,L,W,H);
     const bx=L*.12,hy=H+1.75;
@@ -105,7 +105,7 @@
     for(const x of[-L*.18,L*.22]){b.cyl(.22,.025,x,R-.17,0,0x526063,'y',.22,12);b.box(.30,.026,.025,x,R-.14,0,C.dark);}
     for(let i=0;i<12;i++)b.box(.25,.055,.025,-L*.26+i*.55,R*.54,R*.82,0x202c2f);
     if(f==='rus'||f==='kor')for(let i=0;i<5;i++)b.box(.55,.025,.65,sx-sl*.8-i*.65,R-.16,0,0x3c484a);
-    return finish(b,name+' exterior study');
+    const g=finish(b,name+' exterior study'),m=new T.Object3D();m.name='muzzle';m.position.set(L*.5+.012,-.2,0);m.userData.source='approximate-forward-hull-exit';g.add(m);g.userData.muzzleFamily='torpedo';g.userData.muzzleBoundary='Forward hull exit for game torpedoes; individual torpedo doors are not modeled or claimed to match this submarine variant.';return g;
   }
   // These are gameplay installations inspired by photos, never claimed to be national equipment variants.
   function defense(kind){const b=new B();b.box(6,.3,5.4,0,.15,0,0x777c72);if(kind==='ciws'){

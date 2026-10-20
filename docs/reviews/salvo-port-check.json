@@ -1,0 +1,107 @@
+{
+  "date": "2026-10-20",
+  "gpuUsed": false,
+  "models": 14,
+  "ports": 104,
+  "checks": [
+    "Distinct existing model ports",
+    "Default muzzle matches port zero",
+    "Backward ray reaches each real existing face",
+    "Immediate launch direction clear",
+    "Independent clone markers"
+  ],
+  "rows": [
+    {
+      "kind": "rocket",
+      "faction": "usa",
+      "count": 6,
+      "source": "existing visible tube/canister faces"
+    },
+    {
+      "kind": "rocket",
+      "faction": "rus",
+      "count": 12,
+      "source": "existing visible tube/canister faces"
+    },
+    {
+      "kind": "rocket",
+      "faction": "chn",
+      "count": 8,
+      "source": "existing visible tube/canister faces"
+    },
+    {
+      "kind": "rocket",
+      "faction": "ind",
+      "count": 12,
+      "source": "existing visible tube/canister faces"
+    },
+    {
+      "kind": "rocket",
+      "faction": "kor",
+      "count": 12,
+      "source": "existing visible tube/canister faces"
+    },
+    {
+      "kind": "rocket",
+      "faction": "imp",
+      "count": 6,
+      "source": "existing visible tube/canister faces"
+    },
+    {
+      "kind": "orbital_missile_barge",
+      "faction": "usa",
+      "count": 8,
+      "source": "front rack apertures only; aft modules are stores"
+    },
+    {
+      "kind": "orbital_missile_barge",
+      "faction": "rus",
+      "count": 8,
+      "source": "front rack apertures only; aft modules are stores"
+    },
+    {
+      "kind": "orbital_missile_barge",
+      "faction": "chn",
+      "count": 8,
+      "source": "front rack apertures only; aft modules are stores"
+    },
+    {
+      "kind": "orbital_missile_barge",
+      "faction": "ind",
+      "count": 8,
+      "source": "front rack apertures only; aft modules are stores"
+    },
+    {
+      "kind": "orbital_missile_barge",
+      "faction": "kor",
+      "count": 8,
+      "source": "front rack apertures only; aft modules are stores"
+    },
+    {
+      "kind": "orbital_missile_barge",
+      "faction": "imp",
+      "count": 8,
+      "source": "front rack apertures only; aft modules are stores"
+    },
+    {
+      "kind": "destroyer",
+      "faction": "imp",
+      "source": "legacy-existing-forward-gun-barrel",
+      "position": [
+        11.262,
+        1.5,
+        0
+      ]
+    },
+    {
+      "kind": "submarine",
+      "faction": "imp",
+      "source": "approximate-forward-hull-exit",
+      "position": [
+        10.012,
+        0,
+        0
+      ]
+    }
+  ]
+}

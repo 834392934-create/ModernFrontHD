@@ -8,7 +8,7 @@
    mesh.boundingBox=new T.Box3().setFromBufferAttribute(src.geometry.attributes.position).expandByScalar(.35);mesh.boundingSphere=mesh.boundingBox.getBoundingSphere(new T.Sphere());
   }
   const joints=(model.userData.motionRig||[]).map(d=>({d,node:model.getObjectByName(d.node),phase:0})).filter(j=>j.node),paths={};for(const [key,points]of Object.entries(model.userData.trackPaths||{})){let length=0;const segments=points.map((a,i)=>{const b=points[(i+1)%points.length],size=Math.hypot(b[0]-a[0],b[1]-a[1]),s={a,b,start:length,size};length+=size;return s;});paths[key]={segments,length};}
-  const muzzle=model.getObjectByName('muzzle'),barrel=joints.find(j=>j.d.role==='recoil'&&j.d.batch);if(muzzle&&barrel){model.updateMatrixWorld(true);barrel.node.attach(muzzle);}
+  const muzzle=model.getObjectByName('muzzle'),barrel=joints.find(j=>j.d.role==='recoil'&&j.d.batch)||joints.find(j=>j.d.batch&&j.d.role===muzzle?.userData.motionJointRole);if(muzzle&&barrel){model.updateMatrixWorld(true);barrel.node.attach(muzzle);}
   // Exhaust is render-only. Templates and baked navigation envelopes contain
   // the physical vehicle, never the length of a flame or smoke effect.
   for(const {d,node}of joints)if(d.effect&&d.plumeRadius&&!node.children.length){const key=d.plumeRadius+':'+d.plumeLength;let geo=plumes.get(key);if(!geo){geo=new T.ConeGeometry(d.plumeRadius*.72,d.plumeLength,8,1,true);geo.rotateZ(Math.PI/2);geo.translate(-d.plumeLength/2,0,0);plumes.set(key,geo);}const mesh=new T.Mesh(geo,plumeMaterial);mesh.userData.motionEffect=true;mesh.raycast=()=>{};node.add(mesh);}

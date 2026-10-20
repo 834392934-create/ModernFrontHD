@@ -30,7 +30,7 @@
   const add=(role,chosen,pivot,axis,extra={})=>{if(!chosen.length)return;parts.push({role,pivot:new T.Vector3(...pivot).applyMatrix4(inv).toArray(),axis:new T.Vector3(...axis).transformDirection(inv).toArray(),rest:[0,0,0,1],sign:1,limit:.20,existing:true,ranges:chosen.flatMap(c=>c.vertices.map(i=>[i,1])),sourceSpace:'licensed-Burke-original-vertex-islands',...extra});};
   const turret=groups.filter(c=>{const b=c.box;return b.min.x>6.80&&b.max.x<8.34&&b.min.y>1.32&&b.max.y<1.85&&b.min.z>-.25&&b.max.z<.25;});
   // Guard the known asset topology instead of silently rigging a different GLB revision.
-  if(turret.length===4&&turret.reduce((n,c)=>n+c.vertices.length,0)===800)add('turret',turret,[7.21,1.323,.00476],[0,1,0]);
+  if(turret.length===4&&turret.reduce((n,c)=>n+c.vertices.length,0)===800){add('turret',turret,[7.21,1.323,.00476],[0,1,0]);if(!g.getObjectByName('muzzle')){const tip=turret.reduce((a,b)=>a.box.max.x>b.box.max.x?a:b).box,center=tip.getCenter(new T.Vector3()),m=new T.Object3D();m.name='muzzle';m.position.set(tip.max.x+.002,center.y,center.z);m.userData.motionJointRole='turret';m.userData.source='licensed-original-main-gun-tip';g.add(m);g.userData.muzzleFamily='navalGun';}}
   for(const side of [-1,1]){
    const props=groups.filter(c=>{const b=c.box,center=b.getCenter(new T.Vector3());return b.min.x> -10.50&&b.max.x< -10.15&&b.max.y<-.40&&Math.abs(center.z)<1&&Math.sign(center.z)===side;});
    if(props.length===6)add('propeller',props,[-10.30,-.8521,side<0?-.536:.5455],[1,0,0],{side,sign:side,rotationConvention:'game counter-rotation; exact shaft handedness not asserted'});

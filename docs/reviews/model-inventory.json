@@ -5487,6 +5487,78 @@
       "license": "Project-original",
       "author": null,
       "fullVisualAcceptance": false
+    },
+    {
+      "key": "operator_usa",
+      "name": "前线行动员（原创）",
+      "category": "original-role-variant",
+      "profile": "operator-usa-v2",
+      "referenceUrl": null,
+      "inspirationUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "operator_rus",
+      "name": "前线行动员（原创）",
+      "category": "original-role-variant",
+      "profile": "operator-rus-v2",
+      "referenceUrl": null,
+      "inspirationUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "operator_chn",
+      "name": "前线行动员（原创）",
+      "category": "original-role-variant",
+      "profile": "operator-chn-v2",
+      "referenceUrl": null,
+      "inspirationUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "operator_ind",
+      "name": "前线行动员（原创）",
+      "category": "original-role-variant",
+      "profile": "operator-ind-v2",
+      "referenceUrl": null,
+      "inspirationUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "operator_kor",
+      "name": "前线行动员（原创）",
+      "category": "original-role-variant",
+      "profile": "operator-kor-v2",
+      "referenceUrl": null,
+      "inspirationUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
+    },
+    {
+      "key": "operator_imp",
+      "name": "前线行动员（原创）",
+      "category": "original-role-variant",
+      "profile": "operator-imp-v2",
+      "referenceUrl": null,
+      "inspirationUrl": null,
+      "assetSource": null,
+      "license": "Project-original",
+      "author": null,
+      "fullVisualAcceptance": false
     }
   ],
   "facilities": [
@@ -5674,5 +5746,7 @@
       "name": "帝国轨道光矛",
       "category": "abstract-effect-no-specific-exterior-model"
     }
-  ]
+  ],
+  "inventoryUpdatedAt": "2026-10-20T15:51:27.378Z",
+  "inventoryUpdateScope": "2026-10-20: add six original operator slots; recordedAt retains the historical inventory date, with no new visual approval."
 }

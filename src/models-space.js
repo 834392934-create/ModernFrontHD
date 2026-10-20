@@ -97,8 +97,8 @@
   if(f==='chn')t.box(.6,.4,1.5,-1.2,3.4,0,c);
   if(f==='ind')t.cyl(.18,1.1,.4,2.5,0,C.gold);
   if(f==='imp'){b.box(4,.4,3,-1,1.2,0,C.red);for(const s of [-1,1])b.cyl(.2,1.3,0,2,s*1.5,C.gold,'y',.02,4);}
-  const turret=mesh(t,'turret');turret.position.set(-1,1.5,0);muzzle(turret,-.65,4.9,0);
-  return finished([mesh(b,'asatChassis'),turret],f,'asat','ground-space-defense',6.2,{inspirationUrl:refs.real});
+  const turret=mesh(t,'turret');turret.position.set(-1,1.5,0);const tube=Math.floor((count-1)/2),z=(tube-(count-1)/2)*.55;muzzle(turret,-.65,4.9,z);turret.getObjectByName('muzzle').userData={source:'asat-existing-tube-top-disc',face:[-.65,4.88+.018/2,z],outward:[0,1,0],artOffset:4.9-(4.88+.018/2),tubeIndex:tube,tubeCount:count};
+  return finished([mesh(b,'asatChassis'),turret],f,'asat','ground-space-defense',6.2,{inspirationUrl:refs.real,muzzleSource:'asat-existing-tube-top-disc',muzzleFamily:'missile'});
  }
  for(const f of Object.keys(palette)){M.register('satellite',f,()=>satellite(f));M.register('orbital_interceptor',f,()=>interceptor(f));M.register('orbital',f,()=>orbital(f));M.register('asat',f,()=>asat(f));}
 })(globalThis);

@@ -72,7 +72,10 @@
       for(const x of [-2.30,2.74]){link(b,[x,-.12,s*2.10],[x,1.27,s*2.10],.095);link(b,[x,1.27,s*2.10],[x,1.27,s*.94],.075);}
       propulsion(b,-3.85,-.30,s*.75,.40,c);link(b,[-2.4,-.23,s*.5],[-2.65,-.73,s*3.1],.1);panel(b,-2.65,-.73,s*3.1,1.6,1.5,true);
     }
-    b.box(1.1,.47,.84,2.30,.28,0,c);b.box(.12,.20,.50,2.90,.32,0,C.glass);hatch(b,-1.5,.12,0,c);identity(b,f,.15,.12,0);const g=finish('orbital_missile_barge',f,b,[],5.7);marker(g,[3.08,.90,1.22],'muzzle');g.userData.weaponVisual='forward-launch-racks-with-aft-storage';return g;
+    b.box(1.1,.47,.84,2.30,.28,0,c);b.box(.12,.20,.50,2.90,.32,0,C.glass);hatch(b,-1.5,.12,0,c);identity(b,f,.15,.12,0);const g=finish('orbital_missile_barge',f,b,[],5.7);marker(g,[3.08,.90,1.22],'muzzle');g.userData.weaponVisual='forward-launch-racks-with-aft-storage';
+    const ports=[];for(const side of [1,-1])for(const row of [1,0])for(const offset of [-.26,.26])ports.push([3.08,.25+row*.65,side*1.48+offset]);
+    g.userData.firePorts=ports.map((p,i)=>{const node='muzzle_'+i;marker(g,p,node);g.getObjectByName(node).userData={source:'existing-front-rack-port',face:[3.0145,p[1],p[2]],outward:[1,0,0],artOffset:.0655};return{node,position:p,direction:[1,0,0]};});
+    return g;
   }
   const make={air_repair_drone:repair,interceptor_drone:interceptor,orbital_shield:shield,orbital_missile_barge:barge};
   for(const kind of kinds)for(const f of Object.keys(D.F))M.register(kind,f,()=>make[kind](f));

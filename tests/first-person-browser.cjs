@@ -6,7 +6,7 @@ const desktop=process.argv.includes('--desktop'),suffix=desktop?'desktop':'brows
 const report=focusOnly?JSON.parse(fs.readFileSync('docs/first-person-'+suffix+'-report.json','utf8')):{recordedAt:new Date().toISOString(),environment:desktop?'Packaged Electron':'Chromium',checks:[],possession:[],screenshots:[],errors:[],scope:'Deterministic small combat fixtures; real browser input, renderer, model raycasts and simulation. No claim of sustained combat performance or photorealism.'};
 fs.mkdirSync('screenshots',{recursive:true});fs.mkdirSync('docs',{recursive:true});
 let host,p;
-async function shot(label){const file='screenshots/fps-'+label+'-'+suffix+'.png';await p.screenshot({path:file});report.screenshots.push(file);}
+async function shot(label){const wasLocked=await p.evaluate(()=>!!document.pointerLockElement);const file='screenshots/fps-'+label+'-'+suffix+'.png';await p.screenshot({path:file});report.screenshots.push(file);if(wasLocked)await lock();}
 async function paused(value){if(await p.evaluate(()=>ModernFront.paused)!==value)await p.keyboard.press(await p.evaluate(()=>ModernFront.direct.active?'KeyP':'Space'));await p.waitForFunction(v=>ModernFront.paused===v,value);}
 async function exit(key='KeyE'){if(await p.evaluate(()=>ModernFront.direct.active)){await p.keyboard.press(key);await p.waitForFunction(()=>!ModernFront.direct.active&&!ModernFront.game.directControl);await p.waitForFunction(()=>!document.pointerLockElement);}assert.equal(await p.evaluate(()=>ModernFront.renderer.cam===ModernFront.renderer.strategyCam),true);}
 async function fixture(kind,combat=false,faction='chn'){
@@ -31,9 +31,11 @@ async function enter(state,button=false,requireLock=false){
  if(requireLock)await lock();
 }
 async function lock(){
+ if(desktop)await host.evaluate(({BrowserWindow})=>{const w=BrowserWindow.getAllWindows()[0];if(w.isMinimized())w.restore();w.show();w.focus();});await p.bringToFront();await p.waitForFunction(()=>document.hasFocus(),null,{timeout:3000});
  if(await p.evaluate(()=>document.pointerLockElement===ModernFront.renderer.canvas))return;
  // Chromium briefly rejects a fresh lock after release. A new real click is required.
  for(let attempt=0;attempt<3;attempt++){
+  if(desktop)await host.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].focus());
   await p.waitForTimeout(1300);const viewport=await p.evaluate(()=>({x:innerWidth*.5,y:innerHeight*.46}));await p.mouse.click(viewport.x,viewport.y);
   try{await p.waitForFunction(()=>document.pointerLockElement===ModernFront.renderer.canvas,{},{timeout:1200});return;}catch{if(attempt===2)throw new Error('Real canvas click failed to acquire pointer lock after three retries');}
  }
@@ -64,7 +66,9 @@ async function nativeFocusCheck(){
  await p.waitForFunction(()=>{const d=ModernFront.direct,i=ModernFront.game.directControl?.input;return d.keys.size===0&&!d.fire&&i?.forward===0&&!i.fire;});
  const blurred=await p.evaluate(()=>{const d=ModernFront.direct,e=ModernFront.game.get(d.entityId);return{documentFocused:document.hasFocus(),events:window.__fpsBlurEvents,locked:!!document.pointerLockElement,keys:d.keys.size,fire:d.fire,input:{...ModernFront.game.directControl.input},position:[e.x,e.y]};});assert.equal(blurred.documentFocused,false);assert.ok(blurred.events.some(e=>e.trusted));
  await p.waitForTimeout(300);const nativeBlurred=await host.evaluate(({BrowserWindow})=>{const w=BrowserWindow.getAllWindows()[0];return{focused:w.isFocused(),minimized:w.isMinimized()};});report.nativeFocus={nativeBefore,nativeBlurred,blurred};assert.equal(nativeBlurred.minimized,true);
- await host.evaluate(({BrowserWindow})=>{const w=BrowserWindow.getAllWindows()[0];w.restore();w.show();w.focus();});await p.bringToFront();await p.waitForTimeout(350);
+ await host.evaluate(({BrowserWindow})=>{const w=BrowserWindow.getAllWindows()[0];w.restore();w.show();});
+ for(let attempt=0;attempt<3;attempt++){await host.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].focus());await p.bringToFront();try{await p.waitForFunction(()=>document.hasFocus(),null,{timeout:2000});break;}catch(error){if(attempt===2)throw error;}}
+ await p.waitForTimeout(150);
  const restored=await p.evaluate(()=>{const d=ModernFront.direct,e=ModernFront.game.get(d.entityId);return{documentFocused:document.hasFocus(),keys:d.keys.size,fire:d.fire,input:{...ModernFront.game.directControl.input},position:[e.x,e.y]};});assert.equal(restored.documentFocused,true);assert.equal(restored.keys,0);assert.equal(restored.fire,false);assert.equal(restored.input.forward,0);assert.equal(restored.input.fire,false);assert.deepEqual(restored.position,blurred.position);
  await p.keyboard.up('KeyW');await p.mouse.up();report.nativeFocus={recordedAt:new Date().toISOString(),method:'Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held',nativeBefore,nativeBlurred,blurred,restored};await shot('focus-restored');await exit();await cdp.detach();report.checks.push('Real packaged fullscreen=true; minimizing with W+fire held clears keys and simulation input; restoring/focusing does not resume movement or fire');
 }
@@ -75,7 +79,7 @@ async function nativeFocusCheck(){
   p.on('pageerror',e=>report.errors.push(e.message));p.on('console',m=>{if(m.type()==='error')report.errors.push(m.text());});
   if(!desktop)await p.goto(process.env.GAME_URL||'http://127.0.0.1:8765');
   await p.waitForFunction(()=>window.ModernFront?.direct);await p.evaluate(()=>Promise.all([WarImported.ready,WarImportedAir.ready,WarImportedGround.ready]));
-  await p.locator('#enemies').selectOption('1');await p.locator('#start').click();await p.waitForTimeout(200);
+  await p.locator('#enemies').selectOption('1');await p.locator('#range-mode').selectOption('balanced');await p.locator('#start').click();await p.waitForTimeout(200);
   if(focusOnly){await nativeFocusCheck();assert.deepEqual(report.errors,[]);report.passed=true;delete report.failure;return;}
   let state=await fixture('infantry');await enter(state,true,true);await paused(false);
   await p.evaluate(()=>{ModernFront.game.teams[0].aiClock=999999;});

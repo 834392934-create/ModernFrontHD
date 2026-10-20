@@ -1,0 +1,953 @@
+{
+  "date": "2026-10-21",
+  "gpuUsed": false,
+  "models": 30,
+  "baselineCompared": true,
+  "checks": [
+    "Every armed model has a turret-child muzzle",
+    "Solid-cap anchors match their surface; M109 open centre is clear .35 with a rim at lateral .105",
+    "Immediate forward exit is clear",
+    "Only USA arty aperture may change geometry hash/triangles; all bounds, mesh counts and scales stay unchanged",
+    "Primary rather than secondary gun selected",
+    "ASAT marker belongs to an actual tube for even and odd counts",
+    "Turret transform and clone isolation"
+  ],
+  "limits": [
+    "VLS/canister artwork may depict closed caps; no opening animation added.",
+    "USA M109 brake geometry was changed to a perforated shell; other geometry remains baseline-identical when baseline is supplied.",
+    "Art-space aperture checks do not certify real weapon dimensions or GPU appearance.",
+    "Korean AA art has cannon only; effect classification must honor autocannon."
+  ],
+  "rows": [
+    {
+      "kind": "ifv",
+      "faction": "usa",
+      "source": "ifv-primary-barrel-front-cap",
+      "local": [
+        3.524,
+        0.34,
+        0
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "autocannon",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011999916076660178,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "32a703bdcc2417312cb1d3adb9aeba492ee8512abae821a6f7cf3b119d0cfad7",
+      "triangles": 13384,
+      "meshes": 2,
+      "bounds": [
+        7.587645053863525,
+        4.07397489219904,
+        3.700000047683716
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "ifv",
+      "faction": "rus",
+      "source": "ifv-primary-barrel-front-cap",
+      "local": [
+        3.724,
+        0.3,
+        0
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "cannon",
+      "aperture": false,
+      "existingSurfaceDistance": 0.012000106811523636,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "73f6fa4fcf834b0751dc79c3e06bf21f64fbf20b1ae5feaee69bfda1b1738f95",
+      "triangles": 12332,
+      "meshes": 2,
+      "bounds": [
+        7.486629486083984,
+        3.6236543011665345,
+        3.700000047683716
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "ifv",
+      "faction": "chn",
+      "source": "ifv-primary-barrel-front-cap",
+      "local": [
+        3.924,
+        0.28,
+        -0.2
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "cannon",
+      "aperture": false,
+      "existingSurfaceDistance": 0.01200005912780755,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "c60180ee2909dfcf9c7a2c7f9db48ab16eab76b52c9f3d79a59ed7ffec61e7ad",
+      "triangles": 14264,
+      "meshes": 2,
+      "bounds": [
+        7.788291931152344,
+        3.9417350837588305,
+        3.700000047683716
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "ifv",
+      "faction": "ind",
+      "source": "ifv-primary-barrel-front-cap",
+      "local": [
+        3.4240000000000004,
+        0.3,
+        0
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "autocannon",
+      "aperture": false,
+      "existingSurfaceDistance": 0.012000059127807994,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "2f82faeb85ef667ab0a0b6fde05e6777b7d2d61abe9b944570020ff4d6794a8b",
+      "triangles": 12088,
+      "meshes": 2,
+      "bounds": [
+        7.486629486083984,
+        3.6236543011665345,
+        3.700000047683716
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "ifv",
+      "faction": "kor",
+      "source": "ifv-primary-barrel-front-cap",
+      "local": [
+        3.224,
+        0.34,
+        0
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "autocannon",
+      "aperture": false,
+      "existingSurfaceDistance": 0.012000106811523636,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "ff83279077164dbf88e70dc0f360cdaed9b55ca63a0e3be178f6bf7bff193cf2",
+      "triangles": 13324,
+      "meshes": 2,
+      "bounds": [
+        7.486629486083984,
+        3.943654301166534,
+        3.700000047683716
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "ifv",
+      "faction": "imp",
+      "source": "legacy-primary-barrel-front",
+      "local": [
+        2.762,
+        0.35,
+        0
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "autocannon",
+      "aperture": false,
+      "existingSurfaceDistance": 0.01200000000000001,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "2f8191389f0d3d1035f12f865185eabe63e768334527bc32f194007983f6f833",
+      "triangles": 9596,
+      "meshes": 2,
+      "bounds": [
+        7.28321647644043,
+        2.7951359167695045,
+        3.799999952316284
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "arty",
+      "faction": "usa",
+      "source": "arty-open-brake-exit-plane",
+      "local": [
+        6.292,
+        0.85,
+        0
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "cannon",
+      "aperture": true,
+      "existingSurfaceDistance": null,
+      "rimDistance": 0.011999790191650206,
+      "centreClearDepth": 0.35,
+      "unchangedGeometry": false,
+      "geometryChangeAllowed": true,
+      "hash": "846ecaa098d2e9e79f370cc098d69278e4ba2423cddb26f2d8676dbdc3890805",
+      "triangles": 12414,
+      "meshes": 2,
+      "bounds": [
+        9.62440619468689,
+        4.37999997317791,
+        3.700000047683716
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "arty",
+      "faction": "rus",
+      "source": "arty-primary-muzzle-brake-front",
+      "local": [
+        7.492,
+        0.85,
+        0
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "cannon",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011999980926513665,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "8f6f87162b88a3e2c6c5205cb6f2caa411a6bfc75ea76818dbaa215dfd710628",
+      "triangles": 11902,
+      "meshes": 2,
+      "bounds": [
+        10.924275970458984,
+        4.813661828935146,
+        3.700000047683716
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "arty",
+      "faction": "chn",
+      "source": "arty-primary-muzzle-brake-front",
+      "local": [
+        7.342,
+        0.85,
+        0
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "cannon",
+      "aperture": false,
+      "existingSurfaceDistance": 0.01200007629394495,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "9dc9ac6e310c9363e03fd0ea5e0c66954544d3c3549556373c1065455ad6ae35",
+      "triangles": 11950,
+      "meshes": 2,
+      "bounds": [
+        10.823888397216797,
+        4.444605291187763,
+        3.700000047683716
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "arty",
+      "faction": "ind",
+      "source": "arty-primary-muzzle-brake-front",
+      "local": [
+        7.342,
+        0.85,
+        0
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "cannon",
+      "aperture": false,
+      "existingSurfaceDistance": 0.01200007629394495,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "9370a8f91991b17aa9f503a673b47bd78d2eea41ed319f67239950deaea3367b",
+      "triangles": 12166,
+      "meshes": 2,
+      "bounds": [
+        10.823888397216797,
+        4.444605291187763,
+        3.700000047683716
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "arty",
+      "faction": "kor",
+      "source": "arty-primary-muzzle-brake-front",
+      "local": [
+        7.342,
+        0.85,
+        0
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "cannon",
+      "aperture": false,
+      "existingSurfaceDistance": 0.01200007629394495,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "9f8a2689fa34cfb70a9b5d92878bb7d284240b6b4f29431d0b6daf563d23fad7",
+      "triangles": 12166,
+      "meshes": 2,
+      "bounds": [
+        10.823888397216797,
+        4.444605291187763,
+        3.700000047683716
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "arty",
+      "faction": "imp",
+      "source": "legacy-primary-muzzle-brake-front",
+      "local": [
+        5.592,
+        0.7,
+        0
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "cannon",
+      "aperture": false,
+      "existingSurfaceDistance": 0.01200007629394495,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "c1e11399621c531fc61a569901cf48d311a7ec51bf4e7adb02318d21761fb79a",
+      "triangles": 9596,
+      "meshes": 2,
+      "bounds": [
+        9.22160816192627,
+        3.2201358690857886,
+        3.799999952316284
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "rocket",
+      "faction": "usa",
+      "source": "rocket-top-row-existing-port-disc",
+      "local": [
+        2.2195,
+        1.4100000000000001,
+        0
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "rocket",
+      "aperture": false,
+      "existingSurfaceDistance": 0.012000019073486419,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "01f0f2f3d1cd10156de58218f35daea82fc3b9ca919bc9b43a82157981d6b977",
+      "triangles": 6780,
+      "meshes": 2,
+      "bounds": [
+        7.852499723434448,
+        3.7855588531087645,
+        3.5850000381469727
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "rocket",
+      "faction": "rus",
+      "source": "rocket-top-row-existing-port-disc",
+      "local": [
+        2.5794999999999995,
+        2,
+        -0.295
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "rocket",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011999885559081762,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "240870c21fdedbcb5b9e98bb71f8f8c41733443788fd33e2f7826e5ae145b23f",
+      "triangles": 8964,
+      "meshes": 2,
+      "bounds": [
+        9.952499866485596,
+        4.277840980309994,
+        3.3499999046325684
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "rocket",
+      "faction": "chn",
+      "source": "rocket-top-row-existing-port-disc",
+      "local": [
+        2.4195,
+        1.4100000000000001,
+        -0.4611111111111111
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "rocket",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011999971389770733,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "6e8af999f77fe10455c872536dee52926d5366b9e35046f759686a937f20c995",
+      "triangles": 9108,
+      "meshes": 2,
+      "bounds": [
+        10.652499675750732,
+        3.801541795713229,
+        3.5850000381469727
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "rocket",
+      "faction": "ind",
+      "source": "rocket-top-row-existing-port-disc",
+      "local": [
+        2.4195,
+        1.4100000000000001,
+        -0.75
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "rocket",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011999971389770733,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "854cf0582bc1307164a0a3dc8edc9e598e8d0c86ea89f6cbabd6736a88be2456",
+      "triangles": 9108,
+      "meshes": 2,
+      "bounds": [
+        9.952499866485596,
+        3.801541795713229,
+        3.5850000381469727
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "rocket",
+      "faction": "kor",
+      "source": "rocket-top-row-existing-port-disc",
+      "local": [
+        2.4195,
+        1.4100000000000001,
+        -0.75
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "rocket",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011999971389770733,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "654ae953528b6cc1f9d1500c867e042d648977a960ff72498e3ed08db74fc9e6",
+      "triangles": 9108,
+      "meshes": 2,
+      "bounds": [
+        10.252500057220459,
+        3.801541795713229,
+        3.5850000381469727
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "rocket",
+      "faction": "imp",
+      "source": "legacy-closed-canister-front-face",
+      "local": [
+        1.5377230704977234,
+        1.9030852424079217,
+        0
+      ],
+      "outward": [
+        0.9887710779360422,
+        0.14943813247359922,
+        0
+      ],
+      "family": "rocket",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011999896105186647,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "1b6ad4537104291450e8b4cbcad1f642236e4b41aa13dbb9046d663576b3dc0d",
+      "triangles": 2820,
+      "meshes": 2,
+      "bounds": [
+        7,
+        3.473203958570957,
+        3.140000104904175
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "aa",
+      "faction": "usa",
+      "source": "aa-existing-missile-port-disc",
+      "local": [
+        0.607,
+        0.9349999999999999,
+        0.735
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "missile",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011999971389770492,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "b12b83c58acdd882aa78a52205f819bcf2b79426df00e3e25dd7bb6e18c0ec94",
+      "triangles": 8568,
+      "meshes": 2,
+      "bounds": [
+        7.099999904632568,
+        3.314999924041331,
+        3.5299999713897705
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "aa",
+      "faction": "rus",
+      "source": "aa-existing-missile-port-disc",
+      "local": [
+        1.4095,
+        1.5699999999999998,
+        1.1
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "missile",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011999961853027319,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "afd6f7c9157512166aa2e6e0ee4d7d320bd9565e1c668f26b090554ef45edbad",
+      "triangles": 11848,
+      "meshes": 2,
+      "bounds": [
+        9.752500057220459,
+        5.3950000214576725,
+        3.5850000381469727
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "aa",
+      "faction": "chn",
+      "source": "aa-existing-vls-cover-top-closed-art",
+      "local": [
+        -1.35,
+        1.1945,
+        0.45
+      ],
+      "outward": [
+        0,
+        1,
+        0
+      ],
+      "family": "missile",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011999995231628535,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "0ba90d8d36ab5cb3df4805e8afb0d1f9a99958d9374b8e51f3eb9a343c0f9863",
+      "triangles": 10458,
+      "meshes": 2,
+      "bounds": [
+        8.088896751403809,
+        4.64691979020834,
+        3.700000047683716
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "aa",
+      "faction": "ind",
+      "source": "aa-existing-exposed-missile-nose",
+      "local": [
+        3.2620000000000005,
+        1,
+        0
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "missile",
+      "aperture": false,
+      "existingSurfaceDistance": 0.012000000000000455,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "088c14056d6a9275528756a99397a83152dc4201ab3ab759561159cfc6dcf2ed",
+      "triangles": 8120,
+      "meshes": 2,
+      "bounds": [
+        9.752500057220459,
+        4.535000026226044,
+        3.5850000381469727
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "aa",
+      "faction": "kor",
+      "source": "aa-existing-primary-cannon-front-cap",
+      "local": [
+        3.974,
+        1.1,
+        1.05
+      ],
+      "outward": [
+        1,
+        0,
+        0
+      ],
+      "family": "autocannon",
+      "aperture": false,
+      "existingSurfaceDistance": 0.012000106811523636,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "436c26d584187f830f3575bd23d164eb61954090716d01e8aa9ae7b1509216c8",
+      "triangles": 11308,
+      "meshes": 2,
+      "bounds": [
+        7.8060996532440186,
+        4.118334943652153,
+        3.700000047683716
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "aa",
+      "faction": "imp",
+      "source": "legacy-closed-aa-canister-front-face",
+      "local": [
+        1.1772616255206598,
+        1.4219044167703128,
+        1.05
+      ],
+      "outward": [
+        0.9713379748520297,
+        -0.23770262642713458,
+        0
+      ],
+      "family": "missile",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011999974797669042,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "cf1753ebc57c2325e8c0cb8074b325bc76e764762062f3c08f013149b5e4ce67",
+      "triangles": 9628,
+      "meshes": 2,
+      "bounds": [
+        7.28321647644043,
+        4.269105972349644,
+        3.799999952316284
+      ],
+      "scale": 6.4
+    },
+    {
+      "kind": "asat",
+      "faction": "usa",
+      "source": "asat-existing-tube-top-disc",
+      "local": [
+        -0.65,
+        4.9,
+        -0.275
+      ],
+      "outward": [
+        0,
+        1,
+        0
+      ],
+      "family": "missile",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011000061035156605,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "803ac4102fe38e1063fdee8cde3854802c63e10585c7277d53ae414c227e548c",
+      "triangles": 4828,
+      "meshes": 2,
+      "bounds": [
+        7.575000047683716,
+        6.298999942839146,
+        3.5
+      ],
+      "scale": 6.2
+    },
+    {
+      "kind": "asat",
+      "faction": "rus",
+      "source": "asat-existing-tube-top-disc",
+      "local": [
+        -0.65,
+        4.9,
+        0
+      ],
+      "outward": [
+        0,
+        1,
+        0
+      ],
+      "family": "missile",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011000061035156605,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "9d6da6a20acef7e9299e0f599354ea17fa67b63079e31a9d11731fbf9792f459",
+      "triangles": 5392,
+      "meshes": 2,
+      "bounds": [
+        7.575000047683716,
+        6.298999942839146,
+        3.5
+      ],
+      "scale": 6.2
+    },
+    {
+      "kind": "asat",
+      "faction": "chn",
+      "source": "asat-existing-tube-top-disc",
+      "local": [
+        -0.65,
+        4.9,
+        -0.275
+      ],
+      "outward": [
+        0,
+        1,
+        0
+      ],
+      "family": "missile",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011000061035156605,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "c0f5a8b998fb04727d22a4ee66700fba18c7caadacfa52f251c1b31d40942275",
+      "triangles": 4828,
+      "meshes": 2,
+      "bounds": [
+        7.575000047683716,
+        6.298999942839146,
+        3.5
+      ],
+      "scale": 6.2
+    },
+    {
+      "kind": "asat",
+      "faction": "ind",
+      "source": "asat-existing-tube-top-disc",
+      "local": [
+        -0.65,
+        4.9,
+        -0.275
+      ],
+      "outward": [
+        0,
+        1,
+        0
+      ],
+      "family": "missile",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011000061035156605,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "821c66cfd93c01b660830c21c3cd99af6ca71175d36a380d208c58c98e12baf7",
+      "triangles": 4880,
+      "meshes": 2,
+      "bounds": [
+        7.575000047683716,
+        6.298999942839146,
+        3.5
+      ],
+      "scale": 6.2
+    },
+    {
+      "kind": "asat",
+      "faction": "kor",
+      "source": "asat-existing-tube-top-disc",
+      "local": [
+        -0.65,
+        4.9,
+        -0.275
+      ],
+      "outward": [
+        0,
+        1,
+        0
+      ],
+      "family": "missile",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011000061035156605,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "21d9ea16eec4fec06d3185013dca5ea828b6f6d39cc9b1835b93beb9bf0bc867",
+      "triangles": 5968,
+      "meshes": 2,
+      "bounds": [
+        7.575000047683716,
+        6.298999942839146,
+        3.5
+      ],
+      "scale": 6.2
+    },
+    {
+      "kind": "asat",
+      "faction": "imp",
+      "source": "asat-existing-tube-top-disc",
+      "local": [
+        -0.65,
+        4.9,
+        -0.275
+      ],
+      "outward": [
+        0,
+        1,
+        0
+      ],
+      "family": "missile",
+      "aperture": false,
+      "existingSurfaceDistance": 0.011000061035156605,
+      "rimDistance": null,
+      "centreClearDepth": null,
+      "unchangedGeometry": true,
+      "geometryChangeAllowed": false,
+      "hash": "2cfb983db52fe71012c4907083d488ee2e12cff261873b5da8ff675bb5537fa2",
+      "triangles": 4860,
+      "meshes": 2,
+      "bounds": [
+        7.575000047683716,
+        6.298999942839146,
+        3.5
+      ],
+      "scale": 6.2
+    }
+  ]
+}

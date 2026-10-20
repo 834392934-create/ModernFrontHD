@@ -51,6 +51,11 @@
                 </select></label
               >
             </div>
+            <div class="option-row">
+              <label>武器射程<select id="range-mode"><option value="published" selected>公开射程 · 未知项标注估算</option><option value="balanced">原版平衡射程</option></select></label>
+              <label>射程标尺<select id="range-scale"><option value="1" selected>1 游戏单位 = 1 米</option><option value="5">1 游戏单位 = 5 米</option><option value="10">1 游戏单位 = 10 米</option></select></label>
+            </div>
+            <p class="small-note">标尺用于交战距离，载具外观有放大。远程武器可覆盖全图，仍受侦察、最小射程和目标类型限制。</p>
             <div class="switch-row">
               <label><input id="allied" type="checkbox" />敌方结盟</label
               ><label
@@ -206,6 +211,8 @@
   <script src="src/crowd-navigation.js"></script>
   <script src="src/destructible-trees.js"></script>
   <script src="src/vehicle-motion.js"></script>
+  <script src="src/weapon-range-data.js"></script>
+  <script src="src/weapon-salvos.js"></script>
   <script src="src/sim.js"></script>
   <script src="src/operator-sim.js"></script>
   <script src="src/vehicle-interaction.js"></script>

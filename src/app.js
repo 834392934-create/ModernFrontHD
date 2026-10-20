@@ -280,6 +280,8 @@
       aiSpaceWeapons: !$("#ai-space-ban").checked,
       mode: $('#game-mode').value,
       scoreLimit: Number($('#score-limit').value),
+      rangeMode: $('#range-mode').value,
+      metersPerUnit: Number($('#range-scale').value),
       buffs: $$("#buffs input:checked").map((e) => e.dataset.buff),
       opponents: $$("#opponents select").map((e) => e.value || undefined),
     };
@@ -474,7 +476,8 @@
           " / " +
           Math.ceil(chosen[0].maxHp) +
           " · " +
-          (U[chosen[0].kind]?.role || "基地设施")
+          (U[chosen[0].kind]?.role || "基地设施") +
+          attackRangeText(chosen[0])
         : chosen.length
           ? "右键移动 / 集火 · A 攻击移动 · S 停止"
           : "左键选择单位，按住拖动框选";
@@ -495,7 +498,14 @@
       .map((e) => "<div>" + escapeHTML(e.text) + "</div>")
       .join("");
   }
+  function attackRangeText(e, nominal=false) {
+    if(!(U[e.kind]||B[e.kind])?.damage)return "";
+    const p=nominal?game.weaponRangeProfile(e):game.rangeProfile(e),range=nominal?p.range:p.attack;
+    return " · "+(nominal?"标称射程 ":"射程 ")+(p.min?game.formatRangeDistance(p.min)+" – ":"")+game.formatRangeDistance(range)+" · "+(game.rangeReferenceLabel(p.reference)||"游戏平衡")+(p.boosted?" · 雷达 +15%":"");
+  }
   function item(k, name, icon, sub, cost, disabled, title) {
+    const range=(U[k]||B[k])?attackRangeText({kind:k,team:0},true):"";
+    title+=range+(range?"；最小射程内不能攻击，公开/估算口径以装备资料为准。":"");
     return (
       '<button class="catalog-item ' +
       (mode === k ? "active" : "") +
@@ -511,6 +521,7 @@
       escapeHTML(name) +
       "</strong><small>" +
       escapeHTML(sub) +
+      (range?"</small><small>"+escapeHTML(range.slice(3)):"") +
       '</small></span><span class="price">' +
       cost.toLocaleString() +
       "</span></button>"
@@ -733,6 +744,7 @@
     for (const id of selection) {
       const e = game.get(id);
       if (e) {
+        window.WarWeaponSalvos?.cancel(game,e,'stop');
         e.order = null;
         e.path = [];
         e.target = null;
@@ -1135,7 +1147,7 @@
     openModal(
       "<small>PUBLIC DATA / " +
         D.EQUIPMENT.checked +
-        '</small><h2>装备资料与推演边界</h2><p>公开参数带来源；未知数据保留未知。所有生命、伤害、雷达距离和打击范围均为游戏数值。已知机动参数用于相对移动映射（3 倍时间压缩）；无可靠数值时使用同类游戏基线。这里不是现实作战性能预测。</p><select id="dossier-faction">' +
+        '</small><h2>装备资料与推演边界</h2><p>公开参数带来源；未知数据保留未知。攻击射程按对局模式采用公开弹种规格、同类估算或游戏设定；最小射程以内不能攻击。公开最大、有效和试验距离不等价，也不保证命中。生命、伤害和侦察范围仍为游戏数值。已知机动参数用于相对移动映射（3 倍时间压缩）；无可靠数值时使用同类游戏基线。这里不是现实作战性能预测。</p><select id="dossier-faction">' +
         Object.entries(F)
           .map(
             ([k, f]) =>

@@ -45,7 +45,33 @@
  function antenna(b,x,y,z){b.cyl(.04,.16,x,y,z,steel);b.cyl(.009,1.3,x,y+.68,z,dark,'y',.005,6);}
  function lights(b,x,y,w,c){for(let s of [-1,1]){b.box(.16,.23,.37,x,y,s*w,c);b.cyl(.075,.025,x+.1,y,s*w,0xe0dfbe,'x');b.cyl(.04,.025,x+.1,y,s*w+s*.12,0xd38f43,'x');}}
  function vent(b,x,y,z,w=.7){for(let j=0;j<9;j++)b.box(w,.018,.035,x,y,z+(j-4)*.075,dark);}
- function barrel(b,x,y,z,len,r,c,muzzle=false){b.cyl(r,len,x+len/2,y,z,c,'x',r*.85,16);b.cyl(r*1.35,.35,x+len*.3,y,z,c,'x');if(muzzle){b.box(.3,r*2.6,r*2.7,x+len+.08,y,z,c);for(let s of [-1,1])b.box(.15,r*1.3,.01,x+len+.04,y,z+s*r*1.37,dark);}else b.cyl(r*.7,.008,x+len+.008,y,z,dark,'x');}
+ // M109 exterior-only interpretation of ground/5.jpg. These art-space values
+ // stay inside the previous brake envelope; they are not engineering dimensions.
+ function paladinBrake(b,end,y,z,r,c){
+   const halfY=r*1.3,halfZ=r*1.35,back=end-.07,front=end+.23;
+   function rim(x,depth,inner){
+     const shape=new T.Shape(),corner=.025;
+     shape.moveTo(-halfZ+corner,-halfY);shape.lineTo(halfZ-corner,-halfY);shape.lineTo(halfZ,-halfY+corner);shape.lineTo(halfZ,halfY-corner);shape.lineTo(halfZ-corner,halfY);shape.lineTo(-halfZ+corner,halfY);shape.lineTo(-halfZ,halfY-corner);shape.lineTo(-halfZ,-halfY+corner);shape.closePath();
+     const hole=new T.Path();hole.absarc(0,0,inner,0,Math.PI*2,true);shape.holes.push(hole);
+     b.add(new T.ExtrudeGeometry(shape,{depth,bevelEnabled:false,curveSegments:16}),c,[x,y,z],[0,Math.PI/2,0]);
+   }
+   // Three perforated exterior edges and continuous upper/lower shell strips
+   // leave two genuinely open side windows, rather than dark painted rectangles.
+   rim(back,.025,r*.85);rim(end+.095,.026,r*.74);rim(front-.03,.03,r*.68);
+   for(const s of [-1,1])b.box(front-back,.026,halfZ*2,(front+back)/2,y+s*(halfY-.013),z,c);
+ }
+ function barrel(b,x,y,z,len,r,c,muzzle=false){
+   if(muzzle==='m109-open'){
+     const geo=new T.CylinderGeometry(r*.85,r,len,16),cap=geo.groups.find(g=>g.materialIndex===1),ids=Array.from(geo.index.array);
+     // Remove only the outward cap. Keep the original tube, rear closure and
+     // primitive identity so the existing recoil rig still owns the barrel.
+     geo.setIndex(ids.filter((_,i)=>i<cap.start||i>=cap.start+cap.count));geo.clearGroups();b.add(geo,c,[x+len/2,y,z],[0,0,-Math.PI/2]);
+   }else b.cyl(r,len,x+len/2,y,z,c,'x',r*.85,16);
+   b.cyl(r*1.35,.35,x+len*.3,y,z,c,'x');
+   if(muzzle==='m109-open')paladinBrake(b,x+len,y,z,r,c);
+   else if(muzzle){b.box(.3,r*2.6,r*2.7,x+len+.08,y,z,c);for(let s of [-1,1])b.box(.15,r*1.3,.01,x+len+.04,y,z+s*r*1.37,dark);}
+   else b.cyl(r*.7,.008,x+len+.008,y,z,dark,'x');
+ }
  function chassis(b,f,L=6.6,height=1.7,skirt=true){
    const c=colors[f];M.tracks(b,L,c,6);
    section(b,[[-L/2,.68],[L/2-.35,.68],[L/2,1.08],[L/2-(height<1.7?1.65:.95),height],[-L/2,height]],2.75,c);
@@ -78,6 +104,9 @@
    return front;
  }
  function finish(b,t,f,k,ty,tx=0){const g=new T.Group();g.add(b.finish());let mesh=t.finish();mesh.name='turret';mesh.position.set(tx,ty,0);g.add(mesh);g.userData={scale:6.4,parts:b.parts+t.parts,profile:names[f][['ifv','arty','rocket','aa'].indexOf(k)],referenceUrl:referenceUrls[k+'_'+f],evidenceStatus:'photo-referenced',modelRevision:3};return g;}
+ // Coordinates are derived from the existing visible primitive's outer face.
+ // The tiny normal offset avoids coplanar flashes; no geometry or envelope changes.
+ function firingPoint(g,face,source,family='cannon',normal=[1,0,0]){const a=new T.Object3D();a.name='muzzle';a.position.set(...face).addScaledVector(new T.Vector3(...normal),.012);a.userData={source,face:face.slice(),outward:normal.slice(),artOffset:.012};g.getObjectByName('turret').add(a);g.userData.muzzleSource=source;g.userData.muzzleFamily=family;return g;}
  function ifv(f){
    const b=new B(),t=new B(),c=colors[f],low=f==='rus'||f==='ind',h=low?1.58:f==='usa'?2.03:1.9,L=f==='usa'?6.8:f==='chn'?7.0:6.7;
    chassis(b,f,L,h,!low);const tx=f==='ind'?-.35:f==='chn'?-.5:f==='usa'?-.15:0;
@@ -93,7 +122,8 @@
      if(f==='kor'){for(let s of [-1,1]){for(let i=0;i<4;i++)t.box(.035,.4,.035,-1.25+i*.3,.45,s*1.15,steel);t.box(1.0,.035,.035,-.8,.66,s*1.15,steel);}}
    }
    for(let s of [-1,1]){antenna(t,-.7,.75,s*.65);for(let i=0;i<3;i++)hatch(b,-1-i*.65,h+.025,s*.63,c,.22);}
-   return finish(b,t,f,'ifv',h+.04,tx);
+   const primary=f==='rus'?[.7+3+.012,.3,0]:f==='ind'?[.7+2.7+.012,.3,0]:f==='chn'?[.9+3+.012,.28,-.2]:[.85+(f==='kor'?2.35:2.65)+.012,.34,0];
+   return firingPoint(finish(b,t,f,'ifv',h+.04,tx),primary,'ifv-primary-barrel-front-cap',f==='rus'||f==='chn'?'cannon':'autocannon');
  }
  function arty(f){
    const b=new B(),t=new B(),c=colors[f],msta=f==='rus',paladin=f==='usa',L=paladin?7.2:msta?7.4:7.5;
@@ -102,14 +132,15 @@
    const upper=lower.map(([x,z])=>[x>0?x-(paladin?.5:.3):x+.1,z*.88]);faceted(t,lower,upper,h,c);
    // Gun cradle is visibly recessed between shaped cheeks, rather than one flat wall.
    t.box(.045,.85,1.03,len/2-.03,.79,0,dark);for(let s of [-1,1])section(t,[[len/2-.5,.25],[len/2+.22,.25],[len/2+.22,.9],[len/2-.15,1.2],[len/2-.5,1.2]],.25,c,s*.51);
-   t.cyl(.29,.84,len/2-.07,.85,0,c,'z');t.box(.35,.45,.45,len/2+.06,.85,0,c);const gunLength=paladin?4.1:5.0;barrel(t,len/2,.85,0,gunLength,.11,c,true);
+   t.cyl(.29,.84,len/2-.07,.85,0,c,'z');t.box(.35,.45,.45,len/2+.06,.85,0,c);const gunLength=paladin?4.1:5.0;barrel(t,len/2,.85,0,gunLength,.11,c,paladin?'m109-open':true);
    t.cyl(.21,.8,len/2+1,.85,0,c,'x');for(let j=0;j<5;j++)t.cyl(.19,.025,len/2+.2+j*.15,.85,0,steel,'x');
    for(let s of [-1,1]){plate(t,1.05,1.15,-.45,.8,s*(w/2+.025),c);t.box(.3,.07,.07,-.3,1.1,s*(w/2+.06),steel);for(let i=0;i<4;i++)t.box(.2,.35,.35,-1.45,.65+i*.05,s*(w/2+.17),c);hatch(t,-.6,h+.04,s*.6,c,.3);antenna(t,-1.3,h+.03,s*.9);}
    t.cyl(.18,.18,.1,h+.15,-.65,c);barrel(t,.15,h+.25,-.65,.75,.025,steel);for(let s of [-1,1])t.box(.25,.4,.025,.1,h+.25,-.65+s*.22,c);
    if(f==='kor'||f==='ind')for(let s of [-1,1]){t.cyl(.36,.055,-.55,.78,s*(w/2+.04),c,'z',.36,24);t.box(.15,.04,.035,-.55,.89,s*(w/2+.08),steel);}
    if(msta){t.box(.2,1.4,.55,-len/2-.13,.8,.6,c);t.box(1,.08,.45,-len/2-.5,.1,.6,steel,[0,0,.3]);}
    else{for(let i=0;i<5;i++)t.box(.05,.4,.045,-len/2-.07,h-.2,-1+i*.5,steel);t.box(.05,.04,2.1,-len/2-.07,h+.01,0,steel);}
-   b.box(.2,.45,.4,L/2-.7,1.88,0,c);vent(b,2,1.64,.7);return finish(b,t,f,'arty',1.68,-.65);
+   b.box(.2,.45,.4,L/2-.7,1.88,0,c);vent(b,2,1.64,.7);const g=firingPoint(finish(b,t,f,'arty',1.68,-.65),[len/2+gunLength+.08+.3/2,.85,0],paladin?'arty-open-brake-exit-plane':'arty-primary-muzzle-brake-front');
+   if(paladin){g.userData.muzzleDetail='original-perforated-shell-from-public-exterior-photo';g.userData.modelRevision=4;g.getObjectByName('muzzle').userData.aperture=true;}return g;
  }
  function rocket(f){
    const b=new B(),t=new B(),c=colors[f],us=f==='usa',smerch=f==='rus',L=us?7.6:f==='chn'?10.4:f==='kor'?10:9.7;
@@ -125,7 +156,15 @@
      for(let x of [-plen/2+.15,plen/2-.15])t.box(.1,1.36,podW+.1,x,1.15,z,steel);for(let i=0;i<5;i++)t.box(.07,.75,.06,-1.7+i*.8,1.15,z+podW/2+.04,steel);
    }
    for(let s of [-1,1]){b.box(.2,.6,.25,-L/2+.4,1.1,s*1.3,c);b.cyl(.075,.75,-L/2+.4,.8,s*1.3,steel);b.box(.45,.08,.4,-L/2+.4,.43,s*1.3,steel);}
-   const g=finish(b,t,f,'rocket',1.85,-1.4);const turret=g.getObjectByName('turret');turret.rotation.z=.08;return g;
+   const g=finish(b,t,f,'rocket',1.85,-1.4);const turret=g.getObjectByName('turret');turret.rotation.z=.08;
+   const face=smerch?[plen/2+.01+.015/2,.9+2*.55,(1-1.5)*.59]:[plen/2+.04+.035/2,.87+.54,us?0:-.75+(f==='chn'?.5*(podW/(cols+.25)):0)];
+   firingPoint(g,face,'rocket-top-row-existing-port-disc','rocket');
+   const faces=[];
+   if(smerch){for(let row=0;row<3;row++)for(let col=0;col<4;col++)faces.push([plen/2+.01+.015/2,.9+row*.55,(col-1.5)*.59]);}
+   else for(let p=0;p<count;p++)for(let row=0;row<rows;row++)for(let col=0;col<cols;col++)faces.push([plen/2+.04+.035/2,.87+row*.54,(count===1?0:(p-.5)*1.5)+(col-(cols-1)/2)*(podW/(cols+.25))]);
+   faces.sort((a,b)=>Math.hypot(...a.map((v,i)=>v-face[i]))-Math.hypot(...b.map((v,i)=>v-face[i])));
+   g.userData.firePorts=faces.map((p,i)=>{const a=new T.Object3D();a.name='muzzle_'+i;a.position.set(p[0]+.012,p[1],p[2]);a.userData={source:'existing-rocket-port-disc',face:p.slice(),outward:[1,0,0],artOffset:.012};turret.add(a);return{node:a.name,parent:'turret',position:a.position.toArray(),direction:[1,0,0]};});
+   return g;
  }
  function missile(b,x,y,z,len=3.0){
    b.cyl(.15,len,x,y,z,0xb7bcb3,'x');b.cyl(.15,.45,x+len/2+.225,y,z,0x5f715c,'x',0,16);
@@ -160,7 +199,12 @@
      for(let s of [-1,1]){t.cyl(.48,.55,.2,.82,s*1.05,c,'z',.48,16);t.box(.9,.6,.55,.1,.75,s*1.05,c);barrel(t,.85,1.1,s*1.05,3.1,.046,steel);for(let j=0;j<3;j++)t.cyl(.047,.3,-.8+j*.16,.45,s*1.15,steel,'z');for(let j=0;j<4;j++)t.box(.03,.45,.035,-1.75+j*.19,.5,s*1.12,steel);t.box(.7,.04,.035,-1.45,.75,s*1.12,steel);}
      t.cyl(.07,.9,-.8,1.45,0,steel);t.box(.22,.67,1.8,-.8,2.1,0,c);t.box(.025,.56,1.65,-.67,2.1,0,0x3b4c49);hatch(t,-.65,.95,.6,c);optic(t,.5,1.13,0,c);ty=1.76;
    }
-   return finish(b,t,f,'aa',ty,tx);
+   const g=finish(b,t,f,'aa',ty,tx);
+   if(f==='usa')return firingPoint(g,[.59+.01/2,.82+.115,.85-.115],'aa-existing-missile-port-disc','missile');
+   if(f==='rus')return firingPoint(g,[1.39+.015/2,.85+2*.36,1.1],'aa-existing-missile-port-disc','missile');
+   if(f==='chn')return firingPoint(g,[-1.35,1.17+.025/2,.45],'aa-existing-vls-cover-top-closed-art','missile',[0,1,0]);
+   if(f==='ind')return firingPoint(g,[.2+5.2/2+.45,1,0],'aa-existing-exposed-missile-nose','missile');
+   return firingPoint(g,[.85+3.1+.012,1.1,1.05],'aa-existing-primary-cannon-front-cap','autocannon');
  }
  for(const f of Object.keys(names))for(const [kind,fn] of Object.entries({ifv,arty,rocket,aa}))M.register(kind,f,()=>fn(f));
 })(globalThis);

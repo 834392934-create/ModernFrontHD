@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul
 cd /d "%~dp0"
-if exist "%~dp0release\ModernFrontHD-3.10.0\ModernFrontHD.exe" (
+if exist "%~dp0release\ModernFrontHD-3.10.1\ModernFrontHD.exe" (
   call "%~dp0启动独立版.cmd"
   exit /b
 )

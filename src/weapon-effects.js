@@ -21,6 +21,8 @@
  };
  function family(f){const k=f.sourceKind||f.kind||'',u=root.WarData?.U?.[k]||root.WarData?.B?.[k]||{},w=root.WarOperatorWeapons?.byId?.[f.weaponId],fx=f.weaponFx||u.weaponFx;
   if(w)return({lmg:'machinegun',smg:'machinegun',pistol:'rifle',marksman:'sniper',launcher:'rocket'})[w.category]||w.category;
+  if(k==='aa'&&f.sourceFaction==='kor')return 'autocannon';
+  if(k==='ifv'&&['chn','rus'].includes(f.sourceFaction))return 'cannon';
   if(fx==='torpedo')return 'torpedo';if(/beam/.test(fx))return 'beam';if(fx==='interceptor-burst')return 'pulse';
   if(['rocket','rocket_artillery','antitank_team'].includes(k))return 'rocket';
   if(f.rocket||u.rocket||/missile|asat|sam/.test(k)||['heli','aa','fighter','jet','interceptor'].includes(k))return 'missile';
@@ -36,7 +38,7 @@
   ctx.restore();if(p.smoke&&age>0&&age<p.smoke){const t=age/p.smoke;ctx.save();ctx.globalAlpha=(1-t)*(p.exhaust?.32:.22);ctx.fillStyle=p.exhaust?'#d8d6c9':'#b9b6a9';for(let i=0;i<4;i++){const a=i*2.399,r=size*(.25+t*.95),shift=p.exhaust?-1:1;ctx.beginPath();ctx.ellipse(head.x+dir.x*size*t*shift+Math.cos(a)*r*.65,head.y+dir.y*size*t*shift+Math.sin(a)*r*.45-size*t*.4,r*.55,r*.4,0,0,Math.PI*2);ctx.fill();}if(p.dust){ctx.globalAlpha=(1-t)*.15;ctx.fillStyle='#9f8c68';ctx.beginPath();ctx.ellipse(head.x,head.y+size*.3,size*(1+t*2),size*.20,0,0,Math.PI*2);ctx.fill();}ctx.restore();}
  }
  function update(renderer,game){let s=states.get(renderer);if(!s||s.game!==game){s={game,seen:new WeakSet(),shots:[]};states.set(renderer,s);}for(const f of game.effects||[]){if(f.type!=='shot'||s.seen.has(f))continue;s.seen.add(f);if(!game.visibleAt(f.x,f.y)&&f.sourceId!==renderer.firstPerson?.entityId)continue;
-   const p=profile(f),origin=[f.x,f.sourceHeight??8,f.y];if(!game.directControl||game.directControl.entityId!==f.sourceId){const anchor=renderer.objects.get(f.sourceId)?.getObjectByName('muzzle');if(anchor){const v=anchor.getWorldPosition(new root.THREE.Vector3());origin[0]=v.x;origin[2]=v.z;const source=game.get(f.sourceId);origin[1]=v.y+(source?renderer.physicalHeight(source)-renderer.entityHeight(source):0);}}
+   const p=profile(f),origin=[f.x,f.sourceHeight??8,f.y];if(!game.directControl||game.directControl.id!==f.sourceId){const model=renderer.objects.get(f.sourceId),anchor=model?.getObjectByName(Number.isInteger(f.portIndex)?'muzzle_'+f.portIndex:'muzzle')||model?.getObjectByName('muzzle');if(anchor){const v=anchor.getWorldPosition(new root.THREE.Vector3());origin[0]=v.x;origin[2]=v.z;const source=game.get(f.sourceId);origin[1]=v.y+(source?renderer.physicalHeight(source)-renderer.entityHeight(source):0);}}
    s.shots.push({p,origin,end:[f.tx,f.targetHeight??0,f.ty],at:Number.isFinite(f.firedAt)?f.firedAt:game.time-Math.max(0,f.max-f.ttl),max:f.max});
   }s.shots=s.shots.filter(v=>game.time-v.at<Math.max(v.p.smoke,v.p.flash,v.p.exhaust?1.3:0));if(s.shots.length>160)s.shots.splice(0,s.shots.length-160);return s;
  }

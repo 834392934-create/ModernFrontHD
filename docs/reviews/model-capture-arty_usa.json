@@ -1,0 +1,7770 @@
+{
+  "recordedAt": "2026-10-20T16:20:00.532Z",
+  "models": [
+    {
+      "key": "arty_usa",
+      "scale": 6.4,
+      "parts": 615,
+      "profile": "M109A7 Paladin",
+      "referenceUrl": "https://babel.ua/amp/news/46776-ssha-pochinaye-vikoristovuvati-suputniki-dlya-navedennya-artileriji-na-cili",
+      "evidenceStatus": "photo-referenced",
+      "modelRevision": 4,
+      "muzzleSource": "arty-open-brake-exit-plane",
+      "muzzleFamily": "cannon",
+      "muzzleDetail": "original-perforated-shell-from-public-exterior-photo",
+      "kind": "arty",
+      "faction": "usa",
+      "motionRig": [
+        {
+          "node": "rig_ground_0_1",
+          "role": "wheel",
+          "pivot": [
+            -2.95,
+            0.65,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.49,
+          "positionZ": -1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_2",
+          "role": "wheel",
+          "pivot": [
+            -1.77,
+            0.65,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.49,
+          "positionZ": -1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_3",
+          "role": "wheel",
+          "pivot": [
+            -0.5899999999999999,
+            0.65,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.49,
+          "positionZ": -1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_4",
+          "role": "wheel",
+          "pivot": [
+            0.5900000000000003,
+            0.65,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.49,
+          "positionZ": -1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_5",
+          "role": "wheel",
+          "pivot": [
+            1.7700000000000005,
+            0.65,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.49,
+          "positionZ": -1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_6",
+          "role": "wheel",
+          "pivot": [
+            2.95,
+            0.65,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.49,
+          "positionZ": -1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_7",
+          "role": "wheel",
+          "pivot": [
+            -3.35,
+            0.72,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.48,
+          "positionZ": -1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_8",
+          "role": "wheel",
+          "pivot": [
+            3.35,
+            0.72,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.48,
+          "positionZ": -1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_9",
+          "role": "wheel",
+          "pivot": [
+            -2.95,
+            0.65,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.49,
+          "positionZ": 1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_10",
+          "role": "wheel",
+          "pivot": [
+            -1.77,
+            0.65,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.49,
+          "positionZ": 1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_11",
+          "role": "wheel",
+          "pivot": [
+            -0.5899999999999999,
+            0.65,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.49,
+          "positionZ": 1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_12",
+          "role": "wheel",
+          "pivot": [
+            0.5900000000000003,
+            0.65,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.49,
+          "positionZ": 1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_13",
+          "role": "wheel",
+          "pivot": [
+            1.7700000000000005,
+            0.65,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.49,
+          "positionZ": 1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_14",
+          "role": "wheel",
+          "pivot": [
+            2.95,
+            0.65,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.49,
+          "positionZ": 1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_15",
+          "role": "wheel",
+          "pivot": [
+            -3.35,
+            0.72,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.48,
+          "positionZ": 1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_16",
+          "role": "wheel",
+          "pivot": [
+            3.35,
+            0.72,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "radius": 0.48,
+          "positionZ": 1.52,
+          "steering": false,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_17",
+          "role": "track",
+          "pivot": [
+            -3.931603799849504,
+            0.6208182476429351,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 0,
+          "pathAngle": -1.2569144221824426,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_18",
+          "role": "track",
+          "pivot": [
+            -3.8789699733886223,
+            0.4586749777513825,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 0.17047216681628438,
+          "pathAngle": -0.9669639250428483,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_19",
+          "role": "track",
+          "pivot": [
+            -3.7821756491871614,
+            0.3183481504466144,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 0.3409443336325706,
+          "pathAngle": -0.6770134279032566,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_20",
+          "role": "track",
+          "pivot": [
+            -3.649301598839428,
+            0.21155280221820283,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 0.5114165004488567,
+          "pathAngle": -0.3870629307636632,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_21",
+          "role": "track",
+          "pivot": [
+            -3.4914406716475725,
+            0.14720462955442493,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 0.6818886672651429,
+          "pathAngle": -0.10104937528964852,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_22",
+          "role": "track",
+          "pivot": [
+            -3.32176093918202,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 0.8524383986858827,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_23",
+          "role": "track",
+          "pivot": [
+            -3.1506901458696634,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 1.0235091919982393,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_24",
+          "role": "track",
+          "pivot": [
+            -2.9796193525573034,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 1.1945799853105994,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_25",
+          "role": "track",
+          "pivot": [
+            -2.8085485592449433,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 1.3656507786229595,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_26",
+          "role": "track",
+          "pivot": [
+            -2.6374777659325823,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 1.5367215719353204,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_27",
+          "role": "track",
+          "pivot": [
+            -2.466406972620224,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 1.7077923652476787,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_28",
+          "role": "track",
+          "pivot": [
+            -2.295336179307864,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 1.8788631585600388,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_29",
+          "role": "track",
+          "pivot": [
+            -2.124265385995504,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 2.049933951872399,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_30",
+          "role": "track",
+          "pivot": [
+            -1.9531945926831455,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 2.221004745184757,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_31",
+          "role": "track",
+          "pivot": [
+            -1.7821237993707855,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 2.3920755384971173,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_32",
+          "role": "track",
+          "pivot": [
+            -1.6110530060584272,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 2.5631463318094756,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_33",
+          "role": "track",
+          "pivot": [
+            -1.439982212746067,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 2.7342171251218357,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_34",
+          "role": "track",
+          "pivot": [
+            -1.268911419433707,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 2.9052879184341958,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_35",
+          "role": "track",
+          "pivot": [
+            -1.097840626121347,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 3.076358711746556,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_36",
+          "role": "track",
+          "pivot": [
+            -0.9267698328089886,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 3.247429505058914,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_37",
+          "role": "track",
+          "pivot": [
+            -0.7556990394966285,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 3.4185002983712742,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_38",
+          "role": "track",
+          "pivot": [
+            -0.5846282461842685,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 3.5895710916836343,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_39",
+          "role": "track",
+          "pivot": [
+            -0.41355745287190837,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 3.7606418849959944,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_40",
+          "role": "track",
+          "pivot": [
+            -0.2424866595595483,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 3.9317126783083545,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_41",
+          "role": "track",
+          "pivot": [
+            -0.07141586624718999,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 4.102783471620713,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_42",
+          "role": "track",
+          "pivot": [
+            0.0996549270651701,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 4.273854264933073,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_43",
+          "role": "track",
+          "pivot": [
+            0.2707257203775284,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 4.444925058245431,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_44",
+          "role": "track",
+          "pivot": [
+            0.4417965136898885,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 4.615995851557791,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_45",
+          "role": "track",
+          "pivot": [
+            0.6128673070022486,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 4.787066644870151,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_46",
+          "role": "track",
+          "pivot": [
+            0.7839381003146069,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 4.95813743818251,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_47",
+          "role": "track",
+          "pivot": [
+            0.955008893626967,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 5.12920823149487,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_48",
+          "role": "track",
+          "pivot": [
+            1.126079686939327,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 5.30027902480723,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_49",
+          "role": "track",
+          "pivot": [
+            1.297150480251687,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 5.47134981811959,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_50",
+          "role": "track",
+          "pivot": [
+            1.4682212735640452,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 5.642420611431948,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_51",
+          "role": "track",
+          "pivot": [
+            1.6392920668764053,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 5.813491404744308,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_52",
+          "role": "track",
+          "pivot": [
+            1.8103628601887654,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 5.984562198056668,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_53",
+          "role": "track",
+          "pivot": [
+            1.9814336535011254,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 6.155632991369028,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_54",
+          "role": "track",
+          "pivot": [
+            2.1525044468134853,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 6.3267037846813885,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_55",
+          "role": "track",
+          "pivot": [
+            2.323575240125842,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 6.497774577993745,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_56",
+          "role": "track",
+          "pivot": [
+            2.494646033438202,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 6.668845371306105,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_57",
+          "role": "track",
+          "pivot": [
+            2.665716826750562,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 6.839916164618465,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_58",
+          "role": "track",
+          "pivot": [
+            2.836787620062922,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 7.010986957930825,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_59",
+          "role": "track",
+          "pivot": [
+            3.0078584133752804,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 7.182057751243184,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_60",
+          "role": "track",
+          "pivot": [
+            3.1789292066876405,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 7.353128544555544,
+          "pathAngle": 0,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_61",
+          "role": "track",
+          "pivot": [
+            3.3500000000000005,
+            0.13,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 7.524199337867904,
+          "pathAngle": 0.14497524856979754,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_62",
+          "role": "track",
+          "pivot": [
+            3.5186838254755934,
+            0.1546277624229152,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 7.69467150468419,
+          "pathAngle": 0.4349257457093912,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_63",
+          "role": "track",
+          "pivot": [
+            3.673285260515927,
+            0.22645502704095,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 7.865143671500476,
+          "pathAngle": 0.7248762428489844,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_64",
+          "role": "track",
+          "pivot": [
+            3.8008975681297628,
+            0.3394853707744394,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 8.03561583831676,
+          "pathAngle": 1.0148267399885735,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_65",
+          "role": "track",
+          "pivot": [
+            3.8908671700318376,
+            0.48428257514186335,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 8.206088005133045,
+          "pathAngle": 1.3047772371281672,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_66",
+          "role": "track",
+          "pivot": [
+            3.935683049337647,
+            0.6487583989613136,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 8.37656017194933,
+          "pathAngle": 1.5947277342677597,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_67",
+          "role": "track",
+          "pivot": [
+            3.931603799849504,
+            0.8191817523570641,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 8.547032338765616,
+          "pathAngle": 1.8846782314073502,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_68",
+          "role": "track",
+          "pivot": [
+            3.878969973388622,
+            0.9813250222486184,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 8.717504505581902,
+          "pathAngle": 2.174628728546945,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_69",
+          "role": "track",
+          "pivot": [
+            3.7821756491871614,
+            1.1216518495533858,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 8.887976672398187,
+          "pathAngle": 2.4645792256865375,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_70",
+          "role": "track",
+          "pivot": [
+            3.649301598839428,
+            1.2284471977817972,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 9.058448839214472,
+          "pathAngle": 2.75452972282613,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_71",
+          "role": "track",
+          "pivot": [
+            3.4914406716475734,
+            1.2927953704455748,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 9.228921006030758,
+          "pathAngle": 3.0405432783001416,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_72",
+          "role": "track",
+          "pivot": [
+            3.3217609391820226,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 9.399470737451496,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_73",
+          "role": "track",
+          "pivot": [
+            3.1506901458696626,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 9.570541530763856,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_74",
+          "role": "track",
+          "pivot": [
+            2.9796193525573034,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 9.741612324076215,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_75",
+          "role": "track",
+          "pivot": [
+            2.8085485592449433,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 9.912683117388575,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_76",
+          "role": "track",
+          "pivot": [
+            2.637477765932584,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 10.083753910700935,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_77",
+          "role": "track",
+          "pivot": [
+            2.466406972620225,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 10.254824704013295,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_78",
+          "role": "track",
+          "pivot": [
+            2.295336179307865,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 10.425895497325655,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_79",
+          "role": "track",
+          "pivot": [
+            2.1242653859955056,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 10.596966290638015,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_80",
+          "role": "track",
+          "pivot": [
+            1.9531945926831455,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 10.768037083950375,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_81",
+          "role": "track",
+          "pivot": [
+            1.7821237993707864,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 10.939107877262735,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_82",
+          "role": "track",
+          "pivot": [
+            1.6110530060584263,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 11.110178670575095,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_83",
+          "role": "track",
+          "pivot": [
+            1.439982212746068,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 11.281249463887454,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_84",
+          "role": "track",
+          "pivot": [
+            1.2689114194337079,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 11.452320257199814,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_85",
+          "role": "track",
+          "pivot": [
+            1.0978406261213487,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 11.623391050512172,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_86",
+          "role": "track",
+          "pivot": [
+            0.9267698328089886,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 11.794461843824532,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_87",
+          "role": "track",
+          "pivot": [
+            0.7556990394966285,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 11.965532637136892,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_88",
+          "role": "track",
+          "pivot": [
+            0.5846282461842698,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 12.13660343044925,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_89",
+          "role": "track",
+          "pivot": [
+            0.41355745287191015,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 12.30767422376161,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_90",
+          "role": "track",
+          "pivot": [
+            0.2424866595595505,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 12.47874501707397,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_91",
+          "role": "track",
+          "pivot": [
+            0.07141586624719087,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 12.64981581038633,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_92",
+          "role": "track",
+          "pivot": [
+            -0.09965492706516876,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 12.82088660369869,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_93",
+          "role": "track",
+          "pivot": [
+            -0.2707257203775284,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 12.991957397011051,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_94",
+          "role": "track",
+          "pivot": [
+            -0.4417965136898876,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 13.16302819032341,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_95",
+          "role": "track",
+          "pivot": [
+            -0.6128673070022472,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 13.33409898363577,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_96",
+          "role": "track",
+          "pivot": [
+            -0.7839381003146069,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 13.50516977694813,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_97",
+          "role": "track",
+          "pivot": [
+            -0.9550088936269661,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 13.67624057026049,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_98",
+          "role": "track",
+          "pivot": [
+            -1.1260796869393257,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 13.84731136357285,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_99",
+          "role": "track",
+          "pivot": [
+            -1.2971504802516858,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 14.01838215688521,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_100",
+          "role": "track",
+          "pivot": [
+            -1.468221273564045,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 14.18945295019757,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_101",
+          "role": "track",
+          "pivot": [
+            -1.6392920668764046,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 14.36052374350993,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_102",
+          "role": "track",
+          "pivot": [
+            -1.8103628601887642,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 14.53159453682229,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_103",
+          "role": "track",
+          "pivot": [
+            -1.9814336535011237,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 14.70266533013465,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_104",
+          "role": "track",
+          "pivot": [
+            -2.152504446813483,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 14.87373612344701,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_105",
+          "role": "track",
+          "pivot": [
+            -2.3235752401258427,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 15.04480691675937,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_106",
+          "role": "track",
+          "pivot": [
+            -2.4946460334382023,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 15.21587771007173,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_107",
+          "role": "track",
+          "pivot": [
+            -2.665716826750562,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 15.38694850338409,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_108",
+          "role": "track",
+          "pivot": [
+            -2.8367876200629216,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 15.55801929669645,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_109",
+          "role": "track",
+          "pivot": [
+            -3.007858413375281,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 15.72909009000881,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_110",
+          "role": "track",
+          "pivot": [
+            -3.1789292066876405,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 15.90016088332117,
+          "pathAngle": 3.141592653589793,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_111",
+          "role": "track",
+          "pivot": [
+            -3.35,
+            1.31,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 16.07123167663353,
+          "pathAngle": -2.996617405019994,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_112",
+          "role": "track",
+          "pivot": [
+            -3.518683825475594,
+            1.2853722375770844,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 16.24170384344982,
+          "pathAngle": -2.7066669078804013,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_113",
+          "role": "track",
+          "pivot": [
+            -3.6732852605159274,
+            1.2135449729590495,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 16.412176010266105,
+          "pathAngle": -2.416716410740808,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_114",
+          "role": "track",
+          "pivot": [
+            -3.8008975681297645,
+            1.1005146292255588,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 16.58264817708239,
+          "pathAngle": -2.126765913601213,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_115",
+          "role": "track",
+          "pivot": [
+            -3.890867170031839,
+            0.9557174248581335,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 16.753120343898676,
+          "pathAngle": -1.8368154164616235,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_116",
+          "role": "track",
+          "pivot": [
+            -3.935683049337647,
+            0.7912416010386865,
+            -1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_0",
+          "pathOffset": 16.923592510714958,
+          "pathAngle": -1.5468649193220336,
+          "positionZ": -1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_117",
+          "role": "track",
+          "pivot": [
+            -3.931603799849504,
+            0.6208182476429351,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 0,
+          "pathAngle": -1.2569144221824426,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_118",
+          "role": "track",
+          "pivot": [
+            -3.8789699733886223,
+            0.4586749777513825,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 0.17047216681628438,
+          "pathAngle": -0.9669639250428483,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_119",
+          "role": "track",
+          "pivot": [
+            -3.7821756491871614,
+            0.3183481504466144,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 0.3409443336325706,
+          "pathAngle": -0.6770134279032566,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_120",
+          "role": "track",
+          "pivot": [
+            -3.649301598839428,
+            0.21155280221820283,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 0.5114165004488567,
+          "pathAngle": -0.3870629307636632,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_121",
+          "role": "track",
+          "pivot": [
+            -3.4914406716475725,
+            0.14720462955442493,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 0.6818886672651429,
+          "pathAngle": -0.10104937528964852,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_122",
+          "role": "track",
+          "pivot": [
+            -3.32176093918202,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 0.8524383986858827,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_123",
+          "role": "track",
+          "pivot": [
+            -3.1506901458696634,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 1.0235091919982393,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_124",
+          "role": "track",
+          "pivot": [
+            -2.9796193525573034,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 1.1945799853105994,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_125",
+          "role": "track",
+          "pivot": [
+            -2.8085485592449433,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 1.3656507786229595,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_126",
+          "role": "track",
+          "pivot": [
+            -2.6374777659325823,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 1.5367215719353204,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_127",
+          "role": "track",
+          "pivot": [
+            -2.466406972620224,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 1.7077923652476787,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_128",
+          "role": "track",
+          "pivot": [
+            -2.295336179307864,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 1.8788631585600388,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_129",
+          "role": "track",
+          "pivot": [
+            -2.124265385995504,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 2.049933951872399,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_130",
+          "role": "track",
+          "pivot": [
+            -1.9531945926831455,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 2.221004745184757,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_131",
+          "role": "track",
+          "pivot": [
+            -1.7821237993707855,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 2.3920755384971173,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_132",
+          "role": "track",
+          "pivot": [
+            -1.6110530060584272,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 2.5631463318094756,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_133",
+          "role": "track",
+          "pivot": [
+            -1.439982212746067,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 2.7342171251218357,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_134",
+          "role": "track",
+          "pivot": [
+            -1.268911419433707,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 2.9052879184341958,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_135",
+          "role": "track",
+          "pivot": [
+            -1.097840626121347,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 3.076358711746556,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_136",
+          "role": "track",
+          "pivot": [
+            -0.9267698328089886,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 3.247429505058914,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_137",
+          "role": "track",
+          "pivot": [
+            -0.7556990394966285,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 3.4185002983712742,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_138",
+          "role": "track",
+          "pivot": [
+            -0.5846282461842685,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 3.5895710916836343,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_139",
+          "role": "track",
+          "pivot": [
+            -0.41355745287190837,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 3.7606418849959944,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_140",
+          "role": "track",
+          "pivot": [
+            -0.2424866595595483,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 3.9317126783083545,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_141",
+          "role": "track",
+          "pivot": [
+            -0.07141586624718999,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 4.102783471620713,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_142",
+          "role": "track",
+          "pivot": [
+            0.0996549270651701,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 4.273854264933073,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_143",
+          "role": "track",
+          "pivot": [
+            0.2707257203775284,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 4.444925058245431,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_144",
+          "role": "track",
+          "pivot": [
+            0.4417965136898885,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 4.615995851557791,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_145",
+          "role": "track",
+          "pivot": [
+            0.6128673070022486,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 4.787066644870151,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_146",
+          "role": "track",
+          "pivot": [
+            0.7839381003146069,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 4.95813743818251,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_147",
+          "role": "track",
+          "pivot": [
+            0.955008893626967,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 5.12920823149487,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_148",
+          "role": "track",
+          "pivot": [
+            1.126079686939327,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 5.30027902480723,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_149",
+          "role": "track",
+          "pivot": [
+            1.297150480251687,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 5.47134981811959,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_150",
+          "role": "track",
+          "pivot": [
+            1.4682212735640452,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 5.642420611431948,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_151",
+          "role": "track",
+          "pivot": [
+            1.6392920668764053,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 5.813491404744308,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_152",
+          "role": "track",
+          "pivot": [
+            1.8103628601887654,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 5.984562198056668,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_153",
+          "role": "track",
+          "pivot": [
+            1.9814336535011254,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 6.155632991369028,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_154",
+          "role": "track",
+          "pivot": [
+            2.1525044468134853,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 6.3267037846813885,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_155",
+          "role": "track",
+          "pivot": [
+            2.323575240125842,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 6.497774577993745,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_156",
+          "role": "track",
+          "pivot": [
+            2.494646033438202,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 6.668845371306105,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_157",
+          "role": "track",
+          "pivot": [
+            2.665716826750562,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 6.839916164618465,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_158",
+          "role": "track",
+          "pivot": [
+            2.836787620062922,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 7.010986957930825,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_159",
+          "role": "track",
+          "pivot": [
+            3.0078584133752804,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 7.182057751243184,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_160",
+          "role": "track",
+          "pivot": [
+            3.1789292066876405,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 7.353128544555544,
+          "pathAngle": 0,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_161",
+          "role": "track",
+          "pivot": [
+            3.3500000000000005,
+            0.13,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 7.524199337867904,
+          "pathAngle": 0.14497524856979754,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_162",
+          "role": "track",
+          "pivot": [
+            3.5186838254755934,
+            0.1546277624229152,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 7.69467150468419,
+          "pathAngle": 0.4349257457093912,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_163",
+          "role": "track",
+          "pivot": [
+            3.673285260515927,
+            0.22645502704095,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 7.865143671500476,
+          "pathAngle": 0.7248762428489844,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_164",
+          "role": "track",
+          "pivot": [
+            3.8008975681297628,
+            0.3394853707744394,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 8.03561583831676,
+          "pathAngle": 1.0148267399885735,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_165",
+          "role": "track",
+          "pivot": [
+            3.8908671700318376,
+            0.48428257514186335,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 8.206088005133045,
+          "pathAngle": 1.3047772371281672,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_166",
+          "role": "track",
+          "pivot": [
+            3.935683049337647,
+            0.6487583989613136,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 8.37656017194933,
+          "pathAngle": 1.5947277342677597,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_167",
+          "role": "track",
+          "pivot": [
+            3.931603799849504,
+            0.8191817523570641,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 8.547032338765616,
+          "pathAngle": 1.8846782314073502,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_168",
+          "role": "track",
+          "pivot": [
+            3.878969973388622,
+            0.9813250222486184,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 8.717504505581902,
+          "pathAngle": 2.174628728546945,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_169",
+          "role": "track",
+          "pivot": [
+            3.7821756491871614,
+            1.1216518495533858,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 8.887976672398187,
+          "pathAngle": 2.4645792256865375,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_170",
+          "role": "track",
+          "pivot": [
+            3.649301598839428,
+            1.2284471977817972,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 9.058448839214472,
+          "pathAngle": 2.75452972282613,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_171",
+          "role": "track",
+          "pivot": [
+            3.4914406716475734,
+            1.2927953704455748,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 9.228921006030758,
+          "pathAngle": 3.0405432783001416,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_172",
+          "role": "track",
+          "pivot": [
+            3.3217609391820226,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 9.399470737451496,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_173",
+          "role": "track",
+          "pivot": [
+            3.1506901458696626,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 9.570541530763856,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_174",
+          "role": "track",
+          "pivot": [
+            2.9796193525573034,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 9.741612324076215,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_175",
+          "role": "track",
+          "pivot": [
+            2.8085485592449433,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 9.912683117388575,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_176",
+          "role": "track",
+          "pivot": [
+            2.637477765932584,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 10.083753910700935,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_177",
+          "role": "track",
+          "pivot": [
+            2.466406972620225,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 10.254824704013295,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_178",
+          "role": "track",
+          "pivot": [
+            2.295336179307865,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 10.425895497325655,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_179",
+          "role": "track",
+          "pivot": [
+            2.1242653859955056,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 10.596966290638015,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_180",
+          "role": "track",
+          "pivot": [
+            1.9531945926831455,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 10.768037083950375,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_181",
+          "role": "track",
+          "pivot": [
+            1.7821237993707864,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 10.939107877262735,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_182",
+          "role": "track",
+          "pivot": [
+            1.6110530060584263,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 11.110178670575095,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_183",
+          "role": "track",
+          "pivot": [
+            1.439982212746068,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 11.281249463887454,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_184",
+          "role": "track",
+          "pivot": [
+            1.2689114194337079,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 11.452320257199814,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_185",
+          "role": "track",
+          "pivot": [
+            1.0978406261213487,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 11.623391050512172,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_186",
+          "role": "track",
+          "pivot": [
+            0.9267698328089886,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 11.794461843824532,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_187",
+          "role": "track",
+          "pivot": [
+            0.7556990394966285,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 11.965532637136892,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_188",
+          "role": "track",
+          "pivot": [
+            0.5846282461842698,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 12.13660343044925,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_189",
+          "role": "track",
+          "pivot": [
+            0.41355745287191015,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 12.30767422376161,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_190",
+          "role": "track",
+          "pivot": [
+            0.2424866595595505,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 12.47874501707397,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_191",
+          "role": "track",
+          "pivot": [
+            0.07141586624719087,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 12.64981581038633,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_192",
+          "role": "track",
+          "pivot": [
+            -0.09965492706516876,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 12.82088660369869,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_193",
+          "role": "track",
+          "pivot": [
+            -0.2707257203775284,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 12.991957397011051,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_194",
+          "role": "track",
+          "pivot": [
+            -0.4417965136898876,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 13.16302819032341,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_195",
+          "role": "track",
+          "pivot": [
+            -0.6128673070022472,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 13.33409898363577,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_196",
+          "role": "track",
+          "pivot": [
+            -0.7839381003146069,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 13.50516977694813,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_197",
+          "role": "track",
+          "pivot": [
+            -0.9550088936269661,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 13.67624057026049,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_198",
+          "role": "track",
+          "pivot": [
+            -1.1260796869393257,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 13.84731136357285,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_199",
+          "role": "track",
+          "pivot": [
+            -1.2971504802516858,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 14.01838215688521,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_200",
+          "role": "track",
+          "pivot": [
+            -1.468221273564045,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 14.18945295019757,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_201",
+          "role": "track",
+          "pivot": [
+            -1.6392920668764046,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 14.36052374350993,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_202",
+          "role": "track",
+          "pivot": [
+            -1.8103628601887642,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 14.53159453682229,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_203",
+          "role": "track",
+          "pivot": [
+            -1.9814336535011237,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 14.70266533013465,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_204",
+          "role": "track",
+          "pivot": [
+            -2.152504446813483,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 14.87373612344701,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_205",
+          "role": "track",
+          "pivot": [
+            -2.3235752401258427,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 15.04480691675937,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_206",
+          "role": "track",
+          "pivot": [
+            -2.4946460334382023,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 15.21587771007173,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_207",
+          "role": "track",
+          "pivot": [
+            -2.665716826750562,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 15.38694850338409,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_208",
+          "role": "track",
+          "pivot": [
+            -2.8367876200629216,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 15.55801929669645,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_209",
+          "role": "track",
+          "pivot": [
+            -3.007858413375281,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 15.72909009000881,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_210",
+          "role": "track",
+          "pivot": [
+            -3.1789292066876405,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 15.90016088332117,
+          "pathAngle": 3.141592653589793,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_211",
+          "role": "track",
+          "pivot": [
+            -3.35,
+            1.31,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 16.07123167663353,
+          "pathAngle": -2.996617405019994,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_212",
+          "role": "track",
+          "pivot": [
+            -3.518683825475594,
+            1.2853722375770844,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 16.24170384344982,
+          "pathAngle": -2.7066669078804013,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_213",
+          "role": "track",
+          "pivot": [
+            -3.6732852605159274,
+            1.2135449729590495,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 16.412176010266105,
+          "pathAngle": -2.416716410740808,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_214",
+          "role": "track",
+          "pivot": [
+            -3.8008975681297645,
+            1.1005146292255588,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 16.58264817708239,
+          "pathAngle": -2.126765913601213,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_215",
+          "role": "track",
+          "pivot": [
+            -3.890867170031839,
+            0.9557174248581335,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 16.753120343898676,
+          "pathAngle": -1.8368154164616235,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_0_216",
+          "role": "track",
+          "pivot": [
+            -3.935683049337647,
+            0.7912416010386865,
+            1.52
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "path": "track_1",
+          "pathOffset": 16.923592510714958,
+          "pathAngle": -1.5468649193220336,
+          "positionZ": 1.5199999999999998,
+          "batch": "rig_ground_0_mesh"
+        },
+        {
+          "node": "rig_ground_216_1",
+          "role": "recoil",
+          "pivot": [
+            4,
+            0.85,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "distance": 0.3,
+          "batch": "turret"
+        },
+        {
+          "node": "turret",
+          "role": "turret",
+          "pivot": [
+            -0.65,
+            1.68,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "rest": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "restScale": [
+            1,
+            1,
+            1
+          ],
+          "sign": 1,
+          "distance": 0.28
+        }
+      ],
+      "trackPaths": {
+        "track_0": [
+          [
+            -3.931603799849504,
+            0.6208182476429351,
+            -1.52
+          ],
+          [
+            -3.8789699733886223,
+            0.4586749777513825,
+            -1.52
+          ],
+          [
+            -3.7821756491871614,
+            0.3183481504466144,
+            -1.52
+          ],
+          [
+            -3.649301598839428,
+            0.21155280221820283,
+            -1.52
+          ],
+          [
+            -3.4914406716475725,
+            0.14720462955442493,
+            -1.52
+          ],
+          [
+            -3.32176093918202,
+            0.13,
+            -1.52
+          ],
+          [
+            -3.1506901458696634,
+            0.13,
+            -1.52
+          ],
+          [
+            -2.9796193525573034,
+            0.13,
+            -1.52
+          ],
+          [
+            -2.8085485592449433,
+            0.13,
+            -1.52
+          ],
+          [
+            -2.6374777659325823,
+            0.13,
+            -1.52
+          ],
+          [
+            -2.466406972620224,
+            0.13,
+            -1.52
+          ],
+          [
+            -2.295336179307864,
+            0.13,
+            -1.52
+          ],
+          [
+            -2.124265385995504,
+            0.13,
+            -1.52
+          ],
+          [
+            -1.9531945926831455,
+            0.13,
+            -1.52
+          ],
+          [
+            -1.7821237993707855,
+            0.13,
+            -1.52
+          ],
+          [
+            -1.6110530060584272,
+            0.13,
+            -1.52
+          ],
+          [
+            -1.439982212746067,
+            0.13,
+            -1.52
+          ],
+          [
+            -1.268911419433707,
+            0.13,
+            -1.52
+          ],
+          [
+            -1.097840626121347,
+            0.13,
+            -1.52
+          ],
+          [
+            -0.9267698328089886,
+            0.13,
+            -1.52
+          ],
+          [
+            -0.7556990394966285,
+            0.13,
+            -1.52
+          ],
+          [
+            -0.5846282461842685,
+            0.13,
+            -1.52
+          ],
+          [
+            -0.41355745287190837,
+            0.13,
+            -1.52
+          ],
+          [
+            -0.2424866595595483,
+            0.13,
+            -1.52
+          ],
+          [
+            -0.07141586624718999,
+            0.13,
+            -1.52
+          ],
+          [
+            0.0996549270651701,
+            0.13,
+            -1.52
+          ],
+          [
+            0.2707257203775284,
+            0.13,
+            -1.52
+          ],
+          [
+            0.4417965136898885,
+            0.13,
+            -1.52
+          ],
+          [
+            0.6128673070022486,
+            0.13,
+            -1.52
+          ],
+          [
+            0.7839381003146069,
+            0.13,
+            -1.52
+          ],
+          [
+            0.955008893626967,
+            0.13,
+            -1.52
+          ],
+          [
+            1.126079686939327,
+            0.13,
+            -1.52
+          ],
+          [
+            1.297150480251687,
+            0.13,
+            -1.52
+          ],
+          [
+            1.4682212735640452,
+            0.13,
+            -1.52
+          ],
+          [
+            1.6392920668764053,
+            0.13,
+            -1.52
+          ],
+          [
+            1.8103628601887654,
+            0.13,
+            -1.52
+          ],
+          [
+            1.9814336535011254,
+            0.13,
+            -1.52
+          ],
+          [
+            2.1525044468134853,
+            0.13,
+            -1.52
+          ],
+          [
+            2.323575240125842,
+            0.13,
+            -1.52
+          ],
+          [
+            2.494646033438202,
+            0.13,
+            -1.52
+          ],
+          [
+            2.665716826750562,
+            0.13,
+            -1.52
+          ],
+          [
+            2.836787620062922,
+            0.13,
+            -1.52
+          ],
+          [
+            3.0078584133752804,
+            0.13,
+            -1.52
+          ],
+          [
+            3.1789292066876405,
+            0.13,
+            -1.52
+          ],
+          [
+            3.3500000000000005,
+            0.13,
+            -1.52
+          ],
+          [
+            3.5186838254755934,
+            0.1546277624229152,
+            -1.52
+          ],
+          [
+            3.673285260515927,
+            0.22645502704095,
+            -1.52
+          ],
+          [
+            3.8008975681297628,
+            0.3394853707744394,
+            -1.52
+          ],
+          [
+            3.8908671700318376,
+            0.48428257514186335,
+            -1.52
+          ],
+          [
+            3.935683049337647,
+            0.6487583989613136,
+            -1.52
+          ],
+          [
+            3.931603799849504,
+            0.8191817523570641,
+            -1.52
+          ],
+          [
+            3.878969973388622,
+            0.9813250222486184,
+            -1.52
+          ],
+          [
+            3.7821756491871614,
+            1.1216518495533858,
+            -1.52
+          ],
+          [
+            3.649301598839428,
+            1.2284471977817972,
+            -1.52
+          ],
+          [
+            3.4914406716475734,
+            1.2927953704455748,
+            -1.52
+          ],
+          [
+            3.3217609391820226,
+            1.31,
+            -1.52
+          ],
+          [
+            3.1506901458696626,
+            1.31,
+            -1.52
+          ],
+          [
+            2.9796193525573034,
+            1.31,
+            -1.52
+          ],
+          [
+            2.8085485592449433,
+            1.31,
+            -1.52
+          ],
+          [
+            2.637477765932584,
+            1.31,
+            -1.52
+          ],
+          [
+            2.466406972620225,
+            1.31,
+            -1.52
+          ],
+          [
+            2.295336179307865,
+            1.31,
+            -1.52
+          ],
+          [
+            2.1242653859955056,
+            1.31,
+            -1.52
+          ],
+          [
+            1.9531945926831455,
+            1.31,
+            -1.52
+          ],
+          [
+            1.7821237993707864,
+            1.31,
+            -1.52
+          ],
+          [
+            1.6110530060584263,
+            1.31,
+            -1.52
+          ],
+          [
+            1.439982212746068,
+            1.31,
+            -1.52
+          ],
+          [
+            1.2689114194337079,
+            1.31,
+            -1.52
+          ],
+          [
+            1.0978406261213487,
+            1.31,
+            -1.52
+          ],
+          [
+            0.9267698328089886,
+            1.31,
+            -1.52
+          ],
+          [
+            0.7556990394966285,
+            1.31,
+            -1.52
+          ],
+          [
+            0.5846282461842698,
+            1.31,
+            -1.52
+          ],
+          [
+            0.41355745287191015,
+            1.31,
+            -1.52
+          ],
+          [
+            0.2424866595595505,
+            1.31,
+            -1.52
+          ],
+          [
+            0.07141586624719087,
+            1.31,
+            -1.52
+          ],
+          [
+            -0.09965492706516876,
+            1.31,
+            -1.52
+          ],
+          [
+            -0.2707257203775284,
+            1.31,
+            -1.52
+          ],
+          [
+            -0.4417965136898876,
+            1.31,
+            -1.52
+          ],
+          [
+            -0.6128673070022472,
+            1.31,
+            -1.52
+          ],
+          [
+            -0.7839381003146069,
+            1.31,
+            -1.52
+          ],
+          [
+            -0.9550088936269661,
+            1.31,
+            -1.52
+          ],
+          [
+            -1.1260796869393257,
+            1.31,
+            -1.52
+          ],
+          [
+            -1.2971504802516858,
+            1.31,
+            -1.52
+          ],
+          [
+            -1.468221273564045,
+            1.31,
+            -1.52
+          ],
+          [
+            -1.6392920668764046,
+            1.31,
+            -1.52
+          ],
+          [
+            -1.8103628601887642,
+            1.31,
+            -1.52
+          ],
+          [
+            -1.9814336535011237,
+            1.31,
+            -1.52
+          ],
+          [
+            -2.152504446813483,
+            1.31,
+            -1.52
+          ],
+          [
+            -2.3235752401258427,
+            1.31,
+            -1.52
+          ],
+          [
+            -2.4946460334382023,
+            1.31,
+            -1.52
+          ],
+          [
+            -2.665716826750562,
+            1.31,
+            -1.52
+          ],
+          [
+            -2.8367876200629216,
+            1.31,
+            -1.52
+          ],
+          [
+            -3.007858413375281,
+            1.31,
+            -1.52
+          ],
+          [
+            -3.1789292066876405,
+            1.31,
+            -1.52
+          ],
+          [
+            -3.35,
+            1.31,
+            -1.52
+          ],
+          [
+            -3.518683825475594,
+            1.2853722375770844,
+            -1.52
+          ],
+          [
+            -3.6732852605159274,
+            1.2135449729590495,
+            -1.52
+          ],
+          [
+            -3.8008975681297645,
+            1.1005146292255588,
+            -1.52
+          ],
+          [
+            -3.890867170031839,
+            0.9557174248581335,
+            -1.52
+          ],
+          [
+            -3.935683049337647,
+            0.7912416010386865,
+            -1.52
+          ]
+        ],
+        "track_1": [
+          [
+            -3.931603799849504,
+            0.6208182476429351,
+            1.52
+          ],
+          [
+            -3.8789699733886223,
+            0.4586749777513825,
+            1.52
+          ],
+          [
+            -3.7821756491871614,
+            0.3183481504466144,
+            1.52
+          ],
+          [
+            -3.649301598839428,
+            0.21155280221820283,
+            1.52
+          ],
+          [
+            -3.4914406716475725,
+            0.14720462955442493,
+            1.52
+          ],
+          [
+            -3.32176093918202,
+            0.13,
+            1.52
+          ],
+          [
+            -3.1506901458696634,
+            0.13,
+            1.52
+          ],
+          [
+            -2.9796193525573034,
+            0.13,
+            1.52
+          ],
+          [
+            -2.8085485592449433,
+            0.13,
+            1.52
+          ],
+          [
+            -2.6374777659325823,
+            0.13,
+            1.52
+          ],
+          [
+            -2.466406972620224,
+            0.13,
+            1.52
+          ],
+          [
+            -2.295336179307864,
+            0.13,
+            1.52
+          ],
+          [
+            -2.124265385995504,
+            0.13,
+            1.52
+          ],
+          [
+            -1.9531945926831455,
+            0.13,
+            1.52
+          ],
+          [
+            -1.7821237993707855,
+            0.13,
+            1.52
+          ],
+          [
+            -1.6110530060584272,
+            0.13,
+            1.52
+          ],
+          [
+            -1.439982212746067,
+            0.13,
+            1.52
+          ],
+          [
+            -1.268911419433707,
+            0.13,
+            1.52
+          ],
+          [
+            -1.097840626121347,
+            0.13,
+            1.52
+          ],
+          [
+            -0.9267698328089886,
+            0.13,
+            1.52
+          ],
+          [
+            -0.7556990394966285,
+            0.13,
+            1.52
+          ],
+          [
+            -0.5846282461842685,
+            0.13,
+            1.52
+          ],
+          [
+            -0.41355745287190837,
+            0.13,
+            1.52
+          ],
+          [
+            -0.2424866595595483,
+            0.13,
+            1.52
+          ],
+          [
+            -0.07141586624718999,
+            0.13,
+            1.52
+          ],
+          [
+            0.0996549270651701,
+            0.13,
+            1.52
+          ],
+          [
+            0.2707257203775284,
+            0.13,
+            1.52
+          ],
+          [
+            0.4417965136898885,
+            0.13,
+            1.52
+          ],
+          [
+            0.6128673070022486,
+            0.13,
+            1.52
+          ],
+          [
+            0.7839381003146069,
+            0.13,
+            1.52
+          ],
+          [
+            0.955008893626967,
+            0.13,
+            1.52
+          ],
+          [
+            1.126079686939327,
+            0.13,
+            1.52
+          ],
+          [
+            1.297150480251687,
+            0.13,
+            1.52
+          ],
+          [
+            1.4682212735640452,
+            0.13,
+            1.52
+          ],
+          [
+            1.6392920668764053,
+            0.13,
+            1.52
+          ],
+          [
+            1.8103628601887654,
+            0.13,
+            1.52
+          ],
+          [
+            1.9814336535011254,
+            0.13,
+            1.52
+          ],
+          [
+            2.1525044468134853,
+            0.13,
+            1.52
+          ],
+          [
+            2.323575240125842,
+            0.13,
+            1.52
+          ],
+          [
+            2.494646033438202,
+            0.13,
+            1.52
+          ],
+          [
+            2.665716826750562,
+            0.13,
+            1.52
+          ],
+          [
+            2.836787620062922,
+            0.13,
+            1.52
+          ],
+          [
+            3.0078584133752804,
+            0.13,
+            1.52
+          ],
+          [
+            3.1789292066876405,
+            0.13,
+            1.52
+          ],
+          [
+            3.3500000000000005,
+            0.13,
+            1.52
+          ],
+          [
+            3.5186838254755934,
+            0.1546277624229152,
+            1.52
+          ],
+          [
+            3.673285260515927,
+            0.22645502704095,
+            1.52
+          ],
+          [
+            3.8008975681297628,
+            0.3394853707744394,
+            1.52
+          ],
+          [
+            3.8908671700318376,
+            0.48428257514186335,
+            1.52
+          ],
+          [
+            3.935683049337647,
+            0.6487583989613136,
+            1.52
+          ],
+          [
+            3.931603799849504,
+            0.8191817523570641,
+            1.52
+          ],
+          [
+            3.878969973388622,
+            0.9813250222486184,
+            1.52
+          ],
+          [
+            3.7821756491871614,
+            1.1216518495533858,
+            1.52
+          ],
+          [
+            3.649301598839428,
+            1.2284471977817972,
+            1.52
+          ],
+          [
+            3.4914406716475734,
+            1.2927953704455748,
+            1.52
+          ],
+          [
+            3.3217609391820226,
+            1.31,
+            1.52
+          ],
+          [
+            3.1506901458696626,
+            1.31,
+            1.52
+          ],
+          [
+            2.9796193525573034,
+            1.31,
+            1.52
+          ],
+          [
+            2.8085485592449433,
+            1.31,
+            1.52
+          ],
+          [
+            2.637477765932584,
+            1.31,
+            1.52
+          ],
+          [
+            2.466406972620225,
+            1.31,
+            1.52
+          ],
+          [
+            2.295336179307865,
+            1.31,
+            1.52
+          ],
+          [
+            2.1242653859955056,
+            1.31,
+            1.52
+          ],
+          [
+            1.9531945926831455,
+            1.31,
+            1.52
+          ],
+          [
+            1.7821237993707864,
+            1.31,
+            1.52
+          ],
+          [
+            1.6110530060584263,
+            1.31,
+            1.52
+          ],
+          [
+            1.439982212746068,
+            1.31,
+            1.52
+          ],
+          [
+            1.2689114194337079,
+            1.31,
+            1.52
+          ],
+          [
+            1.0978406261213487,
+            1.31,
+            1.52
+          ],
+          [
+            0.9267698328089886,
+            1.31,
+            1.52
+          ],
+          [
+            0.7556990394966285,
+            1.31,
+            1.52
+          ],
+          [
+            0.5846282461842698,
+            1.31,
+            1.52
+          ],
+          [
+            0.41355745287191015,
+            1.31,
+            1.52
+          ],
+          [
+            0.2424866595595505,
+            1.31,
+            1.52
+          ],
+          [
+            0.07141586624719087,
+            1.31,
+            1.52
+          ],
+          [
+            -0.09965492706516876,
+            1.31,
+            1.52
+          ],
+          [
+            -0.2707257203775284,
+            1.31,
+            1.52
+          ],
+          [
+            -0.4417965136898876,
+            1.31,
+            1.52
+          ],
+          [
+            -0.6128673070022472,
+            1.31,
+            1.52
+          ],
+          [
+            -0.7839381003146069,
+            1.31,
+            1.52
+          ],
+          [
+            -0.9550088936269661,
+            1.31,
+            1.52
+          ],
+          [
+            -1.1260796869393257,
+            1.31,
+            1.52
+          ],
+          [
+            -1.2971504802516858,
+            1.31,
+            1.52
+          ],
+          [
+            -1.468221273564045,
+            1.31,
+            1.52
+          ],
+          [
+            -1.6392920668764046,
+            1.31,
+            1.52
+          ],
+          [
+            -1.8103628601887642,
+            1.31,
+            1.52
+          ],
+          [
+            -1.9814336535011237,
+            1.31,
+            1.52
+          ],
+          [
+            -2.152504446813483,
+            1.31,
+            1.52
+          ],
+          [
+            -2.3235752401258427,
+            1.31,
+            1.52
+          ],
+          [
+            -2.4946460334382023,
+            1.31,
+            1.52
+          ],
+          [
+            -2.665716826750562,
+            1.31,
+            1.52
+          ],
+          [
+            -2.8367876200629216,
+            1.31,
+            1.52
+          ],
+          [
+            -3.007858413375281,
+            1.31,
+            1.52
+          ],
+          [
+            -3.1789292066876405,
+            1.31,
+            1.52
+          ],
+          [
+            -3.35,
+            1.31,
+            1.52
+          ],
+          [
+            -3.518683825475594,
+            1.2853722375770844,
+            1.52
+          ],
+          [
+            -3.6732852605159274,
+            1.2135449729590495,
+            1.52
+          ],
+          [
+            -3.8008975681297645,
+            1.1005146292255588,
+            1.52
+          ],
+          [
+            -3.890867170031839,
+            0.9557174248581335,
+            1.52
+          ],
+          [
+            -3.935683049337647,
+            0.7912416010386865,
+            1.52
+          ]
+        ]
+      },
+      "triangles": 12414,
+      "dimensions": [
+        9.62440619468689,
+        4.37999997317791,
+        3.700000047683716
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Rendered multi-view evidence only; no automatic photo-realism approval."
+}

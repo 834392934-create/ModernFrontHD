@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-20T15:11:33.764Z",
+  "recordedAt": "2026-10-20T16:45:32.200Z",
   "environment": "Packaged Electron",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
@@ -803,6 +803,7 @@
     "screenshots/fps-muzzle-cover-tank_destroyer-chn-desktop.png",
     "screenshots/fps-muzzle-cover-tank-chn-desktop.png",
     "screenshots/fps-muzzle-cover-tank-imp-desktop.png",
+    "screenshots/fps-failure-desktop.png",
     "screenshots/fps-focus-restored-desktop.png"
   ],
   "errors": [],
@@ -848,7 +849,7 @@
       },
       "after": {
         "x": 700,
-        "y": 821.6000000000001,
+        "y": 825.2000000000002,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -857,13 +858,13 @@
       "key": "KeyA",
       "before": {
         "x": 700,
-        "y": 821.6000000000001,
+        "y": 825.2000000000002,
         "yaw": 0,
         "pitch": -0.025
       },
       "after": {
         "x": 700,
-        "y": 796.4,
+        "y": 803.6,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -876,8 +877,8 @@
     "view": "infantry"
   },
   "ai": {
-    "calls": 1,
-    "production": 2,
+    "calls": 21,
+    "production": 3,
     "construction": 1,
     "othersOrdered": 1,
     "controlledOrder": null
@@ -895,7 +896,7 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 22.75000000000019,
+      "hitAt": 24.850000000000218,
       "sourceId": 346,
       "targetId": 347,
       "damage": 74
@@ -904,7 +905,7 @@
       "x": 745.7908,
       "y": 800.0000000000001,
       "sourceId": 346,
-      "time": 22.75000000000019
+      "time": 24.850000000000218
     },
     "hudConfirmed": true
   },
@@ -981,7 +982,7 @@
     }
   ],
   "nativeFocus": {
-    "recordedAt": "2026-10-20T15:12:28.649Z",
+    "recordedAt": "2026-10-20T16:48:14.795Z",
     "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
     "nativeBefore": {
       "fullScreen": true,
@@ -989,7 +990,7 @@
       "minimized": false
     },
     "nativeBlurred": {
-      "focused": false,
+      "focused": true,
       "minimized": true
     },
     "blurred": {
@@ -997,7 +998,7 @@
       "events": [
         {
           "trusted": true,
-          "at": 53892.700000047684
+          "at": 9514.299999952316
         }
       ],
       "locked": false,
@@ -1017,10 +1018,15 @@
         "jump": false,
         "targetId": null,
         "targetTreeId": null,
-        "aimX": 825,
+        "aimX": 1111.9141635668075,
         "aimY": 800,
-        "aimHeight": 0,
-        "aimOrigin": null
+        "aimHeight": -0.800000011920929,
+        "aimOrigin": {
+          "x": 705.964,
+          "y": 800.952,
+          "height": 7.475999999999999
+        },
+        "aimOrigins": []
       },
       "position": [
         700,
@@ -1052,21 +1058,14 @@
           "x": 705.964,
           "y": 800.952,
           "height": 7.475999999999999
-        }
+        },
+        "aimOrigins": []
       },
       "position": [
         700,
         800
       ]
     }
-  },
-  "renderEnvironment": {
-    "viewport": [
-      2752,
-      1152
-    ],
-    "dpr": 1.25,
-    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)"
   },
   "passed": true
 }

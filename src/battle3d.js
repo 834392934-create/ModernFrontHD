@@ -204,7 +204,7 @@
         if(!ui.demo&&!game.visibleAt(fx.x,fx.y)&&!['nuke','orbital'].includes(fx.type))continue;
         if(fx.type==='shot'){
           const target=game.get(fx.target),end=this.toScreen(fx.tx,fx.ty,fx.targetHeight??(target?this.physicalHeight(target):0));
-          if(!fx.visualOrigin){const anchor=this.objects.get(fx.sourceId)?.getObjectByName('muzzle');if(anchor){const pos=anchor.getWorldPosition(new T.Vector3());const source=game.get(fx.sourceId);fx.visualOrigin=[pos.x,pos.z,pos.y+(source?this.physicalHeight(source)-this.entityHeight(source):0)];}}
+          if(!fx.visualOrigin){const model=this.objects.get(fx.sourceId),anchor=model?.getObjectByName(Number.isInteger(fx.portIndex)?'muzzle_'+fx.portIndex:'muzzle')||model?.getObjectByName('muzzle');if(anchor){const pos=anchor.getWorldPosition(new T.Vector3());const source=game.get(fx.sourceId);fx.visualOrigin=[pos.x,pos.z,pos.y+(source?this.physicalHeight(source)-this.entityHeight(source):0)];}}
           const start=fx.visualOrigin?this.toScreen(...fx.visualOrigin):this.toScreen(fx.x,fx.y,fx.sourceHeight??(fx.space?145:9));
           const beam=fx.weaponFx==='orbital-beam'||fx.weaponFx==='laser-beam',imperial=game.teams[fx.from]?.faction==='imp';
           if(beam){

@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-21",
+  "gpuUsed": false,
+  "referenceActuallyViewed": ".tmp/references/ground/5.jpg",
+  "previousModelActuallyViewed": "screenshots/model-review/arty_usa-perspective.png",
+  "checks": [
+    "USA front axial aperture clears .35 art units",
+    "Both side windows have an unobstructed cross-ray",
+    "Front hole rim and continuous upper shell have real surfaces",
+    "All six faction boxes/scales/muzzle positions exactly unchanged",
+    "Other five faction geometry buffers exactly unchanged",
+    "Entire brake belongs to existing recoil bone",
+    "Muzzle follows recoil with no transverse shift",
+    "Unchanged simulation time freezes pose"
+  ],
+  "brakeVertices": 1596,
+  "recoilDisplacement": 0.20999999999999908,
+  "rows": [
+    {
+      "faction": "usa",
+      "triangles": 12414,
+      "meshes": 2,
+      "unchangedBounds": true,
+      "unchangedMuzzle": true,
+      "geometryUnchanged": false
+    },
+    {
+      "faction": "rus",
+      "triangles": 11902,
+      "meshes": 2,
+      "unchangedBounds": true,
+      "unchangedMuzzle": true,
+      "geometryUnchanged": true
+    },
+    {
+      "faction": "chn",
+      "triangles": 11950,
+      "meshes": 2,
+      "unchangedBounds": true,
+      "unchangedMuzzle": true,
+      "geometryUnchanged": true
+    },
+    {
+      "faction": "ind",
+      "triangles": 12166,
+      "meshes": 2,
+      "unchangedBounds": true,
+      "unchangedMuzzle": true,
+      "geometryUnchanged": true
+    },
+    {
+      "faction": "kor",
+      "triangles": 12166,
+      "meshes": 2,
+      "unchangedBounds": true,
+      "unchangedMuzzle": true,
+      "geometryUnchanged": true
+    },
+    {
+      "faction": "imp",
+      "triangles": 9596,
+      "meshes": 2,
+      "unchangedBounds": true,
+      "unchangedMuzzle": true,
+      "geometryUnchanged": true
+    }
+  ]
+}

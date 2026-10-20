@@ -37,7 +37,7 @@ test('operator status uses equipped weapon, exact ammo, reload and cooldown with
  g.operatorState(e).reloadRemaining=0;e.cool=.2;assert.equal(g.directFireStatus(e,t).reason,'cooldown');
 });
 test('minimum range, no weapon, EMP and cancelled trigger never acquire or damage forbidden targets',()=>{
- const a=arena('arty','tank',20);assert.equal(a.g.directFireStatus(a.e,a.t).reason,'min-range');assert.equal(tap(a.g,a.e,a.t)[0]?.target,null);
+ const a=arena('arty','tank',20);assert.equal(a.g.directFireStatus(a.e,a.t).reason,'min-range');assert.equal(tap(a.g,a.e,a.t).length,0,'inside the minimum range no projectile is launched');assert.equal(a.e.cool,0);
  for(const kind of ['harvester','field_medic']){const f=arena(kind);assert.equal(f.g.directFireStatus(f.e,f.t).reason,'unarmed');assert.equal(tap(f.g,f.e,f.t).length,0);}
  const f=arena();f.e.disabled=f.g.time+2;assert.equal(f.g.directFireStatus(f.e,f.t).reason,'emp');assert.equal(tap(f.g,f.e,f.t).length,0);
  f.e.disabled=0;f.g.setDirectInput({...aim(f.g,f.t),fire:true});f.g.setDirectInput({cancelJump:true});f.g.stepDirectControl(f.e,.05);assert.equal(f.g.effects.length,0);

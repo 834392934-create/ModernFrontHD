@@ -1,0 +1,476 @@
+{
+  "version": "3.10.1",
+  "date": "2026-10-21",
+  "recordedAt": "2026-10-20T16:52:20.885Z",
+  "cpu": {
+    "total": 646,
+    "passed": 646,
+    "failed": 0
+  },
+  "native": [
+    {
+      "file": "public-range-salvo-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T16:29:34.946Z",
+      "errors": [],
+      "checks": 9,
+      "version": "3.10.1",
+      "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.10.1\\ModernFrontHD.exe"
+    },
+    {
+      "file": "vehicle-motion-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T16:29:52.606Z",
+      "errors": [],
+      "checks": 9,
+      "version": "3.10.1",
+      "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.10.1\\ModernFrontHD.exe"
+    },
+    {
+      "file": "weapon-effects-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T16:30:50.973Z",
+      "errors": [],
+      "checks": 6,
+      "version": "3.10.1",
+      "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.10.1\\ModernFrontHD.exe"
+    },
+    {
+      "file": "vehicle-camera-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T16:40:12.904Z",
+      "errors": [],
+      "checks": 7,
+      "version": "3.10.1",
+      "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.10.1\\ModernFrontHD.exe"
+    },
+    {
+      "file": "fps-ballistics-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T16:42:47.691Z",
+      "errors": [],
+      "checks": 4,
+      "version": "3.10.1",
+      "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.10.1\\ModernFrontHD.exe"
+    },
+    {
+      "file": "first-person-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T16:45:32.200Z",
+      "errors": [],
+      "checks": 10
+    },
+    {
+      "file": "fps-upgrade-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T16:49:36.159Z",
+      "errors": [],
+      "checks": 9
+    },
+    {
+      "file": "orbit-scope-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T16:49:56.093Z",
+      "errors": [],
+      "checks": 7
+    },
+    {
+      "file": "arrival-animation-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T16:50:23.679Z",
+      "errors": [],
+      "checks": 4
+    },
+    {
+      "file": "crowd-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T16:50:54.500Z",
+      "errors": []
+    },
+    {
+      "file": "desktop-report.json",
+      "passed": true,
+      "errors": [],
+      "version": "3.10.1"
+    }
+  ],
+  "publicRanges": {
+    "default": {
+      "mode": "published",
+      "scale": 1
+    },
+    "armoryCards": 64,
+    "innerBoundary": {
+      "min": 1500,
+      "attack": 7000,
+      "formatted": "70 km",
+      "results": [
+        {
+          "distance": 1499,
+          "rangeState": "min",
+          "inRange": false,
+          "reason": "min-range"
+        },
+        {
+          "distance": 1501,
+          "rangeState": "in",
+          "inRange": true,
+          "reason": "ready"
+        },
+        {
+          "distance": 6999,
+          "rangeState": "in",
+          "inRange": true,
+          "reason": "ready"
+        },
+        {
+          "distance": 7001,
+          "rangeState": "out",
+          "inRange": false,
+          "reason": "out-of-range"
+        }
+      ],
+      "queryMs": 0,
+      "queries": 20,
+      "found": 80
+    },
+    "scaleNote": "射程标尺仅控制距离换算；模型、速度、伤害与侦察仍为游戏规则。公开规格、估算与架空分开标注。"
+  },
+  "salvo": {
+    "count": 8,
+    "ports": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "maxOriginError": 0,
+    "totalBaseDamage": 136,
+    "actualTargetDamage": 86.16966596299608,
+    "shots": [
+      {
+        "portIndex": 0,
+        "salvoIndex": 0,
+        "count": 8,
+        "origin": [
+          1805.754124863377,
+          22.07260165084869,
+          1397.048888888889
+        ],
+        "muzzle": [
+          1805.754124863377,
+          22.07260165084869,
+          1397.048888888889
+        ],
+        "end": [
+          2085.433591553935,
+          12.33988286374126,
+          1400
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 1.5000000000000007,
+        "portError": 0
+      },
+      {
+        "portIndex": 1,
+        "salvoIndex": 1,
+        "count": 8,
+        "origin": [
+          1806.0303100457345,
+          18.62765495386683,
+          1397.048888888889
+        ],
+        "muzzle": [
+          1806.0303100457345,
+          18.62765495386683,
+          1397.048888888889
+        ],
+        "end": [
+          2096.4678220609294,
+          12.33988286374126,
+          1386.4944534864837
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 1.7000000000000008,
+        "portError": 0
+      },
+      {
+        "portIndex": 2,
+        "salvoIndex": 2,
+        "count": 8,
+        "origin": [
+          1805.754124863377,
+          22.07260165084869,
+          1393.351111111111
+        ],
+        "muzzle": [
+          1805.754124863377,
+          22.07260165084869,
+          1393.351111111111
+        ],
+        "end": [
+          2089.0083200598756,
+          12.33988286374126,
+          1420.0635071042796
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 1.850000000000001,
+        "portError": 0
+      },
+      {
+        "portIndex": 3,
+        "salvoIndex": 3,
+        "count": 8,
+        "origin": [
+          1806.0303100457345,
+          18.62765495386683,
+          1393.351111111111
+        ],
+        "muzzle": [
+          1806.0303100457345,
+          18.62765495386683,
+          1393.351111111111
+        ],
+        "end": [
+          2059.8651494848427,
+          12.33988286374126,
+          1387.1540375723255
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 2.000000000000001,
+        "portError": 0
+      },
+      {
+        "portIndex": 4,
+        "salvoIndex": 4,
+        "count": 8,
+        "origin": [
+          1805.754124863377,
+          22.07260165084869,
+          1402.951111111111
+        ],
+        "muzzle": [
+          1805.754124863377,
+          22.07260165084869,
+          1402.951111111111
+        ],
+        "end": [
+          2123.918162948127,
+          12.33988286374126,
+          1393.5010548221346
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 2.1500000000000004,
+        "portError": 0
+      },
+      {
+        "portIndex": 5,
+        "salvoIndex": 5,
+        "count": 8,
+        "origin": [
+          1806.0303100457345,
+          18.62765495386683,
+          1402.951111111111
+        ],
+        "muzzle": [
+          1806.0303100457345,
+          18.62765495386683,
+          1402.951111111111
+        ],
+        "end": [
+          2054.988680089002,
+          12.33988286374126,
+          1427.2995720679378
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 2.3,
+        "portError": 0
+      },
+      {
+        "portIndex": 6,
+        "salvoIndex": 6,
+        "count": 8,
+        "origin": [
+          1805.754124863377,
+          22.07260165084869,
+          1406.648888888889
+        ],
+        "muzzle": [
+          1805.754124863377,
+          22.07260165084869,
+          1406.648888888889
+        ],
+        "end": [
+          2087.483390160946,
+          12.33988286374126,
+          1363.857247502186
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 2.499999999999999,
+        "portError": 0
+      },
+      {
+        "portIndex": 7,
+        "salvoIndex": 7,
+        "count": 8,
+        "origin": [
+          1806.0303100457345,
+          18.62765495386683,
+          1406.648888888889
+        ],
+        "muzzle": [
+          1806.0303100457345,
+          18.62765495386683,
+          1406.648888888889
+        ],
+        "end": [
+          2118.1913747888816,
+          12.33988286374126,
+          1425.270458982262
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 2.6499999999999986,
+        "portError": 0
+      }
+    ]
+  },
+  "muzzleChecks": [
+    {
+      "kind": "tank",
+      "error": 0,
+      "screenshot": "screenshots/weapon-effects-tank-desktop.png",
+      "visualAge": 0.050000000000000044
+    },
+    {
+      "kind": "rocket",
+      "error": 0,
+      "screenshot": "screenshots/weapon-effects-rocket-desktop.png",
+      "visualAge": 0.050000000000000044
+    },
+    {
+      "kind": "machinegun_team",
+      "error": 0,
+      "screenshot": "screenshots/weapon-effects-machinegun_team-desktop.png",
+      "visualAge": 0
+    },
+    {
+      "kind": "destroyer",
+      "error": 0,
+      "screenshot": "screenshots/weapon-effects-destroyer-desktop.png",
+      "visualAge": 0.04999999999999982
+    },
+    {
+      "kind": "submarine",
+      "error": 0,
+      "screenshot": "screenshots/weapon-effects-submarine-desktop.png",
+      "visualAge": 0.04999999999999982
+    },
+    {
+      "kind": "orbital",
+      "error": 0,
+      "screenshot": "screenshots/weapon-effects-orbital-desktop.png",
+      "visualAge": 0.04999999999999982
+    }
+  ],
+  "models": {
+    "anchors": 44,
+    "mainAnchors": 30,
+    "salvoPorts": 104,
+    "inventorySlots": 462,
+    "fullVisualAcceptance": 0,
+    "m109Triangles": 12414,
+    "m109AddedTriangles": 464,
+    "portraitsRebaked": 6,
+    "portraitsChanged": 1
+  },
+  "performance": {
+    "viewport": [
+      2752,
+      1152
+    ],
+    "dpr": 1.25,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "frames": 397,
+    "durationMs": 8009.399999904632,
+    "meanFPS": 49.56675905869692,
+    "p95FrameMs": 20.100000000000364,
+    "entities": 98,
+    "movingUnits": 96,
+    "progressed": 96,
+    "finite": true,
+    "calls": 203,
+    "triangles": 1891354,
+    "foregroundCalls": 0,
+    "foregroundTriangles": 0,
+    "visibleEntities": 97,
+    "geometries": 171
+  },
+  "package": {
+    "recordedAt": "2026-10-20T16:52:01.846Z",
+    "version": "3.10.1",
+    "sha256Matches": 698,
+    "portraits": 588,
+    "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.10.1\\ModernFrontHD.exe",
+    "runtimeChecks": [
+      "desktop-report.json",
+      "expanded-desktop-report.json",
+      "first-person-desktop-report.json",
+      "depth-flight-desktop-report.json",
+      "high-altitude-desktop-report.json",
+      "maps-browser/desktop-report.json",
+      "command-feedback-desktop-report.json",
+      "player-mode-desktop-report.json",
+      "fps-upgrade-desktop-report.json",
+      "operator-desktop-report.json",
+      "crowd-desktop-report.json",
+      "arrival-animation-desktop-report.json",
+      "vehicle-tree-desktop-report.json",
+      "orbit-scope-desktop-report.json",
+      "unified-aim-desktop-report.json",
+      "right-button-fire-desktop-report.json",
+      "single-soldier-desktop-report.json",
+      "render-pass-stats-desktop-report.json",
+      "render-cache-desktop-report.json",
+      "fps-ballistics-desktop-report.json",
+      "vehicle-camera-desktop-report.json",
+      "vehicle-motion-desktop-report.json",
+      "weapon-effects-desktop-report.json",
+      "public-range-salvo-desktop-report.json"
+    ],
+    "mismatches": []
+  },
+  "testHarness": {
+    "legacyTests": "明确选择 balanced；public-range-salvo 使用新局默认 published/1m",
+    "inputReadiness": "测试操作前激活实际原生窗口，真实点击重获鼠标锁定；截图后重新检查。保留失锁禁操作与真实最小化/恢复断言。",
+    "failedAttemptEvidence": [
+      "static orbital_bombardment: pointer lock unavailable",
+      "static hunter_sub: C return ignored while pointer unlocked",
+      "submarine domain: F after screenshot ignored while pointer unlocked",
+      "first-person initial entry: native canvas could not acquire lock",
+      "fullscreen restore: focus was not ready after a fixed 350ms delay",
+      "fps-upgrade initial entry: native canvas could not acquire lock"
+    ],
+    "resolution": "修正测试前置同步，轨道/猎潜/潜艇专项分别复测，随后完整相关套件重跑；first-person的77兵种等9项已在当前包通过，最后原生失焦项用脚本既有 --focus-only 单独复验并合并为10项。没有更改游戏焦点规则或用旧版报告代替。"
+  },
+  "limits": [
+    "所有公开资料对应弹种和平台范围；未核实值是标注的同类估算。",
+    "GMLRS最小射程15km在1m/u地图不可满足，开局可选10m/u；不删除盲区。",
+    "模型与战斗时间不是1:1现实物理；64原创行动员武器不是64款现役实枪认证。",
+    "M109开孔缺陷已关闭，实物曲面与附件仍简化；462槽未全部完成实物外形验收。",
+    "潜艇首部出口为近似游戏标记，缺少可辨发射门；42海军槽仍只做船体运动。",
+    "截图用真实输入发射后正常暂停，隐藏遮住炮口的暂停按钮并恢复；不制造假弹或回拨时钟。",
+    "96单位短场景性能不代表大型长时间战斗。"
+  ]
+}

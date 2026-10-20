@@ -165,7 +165,20 @@
       else if(kind==='aa'){t.box(2,.65,1.8,0,.4,0,c);for(const s of [-1,1])for(let i=0;i<4;i++)t.box(2.4,.3,.3,0,.75+i*.32,s*1.05,c,[0,0,-.24]);t.box(.1,1.1,1.5,-.5,1.9,0,dark,[0,0,.2]);}
       else {t.prism([[-.9,-.8],[.9,-.55],[.9,.55],[-.9,.8]],0,.65,c,.7);t.cyl(.075,2.5,1.5,.35,0,steel,'x');t.box(.6,.25,.4,-.5,.85,0,c);}
     }
-    const g=new T.Group();g.add(b.finish());const turret=t.finish();turret.name='turret';turret.position.y=truck?1.4:1.9;g.add(turret);g.userData={scale:6.4,parts:b.parts+t.parts};return g;
+    const g=new T.Group();g.add(b.finish());const turret=t.finish();turret.name='turret';turret.position.y=truck?1.4:1.9;g.add(turret);g.userData={scale:6.4,parts:b.parts+t.parts};
+    // Legacy exteriors expose closed canister faces, not newly invented apertures.
+    let face,normal=[1,0,0],source,family='cannon';
+    if(kind==='rocket'||kind==='asat'){const angle=.15;normal=[Math.cos(angle),Math.sin(angle),0];face=[-.6+4.3/2*normal[0],1+.58+4.3/2*normal[1],0];source='legacy-closed-canister-front-face';family='rocket';}
+    else if(kind==='aa'){const angle=-.24;normal=[Math.cos(angle),Math.sin(angle),0];face=[2.4/2*normal[0],.75+3*.32+2.4/2*normal[1],1.05];source='legacy-closed-aa-canister-front-face';family='missile';}
+    else if(kind==='arty'){face=[5.4+.36/2,.7,0];source='legacy-primary-muzzle-brake-front';}
+    else if(kind==='ifv'){face=[1.5+2.5/2,.35,0];source='legacy-primary-barrel-front';family='autocannon';}
+    if(face){const a=new T.Object3D();a.name='muzzle';a.position.set(...face).addScaledVector(new T.Vector3(...normal),.012);a.userData={source,face:face.slice(),outward:normal.slice(),artOffset:.012};turret.add(a);g.userData.muzzleSource=source;g.userData.muzzleFamily=family;}
+    if(kind==='rocket'){
+      const faces=[];for(let row=0;row<2;row++)for(let col=0;col<3;col++)faces.push([-.6+4.3/2*normal[0],1+row*.58+4.3/2*normal[1],(col-1)*.6]);
+      faces.sort((a,b)=>Math.hypot(...a.map((v,i)=>v-face[i]))-Math.hypot(...b.map((v,i)=>v-face[i])));
+      g.userData.firePorts=faces.map((p,i)=>{const a=new T.Object3D();a.name='muzzle_'+i;a.position.set(...p).addScaledVector(new T.Vector3(...normal),.012);a.userData={source,face:p.slice(),outward:normal.slice(),artOffset:.012};turret.add(a);return{node:a.name,parent:'turret',position:a.position.toArray(),direction:normal.slice()};});
+    }
+    return g;
   }
   function aircraft(f,kind){
     const b=new Builder(),r=new Builder(),c=kind==='jet'?0x414b52:f==='chn'?0x7c888a:0x8c9497;
@@ -219,7 +232,9 @@
       b.cyl(.06,3.2,0,4,0,steel);b.box(.08,.15,3.4,0,5.4,0,steel);
       for(const side of [-1,1])for(let i=0;i<20;i++){b.cyl(.018,.3,-10+i*.95,1.12,side*w*.96,c,'y',.018,4);}
     }
-    const g=new T.Group();g.add(b.finish());g.userData={scale:5.4,parts:b.parts};return g;
+    const g=new T.Group();g.add(b.finish());g.userData={scale:5.4,parts:b.parts};
+    if(!carrier){const a=new T.Object3D();a.name='muzzle';a.position.set(sub?10.012:10.2+2.1/2+.012,sub?0:1.5,0);a.userData={source:sub?'approximate-forward-hull-exit':'legacy-existing-forward-gun-barrel',outward:[1,0,0],...(!sub?{motionJointRole:'turret'}:{})};g.add(a);g.userData.muzzleSource=a.userData.source;g.userData.muzzleFamily=sub?'torpedo':'navalGun';}
+    return g;
   }
   function other(kind,f){
     const b=new Builder(),c=colors[f]||0x777c6b;

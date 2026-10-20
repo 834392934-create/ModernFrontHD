@@ -56,3 +56,17 @@ test('death, possession change, game replacement and external modal close armory
 test('Tab cycles only enabled dialog controls and periodic status updates preserve search/card focus',()=>{
  const f=fixture();f.ui.show();const search=f.ui.el('search');f.ui.update();assert.equal(f.document.activeElement,search);const controls=f.ui.panel.querySelectorAll();controls.at(-1).focus();const e=f.event({code:'Tab',key:'Tab'});f.emit(e);assert.equal(f.document.activeElement,controls[0]);assert.equal(e.prevented,true);assert.equal(e.stopped,true);
 });
+test('armory cards and details use current simulation range overrides, minimum and evidence labels',()=>{
+ const f=fixture(),calls=[];
+ f.game.weaponRangeProfile=(e,w)=>{calls.push([e.id,w.id]);return{range:w.category==='pistol'?10:100,min:2,reference:{status:'inferred',record:{note:'公开参照不等于原创枪型认证。',sourceUrl:'https://example.test/spec'}}};};
+ f.game.formatRangeDistance=v=>v*5+' m';f.game.rangeReferenceLabel=()=> '同类估算';
+ f.ui.show();f.ui.selected='pistol_01';f.ui.renderCatalog();
+ assert.match(f.ui.el('weapons').innerHTML,/射程 10 m – 50 m · 同类估算/);
+ assert.match(f.ui.el('details').innerHTML,/10 m – 50 m/);
+ assert.match(f.ui.el('details').innerHTML,/最小射程内不能攻击/);
+ assert.match(f.ui.el('details').innerHTML,/不是这把原创枪的实测/);
+ assert.match(f.ui.el('details').innerHTML,/href="https:\/\/example.test\/spec"/);
+ assert.ok(calls.some(([id,w])=>id===7&&w==='pistol_01'));
+ f.game.weaponRangeProfile=()=>({range:235,min:0,reference:null});f.game.formatRangeDistance=v=>v+' u';f.game.rangeReferenceLabel=()=> '';
+ f.ui.renderCatalog();assert.match(f.ui.el('details').innerHTML,/235 u/);assert.match(f.ui.el('details').innerHTML,/游戏平衡/);
+});

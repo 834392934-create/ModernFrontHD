@@ -1,14 +1,22 @@
-# 现代战线 HD · 3.10.0
+# 现代战线 HD · 3.10.1
 
 可离线运行的三维即时战略遭遇战。项目位于 `D:\现代战线HD`；原参考目录 `D:\红警\2024` 未修改。
 
 ## 启动
 
-双击 **启动独立版.cmd**，或 **启动游戏.cmd**。当前新版位于 `release/ModernFrontHD-3.10.0/ModernFrontHD.exe`，需保留整个同名目录；启动器优先新版，找不到时回退到原 `release/ModernFrontHD`。旧程序运行中可并列构建新版，正在进行的对局继续运行。默认全屏，F11切换全屏，Tab隐藏/恢复作战界面，无需另外安装 Node.js 或浏览器。
+双击 **启动独立版.cmd**，或 **启动游戏.cmd**。当前新版位于 `release/ModernFrontHD-3.10.1/ModernFrontHD.exe`，需保留整个同名目录；启动器优先新版，找不到时回退到原 `release/ModernFrontHD`。旧程序运行中可并列构建新版，正在进行的对局继续运行。默认全屏，F11切换全屏，Tab隐藏/恢复作战界面，无需另外安装 Node.js 或浏览器。
 
 独立窗口使用Electron + Three.js WebGL；不是Unreal/DirectX引擎重写。资源全部本地加载，不要求账号、服务器或联网AI。浏览器兼容入口保留为 `play.ps1` 或 `index.html`。
 
 `release/ModernFrontHD-portable.zip` 是浏览器兼容包，不含独立版运行时；本机优先使用上面的EXE目录。
+
+## 3.10.1 炮口、公开射程与多管齐射
+
+- 炮口火光与弹迹从实际炮管或对应发射口出发，随炮塔和后坐运动；美军 M109 炮口增加真正透空的前孔与侧窗。潜艇暂用明确标注的船首近似出口。
+- 多管火箭炮依阵营从 6 / 8 / 12 个发射口依次发射，轨道导弹驳船从 8 口发射，落点覆盖区域。每发独立飞行、命中和结算，一轮总伤害按原武器预算分摊。松左键、离开驾驶或发出停止命令会取消尚未发射的弹，已发射弹继续飞行。
+- 新对局默认“公开射程”，区分公开数值、同类估算及架空游戏设定，显示最小射程和来源。保留“经典平衡”可选；旧存档继续原规则。模型、速度和地图为游戏尺度，不宣称真实战场模拟。
+- 默认 1 游戏单位对应 1 m，可选 5 或 10 m。GMLRS 的 15 km 最小射程会超过默认地图范围；使用此类远程装备建议在开局选择 10 m 比例。远程打击仍需满足侦察、目标种类及最小射程，不等于穿透迷雾。
+- [射程来源与估算边界](docs/reviews/weapon-range-sources.md)、[齐射机制](docs/reviews/weapon-salvos.md)、[独立模型审核](docs/reviews/model-audit-3.10.1.md)。已知装备尚未全部通过实物外形验收。
 
 ## 3.10.0 载具运动与武器开火
 
@@ -41,7 +49,7 @@
 
 RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU 绘制提交从 6.17 降到 3.98 ms，半数行走时从 5.66 降到 4.11 ms；两版帧率均约 50 FPS。492 项 CPU 测试及本轮原生回归通过。范围和完整证据见 [验证记录](docs/VALIDATION.md)；不将短样本外推到大型长局。
 
-本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.10.0`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
+本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.10.1`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
 
 ## 第一人称瞄准与单兵作战
 
@@ -262,7 +270,7 @@ RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU
 npm test
 # 首次构建独立版需要联网下载官方运行时：
 powershell -File tools/fetch-desktop-runtime.ps1
-powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.10.0
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.10.1
 node server.cjs
 # 第二终端；需要已有Playwright或设置PLAYWRIGHT_MODULE：
 node tests/gallery.cjs
@@ -282,7 +290,7 @@ node tests/performance3d.cjs --desktop
 node tools/capture-model-review.cjs tank_chn tank_usa
 node tools/bake-portraits.cjs
 node tools/export-model-inventory.cjs
-powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.10.0
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.10.1
 ```
 
 游戏运行不需要开发工具。报告见 [验证记录](docs/VALIDATION.md)，真实截图在 `screenshots/`。

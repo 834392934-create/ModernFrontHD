@@ -1,0 +1,668 @@
+{
+  "recordedAt": "2026-10-20T16:29:34.946Z",
+  "checks": [
+    "New game defaults: published, 1 metre per unit",
+    "64 armory cards and sampled details display actual published-mode ranges",
+    "RMB observes only, no shot",
+    "Real LMB completes eight unique model ports, 2D impacts and normalized actual damage",
+    "Pause freezes simulation time",
+    "release cancels pending launches",
+    "exit cancels pending launches",
+    "pause cancels pending launches",
+    "GMLRS 15 km inner limit becomes 1500 units at 10 m/u; long-range query completes"
+  ],
+  "errors": [],
+  "scope": "Public ranges, real-input eight-port salvo, normalized damage and cancellation; CPU metadata does not certify real weapon fidelity",
+  "profile": "D:\\现代战线HD\\.tmp\\profile-v3101-final-public-range-salvo-browser",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.10.1\\ModernFrontHD.exe",
+  "sourceHashes": {
+    "src/sim.js": "580a4a9f7ac9c1cfe9a5fcf1ab00a99a1a9ff375ecf9e26039f85c9b7e5d49bf",
+    "src/weapon-salvos.js": "372b1048feeee0838d65e751b8437abe5c29a0ac6eda6b9a9587d365cbc5757c",
+    "src/weapon-range-data.js": "5cf2cbd9f5b586ea368e864c38f88d83c9b5406b6d4c5f6f366b8c1a92c1859d",
+    "src/operator-ui.js": "aad6cdf6c69f1104d7c74f6cba600d689fefa20999bd1087907efa55b5378f58",
+    "src/direct-control.js": "03b2082093ae8c6d808c604e31a994cbc028efee2d29bfaf745afe16b086bca9",
+    "src/models-vehicles.js": "79990ee7ddc13303cb9b33e1e1f6868eefba6aefaece7b7b35fec47c2b245a4d",
+    "src/models3d.js": "ee163523031e2953b0151d4b9eefa5a6f8e863e29e7e7b12679c4fa02a29f317",
+    "src/vehicle-animation.js": "fdaeba86cf5702aa46d7aa7bd2d492d26d9adb6648845ef6d209586b2dc4e7fd",
+    "index.html": "6a906230f9de92ba61d8b0739392100a44e43fb42ab15840cc62dcf0c95f17ed"
+  },
+  "version": "3.10.1",
+  "defaults": {
+    "mode": "published",
+    "scale": 1
+  },
+  "armory": [
+    {
+      "id": "pistol_01",
+      "expected": "50 m",
+      "text": "手枪已装备 副微光-01 标准伤害 32 · 射程 50 m · 同类估算人员 · 车辆 / 基地"
+    },
+    {
+      "id": "pistol_02",
+      "expected": "50 m",
+      "text": "手枪微光-02 紧凑伤害 30 · 射程 50 m · 同类估算人员 · 舰艇 / 水下"
+    },
+    {
+      "id": "pistol_03",
+      "expected": "50 m",
+      "text": "手枪微光-03 巡逻伤害 33 · 射程 50 m · 同类估算人员 · 空中"
+    },
+    {
+      "id": "pistol_04",
+      "expected": "50 m",
+      "text": "手枪微光-04 高容伤害 31 · 射程 50 m · 同类估算人员 · 太空"
+    },
+    {
+      "id": "pistol_05",
+      "expected": "50 m",
+      "text": "手枪微光-05 轻量伤害 29 · 射程 50 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下"
+    },
+    {
+      "id": "pistol_06",
+      "expected": "50 m",
+      "text": "手枪微光-06 精确伤害 36 · 射程 50 m · 同类估算人员 · 空中 · 太空"
+    },
+    {
+      "id": "pistol_07",
+      "expected": "50 m",
+      "text": "手枪微光-07 突击伤害 34 · 射程 50 m · 同类估算人员 · 车辆 / 基地 · 空中"
+    },
+    {
+      "id": "pistol_08",
+      "expected": "50 m",
+      "text": "手枪微光-08 守望伤害 37 · 射程 50 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下 · 空中 · 太空"
+    },
+    {
+      "id": "smg_01",
+      "expected": "150 m",
+      "text": "冲锋枪迅雨-01 标准伤害 19 · 射程 150 m · 同类估算人员 · 车辆 / 基地"
+    },
+    {
+      "id": "smg_02",
+      "expected": "150 m",
+      "text": "冲锋枪迅雨-02 紧凑伤害 18 · 射程 150 m · 同类估算人员 · 舰艇 / 水下"
+    },
+    {
+      "id": "smg_03",
+      "expected": "150 m",
+      "text": "冲锋枪迅雨-03 巡逻伤害 20 · 射程 150 m · 同类估算人员 · 空中"
+    },
+    {
+      "id": "smg_04",
+      "expected": "150 m",
+      "text": "冲锋枪迅雨-04 高容伤害 18 · 射程 150 m · 同类估算人员 · 太空"
+    },
+    {
+      "id": "smg_05",
+      "expected": "150 m",
+      "text": "冲锋枪迅雨-05 轻量伤害 17 · 射程 150 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下"
+    },
+    {
+      "id": "smg_06",
+      "expected": "150 m",
+      "text": "冲锋枪迅雨-06 精确伤害 21 · 射程 150 m · 同类估算人员 · 空中 · 太空"
+    },
+    {
+      "id": "smg_07",
+      "expected": "150 m",
+      "text": "冲锋枪迅雨-07 突击伤害 20 · 射程 150 m · 同类估算人员 · 车辆 / 基地 · 空中"
+    },
+    {
+      "id": "smg_08",
+      "expected": "150 m",
+      "text": "冲锋枪迅雨-08 守望伤害 22 · 射程 150 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下 · 空中 · 太空"
+    },
+    {
+      "id": "rifle_01",
+      "expected": "500 m",
+      "text": "突击步枪已装备 主远岚-01 标准伤害 33 · 射程 500 m · 同类估算人员 · 车辆 / 基地"
+    },
+    {
+      "id": "rifle_02",
+      "expected": "500 m",
+      "text": "突击步枪远岚-02 紧凑伤害 31 · 射程 500 m · 同类估算人员 · 舰艇 / 水下"
+    },
+    {
+      "id": "rifle_03",
+      "expected": "500 m",
+      "text": "突击步枪远岚-03 巡逻伤害 34 · 射程 500 m · 同类估算人员 · 空中"
+    },
+    {
+      "id": "rifle_04",
+      "expected": "500 m",
+      "text": "突击步枪远岚-04 高容伤害 32 · 射程 500 m · 同类估算人员 · 太空"
+    },
+    {
+      "id": "rifle_05",
+      "expected": "500 m",
+      "text": "突击步枪远岚-05 轻量伤害 30 · 射程 500 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下"
+    },
+    {
+      "id": "rifle_06",
+      "expected": "500 m",
+      "text": "突击步枪远岚-06 精确伤害 37 · 射程 500 m · 同类估算人员 · 空中 · 太空"
+    },
+    {
+      "id": "rifle_07",
+      "expected": "500 m",
+      "text": "突击步枪远岚-07 突击伤害 35 · 射程 500 m · 同类估算人员 · 空中 · 车辆 / 基地 · 舰艇 / 水下"
+    },
+    {
+      "id": "rifle_08",
+      "expected": "500 m",
+      "text": "突击步枪远岚-08 守望伤害 39 · 射程 500 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下 · 空中 · 太空"
+    },
+    {
+      "id": "shotgun_01",
+      "expected": "40 m",
+      "text": "霰弹枪破晓-01 标准伤害 12 × 8 · 射程 40 m · 同类估算人员 · 车辆 / 基地"
+    },
+    {
+      "id": "shotgun_02",
+      "expected": "40 m",
+      "text": "霰弹枪破晓-02 紧凑伤害 11 × 8 · 射程 40 m · 同类估算人员 · 舰艇 / 水下"
+    },
+    {
+      "id": "shotgun_03",
+      "expected": "40 m",
+      "text": "霰弹枪破晓-03 巡逻伤害 12 × 8 · 射程 40 m · 同类估算人员 · 空中"
+    },
+    {
+      "id": "shotgun_04",
+      "expected": "40 m",
+      "text": "霰弹枪破晓-04 高容伤害 12 × 8 · 射程 40 m · 同类估算人员 · 太空"
+    },
+    {
+      "id": "shotgun_05",
+      "expected": "40 m",
+      "text": "霰弹枪破晓-05 轻量伤害 11 × 8 · 射程 40 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下"
+    },
+    {
+      "id": "shotgun_06",
+      "expected": "40 m",
+      "text": "霰弹枪破晓-06 精确伤害 13 × 8 · 射程 40 m · 同类估算人员 · 空中 · 太空"
+    },
+    {
+      "id": "shotgun_07",
+      "expected": "40 m",
+      "text": "霰弹枪破晓-07 突击伤害 13 × 8 · 射程 40 m · 同类估算人员 · 空中 · 车辆 / 基地 · 太空"
+    },
+    {
+      "id": "shotgun_08",
+      "expected": "40 m",
+      "text": "霰弹枪破晓-08 守望伤害 14 × 8 · 射程 40 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下 · 空中 · 太空"
+    },
+    {
+      "id": "lmg_01",
+      "expected": "600 m",
+      "text": "轻机枪磐石-01 标准伤害 29 · 射程 600 m · 同类估算人员 · 车辆 / 基地"
+    },
+    {
+      "id": "lmg_02",
+      "expected": "600 m",
+      "text": "轻机枪磐石-02 紧凑伤害 27 · 射程 600 m · 同类估算人员 · 舰艇 / 水下"
+    },
+    {
+      "id": "lmg_03",
+      "expected": "600 m",
+      "text": "轻机枪磐石-03 巡逻伤害 30 · 射程 600 m · 同类估算人员 · 空中"
+    },
+    {
+      "id": "lmg_04",
+      "expected": "600 m",
+      "text": "轻机枪磐石-04 高容伤害 28 · 射程 600 m · 同类估算人员 · 太空"
+    },
+    {
+      "id": "lmg_05",
+      "expected": "600 m",
+      "text": "轻机枪磐石-05 轻量伤害 26 · 射程 600 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下"
+    },
+    {
+      "id": "lmg_06",
+      "expected": "600 m",
+      "text": "轻机枪磐石-06 精确伤害 32 · 射程 600 m · 同类估算人员 · 空中 · 太空"
+    },
+    {
+      "id": "lmg_07",
+      "expected": "600 m",
+      "text": "轻机枪磐石-07 突击伤害 31 · 射程 600 m · 同类估算人员 · 车辆 / 基地 · 空中 · 舰艇 / 水下"
+    },
+    {
+      "id": "lmg_08",
+      "expected": "600 m",
+      "text": "轻机枪磐石-08 守望伤害 34 · 射程 600 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下 · 空中 · 太空"
+    },
+    {
+      "id": "marksman_01",
+      "expected": "800 m",
+      "text": "精确射手步枪巡隼-01 标准伤害 79 · 射程 800 m · 同类估算人员 · 车辆 / 基地"
+    },
+    {
+      "id": "marksman_02",
+      "expected": "800 m",
+      "text": "精确射手步枪巡隼-02 紧凑伤害 74 · 射程 800 m · 同类估算人员 · 舰艇 / 水下"
+    },
+    {
+      "id": "marksman_03",
+      "expected": "800 m",
+      "text": "精确射手步枪巡隼-03 巡逻伤害 81 · 射程 800 m · 同类估算人员 · 空中"
+    },
+    {
+      "id": "marksman_04",
+      "expected": "800 m",
+      "text": "精确射手步枪巡隼-04 高容伤害 76 · 射程 800 m · 同类估算人员 · 太空"
+    },
+    {
+      "id": "marksman_05",
+      "expected": "800 m",
+      "text": "精确射手步枪巡隼-05 轻量伤害 72 · 射程 800 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下"
+    },
+    {
+      "id": "marksman_06",
+      "expected": "800 m",
+      "text": "精确射手步枪巡隼-06 精确伤害 88 · 射程 800 m · 同类估算人员 · 空中 · 太空"
+    },
+    {
+      "id": "marksman_07",
+      "expected": "800 m",
+      "text": "精确射手步枪巡隼-07 突击伤害 84 · 射程 800 m · 同类估算人员 · 太空 · 舰艇 / 水下 · 空中"
+    },
+    {
+      "id": "marksman_08",
+      "expected": "800 m",
+      "text": "精确射手步枪巡隼-08 守望伤害 92 · 射程 800 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下 · 空中 · 太空"
+    },
+    {
+      "id": "sniper_01",
+      "expected": "1.2 km",
+      "text": "狙击步枪长夜-01 标准伤害 165 · 射程 1.2 km · 同类估算人员 · 车辆 / 基地"
+    },
+    {
+      "id": "sniper_02",
+      "expected": "1.2 km",
+      "text": "狙击步枪长夜-02 紧凑伤害 155 · 射程 1.2 km · 同类估算人员 · 舰艇 / 水下"
+    },
+    {
+      "id": "sniper_03",
+      "expected": "1.2 km",
+      "text": "狙击步枪长夜-03 巡逻伤害 170 · 射程 1.2 km · 同类估算人员 · 空中"
+    },
+    {
+      "id": "sniper_04",
+      "expected": "1.2 km",
+      "text": "狙击步枪长夜-04 高容伤害 158 · 射程 1.2 km · 同类估算人员 · 太空"
+    },
+    {
+      "id": "sniper_05",
+      "expected": "1.2 km",
+      "text": "狙击步枪长夜-05 轻量伤害 150 · 射程 1.2 km · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下"
+    },
+    {
+      "id": "sniper_06",
+      "expected": "1.2 km",
+      "text": "狙击步枪长夜-06 精确伤害 185 · 射程 1.2 km · 同类估算人员 · 空中 · 太空"
+    },
+    {
+      "id": "sniper_07",
+      "expected": "1.2 km",
+      "text": "狙击步枪长夜-07 突击伤害 175 · 射程 1.2 km · 同类估算人员 · 车辆 / 基地 · 空中"
+    },
+    {
+      "id": "sniper_08",
+      "expected": "1.2 km",
+      "text": "狙击步枪长夜-08 守望伤害 193 · 射程 1.2 km · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下 · 空中 · 太空"
+    },
+    {
+      "id": "launcher_01",
+      "expected": "500 m",
+      "text": "发射器雷幕-01 标准伤害 225 · 射程 500 m · 同类估算人员 · 车辆 / 基地"
+    },
+    {
+      "id": "launcher_02",
+      "expected": "500 m",
+      "text": "发射器雷幕-02 紧凑伤害 212 · 射程 500 m · 同类估算人员 · 舰艇 / 水下"
+    },
+    {
+      "id": "launcher_03",
+      "expected": "500 m",
+      "text": "发射器雷幕-03 巡逻伤害 232 · 射程 500 m · 同类估算人员 · 空中"
+    },
+    {
+      "id": "launcher_04",
+      "expected": "500 m",
+      "text": "发射器雷幕-04 高容伤害 216 · 射程 500 m · 同类估算人员 · 太空"
+    },
+    {
+      "id": "launcher_05",
+      "expected": "500 m",
+      "text": "发射器雷幕-05 轻量伤害 205 · 射程 500 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下"
+    },
+    {
+      "id": "launcher_06",
+      "expected": "500 m",
+      "text": "发射器雷幕-06 精确伤害 252 · 射程 500 m · 同类估算人员 · 空中 · 太空"
+    },
+    {
+      "id": "launcher_07",
+      "expected": "500 m",
+      "text": "发射器雷幕-07 突击伤害 239 · 射程 500 m · 同类估算人员 · 舰艇 / 水下 · 太空 · 车辆 / 基地"
+    },
+    {
+      "id": "launcher_08",
+      "expected": "500 m",
+      "text": "发射器雷幕-08 守望伤害 263 · 射程 500 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下 · 空中 · 太空"
+    }
+  ],
+  "fullSalvo": {
+    "time": 3.899999999999994,
+    "shots": [
+      {
+        "portIndex": 0,
+        "salvoIndex": 0,
+        "count": 8,
+        "origin": [
+          1805.754124863377,
+          22.07260165084869,
+          1397.048888888889
+        ],
+        "muzzle": [
+          1805.754124863377,
+          22.07260165084869,
+          1397.048888888889
+        ],
+        "end": [
+          2085.433591553935,
+          12.33988286374126,
+          1400
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 1.5000000000000007,
+        "portError": 0
+      },
+      {
+        "portIndex": 1,
+        "salvoIndex": 1,
+        "count": 8,
+        "origin": [
+          1806.0303100457345,
+          18.62765495386683,
+          1397.048888888889
+        ],
+        "muzzle": [
+          1806.0303100457345,
+          18.62765495386683,
+          1397.048888888889
+        ],
+        "end": [
+          2096.4678220609294,
+          12.33988286374126,
+          1386.4944534864837
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 1.7000000000000008,
+        "portError": 0
+      },
+      {
+        "portIndex": 2,
+        "salvoIndex": 2,
+        "count": 8,
+        "origin": [
+          1805.754124863377,
+          22.07260165084869,
+          1393.351111111111
+        ],
+        "muzzle": [
+          1805.754124863377,
+          22.07260165084869,
+          1393.351111111111
+        ],
+        "end": [
+          2089.0083200598756,
+          12.33988286374126,
+          1420.0635071042796
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 1.850000000000001,
+        "portError": 0
+      },
+      {
+        "portIndex": 3,
+        "salvoIndex": 3,
+        "count": 8,
+        "origin": [
+          1806.0303100457345,
+          18.62765495386683,
+          1393.351111111111
+        ],
+        "muzzle": [
+          1806.0303100457345,
+          18.62765495386683,
+          1393.351111111111
+        ],
+        "end": [
+          2059.8651494848427,
+          12.33988286374126,
+          1387.1540375723255
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 2.000000000000001,
+        "portError": 0
+      },
+      {
+        "portIndex": 4,
+        "salvoIndex": 4,
+        "count": 8,
+        "origin": [
+          1805.754124863377,
+          22.07260165084869,
+          1402.951111111111
+        ],
+        "muzzle": [
+          1805.754124863377,
+          22.07260165084869,
+          1402.951111111111
+        ],
+        "end": [
+          2123.918162948127,
+          12.33988286374126,
+          1393.5010548221346
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 2.1500000000000004,
+        "portError": 0
+      },
+      {
+        "portIndex": 5,
+        "salvoIndex": 5,
+        "count": 8,
+        "origin": [
+          1806.0303100457345,
+          18.62765495386683,
+          1402.951111111111
+        ],
+        "muzzle": [
+          1806.0303100457345,
+          18.62765495386683,
+          1402.951111111111
+        ],
+        "end": [
+          2054.988680089002,
+          12.33988286374126,
+          1427.2995720679378
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 2.3,
+        "portError": 0
+      },
+      {
+        "portIndex": 6,
+        "salvoIndex": 6,
+        "count": 8,
+        "origin": [
+          1805.754124863377,
+          22.07260165084869,
+          1406.648888888889
+        ],
+        "muzzle": [
+          1805.754124863377,
+          22.07260165084869,
+          1406.648888888889
+        ],
+        "end": [
+          2087.483390160946,
+          12.33988286374126,
+          1363.857247502186
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 2.499999999999999,
+        "portError": 0
+      },
+      {
+        "portIndex": 7,
+        "salvoIndex": 7,
+        "count": 8,
+        "origin": [
+          1806.0303100457345,
+          18.62765495386683,
+          1406.648888888889
+        ],
+        "muzzle": [
+          1806.0303100457345,
+          18.62765495386683,
+          1406.648888888889
+        ],
+        "end": [
+          2118.1913747888816,
+          12.33988286374126,
+          1425.270458982262
+        ],
+        "baseDamage": 17,
+        "damage": 17,
+        "firedAt": 2.6499999999999986,
+        "portError": 0
+      }
+    ],
+    "hp": 9913.830334037004,
+    "initialHp": 10000,
+    "active": false,
+    "cool": 4.000000000000009,
+    "range": {
+      "kind": "rocket",
+      "active": true,
+      "reason": null,
+      "preview": false,
+      "power": 0,
+      "boosted": false,
+      "attack": 70000,
+      "nominal": 70000,
+      "min": 0,
+      "reference": {
+        "known": true,
+        "range": 70000,
+        "minRange": null,
+        "meters": 70000,
+        "minMeters": null,
+        "metersPerUnit": 1,
+        "metric": "selected",
+        "qualifier": "estimated",
+        "publishedKind": "estimate",
+        "status": "inferred",
+        "sourceUrl": "https://lockheedmartin.com/content/dam/lockheed-martin/mfc/pc/guided-mlrs-unitary-rocket/GMLRS-Fast-Facts-Updates.pdf",
+        "verified": false,
+        "record": {
+          "id": "inferred:chn:rocket",
+          "platform": "PHL-191",
+          "weapon": "未指定制式型号的游戏武器",
+          "target": [],
+          "publishedM": null,
+          "publishedKind": "estimate",
+          "effectiveM": null,
+          "maxM": null,
+          "minM": null,
+          "estimateM": 70000,
+          "status": "inferred",
+          "scope": "game-role-estimate",
+          "qualifier": "estimated",
+          "source": "gmlrs",
+          "sourceUrl": "https://lockheedmartin.com/content/dam/lockheed-martin/mfc/pc/guided-mlrs-unitary-rocket/GMLRS-Fast-Facts-Updates.pdf",
+          "referenceIds": [
+            "gmlrs"
+          ],
+          "checked": "2026-10-20",
+          "reliability": "估算/游戏设定，不是该装备公开性能",
+          "note": "未核实弹种的远程火箭角色估算，不冒称PHL-191实测"
+        },
+        "notes": "逐弹种证据；范围不赋予新目标域。primary为当前游戏选值，records保留原始公开参照；必须核对weapon/target/scope。",
+        "platform": "PHL-191"
+      },
+      "domains": [
+        "ground",
+        "naval",
+        "structure"
+      ],
+      "zones": [
+        {
+          "type": "attack",
+          "label": "攻击",
+          "radius": 70000,
+          "min": 0,
+          "domains": [
+            "ground",
+            "naval",
+            "structure"
+          ]
+        }
+      ]
+    },
+    "damageBudget": 136,
+    "unitDamage": 136,
+    "aim": [
+      2085.433591553935,
+      12.33988286374126,
+      1400
+    ],
+    "contact": "M1A2 SEPv3 · 实际距离 300 m / 射程 70 km · 射程内 · 装填中 · 同类估算"
+  },
+  "rangeBoundary": {
+    "min": 1500,
+    "attack": 7000,
+    "formatted": "70 km",
+    "results": [
+      {
+        "distance": 1499,
+        "rangeState": "min",
+        "inRange": false,
+        "reason": "min-range"
+      },
+      {
+        "distance": 1501,
+        "rangeState": "in",
+        "inRange": true,
+        "reason": "ready"
+      },
+      {
+        "distance": 6999,
+        "rangeState": "in",
+        "inRange": true,
+        "reason": "ready"
+      },
+      {
+        "distance": 7001,
+        "rangeState": "out",
+        "inRange": false,
+        "reason": "out-of-range"
+      }
+    ],
+    "queryMs": 0,
+    "queries": 20,
+    "found": 80
+  },
+  "passed": true
+}
