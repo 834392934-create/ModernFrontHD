@@ -1,0 +1,393 @@
+{
+  "recordedAt": "2026-10-20T15:08:06.629Z",
+  "scope": "Six real-input discharge families; fixture free-aim; normal pause action freezes machinegun first visual frame and other real shots at 50–150 ms before screenshots; no clock/ttl edits or fake shots; no mouse-only aiming or fidelity claim",
+  "runs": [
+    {
+      "kind": "tank",
+      "family": "cannon",
+      "shot": {
+        "profile": {
+          "name": "cannon",
+          "flash": 0.065,
+          "size": 12,
+          "recoil": 1,
+          "smoke": 0.75,
+          "trail": 22,
+          "color": "#ffd29a",
+          "dust": true
+        },
+        "frozenEndpoints": [
+          1845.7908,
+          12.341999999999999,
+          1400,
+          2065.786354315272,
+          10.943400158698621,
+          1400
+        ],
+        "observedAge": 0.04999999999999999,
+        "observedAt": 0.8000000000000002,
+        "firedAt": 0.8000000000000002,
+        "max": 0.31428571428571406,
+        "sourceId": 36
+      },
+      "shotCount": 1,
+      "maxRecoil": 0.26607613101514715,
+      "visual": [
+        {
+          "at": 0.8000000000000002,
+          "origin": [
+            1845.7908,
+            12.341999999999999,
+            1400
+          ],
+          "end": [
+            2065.786354315272,
+            10.943400158698621,
+            1400
+          ],
+          "family": "cannon"
+        }
+      ],
+      "capture": {
+        "age": 0.050000000000000044,
+        "physicsAge": 0.09999999999999998,
+        "visualAt": 0.8000000000000002,
+        "targetAge": 0.05,
+        "time": 0.8500000000000002,
+        "flashAlive": true,
+        "smokeAlive": true
+      },
+      "captureWallMs": 537,
+      "screenshot": "screenshots/weapon-effects-tank-desktop.png",
+      "pauseTime": 0.8500000000000002
+    },
+    {
+      "kind": "rocket",
+      "family": "rocket",
+      "shot": {
+        "profile": {
+          "name": "rocket",
+          "flash": 0.15,
+          "size": 16,
+          "recoil": 0.025,
+          "smoke": 1.2,
+          "trail": 38,
+          "color": "#ffba6c",
+          "exhaust": true
+        },
+        "frozenEndpoints": [
+          1800,
+          12.35,
+          1400,
+          2309.9891405541275,
+          9.02185984932686,
+          1400
+        ],
+        "observedAge": 0.050000000000000044,
+        "observedAt": 1.2500000000000004,
+        "firedAt": 1.2500000000000004,
+        "max": 1.2750000000000004,
+        "sourceId": 40
+      },
+      "shotCount": 1,
+      "maxRecoil": 0,
+      "visual": [
+        {
+          "at": 0.8000000000000002,
+          "origin": [
+            1845.7908,
+            12.341999999999999,
+            1400
+          ],
+          "end": [
+            2065.786354315272,
+            10.943400158698621,
+            1400
+          ],
+          "family": "cannon"
+        },
+        {
+          "at": 1.2500000000000004,
+          "origin": [
+            1800,
+            12.35,
+            1400
+          ],
+          "end": [
+            2309.9891405541275,
+            9.02185984932686,
+            1400
+          ],
+          "family": "rocket"
+        }
+      ],
+      "capture": {
+        "age": 0.050000000000000044,
+        "physicsAge": 0.10000000000000009,
+        "visualAt": 1.2500000000000004,
+        "targetAge": 0.05,
+        "time": 1.3000000000000005,
+        "flashAlive": true,
+        "smokeAlive": true
+      },
+      "captureWallMs": 560,
+      "screenshot": "screenshots/weapon-effects-rocket-desktop.png",
+      "pauseTime": 1.3000000000000005
+    },
+    {
+      "kind": "machinegun_team",
+      "family": "machinegun",
+      "shot": {
+        "profile": {
+          "name": "machinegun",
+          "flash": 0.026,
+          "size": 2.4,
+          "recoil": 0.13,
+          "smoke": 0.25,
+          "trail": 14,
+          "color": "#ffce80"
+        },
+        "frozenEndpoints": [
+          1807.112,
+          7.475999999999999,
+          1400.952,
+          2012.084421685439,
+          4.1355368527950365,
+          1400.5677417941567
+        ],
+        "observedAge": 0.04999999999999999,
+        "observedAt": 1.7000000000000008,
+        "firedAt": 1.7000000000000008,
+        "max": 0.292857142857143,
+        "sourceId": 44
+      },
+      "shotCount": 1,
+      "maxRecoil": 0,
+      "visual": [
+        {
+          "at": 1.2500000000000004,
+          "origin": [
+            1800,
+            12.35,
+            1400
+          ],
+          "end": [
+            2309.9891405541275,
+            9.02185984932686,
+            1400
+          ],
+          "family": "rocket"
+        },
+        {
+          "at": 1.7000000000000008,
+          "origin": [
+            1807.112,
+            7.475999999999999,
+            1400.952
+          ],
+          "end": [
+            2012.084421685439,
+            4.1355368527950365,
+            1400.5677417941567
+          ],
+          "family": "machinegun"
+        }
+      ],
+      "capture": {
+        "age": 0,
+        "physicsAge": 0.04999999999999999,
+        "visualAt": 1.7000000000000008,
+        "targetAge": 0,
+        "time": 1.7000000000000008,
+        "flashAlive": true,
+        "smokeAlive": true
+      },
+      "captureWallMs": 492,
+      "screenshot": "screenshots/weapon-effects-machinegun_team-desktop.png",
+      "pauseTime": 1.7000000000000008
+    },
+    {
+      "kind": "destroyer",
+      "family": "navalGun",
+      "shot": {
+        "profile": {
+          "name": "navalGun",
+          "flash": 0.06,
+          "size": 11,
+          "recoil": 0.85,
+          "smoke": 0.7,
+          "trail": 24,
+          "color": "#ffe1ac"
+        },
+        "frozenEndpoints": [
+          1800,
+          13.65,
+          100,
+          2389.919844042509,
+          3.9248982081448283,
+          99.9999999999998
+        ],
+        "observedAge": 0.050000000000000044,
+        "observedAt": 2.2,
+        "firedAt": 2.2,
+        "max": 0.8428571428571429,
+        "sourceId": 47
+      },
+      "shotCount": 1,
+      "maxRecoil": 0,
+      "visual": [
+        {
+          "at": 1.2500000000000004,
+          "origin": [
+            1800,
+            12.35,
+            1400
+          ],
+          "end": [
+            2309.9891405541275,
+            9.02185984932686,
+            1400
+          ],
+          "family": "rocket"
+        },
+        {
+          "at": 2.2,
+          "origin": [
+            1800,
+            13.65,
+            100
+          ],
+          "end": [
+            2389.919844042509,
+            3.9248982081448283,
+            99.9999999999998
+          ],
+          "family": "navalGun"
+        }
+      ],
+      "capture": {
+        "age": 0.04999999999999982,
+        "physicsAge": 0.10000000000000009,
+        "visualAt": 2.2,
+        "targetAge": 0.05,
+        "time": 2.25,
+        "flashAlive": true,
+        "smokeAlive": true
+      },
+      "captureWallMs": 285,
+      "screenshot": "screenshots/weapon-effects-destroyer-desktop.png",
+      "pauseTime": 2.25
+    },
+    {
+      "kind": "submarine",
+      "family": "torpedo",
+      "shot": {
+        "profile": {
+          "name": "torpedo",
+          "flash": 0,
+          "size": 3,
+          "recoil": 0,
+          "smoke": 0,
+          "trail": 28,
+          "color": "#9cdedb",
+          "wake": true
+        },
+        "frozenEndpoints": [
+          1800,
+          -52,
+          100,
+          2239.999334196384,
+          -51.23455454871418,
+          99.9999999999999
+        ],
+        "observedAge": 0.050000000000000044,
+        "observedAt": 4.049999999999994,
+        "firedAt": 4.049999999999994,
+        "max": 2.000000000000001,
+        "sourceId": 51
+      },
+      "shotCount": 1,
+      "maxRecoil": 0,
+      "visual": [],
+      "capture": {
+        "age": 0.04999999999999982,
+        "physicsAge": 0.10000000000000009,
+        "visualAt": 4.049999999999994,
+        "targetAge": 0.05,
+        "time": 4.099999999999993,
+        "flashAlive": false,
+        "smokeAlive": false
+      },
+      "captureWallMs": 220,
+      "screenshot": "screenshots/weapon-effects-submarine-desktop.png",
+      "pauseTime": 4.099999999999993
+    },
+    {
+      "kind": "orbital",
+      "family": "beam",
+      "shot": {
+        "profile": {
+          "name": "beam",
+          "flash": 0,
+          "size": 8,
+          "recoil": 0,
+          "smoke": 0,
+          "trail": 0,
+          "color": "#a9e3ff",
+          "beam": true
+        },
+        "frozenEndpoints": [
+          1793.4896653894393,
+          3989.2765412175672,
+          1400,
+          2777.653514368996,
+          3076.9248993810743,
+          1399.9999999999998
+        ],
+        "observedAge": 0.050000000000000044,
+        "observedAt": 4.6499999999999915,
+        "firedAt": 4.6499999999999915,
+        "max": 1.917142857142857,
+        "sourceId": 55
+      },
+      "shotCount": 1,
+      "maxRecoil": 0,
+      "visual": [],
+      "capture": {
+        "age": 0.04999999999999982,
+        "physicsAge": 0.10000000000000009,
+        "visualAt": 4.6499999999999915,
+        "targetAge": 0.05,
+        "time": 4.699999999999991,
+        "flashAlive": false,
+        "smokeAlive": false
+      },
+      "captureWallMs": 448,
+      "screenshot": "screenshots/weapon-effects-orbital-desktop.png",
+      "pauseTime": 4.699999999999991
+    }
+  ],
+  "checks": [
+    "tank: real LMB / no RMB shot / frozen geometry and effect clock",
+    "rocket: real LMB / no RMB shot / frozen geometry and effect clock",
+    "machinegun_team: real LMB / no RMB shot / frozen geometry and effect clock",
+    "destroyer: real LMB / no RMB shot / frozen geometry and effect clock",
+    "submarine: real LMB / no RMB shot / frozen geometry and effect clock",
+    "orbital: real LMB / no RMB shot / frozen geometry and effect clock"
+  ],
+  "errors": [],
+  "testProfile": "D:\\现代战线HD\\.tmp\\profile-v310-final-weapon-effects-browser",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.10.0\\ModernFrontHD.exe",
+  "sourceHashes": {
+    "src/weapon-effects.js": "7812769c7612112d807339bddf5c07587c29b794ca6487c6125054df2adc59a9",
+    "src/vehicle-animation.js": "109bd4a58ae7a4db428833ee90739117e7d5db5c0f3f798f72ab7db8b580df23",
+    "src/battle3d.js": "42b756221b44eb46cb6dbb8e5e09c7fce5f929d83281a85eccf91f09125ebc53",
+    "src/direct-control.js": "78d7aba5775d594afb478469a3d2e67487bb9e23892052f28a640fed90086333",
+    "src/fps-viewmodel.js": "7338c372b19b6e5785216fc0c8fdad0c3cf6c4b78e269434886c5cb35720ac6d",
+    "src/sim.js": "4eea738c605bd837635764addd4838c1415f83e8e633ce0b3396181db96e9922",
+    "index.html": "7680348d9a15775058d736df54b8999f228bb8e659ee82ec1a1016bfa70c2286"
+  },
+  "version": "3.10.0",
+  "stage": "orbital",
+  "passed": true
+}

@@ -1,0 +1,165 @@
+{
+  "version": "3.10.0",
+  "date": "2026-10-20",
+  "baseCommit": "0dfb2ce",
+  "cpu": {
+    "command": "node --test tests/*.test.cjs",
+    "tests": 575,
+    "passed": 575,
+    "failed": 0,
+    "log": "docs/simulation-tests.txt"
+  },
+  "native": [
+    {
+      "file": "vehicle-motion-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T15:07:04.637Z",
+      "errors": [],
+      "checks": 9,
+      "runs": 8
+    },
+    {
+      "file": "weapon-effects-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T15:08:06.629Z",
+      "errors": [],
+      "checks": 6,
+      "runs": 6
+    },
+    {
+      "file": "vehicle-camera-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T15:08:23.795Z",
+      "errors": [],
+      "checks": 7
+    },
+    {
+      "file": "fps-ballistics-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T15:10:56.931Z",
+      "errors": [],
+      "checks": 4
+    },
+    {
+      "file": "first-person-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T15:11:33.764Z",
+      "errors": [],
+      "checks": 10
+    },
+    {
+      "file": "fps-upgrade-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T15:12:30.468Z",
+      "errors": [],
+      "checks": 9
+    },
+    {
+      "file": "orbit-scope-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T15:12:47.607Z",
+      "errors": [],
+      "checks": 7
+    },
+    {
+      "file": "arrival-animation-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T15:13:09.570Z",
+      "errors": [],
+      "checks": 4
+    },
+    {
+      "file": "crowd-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-20T15:13:33.560Z",
+      "errors": []
+    },
+    {
+      "file": "desktop-report.json",
+      "passed": true,
+      "errors": []
+    }
+  ],
+  "performance": {
+    "viewport": [
+      2752,
+      1152
+    ],
+    "dpr": 1.25,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "frames": 402,
+    "durationMs": 8018.199999904633,
+    "meanFPS": 50.135940735424576,
+    "p95FrameMs": 20.100000000000364,
+    "entities": 98,
+    "movingUnits": 96,
+    "progressed": 96,
+    "finite": true,
+    "calls": 203,
+    "triangles": 1891354,
+    "foregroundCalls": 0,
+    "foregroundTriangles": 0,
+    "visibleEntities": 97,
+    "geometries": 171
+  },
+  "portraits": {
+    "baked": 588,
+    "changed": 90
+  },
+  "limits": [
+    "游戏化转向和加减速，不是实车动力学。",
+    "42个已登记海军槽位只做船体运动，未添加无来源硬件。",
+    "96单位8秒性能样本不代表长时间全图战斗。",
+    "短闪焰和投影烟雾参考公开实拍规律，不等于实拍画质。"
+  ],
+  "recordedAt": "2026-10-20T15:14:27.279Z",
+  "dischargeClock": {
+    "fixedStepSeconds": 0.05,
+    "machinegunFlashSeconds": 0.026,
+    "eventTimestamp": "firedAt",
+    "runs": [
+      {
+        "kind": "tank",
+        "visualAge": 0.050000000000000044,
+        "physicsAge": 0.09999999999999998,
+        "flashAlive": true,
+        "captureWallMs": 537
+      },
+      {
+        "kind": "rocket",
+        "visualAge": 0.050000000000000044,
+        "physicsAge": 0.10000000000000009,
+        "flashAlive": true,
+        "captureWallMs": 560
+      },
+      {
+        "kind": "machinegun_team",
+        "visualAge": 0,
+        "physicsAge": 0.04999999999999999,
+        "flashAlive": true,
+        "captureWallMs": 492
+      },
+      {
+        "kind": "destroyer",
+        "visualAge": 0.04999999999999982,
+        "physicsAge": 0.10000000000000009,
+        "flashAlive": true,
+        "captureWallMs": 285
+      },
+      {
+        "kind": "submarine",
+        "visualAge": 0.04999999999999982,
+        "physicsAge": 0.10000000000000009,
+        "flashAlive": false,
+        "captureWallMs": 220
+      },
+      {
+        "kind": "orbital",
+        "visualAge": 0.04999999999999982,
+        "physicsAge": 0.10000000000000009,
+        "flashAlive": false,
+        "captureWallMs": 448
+      }
+    ]
+  }
+}

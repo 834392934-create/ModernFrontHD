@@ -55,11 +55,20 @@ test('independent production lanes finish infantry while tank is queued',()=>{
 test('saved AI space ban removes forbidden platforms and refunds queued ones',()=>{
  const g=new Game({enemies:1,playerOnlyTech:false,aiSpaceWeapons:true});g.spawn(1,'spaceport',2200,1600);g.teams[1].money=30000;g.train(1,'orbital');g.spawn(1,'orbital',2250,1500);const before=g.teams[1].money;g.setAISpaceWeapons(false);assert.equal(g.teams[1].queue.length,0);assert.ok(g.teams[1].money>before);assert.ok(!g.entities.some(e=>e.team===1&&e.kind==='orbital'));assert.equal(Game.load(JSON.stringify(g.save())).options.aiSpaceWeapons,false);
 });
-test('every mine on every map supports an ordered round trip to a refinery',()=>{
+test('every mine on every map delivers within 210 seconds with finite steering and without a long reverse haul',()=>{
  for(const map of ['river','desert','industry'])for(let i=0;i<5;i++){
   const g=new Game({enemies:1,map});g.teams.forEach(t=>t.aiClock=99999);g.entities=g.entities.filter(e=>e.structure||e.kind==='harvester'&&e.team===0);
-  const h=g.entities.find(e=>e.kind==='harvester'),ore=g.ore[i];g.command([h.id],ore.x,ore.y);advance(g,150);
+  const h=g.entities.find(e=>e.kind==='harvester'),ore=g.ore[i];g.command([h.id],ore.x,ore.y);
+  // Before the hauling fix, first deliveries took up to 255.15s, including
+  // 172.9s of reversing. Finite steering now completes all 15 in <=182.2s;
+  // the former 150s instantaneous-heading budget cannot cover the longest route.
+  let reverseSeconds=0;
+  for(let tick=0;tick<210*20&&g.teams[0].harvested<500;tick++){
+   g.step(.05);if(h.motion.reverse)reverseSeconds+=.05;
+   assert.ok(WarNavigationFootprints.terrain(g,h,h.x,h.y,h.angle),map+' mine '+i+' crossed blocked terrain');
+  }
   assert.ok(g.teams[0].harvested>=500,map+' mine '+i+' failed delivery; state='+h.miningState+' at '+Math.round(h.x)+','+Math.round(h.y));
+  assert.ok(reverseSeconds<20,map+' mine '+i+' reversed for '+reverseSeconds+'s instead of turning for the haul');
   assert.ok(ore.amount<24000,map+' mine '+i+' was not the chosen mining site');
  }
 });

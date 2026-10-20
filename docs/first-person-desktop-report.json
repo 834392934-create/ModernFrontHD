@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-19T17:46:59.657Z",
+  "recordedAt": "2026-10-20T15:11:33.764Z",
   "environment": "Packaged Electron",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
@@ -863,7 +863,7 @@
       },
       "after": {
         "x": 700,
-        "y": 800,
+        "y": 796.4,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -885,26 +885,26 @@
   "aim": {
     "target": 347,
     "point": [
-      828.4683744545998,
-      13.859999811172484,
-      798.6121832091302
+      818.0851886081095,
+      14.892971510536672,
+      799.9698418142689
     ],
-    "yaw": -0.010802369177204807,
-    "pitch": -0.03998618916331531
+    "yaw": -0.0002553934615701233,
+    "pitch": -0.034766201961240695
   },
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 23.5500000000002,
+      "hitAt": 22.75000000000019,
       "sourceId": 346,
       "targetId": 347,
       "damage": 74
     },
     "incoming": {
       "x": 745.7908,
-      "y": 800,
+      "y": 800.0000000000001,
       "sourceId": 346,
-      "time": 23.5500000000002
+      "time": 22.75000000000019
     },
     "hudConfirmed": true
   },
@@ -914,8 +914,8 @@
       800
     ],
     "impact": [
-      828.4683744545998,
-      798.6121832091302
+      818.0851886081095,
+      799.9698418142689
     ],
     "health": 576,
     "area": {
@@ -939,12 +939,12 @@
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
-        720.89823744546,
-        17.687249981117247,
-        803.943618320913
+        719.8599188608109,
+        17.790547151053666,
+        804.0793841814268
       ],
-      "size": 2.727692887095687,
-      "gap": 4.196450595531826,
+      "size": 2.676198128379161,
+      "gap": 4.117227889814093,
       "damage": 0
     },
     {
@@ -955,12 +955,12 @@
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
-        754.05855744546,
-        12.493799981117249,
-        799.861218320913
+        753.020238860811,
+        12.597097151053665,
+        799.996984181427
       ],
-      "size": 2.8358315313926594,
-      "gap": 4.3628177406040916,
+      "size": 2.9614681511893424,
+      "gap": 4.556104847983604,
       "damage": 0
     },
     {
@@ -971,17 +971,17 @@
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
-        712.84683744546,
-        12.500999981117248,
-        799.861218320913
+        711.808518860811,
+        12.604297151053666,
+        799.9969841814269
       ],
       "size": 3,
-      "gap": 5.980215943228312,
+      "gap": 5.981383363073956,
       "damage": 0
     }
   ],
   "nativeFocus": {
-    "recordedAt": "2026-10-19T17:47:52.775Z",
+    "recordedAt": "2026-10-20T15:12:28.649Z",
     "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
     "nativeBefore": {
       "fullScreen": true,
@@ -989,7 +989,7 @@
       "minimized": false
     },
     "nativeBlurred": {
-      "focused": true,
+      "focused": false,
       "minimized": true
     },
     "blurred": {
@@ -997,10 +997,10 @@
       "events": [
         {
           "trusted": true,
-          "at": 52176.09999990463
+          "at": 53892.700000047684
         }
       ],
-      "locked": true,
+      "locked": false,
       "keys": 0,
       "fire": false,
       "input": {

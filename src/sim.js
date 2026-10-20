@@ -1,6 +1,7 @@
 (function (root) {
   "use strict";
   if(typeof module!=='undefined'&&typeof require==='function')require('./navigation-footprints.js');
+  if(typeof module!=='undefined'&&typeof require==='function')require('./vehicle-motion.js');
   if(typeof module!=='undefined'&&typeof require==='function')require('./destructible-trees.js');
   const D = root.WarData,
     { F, U, B, W, H, T, COLS, ROWS, ABILITIES } = D,
@@ -406,7 +407,7 @@
         cargo: 0,
         anim: this.random() * 10,
       };
-      e.altitude=this.entityAltitude(e);e.pitch=0;e.roll=0;e.flightSpeed=0;
+      e.altitude=this.entityAltitude(e);e.pitch=0;e.roll=0;e.flightSpeed=0;e.motionFaction=this.teams[team].faction;if(!e.structure)root.WarVehicleMotion.stop(e);
       this.entities.push(e);
       return e;
     }
@@ -616,13 +617,14 @@
       this.teams[0].aiClock=0;
       this.resetJump(e);
       e.order=null;e.orderQueue=[];e.path=[];e.target=null;e.retreating=false;e.manualMove=true;
+      root.WarVehicleMotion.stop(e);
       this.directControl={id:e.id,input:{forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null,aimX:e.x,aimY:e.y,aimHeight:this.entityAltitude(e),pitch:e.pitch,turn:0,lift:0,throttle:0,flightEnabled:false}};
       return true;
     }
     endDirectControl() {
       if(!this.directControl)return false;
       const e=this.entities.find(o=>o.id===this.directControl.id);
-      if(e){this.resetJump(e);e.manualMove=false;e.order=null;e.orderQueue=[];e.path=[];e.target=null;}
+      if(e){this.resetJump(e);root.WarVehicleMotion.stop(e);e.manualMove=false;e.order=null;e.orderQueue=[];e.path=[];e.target=null;}
       if(e?.operatorState){e.operatorState.reloadRemaining=0;e.operatorState.fireHeld=false;}
       if(this._directTeamAI)Object.assign(this.teams[0],this._directTeamAI);
       for(const ally of this.entities)if(ally.protectionRole){delete ally.protectionRole;ally.order=null;ally.orderQueue=[];ally.path=[];ally.target=null;}
@@ -635,6 +637,7 @@
       const e=this.get(this.directControl?.id);
       if(!e||this.result)return false;
       if(!input||typeof input!=='object')input={};
+      if(input.cancelJump===true)root.WarVehicleMotion.stop(e);
       const finite=(v,fallback=0)=>Number.isFinite(v)?v:fallback;
       if(e.disabled>this.time){this.resetJump(e);e.target=null;this.directControl.firePending=null;this.directControl.input={forward:0,strafe:0,yaw:e.angle,fire:false,targetId:null};return false;}
       const yaw=finite(input.yaw,e.angle),d=U[e.kind],aimTarget=Number.isInteger(input.targetId)?this.get(input.targetId):null;
@@ -697,7 +700,9 @@
       const origin=aim?.origin||{x:e.x,y:e.y,height:this.entityAltitude(e)+(e.structure?20:!d.air&&!d.naval?12:0)},destination=aim?.fixedImpact?aim:target||aim,destinationHeight=aim?.fixedImpact?aim.height:target?this.entityAltitude(target):aim?.height??0,crossLayer=target?(!!U[e.kind]?.space!==!!U[target.kind]?.space):aim?.projected===true,travel=Math.max(.08,Math.hypot(origin.x-destination.x,origin.y-destination.y,crossLayer?0:(aim?.origin?origin.height:this.entityAltitude(e))-destinationHeight)/(weaponFx==='torpedo'?220:e.kind==='rocket'?400:700));
       this.effects.push({type:'shot',x:origin.x,y:origin.y,tx:destination.x,ty:destination.y,target:target?.id??null,from:e.team,
         damage:val,baseDamage:target||weapon?d.damage:0,targetDomain:target?this.targetDomain(target.kind):weapon?(destinationHeight>=2000?'space':destinationHeight>25?'air':destinationHeight< -15?'underwater':null):null,splash:target||weapon?(d.splash||0):0,
-        ttl:travel,max:travel,rocket:weaponFx!=='torpedo'&&(!!d.rocket||['rocket','heli','asat','sam'].includes(e.kind)),space:!!d.spaceWeapon,
+        // TTL also advances during the firing step. Keep visual discharge age
+        // independent so a short muzzle flash survives its first rendered frame.
+        ttl:travel,max:travel,firedAt:this.time,rocket:weaponFx!=='torpedo'&&(!!d.rocket||['rocket','heli','asat','sam'].includes(e.kind)),space:!!d.spaceWeapon,
         sourceKind:e.kind,sourceId:e.id,sourceHeight:origin.height,
         targetHeight:aim?.fixedImpact?aim.height:target?this.entityAltitude(target):(aim?.height??5),
         // Environment impacts share projectile arrival, cooldown and ammunition, but do not turn a unit miss into a hit.
@@ -711,6 +716,7 @@
     }
     stepDirectControl(e,dt) {
       const input=this.directControl.input,d=U[e.kind],yaw=input.yaw;
+      const motion=root.WarVehicleMotion,kind=motion.kind(e),before={x:e.x,y:e.y,angle:e.angle};
       const turnHull=desired=>{
         if(d.air){e.angle=desired;return;}
         const start=e.angle,delta=Math.atan2(Math.sin(desired-start),Math.cos(desired-start)),steps=Math.max(1,Math.ceil(Math.abs(delta)/.08));
@@ -736,7 +742,7 @@
       }
       e.target=null;
       let dx=0,dy=0;
-      if(d.air||d.underwater){
+      if(d.air){
         if(input.flightEnabled){
           const speed=this.effectiveSpeed(e),angleDelta=Math.atan2(Math.sin(yaw-e.angle),Math.cos(yaw-e.angle));
           const fixedWing=d.air&&!d.space&&(d.modelKind||e.kind)!=='heli';
@@ -751,34 +757,40 @@
             e.altitude=clamp(this.entityAltitude(e)+Math.sin(e.pitch)*e.flightSpeed*dt,25,1800);
           }else{
             const norm=Math.max(1,Math.hypot(input.forward,input.strafe));
-            dx=(Math.cos(e.angle)*input.forward-Math.sin(e.angle)*input.strafe)*speed*dt/norm;
-            dy=(Math.sin(e.angle)*input.forward+Math.cos(e.angle)*input.strafe)*speed*dt/norm;
+            const m=motion.state(e),tx=(Math.cos(e.angle)*input.forward-Math.sin(e.angle)*input.strafe)*speed/norm,ty=(Math.sin(e.angle)*input.forward+Math.cos(e.angle)*input.strafe)*speed/norm;
+            const deltaX=tx-(m.vx||0),deltaY=ty-(m.vy||0),delta=Math.hypot(deltaX,deltaY),response=speed*(norm>1||input.forward||input.strafe?motion.profiles[kind].accel:motion.profiles[kind].brake)*dt,k=delta>0?Math.min(1,response/delta):1;
+            dx=((m.vx||0)+deltaX*k)*dt;dy=((m.vy||0)+deltaY*k)*dt;
             e.flightSpeed=Math.hypot(dx,dy)/dt;
             const climb=input.lift*(d.underwater?22:d.space?450:60)+(d.underwater?Math.sin(e.pitch)*e.flightSpeed:0);
             e.altitude=clamp(this.entityAltitude(e)+climb*dt,d.underwater?-140:d.space?2000:25,d.underwater?-22:d.space?12000:1800);
           }
         }
-      }else{
+      }else if(kind==='personnel'){
         turnHull(yaw);
         const normal=Math.max(1,Math.hypot(input.forward,input.strafe)),speed=this.effectiveSpeed(e)*dt/normal;
         dx=(Math.cos(e.angle)*input.forward-Math.sin(e.angle)*input.strafe)*speed;
         dy=(Math.sin(e.angle)*input.forward+Math.cos(e.angle)*input.strafe)*speed;
+      }else if(!d.underwater||input.flightEnabled){
+        const velocity=motion.speed(this,e,input.forward,dt),steer=input.strafe||input.turn;
+        turnHull(e.angle+motion.steerRate(this,e,steer,velocity)*dt);
+        dx=Math.cos(e.angle)*velocity*dt;dy=Math.sin(e.angle)*velocity*dt;
+        if(d.underwater){e.pitch+=(input.pitch-e.pitch)*Math.min(1,dt*2);e.altitude=clamp(this.entityAltitude(e)+(input.lift*22+Math.sin(e.pitch)*velocity)*dt,-140,-22);}
       }
-      e.turret=yaw;
+      const turretDelta=motion.angleDelta(yaw,e.turret??e.angle);
+      e.turret=(e.turret??e.angle)+clamp(turretDelta,-2.4*dt,2.4*dt);
       if(d.air&&!d.space&&input.flightEnabled)e.altitude=Math.max(this.entityAltitude(e),this.flightFloor(e,e.x,e.y));
       const steps=Math.max(1,Math.ceil(Math.hypot(dx,dy)/8));
       for(let n=0;n<steps;n++){
         const x=e.x+dx/steps,y=e.y+dy/steps;
         if(this.directPositionFree(e,x,y)){e.x=x;e.y=y;}
-        else if(this.directPositionFree(e,x,e.y))e.x=x;
-        else if(this.directPositionFree(e,e.x,y))e.y=y;
+        else if(kind==='personnel'){if(this.directPositionFree(e,x,e.y))e.x=x;else if(this.directPositionFree(e,e.x,y))e.y=y;}
       }
+      motion.record(e,before,dt,input.forward||input.throttle,input.strafe||input.turn,this.tick);
       if(e.kind==='operator'&&this.stepOperator){this.stepOperator(e,dt,input);return;}
       const fireInput=this.directControl.firePending||input;this.directControl.firePending=null;
       const candidate=this.get(fireInput.targetId),status=this.directFireStatus(e,candidate,fireInput),range=status.range;
       const target=candidate&&status.inRange&&status.domainAllowed&&status.detected&&status.aimValid&&this.isEnemy(e.team,candidate.team)?candidate:null;
       e.target=target?.id??null;
-      if(target)e.turret=Math.atan2(target.y-e.y,target.x-e.x);
       if(!fireInput.fire||!status.armed||e.cool>0||e.disabled>this.time)return;
       const point=this.directShotPoint(e,fireInput,target,range);
       this.emitShot(e,target,{...point,targetTreeId:fireInput.targetTreeId,fixedImpact:true});
@@ -1472,7 +1484,8 @@
         }
         e.target = target?.id || null;
         if (target) {
-          e.turret = Math.atan2(target.y - e.y, target.x - e.x);
+          const turretAim=Math.atan2(target.y-e.y,target.x-e.x),turretDelta=root.WarVehicleMotion.angleDelta(turretAim,e.turret??e.angle);
+          e.turret=(e.turret??e.angle)+clamp(turretDelta,-2.4*dt,2.4*dt);
           if (
             this.engagementDistance(e, target) <= range &&
             this.engagementDistance(e, target) >= (d.minRange || 0) &&
@@ -1498,7 +1511,7 @@
             const p=this.destination(e,goal.x,goal.y);
             if(p){Object.assign(goal,p);e.path=[];e.repath=0;e.crowdRouteOrder=null;e.crowdDetourUntil=0;}
           }
-          if (dist(e, goal) < (d.air?14:6)) {
+          if (dist(e, goal) < 6) {
             e.order = e.orderQueue?.shift() || null;
             e.manualMove=false;
             e.path = [];
@@ -1573,6 +1586,7 @@
         }
       }
       root.WarCrowdNavigation?.process(this,findPath);
+      for(const e of this.entities)if(!e.structure&&e.motion?.tick!==this.tick)root.WarVehicleMotion.stop(e);
       for (const n of this.nodes) {
         const close = this.spatial
           .query(n.x, n.y, 100)
@@ -1742,7 +1756,7 @@
         time: this.time,
         tick: this.tick,
         nextId: this.nextId,
-        entities: this.entities.map(e=>e.protectionRole?{...e,protectionRole:undefined,order:null,orderQueue:[],path:[],target:null}:e.id===this.directControl?.id?{...e,manualMove:false,target:null,jumpHeight:0,jumpVelocity:0}:e),
+        entities: this.entities.map(e=>({...e,...(e.protectionRole?{protectionRole:undefined,order:null,orderQueue:[],path:[],target:null}:e.id===this.directControl?.id?{manualMove:false,target:null,jumpHeight:0,jumpVelocity:0}:{}),motion:undefined,motionTerrainTurn:undefined})),
         teams: this.teams.map(t=>t.id===0&&this._directTeamAI?{...t,...this._directTeamAI}:t),
         nodes: this.nodes,
         wealthGranted: !!this.wealthGranted,
@@ -1872,7 +1886,7 @@
       g.wealthGranted = !!s.wealthGranted;
       for(const t of g.teams){t.score=finite(t.score)?Math.max(0,t.score):0;t.harvested=finite(t.harvested)?Math.max(0,t.harvested):0;}
       for(const e of g.entities){if(e.rally&&(!finite(e.rally.x)||!finite(e.rally.y)))throw Error('集结点无效');if(e.orderQueue&&(!Array.isArray(e.orderQueue)||e.orderQueue.length>16||e.orderQueue.some(p=>!finite(p.x)||!finite(p.y))))throw Error('路径队列无效');e.cargo=finite(e.cargo)?clamp(e.cargo,0,500):0;}
-      for(const e of g.entities){e.r=(U[e.kind]||B[e.kind]).r;g.resetJump(e);if(s.altitudeSchema===undefined&&U[e.kind]?.space&&finite(e.altitude)&&e.altitude>=120&&e.altitude<=900)e.altitude=4000;e.altitude=g.entityAltitude(e);e.pitch=e.pitch??0;e.roll=e.roll??0;e.flightSpeed=e.flightSpeed??0;}
+      for(const e of g.entities){e.r=(U[e.kind]||B[e.kind]).r;g.resetJump(e);if(s.altitudeSchema===undefined&&U[e.kind]?.space&&finite(e.altitude)&&e.altitude>=120&&e.altitude<=900)e.altitude=4000;e.altitude=g.entityAltitude(e);e.pitch=e.pitch??0;e.roll=e.roll??0;e.flightSpeed=e.flightSpeed??0;e.motionFaction=g.teams[e.team].faction;e.motion=undefined;e.motionTerrainTurn=undefined;}
       g.buffs = new Set(s.buffs);
       g.explored = Uint8Array.from(s.explored);
       g.effects = Array.isArray(s.effects) ? s.effects : [];

@@ -1,0 +1,3337 @@
+{
+  "date": "2026-10-20",
+  "gpuUsed": false,
+  "models": 216,
+  "kinds": 36,
+  "maxRelativeAreaError": 0.000012882815894326924,
+  "licensedSlots": 2,
+  "rows": [
+    {
+      "kind": "heli",
+      "faction": "usa",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 220711,
+      "originalTriangles": 220711,
+      "meshes": 12,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": true
+    },
+    {
+      "kind": "heli",
+      "faction": "rus",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 4884,
+      "originalTriangles": 4884,
+      "meshes": 4,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "heli",
+      "faction": "chn",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 4996,
+      "originalTriangles": 4996,
+      "meshes": 4,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "heli",
+      "faction": "ind",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 4980,
+      "originalTriangles": 4980,
+      "meshes": 4,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "heli",
+      "faction": "kor",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 220711,
+      "originalTriangles": 220711,
+      "meshes": 12,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": true
+    },
+    {
+      "kind": "heli",
+      "faction": "imp",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 1,
+      "restTriangles": 804,
+      "originalTriangles": 804,
+      "meshes": 2,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "jet",
+      "faction": "usa",
+      "roles": [
+        "flap",
+        "aileron",
+        "thruster"
+      ],
+      "joints": 6,
+      "restTriangles": 624,
+      "originalTriangles": 512,
+      "meshes": 5,
+      "effects": 2,
+      "relativeAreaError": 1.636321591270402e-8,
+      "licensed": false
+    },
+    {
+      "kind": "jet",
+      "faction": "rus",
+      "roles": [
+        "flap",
+        "aileron",
+        "thruster"
+      ],
+      "joints": 6,
+      "restTriangles": 596,
+      "originalTriangles": 488,
+      "meshes": 5,
+      "effects": 2,
+      "relativeAreaError": 1.6048968946866937e-8,
+      "licensed": false
+    },
+    {
+      "kind": "jet",
+      "faction": "chn",
+      "roles": [
+        "flap",
+        "aileron",
+        "thruster"
+      ],
+      "joints": 7,
+      "restTriangles": 732,
+      "originalTriangles": 616,
+      "meshes": 5,
+      "effects": 3,
+      "relativeAreaError": 2.9504090188905784e-8,
+      "licensed": false
+    },
+    {
+      "kind": "jet",
+      "faction": "ind",
+      "roles": [
+        "flap",
+        "aileron",
+        "thruster"
+      ],
+      "joints": 6,
+      "restTriangles": 608,
+      "originalTriangles": 504,
+      "meshes": 5,
+      "effects": 2,
+      "relativeAreaError": 6.134272569084115e-9,
+      "licensed": false
+    },
+    {
+      "kind": "jet",
+      "faction": "kor",
+      "roles": [
+        "flap",
+        "aileron",
+        "thruster"
+      ],
+      "joints": 6,
+      "restTriangles": 606,
+      "originalTriangles": 488,
+      "meshes": 5,
+      "effects": 2,
+      "relativeAreaError": 1.3654980362282831e-8,
+      "licensed": false
+    },
+    {
+      "kind": "jet",
+      "faction": "imp",
+      "roles": [
+        "flap",
+        "aileron",
+        "thruster"
+      ],
+      "joints": 6,
+      "restTriangles": 598,
+      "originalTriangles": 488,
+      "meshes": 5,
+      "effects": 2,
+      "relativeAreaError": 8.053765374964507e-9,
+      "licensed": false
+    },
+    {
+      "kind": "fighter",
+      "faction": "usa",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 4612,
+      "originalTriangles": 3536,
+      "meshes": 9,
+      "effects": 1,
+      "relativeAreaError": 4.207100673142257e-9,
+      "licensed": false
+    },
+    {
+      "kind": "fighter",
+      "faction": "rus",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 5206,
+      "originalTriangles": 3936,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 5.402338683327818e-9,
+      "licensed": false
+    },
+    {
+      "kind": "fighter",
+      "faction": "chn",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 4594,
+      "originalTriangles": 3388,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 9.23575162692687e-10,
+      "licensed": false
+    },
+    {
+      "kind": "fighter",
+      "faction": "ind",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 4464,
+      "originalTriangles": 3568,
+      "meshes": 8,
+      "effects": 2,
+      "relativeAreaError": 6.186223585695885e-9,
+      "licensed": false
+    },
+    {
+      "kind": "fighter",
+      "faction": "kor",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 4596,
+      "originalTriangles": 3548,
+      "meshes": 9,
+      "effects": 1,
+      "relativeAreaError": 4.213681678676904e-9,
+      "licensed": false
+    },
+    {
+      "kind": "fighter",
+      "faction": "imp",
+      "roles": [
+        "flap",
+        "aileron",
+        "thruster"
+      ],
+      "joints": 6,
+      "restTriangles": 598,
+      "originalTriangles": 488,
+      "meshes": 5,
+      "effects": 2,
+      "relativeAreaError": 8.053765374964507e-9,
+      "licensed": false
+    },
+    {
+      "kind": "satellite",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 2200,
+      "originalTriangles": 2200,
+      "meshes": 2,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "satellite",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 2236,
+      "originalTriangles": 2236,
+      "meshes": 2,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "satellite",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 2100,
+      "originalTriangles": 2100,
+      "meshes": 2,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "satellite",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 2140,
+      "originalTriangles": 2140,
+      "meshes": 2,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "satellite",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 2220,
+      "originalTriangles": 2220,
+      "meshes": 2,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "satellite",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 2128,
+      "originalTriangles": 2128,
+      "meshes": 2,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 5380,
+      "originalTriangles": 5380,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 5044,
+      "originalTriangles": 5044,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 5740,
+      "originalTriangles": 5740,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 5500,
+      "originalTriangles": 5500,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 4908,
+      "originalTriangles": 4908,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 11516,
+      "originalTriangles": 11516,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_interceptor",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 5160,
+      "originalTriangles": 5160,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_interceptor",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 5460,
+      "originalTriangles": 5460,
+      "meshes": 3,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_interceptor",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 4772,
+      "originalTriangles": 4772,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_interceptor",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 3,
+      "restTriangles": 5056,
+      "originalTriangles": 5056,
+      "meshes": 3,
+      "effects": 3,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_interceptor",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 4780,
+      "originalTriangles": 4780,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_interceptor",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 4848,
+      "originalTriangles": 4848,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "recon_drone",
+      "faction": "usa",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 7,
+      "restTriangles": 9385,
+      "originalTriangles": 7852,
+      "meshes": 7,
+      "effects": 1,
+      "relativeAreaError": 0.000012882815894326924,
+      "licensed": false
+    },
+    {
+      "kind": "recon_drone",
+      "faction": "rus",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 7,
+      "restTriangles": 9397,
+      "originalTriangles": 7864,
+      "meshes": 7,
+      "effects": 1,
+      "relativeAreaError": 0.000012866824998446401,
+      "licensed": false
+    },
+    {
+      "kind": "recon_drone",
+      "faction": "chn",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 7,
+      "restTriangles": 9385,
+      "originalTriangles": 7852,
+      "meshes": 7,
+      "effects": 1,
+      "relativeAreaError": 0.000012882815894326924,
+      "licensed": false
+    },
+    {
+      "kind": "recon_drone",
+      "faction": "ind",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 7,
+      "restTriangles": 9397,
+      "originalTriangles": 7864,
+      "meshes": 7,
+      "effects": 1,
+      "relativeAreaError": 0.000012866824998446401,
+      "licensed": false
+    },
+    {
+      "kind": "recon_drone",
+      "faction": "kor",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 7,
+      "restTriangles": 9385,
+      "originalTriangles": 7852,
+      "meshes": 7,
+      "effects": 1,
+      "relativeAreaError": 0.000012882815894326924,
+      "licensed": false
+    },
+    {
+      "kind": "recon_drone",
+      "faction": "imp",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 7,
+      "restTriangles": 9397,
+      "originalTriangles": 7864,
+      "meshes": 7,
+      "effects": 1,
+      "relativeAreaError": 0.000012866824998446401,
+      "licensed": false
+    },
+    {
+      "kind": "attack_drone",
+      "faction": "usa",
+      "roles": [
+        "propeller",
+        "flap",
+        "aileron",
+        "rudder"
+      ],
+      "joints": 7,
+      "restTriangles": 8211,
+      "originalTriangles": 6792,
+      "meshes": 8,
+      "effects": 0,
+      "relativeAreaError": 7.402536028915602e-9,
+      "licensed": false
+    },
+    {
+      "kind": "attack_drone",
+      "faction": "rus",
+      "roles": [
+        "propeller",
+        "flap",
+        "aileron",
+        "rudder"
+      ],
+      "joints": 7,
+      "restTriangles": 8223,
+      "originalTriangles": 6804,
+      "meshes": 8,
+      "effects": 0,
+      "relativeAreaError": 7.393236964189773e-9,
+      "licensed": false
+    },
+    {
+      "kind": "attack_drone",
+      "faction": "chn",
+      "roles": [
+        "propeller",
+        "flap",
+        "aileron",
+        "rudder"
+      ],
+      "joints": 7,
+      "restTriangles": 8211,
+      "originalTriangles": 6792,
+      "meshes": 8,
+      "effects": 0,
+      "relativeAreaError": 7.402536028915602e-9,
+      "licensed": false
+    },
+    {
+      "kind": "attack_drone",
+      "faction": "ind",
+      "roles": [
+        "propeller",
+        "flap",
+        "aileron",
+        "rudder"
+      ],
+      "joints": 7,
+      "restTriangles": 8223,
+      "originalTriangles": 6804,
+      "meshes": 8,
+      "effects": 0,
+      "relativeAreaError": 7.393236964189773e-9,
+      "licensed": false
+    },
+    {
+      "kind": "attack_drone",
+      "faction": "kor",
+      "roles": [
+        "propeller",
+        "flap",
+        "aileron",
+        "rudder"
+      ],
+      "joints": 7,
+      "restTriangles": 8211,
+      "originalTriangles": 6792,
+      "meshes": 8,
+      "effects": 0,
+      "relativeAreaError": 7.402536028915602e-9,
+      "licensed": false
+    },
+    {
+      "kind": "attack_drone",
+      "faction": "imp",
+      "roles": [
+        "propeller",
+        "flap",
+        "aileron",
+        "rudder"
+      ],
+      "joints": 7,
+      "restTriangles": 8223,
+      "originalTriangles": 6804,
+      "meshes": 8,
+      "effects": 0,
+      "relativeAreaError": 7.393236964189773e-9,
+      "licensed": false
+    },
+    {
+      "kind": "interceptor",
+      "faction": "usa",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21563,
+      "originalTriangles": 19884,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 2.5873143066949604e-9,
+      "licensed": false
+    },
+    {
+      "kind": "interceptor",
+      "faction": "rus",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21575,
+      "originalTriangles": 19896,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 2.585813410329274e-9,
+      "licensed": false
+    },
+    {
+      "kind": "interceptor",
+      "faction": "chn",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21563,
+      "originalTriangles": 19884,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 2.5873143066949604e-9,
+      "licensed": false
+    },
+    {
+      "kind": "interceptor",
+      "faction": "ind",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21575,
+      "originalTriangles": 19896,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 2.585813410329274e-9,
+      "licensed": false
+    },
+    {
+      "kind": "interceptor",
+      "faction": "kor",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21563,
+      "originalTriangles": 19884,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 2.5873143066949604e-9,
+      "licensed": false
+    },
+    {
+      "kind": "interceptor",
+      "faction": "imp",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21575,
+      "originalTriangles": 19896,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 2.585813410329274e-9,
+      "licensed": false
+    },
+    {
+      "kind": "close_support_aircraft",
+      "faction": "usa",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21176,
+      "originalTriangles": 19508,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 2.858915346688895e-9,
+      "licensed": false
+    },
+    {
+      "kind": "close_support_aircraft",
+      "faction": "rus",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21188,
+      "originalTriangles": 19520,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 2.8571723530111706e-9,
+      "licensed": false
+    },
+    {
+      "kind": "close_support_aircraft",
+      "faction": "chn",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21176,
+      "originalTriangles": 19508,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 2.858915346688895e-9,
+      "licensed": false
+    },
+    {
+      "kind": "close_support_aircraft",
+      "faction": "ind",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21188,
+      "originalTriangles": 19520,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 2.8571723530111706e-9,
+      "licensed": false
+    },
+    {
+      "kind": "close_support_aircraft",
+      "faction": "kor",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21176,
+      "originalTriangles": 19508,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 2.858915346688895e-9,
+      "licensed": false
+    },
+    {
+      "kind": "close_support_aircraft",
+      "faction": "imp",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21188,
+      "originalTriangles": 19520,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 2.8571723530111706e-9,
+      "licensed": false
+    },
+    {
+      "kind": "heavy_bomber",
+      "faction": "usa",
+      "roles": [
+        "flap",
+        "aileron",
+        "thruster"
+      ],
+      "joints": 6,
+      "restTriangles": 6188,
+      "originalTriangles": 5052,
+      "meshes": 5,
+      "effects": 2,
+      "relativeAreaError": 8.978514429698761e-9,
+      "licensed": false
+    },
+    {
+      "kind": "heavy_bomber",
+      "faction": "rus",
+      "roles": [
+        "flap",
+        "aileron",
+        "thruster"
+      ],
+      "joints": 6,
+      "restTriangles": 6200,
+      "originalTriangles": 5064,
+      "meshes": 5,
+      "effects": 2,
+      "relativeAreaError": 8.975027699566698e-9,
+      "licensed": false
+    },
+    {
+      "kind": "heavy_bomber",
+      "faction": "chn",
+      "roles": [
+        "flap",
+        "aileron",
+        "thruster"
+      ],
+      "joints": 6,
+      "restTriangles": 6188,
+      "originalTriangles": 5052,
+      "meshes": 5,
+      "effects": 2,
+      "relativeAreaError": 8.978514429698761e-9,
+      "licensed": false
+    },
+    {
+      "kind": "heavy_bomber",
+      "faction": "ind",
+      "roles": [
+        "flap",
+        "aileron",
+        "thruster"
+      ],
+      "joints": 6,
+      "restTriangles": 6200,
+      "originalTriangles": 5064,
+      "meshes": 5,
+      "effects": 2,
+      "relativeAreaError": 8.975027699566698e-9,
+      "licensed": false
+    },
+    {
+      "kind": "heavy_bomber",
+      "faction": "kor",
+      "roles": [
+        "flap",
+        "aileron",
+        "thruster"
+      ],
+      "joints": 6,
+      "restTriangles": 6188,
+      "originalTriangles": 5052,
+      "meshes": 5,
+      "effects": 2,
+      "relativeAreaError": 8.978514429698761e-9,
+      "licensed": false
+    },
+    {
+      "kind": "heavy_bomber",
+      "faction": "imp",
+      "roles": [
+        "flap",
+        "aileron",
+        "thruster"
+      ],
+      "joints": 6,
+      "restTriangles": 6200,
+      "originalTriangles": 5064,
+      "meshes": 5,
+      "effects": 2,
+      "relativeAreaError": 8.975027699566698e-9,
+      "licensed": false
+    },
+    {
+      "kind": "early_warning_aircraft",
+      "faction": "usa",
+      "roles": [
+        "radar",
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 12,
+      "restTriangles": 26588,
+      "originalTriangles": 25032,
+      "meshes": 9,
+      "effects": 4,
+      "relativeAreaError": 1.9473619057203112e-9,
+      "licensed": false
+    },
+    {
+      "kind": "early_warning_aircraft",
+      "faction": "rus",
+      "roles": [
+        "radar",
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 12,
+      "restTriangles": 26588,
+      "originalTriangles": 25032,
+      "meshes": 9,
+      "effects": 4,
+      "relativeAreaError": 1.9473619057203112e-9,
+      "licensed": false
+    },
+    {
+      "kind": "early_warning_aircraft",
+      "faction": "chn",
+      "roles": [
+        "radar",
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 12,
+      "restTriangles": 26588,
+      "originalTriangles": 25032,
+      "meshes": 9,
+      "effects": 4,
+      "relativeAreaError": 1.9473619057203112e-9,
+      "licensed": false
+    },
+    {
+      "kind": "early_warning_aircraft",
+      "faction": "ind",
+      "roles": [
+        "radar",
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 12,
+      "restTriangles": 26588,
+      "originalTriangles": 25032,
+      "meshes": 9,
+      "effects": 4,
+      "relativeAreaError": 1.9473619057203112e-9,
+      "licensed": false
+    },
+    {
+      "kind": "early_warning_aircraft",
+      "faction": "kor",
+      "roles": [
+        "radar",
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 12,
+      "restTriangles": 26588,
+      "originalTriangles": 25032,
+      "meshes": 9,
+      "effects": 4,
+      "relativeAreaError": 1.9473619057203112e-9,
+      "licensed": false
+    },
+    {
+      "kind": "early_warning_aircraft",
+      "faction": "imp",
+      "roles": [
+        "radar",
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 12,
+      "restTriangles": 26588,
+      "originalTriangles": 25032,
+      "meshes": 9,
+      "effects": 4,
+      "relativeAreaError": 1.9473619057203112e-9,
+      "licensed": false
+    },
+    {
+      "kind": "escort_helicopter",
+      "faction": "usa",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 16080,
+      "originalTriangles": 16080,
+      "meshes": 3,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "escort_helicopter",
+      "faction": "rus",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 16092,
+      "originalTriangles": 16092,
+      "meshes": 3,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "escort_helicopter",
+      "faction": "chn",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 16080,
+      "originalTriangles": 16080,
+      "meshes": 3,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "escort_helicopter",
+      "faction": "ind",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 16092,
+      "originalTriangles": 16092,
+      "meshes": 3,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "escort_helicopter",
+      "faction": "kor",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 16080,
+      "originalTriangles": 16080,
+      "meshes": 3,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "escort_helicopter",
+      "faction": "imp",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 16092,
+      "originalTriangles": 16092,
+      "meshes": 3,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_sniper",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 11288,
+      "originalTriangles": 11288,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_sniper",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 10296,
+      "originalTriangles": 10296,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_sniper",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 10456,
+      "originalTriangles": 10456,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_sniper",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 11288,
+      "originalTriangles": 11288,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_sniper",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 10296,
+      "originalTriangles": 10296,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_sniper",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 10256,
+      "originalTriangles": 10256,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_point_defense",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 8188,
+      "originalTriangles": 8188,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_point_defense",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7196,
+      "originalTriangles": 7196,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_point_defense",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7356,
+      "originalTriangles": 7356,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_point_defense",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 8188,
+      "originalTriangles": 8188,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_point_defense",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7196,
+      "originalTriangles": 7196,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_point_defense",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7156,
+      "originalTriangles": 7156,
+      "meshes": 3,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_bombardment",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 10384,
+      "originalTriangles": 10384,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_bombardment",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 9392,
+      "originalTriangles": 9392,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_bombardment",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 9552,
+      "originalTriangles": 9552,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_bombardment",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 10384,
+      "originalTriangles": 10384,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_bombardment",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 9392,
+      "originalTriangles": 9392,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_bombardment",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 9352,
+      "originalTriangles": 9352,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_siege",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 8560,
+      "originalTriangles": 8560,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_siege",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7568,
+      "originalTriangles": 7568,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_siege",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7728,
+      "originalTriangles": 7728,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_siege",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 8560,
+      "originalTriangles": 8560,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_siege",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7568,
+      "originalTriangles": 7568,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_siege",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7528,
+      "originalTriangles": 7528,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_repair",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 8828,
+      "originalTriangles": 8828,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_repair",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7836,
+      "originalTriangles": 7836,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_repair",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7996,
+      "originalTriangles": 7996,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_repair",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 8828,
+      "originalTriangles": 8828,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_repair",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7836,
+      "originalTriangles": 7836,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_repair",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7796,
+      "originalTriangles": 7796,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_mapper",
+      "faction": "usa",
+      "roles": [
+        "solarArray"
+      ],
+      "joints": 2,
+      "restTriangles": 4064,
+      "originalTriangles": 3776,
+      "meshes": 4,
+      "effects": 0,
+      "relativeAreaError": 1.4100205704511768e-10,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_mapper",
+      "faction": "rus",
+      "roles": [
+        "solarArray"
+      ],
+      "joints": 2,
+      "restTriangles": 3072,
+      "originalTriangles": 2784,
+      "meshes": 4,
+      "effects": 0,
+      "relativeAreaError": 1.4128126534647802e-10,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_mapper",
+      "faction": "chn",
+      "roles": [
+        "solarArray"
+      ],
+      "joints": 2,
+      "restTriangles": 3232,
+      "originalTriangles": 2944,
+      "meshes": 4,
+      "effects": 0,
+      "relativeAreaError": 1.4142068511834425e-10,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_mapper",
+      "faction": "ind",
+      "roles": [
+        "solarArray"
+      ],
+      "joints": 2,
+      "restTriangles": 4064,
+      "originalTriangles": 3776,
+      "meshes": 4,
+      "effects": 0,
+      "relativeAreaError": 1.4100205704511768e-10,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_mapper",
+      "faction": "kor",
+      "roles": [
+        "solarArray"
+      ],
+      "joints": 2,
+      "restTriangles": 3072,
+      "originalTriangles": 2784,
+      "meshes": 4,
+      "effects": 0,
+      "relativeAreaError": 1.4128126534647802e-10,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_mapper",
+      "faction": "imp",
+      "roles": [
+        "solarArray"
+      ],
+      "joints": 2,
+      "restTriangles": 3032,
+      "originalTriangles": 2744,
+      "meshes": 4,
+      "effects": 0,
+      "relativeAreaError": 1.405403427299669e-10,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_raider",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7180,
+      "originalTriangles": 7180,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_raider",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 6188,
+      "originalTriangles": 6188,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_raider",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 6348,
+      "originalTriangles": 6348,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_raider",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7180,
+      "originalTriangles": 7180,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_raider",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 6188,
+      "originalTriangles": 6188,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_raider",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 6148,
+      "originalTriangles": 6148,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "rescue_helicopter",
+      "faction": "usa",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 15276,
+      "originalTriangles": 15276,
+      "meshes": 3,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "rescue_helicopter",
+      "faction": "rus",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 15288,
+      "originalTriangles": 15288,
+      "meshes": 3,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "rescue_helicopter",
+      "faction": "chn",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 15300,
+      "originalTriangles": 15300,
+      "meshes": 3,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "rescue_helicopter",
+      "faction": "ind",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 15276,
+      "originalTriangles": 15276,
+      "meshes": 3,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "rescue_helicopter",
+      "faction": "kor",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 15288,
+      "originalTriangles": 15288,
+      "meshes": 3,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "rescue_helicopter",
+      "faction": "imp",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 2,
+      "restTriangles": 15036,
+      "originalTriangles": 15036,
+      "meshes": 3,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "naval_strike_aircraft",
+      "faction": "usa",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21042,
+      "originalTriangles": 19420,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 6.77499983543455e-9,
+      "licensed": false
+    },
+    {
+      "kind": "naval_strike_aircraft",
+      "faction": "rus",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21054,
+      "originalTriangles": 19432,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 6.77195596774112e-9,
+      "licensed": false
+    },
+    {
+      "kind": "naval_strike_aircraft",
+      "faction": "chn",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21066,
+      "originalTriangles": 19444,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 6.768914830351425e-9,
+      "licensed": false
+    },
+    {
+      "kind": "naval_strike_aircraft",
+      "faction": "ind",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21042,
+      "originalTriangles": 19420,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 6.77499983543455e-9,
+      "licensed": false
+    },
+    {
+      "kind": "naval_strike_aircraft",
+      "faction": "kor",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21054,
+      "originalTriangles": 19432,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 6.77195596774112e-9,
+      "licensed": false
+    },
+    {
+      "kind": "naval_strike_aircraft",
+      "faction": "imp",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 20802,
+      "originalTriangles": 19180,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 6.76500793240011e-9,
+      "licensed": false
+    },
+    {
+      "kind": "electronic_warfare_aircraft",
+      "faction": "usa",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 20762,
+      "originalTriangles": 18900,
+      "meshes": 8,
+      "effects": 2,
+      "relativeAreaError": 9.329038794741428e-11,
+      "licensed": false
+    },
+    {
+      "kind": "electronic_warfare_aircraft",
+      "faction": "rus",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 20774,
+      "originalTriangles": 18912,
+      "meshes": 8,
+      "effects": 2,
+      "relativeAreaError": 9.324930271025399e-11,
+      "licensed": false
+    },
+    {
+      "kind": "electronic_warfare_aircraft",
+      "faction": "chn",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 20786,
+      "originalTriangles": 18924,
+      "meshes": 8,
+      "effects": 2,
+      "relativeAreaError": 9.320825359709335e-11,
+      "licensed": false
+    },
+    {
+      "kind": "electronic_warfare_aircraft",
+      "faction": "ind",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 20762,
+      "originalTriangles": 18900,
+      "meshes": 8,
+      "effects": 2,
+      "relativeAreaError": 9.329038794741428e-11,
+      "licensed": false
+    },
+    {
+      "kind": "electronic_warfare_aircraft",
+      "faction": "kor",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 20774,
+      "originalTriangles": 18912,
+      "meshes": 8,
+      "effects": 2,
+      "relativeAreaError": 9.324930271025399e-11,
+      "licensed": false
+    },
+    {
+      "kind": "electronic_warfare_aircraft",
+      "faction": "imp",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 20522,
+      "originalTriangles": 18660,
+      "meshes": 8,
+      "effects": 2,
+      "relativeAreaError": 9.315551742406697e-11,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_escort",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7572,
+      "originalTriangles": 7572,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_escort",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7584,
+      "originalTriangles": 7584,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_escort",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7596,
+      "originalTriangles": 7596,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_escort",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7572,
+      "originalTriangles": 7572,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_escort",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7584,
+      "originalTriangles": 7584,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_escort",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 7332,
+      "originalTriangles": 7332,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_relay",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 1,
+      "restTriangles": 11024,
+      "originalTriangles": 11024,
+      "meshes": 1,
+      "effects": 1,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_relay",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 1,
+      "restTriangles": 11036,
+      "originalTriangles": 11036,
+      "meshes": 1,
+      "effects": 1,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_relay",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 1,
+      "restTriangles": 11048,
+      "originalTriangles": 11048,
+      "meshes": 1,
+      "effects": 1,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_relay",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 1,
+      "restTriangles": 11024,
+      "originalTriangles": 11024,
+      "meshes": 1,
+      "effects": 1,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_relay",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 1,
+      "restTriangles": 11036,
+      "originalTriangles": 11036,
+      "meshes": 1,
+      "effects": 1,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_relay",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 1,
+      "restTriangles": 10784,
+      "originalTriangles": 10784,
+      "meshes": 1,
+      "effects": 1,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_jammer",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 1,
+      "restTriangles": 6916,
+      "originalTriangles": 6916,
+      "meshes": 1,
+      "effects": 1,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_jammer",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 1,
+      "restTriangles": 6928,
+      "originalTriangles": 6928,
+      "meshes": 1,
+      "effects": 1,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_jammer",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 1,
+      "restTriangles": 6940,
+      "originalTriangles": 6940,
+      "meshes": 1,
+      "effects": 1,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_jammer",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 1,
+      "restTriangles": 6916,
+      "originalTriangles": 6916,
+      "meshes": 1,
+      "effects": 1,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_jammer",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 1,
+      "restTriangles": 6928,
+      "originalTriangles": 6928,
+      "meshes": 1,
+      "effects": 1,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_jammer",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 1,
+      "restTriangles": 6676,
+      "originalTriangles": 6676,
+      "meshes": 1,
+      "effects": 1,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "air_repair_drone",
+      "faction": "usa",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 4,
+      "restTriangles": 5212,
+      "originalTriangles": 5212,
+      "meshes": 5,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "air_repair_drone",
+      "faction": "rus",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 4,
+      "restTriangles": 5224,
+      "originalTriangles": 5224,
+      "meshes": 5,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "air_repair_drone",
+      "faction": "chn",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 4,
+      "restTriangles": 5236,
+      "originalTriangles": 5236,
+      "meshes": 5,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "air_repair_drone",
+      "faction": "ind",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 4,
+      "restTriangles": 5212,
+      "originalTriangles": 5212,
+      "meshes": 5,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "air_repair_drone",
+      "faction": "kor",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 4,
+      "restTriangles": 5224,
+      "originalTriangles": 5224,
+      "meshes": 5,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "air_repair_drone",
+      "faction": "imp",
+      "roles": [
+        "rotor"
+      ],
+      "joints": 4,
+      "restTriangles": 5236,
+      "originalTriangles": 5236,
+      "meshes": 5,
+      "effects": 0,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "interceptor_drone",
+      "faction": "usa",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 7,
+      "restTriangles": 9646,
+      "originalTriangles": 8236,
+      "meshes": 7,
+      "effects": 1,
+      "relativeAreaError": 1.7385586747458585e-9,
+      "licensed": false
+    },
+    {
+      "kind": "interceptor_drone",
+      "faction": "rus",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 7,
+      "restTriangles": 9658,
+      "originalTriangles": 8248,
+      "meshes": 7,
+      "effects": 1,
+      "relativeAreaError": 1.7359915976438763e-9,
+      "licensed": false
+    },
+    {
+      "kind": "interceptor_drone",
+      "faction": "chn",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 7,
+      "restTriangles": 9670,
+      "originalTriangles": 8260,
+      "meshes": 7,
+      "effects": 1,
+      "relativeAreaError": 1.733432091591558e-9,
+      "licensed": false
+    },
+    {
+      "kind": "interceptor_drone",
+      "faction": "ind",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 7,
+      "restTriangles": 9646,
+      "originalTriangles": 8236,
+      "meshes": 7,
+      "effects": 1,
+      "relativeAreaError": 1.7385586747458585e-9,
+      "licensed": false
+    },
+    {
+      "kind": "interceptor_drone",
+      "faction": "kor",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 7,
+      "restTriangles": 9658,
+      "originalTriangles": 8248,
+      "meshes": 7,
+      "effects": 1,
+      "relativeAreaError": 1.7359915976438763e-9,
+      "licensed": false
+    },
+    {
+      "kind": "interceptor_drone",
+      "faction": "imp",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 7,
+      "restTriangles": 9670,
+      "originalTriangles": 8260,
+      "meshes": 7,
+      "effects": 1,
+      "relativeAreaError": 1.733432091591558e-9,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_shield",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 8376,
+      "originalTriangles": 8376,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_shield",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 8388,
+      "originalTriangles": 8388,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_shield",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 8400,
+      "originalTriangles": 8400,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_shield",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 8376,
+      "originalTriangles": 8376,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_shield",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 8388,
+      "originalTriangles": 8388,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_shield",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 8400,
+      "originalTriangles": 8400,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_missile_barge",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 6564,
+      "originalTriangles": 6564,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_missile_barge",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 6576,
+      "originalTriangles": 6576,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_missile_barge",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 6588,
+      "originalTriangles": 6588,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_missile_barge",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 6564,
+      "originalTriangles": 6564,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_missile_barge",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 6576,
+      "originalTriangles": 6576,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_missile_barge",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 2,
+      "restTriangles": 6588,
+      "originalTriangles": 6588,
+      "meshes": 1,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "omni_striker",
+      "faction": "usa",
+      "roles": [
+        "rotor",
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21668,
+      "originalTriangles": 20168,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 1.0796467731331457e-9,
+      "licensed": false
+    },
+    {
+      "kind": "omni_striker",
+      "faction": "rus",
+      "roles": [
+        "rotor",
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21680,
+      "originalTriangles": 20180,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 1.079351241153489e-9,
+      "licensed": false
+    },
+    {
+      "kind": "omni_striker",
+      "faction": "chn",
+      "roles": [
+        "rotor",
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21692,
+      "originalTriangles": 20192,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 1.079055871266614e-9,
+      "licensed": false
+    },
+    {
+      "kind": "omni_striker",
+      "faction": "ind",
+      "roles": [
+        "rotor",
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21668,
+      "originalTriangles": 20168,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 1.0796467731331457e-9,
+      "licensed": false
+    },
+    {
+      "kind": "omni_striker",
+      "faction": "kor",
+      "roles": [
+        "rotor",
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21680,
+      "originalTriangles": 20180,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 1.079351241153489e-9,
+      "licensed": false
+    },
+    {
+      "kind": "omni_striker",
+      "faction": "imp",
+      "roles": [
+        "rotor",
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 21692,
+      "originalTriangles": 20192,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 1.079055871266614e-9,
+      "licensed": false
+    },
+    {
+      "kind": "omni_dreadnought",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 8756,
+      "originalTriangles": 8756,
+      "meshes": 1,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "omni_dreadnought",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 8768,
+      "originalTriangles": 8768,
+      "meshes": 1,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "omni_dreadnought",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 8780,
+      "originalTriangles": 8780,
+      "meshes": 1,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "omni_dreadnought",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 8756,
+      "originalTriangles": 8756,
+      "meshes": 1,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "omni_dreadnought",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 8768,
+      "originalTriangles": 8768,
+      "meshes": 1,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "omni_dreadnought",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 8780,
+      "originalTriangles": 8780,
+      "meshes": 1,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "high_altitude_interceptor",
+      "faction": "usa",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 17948,
+      "originalTriangles": 16228,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 3.5328666118003007e-9,
+      "licensed": false
+    },
+    {
+      "kind": "high_altitude_interceptor",
+      "faction": "rus",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 17960,
+      "originalTriangles": 16240,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 3.5319769547807717e-9,
+      "licensed": false
+    },
+    {
+      "kind": "high_altitude_interceptor",
+      "faction": "chn",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 17972,
+      "originalTriangles": 16252,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 3.531087745849463e-9,
+      "licensed": false
+    },
+    {
+      "kind": "high_altitude_interceptor",
+      "faction": "ind",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 17948,
+      "originalTriangles": 16228,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 3.5328666118003007e-9,
+      "licensed": false
+    },
+    {
+      "kind": "high_altitude_interceptor",
+      "faction": "kor",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 17960,
+      "originalTriangles": 16240,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 3.5319769547807717e-9,
+      "licensed": false
+    },
+    {
+      "kind": "high_altitude_interceptor",
+      "faction": "imp",
+      "roles": [
+        "flap",
+        "aileron",
+        "elevator",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 10,
+      "restTriangles": 17972,
+      "originalTriangles": 16252,
+      "meshes": 9,
+      "effects": 2,
+      "relativeAreaError": 3.531087745849463e-9,
+      "licensed": false
+    },
+    {
+      "kind": "strategic_strike_aircraft",
+      "faction": "usa",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 17700,
+      "originalTriangles": 16208,
+      "meshes": 6,
+      "effects": 4,
+      "relativeAreaError": 5.931762010215154e-10,
+      "licensed": false
+    },
+    {
+      "kind": "strategic_strike_aircraft",
+      "faction": "rus",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 17712,
+      "originalTriangles": 16220,
+      "meshes": 6,
+      "effects": 4,
+      "relativeAreaError": 5.930889718293176e-10,
+      "licensed": false
+    },
+    {
+      "kind": "strategic_strike_aircraft",
+      "faction": "chn",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 17724,
+      "originalTriangles": 16232,
+      "meshes": 6,
+      "effects": 4,
+      "relativeAreaError": 5.930017683008651e-10,
+      "licensed": false
+    },
+    {
+      "kind": "strategic_strike_aircraft",
+      "faction": "ind",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 17700,
+      "originalTriangles": 16208,
+      "meshes": 6,
+      "effects": 4,
+      "relativeAreaError": 5.931762010215154e-10,
+      "licensed": false
+    },
+    {
+      "kind": "strategic_strike_aircraft",
+      "faction": "kor",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 17712,
+      "originalTriangles": 16220,
+      "meshes": 6,
+      "effects": 4,
+      "relativeAreaError": 5.930889718293176e-10,
+      "licensed": false
+    },
+    {
+      "kind": "strategic_strike_aircraft",
+      "faction": "imp",
+      "roles": [
+        "flap",
+        "aileron",
+        "rudder",
+        "thruster"
+      ],
+      "joints": 9,
+      "restTriangles": 17724,
+      "originalTriangles": 16232,
+      "meshes": 6,
+      "effects": 4,
+      "relativeAreaError": 5.930017683008651e-10,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_carrier",
+      "faction": "usa",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 13920,
+      "originalTriangles": 13920,
+      "meshes": 1,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_carrier",
+      "faction": "rus",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 13932,
+      "originalTriangles": 13932,
+      "meshes": 1,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_carrier",
+      "faction": "chn",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 13944,
+      "originalTriangles": 13944,
+      "meshes": 1,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_carrier",
+      "faction": "ind",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 13920,
+      "originalTriangles": 13920,
+      "meshes": 1,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_carrier",
+      "faction": "kor",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 13932,
+      "originalTriangles": 13932,
+      "meshes": 1,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_carrier",
+      "faction": "imp",
+      "roles": [
+        "thruster"
+      ],
+      "joints": 4,
+      "restTriangles": 13944,
+      "originalTriangles": 13944,
+      "meshes": 1,
+      "effects": 4,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_sensor",
+      "faction": "usa",
+      "roles": [
+        "radar",
+        "thruster"
+      ],
+      "joints": 3,
+      "restTriangles": 5428,
+      "originalTriangles": 5428,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_sensor",
+      "faction": "rus",
+      "roles": [
+        "radar",
+        "thruster"
+      ],
+      "joints": 3,
+      "restTriangles": 5440,
+      "originalTriangles": 5440,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_sensor",
+      "faction": "chn",
+      "roles": [
+        "radar",
+        "thruster"
+      ],
+      "joints": 3,
+      "restTriangles": 5452,
+      "originalTriangles": 5452,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_sensor",
+      "faction": "ind",
+      "roles": [
+        "radar",
+        "thruster"
+      ],
+      "joints": 3,
+      "restTriangles": 5428,
+      "originalTriangles": 5428,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_sensor",
+      "faction": "kor",
+      "roles": [
+        "radar",
+        "thruster"
+      ],
+      "joints": 3,
+      "restTriangles": 5440,
+      "originalTriangles": 5440,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    },
+    {
+      "kind": "orbital_sensor",
+      "faction": "imp",
+      "roles": [
+        "radar",
+        "thruster"
+      ],
+      "joints": 3,
+      "restTriangles": 5452,
+      "originalTriangles": 5452,
+      "meshes": 2,
+      "effects": 2,
+      "relativeAreaError": 0,
+      "licensed": false
+    }
+  ],
+  "limits": [
+    "CPU conservation/clone tests do not establish visual realism.",
+    "Simulation-time freeze is tested by the shared animation integration, not by this geometry-only module.",
+    "Certified aircraft hinge positions are not asserted."
+  ]
+}

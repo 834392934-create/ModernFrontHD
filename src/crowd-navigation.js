@@ -28,6 +28,7 @@
  }
  function move(game,e,to,dt){
   const dx=to.x-e.x,dy=to.y-e.y,distance=Math.hypot(dx,dy),speed=game.effectiveSpeed(e),step=Math.min(distance,speed*dt);let heading=Math.atan2(dy,dx);
+  const physics=root.WarVehicleMotion,profile=physics.profile(e),before={x:e.x,y:e.y,angle:e.angle},vehicle=profile.kind!=='personnel';
   const neighbors=game.spatial.query(e.x,e.y,game.navigationRadius(e)+260).filter(o=>o.id!==e.id&&o.hp>0&&game.navigationLayer(e,o));
   const radius=game.navigationRadius(e),contacts=neighbors.map(o=>({o,safe:radius+(o.structure?o.r:game.navigationRadius(o))+(o.structure?8:2),now:Math.hypot(e.x-o.x,e.y-o.y)})).filter(p=>p.now<p.safe+speed*.5+step+32);
   // Keep a chosen passing side while rounding a hull. Re-evaluating the shortest
@@ -45,12 +46,31 @@
    heading=radial+e.crowdSteer.side*Math.PI/2;
    if(nearest<safe)heading-=e.crowdSteer.side*.3;
   }else e.crowdSteer=null;
-  let best=null,bestScore=-Infinity,observedBlocker=null;
-  for(const turn of [0,.35,-.35,.7,-.7,1.05,-1.05,1.4,-1.4,1.8,-1.8,null]){
+  const overlapping=contacts.filter(p=>p.now<p.safe-.01);
+  // Legacy dense saves can start inside several conservative hull envelopes.
+  // Turn toward an actually separating direction before trying to translate;
+  // otherwise finite steering leaves every initial candidate pointing inward.
+  let recoveryHeading=null;
+  if(vehicle&&overlapping.length){let score=-Infinity;for(let i=0;i<32;i++){
+    const a=i*Math.PI/16,c=Math.cos(a),s=Math.sin(a),outward=Math.min(...overlapping.map(p=>((e.x-p.o.x)*c+(e.y-p.o.y)*s)/Math.max(1,p.now)));
+    if(!clear(game,e,e.x+c*radius*2,e.y+s*radius*2,a))continue;
+    if(outward>=-.001&&outward+Math.cos(a-heading)*.01>score){score=outward+Math.cos(a-heading)*.01;recoveryHeading=a;}
+   }if(recoveryHeading!==null)heading=recoveryHeading;
+  }
+  // The intended segment remains obstructed while testing a tangent around it.
+  // Keep observing that physical hull even when the tangent fails terrain first.
+  let best=null,bestScore=-Infinity,observedBlocker=obstruction;
+  // A loaded truck must turn for a long haul instead of reversing all the way
+  // to its refinery at 40% speed. Use the business goal, not a nearby path node;
+  // keep reverse for short docking/escape moves.
+  const haul=e.order?Math.hypot(e.order.x-e.x,e.order.y-e.y):distance;
+  const reverseCost=e.kind==='harvester'?Math.min(1,haul/Math.max(1,radius*4)):.15;
+  const candidates=[0,.35,-.35,.7,-.7,1.05,-1.05,1.4,-1.4,1.8,-1.8].flatMap(turn=>vehicle&&profile.reverse>0?[{turn,reverse:false},{turn,reverse:true}]:[{turn,reverse:false}]);candidates.push({turn:null,reverse:true});
+  for(const candidate of candidates){
    // A long hull beside a wall may have room to reverse but none to rotate.
    // Preserve body orientation while backing out; all ordinary checks still apply.
-   const reverse=turn===null;if(reverse&&best)continue;
-   const angle=reverse?e.angle:heading+turn,motion=reverse?angle+Math.PI:angle,vx=Math.cos(motion)*step,vy=Math.sin(motion)*step,x=e.x+vx,y=e.y+vy;
+   const {turn,reverse}=candidate;if(turn===null&&best)continue;
+   const angle=turn===null?e.angle:heading+turn+(reverse?Math.PI:0),motion=reverse?angle+Math.PI:angle,x=e.x+Math.cos(motion)*step,y=e.y+Math.sin(motion)*step;
    if(!clear(game,e,x,y,angle))continue;
    let blocked=false,penalty=0;
    for(const {o,safe,now} of contacts){
@@ -61,20 +81,61 @@
     if(distance>80&&future<safe+8)penalty+=(safe+8-future)/Math.max(1,safe)*1.2;
    }
    if(blocked)continue;
-   const score=reverse?-2-penalty:Math.cos(turn)-Math.abs(turn)*.04-penalty+(turn>0?.03:0);
-   if(score>bestScore){bestScore=score;best={x,y,angle,reverse};}
+   const score=turn===null?-2-penalty:Math.cos(turn)-Math.abs(turn)*.04-penalty+(turn>0?.03:0)-(reverse?reverseCost:0)-(vehicle?Math.abs(physics.angleDelta(angle,e.angle))*.2:0);
+   if(score>bestScore){bestScore=score;best={x,y,angle,reverse,fallback:turn===null,throttle:reverse?-1:1};}
   }
   // Waiting is tied to a currently observed blocker, never to an expiring permission to cross it.
   if(observedBlocker)e.crowdWaiting={id:observedBlocker.id,since:e.crowdWaiting?.id===observedBlocker.id?e.crowdWaiting.since:game.time};
   else e.crowdWaiting=null;
+  if(!best&&vehicle){
+   // A full-speed geometric probe may not fit a narrow residual gap although a
+   // real acceleration-limited creep step does. Try only physically valid poses.
+   let score=-Infinity;for(const reverse of [false,true])for(const sign of [0,1,-1]){
+    if(reverse&&profile.reverse===0)continue;
+    const angle=e.angle+sign*profile.turn*dt,velocity=physics.speed(game,e,reverse?-1:.25,dt),x=e.x+Math.cos(angle)*velocity*dt,y=e.y+Math.sin(angle)*velocity*dt;
+    if(!clear(game,e,x,y,angle)||!contacts.every(({o,safe,now})=>{const next=Math.hypot(x-o.x,y-o.y);return next>=safe||next>=now-.001;}))continue;
+    const gain=distance-Math.hypot(to.x-x,to.y-y),alignment=Math.cos(physics.angleDelta(heading,angle))*.01,value=gain+alignment;
+    if(value>score){score=value;best={x,y,angle,reverse,throttle:reverse?-1:.25,executed:true};}
+   }
+  }
+  if(!best&&recoveryHeading!==null){const delta=physics.angleDelta(recoveryHeading,e.angle),angle=e.angle+Math.max(-profile.turn*dt,Math.min(profile.turn*dt,delta));if(clear(game,e,e.x,e.y,angle))best={x:e.x,y:e.y,angle,reverse:false,throttle:0};}
   if(best){
+   if(vehicle&&!best.executed){
+    // Select the proven avoidance direction first, then execute it with bounded
+    // steering. RTS uses low-speed alignment assistance; manual wheel steering
+    // remains non-pivoting. Every accepted translation stays on the hull axis.
+    const delta=physics.angleDelta(best.angle,e.angle);let angle=e.angle+Math.max(-profile.turn*dt,Math.min(profile.turn*dt,delta));
+    let throttle=best.reverse?-1:Math.abs(delta)>.85?0:1;
+    if(e.motionTerrainTurn&&(e.motionTerrainTurn.order!==e.order||e.motionTerrainTurn.path!==e.path))e.motionTerrainTurn=null;
+    if((best.fallback||!clear(game,e,e.x,e.y,angle))&&!e.motionTerrainTurn)e.motionTerrainTurn={order:e.order,path:e.path,angle:best.fallback?heading:best.angle,phase:'back'};
+    if(e.motionTerrainTurn){
+     const turn=physics.angleDelta(e.motionTerrainTurn.angle,e.angle),samples=Math.max(1,Math.ceil(Math.abs(turn)/.08));
+     const room=(x,y)=>{let blocked=0;for(let i=1;i<=samples;i++)if(!clear(game,e,x,y,e.angle+turn*i/samples))blocked++;return blocked;};
+     const maneuver=e.motionTerrainTurn;
+     if(room(e.x,e.y)===0)maneuver.phase='align';
+     if(maneuver.phase==='align'){
+      angle=e.angle+Math.max(-profile.turn*dt,Math.min(profile.turn*dt,turn));throttle=0;
+      if(Math.abs(turn)<.04)e.motionTerrainTurn=null;
+     }else{
+      angle=e.angle;
+      if(!maneuver.direction){const probe=radius*1.5,c=Math.cos(angle)*probe,s=Math.sin(angle)*probe,front=room(e.x+c,e.y+s),back=room(e.x-c,e.y-s);maneuver.direction=back<=front?-1:1;}
+      throttle=maneuver.direction;
+     }
+    }
+    const limit=Math.min(Math.sqrt(2*speed*profile.brake*distance),Math.abs(delta)>.2?Math.max(1,distance)*profile.turn*.65/Math.max(.5,Math.abs(delta)):Infinity);
+    const velocity=physics.speed(game,e,throttle,dt,limit),travel=Math.min(distance,Math.abs(velocity)*dt),motion=angle+(velocity<0?Math.PI:0),x=e.x+Math.cos(motion)*travel,y=e.y+Math.sin(motion)*travel;
+    const accepted=clear(game,e,x,y,angle)&&contacts.every(({o,safe,now})=>{const next=Math.hypot(x-o.x,y-o.y);return next>=safe||next>=now-.001;});
+    best={x:accepted?x:e.x,y:accepted?y:e.y,angle:clear(game,e,e.x,e.y,angle)?angle:e.angle,throttle,reverse:velocity<0};
+   }
    e.x=best.x;e.y=best.y;e.angle=best.angle;
+   physics.record(e,before,dt,best.throttle,physics.angleDelta(e.angle,before.angle)/Math.max(.001,profile.turn*dt),game.tick);
    if(e.crowdRouteOrder===e.order){
     const p=e.crowdRouteProgress;
     if(!p||game.time-p.time>=1){if(p&&Math.hypot(e.x-p.x,e.y-p.y)>8)e.crowdDetourUntil=game.time+2;e.crowdRouteProgress={x:e.x,y:e.y,time:game.time};}
    }
    return true;
   }
+  physics.stop(e);
   return false;
  }
  function detour(game,e,goal,findPath){

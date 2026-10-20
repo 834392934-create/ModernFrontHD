@@ -1,5 +1,16 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const THREE=require('../assets/vendor/three.min.js');require('../src/data');require('../src/roster');require('../src/equipment');require('../src/sim');
+test('real fixed-step machinegun shot has age-zero visible flash, RMB emits none, and flash expires independently of TTL',()=>{
+ require('../src/weapon-effects');const f=fixture('machinegun_team',0);f.d.pitch=0;
+ f.emit('mousedown',{button:2});for(let i=0;i<4;i++)f.g.step(.05);assert.equal(f.g.effects.filter(x=>x.type==='shot'&&x.sourceId===f.actor.id).length,0,'RMB did not shoot');
+ f.emit('mousedown',{button:0});f.g.step(.05);f.emit('mouseup',{button:0});f.emit('mouseup',{button:2});
+ const shot=f.g.effects.find(x=>x.type==='shot'&&x.sourceId===f.actor.id);assert.ok(shot);assert.equal(shot.firedAt,f.g.time);assert.ok(Math.abs((shot.max-shot.ttl)-.05)<1e-9,'physics TTL keeps its existing 50 ms update');
+ const renderer={firstPerson:{entityId:f.actor.id},objects:new Map()},s=WarWeaponEffects.update(renderer,f.g),visual=s.shots.find(v=>v.p.name==='machinegun');assert.ok(visual);assert.equal(f.g.time-visual.at,0);assert.ok(visual.p.flash>0&&visual.p.flash<.05,'the old TTL-derived age would skip this entire flash');
+ const ctx={fills:0,save(){},restore(){},translate(){},rotate(){},beginPath(){},moveTo(){},lineTo(){},closePath(){},ellipse(){},fill(){this.fills++;}};
+ WarWeaponEffects.discharge(ctx,visual.p,{x:100,y:100},{x:1,y:0},0,1);assert.ok(ctx.fills>=2,'real profile draws its flash at first render');
+ for(let i=0;i<20;i++)assert.equal(WarWeaponEffects.update(renderer,f.g).shots[0].at,visual.at,'paused redraw cannot restart flash');
+ f.g.step(.05);assert.ok(f.g.time-visual.at>visual.p.flash,'flash expires with simulation time');assert.equal(WarWeaponEffects.update(renderer,f.g).shots.length,1,'smoke survives flash');for(let i=0;i<8;i++)f.g.step(.05);assert.equal(WarWeaponEffects.update(renderer,f.g).shots.length,0,'smoke expires without extra shots');
+});
 function fixture(kind='orbital',height=4000){
  const nodes=new Map(),listeners={},events={},el=()=>({hidden:false,style:{},classList:{toggle(){},add(){},remove(){}},querySelector(s){if(!nodes.has(s))nodes.set(s,el());return nodes.get(s);}}),document={hidden:false,pointerLockElement:null,createElement:el,body:{append(){}},addEventListener(n,fn){(listeners[n]??=[]).push(fn);}};
  const c={THREE,WarData,WarNavigationFootprints,document,innerWidth:1600,innerHeight:1000,console,addEventListener(n,fn){events[n]=fn;}};c.globalThis=c;vm.createContext(c);vm.runInContext(fs.readFileSync(path.join(__dirname,'../src/direct-control.js'),'utf8'),c);

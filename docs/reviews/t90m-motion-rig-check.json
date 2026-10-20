@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-20",
+  "gpuUsed": false,
+  "asset": "assets/models/t90m.glb",
+  "meshes": 23,
+  "triangles": 122516,
+  "wheelRig": {
+    "axes": 16,
+    "roadWheels": 12,
+    "radii": [
+      0.25796419382095337,
+      0.25796419382095337,
+      0.33940160274505615,
+      0.33940160274505615,
+      0.37441100366413593,
+      0.37441100366413593,
+      0.37441100366413593,
+      0.37441100366413593,
+      0.37441100366413593,
+      0.37441100366413593,
+      0.37441100366413593,
+      0.37441100366413593,
+      0.37441100366413593,
+      0.37441100366413593,
+      0.37441100366413593,
+      0.37441100366413593
+    ],
+    "sourceIslands": 172,
+    "indexedPreserved": true
+  },
+  "trackRig": {
+    "sourceShoes": 183,
+    "joints": 182,
+    "sourceIslands": 1647,
+    "coincidentSeamsMerged": 1,
+    "indexedPreserved": true,
+    "limit": "Original exterior loop, not physical track tension or suspension simulation."
+  },
+  "checks": [
+    "Actual imported GLB loaded",
+    "16 coaxial wheel joints / 12 road wheels",
+    "Original indexed geometry, UVs, normals and materials preserved",
+    "Every original wheel/track vertex rigidly assigned; no triangle tears",
+    "Rest-pose skinned vertices conserved",
+    "Individual measured wheel radii set rotation speed",
+    "Forward bottom track travels backward relative to hull",
+    "Reverse returns wheel/track phases",
+    "Pause and independent clone verified"
+  ],
+  "limits": [
+    "Placeholder WebP decode is not GPU texture verification.",
+    "The 183 source shoes include one overlapping seam pair; all geometry retained in 182 joints.",
+    "Original exterior loop is not dynamic suspension or track-tension simulation.",
+    "GPU runtime and 198 mechanical-bone pressure require native-app validation."
+  ]
+}

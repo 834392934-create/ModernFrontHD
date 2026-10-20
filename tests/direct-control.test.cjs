@@ -2,7 +2,7 @@ const test=require('node:test'),assert=require('node:assert/strict');
 require('../src/data.js');require('../src/roster.js');require('../src/sim.js');
 const {Game}=WarSim,{U,T,COLS,ROWS}=WarData;
 // Deliberately empty collision arena; each case supplies its own terrain, resource or tree obstacle.
-function arena(){const g=new Game({map:'desert',faction:'chn',enemies:1,buffs:['vision'],abilities:false,playerOnlyTech:false,aiSpaceWeapons:true});g.entities=[];g.spawn(0,'hq',300,300);g.spawn(1,'hq',2700,1800);g.ore=[];g.directObstacles=[];g.map.blocked.fill(0);g.map.navalBlocked.fill(1);g.teams.forEach(t=>{t.aiClock=999999;t.money=0;});return g;}
+function arena(){const g=new Game({map:'desert',faction:'chn',enemies:1,buffs:['vision'],abilities:false,playerOnlyTech:false,aiSpaceWeapons:true});const spawn=g.spawn.bind(g);g.spawn=(...args)=>{const e=spawn(...args);e.angle=0;return e;};g.entities=[];g.spawn(0,'hq',300,300);g.spawn(1,'hq',2700,1800);g.ore=[];g.directObstacles=[];g.map.blocked.fill(0);g.map.navalBlocked.fill(1);g.teams.forEach(t=>{t.aiClock=999999;t.money=0;});return g;}
 function step(g,seconds){for(let n=0;n<Math.ceil(seconds*20);n++)g.step(.05);}
 test('direct control only accepts living friendly units; entry clears orders and exit preserves position',()=>{
  const g=arena(),a=g.spawn(0,'tank',1000,750),enemy=g.spawn(1,'tank',1500,750),dead=g.spawn(0,'infantry',1050,700);dead.hp=0;
@@ -10,8 +10,8 @@ test('direct control only accepts living friendly units; entry clears orders and
  g.command([a.id],1300,750,true,enemy.id);a.orderQueue=[{x:1400,y:750}];assert.equal(g.beginDirectControl(a.id),true);assert.equal(a.order,null);assert.equal(a.target,null);assert.deepEqual(a.orderQueue,[]);assert.equal(a.manualMove,true);
  g.setDirectInput({forward:1,yaw:0,flightEnabled:true});step(g,.3);const x=a.x;assert.ok(x>1000);assert.equal(g.endDirectControl(),true);assert.equal(a.x,x);assert.equal(a.manualMove,false);assert.equal(g.directControl,null);assert.equal(g.endDirectControl(),false);
 });
-test('driving uses original effective speed, normalized diagonal input, absolute yaw and positive right strafe',()=>{
- for(const input of [{forward:1,yaw:0},{strafe:1,yaw:0},{forward:1,strafe:1,yaw:Math.PI/2}]){const g=arena(),a=g.spawn(0,'tank',1000,750);g.beginDirectControl(a.id);g.setDirectInput(input);step(g,.5);assert.ok(Math.abs(Math.hypot(a.x-1000,a.y-750)-g.effectiveSpeed(a)*.5)<1e-8);if(input.strafe&&!input.forward)assert.ok(a.y>750&&a.x===1000);assert.equal(a.angle,input.yaw);}
+test('personnel retain original effective speed, normalized diagonal input, absolute yaw and positive right strafe',()=>{
+ for(const input of [{forward:1,yaw:0},{strafe:1,yaw:0},{forward:1,strafe:1,yaw:Math.PI/2}]){const g=arena(),a=g.spawn(0,'infantry',1000,750);g.beginDirectControl(a.id);g.setDirectInput(input);step(g,.5);assert.ok(Math.abs(Math.hypot(a.x-1000,a.y-750)-g.effectiveSpeed(a)*.5)<1e-8);if(input.strafe&&!input.forward)assert.ok(a.y>750&&a.x===1000);assert.equal(a.angle,input.yaw);}
  const g=arena(),a=g.spawn(0,'fighter',1000,750);g.beginDirectControl(a.id);g.setDirectInput({forward:99,strafe:Infinity,yaw:NaN,aimX:Infinity,aimY:NaN,aimHeight:999});assert.equal(g.directControl.input.forward,1);assert.equal(g.directControl.input.strafe,0);assert.equal(g.directControl.input.aimHeight,999);step(g,.2);assert.ok(Number.isFinite(a.x)&&Number.isFinite(a.y));
 });
 test('ground driving cannot cross blocked tiles, buildings or ore; aircraft can fly above them',()=>{

@@ -7,7 +7,7 @@ function fixture(){
  r.firstPerson={active:true,entityId:99,eye:{y:0},drawOverlay(){}};
  const e={id:1,kind:'tank',team:0,x:30,y:40,hp:100,angle:.7,turret:.2,target:2},game={time:0,entities:[e],effects:[],nodes:[],teams:[{faction:'chn',buildQueue:[]}],visibleAt(){return true;}};
  function install(m){r.objects.set(e.id,m.o);r.scene.add(m.o);}const m=model();install(m);
- return{r,e,game,m,install,draw(time){r.draw(game,{},time);}};
+ return{r,e,game,m,install,draw(time){game.time=time;r.draw(game,{},time);}};
 }
 test('FPS updates all animated parts without unused screen projections',()=>{
  const f=fixture();f.draw(2);for(const part of f.m.o.children){const value=part.rotation[part.name==='propeller'?'x':part.name==='tailRotor'?'z':'y'];const expected={turret:.5,turretRear:.5,radar:.9,jammerHead:.36,rotor:54,rotorCounter:-54,rotor2:54,rotorCounter2:-54,propeller:70,tailRotor:76}[part.name];assert.ok(Math.abs(value-expected)<1e-10,part.name);}
@@ -21,3 +21,5 @@ test('missing parts are cached and a replacement model gets its own discovery',(
 test('RTS still computes screen visibility and does not create offscreen objects',()=>{
  const f=fixture();f.r.firstPerson.active=false;let projections=0;f.r.entityScreen=()=>{projections++;return{x:10000,y:10000};};f.draw(1);assert.equal(projections,1);assert.equal(f.m.o.visible,false);assert.equal(f.m.searches(),0);
 });
+
+test('render clock cannot animate stopped simulation',()=>{const f=fixture();f.draw(2);const before=f.m.o.children.map(p=>p.quaternion.toArray());f.r.draw(f.game,{},99);assert.deepEqual(f.m.o.children.map(p=>p.quaternion.toArray()),before);});

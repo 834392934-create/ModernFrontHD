@@ -1,0 +1,1367 @@
+{
+  "date": "2026-10-20",
+  "gpuUsed": false,
+  "models": 114,
+  "kinds": 19,
+  "articulated": 72,
+  "bodyOnly": 42,
+  "checks": [
+    "Original vertex attributes and triangle count unchanged",
+    "Original materials and metadata retained",
+    "Joint lookup and normalized local axes",
+    "Independent per-instance skeleton poses",
+    "Unchanged simulation time freezes joints"
+  ],
+  "limits": [
+    "GPU deformation and appearance require parent visual verification.",
+    "CPU texture decode is stubbed; no claim of texture rendering verification.",
+    "Body-only entries contain no identified movable exterior mechanism; no fake hardware added."
+  ],
+  "rows": [
+    {
+      "kind": "destroyer",
+      "faction": "usa",
+      "roles": [
+        "turret",
+        "propeller",
+        "rudder"
+      ],
+      "joints": 5,
+      "triangles": 49381,
+      "meshes": 6,
+      "bodyOnly": false,
+      "licensed": true
+    },
+    {
+      "kind": "destroyer",
+      "faction": "rus",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 7124,
+      "meshes": 1,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "destroyer",
+      "faction": "chn",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 7356,
+      "meshes": 1,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "destroyer",
+      "faction": "ind",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 7822,
+      "meshes": 1,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "destroyer",
+      "faction": "kor",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 7456,
+      "meshes": 1,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "destroyer",
+      "faction": "imp",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 1188,
+      "meshes": 1,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "carrier",
+      "faction": "usa",
+      "roles": [],
+      "joints": 0,
+      "triangles": 7908,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "carrier",
+      "faction": "rus",
+      "roles": [],
+      "joints": 0,
+      "triangles": 844,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "carrier",
+      "faction": "chn",
+      "roles": [],
+      "joints": 0,
+      "triangles": 8622,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "carrier",
+      "faction": "ind",
+      "roles": [],
+      "joints": 0,
+      "triangles": 8670,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "carrier",
+      "faction": "kor",
+      "roles": [],
+      "joints": 0,
+      "triangles": 9734,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "carrier",
+      "faction": "imp",
+      "roles": [],
+      "joints": 0,
+      "triangles": 844,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "submarine",
+      "faction": "usa",
+      "roles": [
+        "elevator",
+        "rudder"
+      ],
+      "joints": 5,
+      "triangles": 5352,
+      "meshes": 1,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "submarine",
+      "faction": "rus",
+      "roles": [
+        "elevator",
+        "rudder"
+      ],
+      "joints": 5,
+      "triangles": 5412,
+      "meshes": 1,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "submarine",
+      "faction": "chn",
+      "roles": [
+        "elevator",
+        "rudder"
+      ],
+      "joints": 5,
+      "triangles": 5352,
+      "meshes": 1,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "submarine",
+      "faction": "ind",
+      "roles": [
+        "elevator",
+        "rudder"
+      ],
+      "joints": 5,
+      "triangles": 5352,
+      "meshes": 1,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "submarine",
+      "faction": "kor",
+      "roles": [
+        "elevator",
+        "rudder"
+      ],
+      "joints": 5,
+      "triangles": 5412,
+      "meshes": 1,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "submarine",
+      "faction": "imp",
+      "roles": [
+        "elevator"
+      ],
+      "joints": 1,
+      "triangles": 192,
+      "meshes": 1,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "frigate",
+      "faction": "usa",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 8364,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "frigate",
+      "faction": "rus",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 7372,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "frigate",
+      "faction": "chn",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 7532,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "frigate",
+      "faction": "ind",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 8364,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "frigate",
+      "faction": "kor",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 7372,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "frigate",
+      "faction": "imp",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 7332,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "patrol_boat",
+      "faction": "usa",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 6384,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "patrol_boat",
+      "faction": "rus",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 5392,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "patrol_boat",
+      "faction": "chn",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 5552,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "patrol_boat",
+      "faction": "ind",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 6384,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "patrol_boat",
+      "faction": "kor",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 5392,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "patrol_boat",
+      "faction": "imp",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 5352,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "missile_boat",
+      "faction": "usa",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 6116,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "missile_boat",
+      "faction": "rus",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 5124,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "missile_boat",
+      "faction": "chn",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 5284,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "missile_boat",
+      "faction": "ind",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 6116,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "missile_boat",
+      "faction": "kor",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 5124,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "missile_boat",
+      "faction": "imp",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 5084,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "shore_bombardment",
+      "faction": "usa",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 8284,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "shore_bombardment",
+      "faction": "rus",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 7292,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "shore_bombardment",
+      "faction": "chn",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 7452,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "shore_bombardment",
+      "faction": "ind",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 8284,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "shore_bombardment",
+      "faction": "kor",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 7292,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "shore_bombardment",
+      "faction": "imp",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 7252,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "air_defense_ship",
+      "faction": "usa",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 10540,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "air_defense_ship",
+      "faction": "rus",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 9548,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "air_defense_ship",
+      "faction": "chn",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 9708,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "air_defense_ship",
+      "faction": "ind",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 10540,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "air_defense_ship",
+      "faction": "kor",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 9548,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "air_defense_ship",
+      "faction": "imp",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 2,
+      "triangles": 9508,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "repair_ship",
+      "faction": "usa",
+      "roles": [],
+      "joints": 0,
+      "triangles": 7788,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "repair_ship",
+      "faction": "rus",
+      "roles": [],
+      "joints": 0,
+      "triangles": 6796,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "repair_ship",
+      "faction": "chn",
+      "roles": [],
+      "joints": 0,
+      "triangles": 6956,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "repair_ship",
+      "faction": "ind",
+      "roles": [],
+      "joints": 0,
+      "triangles": 7788,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "repair_ship",
+      "faction": "kor",
+      "roles": [],
+      "joints": 0,
+      "triangles": 6796,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "repair_ship",
+      "faction": "imp",
+      "roles": [],
+      "joints": 0,
+      "triangles": 6756,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "recon_boat",
+      "faction": "usa",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 7992,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "recon_boat",
+      "faction": "rus",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 7000,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "recon_boat",
+      "faction": "chn",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 7160,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "recon_boat",
+      "faction": "ind",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 7992,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "recon_boat",
+      "faction": "kor",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 7000,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "recon_boat",
+      "faction": "imp",
+      "roles": [
+        "turret"
+      ],
+      "joints": 1,
+      "triangles": 6960,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "torpedo_boat",
+      "faction": "usa",
+      "roles": [],
+      "joints": 0,
+      "triangles": 6584,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "torpedo_boat",
+      "faction": "rus",
+      "roles": [],
+      "joints": 0,
+      "triangles": 6508,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "torpedo_boat",
+      "faction": "chn",
+      "roles": [],
+      "joints": 0,
+      "triangles": 7224,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "torpedo_boat",
+      "faction": "ind",
+      "roles": [],
+      "joints": 0,
+      "triangles": 6584,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "torpedo_boat",
+      "faction": "kor",
+      "roles": [],
+      "joints": 0,
+      "triangles": 7224,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "torpedo_boat",
+      "faction": "imp",
+      "roles": [],
+      "joints": 0,
+      "triangles": 6536,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "arsenal_ship",
+      "faction": "usa",
+      "roles": [],
+      "joints": 0,
+      "triangles": 9440,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "arsenal_ship",
+      "faction": "rus",
+      "roles": [],
+      "joints": 0,
+      "triangles": 9364,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "arsenal_ship",
+      "faction": "chn",
+      "roles": [],
+      "joints": 0,
+      "triangles": 10080,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "arsenal_ship",
+      "faction": "ind",
+      "roles": [],
+      "joints": 0,
+      "triangles": 9440,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "arsenal_ship",
+      "faction": "kor",
+      "roles": [],
+      "joints": 0,
+      "triangles": 10080,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "arsenal_ship",
+      "faction": "imp",
+      "roles": [],
+      "joints": 0,
+      "triangles": 9392,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "escort_corvette",
+      "faction": "usa",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 4,
+      "triangles": 9600,
+      "meshes": 3,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "escort_corvette",
+      "faction": "rus",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 4,
+      "triangles": 9524,
+      "meshes": 3,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "escort_corvette",
+      "faction": "chn",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 4,
+      "triangles": 10240,
+      "meshes": 3,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "escort_corvette",
+      "faction": "ind",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 4,
+      "triangles": 9600,
+      "meshes": 3,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "escort_corvette",
+      "faction": "kor",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 4,
+      "triangles": 10240,
+      "meshes": 3,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "escort_corvette",
+      "faction": "imp",
+      "roles": [
+        "recoil",
+        "turret"
+      ],
+      "joints": 4,
+      "triangles": 9552,
+      "meshes": 3,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "fleet_command_ship",
+      "faction": "usa",
+      "roles": [
+        "radar"
+      ],
+      "joints": 1,
+      "triangles": 9668,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "fleet_command_ship",
+      "faction": "rus",
+      "roles": [
+        "radar"
+      ],
+      "joints": 1,
+      "triangles": 9700,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "fleet_command_ship",
+      "faction": "chn",
+      "roles": [
+        "radar"
+      ],
+      "joints": 1,
+      "triangles": 10468,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "fleet_command_ship",
+      "faction": "ind",
+      "roles": [
+        "radar"
+      ],
+      "joints": 1,
+      "triangles": 9668,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "fleet_command_ship",
+      "faction": "kor",
+      "roles": [
+        "radar"
+      ],
+      "joints": 1,
+      "triangles": 10468,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "fleet_command_ship",
+      "faction": "imp",
+      "roles": [
+        "radar"
+      ],
+      "joints": 1,
+      "triangles": 9680,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "electronic_warfare_ship",
+      "faction": "usa",
+      "roles": [],
+      "joints": 0,
+      "triangles": 10890,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "electronic_warfare_ship",
+      "faction": "rus",
+      "roles": [],
+      "joints": 0,
+      "triangles": 10922,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "electronic_warfare_ship",
+      "faction": "chn",
+      "roles": [],
+      "joints": 0,
+      "triangles": 11690,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "electronic_warfare_ship",
+      "faction": "ind",
+      "roles": [],
+      "joints": 0,
+      "triangles": 10890,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "electronic_warfare_ship",
+      "faction": "kor",
+      "roles": [],
+      "joints": 0,
+      "triangles": 11690,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "electronic_warfare_ship",
+      "faction": "imp",
+      "roles": [],
+      "joints": 0,
+      "triangles": 10902,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "hunter_sub",
+      "faction": "usa",
+      "roles": [
+        "propeller",
+        "elevator",
+        "rudder"
+      ],
+      "joints": 7,
+      "triangles": 7264,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "hunter_sub",
+      "faction": "rus",
+      "roles": [
+        "propeller",
+        "elevator",
+        "rudder"
+      ],
+      "joints": 7,
+      "triangles": 7276,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "hunter_sub",
+      "faction": "chn",
+      "roles": [
+        "propeller",
+        "elevator",
+        "rudder"
+      ],
+      "joints": 7,
+      "triangles": 7288,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "hunter_sub",
+      "faction": "ind",
+      "roles": [
+        "propeller",
+        "elevator",
+        "rudder"
+      ],
+      "joints": 7,
+      "triangles": 7264,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "hunter_sub",
+      "faction": "kor",
+      "roles": [
+        "propeller",
+        "elevator",
+        "rudder"
+      ],
+      "joints": 7,
+      "triangles": 7276,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "hunter_sub",
+      "faction": "imp",
+      "roles": [
+        "propeller",
+        "elevator",
+        "rudder"
+      ],
+      "joints": 7,
+      "triangles": 7288,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "abyss_tender",
+      "faction": "usa",
+      "roles": [],
+      "joints": 0,
+      "triangles": 9836,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "abyss_tender",
+      "faction": "rus",
+      "roles": [],
+      "joints": 0,
+      "triangles": 9848,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "abyss_tender",
+      "faction": "chn",
+      "roles": [],
+      "joints": 0,
+      "triangles": 9860,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "abyss_tender",
+      "faction": "ind",
+      "roles": [],
+      "joints": 0,
+      "triangles": 9836,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "abyss_tender",
+      "faction": "kor",
+      "roles": [],
+      "joints": 0,
+      "triangles": 9848,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "abyss_tender",
+      "faction": "imp",
+      "roles": [],
+      "joints": 0,
+      "triangles": 9860,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "asw_patrol_ship",
+      "faction": "usa",
+      "roles": [],
+      "joints": 0,
+      "triangles": 11820,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "asw_patrol_ship",
+      "faction": "rus",
+      "roles": [],
+      "joints": 0,
+      "triangles": 11832,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "asw_patrol_ship",
+      "faction": "chn",
+      "roles": [],
+      "joints": 0,
+      "triangles": 11844,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "asw_patrol_ship",
+      "faction": "ind",
+      "roles": [],
+      "joints": 0,
+      "triangles": 11820,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "asw_patrol_ship",
+      "faction": "kor",
+      "roles": [],
+      "joints": 0,
+      "triangles": 11832,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "asw_patrol_ship",
+      "faction": "imp",
+      "roles": [],
+      "joints": 0,
+      "triangles": 11844,
+      "meshes": 1,
+      "bodyOnly": true,
+      "licensed": false
+    },
+    {
+      "kind": "missile_sub",
+      "faction": "usa",
+      "roles": [
+        "propeller",
+        "elevator",
+        "rudder"
+      ],
+      "joints": 6,
+      "triangles": 3580,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "missile_sub",
+      "faction": "rus",
+      "roles": [
+        "propeller",
+        "elevator",
+        "rudder"
+      ],
+      "joints": 6,
+      "triangles": 3592,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "missile_sub",
+      "faction": "chn",
+      "roles": [
+        "propeller",
+        "elevator",
+        "rudder"
+      ],
+      "joints": 6,
+      "triangles": 3604,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "missile_sub",
+      "faction": "ind",
+      "roles": [
+        "propeller",
+        "elevator",
+        "rudder"
+      ],
+      "joints": 6,
+      "triangles": 3580,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "missile_sub",
+      "faction": "kor",
+      "roles": [
+        "propeller",
+        "elevator",
+        "rudder"
+      ],
+      "joints": 6,
+      "triangles": 3592,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    },
+    {
+      "kind": "missile_sub",
+      "faction": "imp",
+      "roles": [
+        "propeller",
+        "elevator",
+        "rudder"
+      ],
+      "joints": 6,
+      "triangles": 3604,
+      "meshes": 2,
+      "bodyOnly": false,
+      "licensed": false
+    }
+  ]
+}

@@ -46,9 +46,9 @@
   const mat=material();
   // Builder merges colored triangles. Components remain documented in metadata.
   class Builder {
-    constructor(){this.p=[];this.n=[];this.c=[];this.paint=[];this.surface=[];this.parts=0;}
+    constructor(){this.p=[];this.n=[];this.c=[];this.paint=[];this.surface=[];this.parts=0;this.motionPrimitives=[];}
     add(geo,color,pos=[0,0,0],rot=[0,0,0],scale=[1,1,1],paint=0){
-      const original=geo; if(geo.index)geo=geo.toNonIndexed();
+      const original=geo;this.motionPrimitives.push({start:this.p.length/3,count:geo.index?.count||geo.attributes.position.count,type:geo.type,params:Object.fromEntries(Object.entries(geo.parameters||{}).filter(([k,v])=>typeof v==='number')),pos:pos.slice(),rot:rot.slice()}); if(geo.index)geo=geo.toNonIndexed();
       const matrix=new T.Matrix4().compose(new T.Vector3(...pos),new T.Quaternion().setFromEuler(new T.Euler(...rot)),new T.Vector3(...scale));
       geo.applyMatrix4(matrix); const c=new T.Color(color);
       const finish=[0x233b42,0x344b53,0x254c5c,0x263c43,0x314847,0x3b4c49].includes(color)?1:[0x454a43,0x41423d,0x444b4c,0x60656a,0x939796].includes(color)?2:0;
@@ -67,7 +67,7 @@
       const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(p,3));g.computeVertexNormals();
       this.add(g,c,[0,0,0],[0,0,0],[1,1,1],paint);
     }
-    finish(){const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(this.p,3));g.setAttribute('normal',new T.Float32BufferAttribute(this.n,3));g.setAttribute('color',new T.Float32BufferAttribute(this.c,3));g.setAttribute('paint',new T.Float32BufferAttribute(this.paint,1));g.setAttribute('surface',new T.Float32BufferAttribute(this.surface,1));g.computeBoundingSphere();const mesh=new T.Mesh(g,mat);mesh.castShadow=mesh.receiveShadow=true;mesh.userData.parts=this.parts;return mesh;}
+    finish(){const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(this.p,3));g.setAttribute('normal',new T.Float32BufferAttribute(this.n,3));g.setAttribute('color',new T.Float32BufferAttribute(this.c,3));g.setAttribute('paint',new T.Float32BufferAttribute(this.paint,1));g.setAttribute('surface',new T.Float32BufferAttribute(this.surface,1));g.computeBoundingSphere();const mesh=new T.Mesh(g,mat);mesh.castShadow=mesh.receiveShadow=true;mesh.userData.parts=this.parts;mesh.userData.motionPrimitives=this.motionPrimitives;return mesh;}
   }
   function wheel(b,x,z,r=.49,c=colors.chn){
     b.cyl(r,.36,x,.65,z,rubber,'z');
@@ -262,7 +262,7 @@
     const key=kind+'_'+f;
     if(!cache.has(key)){
       let g=builders.has(key)?builders.get(key)():['tank','ifv','arty','rocket','aa','asat','harvester'].includes(kind)?vehicle(f,kind):['fighter','jet','heli'].includes(kind)?aircraft(f,kind):['destroyer','carrier','submarine'].includes(kind)?ship(f,kind):other(kind,f);
-      g.userData.kind=kind;cache.set(key,g);
+      g.userData.kind=kind;g.userData.faction=f;root.WarAirRig?.attach(g,kind,f);root.WarNavalRig?.attach(g,kind,f);root.WarGroundRig?.attach(g,kind,f);g.traverse(o=>{delete o.userData.motionPrimitives;});cache.set(key,g);
     }
     return cache.get(key).clone(true);
   }
