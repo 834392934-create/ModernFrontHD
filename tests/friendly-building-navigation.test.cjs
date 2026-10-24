@@ -4,7 +4,7 @@ const {U,T,COLS,ROWS}=WarData;
 function arena(){const g=new WarSim.Game({map:'desert',faction:'chn',enemies:1,buffs:['vision']});g.entities=[];g.effects=[];g.ore=[];g.nodes=[];g.map.blocked.fill(0);g.map.navalBlocked.fill(0);g.map.tiles.fill(0);g.ai=()=>{};g.teams.forEach(t=>{t.queue=[];t.buildQueue=[];t.money=0;});g.spawn(0,'hq',300,300);g.spawn(1,'hq',5700,3500);return g;}
 function advance(g,e,seconds=120){for(let i=0;i<seconds*20;i++){const old={x:e.x,y:e.y};g.step(.05);assert.ok(Math.hypot(e.x-old.x,e.y-old.y)<=g.effectiveSpeed(e)*.05+1e-7,'no teleport');for(const o of g.entities)if(o.structure&&o.hp>0&&g.navigationLayer(e,o))assert.ok(Math.hypot(e.x-o.x,e.y-o.y)>=o.r+g.navigationRadius(e)+8-1e-7,'no building penetration');}}
 for(const kind of ['tank','carrier','destroyer','submarine','heli','orbital']){
- test(kind+': routes around the whole friendly building wall, not just the visible local slice',()=>{
+ test(kind+': clears the whole friendly building wall by its domain movement',()=>{
   const g=arena(),e=g.spawn(0,kind,1000,1400);if(kind==='heli')e.altitude=25;if(kind==='submarine')e.altitude=-22;
   for(let y=500;y<=2300;y+=120)g.spawn(0,U[kind].naval?'navalyard':'factory',1500,y);
   g.command([e.id],2200,1400);advance(g,e);assert.equal(e.order,null);assert.ok(Math.hypot(e.x-2200,e.y-1400)<15);
@@ -26,7 +26,7 @@ test('matching movers reuse a tick-local grid; height, construction and next tic
 });
 test('long clear aerial routes avoid distance-sized spatial queries and terrain sampling',()=>{
  const g=arena(),e=g.spawn(0,'fighter',500,1400);e.altitude=1000;e.order={x:5500,y:1400};g.spawn(0,'factory',2500,1400);let queries=0,terrainChecks=0;const query=g.spatial.query,terrain=WarNavigationFootprints.terrain;g.spatial.query=()=>{queries++;throw Error('normal air route queried distant buckets');};WarNavigationFootprints.terrain=(...args)=>{terrainChecks++;return terrain(...args);};
- try{for(let i=0;i<1000;i++){assert.equal(WarNavigationFootprints.buildingSegmentClear(g,e,e.order),true);assert.equal(WarCrowdNavigation.segment(g,e,e.order),true);}assert.equal(queries,0);assert.equal(terrainChecks,1000,'one endpoint check per segment, independent of distance');e.altitude=25;assert.equal(WarNavigationFootprints.buildingSegmentClear(g,e,e.order),false,'low aircraft still route around the same structure');}
+ try{for(let i=0;i<1000;i++){assert.equal(WarNavigationFootprints.buildingSegmentClear(g,e,e.order),true);assert.equal(WarCrowdNavigation.segment(g,e,e.order),true);}assert.equal(queries,0);assert.equal(terrainChecks,1000,'one endpoint check per segment, independent of distance');e.altitude=25;assert.equal(WarNavigationFootprints.buildingSegmentClear(g,e,e.order),false,'low aircraft detects physical overlap before flight control climbs above it');}
  finally{g.spatial.query=query;WarNavigationFootprints.terrain=terrain;}
 });
 test('a physically sealed wall retains the order without tunnelling; demolition restores passage',()=>{
@@ -44,6 +44,6 @@ test('production waits when every exit is occupied and resumes after actual spac
 test('every roster unit completes a move past a friendly structure with its existing domain/footprint',()=>{
  for(const kind of Object.keys(U)){
   const g=arena(),e=g.spawn(0,kind,1000,1400);g.entities.find(o=>o.team===1).hp=1e12;g.spawn(0,U[kind].naval?'navalyard':'factory',1500,1400);g.command([e.id],2200,1400);
-  advance(g,e,90);assert.equal(e.order,null,kind);assert.ok(Math.hypot(e.x-2200,e.y-1400)<15,kind);
+  advance(g,e,90);assert.equal(e.order,null,kind);assert.ok(Math.hypot(e.x-2200,e.y-1400)<(WarAircraftFlight.fixed(e)?350:15),kind);
  }
 });

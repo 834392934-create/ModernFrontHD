@@ -65,6 +65,7 @@
     clearObjects(){for(const id of this.objects.keys())this.removeObject(id);}
     disposeWorld(){
       this.treeVisual=null;
+      this.runwayObjects=new Map();
       const geos=new Set(),mats=new Set();this.world.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.geometry)geos.add(o.geometry);if(o.material)mats.add(o.material);});
       geos.forEach(g=>g.dispose());mats.forEach(m=>{m.map?.dispose();m.normalMap?.dispose();m.userData.detailTexture?.dispose();m.dispose();});this.world.clear();
       this.clearObjects();
@@ -148,8 +149,22 @@
       if(changed){this.fogCtx.putImageData(im,0,0);this.fogTex.needsUpdate=true;}
       this.fogEnabled.value=demo?0:1;
     }
+    syncRunways(game,ui){
+      this.runwayObjects??=new Map();const alive=new Set();
+      for(const e of game.entities){if(e.hp<=0||!e.runway)continue;alive.add(e.id);const r=e.runway,key=JSON.stringify(r);let entry=this.runwayObjects.get(e.id);
+        if(entry?.key!==key){if(entry){entry.mesh.removeFromParent();entry.mesh.geometry.dispose();entry.mesh.material.dispose();}const b=new root.WarModels.Builder();
+          b.box(r.length+24,.6,r.width,r.length/2,.4,0,0x343b3d);
+          for(const side of [-1,1]){b.box(r.length, .05,1.4,r.length/2,.76,side*(r.width/2-5),0xd5d6c7);for(let x=0;x<=r.length;x+=45)b.box(2,1.5,2,x,1.5,side*(r.width/2+1),0x92d4ef);}
+          for(let x=18;x<r.length;x+=36)b.box(18,.07,2,x,.8,0,0xd7dbcf);
+          for(let z=-50;z<=50;z+=20){b.box(18,.07,7,12,.8,z,0xe2e2d6);b.box(18,.07,7,r.length-12,.8,z,0xe2e2d6);}
+          const mesh=b.finish();mesh.name='airfield-runway-'+e.id;mesh.material=this.fogify(new T.MeshStandardMaterial({vertexColors:true,roughness:.92}));mesh.position.set(r.x,0,r.y);mesh.rotation.y=-r.angle;mesh.castShadow=false;mesh.receiveShadow=true;this.world.add(mesh);entry={mesh,key};this.runwayObjects.set(e.id,entry);
+        }entry.mesh.visible=!!ui.demo||e.team===0||game.visibleAt(e.x,e.y);
+      }
+      for(const [id,entry]of this.runwayObjects)if(!alive.has(id)){entry.mesh.removeFromParent();entry.mesh.geometry.dispose();entry.mesh.material.dispose();this.runwayObjects.delete(id);}
+    }
     draw(game,ui={},time=0){
       this.treeVisual?.sync(game);
+      this.syncRunways(game,ui);
       this.syncCamera();this.updateFog(game,!!ui.demo);this.underwaterScene?.update(this.firstPerson?.underwater===true,time);if(this.altitudeScene&&!this.firstPerson?.active)this.altitudeScene.group.visible=false;const g=this.ctx;g.setTransform(this.dpr,0,0,this.dpr,0,0);g.clearRect(0,0,this.width,this.height);
       for(const {m,ore}of this.oreObjects||[])m.material.color.setHex(ore.amount>0?0xffffff:0x7a7e78);
       if(this.contextLost){g.fillStyle='#dbe3d8';g.fillText('图形设备正在恢复…',40,90);return;}

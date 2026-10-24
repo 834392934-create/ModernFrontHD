@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-20T16:30:50.973Z",
+  "recordedAt": "2026-10-24T09:35:39.072Z",
   "scope": "Six real-input discharge families; fixture free-aim; normal pause action freezes machinegun first visual frame and other real shots at 50–150 ms before screenshots; no clock/ttl edits or fake shots; no mouse-only aiming or fidelity claim",
   "runs": [
     {
@@ -64,7 +64,7 @@
         "flashAlive": true,
         "smokeAlive": true
       },
-      "captureWallMs": 569,
+      "captureWallMs": 635,
       "screenshotAdjustment": {
         "hiddenElement": "direct.el('lock')",
         "reason": "Pause button covered weapon muzzle; other HUD retained",
@@ -96,8 +96,8 @@
           1400
         ],
         "observedAge": 0.04999999999999982,
-        "observedAt": 1.3000000000000005,
-        "firedAt": 1.3000000000000005,
+        "observedAt": 1.2500000000000004,
+        "firedAt": 1.2500000000000004,
         "max": 5.023561836954121,
         "sourceId": 40,
         "portIndex": 0,
@@ -126,7 +126,7 @@
           "family": "cannon"
         },
         {
-          "at": 1.3000000000000005,
+          "at": 1.2500000000000004,
           "origin": [
             1805.754124863377,
             22.07260165084869,
@@ -143,20 +143,20 @@
       "capture": {
         "age": 0.050000000000000044,
         "physicsAge": 0.09999999999999964,
-        "visualAt": 1.3000000000000005,
+        "visualAt": 1.2500000000000004,
         "targetAge": 0.05,
-        "time": 1.3500000000000005,
+        "time": 1.3000000000000005,
         "flashAlive": true,
         "smokeAlive": true
       },
-      "captureWallMs": 533,
+      "captureWallMs": 602,
       "screenshotAdjustment": {
         "hiddenElement": "direct.el('lock')",
         "reason": "Pause button covered weapon muzzle; other HUD retained",
         "restored": true
       },
       "screenshot": "screenshots/weapon-effects-rocket-desktop.png",
-      "pauseTime": 1.3500000000000005
+      "pauseTime": 1.3000000000000005
     },
     {
       "kind": "machinegun_team",
@@ -180,8 +180,8 @@
           1400
         ],
         "observedAge": 0.050000000000000044,
-        "observedAt": 1.7500000000000009,
-        "firedAt": 1.7500000000000009,
+        "observedAt": 1.7000000000000008,
+        "firedAt": 1.7000000000000008,
         "max": 0.7255537962766608,
         "sourceId": 44,
         "portIndex": null,
@@ -196,7 +196,7 @@
       "maxRecoil": 0,
       "visual": [
         {
-          "at": 1.3000000000000005,
+          "at": 1.2500000000000004,
           "origin": [
             1805.754124863377,
             22.07260165084869,
@@ -210,7 +210,7 @@
           "family": "rocket"
         },
         {
-          "at": 1.7500000000000009,
+          "at": 1.7000000000000008,
           "origin": [
             1807.112,
             7.475999999999999,
@@ -227,20 +227,20 @@
       "capture": {
         "age": 0,
         "physicsAge": 0.050000000000000044,
-        "visualAt": 1.7500000000000009,
+        "visualAt": 1.7000000000000008,
         "targetAge": 0,
-        "time": 1.7500000000000009,
+        "time": 1.7000000000000008,
         "flashAlive": true,
         "smokeAlive": true
       },
-      "captureWallMs": 460,
+      "captureWallMs": 528,
       "screenshotAdjustment": {
         "hiddenElement": "direct.el('lock')",
         "reason": "Pause button covered weapon muzzle; other HUD retained",
         "restored": true
       },
       "screenshot": "screenshots/weapon-effects-machinegun_team-desktop.png",
-      "pauseTime": 1.7500000000000009
+      "pauseTime": 1.7000000000000008
     },
     {
       "kind": "destroyer",
@@ -264,8 +264,8 @@
           99.99999999999467
         ],
         "observedAge": 0.05000000000000071,
-        "observedAt": 2.1500000000000004,
-        "firedAt": 2.1500000000000004,
+        "observedAt": 2.1000000000000005,
+        "firedAt": 2.1000000000000005,
         "max": 22.454694242586854,
         "sourceId": 47,
         "portIndex": null,
@@ -280,7 +280,7 @@
       "maxRecoil": 0,
       "visual": [
         {
-          "at": 1.3000000000000005,
+          "at": 1.2500000000000004,
           "origin": [
             1805.754124863377,
             22.07260165084869,
@@ -294,7 +294,7 @@
           "family": "rocket"
         },
         {
-          "at": 2.1500000000000004,
+          "at": 2.1000000000000005,
           "origin": [
             1865.2752,
             9.161100000000003,
@@ -311,20 +311,20 @@
       "capture": {
         "age": 0.04999999999999982,
         "physicsAge": 0.10000000000000142,
-        "visualAt": 2.1500000000000004,
+        "visualAt": 2.1000000000000005,
         "targetAge": 0.05,
-        "time": 2.2,
+        "time": 2.1500000000000004,
         "flashAlive": true,
         "smokeAlive": true
       },
-      "captureWallMs": 281,
+      "captureWallMs": 317,
       "screenshotAdjustment": {
         "hiddenElement": "direct.el('lock')",
         "reason": "Pause button covered weapon muzzle; other HUD retained",
         "restored": true
       },
       "screenshot": "screenshots/weapon-effects-destroyer-desktop.png",
-      "pauseTime": 2.2
+      "pauseTime": 2.1500000000000004
     },
     {
       "kind": "submarine",
@@ -349,8 +349,8 @@
           99.99999999999645
         ],
         "observedAge": 0.04999999999999716,
-        "observedAt": 4.049999999999994,
-        "firedAt": 4.049999999999994,
+        "observedAt": 2.549999999999999,
+        "firedAt": 2.549999999999999,
         "max": 71.78779123667772,
         "sourceId": 51,
         "portIndex": null,
@@ -363,24 +363,39 @@
       },
       "shotCount": 1,
       "maxRecoil": 0,
-      "visual": [],
+      "visual": [
+        {
+          "at": 2.1000000000000005,
+          "origin": [
+            1865.2752,
+            9.161100000000003,
+            100
+          ],
+          "end": [
+            17581.481597995487,
+            -246.5150317695297,
+            99.99999999999467
+          ],
+          "family": "navalGun"
+        }
+      ],
       "capture": {
         "age": 0.04999999999999982,
         "physicsAge": 0.09999999999999432,
-        "visualAt": 4.049999999999994,
+        "visualAt": 2.549999999999999,
         "targetAge": 0.05,
-        "time": 4.099999999999993,
+        "time": 2.5999999999999988,
         "flashAlive": false,
         "smokeAlive": false
       },
-      "captureWallMs": 204,
+      "captureWallMs": 201,
       "screenshotAdjustment": {
         "hiddenElement": "direct.el('lock')",
         "reason": "Pause button covered weapon muzzle; other HUD retained",
         "restored": true
       },
       "screenshot": "screenshots/weapon-effects-submarine-desktop.png",
-      "pauseTime": 4.099999999999993
+      "pauseTime": 2.5999999999999988
     },
     {
       "kind": "orbital",
@@ -405,8 +420,8 @@
           1399.9999999999984
         ],
         "observedAge": 0.05000000000000071,
-        "observedAt": 4.499999999999992,
-        "firedAt": 4.499999999999992,
+        "observedAt": 2.9999999999999973,
+        "firedAt": 2.9999999999999973,
         "max": 19.17142857142857,
         "sourceId": 55,
         "portIndex": null,
@@ -423,20 +438,20 @@
       "capture": {
         "age": 0.04999999999999982,
         "physicsAge": 0.10000000000000142,
-        "visualAt": 4.499999999999992,
+        "visualAt": 2.9999999999999973,
         "targetAge": 0.05,
-        "time": 4.549999999999992,
+        "time": 3.049999999999997,
         "flashAlive": false,
         "smokeAlive": false
       },
-      "captureWallMs": 448,
+      "captureWallMs": 447,
       "screenshotAdjustment": {
         "hiddenElement": "direct.el('lock')",
         "reason": "Pause button covered weapon muzzle; other HUD retained",
         "restored": true
       },
       "screenshot": "screenshots/weapon-effects-orbital-desktop.png",
-      "pauseTime": 4.549999999999992
+      "pauseTime": 3.049999999999997
     }
   ],
   "checks": [
@@ -448,18 +463,18 @@
     "orbital: real LMB / no RMB shot / frozen geometry and effect clock"
   ],
   "errors": [],
-  "testProfile": "D:\\现代战线HD\\.tmp\\profile-v3101-final-weapon-effects-browser",
-  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.10.1\\ModernFrontHD.exe",
+  "testProfile": "D:\\现代战线HD\\.tmp\\profile-v3110-final-weapon-effects-browser",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.11.0\\ModernFrontHD.exe",
   "sourceHashes": {
     "src/weapon-effects.js": "5050f411329b88c7f869f7e937db0d0df522ea5b3c3cc3fde8816cadc4b73504",
     "src/vehicle-animation.js": "fdaeba86cf5702aa46d7aa7bd2d492d26d9adb6648845ef6d209586b2dc4e7fd",
-    "src/battle3d.js": "bb387a1abe1e2c0581e7c0cb6e208985d03f037b06e097241cfac70a184acbf7",
-    "src/direct-control.js": "03b2082093ae8c6d808c604e31a994cbc028efee2d29bfaf745afe16b086bca9",
+    "src/battle3d.js": "96e5fd4bd81d0a54936a3f08ce246ca8fa36930dccb1901eb3c3a2a2b62c34a4",
+    "src/direct-control.js": "60f451ccbe68d127f7e6dffea80a9ef7a4be255063258f283f98d7ea4740b562",
     "src/fps-viewmodel.js": "7338c372b19b6e5785216fc0c8fdad0c3cf6c4b78e269434886c5cb35720ac6d",
-    "src/sim.js": "580a4a9f7ac9c1cfe9a5fcf1ab00a99a1a9ff375ecf9e26039f85c9b7e5d49bf",
-    "index.html": "6a906230f9de92ba61d8b0739392100a44e43fb42ab15840cc62dcf0c95f17ed"
+    "src/sim.js": "2c3ff65f24438db51dc7ca66d036d48ee5f69cf1871e9ea545ff85a2e2f74937",
+    "index.html": "87e696f95b337a27de317ce9ca9cfe3ad7b042d59b8fee6741760f75cdf63abb"
   },
-  "version": "3.10.1",
+  "version": "3.11.0",
   "stage": "orbital",
   "passed": true
 }

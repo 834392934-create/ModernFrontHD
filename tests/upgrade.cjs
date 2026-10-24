@@ -15,7 +15,7 @@ try{
  await page.goto('http://127.0.0.1:8765');await page.waitForFunction(()=>window.ModernFront);
  await verifyImported(page);checks.push('licensed T-90M, ship and AH-64 load from embedded GLB with preserved materials');
  assert.equal(await page.locator('#difficulty option').count(),4);assert.equal(await page.locator('[data-faction]').count(),6);
- await page.locator('#enemies').selectOption('1');await page.locator('#difficulty').selectOption('normal');await page.locator('#game-mode').selectOption('domination');
+ await page.locator('#enemies').selectOption('1');await page.locator('#difficulty').selectOption('normal');await page.locator('#game-mode').selectOption('annihilation');assert.equal(await page.locator('#game-mode option').count(),1);
  await page.screenshot({path:'screenshots/15-deployment-v2.png'});
  await page.locator('#start').click();await page.waitForTimeout(1400);
  assert.ok(await page.evaluate(()=>ModernFront.renderer.is3D));checks.push('desktop deployment, six factions, four AI difficulties, real WebGL battlefield');

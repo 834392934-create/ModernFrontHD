@@ -1,0 +1,171 @@
+{
+  "recordedAt": "2026-10-24T09:39:32.778Z",
+  "version": "3.11.0",
+  "cpu": {
+    "tests": 690,
+    "passed": 690,
+    "failed": 0,
+    "command": "npm test"
+  },
+  "native": [
+    {
+      "file": "aircraft-flight-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-24T09:38:25.658Z",
+      "version": "3.11.0",
+      "checks": 4,
+      "sourceHashes": {
+        "src/sim.js": "2c3ff65f24438db51dc7ca66d036d48ee5f69cf1871e9ea545ff85a2e2f74937",
+        "src/aircraft-flight.js": "250b78e71e4a8029f0382e5d9ef3907032501a387ee7b72cf011782c342f4cbf",
+        "src/battle3d.js": "96e5fd4bd81d0a54936a3f08ce246ca8fa36930dccb1901eb3c3a2a2b62c34a4",
+        "src/direct-control.js": "60f451ccbe68d127f7e6dffea80a9ef7a4be255063258f283f98d7ea4740b562",
+        "src/app.js": "fd87b8bb0add545a441d87e62daf1cdb48c2890cd4dd20f914f22ec72fd469ca",
+        "index.html": "87e696f95b337a27de317ce9ca9cfe3ad7b042d59b8fee6741760f75cdf63abb"
+      }
+    },
+    {
+      "file": "vehicle-camera-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-24T09:31:50.284Z",
+      "version": "3.11.0",
+      "checks": 7,
+      "sourceHashes": {
+        "src/direct-control.js": "60f451ccbe68d127f7e6dffea80a9ef7a4be255063258f283f98d7ea4740b562",
+        "src/vehicle-camera.js": "97eb37852c014549296515d246a10930cf591f88196362932fd1e84eda73cd2d",
+        "src/battle3d.js": "96e5fd4bd81d0a54936a3f08ce246ca8fa36930dccb1901eb3c3a2a2b62c34a4",
+        "src/app.js": "fd87b8bb0add545a441d87e62daf1cdb48c2890cd4dd20f914f22ec72fd469ca",
+        "src/sim.js": "2c3ff65f24438db51dc7ca66d036d48ee5f69cf1871e9ea545ff85a2e2f74937",
+        "src/navigation-footprints.js": "4775176fce696c5bcd82ac22db5ce321a82f340ee2d6e516247599b3a8ae815c",
+        "src/crowd-navigation.js": "b4b21336962fbf317490b3b8f74636dbc445d23bb10a9a7d80375d9e2d06dd08",
+        "index.html": "87e696f95b337a27de317ce9ca9cfe3ad7b042d59b8fee6741760f75cdf63abb",
+        "style.css": "150c5842cb6fac70871c3b6c3bad4317dfb8f50390dbfac165ad1852c8cfb8a5"
+      }
+    },
+    {
+      "file": "fps-ballistics-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-24T09:26:13.303Z",
+      "version": "3.11.0",
+      "checks": 4,
+      "sourceHashes": {
+        "src/direct-control.js": "60f451ccbe68d127f7e6dffea80a9ef7a4be255063258f283f98d7ea4740b562",
+        "src/sim.js": "2c3ff65f24438db51dc7ca66d036d48ee5f69cf1871e9ea545ff85a2e2f74937",
+        "src/operator-sim.js": "8f87ca0e28046d182f9745ea5492cc765601114e137f39ad3114ee34d6716135",
+        "style.css": "150c5842cb6fac70871c3b6c3bad4317dfb8f50390dbfac165ad1852c8cfb8a5"
+      }
+    },
+    {
+      "file": "vehicle-motion-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-24T09:34:27.327Z",
+      "version": "3.11.0",
+      "checks": 9,
+      "sourceHashes": {
+        "src/models3d.js": "ee163523031e2953b0151d4b9eefa5a6f8e863e29e7e7b12679c4fa02a29f317",
+        "src/vehicle-rig-ground.js": "57b3524d0cc9a8fb5b7f7f181bdc22ba19b67813eba44357832f36b9ad586d67",
+        "src/vehicle-rig-air.js": "bd38484069503347ab10dd09b51a1ccef681fd3229a96cb998025174dbedf65e",
+        "src/vehicle-rig-naval.js": "d2364803327bc8889b7f3109c869cdcc945f7701013d66df3b9542bef5ffc795",
+        "src/vehicle-animation.js": "fdaeba86cf5702aa46d7aa7bd2d492d26d9adb6648845ef6d209586b2dc4e7fd",
+        "src/vehicle-motion.js": "e2b9e82ea3533948cb697ec5b1e0c1c72b1f606a262f09d2d75ee15c17bf0da6",
+        "src/weapon-effects.js": "5050f411329b88c7f869f7e937db0d0df522ea5b3c3cc3fde8816cadc4b73504",
+        "src/sim.js": "2c3ff65f24438db51dc7ca66d036d48ee5f69cf1871e9ea545ff85a2e2f74937",
+        "src/battle3d.js": "96e5fd4bd81d0a54936a3f08ce246ca8fa36930dccb1901eb3c3a2a2b62c34a4",
+        "src/direct-control.js": "60f451ccbe68d127f7e6dffea80a9ef7a4be255063258f283f98d7ea4740b562",
+        "index.html": "87e696f95b337a27de317ce9ca9cfe3ad7b042d59b8fee6741760f75cdf63abb"
+      }
+    },
+    {
+      "file": "weapon-effects-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-24T09:35:39.072Z",
+      "version": "3.11.0",
+      "checks": 6,
+      "sourceHashes": {
+        "src/weapon-effects.js": "5050f411329b88c7f869f7e937db0d0df522ea5b3c3cc3fde8816cadc4b73504",
+        "src/vehicle-animation.js": "fdaeba86cf5702aa46d7aa7bd2d492d26d9adb6648845ef6d209586b2dc4e7fd",
+        "src/battle3d.js": "96e5fd4bd81d0a54936a3f08ce246ca8fa36930dccb1901eb3c3a2a2b62c34a4",
+        "src/direct-control.js": "60f451ccbe68d127f7e6dffea80a9ef7a4be255063258f283f98d7ea4740b562",
+        "src/fps-viewmodel.js": "7338c372b19b6e5785216fc0c8fdad0c3cf6c4b78e269434886c5cb35720ac6d",
+        "src/sim.js": "2c3ff65f24438db51dc7ca66d036d48ee5f69cf1871e9ea545ff85a2e2f74937",
+        "index.html": "87e696f95b337a27de317ce9ca9cfe3ad7b042d59b8fee6741760f75cdf63abb"
+      }
+    },
+    {
+      "file": "public-range-salvo-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-24T09:36:02.214Z",
+      "version": "3.11.0",
+      "checks": 9,
+      "sourceHashes": {
+        "src/sim.js": "2c3ff65f24438db51dc7ca66d036d48ee5f69cf1871e9ea545ff85a2e2f74937",
+        "src/weapon-salvos.js": "372b1048feeee0838d65e751b8437abe5c29a0ac6eda6b9a9587d365cbc5757c",
+        "src/weapon-range-data.js": "5cf2cbd9f5b586ea368e864c38f88d83c9b5406b6d4c5f6f366b8c1a92c1859d",
+        "src/operator-ui.js": "aad6cdf6c69f1104d7c74f6cba600d689fefa20999bd1087907efa55b5378f58",
+        "src/direct-control.js": "60f451ccbe68d127f7e6dffea80a9ef7a4be255063258f283f98d7ea4740b562",
+        "src/models-vehicles.js": "79990ee7ddc13303cb9b33e1e1f6868eefba6aefaece7b7b35fec47c2b245a4d",
+        "src/models3d.js": "ee163523031e2953b0151d4b9eefa5a6f8e863e29e7e7b12679c4fa02a29f317",
+        "src/vehicle-animation.js": "fdaeba86cf5702aa46d7aa7bd2d492d26d9adb6648845ef6d209586b2dc4e7fd",
+        "index.html": "87e696f95b337a27de317ce9ca9cfe3ad7b042d59b8fee6741760f75cdf63abb"
+      }
+    },
+    {
+      "file": "first-person-desktop-report.json",
+      "passed": true,
+      "recordedAt": "2026-10-24T09:28:32.753Z",
+      "version": "3.11.0 (isolated runner, current EXE)",
+      "checks": 10,
+      "possession": 77
+    },
+    {
+      "file": "desktop-report.json",
+      "passed": true,
+      "version": "3.11.0"
+    }
+  ],
+  "package": {
+    "recordedAt": "2026-10-24T09:39:32.671Z",
+    "version": "3.11.0",
+    "sha256Matches": 699,
+    "portraits": 588,
+    "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.11.0\\ModernFrontHD.exe",
+    "runtimeChecks": [
+      "desktop-report.json",
+      "expanded-desktop-report.json",
+      "first-person-desktop-report.json",
+      "depth-flight-desktop-report.json",
+      "high-altitude-desktop-report.json",
+      "maps-browser/desktop-report.json",
+      "command-feedback-desktop-report.json",
+      "player-mode-desktop-report.json",
+      "fps-upgrade-desktop-report.json",
+      "operator-desktop-report.json",
+      "crowd-desktop-report.json",
+      "arrival-animation-desktop-report.json",
+      "vehicle-tree-desktop-report.json",
+      "orbit-scope-desktop-report.json",
+      "unified-aim-desktop-report.json",
+      "right-button-fire-desktop-report.json",
+      "single-soldier-desktop-report.json",
+      "render-pass-stats-desktop-report.json",
+      "render-cache-desktop-report.json",
+      "fps-ballistics-desktop-report.json",
+      "vehicle-camera-desktop-report.json",
+      "vehicle-motion-desktop-report.json",
+      "weapon-effects-desktop-report.json",
+      "public-range-salvo-desktop-report.json",
+      "aircraft-flight-desktop-report.json"
+    ],
+    "mismatches": []
+  },
+  "scope": [
+    "18 aircraft roles: prepare, takeoff/vertical lift, climb, continuous fixed-wing flight, attack pass, return, approach, landing, taxi, maintenance",
+    "Aircraft fly above buildings using vertical clearance; ground/naval obstacle contracts remain",
+    "All opposing facilities and units required for victory; HQ loss preserves residual army/production; domination no longer ends the match"
+  ],
+  "limits": [
+    "Game-scale flight parameters, no certified aerodynamics, weather/fuel model or carrier landing",
+    "Original aircraft meshes unchanged; existing visual authenticity limitations remain",
+    "690 CPU checks and native controlled scenarios do not prove all long-running matches are bug-free",
+    "Other historical native reports retained by package validation are not claimed freshly rerun"
+  ]
+}

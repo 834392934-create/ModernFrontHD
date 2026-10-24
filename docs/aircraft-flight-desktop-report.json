@@ -1,0 +1,95 @@
+{
+  "recordedAt": "2026-10-24T09:38:25.658Z",
+  "checks": [
+    "机场准备、加速滑跑、离地爬升、持续盘旋及可见跑道",
+    "真实 E 接管、C 机外视角、R 自动返航输入",
+    "自动返航、对正进近、着陆减速、滑行停机维修",
+    "摧毁总部后继续战斗，最后设施消灭才出现胜利界面"
+  ],
+  "errors": [],
+  "sourceHashes": {
+    "src/sim.js": "2c3ff65f24438db51dc7ca66d036d48ee5f69cf1871e9ea545ff85a2e2f74937",
+    "src/aircraft-flight.js": "250b78e71e4a8029f0382e5d9ef3907032501a387ee7b72cf011782c342f4cbf",
+    "src/battle3d.js": "96e5fd4bd81d0a54936a3f08ce246ca8fa36930dccb1901eb3c3a2a2b62c34a4",
+    "src/direct-control.js": "60f451ccbe68d127f7e6dffea80a9ef7a4be255063258f283f98d7ea4740b562",
+    "src/app.js": "fd87b8bb0add545a441d87e62daf1cdb48c2890cd4dd20f914f22ec72fd469ca",
+    "index.html": "87e696f95b337a27de317ce9ca9cfe3ad7b042d59b8fee6741760f75cdf63abb"
+  },
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.11.0\\ModernFrontHD.exe",
+  "profile": "D:\\现代战线HD\\.tmp\\native-aircraft-79628",
+  "version": "3.11.0",
+  "imports": [
+    "ready",
+    "ready",
+    "ready"
+  ],
+  "prepare": "screenshots/aircraft-prepare-desktop.png",
+  "takeoff": "screenshots/aircraft-takeoff-desktop.png",
+  "climb": "screenshots/aircraft-climb-desktop.png",
+  "approach": "screenshots/aircraft-approach-desktop.png",
+  "parked": "screenshots/aircraft-parked-desktop.png",
+  "phases": [
+    {
+      "phase": "prepare",
+      "time": 0.35,
+      "altitude": 12,
+      "speed": 0
+    },
+    {
+      "phase": "takeoff",
+      "time": 1.7500000000000009,
+      "altitude": 12,
+      "speed": 0
+    },
+    {
+      "phase": "climb",
+      "time": 4.249999999999993,
+      "altitude": 12,
+      "speed": 115.50000000000007
+    },
+    {
+      "phase": "cruise",
+      "time": 6.0499999999999865,
+      "altitude": 156.25,
+      "speed": 130.53208152788702
+    },
+    {
+      "phase": "loiter",
+      "time": 6.099999999999986,
+      "altitude": 160,
+      "speed": 129.0187462285744
+    },
+    {
+      "phase": "return",
+      "time": 7.649999999999981,
+      "altitude": 160,
+      "speed": 5.8987500000000015
+    },
+    {
+      "phase": "approach",
+      "time": 24.050000000000207,
+      "altitude": 160,
+      "speed": 90.74999997736052
+    },
+    {
+      "phase": "landing",
+      "time": 31.25000000000031,
+      "altitude": 12,
+      "speed": 90.75000000000001
+    },
+    {
+      "phase": "taxi",
+      "time": 32.250000000000306,
+      "altitude": 12,
+      "speed": 2.3092638912203256e-14
+    },
+    {
+      "phase": "service",
+      "time": 39.04999999999992,
+      "altitude": 12,
+      "speed": 0
+    }
+  ],
+  "victory": "screenshots/aircraft-victory-desktop.png",
+  "passed": true
+}

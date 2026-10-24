@@ -29,8 +29,8 @@ test('rally point moves newly produced units and shift queues survive save',()=>
  const tank=g.entities.filter(e=>e.team===0&&e.kind==='tank').at(-1);assert.ok(tank.order);g.command([tank.id],1100,750,false,null,{queue:true});assert.equal(tank.orderQueue.length,1);
  assert.equal(Game.load(JSON.stringify(g.save())).get(tank.id).orderQueue.length,1);
 });
-test('domination victory and contested capture rule',()=>{
- const g=new Game({enemies:1,mode:'domination',scoreLimit:10});g.teams.forEach(t=>t.aiClock=999);g.nodes.forEach(n=>n.owner=0);advance(g,4);assert.equal(g.result,'victory');
+test('legacy domination uses annihilation and contested capture remains',()=>{
+ const g=new Game({enemies:1,mode:'domination',scoreLimit:10});g.teams.forEach(t=>t.aiClock=999);g.nodes.forEach(n=>n.owner=0);advance(g,4);assert.equal(g.result,null);
  const g2=new Game({enemies:1});g2.teams.forEach(t=>t.aiClock=999);let n=g2.nodes[0];g2.spawn(0,'infantry',n.x,n.y);g2.spawn(1,'infantry',n.x+10,n.y);advance(g2,.2);assert.equal(n.progress,0);
 });
 test('blocked destination is resolved to accessible ground',()=>{
@@ -40,7 +40,7 @@ test('blocked destination is resolved to accessible ground',()=>{
 test('all land vehicle classes and air reach an ordered point on all three maps',()=>{
  for(const map of ['river','desert','industry'])for(const kind of ['infantry','tank','ifv','arty','rocket','aa','heli','fighter','jet','satellite','orbital','orbital_interceptor','asat']){
   const g=new Game({enemies:1,map,buffs:['vision']});g.entities=[];g.ore=[];g.spawn(0,'hq',300,360);g.spawn(1,'hq',2700,1700);g.teams.forEach(t=>t.aiClock=9999);
-  const e=g.spawn(0,kind,720,600);g.command([e.id],2200,1100);advance(g,100);assert.ok(Math.hypot(e.x-2200,e.y-1100)<30,map+' '+kind+' failed to arrive: '+e.x+','+e.y);
+  const e=g.spawn(0,kind,720,600);g.command([e.id],2200,1100);advance(g,100);assert.equal(e.order,null,map+' '+kind);assert.ok(Math.hypot(e.x-2200,e.y-1100)<(WarAircraftFlight.fixed(e)?350:30),map+' '+kind+' failed to arrive/orbit: '+e.x+','+e.y);
  }
 });
 test('mine loading bay remains accessible; depletion chooses another mine',()=>{

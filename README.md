@@ -1,14 +1,22 @@
-# 现代战线 HD · 3.10.1
+# 现代战线 HD · 3.11.0
 
 可离线运行的三维即时战略遭遇战。项目位于 `D:\现代战线HD`；原参考目录 `D:\红警\2024` 未修改。
 
 ## 启动
 
-双击 **启动独立版.cmd**，或 **启动游戏.cmd**。当前新版位于 `release/ModernFrontHD-3.10.1/ModernFrontHD.exe`，需保留整个同名目录；启动器优先新版，找不到时回退到原 `release/ModernFrontHD`。旧程序运行中可并列构建新版，正在进行的对局继续运行。默认全屏，F11切换全屏，Tab隐藏/恢复作战界面，无需另外安装 Node.js 或浏览器。
+双击 **启动独立版.cmd**，或 **启动游戏.cmd**。当前新版位于 `release/ModernFrontHD-3.11.0/ModernFrontHD.exe`，需保留整个同名目录；启动器优先新版，找不到时回退到原 `release/ModernFrontHD`。旧程序运行中可并列构建新版，正在进行的对局继续运行。默认全屏，F11切换全屏，Tab隐藏/恢复作战界面，无需另外安装 Node.js 或浏览器。
 
 独立窗口使用Electron + Three.js WebGL；不是Unreal/DirectX引擎重写。资源全部本地加载，不要求账号、服务器或联网AI。浏览器兼容入口保留为 `play.ps1` 或 `index.html`。
 
 `release/ModernFrontHD-portable.zip` 是浏览器兼容包，不含独立版运行时；本机优先使用上面的EXE目录。
+
+## 3.11.0 航空起降与全歼胜利
+
+- 机场生产固定翼后，依次准备、加速滑跑、爬升、巡航；接敌时转弯通场攻击，到位后保持盘旋。直升机垂直起降并可悬停。
+- 空中单位直接飞越建筑，低空提前爬升；不再参与地面建筑绕行。跑道有独立可见标线、起降占用和停机维修流程。
+- 选中飞机按 **R** 返航维修；第一人称驾驶同样支持 R 自动返航，保持鼠标锁定；暂停/失焦后按 W 恢复飞控。落地维修完成后，RTS 下达新指令或驾驶时按 W 可再次出发。空中驻留超过 180 秒或重伤会自动返航；这是游戏节奏参数，不是真实航时。
+- 胜利必须消灭敌方所有设施和单位，包括海、空、天及作业单位；摧毁总部不会清空残军，据点不再提供积分胜利。HUD 显示残余设施和单位数量。
+- 起降/速度采用游戏尺度。[实现依据与验收范围](docs/aircraft-flight-plan.md)。
 
 ## 3.10.1 炮口、公开射程与多管齐射
 
@@ -49,7 +57,7 @@
 
 RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU 绘制提交从 6.17 降到 3.98 ms，半数行走时从 5.66 降到 4.11 ms；两版帧率均约 50 FPS。492 项 CPU 测试及本轮原生回归通过。范围和完整证据见 [验证记录](docs/VALIDATION.md)；不将短样本外推到大型长局。
 
-本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.10.1`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
+本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.11.0`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
 
 ## 第一人称瞄准与单兵作战
 
@@ -209,7 +217,7 @@ RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU
 
 - 美国、俄罗斯、中国、印度、韩国、战锤人类帝国同人阵营；1玩家对1–4 AI，支持混战/敌方联盟。
 - 简单、标准、困难、极难四档AI；高难度包含经济补助，不能等同于公平经济下更聪明。
-- 四张扩大地图（含独立群岛）、连通海域、旧图陆路桥梁、矿山、补给据点；基地歼灭与据点积分胜利规则。
+- 四张扩大地图（含独立群岛）、连通海域、旧图陆路桥梁、矿山、补给据点；消灭全部敌方设施和单位的全歼规则。
 - 77类单位：陆军21、海军19、空军18、太空18，另有采矿车、21类基地/防御设施、7类支援能力、9项玩家增益；本地保存和JSON导入导出。
 - 每矿山初始24,000资源；采矿车容量500、装载65/秒，自动往返装车区和炼厂。采空后另寻矿源，炼厂损失时保留货物等待。矿体阻挡车辆，装车区可达。
 - 陆海空生产线分别推进；集结点、队形、排队路径、撤退维修、近防火箭拦截、雷达防御增益。
@@ -250,7 +258,7 @@ RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU
 | 飞机/潜艇升降 | Shift / Ctrl |
 | 攻击与支援范围 | V：选中/防线/关闭 |
 
-独占据点7秒开始产出；积分模式增加胜利积分。电力不足减慢生产并停用高能防御。大型打击需要侦察和可见目标。当前没有友军伤害。
+独占据点7秒开始产出；据点不再提供积分胜利。电力不足减慢生产并停用高能防御。大型打击需要侦察和可见目标。当前没有友军伤害。
 
 ## 外观与真实资料
 
@@ -270,7 +278,7 @@ RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU
 npm test
 # 首次构建独立版需要联网下载官方运行时：
 powershell -File tools/fetch-desktop-runtime.ps1
-powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.10.1
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.11.0
 node server.cjs
 # 第二终端；需要已有Playwright或设置PLAYWRIGHT_MODULE：
 node tests/gallery.cjs
@@ -290,7 +298,7 @@ node tests/performance3d.cjs --desktop
 node tools/capture-model-review.cjs tank_chn tank_usa
 node tools/bake-portraits.cjs
 node tools/export-model-inventory.cjs
-powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.10.1
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.11.0
 ```
 
 游戏运行不需要开发工具。报告见 [验证记录](docs/VALIDATION.md)，真实截图在 `screenshots/`。

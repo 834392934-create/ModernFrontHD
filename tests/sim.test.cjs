@@ -102,9 +102,9 @@ test("save/load restores state and rejects malformed data", () => {
   assert.throws(() => Game.load("{broken"));
   h.step(0.05);
 });
-test("HQ elimination ends a duel and records victory", () => {
+test("eliminating all hostile entities ends a duel and records victory", () => {
   const g = new Game({ enemies: 1 });
-  g.entities.find((e) => e.kind === "hq" && e.team === 1).hp = 0;
+  for(const e of g.entities)if(e.team===1)e.hp=0;
   g.step(0.05);
   assert.equal(g.result, "victory");
 });

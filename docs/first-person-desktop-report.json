@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-20T16:45:32.200Z",
+  "recordedAt": "2026-10-24T09:28:32.753Z",
   "environment": "Packaged Electron",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
@@ -803,7 +803,6 @@
     "screenshots/fps-muzzle-cover-tank_destroyer-chn-desktop.png",
     "screenshots/fps-muzzle-cover-tank-chn-desktop.png",
     "screenshots/fps-muzzle-cover-tank-imp-desktop.png",
-    "screenshots/fps-failure-desktop.png",
     "screenshots/fps-focus-restored-desktop.png"
   ],
   "errors": [],
@@ -877,8 +876,8 @@
     "view": "infantry"
   },
   "ai": {
-    "calls": 21,
-    "production": 3,
+    "calls": 1,
+    "production": 2,
     "construction": 1,
     "othersOrdered": 1,
     "controlledOrder": null
@@ -896,7 +895,7 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 24.850000000000218,
+      "hitAt": 22.85000000000019,
       "sourceId": 346,
       "targetId": 347,
       "damage": 74
@@ -905,7 +904,7 @@
       "x": 745.7908,
       "y": 800.0000000000001,
       "sourceId": 346,
-      "time": 24.850000000000218
+      "time": 22.85000000000019
     },
     "hudConfirmed": true
   },
@@ -956,12 +955,12 @@
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
-        753.020238860811,
+        753.0202374877186,
         12.597097151053665,
-        799.996984181427
+        799.9862314221415
       ],
-      "size": 2.9614681511893424,
-      "gap": 4.556104847983604,
+      "size": 2.9614602216013073,
+      "gap": 4.556092648617396,
       "damage": 0
     },
     {
@@ -982,7 +981,7 @@
     }
   ],
   "nativeFocus": {
-    "recordedAt": "2026-10-20T16:48:14.795Z",
+    "recordedAt": "2026-10-24T09:29:30.797Z",
     "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
     "nativeBefore": {
       "fullScreen": true,
@@ -990,7 +989,7 @@
       "minimized": false
     },
     "nativeBlurred": {
-      "focused": true,
+      "focused": false,
       "minimized": true
     },
     "blurred": {
@@ -998,7 +997,7 @@
       "events": [
         {
           "trusted": true,
-          "at": 9514.299999952316
+          "at": 57234.40000009537
         }
       ],
       "locked": false,
@@ -1066,6 +1065,14 @@
         800
       ]
     }
+  },
+  "renderEnvironment": {
+    "viewport": [
+      2752,
+      1152
+    ],
+    "dpr": 1.25,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)"
   },
   "passed": true
 }

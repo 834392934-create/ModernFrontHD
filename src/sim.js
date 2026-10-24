@@ -2,6 +2,7 @@
   "use strict";
   if(typeof module!=='undefined'&&typeof require==='function')require('./navigation-footprints.js');
   if(typeof module!=='undefined'&&typeof require==='function')require('./vehicle-motion.js');
+  if(typeof module!=='undefined'&&typeof require==='function')require('./aircraft-flight.js');
   if(typeof module!=='undefined'&&typeof require==='function')require('./weapon-range-data.js');
   if(typeof module!=='undefined'&&typeof require==='function')require('./destructible-trees.js');
   if(typeof module!=='undefined'&&typeof require==='function')require('./weapon-salvos.js');
@@ -266,6 +267,7 @@
         ...options,
       };
       this.options.rangeMode=this.options.rangeMode==='published'?'published':'balanced';
+      this.options.mode='annihilation';
       this.options.metersPerUnit=Number.isFinite(Number(this.options.metersPerUnit))?clamp(Number(this.options.metersPerUnit),1,100):1;
       this.options.playerProtection=Object.fromEntries(Object.entries(PLAYER_PROTECTION_DEFAULTS).map(([k,v])=>{
         const value=options.playerProtection?.[k],limit=k==='tickSeconds'?[.5,5]:k==='criticalRatio'?[.1,.8]:k.endsWith('Count')||k==='respondersPerThreat'||k==='maxThreats'?[1,8]:[20,1500];
@@ -372,7 +374,7 @@
       this.directObstacles=root.WarTrees.liveColliders(this);
       this.spatial.rebuild(this.entities);
       this.updateFog();
-      this.message("行动开始。占领补给站，摧毁敌方指挥中心。");
+      this.message("行动开始。占领补给站，消灭敌方全部设施和单位。");
     }
     random() {
       return this._random();
@@ -696,10 +698,11 @@
       return true;
     }
     flightFloor(e,x,y) {
-      let floor=25;const clearance=Math.max(8,e.r*.35);
-      for(const o of this.entities)if(o.structure&&o.hp>0&&Math.hypot(x-o.x,y-o.y)<e.r+o.r+6)
+      const shape=root.WarNavigationFootprints.bounds[e.kind+'_'+this.teams[e.team]?.faction];
+      let floor=25;const clearance=Math.max(16,-(shape?.[1]||0)+8),radius=this.navigationRadius(e);
+      for(const o of this.entities)if(o.structure&&o.hp>0&&Math.hypot(x-o.x,y-o.y)<radius+o.r+6)
         floor=Math.max(floor,this.entityAltitude(o)+(B[o.kind].collisionHeight||60)+clearance);
-      for(const o of this.directObstacles||[])if(Math.hypot(x-o.x,y-o.y)<e.r+o.r)
+      for(const o of this.directObstacles||[])if(Math.hypot(x-o.x,y-o.y)<radius+o.r)
         floor=Math.max(floor,(o.height??50)+clearance);
       return floor;
     }
@@ -814,7 +817,10 @@
       }
       const turretDelta=motion.angleDelta(yaw,e.turret??e.angle);
       e.turret=(e.turret??e.angle)+clamp(turretDelta,-2.4*dt,2.4*dt);
-      if(d.air&&!d.space&&input.flightEnabled)e.altitude=Math.max(this.entityAltitude(e),this.flightFloor(e,e.x,e.y));
+      if(d.air&&!d.space&&input.flightEnabled){
+        const floor=root.WarAircraftFlight.aheadFloor(this,e,e.x+dx,e.y+dy,Math.max(180,e.flightSpeed*2));
+        e.altitude=Math.max(this.flightFloor(e,e.x+dx,e.y+dy),e.altitude+clamp(floor-e.altitude,0,75*dt));
+      }
       const steps=Math.max(1,Math.ceil(Math.hypot(dx,dy)/8));
       for(let n=0;n<steps;n++){
         const x=e.x+dx/steps,y=e.y+dy/steps;
@@ -867,6 +873,7 @@
     }
     canBuild(team, kind, x, y) {
       const d = B[kind];
+      if(d&&this.entities.some(o=>o.hp>0&&o.runway&&root.WarAircraftFlight.runwayContains(o.runway,{x,y},d.r+20)))return false;
       if (
         !d ||
         (d.advanced &&
@@ -947,14 +954,15 @@
       const heading=Math.atan2(y-e.y,x-e.x);
       const free=(px,py)=>budget.remaining-->0&&root.WarNavigationFootprints.terrain(this,e,px,py,heading)&&
         (!U[e.kind]?.naval||root.WarNavigationFootprints.turningRoom(this,e,px,py))&&
-        !this.entities.some(o=>o.structure&&o.hp>0&&this.navigationLayer(e,o)&&Math.hypot(px-o.x,py-o.y)<o.r+r+10)&&
+        (U[e.kind]?.air||!this.entities.some(o=>o.structure&&o.hp>0&&this.navigationLayer(e,o)&&Math.hypot(px-o.x,py-o.y)<o.r+r+10))&&
         (U[e.kind]?.air||U[e.kind]?.naval||!this.ore.some(o=>Math.hypot(o.x-px,o.y-py)<48+r+4));
       if(free(x,y))return{x,y};
       for(let radius=24;radius<Math.max(W,H)&&budget.remaining>0;radius+=24)for(let j=0;j<24&&budget.remaining>0;j++){const a=j*Math.PI/12,px=x+Math.cos(a)*radius,py=y+Math.sin(a)*radius;if(free(px,py))return{x:px,y:py};}
       return null;
     }
     setRally(ids,x,y){for(const id of ids){const e=this.get(id);if(e?.structure&&Object.values(U).some(d=>d.producer===e.kind))e.rally={x:clamp(x,24,W-24),y:clamp(y,24,H-24)};}}
-    retreat(ids){for(const id of ids){const e=this.get(id);if(!e||e.id===this.directControl?.id||e.structure||U[e.kind]?.naval||U[e.kind]?.space)continue;const base=this.teamEntities(e.team).filter(o=>o.kind==='repairhub'||o.kind==='hq').sort((a,b)=>dist(a,e)-dist(b,e))[0];if(base){this.command([id],base.x+90,base.y+90);e.retreating=true;}}}
+    returnAircraft(id){const e=this.get(id);return !!e&&root.WarAircraftFlight.requestReturn(this,e);}
+    retreat(ids){for(const id of ids){const e=this.get(id);if(!e||e.id===this.directControl?.id||e.structure||U[e.kind]?.naval||U[e.kind]?.space)continue;if(U[e.kind].air){this.returnAircraft(id);continue;}const base=this.teamEntities(e.team).filter(o=>o.kind==='repairhub'||o.kind==='hq').sort((a,b)=>dist(a,e)-dist(b,e))[0];if(base){this.command([id],base.x+90,base.y+90);e.retreating=true;}}}
     setAISpaceWeapons(allow){
       this.options.aiSpaceWeapons=!!allow;if(allow)return;
       for(const t of this.teams.slice(1)){for(const q of t.queue)if(U[q.kind]?.spaceWeapon)t.money+=(q.paid??this.cost(t.id,q.kind));t.queue=t.queue.filter(q=>!U[q.kind]?.spaceWeapon);}
@@ -1005,6 +1013,7 @@
         if(options.queue&&e.order){e.orderQueue=e.orderQueue||[];if(e.orderQueue.length<16){e.orderQueue.push(order);report.accepted.push(e.id);}else report.rejected.push({id:e.id,reason:'queue-full'});n++;continue;}
         report.accepted.push(e.id);
         e.orderQueue=[];e.retreating=false;
+        root.WarAircraftFlight.command(this,e);
         if(e.kind!=='harvester'&&e.order&&e.order.x===order.x&&e.order.y===order.y&&e.order.attack===attack&&e.order.target===tracked){n++;continue;}
         if(e.kind==='harvester'){const ore=this.ore.filter(o=>o.amount>0).sort((a,b)=>dist(p,a)-dist(p,b))[0];e.oreId=ore&&dist(ore,p)<120?ore.id:null;e.manualMove=e.oreId===null;e.miningState=null;}
         e.order = order;
@@ -1280,7 +1289,7 @@
       const protecting=t.id===0&&!!this.directControl;
       t.aiClock = protecting?this.options.playerProtection.tickSeconds:easy ? 3.2 : hard ? 1.2 : 2;
       let es = this.teamEntities(t.id),
-        hq = es.find((e) => e.kind === "hq");
+        hq = es.find((e) => e.kind === "hq") || es.find(e=>e.structure) || es[0];
       if (!hq) return;
       const protection=protecting?this.updatePlayerProtection(t,es,hq):null;
       const buildKind =
@@ -1302,7 +1311,7 @@
                         ? "radar"
                         : null);
       const urgentPower=protecting&&buildKind==='power'&&!t.buildQueue.some(q=>q.kind==='power');
-      if (buildKind && (!t.buildQueue.length||urgentPower)) {
+      if (buildKind && es.some(e=>e.structure) && (!t.buildQueue.length||urgentPower)) {
         for (let a = 0; a < 20; a++) {
           const ang = this.random() * Math.PI * 2,
             rad = 190 + this.random() * 230,
@@ -1359,13 +1368,13 @@
       }
       if (
         this.time > t.attackAt &&
-        units.length >= (easy ? 10 : hard ? 5 : 7)
+        units.length >= (es.some(e=>e.kind==='hq') ? (easy ? 10 : hard ? 5 : 7) : 1)
       ) {
         t.attackAt = this.time + (easy ? 45 : hard ? 16 : 27);
         const hqs = this.entities.filter(
-          (e) => e.kind === "hq" && e.hp > 0 && this.isEnemy(t.id, e.team),
+          (e) => e.hp > 0 && this.isEnemy(t.id, e.team),
         );
-        hqs.sort((a, b) => dist(hq, a) - dist(hq, b));
+        hqs.sort((a, b) => Number(b.kind==='hq')-Number(a.kind==='hq') || dist(hq, a) - dist(hq, b));
         let dest = this.options.mode==='domination'?this.nodes.filter(n=>n.owner!==t.id).sort((a,b)=>dist(hq,a)-dist(hq,b))[0]||hqs[0]:hqs[0];
         if (dest) {
           let attack = units.filter(
@@ -1383,6 +1392,8 @@
     }
     step(dt) {
       if (this.result || !Number.isFinite(dt) || dt<=0) return;
+      this.checkElimination();
+      if(this.result)return;
       if(!root.WarCrowdNavigation&&typeof module!=='undefined'&&typeof require==='function')require('./crowd-navigation.js');
       dt = clamp(dt, 0, 0.1);
       this.time += dt;
@@ -1430,11 +1441,13 @@
             (e) => e.kind === U[q.kind].producer && e.disabled <= this.time,
           );
           if (prod) {
-            q.remaining -= dt * rate;
+            q.remaining = Math.max(0,q.remaining-dt*rate);
             if (q.remaining <= 0) {
               let pos = this.freeSpawn(prod,q.kind);
+              q.blockedReason=pos?'':U[q.kind].air?'等待可用跑道或起飞位置':'等待出口腾空';
               if (pos) {
                 const spawned=this.spawn(t.id, q.kind, pos.x, pos.y);
+                if(root.WarAircraftFlight.supported(spawned))root.WarAircraftFlight.launch(this,spawned,prod);
                 if(prod.rally&&q.kind!=='harvester')this.command([spawned.id],prod.rally.x,prod.rally.y,true);
                 t.queue.splice(t.queue.indexOf(q),1);
               }
@@ -1483,9 +1496,16 @@
           const rocket=this.effects.find(f=>f.type==='shot'&&f.rocket&&this.isEnemy(e.team,f.from)&&Math.hypot(f.x+(f.tx-f.x)*(1-f.ttl/f.max)-e.x,f.y+(f.ty-f.y)*(1-f.ttl/f.max)-e.y)<interceptRange);
           if(rocket){rocket.type='intercepted';rocket.ttl=.12;rocket.max=.12;e.interceptAt=this.time+(d.interceptReload||.55);}
         }
-        if(e.id===this.directControl?.id){this.stepDirectControl(e,dt);continue;}
+        if(e.id===this.directControl?.id){
+          if(root.WarAircraftFlight.supported(e)&&e.flight&&this.directControl.input.flightEnabled){
+            if(root.WarAircraftFlight.groundStep(this,e,dt))continue;
+            if(e.flight.returning||e.flight.phase==='climb'){root.WarAircraftFlight.update(this,e,dt,null);continue;}
+          }
+          this.stepDirectControl(e,dt);continue;
+        }
+        if(root.WarAircraftFlight.groundStep(this,e,dt))continue;
         if(e.kind==='operator')this.operatorAutoTick(e,dt);
-        if (!d.damage && !e.order) continue;
+        if (!d.damage && !e.order && !root.WarAircraftFlight.supported(e)) continue;
         let target = this.get(e.target);
         const firingRange=this.rangeProfile(e),range=firingRange.attack,minRange=firingRange.min;
         const canHit = (t) =>
@@ -1525,12 +1545,13 @@
           if (
             this.engagementDistance(e, target) <= range &&
             this.engagementDistance(e, target) >= minRange &&
-            e.cool <= 0
+            e.cool <= 0 && root.WarAircraftFlight.canFire(this,e,target)
           ) {
             this.emitShot(e,target);
           }
         }
         if (e.structure) continue;
+        if(root.WarAircraftFlight.update(this,e,dt,target))continue;
         const fight =
           target && this.engagementDistance(e, target) <= range && this.engagementDistance(e,target)>=minRange && (!e.order || e.order.attack);
         if (fight) continue;
@@ -1723,28 +1744,27 @@
         this.updateFog();
         this.reveals = this.reveals.filter((r) => r.until > this.time);
       }
+      this.checkElimination();
+      this.entities = this.entities.filter((e) => e.hp > 0);
+      if(this.directControl&&(!this.get(this.directControl.id)||this.result))this.endDirectControl();
+    }
+    checkElimination(){
       for (const t of this.teams) {
         if (
           t.alive &&
           !this.entities.some(
-            (e) => e.team === t.id && e.kind === "hq" && e.hp > 0,
+            (e) => e.team === t.id && e.hp > 0,
           )
         ) {
           t.alive = false;
           t.queue = [];
           t.buildQueue = [];
-          for (const e of this.entities) if (e.team === t.id) e.hp = 0;
-          this.message(F[t.faction].name + "指挥部已被摧毁");
+          this.message(F[t.faction].name + "全部设施与单位已被消灭");
         }
       }
       if (!this.teams[0].alive) this.result = "defeat";
       else if (this.teams.slice(1).every((t) => !t.alive))
         this.result = "victory";
-      if(!this.result&&this.options.mode==='domination'){
-        for(const t of this.teams)if(t.alive){t.score=(t.score||0)+this.nodes.filter(n=>n.owner===t.id).length*dt;if(t.score>=this.options.scoreLimit){this.result=t.id===0?'victory':'defeat';this.message(F[t.faction].name+'取得据点积分胜利');break;}}
-      }
-      this.entities = this.entities.filter((e) => e.hp > 0);
-      if(this.directControl&&(!this.get(this.directControl.id)||this.result))this.endDirectControl();
     }
     harvest(e,dt){
       if(e.id===this.directControl?.id)return;
@@ -1778,6 +1798,7 @@
       }else e.miningState='empty';
     }
     freeSpawn(prod,kind=prod.kind==='navalyard'?'destroyer':'tank') {
+      if(root.WarAircraftFlight.fixed({kind}))return root.WarAircraftFlight.launchPosition(this,prod,kind);
       const e={kind,team:prod.team,r:U[kind].r,angle:.6},r=this.navigationRadius(e);
       for(let ring=0;ring<8;ring++)for(let i=0;i<24;i++){
         const a=i*Math.PI/12,rad=prod.r+r+12+ring*48,x=prod.x+Math.cos(a)*rad,y=prod.y+Math.sin(a)*rad;
@@ -1900,6 +1921,8 @@
           ["altitude","pitch","roll","flightSpeed","jumpHeight","jumpVelocity"].some(k=>e[k]!==undefined&&!finite(e[k])) ||
           !Number.isInteger(e.id) ||
           e.maxHp <= 0 ||
+          !root.WarAircraftFlight.validate(e) ||
+          (e.runway&&(![e.runway.x,e.runway.y,e.runway.angle,e.runway.length,e.runway.width].every(finite)||e.runway.length!==360||e.runway.width!==160)) ||
           !Array.isArray(e.path) ||
           e.path.some((p) => !finite(p.x) || !finite(p.y)) ||
           (e.order && (!finite(e.order.x) || !finite(e.order.y)))

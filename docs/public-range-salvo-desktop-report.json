@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-20T16:29:34.946Z",
+  "recordedAt": "2026-10-24T09:36:02.214Z",
   "checks": [
     "New game defaults: published, 1 metre per unit",
     "64 armory cards and sampled details display actual published-mode ranges",
@@ -13,20 +13,20 @@
   ],
   "errors": [],
   "scope": "Public ranges, real-input eight-port salvo, normalized damage and cancellation; CPU metadata does not certify real weapon fidelity",
-  "profile": "D:\\现代战线HD\\.tmp\\profile-v3101-final-public-range-salvo-browser",
-  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.10.1\\ModernFrontHD.exe",
+  "profile": "D:\\现代战线HD\\.tmp\\profile-v3110-final-public-range-salvo-browser",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.11.0\\ModernFrontHD.exe",
   "sourceHashes": {
-    "src/sim.js": "580a4a9f7ac9c1cfe9a5fcf1ab00a99a1a9ff375ecf9e26039f85c9b7e5d49bf",
+    "src/sim.js": "2c3ff65f24438db51dc7ca66d036d48ee5f69cf1871e9ea545ff85a2e2f74937",
     "src/weapon-salvos.js": "372b1048feeee0838d65e751b8437abe5c29a0ac6eda6b9a9587d365cbc5757c",
     "src/weapon-range-data.js": "5cf2cbd9f5b586ea368e864c38f88d83c9b5406b6d4c5f6f366b8c1a92c1859d",
     "src/operator-ui.js": "aad6cdf6c69f1104d7c74f6cba600d689fefa20999bd1087907efa55b5378f58",
-    "src/direct-control.js": "03b2082093ae8c6d808c604e31a994cbc028efee2d29bfaf745afe16b086bca9",
+    "src/direct-control.js": "60f451ccbe68d127f7e6dffea80a9ef7a4be255063258f283f98d7ea4740b562",
     "src/models-vehicles.js": "79990ee7ddc13303cb9b33e1e1f6868eefba6aefaece7b7b35fec47c2b245a4d",
     "src/models3d.js": "ee163523031e2953b0151d4b9eefa5a6f8e863e29e7e7b12679c4fa02a29f317",
     "src/vehicle-animation.js": "fdaeba86cf5702aa46d7aa7bd2d492d26d9adb6648845ef6d209586b2dc4e7fd",
-    "index.html": "6a906230f9de92ba61d8b0739392100a44e43fb42ab15840cc62dcf0c95f17ed"
+    "index.html": "87e696f95b337a27de317ce9ca9cfe3ad7b042d59b8fee6741760f75cdf63abb"
   },
-  "version": "3.10.1",
+  "version": "3.11.0",
   "defaults": {
     "mode": "published",
     "scale": 1
@@ -354,7 +354,7 @@
     }
   ],
   "fullSalvo": {
-    "time": 3.899999999999994,
+    "time": 4.449999999999992,
     "shots": [
       {
         "portIndex": 0,
@@ -377,7 +377,7 @@
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 1.5000000000000007,
+        "firedAt": 2.0500000000000007,
         "portError": 0
       },
       {
@@ -395,13 +395,13 @@
           1397.048888888889
         ],
         "end": [
-          2096.4678220609294,
+          2100.8682948036485,
           12.33988286374126,
-          1386.4944534864837
+          1391.8806425683108
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 1.7000000000000008,
+        "firedAt": 2.25,
         "portError": 0
       },
       {
@@ -419,13 +419,13 @@
           1393.351111111111
         ],
         "end": [
-          2089.0083200598756,
+          2080.883234296293,
           12.33988286374126,
-          1420.0635071042796
+          1419.8649754604048
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 1.850000000000001,
+        "firedAt": 2.3999999999999995,
         "portError": 0
       },
       {
@@ -443,13 +443,13 @@
           1393.351111111111
         ],
         "end": [
-          2059.8651494848427,
+          2066.9186542373254,
           12.33988286374126,
-          1387.1540375723255
+          1378.1834678123273
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.000000000000001,
+        "firedAt": 2.549999999999999,
         "portError": 0
       },
       {
@@ -467,13 +467,13 @@
           1402.951111111111
         ],
         "end": [
-          2123.918162948127,
+          2123.3974938647702,
           12.33988286374126,
-          1393.5010548221346
+          1409.0576291132327
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.1500000000000004,
+        "firedAt": 2.6999999999999984,
         "portError": 0
       },
       {
@@ -491,13 +491,13 @@
           1402.951111111111
         ],
         "end": [
-          2054.988680089002,
+          2046.7411274053497,
           12.33988286374126,
-          1427.2995720679378
+          1413.230740240462
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.3,
+        "firedAt": 2.849999999999998,
         "portError": 0
       },
       {
@@ -515,13 +515,13 @@
           1406.648888888889
         ],
         "end": [
-          2087.483390160946,
+          2101.44495105989,
           12.33988286374126,
-          1363.857247502186
+          1367.532530138328
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.499999999999999,
+        "firedAt": 3.049999999999997,
         "portError": 0
       },
       {
@@ -539,17 +539,17 @@
           1406.648888888889
         ],
         "end": [
-          2118.1913747888816,
+          2105.7106566695684,
           12.33988286374126,
-          1425.270458982262
+          1436.0625718708238
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.6499999999999986,
+        "firedAt": 3.1999999999999966,
         "portError": 0
       }
     ],
-    "hp": 9913.830334037004,
+    "hp": 9913.52962154294,
     "initialHp": 10000,
     "active": false,
     "cool": 4.000000000000009,

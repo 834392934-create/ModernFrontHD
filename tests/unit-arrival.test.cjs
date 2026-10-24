@@ -38,8 +38,8 @@ if(process.env.UNIT_BOUNDS_REPORT){
 if(!process.env.UNIT_BOUNDS_ONLY){
  for(const kind of ['tank','destroyer','submarine','fighter','orbital'])test(kind+': later command avoids an occupied actual-model berth and settles',()=>{
   const g=arena(kind),parked=g.spawn(0,kind,3000,1800),incoming=g.spawn(0,kind,2400,1800);parked.angle=.7;
-  g.command([incoming.id],3000,1800);advance(g,70);assert.equal(incoming.order,null,'second batch must finish');assertSeparated(g,[parked,incoming]);assert.deepEqual([parked.x,parked.y,parked.angle],[3000,1800,.7]);
-  const position=[incoming.x,incoming.y,incoming.angle];advance(g,3);assert.deepEqual([incoming.x,incoming.y,incoming.angle],position,'arrival remains still');
+  g.command([incoming.id],3000,1800);advance(g,70);assert.equal(incoming.order,null,'second batch must finish');assertSeparated(g,[parked,incoming]);if(WarAircraftFlight.fixed(parked))assert.deepEqual(parked.flight.anchor,{x:3000,y:1800});else assert.deepEqual([parked.x,parked.y,parked.angle],[3000,1800,.7]);
+  const position=[incoming.x,incoming.y,incoming.angle];advance(g,3);if(WarAircraftFlight.fixed(incoming)){assert.notDeepEqual([incoming.x,incoming.y,incoming.angle],position,'fixed wing continues circling');assert.equal(incoming.flight.phase,'loiter');assertSeparated(g,[parked,incoming]);}else assert.deepEqual([incoming.x,incoming.y,incoming.angle],position,'arrival remains still');
  });
  for(const kind of ['tank','destroyer','submarine','fighter','orbital'])test(kind+': overlapping batches reserve different destinations while still travelling',()=>{
   const g=arena(kind),first=Array.from({length:3},(_,i)=>g.spawn(0,kind,1800,900+i*450)),second=Array.from({length:3},(_,i)=>g.spawn(0,kind,1200,1100+i*450));
@@ -49,11 +49,11 @@ if(!process.env.UNIT_BOUNDS_ONLY){
  for(const kind of Object.keys(U))test(kind+': short group move completes with actual model separation',()=>{
   const g=arena(kind),units=Array.from({length:3},(_,i)=>g.spawn(0,kind,1800,1200+i*500));g.command(units.map(e=>e.id),2500,1700);advance(g,65);
   assert.ok(units.every(e=>!e.order),kind+' all three finish');assertSeparated(g,units);
-  const poses=units.map(e=>[e.x,e.y,e.angle]);advance(g,2);assert.deepEqual(units.map(e=>[e.x,e.y,e.angle]),poses,'completed group remains still');
+  const poses=units.map(e=>[e.x,e.y,e.angle]);advance(g,2);if(WarAircraftFlight.fixed(units[0])){assert.notDeepEqual(units.map(e=>[e.x,e.y,e.angle]),poses,'fixed wing circles after arrival');assert.ok(units.every(e=>e.flight.phase==='loiter'&&e.flightSpeed>0));assertSeparated(g,units);}else assert.deepEqual(units.map(e=>[e.x,e.y,e.angle]),poses,'completed group remains still');
  });
  test('separated flight height layers can share a horizontal berth',()=>{
   const g=arena('fighter'),lower=g.spawn(0,'fighter',3000,1800),upper=g.spawn(0,'fighter',2400,1800);lower.altitude=100;upper.altitude=600;
-  g.command([upper.id],3000,1800);advance(g,30);assert.equal(upper.order,null);assert.ok(Math.hypot(upper.x-lower.x,upper.y-lower.y)<8,'independent flight layers do not unnecessarily reserve each other');assertSeparated(g,[lower,upper]);
+  g.command([upper.id],3000,1800);advance(g,30);assert.equal(upper.order,null);assert.deepEqual(upper.flight.anchor,{x:3000,y:1800},'independent flight layers may circle the same horizontal point');assert.ok(upper.altitude>=590);assert.ok(lower.altitude<200);assertSeparated(g,[lower,upper]);
  });
  test('idle directly controlled player is not reassigned or pushed by arrival slots',()=>{
   const g=arena('tank'),player=g.spawn(0,'tank',3000,1800),incoming=g.spawn(0,'tank',2400,1800);g.beginDirectControl(player.id);g.teams[0].aiClock=1e9;

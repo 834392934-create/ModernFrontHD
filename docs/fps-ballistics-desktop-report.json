@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-20T16:42:47.691Z",
+  "recordedAt": "2026-10-24T09:26:13.303Z",
   "environment": "desktop",
   "scope": "Controlled clear geometry: original terrain retained, decorative world obstacles removed; no combat/AI/asset-fidelity claim",
   "checks": [
@@ -19,9 +19,9 @@
           "x": 3077.964,
           "y": 2112.952,
           "sourceHeight": 7.475999999999999,
-          "tx": 3537.373903242434,
-          "ty": 2118.0415135322473,
-          "targetHeight": 30.205664642979254,
+          "tx": 3528.626108524482,
+          "ty": 2114.383741300038,
+          "targetHeight": 30.53304557908291,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -70,12 +70,12 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 0.05,
-        "at": 2.799999999999998,
+        "at": 1.3500000000000005,
         "projected": false
       },
-      "actualDistance": 460,
+      "actualDistance": 451.25382357794837,
       "expectedUnclippedDistance": 15994.144807813747,
-      "angleRadians": 0.011146513343505934,
+      "angleRadians": 0.0033756064968200428,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -87,9 +87,9 @@
           "x": 3077.964,
           "y": 2112.952,
           "sourceHeight": 7.475999999999999,
-          "tx": 3534.1354818909895,
-          "ty": 2111.5012615178534,
-          "targetHeight": 66.68304744567871,
+          "tx": 3534.1582777915005,
+          "ty": 2109.691946133534,
+          "targetHeight": 66.43490907300568,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -138,12 +138,12 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 0.13,
-        "at": 3.049999999999997,
+        "at": 1.6000000000000008,
         "projected": false
       },
-      "actualDistance": 459.99999999999983,
+      "actualDistance": 460,
       "expectedUnclippedDistance": 15994.348974310693,
-      "angleRadians": 0.0032853593036878395,
+      "angleRadians": 0.0072176778333779895,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -155,8 +155,8 @@
           "x": 3077.964,
           "y": 2112.952,
           "sourceHeight": 7.475999999999999,
-          "tx": 3122.9532690076053,
-          "ty": 2111.12902332309,
+          "tx": 3122.216326628721,
+          "ty": 2111.6400992140716,
           "targetHeight": -0.8000000119209272,
           "space": false,
           "weaponFx": "projectile",
@@ -206,12 +206,12 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": -0.2,
-        "at": 3.2999999999999963,
+        "at": 1.800000000000001,
         "projected": false
       },
-      "actualDistance": 45.78045157051808,
+      "actualDistance": 45.0386686295728,
       "expectedUnclippedDistance": 45.61465019978953,
-      "angleRadians": 0.018966840809838802,
+      "angleRadians": 0.008601565689867226,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -223,9 +223,9 @@
           "x": 3077.964,
           "y": 2112.952,
           "sourceHeight": 7.475999999999999,
-          "tx": 3242.8613139497174,
-          "ty": 2117.0193002478013,
-          "targetHeight": 436.27949642966234,
+          "tx": 3247.893465867724,
+          "ty": 2113.17662860571,
+          "targetHeight": 434.9381926812937,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -274,12 +274,12 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 1.2,
-        "at": 3.5499999999999954,
+        "at": 2.0500000000000007,
         "projected": false
       },
-      "actualDistance": 459.4345498865327,
+      "actualDistance": 460,
       "expectedUnclippedDistance": 15999.726611007123,
-      "angleRadians": 0.009498327894810869,
+      "angleRadians": 0.007991837848793364,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -291,9 +291,9 @@
           "x": 3066.036,
           "y": 2111.048,
           "sourceHeight": 7.475999999999999,
-          "tx": 2607.8394238747387,
-          "ty": 2102.3017481409597,
-          "targetHeight": 30.53304557908291,
+          "tx": 2606.693760430793,
+          "ty": 2102.4521617961123,
+          "targetHeight": 30.515498977149768,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -342,12 +342,12 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 0.05,
-        "at": 3.7999999999999945,
+        "at": 2.3,
         "projected": false
       },
-      "actualDistance": 458.8597025729434,
+      "actualDistance": 460.0000000000001,
       "expectedUnclippedDistance": 15994.144807813747,
-      "angleRadians": 0.019121985698814365,
+      "angleRadians": 0.01874723737574529,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -359,9 +359,9 @@
           "x": 3066.036,
           "y": 2111.048,
           "sourceHeight": 7.475999999999999,
-          "tx": 2609.9563456224414,
-          "ty": 2104.8497264521393,
-          "targetHeight": 67.0824616285228,
+          "tx": 2614.3920870326515,
+          "ty": 2115.812855433426,
+          "targetHeight": 67.18698487440086,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -410,12 +410,12 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 0.13,
-        "at": 4.049999999999994,
+        "at": 2.499999999999999,
         "projected": false
       },
-      "actualDistance": 460,
+      "actualDistance": 455.5988692725547,
       "expectedUnclippedDistance": 15994.348974310693,
-      "angleRadians": 0.013536180629066981,
+      "angleRadians": 0.010476614108754142,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -427,8 +427,8 @@
           "x": 3066.036,
           "y": 2111.048,
           "sourceHeight": 7.475999999999999,
-          "tx": 3021.1304118188814,
-          "ty": 2111.393894344451,
+          "tx": 3021.878757183104,
+          "ty": 2112.1243392436036,
           "targetHeight": -0.8000000119209272,
           "space": false,
           "weaponFx": "projectile",
@@ -478,12 +478,12 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": -0.2,
-        "at": 4.299999999999993,
+        "at": 2.7499999999999982,
         "projected": false
       },
-      "actualDistance": 45.66315439155582,
+      "actualDistance": 44.93898948079449,
       "expectedUnclippedDistance": 45.61465019978953,
-      "angleRadians": 0.013299023233890707,
+      "angleRadians": 0.004155131199425542,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -495,9 +495,9 @@
           "x": 3066.036,
           "y": 2111.048,
           "sourceHeight": 7.475999999999999,
-          "tx": 2894.9054278799326,
-          "ty": 2116.4117755753014,
-          "targetHeight": 434.42512717727413,
+          "tx": 2897.456070568328,
+          "ty": 2102.886378908623,
+          "targetHeight": 435.394444722792,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -546,12 +546,12 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 1.2,
-        "at": 4.549999999999992,
+        "at": 2.9999999999999973,
         "projected": false
       },
       "actualDistance": 460,
       "expectedUnclippedDistance": 15999.726611007123,
-      "angleRadians": 0.015857914463475693,
+      "angleRadians": 0.01845970540185848,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -563,8 +563,8 @@
           "x": 3068.455980812693,
           "y": 2107.109649501314,
           "sourceHeight": 7.475999999999999,
-          "tx": 2744.4479339343548,
-          "ty": 1787.1599400816856,
+          "tx": 2746.7312042434955,
+          "ty": 1786.7800207527935,
           "targetHeight": 30.533045579087442,
           "space": false,
           "weaponFx": "projectile",
@@ -614,12 +614,12 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 0.05,
-        "at": 4.799999999999991,
+        "at": 3.1999999999999966,
         "projected": false
       },
-      "actualDistance": 455.9393143286242,
+      "actualDistance": 454.5872086448331,
       "expectedUnclippedDistance": 15994.14480781375,
-      "angleRadians": 0.006250584899924395,
+      "angleRadians": 0.0021936219036378024,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -631,8 +631,8 @@
           "x": 3068.455980812693,
           "y": 2107.109649501314,
           "sourceHeight": 7.475999999999999,
-          "tx": 2750.666867403076,
-          "ty": 1787.7465365674668,
+          "tx": 2743.2550559263727,
+          "ty": 1787.9878965528246,
           "targetHeight": 67.18698487440594,
           "space": false,
           "weaponFx": "projectile",
@@ -682,12 +682,12 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 0.13,
-        "at": 4.99999999999999,
+        "at": 3.4499999999999957,
         "projected": false
       },
-      "actualDistance": 454.4756541544761,
+      "actualDistance": 459.52120350045453,
       "expectedUnclippedDistance": 15994.348974310691,
-      "angleRadians": 0.0029709411579275655,
+      "angleRadians": 0.009296273072843584,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -699,8 +699,8 @@
           "x": 3068.455980812693,
           "y": 2107.109649501314,
           "sourceHeight": 7.475999999999999,
-          "tx": 3035.380136157519,
-          "ty": 2075.6666198771845,
+          "tx": 3036.26582503767,
+          "ty": 2076.2476901928944,
           "targetHeight": -0.800000011920929,
           "space": false,
           "weaponFx": "projectile",
@@ -750,12 +750,12 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": -0.2,
-        "at": 5.249999999999989,
+        "at": 3.699999999999995,
         "projected": false
       },
-      "actualDistance": 46.380683347643746,
+      "actualDistance": 45.35591292623378,
       "expectedUnclippedDistance": 45.6146501997996,
-      "angleRadians": 0.005036905891361105,
+      "angleRadians": 0.0010646113355250108,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -767,9 +767,9 @@
           "x": 3068.455980812693,
           "y": 2107.109649501314,
           "sourceHeight": 7.475999999999999,
-          "tx": 2949.5441968182695,
-          "ty": 1981.5072998927717,
-          "targetHeight": 433.7201054138779,
+          "tx": 2949.647810230635,
+          "ty": 1992.4537918093115,
+          "targetHeight": 436.27949642968775,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -818,12 +818,12 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 1.2,
-        "at": 5.4999999999999885,
+        "at": 3.899999999999994,
         "projected": false
       },
-      "actualDistance": 459.9999999999999,
+      "actualDistance": 459.49296583350355,
       "expectedUnclippedDistance": 15999.726611007127,
-      "angleRadians": 0.018177798068306772,
+      "angleRadians": 0.006965221121109732,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -835,9 +835,9 @@
           "x": 125.964,
           "y": 120.952,
           "sourceHeight": 7.475999999999999,
-          "tx": 585.3778613895092,
-          "ty": 125.79695032440459,
-          "targetHeight": 30.179092730615864,
+          "tx": 585.3307722045554,
+          "ty": 128.1706952797344,
+          "targetHeight": 30.499010941804336,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -886,12 +886,12 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 0.05,
-        "at": 5.749999999999988,
+        "at": 4.149999999999993,
         "projected": false
       },
-      "actualDistance": 460.00000000000006,
+      "actualDistance": 459.99999999999994,
       "expectedUnclippedDistance": 15994.14480781375,
-      "angleRadians": 0.010619998568319943,
+      "angleRadians": 0.015753128140030454,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -903,9 +903,9 @@
           "x": 125.964,
           "y": 120.952,
           "sourceHeight": 7.475999999999999,
-          "tx": 577.832550226115,
-          "ty": 124.12156519345598,
-          "targetHeight": 67.18698487440086,
+          "tx": 582.1302324751028,
+          "ty": 120.29534537631082,
+          "targetHeight": 66.73759932178322,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -954,12 +954,12 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 0.13,
-        "at": 5.949999999999987,
+        "at": 4.399999999999992,
         "projected": false
       },
-      "actualDistance": 455.80767275424137,
+      "actualDistance": 460,
       "expectedUnclippedDistance": 15994.348974310693,
-      "angleRadians": 0.007116479343204961,
+      "angleRadians": 0.0016857487287501715,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -971,8 +971,8 @@
           "x": 125.964,
           "y": 120.952,
           "sourceHeight": 7.475999999999999,
-          "tx": 575.8392419697195,
-          "ty": 124.47022848588419,
+          "tx": 574.8950824688399,
+          "ty": 115.19335913580949,
           "targetHeight": -83.53178040001067,
           "space": false,
           "weaponFx": "projectile",
@@ -1022,12 +1022,12 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": -0.2,
-        "at": 6.149999999999986,
+        "at": 4.599999999999992,
         "projected": false
       },
-      "actualDistance": 459.0016637903714,
+      "actualDistance": 458.09900113903717,
       "expectedUnclippedDistance": 947.5998603740244,
-      "angleRadians": 0.008681081824177213,
+      "angleRadians": 0.01159787082081996,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -1039,8 +1039,8 @@
           "x": 125.964,
           "y": 120.952,
           "sourceHeight": 7.475999999999999,
-          "tx": 292.2297916479355,
-          "ty": 121.36188892555218,
+          "tx": 286.108787904555,
+          "ty": 118.94814982863339,
           "targetHeight": 436.2794964296756,
           "space": false,
           "weaponFx": "projectile",
@@ -1090,12 +1090,12 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 1.2,
-        "at": 6.349999999999985,
+        "at": 4.849999999999991,
         "projected": false
       },
-      "actualDistance": 459.9096868207505,
+      "actualDistance": 457.7366131945521,
       "expectedUnclippedDistance": 15999.726611007127,
-      "angleRadians": 0.0010774922879779598,
+      "angleRadians": 0.01367502601495647,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -1107,9 +1107,9 @@
           "x": 114.036,
           "y": 119.048,
           "sourceHeight": 7.475999999999999,
-          "tx": -345.3414876606043,
-          "ty": 112.61339744254705,
-          "targetHeight": 30.517695262262297,
+          "tx": -345.39689343240195,
+          "ty": 121.34679424442834,
+          "targetHeight": 30.194538186974178,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -1158,12 +1158,12 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 0.05,
-        "at": 6.5999999999999845,
+        "at": 5.09999999999999,
         "projected": false
       },
       "actualDistance": 460,
       "expectedUnclippedDistance": 15994.14480781375,
-      "angleRadians": 0.014048273352914968,
+      "angleRadians": 0.004992453803861421,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -1175,9 +1175,9 @@
           "x": 114.036,
           "y": 119.048,
           "sourceHeight": 7.475999999999999,
-          "tx": -342.1060882052881,
-          "ty": 116.21849985979212,
-          "targetHeight": 66.85940927124119,
+          "tx": -336.10399861719554,
+          "ty": 120.28404585221539,
+          "targetHeight": 67.18698487440086,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -1226,12 +1226,12 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 0.13,
-        "at": 6.849999999999984,
+        "at": 5.349999999999989,
         "projected": false
       },
-      "actualDistance": 460,
+      "actualDistance": 454.08473645246926,
       "expectedUnclippedDistance": 15994.348974310693,
-      "angleRadians": 0.006251748436730651,
+      "angleRadians": 0.0031622470086979967,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -1243,9 +1243,9 @@
           "x": 114.036,
           "y": 119.048,
           "sourceHeight": 7.475999999999999,
-          "tx": -336.9834145929735,
-          "ty": 124.06456686991737,
-          "targetHeight": -82.83635639186436,
+          "tx": -328.3026523324773,
+          "ty": 118.7164774211229,
+          "targetHeight": -83.8893756368299,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -1294,12 +1294,12 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": -0.2,
-        "at": 7.049999999999983,
+        "at": 5.599999999999988,
         "projected": false
       },
-      "actualDistance": 460,
+      "actualDistance": 451.6760178709863,
       "expectedUnclippedDistance": 15993.752824484667,
-      "angleRadians": 0.011092290783404497,
+      "angleRadians": 0.0038196158273705724,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -1311,9 +1311,9 @@
           "x": 114.036,
           "y": 119.048,
           "sourceHeight": 7.475999999999999,
-          "tx": -47.22301579343017,
-          "ty": 112.22800827544825,
-          "targetHeight": 436.2794964296756,
+          "tx": -53.01257648431735,
+          "ty": 118.71119094845139,
+          "targetHeight": 436.07214983598016,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -1362,12 +1362,12 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 1.2,
-        "at": 7.299999999999982,
+        "at": 5.849999999999987,
         "projected": false
       },
-      "actualDistance": 458.17400735103206,
+      "actualDistance": 460,
       "expectedUnclippedDistance": 15999.726611007127,
-      "angleRadians": 0.018378653351083973,
+      "angleRadians": 0.0014733185894973955,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -1379,9 +1379,9 @@
           "x": 116.45598081269303,
           "y": 115.10964950131384,
           "sourceHeight": 7.475999999999999,
-          "tx": -207.92296068277676,
-          "ty": -210.2458400988859,
-          "targetHeight": 30.325676174792235,
+          "tx": -202.21968024228738,
+          "ty": -213.67433699671864,
+          "targetHeight": 30.533045579081435,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -1430,12 +1430,12 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 0.05,
-        "at": 7.549999999999981,
+        "at": 6.099999999999986,
         "projected": false
       },
-      "actualDistance": 460,
+      "actualDistance": 458.45906477809234,
       "expectedUnclippedDistance": 15994.144807813751,
-      "angleRadians": 0.0016246054313218733,
+      "angleRadians": 0.015651759164816644,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -1447,9 +1447,9 @@
           "x": 116.45598081269303,
           "y": 115.10964950131384,
           "sourceHeight": 7.475999999999999,
-          "tx": -206.89641091762826,
-          "ty": -206.68482945977863,
-          "targetHeight": 66.56528898235176,
+          "tx": -206.42199421783522,
+          "ty": -207.11020410331716,
+          "targetHeight": 66.84079750825153,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -1498,12 +1498,12 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 0.13,
-        "at": 7.79999999999998,
+        "at": 6.349999999999985,
         "projected": false
       },
       "actualDistance": 460,
       "expectedUnclippedDistance": 15994.348974310691,
-      "angleRadians": 0.002703721888381561,
+      "angleRadians": 0.0012175755295367938,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -1515,9 +1515,9 @@
           "x": 116.45598081269303,
           "y": 115.10964950131384,
           "sourceHeight": 7.475999999999999,
-          "tx": -204.35363500662442,
-          "ty": -196.33616109922684,
-          "targetHeight": -83.88937563682909,
+          "tx": -207.725687731888,
+          "ty": -198.4400431641752,
+          "targetHeight": -83.0382862150986,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -1566,12 +1566,12 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": -0.2,
-        "at": 7.99999999999998,
+        "at": 6.5999999999999845,
         "projected": false
       },
-      "actualDistance": 456.36053116809387,
+      "actualDistance": 460,
       "expectedUnclippedDistance": 15993.752824484667,
-      "angleRadians": 0.014542247009304675,
+      "angleRadians": 0.016390499217661867,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -1583,9 +1583,9 @@
           "x": 116.45598081269303,
           "y": 115.10964950131384,
           "sourceHeight": 7.475999999999999,
-          "tx": -8.692846426207211,
-          "ty": 0.7145987719333959,
-          "targetHeight": 435.08743975500744,
+          "tx": -0.1393417286871852,
+          "ty": -6.972460145894985,
+          "targetHeight": 435.3795980984016,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
@@ -1634,12 +1634,12 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 1.2,
-        "at": 8.199999999999982,
+        "at": 6.799999999999984,
         "projected": false
       },
       "actualDistance": 460,
       "expectedUnclippedDistance": 15999.726611007127,
-      "angleRadians": 0.017800842027587693,
+      "angleRadians": 0.009999583084658594,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -1702,7 +1702,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 0.05,
-        "at": 8.649999999999988,
+        "at": 7.249999999999982,
         "projected": false
       },
       "actualDistance": 125.00000000000009,
@@ -1770,7 +1770,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 0.13,
-        "at": 9.600000000000001,
+        "at": 8.199999999999982,
         "projected": false
       },
       "actualDistance": 125.00000000000009,
@@ -1838,7 +1838,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": -0.2,
-        "at": 10.550000000000015,
+        "at": 9.149999999999995,
         "projected": false
       },
       "actualDistance": 45.61465019978953,
@@ -1906,7 +1906,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 1.2,
-        "at": 11.500000000000028,
+        "at": 10.100000000000009,
         "projected": false
       },
       "actualDistance": 124.99999999999997,
@@ -1974,7 +1974,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 0.05,
-        "at": 12.450000000000042,
+        "at": 11.050000000000022,
         "projected": false
       },
       "actualDistance": 125.00000000000009,
@@ -2042,7 +2042,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 0.13,
-        "at": 13.400000000000055,
+        "at": 12.000000000000036,
         "projected": false
       },
       "actualDistance": 125.00000000000009,
@@ -2110,7 +2110,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": -0.2,
-        "at": 14.350000000000069,
+        "at": 12.950000000000049,
         "projected": false
       },
       "actualDistance": 45.61465019978953,
@@ -2178,7 +2178,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 1.2,
-        "at": 15.300000000000082,
+        "at": 13.900000000000063,
         "projected": false
       },
       "actualDistance": 124.99999999999997,
@@ -2246,7 +2246,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 0.05,
-        "at": 16.250000000000096,
+        "at": 14.850000000000076,
         "projected": false
       },
       "actualDistance": 124.99999999999993,
@@ -2314,7 +2314,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 0.13,
-        "at": 17.20000000000011,
+        "at": 15.80000000000009,
         "projected": false
       },
       "actualDistance": 125.00000000000011,
@@ -2382,7 +2382,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": -0.2,
-        "at": 18.150000000000123,
+        "at": 16.750000000000103,
         "projected": false
       },
       "actualDistance": 45.6146501997996,
@@ -2450,7 +2450,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 1.2,
-        "at": 19.100000000000136,
+        "at": 17.700000000000117,
         "projected": false
       },
       "actualDistance": 125.00000000000006,
@@ -2518,7 +2518,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 0.05,
-        "at": 20.05000000000015,
+        "at": 18.65000000000013,
         "projected": false
       },
       "actualDistance": 125,
@@ -2586,7 +2586,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 0.13,
-        "at": 21.000000000000163,
+        "at": 19.600000000000144,
         "projected": false
       },
       "actualDistance": 125.00000000000001,
@@ -2654,7 +2654,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": -0.2,
-        "at": 21.950000000000177,
+        "at": 20.550000000000157,
         "projected": false
       },
       "actualDistance": 125,
@@ -2722,7 +2722,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 1.2,
-        "at": 22.90000000000019,
+        "at": 21.50000000000017,
         "projected": false
       },
       "actualDistance": 125,
@@ -2790,7 +2790,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 0.05,
-        "at": 23.850000000000204,
+        "at": 22.450000000000184,
         "projected": false
       },
       "actualDistance": 125,
@@ -2858,7 +2858,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 0.13,
-        "at": 24.800000000000217,
+        "at": 23.400000000000198,
         "projected": false
       },
       "actualDistance": 125,
@@ -2926,7 +2926,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": -0.2,
-        "at": 25.75000000000023,
+        "at": 24.35000000000021,
         "projected": false
       },
       "actualDistance": 125,
@@ -2994,7 +2994,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 1.2,
-        "at": 26.700000000000244,
+        "at": 25.300000000000225,
         "projected": false
       },
       "actualDistance": 125,
@@ -3062,7 +3062,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 0.05,
-        "at": 27.650000000000258,
+        "at": 26.250000000000238,
         "projected": false
       },
       "actualDistance": 125.00000000000001,
@@ -3130,7 +3130,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 0.13,
-        "at": 28.60000000000027,
+        "at": 27.20000000000025,
         "projected": false
       },
       "actualDistance": 124.99999999999999,
@@ -3198,7 +3198,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": -0.2,
-        "at": 29.550000000000285,
+        "at": 28.150000000000265,
         "projected": false
       },
       "actualDistance": 124.99999999999999,
@@ -3266,7 +3266,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 1.2,
-        "at": 30.5000000000003,
+        "at": 29.10000000000028,
         "projected": false
       },
       "actualDistance": 125,
@@ -3329,18 +3329,18 @@
       ]
     }
   ],
-  "testProfile": "D:\\现代战线HD\\.tmp\\profile-v3101-final-fps-ballistics-browser",
-  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.10.1\\ModernFrontHD.exe",
-  "packageVersion": "3.10.1",
+  "testProfile": "D:\\现代战线HD\\.tmp\\profile-v3110-fps-ballistics-browser",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.11.0\\ModernFrontHD.exe",
+  "packageVersion": "3.11.0",
   "sourceHashes": {
-    "src/direct-control.js": "03b2082093ae8c6d808c604e31a994cbc028efee2d29bfaf745afe16b086bca9",
-    "src/sim.js": "580a4a9f7ac9c1cfe9a5fcf1ab00a99a1a9ff375ecf9e26039f85c9b7e5d49bf",
+    "src/direct-control.js": "60f451ccbe68d127f7e6dffea80a9ef7a4be255063258f283f98d7ea4740b562",
+    "src/sim.js": "2c3ff65f24438db51dc7ca66d036d48ee5f69cf1871e9ea545ff85a2e2f74937",
     "src/operator-sim.js": "8f87ca0e28046d182f9745ea5492cc765601114e137f39ad3114ee34d6716135",
     "style.css": "150c5842cb6fac70871c3b6c3bad4317dfb8f50390dbfac165ad1852c8cfb8a5"
   },
-  "appVersion": "3.10.1",
+  "appVersion": "3.11.0",
   "runtime": {
-    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.10.1 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.11.0 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36",
     "title": "现代战线 HD · 五强遭遇战"
   },
   "imported": {
