@@ -38,6 +38,22 @@ test('left clicks refresh camera ray before submit and damage the observed targe
 test('camera-observed wrong-domain target remains available and muzzle occlusion is separate',()=>{
  const f=fixture('tank',0),t=f.g.spawn(1,'fighter',f.actor.x+100,f.actor.y);t.altitude=100;const p=new THREE.Vector3(t.x,100,t.y);f.d.cast=()=>({entity:t,point:p});let a=f.d.aim();assert.equal(a.observedTarget,t);assert.equal(a.target,null);assert.equal(a.occluded,false);let calls=0;f.d.cast=()=>++calls===1?{entity:t,point:p}:{point:new THREE.Vector3(f.actor.x+10,20,f.actor.y)};a=f.d.aim();assert.equal(a.observedTarget,t);assert.equal(a.target,null);assert.equal(a.occluded,true);
 });
+test('carrier mouse input cannot reinterpret friendly, incompatible or occluded contacts as free sorties',()=>{
+ for(const mode of ['friendly','domain','occluded']){
+  const f=fixture('carrier',0);if(mode==='domain')f.g.teams[0].faction='kor';
+  f.g.setVehicleWeapon(f.actor.id,'carrier:air_wing');f.d.pitch=0;
+  const target=f.g.spawn(mode==='friendly'?0:1,mode==='domain'?'tank':'destroyer',f.actor.x+120,f.actor.y);target.disabled=1e9;
+  const mesh=new THREE.Mesh(new THREE.BoxGeometry(40,40,40),new THREE.MeshBasicMaterial());mesh.position.set(target.x,20,target.y);mesh.updateMatrixWorld();f.r.objects.set(target.id,mesh);
+  let cover;
+  if(mode==='occluded'){cover=new THREE.Mesh(new THREE.BoxGeometry(20,19,40),new THREE.MeshBasicMaterial());cover.position.set(f.actor.x+60,9.5,f.actor.y);f.r.world.add(cover);f.r.world.updateMatrixWorld(true);}
+  try{
+   f.emit('mousedown',{button:0});assert.equal(f.d.aimResult.observedTarget?.id,target.id,mode+' is a real camera-observed entity');
+   if(mode==='occluded')assert.equal(f.d.aimResult.occluded,true,'muzzle cover does not hide the camera contact');
+   assert.equal(f.d.orbitTargetStatus().canFire,false,mode+' HUD refuses the task');f.g.step(.05);
+   assert.equal(f.actor.airWing?.mission??null,null,mode+' must not become a different ground mission');assert.ok(f.actor.cool<=0,mode+' must not charge mission cooldown');
+  }finally{f.emit('mouseup',{button:0});mesh.geometry.dispose();mesh.material.dispose();cover?.geometry.dispose();cover?.material.dispose();}
+ }
+});
 test('a click after controlled-entity removal cannot dereference a stale camera target',()=>{const f=fixture('tank',0);f.g.entities=f.g.entities.filter(e=>e.id!==f.actor.id);f.actor.hp=0;assert.doesNotThrow(()=>f.emit('mousedown',{button:0}));});
 test('paused unlocked canvas can request pointer lock without starting flight, fire or optics',()=>{
  for(const button of [0,2]){const f=fixture('fighter',130);f.paused(true);f.document.pointerLockElement=null;f.d.clearInput();let requests=0;f.r.canvas.requestPointerLock=()=>{requests++;};f.emit('mousedown',{button});assert.equal(requests,1);assert.equal(f.d.flightReady,false);assert.equal(f.d.fire,false);assert.equal(f.d.ads,false);assert.equal(f.d.opticalActive(),false);assert.equal(f.g.directControl.input.fire,false);f.document.pointerLockElement=f.r.canvas;f.emit('mousedown',{button});assert.equal(f.d.fire,false);assert.equal(f.d.ads,false);}

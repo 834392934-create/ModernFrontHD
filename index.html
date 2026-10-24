@@ -165,6 +165,7 @@
           <div id="selection-title">战区待命</div>
           <div id="selection-info">左键选择单位，按住拖动框选</div>
           <div id="selection-icons"></div>
+          <label id="vehicle-weapon-picker" hidden>载具武器 <select id="vehicle-weapon" aria-label="载具武器选择"></select></label>
           <div class="command-buttons">
             <button id="select-all">全军 <kbd>Q</kbd></button
             ><button id="attack-move">攻击移动 <kbd>A</kbd></button
@@ -213,6 +214,8 @@
   <script src="src/vehicle-motion.js"></script>
   <script src="src/aircraft-flight.js"></script>
   <script src="src/weapon-range-data.js"></script>
+  <script src="src/vehicle-weapons.js"></script>
+  <script src="src/carrier-operations.js"></script>
   <script src="src/weapon-salvos.js"></script>
   <script src="src/sim.js"></script>
   <script src="src/operator-sim.js"></script>
@@ -248,6 +251,7 @@
     <script src="src/models-imported-air.js"></script>
     <script src="assets/models/t90m-data.js"></script>
     <script src="src/models-imported-ground.js"></script>
+    <script src="src/model-unit-refinement.js"></script>
     <script src="src/underwater.js"></script>
     <script src="src/altitude-scene.js"></script>
   <script src="src/battle3d.js"></script>

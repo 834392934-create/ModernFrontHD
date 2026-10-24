@@ -1387,5 +1387,8 @@ body.direct-view #hud,body.direct-view #restore-hud{display:none!important}
 .optics-scoped .direct-shade{opacity:.28}
 .optics-scoped #direct-reticle:after{content:"";position:absolute;left:50%;top:50%;width:82px;height:82px;transform:translate(-50%,-50%);border:1px solid #b9d8cb66;border-radius:50%;pointer-events:none}
 #direct-orbit-ground[hidden]{display:none}
+#vehicle-weapon-picker{display:grid;gap:6px;margin:10px 0;color:#c1d2c8;font-size:12px}
+#vehicle-weapon-picker[hidden]{display:none}
+#vehicle-weapon{width:100%;min-width:0;max-width:100%;padding:8px;background:#172a2b;color:#e4ece5;border:1px solid #59786c;border-radius:3px}
 @media(max-width:850px){#direct-orbit-panel{right:18px;width:238px;padding:11px 12px;gap:8px}#direct-orbit-panel>small{font-size:9px;letter-spacing:.7px}}
 @media(max-height:650px){#direct-orbit-panel{top:auto;bottom:155px;width:260px;padding:10px 12px;gap:6px}#direct-orbit-panel>small{display:none}}

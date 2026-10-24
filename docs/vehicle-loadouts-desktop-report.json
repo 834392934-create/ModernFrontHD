@@ -1,0 +1,2070 @@
+{
+  "recordedAt": "2026-10-24T13:44:05.150Z",
+  "environment": "native Electron",
+  "scope": "Actual RTS weapon UI and native FPS inputs; controlled mesh aiming and cover fixtures; five projectile stations plus real carrier sorties. Balanced game distances, no claim of mouse-only acquisition, exact equipment fidelity or sustained performance.",
+  "rangeMode": "balanced",
+  "checks": [
+    "Imported GLB ready, original asset attribution and preserved materials",
+    "anti_ship: RTS dropdown / [ ] / RMB no fire / native LMB / real damage",
+    "land_attack: RTS dropdown / [ ] / RMB no fire / native LMB / real damage",
+    "sam: RTS dropdown / [ ] / RMB no fire / native LMB / real damage",
+    "torpedo: RTS dropdown / [ ] / RMB no fire / native LMB / real damage",
+    "naval_gun: RTS dropdown / [ ] / RMB no fire / native LMB / real damage",
+    "SAM against armor: actual LMB rejected with no damage or aircraft task",
+    "Korean escort helicopter mission against armor: actual LMB rejected with no damage or aircraft task",
+    "Visible enemy with flight-deck launch origin blocked: actual LMB rejected with no damage or aircraft task",
+    "Carrier: native LMB task / real paid deck launch and climb / child actual damage / J possession and W flight"
+  ],
+  "weapons": [
+    {
+      "id": 36,
+      "targetId": 37,
+      "kind": "destroyer",
+      "faction": "usa",
+      "targetKind": "destroyer",
+      "targetDomain": "naval",
+      "distance": 320,
+      "initialHP": 100000,
+      "initialMoney": 0,
+      "weapon": {
+        "id": "destroyer:anti_ship",
+        "name": "反舰导弹",
+        "family": "missile",
+        "targetDomains": [
+          "naval"
+        ],
+        "range": 650,
+        "damage": 155,
+        "reload": 4.5,
+        "meters": 120000,
+        "minRange": 65,
+        "minMeters": 1000,
+        "splash": 24,
+        "referenceId": "brahmos_baseline",
+        "stationId": "anti_ship",
+        "kind": "destroyer",
+        "faction": "usa",
+        "primary": true,
+        "rocket": true,
+        "beam": false,
+        "action": "fire",
+        "weaponFx": "missile",
+        "muzzleClass": "launcher",
+        "rangeSourceKey": null,
+        "rangeReference": {
+          "id": "inferred:usa:destroyer:anti_ship",
+          "weapon": "反舰导弹",
+          "platform": "destroyer",
+          "target": [
+            "naval"
+          ],
+          "status": "inferred",
+          "scope": "game-role-estimate",
+          "publishedKind": "estimate",
+          "publishedM": null,
+          "effectiveM": null,
+          "maxM": null,
+          "estimateM": 120000,
+          "minM": 1000,
+          "qualifier": "estimated",
+          "source": "brahmos",
+          "sourceUrl": "https://www.brahmos.com/page/brahmos-missile",
+          "referenceIds": [
+            "brahmos_baseline"
+          ],
+          "checked": "2026-10-24",
+          "note": "武器类别或家族参照；具体装弹和改型未逐一证实。伤害、装填、散布为游戏设定。"
+        },
+        "status": "inferred",
+        "parameterBasis": "伤害/装填/平衡射程为游戏参数；米制射程依单项证据限定。",
+        "rangeProfile": {
+          "range": 650,
+          "min": 65,
+          "reference": null
+        },
+        "uiValue": "destroyer:anti_ship",
+        "uiLabel": "反舰导弹 · 650 u"
+      },
+      "switchKeys": {
+        "right": "destroyer:land_attack",
+        "left": "destroyer:anti_ship"
+      },
+      "rmb": {
+        "aim": {
+          "point": [
+            2086.3456028053433,
+            15.834558871574183,
+            240.00000000000006
+          ],
+          "origin": [
+            1825.38,
+            9.452,
+            240
+          ],
+          "targetId": 37,
+          "observedTarget": 37,
+          "occluded": false,
+          "status": {
+            "armed": true,
+            "range": 650,
+            "minRange": 65,
+            "distance": 320,
+            "actualDistance": 320,
+            "inRange": true,
+            "rangeState": "in",
+            "domainAllowed": true,
+            "detected": true,
+            "canFire": true,
+            "reason": "ready",
+            "projected": false,
+            "ammo": null,
+            "reloading": false,
+            "aimValid": true,
+            "cooldown": 0,
+            "targetId": 37,
+            "text": "055 型 · 实际距离 320 u / 射程 650 u · 射程内 · 可射击"
+          }
+        },
+        "status": {
+          "armed": true,
+          "range": 650,
+          "minRange": 65,
+          "distance": 320,
+          "actualDistance": 320,
+          "inRange": true,
+          "rangeState": "in",
+          "domainAllowed": true,
+          "detected": true,
+          "canFire": true,
+          "reason": "ready",
+          "projected": false,
+          "ammo": null,
+          "reloading": false,
+          "aimValid": true,
+          "cooldown": 0,
+          "targetId": 37,
+          "text": "055 型 · 实际距离 320 u / 射程 650 u · 射程内 · 可射击"
+        },
+        "shotCount": 0,
+        "missionCount": 0
+      },
+      "shot": {
+        "sourceId": 36,
+        "sourceKind": "destroyer",
+        "carrierOriginId": null,
+        "targetId": 37,
+        "weaponId": "destroyer:anti_ship",
+        "weaponFamily": "missile",
+        "muzzleClass": "launcher",
+        "domains": [
+          "naval"
+        ],
+        "rocket": true,
+        "beam": false,
+        "damage": 155,
+        "time": 0.8500000000000002,
+        "ttl": 0.3729194882339949,
+        "from": [
+          1825.38,
+          9.452,
+          240
+        ],
+        "to": [
+          2086.3456028053433,
+          15.834558871574183,
+          240.00000000000006
+        ],
+        "anchor": [
+          1825.38,
+          9.452,
+          240
+        ],
+        "anchorSource": "approximate-licensed-burke-forward-launch-deck",
+        "anchorApproximate": true,
+        "direct": true,
+        "muzzleError": 0
+      },
+      "damage": 155,
+      "hpEvidence": [
+        {
+          "time": 0.25,
+          "hp": 100000
+        },
+        {
+          "time": 1.2000000000000004,
+          "hp": 99845
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "targetId": 42,
+      "kind": "destroyer",
+      "faction": "usa",
+      "targetKind": "tank",
+      "targetDomain": "ground",
+      "distance": 280.18565273760896,
+      "initialHP": 100000,
+      "initialMoney": 0,
+      "weapon": {
+        "id": "destroyer:land_attack",
+        "name": "Tomahawk 对陆巡航导弹",
+        "family": "missile",
+        "targetDomains": [
+          "ground",
+          "structure"
+        ],
+        "range": 820,
+        "damage": 160,
+        "reload": 5.2,
+        "meters": 300000,
+        "minRange": 100,
+        "minMeters": 1000,
+        "splash": 48,
+        "referenceId": "tomahawk_iv_v",
+        "rangeSourceKey": "tomahawk_iv_v",
+        "stationId": "land_attack",
+        "kind": "destroyer",
+        "faction": "usa",
+        "primary": false,
+        "rocket": true,
+        "beam": false,
+        "action": "fire",
+        "weaponFx": "missile",
+        "muzzleClass": "launcher",
+        "rangeReference": {
+          "id": "tomahawk_iv_v",
+          "platform": "美海军舰艇/潜艇",
+          "weapon": "Block IV/V TLAM-E",
+          "target": [
+            "ground",
+            "structure"
+          ],
+          "publishedM": 1600000,
+          "publishedKind": "published",
+          "minM": null,
+          "qualifier": "approximate",
+          "effectiveM": null,
+          "maxM": null,
+          "status": "public",
+          "scope": "munition-specific",
+          "source": "tomahawk",
+          "sourceUrl": "https://www.navy.mil/Resources/Fact-Files/Display-FactFiles/Article/2169229/tomahawk-cruise-missile/tomahawk-cruise-missile/",
+          "reliability": "官方公开口径；不是独立性能测试",
+          "checked": "2026-10-20",
+          "note": "采用官方约1600km口径；同页900海里/1000英里为近似值，不能混作精确换算或反舰性能。"
+        },
+        "status": "public",
+        "parameterBasis": "伤害/装填/平衡射程为游戏参数；米制射程依单项证据限定。",
+        "rangeProfile": {
+          "range": 820,
+          "min": 100,
+          "reference": null
+        },
+        "uiValue": "destroyer:land_attack",
+        "uiLabel": "Tomahawk 对陆巡航导弹 · 820 u"
+      },
+      "switchKeys": {
+        "right": "destroyer:sam",
+        "left": "destroyer:land_attack"
+      },
+      "rmb": {
+        "aim": {
+          "point": [
+            1982.9770866153187,
+            8.910000157356261,
+            482.4630769440052
+          ],
+          "origin": [
+            1825.38,
+            9.452,
+            240
+          ],
+          "targetId": 42,
+          "observedTarget": 42,
+          "occluded": false,
+          "status": {
+            "armed": true,
+            "range": 820,
+            "minRange": 100,
+            "distance": 280.18565273760896,
+            "actualDistance": 280.18565273760896,
+            "inRange": true,
+            "rangeState": "in",
+            "domainAllowed": true,
+            "detected": true,
+            "canFire": true,
+            "reason": "ready",
+            "projected": false,
+            "ammo": null,
+            "reloading": false,
+            "aimValid": true,
+            "cooldown": 0,
+            "targetId": 42,
+            "text": "ZTZ-99A · 实际距离 280 u / 射程 820 u · 射程内 · 可射击"
+          }
+        },
+        "status": {
+          "armed": true,
+          "range": 820,
+          "minRange": 100,
+          "distance": 280.18565273760896,
+          "actualDistance": 280.18565273760896,
+          "inRange": true,
+          "rangeState": "in",
+          "domainAllowed": true,
+          "detected": true,
+          "canFire": true,
+          "reason": "ready",
+          "projected": false,
+          "ammo": null,
+          "reloading": false,
+          "aimValid": true,
+          "cooldown": 0,
+          "targetId": 42,
+          "text": "ZTZ-99A · 实际距离 280 u / 射程 820 u · 射程内 · 可射击"
+        },
+        "shotCount": 0,
+        "missionCount": 0
+      },
+      "shot": {
+        "sourceId": 41,
+        "sourceKind": "destroyer",
+        "carrierOriginId": null,
+        "targetId": 42,
+        "weaponId": "destroyer:land_attack",
+        "weaponFamily": "missile",
+        "muzzleClass": "launcher",
+        "domains": [
+          "ground",
+          "structure"
+        ],
+        "rocket": true,
+        "beam": false,
+        "damage": 160,
+        "time": 1.850000000000001,
+        "ttl": 0.41311529041260914,
+        "from": [
+          1825.38,
+          9.452,
+          240
+        ],
+        "to": [
+          1982.9770866153187,
+          8.910000157356261,
+          482.4630769440052
+        ],
+        "anchor": [
+          1825.38,
+          9.452,
+          240
+        ],
+        "anchorSource": "approximate-licensed-burke-forward-launch-deck",
+        "anchorApproximate": true,
+        "direct": true,
+        "muzzleError": 0
+      },
+      "damage": 160,
+      "hpEvidence": [
+        {
+          "time": 1.2000000000000004,
+          "hp": 100000
+        },
+        {
+          "time": 2.25,
+          "hp": 99840
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "targetId": 47,
+      "kind": "destroyer",
+      "faction": "usa",
+      "targetKind": "fighter",
+      "targetDomain": "air",
+      "distance": 285.5240795449659,
+      "initialHP": 100000,
+      "initialMoney": 0,
+      "weapon": {
+        "id": "destroyer:sam",
+        "name": "Standard / ESSM 类防空导弹",
+        "family": "missile",
+        "targetDomains": [
+          "air"
+        ],
+        "range": 570,
+        "damage": 64,
+        "reload": 2.2,
+        "meters": 25000,
+        "minRange": 30,
+        "minMeters": 300,
+        "splash": 0,
+        "stationId": "sam",
+        "kind": "destroyer",
+        "faction": "usa",
+        "primary": false,
+        "rocket": true,
+        "beam": false,
+        "action": "fire",
+        "weaponFx": "missile",
+        "muzzleClass": "launcher",
+        "rangeSourceKey": null,
+        "rangeReference": {
+          "id": "inferred:usa:destroyer:sam",
+          "weapon": "Standard / ESSM 类防空导弹",
+          "platform": "destroyer",
+          "target": [
+            "air"
+          ],
+          "status": "inferred",
+          "scope": "game-role-estimate",
+          "publishedKind": "estimate",
+          "publishedM": null,
+          "effectiveM": null,
+          "maxM": null,
+          "estimateM": 25000,
+          "minM": 300,
+          "qualifier": "estimated",
+          "source": null,
+          "sourceUrl": null,
+          "referenceIds": [],
+          "checked": "2026-10-24",
+          "note": "武器类别或家族参照；具体装弹和改型未逐一证实。伤害、装填、散布为游戏设定。"
+        },
+        "status": "inferred",
+        "parameterBasis": "伤害/装填/平衡射程为游戏参数；米制射程依单项证据限定。",
+        "rangeProfile": {
+          "range": 570,
+          "min": 30,
+          "reference": null
+        },
+        "uiValue": "destroyer:sam",
+        "uiLabel": "Standard / ESSM 类防空导弹 · 570 u"
+      },
+      "switchKeys": {
+        "right": "destroyer:naval_gun",
+        "left": "destroyer:sam"
+      },
+      "rmb": {
+        "aim": {
+          "point": [
+            2047.8496310107357,
+            117.44836509983585,
+            240.00000000000006
+          ],
+          "origin": [
+            1825.38,
+            9.452,
+            240
+          ],
+          "targetId": 47,
+          "observedTarget": 47,
+          "occluded": false,
+          "status": {
+            "armed": true,
+            "range": 570,
+            "minRange": 30,
+            "distance": 285.5240795449659,
+            "actualDistance": 285.5240795449659,
+            "inRange": true,
+            "rangeState": "in",
+            "domainAllowed": true,
+            "detected": true,
+            "canFire": true,
+            "reason": "ready",
+            "projected": false,
+            "ammo": null,
+            "reloading": false,
+            "aimValid": true,
+            "cooldown": 0,
+            "targetId": 47,
+            "text": "J-20 · 实际距离 286 u / 射程 570 u · 射程内 · 可射击"
+          }
+        },
+        "status": {
+          "armed": true,
+          "range": 570,
+          "minRange": 30,
+          "distance": 285.5240795449659,
+          "actualDistance": 285.5240795449659,
+          "inRange": true,
+          "rangeState": "in",
+          "domainAllowed": true,
+          "detected": true,
+          "canFire": true,
+          "reason": "ready",
+          "projected": false,
+          "ammo": null,
+          "reloading": false,
+          "aimValid": true,
+          "cooldown": 0,
+          "targetId": 47,
+          "text": "J-20 · 实际距离 286 u / 射程 570 u · 射程内 · 可射击"
+        },
+        "shotCount": 0,
+        "missionCount": 0
+      },
+      "shot": {
+        "sourceId": 46,
+        "sourceKind": "destroyer",
+        "carrierOriginId": null,
+        "targetId": 47,
+        "weaponId": "destroyer:sam",
+        "weaponFamily": "missile",
+        "muzzleClass": "launcher",
+        "domains": [
+          "air"
+        ],
+        "rocket": true,
+        "beam": false,
+        "damage": 64,
+        "time": 2.8999999999999977,
+        "ttl": 0.3532818485053065,
+        "from": [
+          1825.38,
+          9.452,
+          240
+        ],
+        "to": [
+          2047.8496310107357,
+          117.44836509983585,
+          240.00000000000006
+        ],
+        "anchor": [
+          1825.38,
+          9.452,
+          240
+        ],
+        "anchorSource": "approximate-licensed-burke-forward-launch-deck",
+        "anchorApproximate": true,
+        "direct": true,
+        "muzzleError": 0
+      },
+      "damage": 64,
+      "hpEvidence": [
+        {
+          "time": 2.25,
+          "hp": 100000
+        },
+        {
+          "time": 3.2499999999999964,
+          "hp": 99936
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "targetId": 52,
+      "kind": "destroyer",
+      "faction": "usa",
+      "targetKind": "submarine",
+      "targetDomain": "underwater",
+      "distance": 227.26416347501862,
+      "initialHP": 100000,
+      "initialMoney": 0,
+      "weapon": {
+        "id": "destroyer:torpedo",
+        "name": "重型鱼雷",
+        "family": "torpedo",
+        "targetDomains": [
+          "naval",
+          "underwater"
+        ],
+        "range": 320,
+        "damage": 130,
+        "reload": 3.8,
+        "meters": 20000,
+        "minRange": 25,
+        "minMeters": 200,
+        "splash": 0,
+        "stationId": "torpedo",
+        "kind": "destroyer",
+        "faction": "usa",
+        "primary": false,
+        "rocket": false,
+        "beam": false,
+        "action": "fire",
+        "weaponFx": "torpedo",
+        "muzzleClass": "torpedo",
+        "rangeSourceKey": null,
+        "rangeReference": {
+          "id": "inferred:usa:destroyer:torpedo",
+          "weapon": "重型鱼雷",
+          "platform": "destroyer",
+          "target": [
+            "naval",
+            "underwater"
+          ],
+          "status": "inferred",
+          "scope": "game-role-estimate",
+          "publishedKind": "estimate",
+          "publishedM": null,
+          "effectiveM": null,
+          "maxM": null,
+          "estimateM": 20000,
+          "minM": 200,
+          "qualifier": "estimated",
+          "source": null,
+          "sourceUrl": null,
+          "referenceIds": [],
+          "checked": "2026-10-24",
+          "note": "武器类别或家族参照；具体装弹和改型未逐一证实。伤害、装填、散布为游戏设定。"
+        },
+        "status": "inferred",
+        "parameterBasis": "伤害/装填/平衡射程为游戏参数；米制射程依单项证据限定。",
+        "rangeProfile": {
+          "range": 320,
+          "min": 25,
+          "reference": null
+        },
+        "uiValue": "destroyer:torpedo",
+        "uiLabel": "重型鱼雷 · 320 u"
+      },
+      "switchKeys": {
+        "right": "destroyer:ciws",
+        "left": "destroyer:torpedo"
+      },
+      "rmb": {
+        "aim": {
+          "point": [
+            2015.5986016969825,
+            -48.761988912398486,
+            240.0000000000001
+          ],
+          "origin": [
+            1810.368,
+            1.46,
+            250.5316464670807
+          ],
+          "targetId": 52,
+          "observedTarget": 52,
+          "occluded": false,
+          "status": {
+            "armed": true,
+            "range": 320,
+            "minRange": 25,
+            "distance": 227.26416347501862,
+            "actualDistance": 227.26416347501862,
+            "inRange": true,
+            "rangeState": "in",
+            "domainAllowed": true,
+            "detected": true,
+            "canFire": true,
+            "reason": "ready",
+            "projected": false,
+            "ammo": null,
+            "reloading": false,
+            "aimValid": true,
+            "cooldown": 0,
+            "targetId": 52,
+            "text": "093 型 · 实际距离 227 u / 射程 320 u · 射程内 · 可射击"
+          }
+        },
+        "status": {
+          "armed": true,
+          "range": 320,
+          "minRange": 25,
+          "distance": 227.26416347501862,
+          "actualDistance": 227.26416347501862,
+          "inRange": true,
+          "rangeState": "in",
+          "domainAllowed": true,
+          "detected": true,
+          "canFire": true,
+          "reason": "ready",
+          "projected": false,
+          "ammo": null,
+          "reloading": false,
+          "aimValid": true,
+          "cooldown": 0,
+          "targetId": 52,
+          "text": "093 型 · 实际距离 227 u / 射程 320 u · 射程内 · 可射击"
+        },
+        "shotCount": 0,
+        "missionCount": 0
+      },
+      "shot": {
+        "sourceId": 51,
+        "sourceKind": "destroyer",
+        "carrierOriginId": null,
+        "targetId": 52,
+        "weaponId": "destroyer:torpedo",
+        "weaponFamily": "torpedo",
+        "muzzleClass": "torpedo",
+        "domains": [
+          "naval",
+          "underwater"
+        ],
+        "rocket": false,
+        "beam": false,
+        "damage": 130,
+        "time": 3.7999999999999945,
+        "ttl": 0.9615840454464886,
+        "from": [
+          1810.368,
+          1.46,
+          250.5316464670807
+        ],
+        "to": [
+          2015.5986016969825,
+          -48.761988912398486,
+          240.0000000000001
+        ],
+        "anchor": [
+          1810.368,
+          1.46,
+          250.5316464670807
+        ],
+        "anchorSource": "approximate-side-torpedo-exit",
+        "anchorApproximate": true,
+        "direct": true,
+        "muzzleError": 0
+      },
+      "damage": 130,
+      "hpEvidence": [
+        {
+          "time": 3.2499999999999964,
+          "hp": 100000
+        },
+        {
+          "time": 4.749999999999991,
+          "hp": 99870
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "targetId": 57,
+      "kind": "destroyer",
+      "faction": "usa",
+      "targetKind": "tank",
+      "targetDomain": "ground",
+      "distance": 280.18565273760896,
+      "initialHP": 100000,
+      "initialMoney": 0,
+      "weapon": {
+        "id": "destroyer:naval_gun",
+        "name": "Mk45 127 mm 舰炮",
+        "family": "navalGun",
+        "targetDomains": [
+          "ground",
+          "naval",
+          "structure"
+        ],
+        "range": 360,
+        "damage": 85,
+        "reload": 2.6,
+        "meters": 24076,
+        "minRange": 0,
+        "minMeters": null,
+        "splash": 18,
+        "referenceId": "mk45_conventional",
+        "rangeSourceKey": "mk45_conventional",
+        "rangeStatus": "inferred",
+        "stationId": "naval_gun",
+        "kind": "destroyer",
+        "faction": "usa",
+        "primary": false,
+        "rocket": false,
+        "beam": false,
+        "action": "fire",
+        "weaponFx": "navalGun",
+        "muzzleClass": "gun",
+        "rangeReference": {
+          "id": "inferred:usa:destroyer:naval_gun",
+          "weapon": "Mk45 127 mm 舰炮",
+          "platform": "destroyer",
+          "target": [
+            "ground",
+            "naval",
+            "structure"
+          ],
+          "status": "inferred",
+          "scope": "game-role-estimate",
+          "publishedKind": "estimate",
+          "publishedM": null,
+          "effectiveM": null,
+          "maxM": null,
+          "estimateM": 24076,
+          "minM": null,
+          "qualifier": "estimated",
+          "source": "mk45",
+          "sourceUrl": "https://www.navy.mil/DesktopModules/ArticleCS/Print.aspx?Article=2167864&ModuleId=724&PortalId=1",
+          "referenceIds": [
+            "mk45_conventional"
+          ],
+          "checked": "2026-10-24",
+          "note": "武器类别或家族参照；具体装弹和改型未逐一证实。伤害、装填、散布为游戏设定。"
+        },
+        "status": "inferred",
+        "parameterBasis": "伤害/装填/平衡射程为游戏参数；米制射程依单项证据限定。",
+        "rangeProfile": {
+          "range": 360,
+          "min": 0,
+          "reference": null
+        },
+        "uiValue": "destroyer:naval_gun",
+        "uiLabel": "Mk45 127 mm 舰炮 · 360 u"
+      },
+      "switchKeys": {
+        "right": "destroyer:torpedo",
+        "left": "destroyer:naval_gun"
+      },
+      "rmb": {
+        "aim": {
+          "point": [
+            1982.9770866153187,
+            8.910000157356261,
+            482.4630769440052
+          ],
+          "origin": [
+            1842.93964242475,
+            11.274774360943017,
+            244.49449954300212
+          ],
+          "targetId": 57,
+          "observedTarget": 57,
+          "occluded": false,
+          "status": {
+            "armed": true,
+            "range": 360,
+            "minRange": 0,
+            "distance": 280.18565273760896,
+            "actualDistance": 280.18565273760896,
+            "inRange": true,
+            "rangeState": "in",
+            "domainAllowed": true,
+            "detected": true,
+            "canFire": true,
+            "reason": "ready",
+            "projected": false,
+            "ammo": null,
+            "reloading": false,
+            "aimValid": true,
+            "cooldown": 0,
+            "targetId": 57,
+            "text": "ZTZ-99A · 实际距离 280 u / 射程 360 u · 射程内 · 可射击"
+          }
+        },
+        "status": {
+          "armed": true,
+          "range": 360,
+          "minRange": 0,
+          "distance": 280.18565273760896,
+          "actualDistance": 280.18565273760896,
+          "inRange": true,
+          "rangeState": "in",
+          "domainAllowed": true,
+          "detected": true,
+          "canFire": true,
+          "reason": "ready",
+          "projected": false,
+          "ammo": null,
+          "reloading": false,
+          "aimValid": true,
+          "cooldown": 0,
+          "targetId": 57,
+          "text": "ZTZ-99A · 实际距离 280 u / 射程 360 u · 射程内 · 可射击"
+        },
+        "shotCount": 0,
+        "missionCount": 0
+      },
+      "shot": {
+        "sourceId": 56,
+        "sourceKind": "destroyer",
+        "carrierOriginId": null,
+        "targetId": 57,
+        "weaponId": "destroyer:naval_gun",
+        "weaponFamily": "navalGun",
+        "muzzleClass": "gun",
+        "domains": [
+          "ground",
+          "naval",
+          "structure"
+        ],
+        "rocket": false,
+        "beam": false,
+        "damage": 85,
+        "time": 7.049999999999983,
+        "ttl": 0.3943524000989395,
+        "from": [
+          1842.5490498176962,
+          11.274774360943017,
+          244.8159774426843
+        ],
+        "to": [
+          1982.9770866153187,
+          8.910000157356261,
+          482.4630769440052
+        ],
+        "anchor": [
+          1842.5490498176962,
+          11.274774360943017,
+          244.8159774426843
+        ],
+        "anchorSource": "licensed-original-main-gun-tip",
+        "anchorApproximate": false,
+        "direct": true,
+        "muzzleError": 0
+      },
+      "damage": 85,
+      "hpEvidence": [
+        {
+          "time": 4.749999999999991,
+          "hp": 100000
+        },
+        {
+          "time": 7.399999999999982,
+          "hp": 99915
+        }
+      ]
+    }
+  ],
+  "rejections": [
+    {
+      "label": "SAM against armor",
+      "id": 61,
+      "targetId": 62,
+      "kind": "destroyer",
+      "faction": "usa",
+      "targetKind": "tank",
+      "targetDomain": "ground",
+      "distance": 274.5978878287304,
+      "initialHP": 100000,
+      "initialMoney": 0,
+      "weapon": {
+        "id": "destroyer:sam",
+        "name": "Standard / ESSM 类防空导弹",
+        "family": "missile",
+        "targetDomains": [
+          "air"
+        ],
+        "range": 570,
+        "damage": 64,
+        "reload": 2.2,
+        "meters": 25000,
+        "minRange": 30,
+        "minMeters": 300,
+        "splash": 0,
+        "stationId": "sam",
+        "kind": "destroyer",
+        "faction": "usa",
+        "primary": false,
+        "rocket": true,
+        "beam": false,
+        "action": "fire",
+        "weaponFx": "missile",
+        "muzzleClass": "launcher",
+        "rangeSourceKey": null,
+        "rangeReference": {
+          "id": "inferred:usa:destroyer:sam",
+          "weapon": "Standard / ESSM 类防空导弹",
+          "platform": "destroyer",
+          "target": [
+            "air"
+          ],
+          "status": "inferred",
+          "scope": "game-role-estimate",
+          "publishedKind": "estimate",
+          "publishedM": null,
+          "effectiveM": null,
+          "maxM": null,
+          "estimateM": 25000,
+          "minM": 300,
+          "qualifier": "estimated",
+          "source": null,
+          "sourceUrl": null,
+          "referenceIds": [],
+          "checked": "2026-10-24",
+          "note": "武器类别或家族参照；具体装弹和改型未逐一证实。伤害、装填、散布为游戏设定。"
+        },
+        "status": "inferred",
+        "parameterBasis": "伤害/装填/平衡射程为游戏参数；米制射程依单项证据限定。",
+        "rangeProfile": {
+          "range": 570,
+          "min": 30,
+          "reference": null
+        },
+        "uiValue": "destroyer:sam",
+        "uiLabel": "Standard / ESSM 类防空导弹 · 570 u"
+      },
+      "before": {
+        "time": 8.199999999999982,
+        "tick": 164,
+        "paused": false,
+        "active": true,
+        "sourceId": 61,
+        "kind": "destroyer",
+        "weaponId": "destroyer:sam",
+        "position": [
+          1800,
+          2,
+          240
+        ],
+        "fire": false,
+        "ads": true,
+        "locked": true,
+        "focused": true,
+        "status": {
+          "armed": true,
+          "range": 570,
+          "minRange": 30,
+          "distance": 274.5978878287304,
+          "actualDistance": 274.5978878287304,
+          "inRange": true,
+          "rangeState": "in",
+          "domainAllowed": false,
+          "detected": true,
+          "canFire": false,
+          "reason": "domain",
+          "projected": false,
+          "ammo": null,
+          "reloading": false,
+          "aimValid": true,
+          "cooldown": 0,
+          "targetId": 62,
+          "text": "ZTZ-99A · 实际距离 275 u / 射程 570 u · 射程内 · 不支持目标域"
+        },
+        "shots": [],
+        "missions": [],
+        "spends": [],
+        "planes": [],
+        "inputs": [
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 7.4499999999999815,
+            "locked": false,
+            "sourceId": 56
+          },
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 7.4499999999999815,
+            "locked": false,
+            "sourceId": 56
+          },
+          {
+            "button": 2,
+            "trusted": true,
+            "time": 7.4499999999999815,
+            "locked": true,
+            "sourceId": 61
+          }
+        ],
+        "hp": [
+          {
+            "time": 7.4499999999999815,
+            "hp": 100000
+          }
+        ],
+        "money": 8.999999999999998,
+        "carrier": null
+      },
+      "after": {
+        "time": 9.099999999999994,
+        "tick": 182,
+        "paused": false,
+        "active": true,
+        "sourceId": 61,
+        "kind": "destroyer",
+        "weaponId": "destroyer:sam",
+        "position": [
+          1800,
+          2,
+          240
+        ],
+        "fire": false,
+        "ads": false,
+        "locked": true,
+        "focused": true,
+        "status": {
+          "armed": true,
+          "range": 570,
+          "minRange": 30,
+          "distance": 274.5978878287304,
+          "actualDistance": 274.5978878287304,
+          "inRange": true,
+          "rangeState": "in",
+          "domainAllowed": false,
+          "detected": true,
+          "canFire": false,
+          "reason": "domain",
+          "projected": false,
+          "ammo": null,
+          "reloading": false,
+          "aimValid": true,
+          "cooldown": 0,
+          "targetId": 62,
+          "text": "ZTZ-99A · 实际距离 275 u / 射程 570 u · 射程内 · 不支持目标域"
+        },
+        "shots": [],
+        "missions": [],
+        "spends": [],
+        "planes": [],
+        "inputs": [
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 7.4499999999999815,
+            "locked": false,
+            "sourceId": 56
+          },
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 7.4499999999999815,
+            "locked": false,
+            "sourceId": 56
+          },
+          {
+            "button": 2,
+            "trusted": true,
+            "time": 7.4499999999999815,
+            "locked": true,
+            "sourceId": 61
+          },
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 8.199999999999982,
+            "locked": true,
+            "sourceId": 61
+          }
+        ],
+        "hp": [
+          {
+            "time": 7.4499999999999815,
+            "hp": 100000
+          }
+        ],
+        "money": 19.800000000000004,
+        "carrier": null
+      }
+    },
+    {
+      "label": "Korean escort helicopter mission against armor",
+      "id": 66,
+      "targetId": 67,
+      "kind": "carrier",
+      "faction": "kor",
+      "targetKind": "tank",
+      "targetDomain": "ground",
+      "distance": 274.5978878287304,
+      "initialHP": 100000,
+      "initialMoney": 100000,
+      "weapon": {
+        "id": "carrier:air_wing",
+        "name": "舰载直升机护航（职责近似）",
+        "family": "airWing",
+        "targetDomains": [
+          "air"
+        ],
+        "range": 840,
+        "damage": 0,
+        "reload": 18,
+        "meters": 8400,
+        "minRange": 0,
+        "minMeters": null,
+        "splash": 0,
+        "action": "airWing",
+        "setting": true,
+        "airWingKind": "escort_helicopter",
+        "stationId": "air_wing",
+        "kind": "carrier",
+        "faction": "kor",
+        "primary": true,
+        "rocket": false,
+        "beam": false,
+        "weaponFx": "airWing",
+        "muzzleClass": "flightDeck",
+        "rangeSourceKey": null,
+        "rangeReference": {
+          "id": "game-setting:kor:carrier:air_wing",
+          "weapon": "舰载直升机护航（职责近似）",
+          "platform": "carrier",
+          "target": [
+            "air"
+          ],
+          "status": "game-setting",
+          "scope": "game-role-estimate",
+          "publishedKind": "estimate",
+          "publishedM": null,
+          "effectiveM": null,
+          "maxM": null,
+          "estimateM": 8400,
+          "minM": null,
+          "qualifier": "estimated",
+          "source": null,
+          "sourceUrl": null,
+          "referenceIds": [],
+          "checked": "2026-10-24",
+          "note": "原创/概念武器的游戏设定，不代表现实性能。"
+        },
+        "status": "game-setting",
+        "parameterBasis": "伤害/装填/平衡射程为游戏参数；米制射程依单项证据限定。",
+        "rangeProfile": {
+          "range": 840,
+          "min": 0,
+          "reference": null
+        },
+        "uiValue": "carrier:air_wing",
+        "uiLabel": "舰载直升机护航（职责近似） · 840 u"
+      },
+      "before": {
+        "time": 9.850000000000005,
+        "tick": 197,
+        "paused": false,
+        "active": true,
+        "sourceId": 66,
+        "kind": "carrier",
+        "weaponId": "carrier:air_wing",
+        "position": [
+          1800,
+          2,
+          240
+        ],
+        "fire": false,
+        "ads": true,
+        "locked": true,
+        "focused": true,
+        "status": {
+          "armed": true,
+          "range": 840,
+          "minRange": 0,
+          "distance": 274.5978878287304,
+          "actualDistance": 274.5978878287304,
+          "inRange": true,
+          "rangeState": "in",
+          "domainAllowed": false,
+          "detected": true,
+          "canFire": false,
+          "reason": "domain",
+          "projected": false,
+          "ammo": null,
+          "reloading": false,
+          "aimValid": true,
+          "cooldown": 0,
+          "targetId": 67,
+          "text": "ZTZ-99A · 实际距离 275 u / 射程 840 u · 射程内 · 不支持目标域"
+        },
+        "shots": [],
+        "missions": [],
+        "spends": [],
+        "planes": [],
+        "inputs": [
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 9.099999999999994,
+            "locked": false,
+            "sourceId": 61
+          },
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 9.099999999999994,
+            "locked": false,
+            "sourceId": 61
+          },
+          {
+            "button": 2,
+            "trusted": true,
+            "time": 9.099999999999994,
+            "locked": true,
+            "sourceId": 66
+          }
+        ],
+        "hp": [
+          {
+            "time": 9.099999999999994,
+            "hp": 100000
+          }
+        ],
+        "money": 100009.00000000009,
+        "carrier": {
+          "capacity": 2,
+          "rotor": true,
+          "kinds": [
+            "escort_helicopter"
+          ],
+          "serviceSeconds": 5,
+          "launchInterval": 4,
+          "description": "旋翼航空舰 · 护航职责近似",
+          "active": 0,
+          "airborne": 0,
+          "onDeck": 0,
+          "repairing": 0,
+          "planeIds": [],
+          "mission": null,
+          "waitingForFunds": false,
+          "replacementCost": 0
+        }
+      },
+      "after": {
+        "time": 10.650000000000016,
+        "tick": 213,
+        "paused": false,
+        "active": true,
+        "sourceId": 66,
+        "kind": "carrier",
+        "weaponId": "carrier:air_wing",
+        "position": [
+          1800,
+          2,
+          240
+        ],
+        "fire": false,
+        "ads": false,
+        "locked": true,
+        "focused": true,
+        "status": {
+          "armed": true,
+          "range": 840,
+          "minRange": 0,
+          "distance": 274.5978878287304,
+          "actualDistance": 274.5978878287304,
+          "inRange": true,
+          "rangeState": "in",
+          "domainAllowed": false,
+          "detected": true,
+          "canFire": false,
+          "reason": "domain",
+          "projected": false,
+          "ammo": null,
+          "reloading": false,
+          "aimValid": true,
+          "cooldown": 0,
+          "targetId": 67,
+          "text": "ZTZ-99A · 实际距离 275 u / 射程 840 u · 射程内 · 不支持目标域"
+        },
+        "shots": [],
+        "missions": [],
+        "spends": [],
+        "planes": [],
+        "inputs": [
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 9.099999999999994,
+            "locked": false,
+            "sourceId": 61
+          },
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 9.099999999999994,
+            "locked": false,
+            "sourceId": 61
+          },
+          {
+            "button": 2,
+            "trusted": true,
+            "time": 9.099999999999994,
+            "locked": true,
+            "sourceId": 66
+          },
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 9.850000000000005,
+            "locked": true,
+            "sourceId": 66
+          }
+        ],
+        "hp": [
+          {
+            "time": 9.099999999999994,
+            "hp": 100000
+          }
+        ],
+        "money": 100018.60000000018,
+        "carrier": {
+          "capacity": 2,
+          "rotor": true,
+          "kinds": [
+            "escort_helicopter"
+          ],
+          "serviceSeconds": 5,
+          "launchInterval": 4,
+          "description": "旋翼航空舰 · 护航职责近似",
+          "active": 0,
+          "airborne": 0,
+          "onDeck": 0,
+          "repairing": 0,
+          "planeIds": [],
+          "mission": null,
+          "waitingForFunds": false,
+          "replacementCost": 0
+        }
+      }
+    },
+    {
+      "label": "Visible enemy with flight-deck launch origin blocked",
+      "id": 71,
+      "targetId": 72,
+      "kind": "carrier",
+      "faction": "usa",
+      "targetKind": "destroyer",
+      "targetDomain": "naval",
+      "distance": 600,
+      "initialHP": 100000,
+      "initialMoney": 100000,
+      "weapon": {
+        "id": "carrier:air_wing",
+        "name": "舰载航空队出动",
+        "family": "airWing",
+        "targetDomains": [
+          "ground",
+          "naval",
+          "air",
+          "structure"
+        ],
+        "range": 840,
+        "damage": 0,
+        "reload": 18,
+        "meters": 8400,
+        "minRange": 0,
+        "minMeters": null,
+        "splash": 0,
+        "action": "airWing",
+        "setting": true,
+        "stationId": "air_wing",
+        "kind": "carrier",
+        "faction": "usa",
+        "primary": true,
+        "rocket": false,
+        "beam": false,
+        "weaponFx": "airWing",
+        "muzzleClass": "flightDeck",
+        "rangeSourceKey": null,
+        "rangeReference": {
+          "id": "game-setting:usa:carrier:air_wing",
+          "weapon": "舰载航空队出动",
+          "platform": "carrier",
+          "target": [
+            "ground",
+            "naval",
+            "air",
+            "structure"
+          ],
+          "status": "game-setting",
+          "scope": "game-role-estimate",
+          "publishedKind": "estimate",
+          "publishedM": null,
+          "effectiveM": null,
+          "maxM": null,
+          "estimateM": 8400,
+          "minM": null,
+          "qualifier": "estimated",
+          "source": null,
+          "sourceUrl": null,
+          "referenceIds": [],
+          "checked": "2026-10-24",
+          "note": "原创/概念武器的游戏设定，不代表现实性能。"
+        },
+        "status": "game-setting",
+        "parameterBasis": "伤害/装填/平衡射程为游戏参数；米制射程依单项证据限定。",
+        "rangeProfile": {
+          "range": 840,
+          "min": 0,
+          "reference": null
+        },
+        "uiValue": "carrier:air_wing",
+        "uiLabel": "舰载航空队出动 · 840 u"
+      },
+      "cover": {
+        "size": 5,
+        "gap": 60.1977341064883,
+        "position": [
+          1933.7332634683362,
+          13.10675297788273,
+          239.99625347738984
+        ],
+        "cameraTarget": 72,
+        "occluded": true,
+        "originMode": "model-muzzle"
+      },
+      "before": {
+        "time": 11.100000000000023,
+        "tick": 222,
+        "paused": false,
+        "active": true,
+        "sourceId": 71,
+        "kind": "carrier",
+        "weaponId": "carrier:air_wing",
+        "position": [
+          1800,
+          2,
+          240
+        ],
+        "fire": false,
+        "ads": false,
+        "locked": true,
+        "focused": true,
+        "status": {
+          "armed": true,
+          "range": 840,
+          "minRange": 0,
+          "distance": 600,
+          "actualDistance": 600,
+          "inRange": true,
+          "rangeState": "in",
+          "domainAllowed": true,
+          "detected": true,
+          "canFire": false,
+          "reason": "blocked",
+          "projected": false,
+          "ammo": null,
+          "reloading": false,
+          "aimValid": false,
+          "cooldown": 0,
+          "targetId": 72,
+          "text": "055 型 · 实际距离 600 u / 射程 840 u · 射程内 · 准线被遮挡"
+        },
+        "shots": [],
+        "missions": [],
+        "spends": [],
+        "planes": [],
+        "inputs": [
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 10.700000000000017,
+            "locked": false,
+            "sourceId": 66
+          },
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 10.700000000000017,
+            "locked": false,
+            "sourceId": 66
+          }
+        ],
+        "hp": [
+          {
+            "time": 10.700000000000017,
+            "hp": 100000
+          }
+        ],
+        "money": 100004.80000000005,
+        "carrier": {
+          "capacity": 3,
+          "rotor": false,
+          "kinds": [
+            "naval_strike_aircraft",
+            "close_support_aircraft",
+            "interceptor"
+          ],
+          "serviceSeconds": 5,
+          "launchInterval": 4,
+          "description": "舰载航空联队 · 现有原创职责近似",
+          "active": 0,
+          "airborne": 0,
+          "onDeck": 0,
+          "repairing": 0,
+          "planeIds": [],
+          "mission": null,
+          "waitingForFunds": false,
+          "replacementCost": 0
+        }
+      },
+      "after": {
+        "time": 11.900000000000034,
+        "tick": 238,
+        "paused": false,
+        "active": true,
+        "sourceId": 71,
+        "kind": "carrier",
+        "weaponId": "carrier:air_wing",
+        "position": [
+          1800,
+          2,
+          240
+        ],
+        "fire": false,
+        "ads": false,
+        "locked": true,
+        "focused": true,
+        "status": {
+          "armed": true,
+          "range": 840,
+          "minRange": 0,
+          "distance": 600,
+          "actualDistance": 600,
+          "inRange": true,
+          "rangeState": "in",
+          "domainAllowed": true,
+          "detected": true,
+          "canFire": false,
+          "reason": "blocked",
+          "projected": false,
+          "ammo": null,
+          "reloading": false,
+          "aimValid": false,
+          "cooldown": 0,
+          "targetId": 72,
+          "text": "055 型 · 实际距离 600 u / 射程 840 u · 射程内 · 准线被遮挡"
+        },
+        "shots": [],
+        "missions": [],
+        "spends": [],
+        "planes": [],
+        "inputs": [
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 10.700000000000017,
+            "locked": false,
+            "sourceId": 66
+          },
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 10.700000000000017,
+            "locked": false,
+            "sourceId": 66
+          },
+          {
+            "button": 0,
+            "trusted": true,
+            "time": 11.150000000000023,
+            "locked": true,
+            "sourceId": 71
+          }
+        ],
+        "hp": [
+          {
+            "time": 10.700000000000017,
+            "hp": 100000
+          }
+        ],
+        "money": 100014.40000000014,
+        "carrier": {
+          "capacity": 3,
+          "rotor": false,
+          "kinds": [
+            "naval_strike_aircraft",
+            "close_support_aircraft",
+            "interceptor"
+          ],
+          "serviceSeconds": 5,
+          "launchInterval": 4,
+          "description": "舰载航空联队 · 现有原创职责近似",
+          "active": 0,
+          "airborne": 0,
+          "onDeck": 0,
+          "repairing": 0,
+          "planeIds": [],
+          "mission": null,
+          "waitingForFunds": false,
+          "replacementCost": 0
+        }
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "screenshots/vehicle-loadouts-anti-ship-desktop.png",
+      "time": 0.8500000000000002,
+      "sourceId": 36,
+      "weaponId": "destroyer:anti_ship",
+      "paused": true,
+      "realShot": {
+        "sourceId": 36,
+        "sourceKind": "destroyer",
+        "carrierOriginId": null,
+        "targetId": 37,
+        "weaponId": "destroyer:anti_ship",
+        "weaponFamily": "missile",
+        "muzzleClass": "launcher",
+        "domains": [
+          "naval"
+        ],
+        "rocket": true,
+        "beam": false,
+        "damage": 155,
+        "time": 0.8500000000000002,
+        "ttl": 0.3729194882339949,
+        "from": [
+          1825.38,
+          9.452,
+          240
+        ],
+        "to": [
+          2086.3456028053433,
+          15.834558871574183,
+          240.00000000000006
+        ],
+        "anchor": [
+          1825.38,
+          9.452,
+          240
+        ],
+        "anchorSource": "approximate-licensed-burke-forward-launch-deck",
+        "anchorApproximate": true,
+        "direct": true,
+        "muzzleError": 0
+      }
+    },
+    {
+      "file": "screenshots/vehicle-loadouts-carrier-sortie-desktop.png",
+      "time": 17.35000000000011,
+      "sourceId": 76,
+      "weaponId": "carrier:air_wing",
+      "paused": false,
+      "method": "Actual aircraft entities and recorded deck preparation/climb, no inserted models"
+    },
+    {
+      "file": "screenshots/vehicle-loadouts-carrier-aircraft-fps-desktop.png",
+      "time": 18.75000000000013,
+      "sourceId": 79,
+      "paused": false,
+      "carrierId": 76,
+      "childId": 79
+    }
+  ],
+  "errors": [],
+  "testProfile": "D:\\现代战线HD\\.tmp\\native-profile-vehicle-loadouts-33460",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.12.0\\ModernFrontHD.exe",
+  "packageVersion": "3.12.0",
+  "sourceHashes": {
+    "src/data.js": "1b66986d4cc1abcb61b3ccbd760d3c38034be0a891885465ea6e7732319d3324",
+    "src/roster.js": "0609dfb5f0cc07ab408d9675816e236b16a4d13ee6b1d4f209a94b3c8f5f0b81",
+    "src/vehicle-weapons.js": "4d245623f2c45fb44eec74c05a17bc8fe6ca88a8ce895bbd442bfd0109e5a22a",
+    "src/weapon-range-data.js": "5cf2cbd9f5b586ea368e864c38f88d83c9b5406b6d4c5f6f366b8c1a92c1859d",
+    "src/carrier-operations.js": "eb56f0095cb6ae5a5767df05bb968020284611dd723617e4001006ce15c596b1",
+    "src/aircraft-flight.js": "42232528fd1ae6bb1bac157c3401ff5ecc02628fe6d30098e24a52f761a69fc3",
+    "src/sim.js": "08a5b7404c7f3ffc2f18ce20a87660d67c0578eee1515da4b8fdd46463374d0f",
+    "src/app.js": "6017c9fe580569d393b0b8304b09d850df0293e02ebe4bbeb2eacbcd782feb0c",
+    "src/direct-control.js": "71e3ad09e054d680bd8578dc32d24abddbb1e656052d16a3cfe12960816e4343",
+    "src/player-mode.js": "0bbbb83582e08b250e804bfc0d280091483203e9b9d4cb0cf4856e08722e0fb8",
+    "src/weapon-effects.js": "2af68d61687428d279ac81cce1b5b33d52d5e246051c5af8293f93aff751965f",
+    "src/battle3d.js": "5f7a0c88996a6bf0513ea31868769c6a67db41e7a4fe1f476d448842c1cbb83b",
+    "src/models3d.js": "e76d9c4bb56b3b46fcbd26d409744fd88410d6b9eb3518fa74edf1bab558962a",
+    "src/model-unit-refinement.js": "f0f085d15ededb8ef757ee11a93ecffb0b65574f01490ec367947008827cd476",
+    "src/models-imported.js": "e34a5d37ef99d02a114f99189da7a89449429d52cd8273f0903c35154f199ce9",
+    "src/models-imported-ground.js": "6abfd2156cfe6f41ab13d28cca275dc0be1b37f8ff82bd1705a6d766f51405ab",
+    "src/models-imported-air.js": "911cdd2b2765e3ceb9be4477d9ab8e634fdfd5ea5013c45ed1450643c2ceca84",
+    "assets/models/burke.glb": "f7a6ccac4894e9994cc5f75d1ebda3a1930ea5993ebb2b5ec5c118b4dc3d73c6",
+    "assets/models/t90m.glb": "58a8ed5339168757d5ead282639fc74ac4f880cf0b1edae77170a5b943a4ecce",
+    "assets/models/ah64.glb": "b7a0b2a2f917afc83be6736bda1a3bfddafdd17a444d01c3d762cb108849b2fd",
+    "index.html": "05019ba894f25b168c728cfbdbd17fc99a8e372343aff07059e28070aeeedb44",
+    "style.css": "87263305ed6605ac29375b8621b0df86563040cff6fc64fd1f2960e96b0682e6"
+  },
+  "stage": "complete",
+  "appVersion": "3.12.0",
+  "assets": {
+    "ready": [
+      "ready",
+      "ready",
+      "ready"
+    ],
+    "errors": [],
+    "models": [
+      {
+        "key": "tank_rus",
+        "source": "https://sketchfab.com/3d-models/t-90m-2e31a3cf16b04f0180b9387df5198c9a",
+        "license": "CC-BY-4.0",
+        "author": "minehffd",
+        "assetPath": "assets/models/t90m.glb",
+        "meshes": 23,
+        "preserved": 23,
+        "textured": 21,
+        "valid": true
+      },
+      {
+        "key": "destroyer_usa",
+        "source": "https://sketchfab.com/3d-models/11-low-poly-us-navy-ddg-51-uss-arleigh-burke-17be09c31c6047e4a5969b68c29eba03",
+        "license": "CC-BY-4.0",
+        "author": "Yi Tsung Lee / WTigerTw",
+        "assetPath": "assets/models/burke.glb",
+        "meshes": 6,
+        "preserved": 6,
+        "textured": 6,
+        "valid": true
+      },
+      {
+        "key": "heli_usa",
+        "source": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+        "license": "CC-BY-4.0",
+        "author": "Andrew Swihart / ArionDigital",
+        "assetPath": "assets/models/ah64.glb",
+        "meshes": 12,
+        "preserved": 12,
+        "textured": 0,
+        "valid": true
+      },
+      {
+        "key": "heli_kor",
+        "source": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+        "license": "CC-BY-4.0",
+        "author": "Andrew Swihart / ArionDigital",
+        "assetPath": "assets/models/ah64.glb",
+        "meshes": 12,
+        "preserved": 12,
+        "textured": 0,
+        "valid": true
+      }
+    ]
+  },
+  "runtime": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.12.0 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36",
+    "title": "现代战线 HD · 五强遭遇战"
+  },
+  "resolution": [
+    1600,
+    1000
+  ],
+  "focusReacquisitions": 1,
+  "carrier": {
+    "id": 76,
+    "targetId": 77,
+    "kind": "carrier",
+    "faction": "usa",
+    "targetKind": "destroyer",
+    "targetDomain": "naval",
+    "distance": 600,
+    "initialHP": 100000,
+    "initialMoney": 100000,
+    "weapon": {
+      "id": "carrier:air_wing",
+      "name": "舰载航空队出动",
+      "family": "airWing",
+      "targetDomains": [
+        "ground",
+        "naval",
+        "air",
+        "structure"
+      ],
+      "range": 840,
+      "damage": 0,
+      "reload": 18,
+      "meters": 8400,
+      "minRange": 0,
+      "minMeters": null,
+      "splash": 0,
+      "action": "airWing",
+      "setting": true,
+      "stationId": "air_wing",
+      "kind": "carrier",
+      "faction": "usa",
+      "primary": true,
+      "rocket": false,
+      "beam": false,
+      "weaponFx": "airWing",
+      "muzzleClass": "flightDeck",
+      "rangeSourceKey": null,
+      "rangeReference": {
+        "id": "game-setting:usa:carrier:air_wing",
+        "weapon": "舰载航空队出动",
+        "platform": "carrier",
+        "target": [
+          "ground",
+          "naval",
+          "air",
+          "structure"
+        ],
+        "status": "game-setting",
+        "scope": "game-role-estimate",
+        "publishedKind": "estimate",
+        "publishedM": null,
+        "effectiveM": null,
+        "maxM": null,
+        "estimateM": 8400,
+        "minM": null,
+        "qualifier": "estimated",
+        "source": null,
+        "sourceUrl": null,
+        "referenceIds": [],
+        "checked": "2026-10-24",
+        "note": "原创/概念武器的游戏设定，不代表现实性能。"
+      },
+      "status": "game-setting",
+      "parameterBasis": "伤害/装填/平衡射程为游戏参数；米制射程依单项证据限定。",
+      "rangeProfile": {
+        "range": 840,
+        "min": 0,
+        "reference": null
+      },
+      "uiValue": "carrier:air_wing",
+      "uiLabel": "舰载航空队出动 · 840 u"
+    },
+    "rmb": {
+      "aim": {
+        "point": [
+          2366.280958348959,
+          15.442413960483726,
+          239.99999999999994
+        ],
+        "origin": [
+          1858.32,
+          11.907919872283937,
+          240
+        ],
+        "targetId": 77,
+        "observedTarget": 77,
+        "occluded": false,
+        "status": {
+          "armed": true,
+          "range": 840,
+          "minRange": 0,
+          "distance": 600,
+          "actualDistance": 600,
+          "inRange": true,
+          "rangeState": "in",
+          "domainAllowed": true,
+          "detected": true,
+          "canFire": true,
+          "reason": "ready",
+          "projected": false,
+          "ammo": null,
+          "reloading": false,
+          "aimValid": true,
+          "cooldown": 0,
+          "targetId": 77,
+          "text": "055 型 · 实际距离 600 u / 射程 840 u · 射程内 · 可射击"
+        }
+      },
+      "status": {
+        "armed": true,
+        "range": 840,
+        "minRange": 0,
+        "distance": 600,
+        "actualDistance": 600,
+        "inRange": true,
+        "rangeState": "in",
+        "domainAllowed": true,
+        "detected": true,
+        "canFire": true,
+        "reason": "ready",
+        "projected": false,
+        "ammo": null,
+        "reloading": false,
+        "aimValid": true,
+        "cooldown": 0,
+        "targetId": 77,
+        "text": "055 型 · 实际距离 600 u / 射程 840 u · 射程内 · 可射击"
+      },
+      "shotCount": 0,
+      "missionCount": 0
+    },
+    "mission": {
+      "sourceId": 76,
+      "time": 12.600000000000044,
+      "mission": {
+        "x": 2400,
+        "y": 240,
+        "targetId": 77,
+        "kind": "naval_strike_aircraft",
+        "until": 192.60000000000005
+      },
+      "accepted": true
+    },
+    "aircraft": [
+      {
+        "id": 79,
+        "kind": "naval_strike_aircraft",
+        "carrierOriginId": 76,
+        "firstSeen": 14.050000000000065,
+        "phases": [
+          "prepare",
+          "takeoff",
+          "climb",
+          "attack"
+        ],
+        "maxAltitude": 160
+      },
+      {
+        "id": 80,
+        "kind": "close_support_aircraft",
+        "carrierOriginId": 76,
+        "firstSeen": 18.05000000000012,
+        "phases": [
+          "prepare"
+        ],
+        "maxAltitude": 23.366
+      }
+    ],
+    "childShot": {
+      "sourceId": 79,
+      "sourceKind": "naval_strike_aircraft",
+      "carrierOriginId": 76,
+      "targetId": 77,
+      "weaponId": "naval_strike_aircraft:anti_ship",
+      "weaponFamily": "missile",
+      "muzzleClass": "launcher",
+      "domains": [
+        "naval"
+      ],
+      "rocket": true,
+      "beam": false,
+      "damage": 185,
+      "time": 18.150000000000123,
+      "ttl": 0.5468523942662824,
+      "from": [
+        2050.297332451931,
+        157.61599999999999,
+        235
+      ],
+      "to": [
+        2400,
+        2,
+        240
+      ],
+      "anchor": [
+        2053.468824575815,
+        151.06363149384933,
+        247.44399980545043
+      ],
+      "anchorSource": "approximate-underwing-store-release",
+      "anchorApproximate": true,
+      "direct": false
+    },
+    "payments": [
+      {
+        "team": 0,
+        "requested": 1600,
+        "paid": 1600,
+        "time": 14.050000000000065
+      },
+      {
+        "team": 0,
+        "requested": 1350,
+        "paid": 1350,
+        "time": 18.05000000000012
+      }
+    ],
+    "moneySpent": 2950,
+    "targetDamage": 185,
+    "hpEvidence": [
+      {
+        "time": 12.050000000000036,
+        "hp": 100000
+      },
+      {
+        "time": 18.65000000000013,
+        "hp": 99815
+      }
+    ],
+    "possession": {
+      "id": 79,
+      "before": [
+        2129.381161514717,
+        160,
+        255.73121950528179
+      ],
+      "after": [
+        2140.5055859171953,
+        161.1066846271442,
+        261.3471048976494
+      ],
+      "phase": "attack",
+      "method": "J menu row followed by native W key; no synthetic aircraft"
+    }
+  },
+  "passed": true,
+  "finishedAt": "2026-10-24T13:44:35.052Z"
+}

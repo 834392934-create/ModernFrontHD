@@ -1,14 +1,24 @@
-# 现代战线 HD · 3.11.0
+# 现代战线 HD · 3.12.0
 
 可离线运行的三维即时战略遭遇战。项目位于 `D:\现代战线HD`；原参考目录 `D:\红警\2024` 未修改。
 
 ## 启动
 
-双击 **启动独立版.cmd**，或 **启动游戏.cmd**。当前新版位于 `release/ModernFrontHD-3.11.0/ModernFrontHD.exe`，需保留整个同名目录；启动器优先新版，找不到时回退到原 `release/ModernFrontHD`。旧程序运行中可并列构建新版，正在进行的对局继续运行。默认全屏，F11切换全屏，Tab隐藏/恢复作战界面，无需另外安装 Node.js 或浏览器。
+双击 **启动独立版.cmd**，或 **启动游戏.cmd**。当前新版位于 `release/ModernFrontHD-3.12.0/ModernFrontHD.exe`，需保留整个同名目录；启动器优先新版，找不到时回退到原 `release/ModernFrontHD`。旧程序运行中可并列构建新版，正在进行的对局继续运行。默认全屏，F11切换全屏，Tab隐藏/恢复作战界面，无需另外安装 Node.js 或浏览器。
 
 独立窗口使用Electron + Three.js WebGL；不是Unreal/DirectX引擎重写。资源全部本地加载，不要求账号、服务器或联网AI。浏览器兼容入口保留为 `play.ps1` 或 `index.html`。
 
 `release/ModernFrontHD-portable.zip` 是浏览器兼容包，不含独立版运行时；本机优先使用上面的EXE目录。
+
+## 3.12.0 载具武器、舰载航空队与驾驶修复
+
+- 修复 Windows 启动脚本因 LF 换行导致的闪退；桌面“现代战线 HD”快捷方式直接启动当前独立版。可运行 `create-desktop-shortcut.ps1` 重建快捷方式。
+- 全部 69 类载具逐类配置武器职责，19 类无武装保障/侦察角色维持其用途。选中单位后在“载具武器”下拉框选择，驾驶时按 **[ / ]** 循环切换；默认按目标自动选择。各武器有独立目标域、射程、最小射程、弹体与效果，切换不重置现有装填冷却。
+- 导弹舰按任务发射反舰、对陆、防空导弹，另选舰炮/鱼雷/近防；坦克主炮与同轴机枪、飞机空空/空地武器等按角色和公开证据区分。数据来源、家族估算与架空设定见 [全载具审计](docs/reviews/vehicle-weapon-audit.md)。伤害和装填是游戏参数，不宣称完整真实性能。
+- 航母主攻击变为放飞真实飞机实体，可驾驶、受损、返航移动甲板、维修再出动；补机消耗资源与时间。常规航空舰 3 个混合职责槽；韩国现有航空舰 2 个护航直升机槽，只执行对空任务。舰载机是既有原创职责模型近似；空中飞机在母舰沉没后继续存在，并计入全歼胜利条件。[联队机制与边界](docs/carrier-operations.md)。
+- 修复手动/自动飞机转弯时机身向外倾斜：机头、航迹和入弯倾斜一致，转完平滑回正。保留鼠标左右正常、上下反向；C 切换车外视角。
+- 77 类单位 × 6 阵营的 462 槽位完成材质检查：458 原创槽位细分橡胶、漆面、金属、布料等表面，4 授权槽位保留原材质；同步生产缩略图。此轮没有重建全部外形，尚不能宣称全部型号已实物还原。[建模优化范围](docs/reviews/unit-model-refinement.md)。
+- 修复坦克炮命中可见模型边缘不伤害、AI 混淆不同阵营飞机武器、以及航母对无效目标误派飞机；右键仍仅瞄准，左键开火。
 
 ## 3.11.0 航空起降与全歼胜利
 
@@ -57,7 +67,7 @@
 
 RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU 绘制提交从 6.17 降到 3.98 ms，半数行走时从 5.66 降到 4.11 ms；两版帧率均约 50 FPS。492 项 CPU 测试及本轮原生回归通过。范围和完整证据见 [验证记录](docs/VALIDATION.md)；不将短样本外推到大型长局。
 
-本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.11.0`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
+本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.12.0`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
 
 ## 第一人称瞄准与单兵作战
 
@@ -278,7 +288,7 @@ RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU
 npm test
 # 首次构建独立版需要联网下载官方运行时：
 powershell -File tools/fetch-desktop-runtime.ps1
-powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.11.0
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.12.0
 node server.cjs
 # 第二终端；需要已有Playwright或设置PLAYWRIGHT_MODULE：
 node tests/gallery.cjs
@@ -298,7 +308,7 @@ node tests/performance3d.cjs --desktop
 node tools/capture-model-review.cjs tank_chn tank_usa
 node tools/bake-portraits.cjs
 node tools/export-model-inventory.cjs
-powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.11.0
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.12.0
 ```
 
 游戏运行不需要开发工具。报告见 [验证记录](docs/VALIDATION.md)，真实截图在 `screenshots/`。

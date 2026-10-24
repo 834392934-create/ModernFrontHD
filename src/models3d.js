@@ -277,7 +277,7 @@
     const key=kind+'_'+f;
     if(!cache.has(key)){
       let g=builders.has(key)?builders.get(key)():['tank','ifv','arty','rocket','aa','asat','harvester'].includes(kind)?vehicle(f,kind):['fighter','jet','heli'].includes(kind)?aircraft(f,kind):['destroyer','carrier','submarine'].includes(kind)?ship(f,kind):other(kind,f);
-      g.userData.kind=kind;g.userData.faction=f;root.WarAirRig?.attach(g,kind,f);root.WarNavalRig?.attach(g,kind,f);root.WarGroundRig?.attach(g,kind,f);g.traverse(o=>{delete o.userData.motionPrimitives;});cache.set(key,g);
+      g.userData.kind=kind;g.userData.faction=f;root.WarAirRig?.attach(g,kind,f);root.WarNavalRig?.attach(g,kind,f);root.WarGroundRig?.attach(g,kind,f);g.traverse(o=>{delete o.userData.motionPrimitives;});root.WarUnitRefinement?.apply(g,kind,f);cache.set(key,g);
     }
     return cache.get(key).clone(true);
   }

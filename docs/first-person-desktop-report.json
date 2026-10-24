@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-24T09:28:32.753Z",
+  "recordedAt": "2026-10-24T13:48:06.786Z",
   "environment": "Packaged Electron",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
@@ -10,7 +10,7 @@
     "AI builds, trains and orders other units during possession, excludes the driver, and stops new AI calls after E exits",
     "Real left-click mesh-target shot reduces enemy HP and confirms actual source damage; a subsequent sky miss produces no hit marker",
     "A real manual projectile remains tied to its recorded impact area: relocating the target during flight causes no remote damage or hit marker",
-    "Camera sees target while model-muzzle or conservative-body origin hits cover: new missile vehicle, legacy Chinese tank and unanchored IMP tank all deal zero damage and no hit confirmation",
+    "Camera sees target while the selected weapon station hits cover: missile vehicle, Chinese tank and explicitly approximate IMP station all deal zero damage and no hit confirmation",
     "Real packaged fullscreen=true; minimizing with W+fire held clears keys and simulation input; restoring/focusing does not resume movement or fire"
   ],
   "possession": [
@@ -895,7 +895,7 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 22.85000000000019,
+      "hitAt": 24.000000000000206,
       "sourceId": 346,
       "targetId": 347,
       "damage": 74
@@ -904,7 +904,7 @@
       "x": 745.7908,
       "y": 800.0000000000001,
       "sourceId": 346,
-      "time": 22.85000000000019
+      "time": 24.000000000000206
     },
     "hudConfirmed": true
   },
@@ -935,6 +935,7 @@
       "kind": "tank_destroyer",
       "faction": "chn",
       "originMode": "model-muzzle",
+      "approximate": false,
       "cameraTarget": 352,
       "muzzleHitCover": true,
       "aimTarget": null,
@@ -951,37 +952,39 @@
       "kind": "tank",
       "faction": "chn",
       "originMode": "model-muzzle",
+      "approximate": false,
       "cameraTarget": 357,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
-        753.0202374877186,
+        753.020238860811,
         12.597097151053665,
-        799.9862314221415
+        799.996984181427
       ],
-      "size": 2.9614602216013073,
-      "gap": 4.556092648617396,
+      "size": 2.9614681511893424,
+      "gap": 4.556104847983604,
       "damage": 0
     },
     {
       "kind": "tank",
       "faction": "imp",
-      "originMode": "conservative-body",
+      "originMode": "model-muzzle",
+      "approximate": true,
       "cameraTarget": 362,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
-        711.808518860811,
-        12.604297151053666,
+        748.158349246019,
+        14.442471490792155,
         799.9969841814269
       ],
-      "size": 3,
-      "gap": 5.981383363073956,
+      "size": 1.872548483300781,
+      "gap": 2.88084382046274,
       "damage": 0
     }
   ],
   "nativeFocus": {
-    "recordedAt": "2026-10-24T09:29:30.797Z",
+    "recordedAt": "2026-10-24T13:49:06.041Z",
     "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
     "nativeBefore": {
       "fullScreen": true,
@@ -989,7 +992,7 @@
       "minimized": false
     },
     "nativeBlurred": {
-      "focused": false,
+      "focused": true,
       "minimized": true
     },
     "blurred": {
@@ -997,7 +1000,7 @@
       "events": [
         {
           "trusted": true,
-          "at": 57234.40000009537
+          "at": 58497.299999952316
         }
       ],
       "locked": false,
@@ -1016,6 +1019,7 @@
         "ads": false,
         "jump": false,
         "targetId": null,
+        "aimBlocked": true,
         "targetTreeId": null,
         "aimX": 1111.9141635668075,
         "aimY": 800,
@@ -1049,6 +1053,7 @@
         "ads": false,
         "jump": false,
         "targetId": null,
+        "aimBlocked": true,
         "targetTreeId": null,
         "aimX": 1111.9141635668075,
         "aimY": 800,

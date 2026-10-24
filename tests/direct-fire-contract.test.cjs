@@ -7,7 +7,16 @@ test('every armed unit captures one short trigger edge between simulation ticks'
  for(const [kind,d]of Object.entries(WarData.U).filter(([k,d])=>d.damage>0)){
   const probe=arena(kind),targetKind=kind==='operator'?'infantry':[...Object.keys(WarData.U),...Object.keys(WarData.B)].find(k=>probe.g.canTargetKind(kind,k));assert.ok(targetKind,kind+' has a legal target domain');
   const {g,e,t}=arena(kind,targetKind,((d.minRange||0)+d.range)*.5);
-  const shots=tap(g,e,t);assert.equal(shots.length,1,kind+' short click');assert.equal(shots[0].target,t.id,kind+' legal target');
+  const shots=tap(g,e,t);
+  if(kind==='carrier'){
+   assert.equal(shots.length,0,'carrier short click requests an actual sortie, never a hull shell');
+   const mission=e.airWing?.mission;assert.equal(mission?.targetId,t.id,'short click preserves the requested aviation target');
+   g.stepDirectControl(e,.05);assert.equal(e.airWing.mission,mission,'edge consumed once');
+   g.teams[0].money=100000;for(let i=0;i<120;i++)g.step(.05);
+   assert.ok(g.entities.some(p=>p.carrierOriginId===e.id&&p.hp>0&&WarData.U[p.kind].air),'accepted click produces an actual aircraft');
+   assert.equal(g.effects.filter(f=>f.type==='shot'&&f.sourceId===e.id).length,0);continue;
+  }
+  assert.equal(shots.length,1,kind+' short click');assert.equal(shots[0].target,t.id,kind+' legal target');
   g.stepDirectControl(e,.05);assert.equal(g.effects.filter(f=>f.type==='shot'&&f.sourceId===e.id).length,1,kind+' edge consumed once');
  }
 });
@@ -65,7 +74,7 @@ test('off-model aim, wrong domain, fog and missing sonar cannot acquire or damag
   if(mode==='fog'){g.buffs.delete('vision');g.visibleAt=()=>false;}
   if(mode==='sonar'){g.buffs.delete('vision');e.disabled=99999;g.beginDirectControl(e.id);e.disabled=0;g.canDetect=()=>false;}
   const s=g.directFireStatus(e,t,{...aim(g,t),...point});assert.equal(s.canFire,false,mode);
-  const [shot]=tap(g,e,t,point);assert.ok(shot);assert.equal(shot.target,null,mode);const hp=t.hp;e.disabled=99999;
+  const [shot]=tap(g,e,t,point);if(mode==='domain'){assert.equal(shot,undefined,'no station can launch against an unsupported domain');assert.equal(e.cool,0);}else{assert.ok(shot,mode);assert.equal(shot.target,null,mode);}const hp=t.hp;e.disabled=99999;
   for(let i=0;i<20;i++)g.step(.05);assert.equal(t.hp,hp,mode);
  }
 });

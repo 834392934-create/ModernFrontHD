@@ -17,7 +17,7 @@ async function fixture(kind='rocket',faction='chn'){
   g.entities=[];g.effects=[];g.ore=[];g.result=null;g.buffs.add('vision');g.options.rangeMode='published';g.options.metersPerUnit=1;
   g.map.blocked.fill(0);g.map.navalBlocked.fill(0);g.teams[0].faction=faction;g.teams.forEach(t=>{t.aiClock=1e9;t.money=0;t.queue=[];t.buildQueue=[];});
   g.spawn(0,'hq',300,3200);g.spawn(1,'hq',5700,3500);const e=g.spawn(0,kind,1800,1400),target=g.spawn(1,'tank',2100,1400);
-  target.hp=target.maxHp=10000;target.disabled=1e9;e.angle=e.pitch=e.roll=0;e.cool=0;
+  target.hp=target.maxHp=10000;target.disabled=1e9;if(kind==='rocket'&&!g.setVehicleWeapon(e.id,'rocket:rocket_salvo'))throw Error('Missing explicit rocket-salvo station');e.angle=e.pitch=e.roll=0;e.cool=0;
   for(const child of [...r.world.children])if(child!==r.water&&child.name!=='terrain-with-seabed')r.world.remove(child);
   r.vegetationColliders=[];g.directObstacles=[];g.spatial.rebuild(g.entities);g.updateFog();return{actor:e.id,target:target.id};
  },{kind,faction});
@@ -33,11 +33,11 @@ async function fixture(kind='rocket',faction='chn'){
   a.restore=()=>{g.emitShot=emit;WarWeaponSalvos.update=update;};
  },ids);return ids;
 }
-async function state(){return p.evaluate(()=>{const g=ModernFront.game,a=window.__publicSalvo,e=g.get(a.ids.actor),target=g.get(a.ids.target);return{time:g.time,shots:a.shots,hp:target?.hp,initialHp:a.initialHp,active:WarWeaponSalvos.active(g,e),cool:e.cool,range:g.rangeProfile(e),damageBudget:g.attackDamage(e.kind,target,WarData.U[e.kind].damage),unitDamage:WarData.U[e.kind].damage,aim:ModernFront.direct.aimResult?.point?.toArray(),contact:ModernFront.direct.el('orbit-contact').textContent};});}
+async function state(){return p.evaluate(()=>{const g=ModernFront.game,a=window.__publicSalvo,e=g.get(a.ids.actor),target=g.get(a.ids.target),definition=g.weaponDefinition(e,target);return{time:g.time,shots:a.shots,hp:target?.hp,initialHp:a.initialHp,active:WarWeaponSalvos.active(g,e),cool:e.cool,range:g.rangeProfile(e),damageBudget:g.attackDamage(e.kind,target,definition.damage,definition),unitDamage:definition.damage,weaponId:e.weaponId,aim:ModernFront.direct.aimResult?.point?.toArray(),contact:ModernFront.direct.el('orbit-contact').textContent};});}
 (async()=>{try{
  for(const name of ['.tmp','docs','screenshots'])fs.mkdirSync(name,{recursive:true});
  if(desktop){const {executable,appRoot}=require('./desktop-path.cjs');const profile=path.resolve(process.env.MODERN_FRONT_TEST_PROFILE||`.tmp/native-profile-public-range-${process.pid}`);fs.mkdirSync(profile,{recursive:true});report.profile=profile;report.executable=executable;report.sourceHashes={};
-  for(const f of ['src/sim.js','src/weapon-salvos.js','src/weapon-range-data.js','src/operator-ui.js','src/direct-control.js','src/models-vehicles.js','src/models3d.js','src/vehicle-animation.js','index.html']){const source=fs.readFileSync(f),packaged=fs.readFileSync(path.join(appRoot,f));assert.ok(source.equals(packaged),'packaged mismatch '+f);report.sourceHashes[f]=crypto.createHash('sha256').update(source).digest('hex');}
+  for(const f of ['src/sim.js','src/vehicle-weapons.js','src/weapon-effects.js','src/carrier-operations.js','src/weapon-salvos.js','src/weapon-range-data.js','src/operator-ui.js','src/direct-control.js','src/models-vehicles.js','src/models3d.js','src/vehicle-animation.js','index.html']){const source=fs.readFileSync(f),packaged=fs.readFileSync(path.join(appRoot,f));assert.ok(source.equals(packaged),'packaged mismatch '+f);report.sourceHashes[f]=crypto.createHash('sha256').update(source).digest('hex');}
   host=await _electron.launch({executablePath:executable,args:['--windowed'],env:{...process.env,MODERN_FRONT_TEST_PROFILE:profile},timeout:45000});report.version=await host.evaluate(({app})=>app.getVersion());assert.equal(report.version,require('../package.json').version);p=await host.firstWindow();
  }else{host=await chromium.launch({headless:true});p=await host.newPage({viewport:{width:1600,height:1000}});await p.goto(process.env.GAME_URL||'http://127.0.0.1:8765');}
  p.on('pageerror',e=>report.errors.push(e.message));await p.waitForFunction(()=>window.ModernFront);await p.evaluate(async()=>Promise.all([WarImported.ready,WarImportedGround.ready,WarImportedAir.ready]));
@@ -54,7 +54,7 @@ async function state(){return p.evaluate(()=>{const g=ModernFront.game,a=window.
  await fixture();let s=await state();const expected=await p.evaluate(()=>{const g=ModernFront.game,e=g.get(ModernFront.direct.entityId);return g.formatRangeDistance(g.rangeProfile(e).attack);});assert.ok(s.contact.includes(expected),'HUD range mismatch: '+s.contact+' / '+expected);assert.match(s.contact,/\b(?:m|km)\b/);
  await p.mouse.down({button:'right'});await p.waitForTimeout(300);await p.mouse.up({button:'right'});assert.equal((await state()).shots.length,0);check('RMB observes only, no shot');
  await p.mouse.down({button:'left'});await p.waitForFunction(()=>window.__publicSalvo.shots.length>=8,null,{timeout:4500});await p.mouse.up({button:'left'});await p.waitForTimeout(1200);
- s=await state();assert.equal(s.shots.length,8);assert.deepEqual(s.shots.map(f=>f.portIndex),[0,1,2,3,4,5,6,7]);assert.ok(s.shots.every(f=>f.count===8));
+ s=await state();assert.equal(s.weaponId,'rocket:rocket_salvo');assert.equal(s.shots.length,8);assert.deepEqual(s.shots.map(f=>f.portIndex),[0,1,2,3,4,5,6,7]);assert.ok(s.shots.every(f=>f.count===8));
  for(const f of s.shots){assert.ok(f.muzzle,'missing real port '+f.portIndex);f.portError=Math.hypot(...f.origin.map((v,i)=>v-f.muzzle[i]));assert.ok(f.portError<=.05,'port error '+f.portIndex+': '+f.portError);}
  assert.equal(new Set(s.shots.map(f=>f.origin.map(v=>v.toFixed(4)).join(','))).size,8,'different tubes must not share centre');
  assert.ok(Math.max(...s.shots.map(f=>f.end[0]))-Math.min(...s.shots.map(f=>f.end[0]))>1);assert.ok(Math.max(...s.shots.map(f=>f.end[2]))-Math.min(...s.shots.map(f=>f.end[2]))>1,'spread is not two dimensional');

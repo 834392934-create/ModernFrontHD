@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-24T09:36:02.214Z",
+  "recordedAt": "2026-10-24T13:38:05.596Z",
   "checks": [
     "New game defaults: published, 1 metre per unit",
     "64 armory cards and sampled details display actual published-mode ranges",
@@ -13,20 +13,23 @@
   ],
   "errors": [],
   "scope": "Public ranges, real-input eight-port salvo, normalized damage and cancellation; CPU metadata does not certify real weapon fidelity",
-  "profile": "D:\\现代战线HD\\.tmp\\profile-v3110-final-public-range-salvo-browser",
-  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.11.0\\ModernFrontHD.exe",
+  "profile": "D:\\现代战线HD\\.tmp\\native-v3120-public-range-salvo-browser-1792849085334",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.12.0\\ModernFrontHD.exe",
   "sourceHashes": {
-    "src/sim.js": "2c3ff65f24438db51dc7ca66d036d48ee5f69cf1871e9ea545ff85a2e2f74937",
+    "src/sim.js": "08a5b7404c7f3ffc2f18ce20a87660d67c0578eee1515da4b8fdd46463374d0f",
+    "src/vehicle-weapons.js": "4d245623f2c45fb44eec74c05a17bc8fe6ca88a8ce895bbd442bfd0109e5a22a",
+    "src/weapon-effects.js": "2af68d61687428d279ac81cce1b5b33d52d5e246051c5af8293f93aff751965f",
+    "src/carrier-operations.js": "eb56f0095cb6ae5a5767df05bb968020284611dd723617e4001006ce15c596b1",
     "src/weapon-salvos.js": "372b1048feeee0838d65e751b8437abe5c29a0ac6eda6b9a9587d365cbc5757c",
     "src/weapon-range-data.js": "5cf2cbd9f5b586ea368e864c38f88d83c9b5406b6d4c5f6f366b8c1a92c1859d",
     "src/operator-ui.js": "aad6cdf6c69f1104d7c74f6cba600d689fefa20999bd1087907efa55b5378f58",
-    "src/direct-control.js": "60f451ccbe68d127f7e6dffea80a9ef7a4be255063258f283f98d7ea4740b562",
+    "src/direct-control.js": "71e3ad09e054d680bd8578dc32d24abddbb1e656052d16a3cfe12960816e4343",
     "src/models-vehicles.js": "79990ee7ddc13303cb9b33e1e1f6868eefba6aefaece7b7b35fec47c2b245a4d",
-    "src/models3d.js": "ee163523031e2953b0151d4b9eefa5a6f8e863e29e7e7b12679c4fa02a29f317",
+    "src/models3d.js": "e76d9c4bb56b3b46fcbd26d409744fd88410d6b9eb3518fa74edf1bab558962a",
     "src/vehicle-animation.js": "fdaeba86cf5702aa46d7aa7bd2d492d26d9adb6648845ef6d209586b2dc4e7fd",
-    "index.html": "87e696f95b337a27de317ce9ca9cfe3ad7b042d59b8fee6741760f75cdf63abb"
+    "index.html": "05019ba894f25b168c728cfbdbd17fc99a8e372343aff07059e28070aeeedb44"
   },
-  "version": "3.11.0",
+  "version": "3.12.0",
   "defaults": {
     "mode": "published",
     "scale": 1
@@ -354,7 +357,7 @@
     }
   ],
   "fullSalvo": {
-    "time": 4.449999999999992,
+    "time": 3.999999999999994,
     "shots": [
       {
         "portIndex": 0,
@@ -377,7 +380,7 @@
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.0500000000000007,
+        "firedAt": 1.6000000000000008,
         "portError": 0
       },
       {
@@ -395,13 +398,13 @@
           1397.048888888889
         ],
         "end": [
-          2100.8682948036485,
+          2097.4234638886974,
           12.33988286374126,
-          1391.8806425683108
+          1387.335206637835
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.25,
+        "firedAt": 1.800000000000001,
         "portError": 0
       },
       {
@@ -419,13 +422,13 @@
           1393.351111111111
         ],
         "end": [
-          2080.883234296293,
+          2087.5354639005664,
           12.33988286374126,
-          1419.8649754604048
+          1420.2707950967178
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.3999999999999995,
+        "firedAt": 1.950000000000001,
         "portError": 0
       },
       {
@@ -443,13 +446,13 @@
           1393.351111111111
         ],
         "end": [
-          2066.9186542373254,
+          2060.870168946147,
           12.33988286374126,
-          1378.1834678123273
+          1385.3234114888733
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.549999999999999,
+        "firedAt": 2.1000000000000005,
         "portError": 0
       },
       {
@@ -467,13 +470,13 @@
           1402.951111111111
         ],
         "end": [
-          2123.3974938647702,
+          2124.2896680803647,
           12.33988286374126,
-          1409.0576291132327
+          1396.3252427574357
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.6999999999999984,
+        "firedAt": 2.25,
         "portError": 0
       },
       {
@@ -491,13 +494,13 @@
           1402.951111111111
         ],
         "end": [
-          2046.7411274053497,
+          2053.07866530484,
           12.33988286374126,
-          1413.230740240462
+          1425.0063595234444
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.849999999999998,
+        "firedAt": 2.3999999999999995,
         "portError": 0
       },
       {
@@ -515,13 +518,13 @@
           1406.648888888889
         ],
         "end": [
-          2101.44495105989,
+          2090.114009096696,
           12.33988286374126,
-          1367.532530138328
+          1364.1030095401723
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 3.049999999999997,
+        "firedAt": 2.5999999999999988,
         "portError": 0
       },
       {
@@ -539,17 +542,17 @@
           1406.648888888889
         ],
         "end": [
-          2105.7106566695684,
+          2116.261024927022,
           12.33988286374126,
-          1436.0625718708238
+          1427.5923505934136
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 3.1999999999999966,
+        "firedAt": 2.7499999999999982,
         "portError": 0
       }
     ],
-    "hp": 9913.52962154294,
+    "hp": 9913.771558966666,
     "initialHp": 10000,
     "active": false,
     "cool": 4.000000000000009,
@@ -574,37 +577,36 @@
         "qualifier": "estimated",
         "publishedKind": "estimate",
         "status": "inferred",
-        "sourceUrl": "https://lockheedmartin.com/content/dam/lockheed-martin/mfc/pc/guided-mlrs-unitary-rocket/GMLRS-Fast-Facts-Updates.pdf",
+        "sourceUrl": null,
         "verified": false,
         "record": {
-          "id": "inferred:chn:rocket",
-          "platform": "PHL-191",
-          "weapon": "未指定制式型号的游戏武器",
-          "target": [],
-          "publishedM": null,
-          "publishedKind": "estimate",
-          "effectiveM": null,
-          "maxM": null,
-          "minM": null,
-          "estimateM": 70000,
+          "id": "inferred:chn:rocket:rocket_salvo",
+          "weapon": "多管火箭覆盖齐射",
+          "platform": "rocket",
+          "target": [
+            "ground",
+            "structure"
+          ],
           "status": "inferred",
           "scope": "game-role-estimate",
+          "publishedKind": "estimate",
+          "publishedM": null,
+          "effectiveM": null,
+          "maxM": null,
+          "estimateM": 70000,
+          "minM": null,
           "qualifier": "estimated",
-          "source": "gmlrs",
-          "sourceUrl": "https://lockheedmartin.com/content/dam/lockheed-martin/mfc/pc/guided-mlrs-unitary-rocket/GMLRS-Fast-Facts-Updates.pdf",
-          "referenceIds": [
-            "gmlrs"
-          ],
-          "checked": "2026-10-20",
-          "reliability": "估算/游戏设定，不是该装备公开性能",
-          "note": "未核实弹种的远程火箭角色估算，不冒称PHL-191实测"
+          "source": null,
+          "sourceUrl": null,
+          "referenceIds": [],
+          "checked": "2026-10-24",
+          "note": "武器类别或家族参照；具体装弹和改型未逐一证实。伤害、装填、散布为游戏设定。"
         },
-        "notes": "逐弹种证据；范围不赋予新目标域。primary为当前游戏选值，records保留原始公开参照；必须核对weapon/target/scope。",
-        "platform": "PHL-191"
+        "notes": "伤害/装填/平衡射程为游戏参数；米制射程依单项证据限定。",
+        "platform": "rocket"
       },
       "domains": [
         "ground",
-        "naval",
         "structure"
       ],
       "zones": [
@@ -615,14 +617,65 @@
           "min": 0,
           "domains": [
             "ground",
-            "naval",
             "structure"
           ]
         }
-      ]
+      ],
+      "weapon": {
+        "id": "rocket:rocket_salvo",
+        "name": "多管火箭覆盖齐射",
+        "family": "rocket",
+        "targetDomains": [
+          "ground",
+          "structure"
+        ],
+        "range": 510,
+        "damage": 136,
+        "reload": 6.4,
+        "meters": 70000,
+        "minRange": 125,
+        "minMeters": null,
+        "splash": 65,
+        "stationId": "rocket_salvo",
+        "kind": "rocket",
+        "faction": "chn",
+        "primary": true,
+        "rocket": true,
+        "beam": false,
+        "action": "fire",
+        "weaponFx": "rocket",
+        "muzzleClass": "rocket",
+        "rangeSourceKey": null,
+        "rangeReference": {
+          "id": "inferred:chn:rocket:rocket_salvo",
+          "weapon": "多管火箭覆盖齐射",
+          "platform": "rocket",
+          "target": [
+            "ground",
+            "structure"
+          ],
+          "status": "inferred",
+          "scope": "game-role-estimate",
+          "publishedKind": "estimate",
+          "publishedM": null,
+          "effectiveM": null,
+          "maxM": null,
+          "estimateM": 70000,
+          "minM": null,
+          "qualifier": "estimated",
+          "source": null,
+          "sourceUrl": null,
+          "referenceIds": [],
+          "checked": "2026-10-24",
+          "note": "武器类别或家族参照；具体装弹和改型未逐一证实。伤害、装填、散布为游戏设定。"
+        },
+        "status": "inferred",
+        "parameterBasis": "伤害/装填/平衡射程为游戏参数；米制射程依单项证据限定。"
+      }
     },
     "damageBudget": 136,
     "unitDamage": 136,
+    "weaponId": "rocket:rocket_salvo",
     "aim": [
       2085.433591553935,
       12.33988286374126,

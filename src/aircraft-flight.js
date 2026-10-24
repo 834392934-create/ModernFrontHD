@@ -29,15 +29,16 @@
  function launchPosition(g,field,kind){const r=runway(g,field),probe={kind,team:field.team,id:-1};if(!r||occupied(g,field)||!runwayClear(g,field,probe))return null;return point(r,0);}
  function launch(g,e,field){
   if(!supported(e))return;
+  if(field.kind==='carrier'&&root.WarCarrierOperations)return root.WarCarrierOperations.launch(g,e,field);
   e.altitude=groundHeight(g,e);e.flightSpeed=0;e.pitch=e.roll=0;
   e.flight={phase:'prepare',homeId:field.id,elapsed:0,airtime:0,anchor:{x:e.x,y:e.y}};
   if(fixed(e))e.angle=field.runway.angle;
  }
  function state(g,e){return e.flight||(e.flight={phase:'cruise',elapsed:0,airtime:0,anchor:{x:e.x,y:e.y},cruiseAltitude:Math.max(160,g.entityAltitude(e))});}
  function phase(f,p){if(f.phase!==p){f.phase=p;f.elapsed=0;}}
- function home(g,e){const f=state(g,e),old=g.get(f.homeId);if(old?.kind==='airfield'&&old.team===e.team)return old;const next=g.teamEntities(e.team).filter(o=>o.kind==='airfield').sort((a,b)=>distance(a,e)-distance(b,e))[0];f.homeId=next?.id??null;return next;}
+ function home(g,e){const f=state(g,e),old=g.get(f.homeId),carriers=root.WarCarrierOperations;if(old?.kind==='airfield'&&old.team===e.team)return old;if(old?.kind==='carrier'&&carriers?.compatible(g,old,e))return old;const next=g.teamEntities(e.team).filter(o=>o.kind==='airfield'||o.kind==='carrier'&&carriers?.canRecover(g,o,e)).sort((a,b)=>distance(a,e)-distance(b,e))[0];f.homeId=next?.id??null;if(next?.kind==='carrier')carriers.adopt(g,next,e);return next;}
  function requestReturn(g,e){if(!supported(e))return false;const f=state(g,e),base=home(g,e);if(!base)return false;f.returning=true;f.returnStage=0;e.retreating=true;e.order=null;e.orderQueue=[];e.target=null;e.path=[];if(!groundPhases.has(f.phase))phase(f,'return');return true;}
- function command(g,e){if(!supported(e))return;const f=state(g,e);f.returning=false;e.retreating=false;f.egress=null;f.airtime=0;if(['return','approach','landing'].includes(f.phase))phase(f,'climb');}
+ function command(g,e){if(!supported(e))return;const f=state(g,e);f.returning=false;e.retreating=false;f.egress=null;f.airtime=0;if(['return','approach','landing'].includes(f.phase)){delete f.deck;phase(f,'climb');}}
  function stop(g,e){if(!supported(e))return;command(g,e);const f=state(g,e);f.anchor={x:e.x,y:e.y};f.resume=null;}
  function clearance(g,e,x,y){return g.flightFloor(e,x,y);}
  function aheadFloor(g,e,x,y,range=200){
@@ -53,7 +54,7 @@
   const old=g.entityAltitude(e),wanted=clamp(Math.max(altitude,floor),25,1800);
   e.altitude=Math.max(clearance(g,e,nx,ny),old+clamp(wanted-old,-55*dt,75*dt));
   e.x=nx;e.y=ny;e.pitch+=(Math.atan2(e.altitude-old,Math.max(.001,e.flightSpeed*dt))-e.pitch)*Math.min(1,dt*3);
-  e.roll+=(-turn/Math.max(.001,dt)*.55-e.roll)*Math.min(1,dt*4);
+  m.bankAircraft(e,turn/Math.max(.001,dt),dt,true);
   m.record(e,before,dt,speed/g.effectiveSpeed(e),turn/Math.max(.001,dt),g.tick);e.flightSpeed=Math.hypot(dx,dy)/dt;
  }
  function loiterGoal(g,e,anchor){const radius=Math.max(130,g.effectiveSpeed(e)*1.15),a=Math.atan2(e.y-anchor.y,e.x-anchor.x)+.65;return{x:clamp(anchor.x+Math.cos(a)*radius,240,W-240),y:clamp(anchor.y+Math.sin(a)*radius,240,H-240)};}
@@ -72,7 +73,11 @@
  function groundStep(g,e,dt){
   if(!supported(e)||!e.flight)return false;const f=e.flight;
   if(!groundPhases.has(f.phase))return false;
+  // An aircraft still physically aboard a destroyed ship is lost with its deck;
+  // airborne aircraft retain normal recovery/diversion and elimination behavior.
+  if(f.deck&&!g.get(f.homeId)){e.hp=0;return true;}
   const base=home(g,e);if(!base){phase(f,'climb');e.altitude=Math.max(25,e.altitude);return false;}
+  if(base.kind==='carrier')return root.WarCarrierOperations.groundStep(g,e,base,dt);
   f.elapsed+=dt;
   if(['taxi','lineup'].includes(f.phase))return taxi(g,e,base,dt);
   if(f.phase==='prepare'){root.WarVehicleMotion.stop(e);if(f.elapsed>=1.5&&base.disabled<=g.time){if(fixed(e)){if(runwayClear(g,base,e))phase(f,'takeoff');}else phase(f,'climb');}return true;}
@@ -109,7 +114,9 @@
   const base=g.get(f.homeId);
   if(!f.returning&&(e.hp<e.maxHp*.25||f.airtime>180)&&home(g,e)){f.resume=e.order?{...e.order}:null;requestReturn(g,e);}
   if(f.returning){
-   const field=home(g,e),r=field&&(fixed(e)?runway(g,field):null);
+   const field=home(g,e);
+   if(field?.kind==='carrier')return root.WarCarrierOperations.updateReturn(g,e,field,dt,{move,rotorMove,loiterGoal});
+   const r=field&&(fixed(e)?runway(g,field):null);
    if(!field||(fixed(e)&&!r)){f.returning=false;e.retreating=false;phase(f,'loiter');f.anchor={x:e.x,y:e.y};}
    else if(!fixed(e)){
     const goal={x:field.x+field.r+90,y:field.y},dd=distance(e,goal);
@@ -161,6 +168,6 @@
   move(g,e,aim,cruise,max*(f.phase==='loiter'?.65:.85),dt);return true;
  }
  function rotorMove(g,e,goal,height,dt){const before={x:e.x,y:e.y,angle:e.angle},max=g.effectiveSpeed(e),dd=distance(e,goal),step=Math.min(dd,max*dt),heading=Math.atan2(goal.y-e.y,goal.x-e.x);e.angle+=clamp(root.WarVehicleMotion.angleDelta(heading,e.angle),-1.3*dt,1.3*dt);e.x+=Math.cos(heading)*step;e.y+=Math.sin(heading)*step;e.altitude=Math.max(clearance(g,e,e.x,e.y),e.altitude+clamp(Math.max(height,aheadFloor(g,e,e.x,e.y))-e.altitude,-60*dt,60*dt));e.roll*=Math.max(0,1-dt*4);e.pitch+=(step>0?-.08-e.pitch:-e.pitch)*Math.min(1,dt*3);root.WarVehicleMotion.record(e,before,dt,step>0?1:0,0,g.tick);e.flightSpeed=step/dt;}
- function validate(e){const f=e.flight;if(!f)return true;return supported(e)&&Object.hasOwn(labels,f.phase)&&[f.elapsed,f.airtime,f.anchor?.x,f.anchor?.y].every(Number.isFinite)&&(f.homeId==null||Number.isInteger(f.homeId))&&(!f.egress||[f.egress.x,f.egress.y,f.egress.until].every(Number.isFinite))&&(!f.resume||[f.resume.x,f.resume.y].every(Number.isFinite))&&(!f.parking||[f.parking.x,f.parking.y].every(Number.isFinite))&&(f.returnStage==null||[0,1,2].includes(f.returnStage));}
+ function validate(e){const f=e.flight;if(!f)return true;return supported(e)&&Object.hasOwn(labels,f.phase)&&[f.elapsed,f.airtime,f.anchor?.x,f.anchor?.y].every(Number.isFinite)&&(f.homeId==null||Number.isInteger(f.homeId))&&(!f.egress||[f.egress.x,f.egress.y,f.egress.until].every(Number.isFinite))&&(!f.resume||[f.resume.x,f.resume.y].every(Number.isFinite))&&(!f.parking||[f.parking.x,f.parking.y].every(Number.isFinite))&&(f.returnStage==null||[0,1,2].includes(f.returnStage))&&(!f.deck||root.WarCarrierOperations?.validate(e)===true);}
  root.WarAircraftFlight={supported,fixed,labels,groundPhases,runwayContains,launchPosition,launch,groundStep,update,canFire,requestReturn,command,stop,aheadFloor,validate};
 })(globalThis);

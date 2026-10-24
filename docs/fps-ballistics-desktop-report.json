@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-24T09:26:13.303Z",
+  "recordedAt": "2026-10-24T13:33:21.370Z",
   "environment": "desktop",
   "scope": "Controlled clear geometry: original terrain retained, decorative world obstacles removed; no combat/AI/asset-fidelity claim",
   "checks": [
@@ -53,6 +53,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3077.964,
@@ -121,6 +122,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3077.964,
@@ -189,6 +191,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": true,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3077.964,
@@ -206,7 +209,7 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": -0.2,
-        "at": 1.800000000000001,
+        "at": 1.850000000000001,
         "projected": false
       },
       "actualDistance": 45.0386686295728,
@@ -257,6 +260,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3077.964,
@@ -274,7 +278,7 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 1.2,
-        "at": 2.0500000000000007,
+        "at": 2.1000000000000005,
         "projected": false
       },
       "actualDistance": 460,
@@ -325,6 +329,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3066.036,
@@ -342,7 +347,7 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 0.05,
-        "at": 2.3,
+        "at": 2.3499999999999996,
         "projected": false
       },
       "actualDistance": 460.0000000000001,
@@ -393,6 +398,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3066.036,
@@ -410,7 +416,7 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 0.13,
-        "at": 2.499999999999999,
+        "at": 2.5999999999999988,
         "projected": false
       },
       "actualDistance": 455.5988692725547,
@@ -461,6 +467,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": true,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3066.036,
@@ -478,7 +485,7 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": -0.2,
-        "at": 2.7499999999999982,
+        "at": 2.849999999999998,
         "projected": false
       },
       "actualDistance": 44.93898948079449,
@@ -529,6 +536,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3066.036,
@@ -546,7 +554,7 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 1.2,
-        "at": 2.9999999999999973,
+        "at": 3.049999999999997,
         "projected": false
       },
       "actualDistance": 460,
@@ -563,8 +571,8 @@
           "x": 3068.455980812693,
           "y": 2107.109649501314,
           "sourceHeight": 7.475999999999999,
-          "tx": 2746.7312042434955,
-          "ty": 1786.7800207527935,
+          "tx": 2751.3702443172156,
+          "ty": 1782.3892975492856,
           "targetHeight": 30.533045579087442,
           "space": false,
           "weaponFx": "projectile",
@@ -597,6 +605,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3068.455980812693,
@@ -614,12 +623,12 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 0.05,
-        "at": 3.1999999999999966,
+        "at": 3.2999999999999963,
         "projected": false
       },
-      "actualDistance": 454.5872086448331,
+      "actualDistance": 454.44284416366867,
       "expectedUnclippedDistance": 15994.14480781375,
-      "angleRadians": 0.0021936219036378024,
+      "angleRadians": 0.011955104645537019,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -665,6 +674,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3068.455980812693,
@@ -682,7 +692,7 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 0.13,
-        "at": 3.4499999999999957,
+        "at": 3.4999999999999956,
         "projected": false
       },
       "actualDistance": 459.52120350045453,
@@ -733,6 +743,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": true,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3068.455980812693,
@@ -750,7 +761,7 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": -0.2,
-        "at": 3.699999999999995,
+        "at": 3.7499999999999947,
         "projected": false
       },
       "actualDistance": 45.35591292623378,
@@ -801,6 +812,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3068.455980812693,
@@ -818,7 +830,7 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 1.2,
-        "at": 3.899999999999994,
+        "at": 3.999999999999994,
         "projected": false
       },
       "actualDistance": 459.49296583350355,
@@ -869,6 +881,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 125.964,
@@ -886,7 +899,7 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 0.05,
-        "at": 4.149999999999993,
+        "at": 4.249999999999993,
         "projected": false
       },
       "actualDistance": 459.99999999999994,
@@ -937,6 +950,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 125.964,
@@ -954,7 +968,7 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 0.13,
-        "at": 4.399999999999992,
+        "at": 4.499999999999992,
         "projected": false
       },
       "actualDistance": 460,
@@ -1005,6 +1019,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": true,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 125.964,
@@ -1022,7 +1037,7 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": -0.2,
-        "at": 4.599999999999992,
+        "at": 4.699999999999991,
         "projected": false
       },
       "actualDistance": 458.09900113903717,
@@ -1073,6 +1088,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 125.964,
@@ -1090,7 +1106,7 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 1.2,
-        "at": 4.849999999999991,
+        "at": 4.94999999999999,
         "projected": false
       },
       "actualDistance": 457.7366131945521,
@@ -1141,6 +1157,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 114.036,
@@ -1158,7 +1175,7 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 0.05,
-        "at": 5.09999999999999,
+        "at": 5.1999999999999895,
         "projected": false
       },
       "actualDistance": 460,
@@ -1209,6 +1226,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 114.036,
@@ -1226,7 +1244,7 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 0.13,
-        "at": 5.349999999999989,
+        "at": 5.449999999999989,
         "projected": false
       },
       "actualDistance": 454.08473645246926,
@@ -1277,6 +1295,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 114.036,
@@ -1294,7 +1313,7 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": -0.2,
-        "at": 5.599999999999988,
+        "at": 5.649999999999988,
         "projected": false
       },
       "actualDistance": 451.6760178709863,
@@ -1345,6 +1364,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 114.036,
@@ -1413,6 +1433,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 116.45598081269303,
@@ -1481,6 +1502,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 116.45598081269303,
@@ -1549,6 +1571,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 116.45598081269303,
@@ -1617,6 +1640,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 116.45598081269303,
@@ -1634,7 +1658,7 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 1.2,
-        "at": 6.799999999999984,
+        "at": 6.849999999999984,
         "projected": false
       },
       "actualDistance": 460,
@@ -1685,6 +1709,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3077.964,
@@ -1702,7 +1727,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 0.05,
-        "at": 7.249999999999982,
+        "at": 7.299999999999982,
         "projected": false
       },
       "actualDistance": 125.00000000000009,
@@ -1753,6 +1778,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3077.964,
@@ -1770,7 +1796,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 0.13,
-        "at": 8.199999999999982,
+        "at": 8.249999999999982,
         "projected": false
       },
       "actualDistance": 125.00000000000009,
@@ -1821,6 +1847,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": true,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3077.964,
@@ -1838,7 +1865,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": -0.2,
-        "at": 9.149999999999995,
+        "at": 9.199999999999996,
         "projected": false
       },
       "actualDistance": 45.61465019978953,
@@ -1889,6 +1916,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3077.964,
@@ -1906,7 +1934,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 1.2,
-        "at": 10.100000000000009,
+        "at": 10.15000000000001,
         "projected": false
       },
       "actualDistance": 124.99999999999997,
@@ -1957,6 +1985,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3066.036,
@@ -1974,7 +2003,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 0.05,
-        "at": 11.050000000000022,
+        "at": 11.100000000000023,
         "projected": false
       },
       "actualDistance": 125.00000000000009,
@@ -2025,6 +2054,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3066.036,
@@ -2042,7 +2072,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 0.13,
-        "at": 12.000000000000036,
+        "at": 12.050000000000036,
         "projected": false
       },
       "actualDistance": 125.00000000000009,
@@ -2093,6 +2123,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": true,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3066.036,
@@ -2110,7 +2141,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": -0.2,
-        "at": 12.950000000000049,
+        "at": 13.00000000000005,
         "projected": false
       },
       "actualDistance": 45.61465019978953,
@@ -2161,6 +2192,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3066.036,
@@ -2178,7 +2210,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 1.2,
-        "at": 13.900000000000063,
+        "at": 13.950000000000063,
         "projected": false
       },
       "actualDistance": 124.99999999999997,
@@ -2229,6 +2261,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3068.455980812693,
@@ -2246,7 +2279,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 0.05,
-        "at": 14.850000000000076,
+        "at": 14.900000000000077,
         "projected": false
       },
       "actualDistance": 124.99999999999993,
@@ -2297,6 +2330,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3068.455980812693,
@@ -2314,7 +2348,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 0.13,
-        "at": 15.80000000000009,
+        "at": 15.85000000000009,
         "projected": false
       },
       "actualDistance": 125.00000000000011,
@@ -2365,6 +2399,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": true,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3068.455980812693,
@@ -2382,7 +2417,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": -0.2,
-        "at": 16.750000000000103,
+        "at": 16.800000000000104,
         "projected": false
       },
       "actualDistance": 45.6146501997996,
@@ -2433,6 +2468,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3068.455980812693,
@@ -2450,7 +2486,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 1.2,
-        "at": 17.700000000000117,
+        "at": 17.750000000000117,
         "projected": false
       },
       "actualDistance": 125.00000000000006,
@@ -2501,6 +2537,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 125.964,
@@ -2518,7 +2555,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 0.05,
-        "at": 18.65000000000013,
+        "at": 18.70000000000013,
         "projected": false
       },
       "actualDistance": 125,
@@ -2569,6 +2606,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 125.964,
@@ -2586,7 +2624,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 0.13,
-        "at": 19.600000000000144,
+        "at": 19.650000000000144,
         "projected": false
       },
       "actualDistance": 125.00000000000001,
@@ -2637,6 +2675,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": true,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 125.964,
@@ -2654,7 +2693,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": -0.2,
-        "at": 20.550000000000157,
+        "at": 20.600000000000158,
         "projected": false
       },
       "actualDistance": 125,
@@ -2705,6 +2744,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 125.964,
@@ -2722,7 +2762,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 1.2,
-        "at": 21.50000000000017,
+        "at": 21.55000000000017,
         "projected": false
       },
       "actualDistance": 125,
@@ -2773,6 +2813,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 114.036,
@@ -2790,7 +2831,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 0.05,
-        "at": 22.450000000000184,
+        "at": 22.500000000000185,
         "projected": false
       },
       "actualDistance": 125,
@@ -2841,6 +2882,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 114.036,
@@ -2858,7 +2900,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 0.13,
-        "at": 23.400000000000198,
+        "at": 23.4500000000002,
         "projected": false
       },
       "actualDistance": 125,
@@ -2909,6 +2951,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 114.036,
@@ -2926,7 +2969,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": -0.2,
-        "at": 24.35000000000021,
+        "at": 24.40000000000021,
         "projected": false
       },
       "actualDistance": 125,
@@ -2977,6 +3020,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 114.036,
@@ -2994,7 +3038,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 1.2,
-        "at": 25.300000000000225,
+        "at": 25.350000000000225,
         "projected": false
       },
       "actualDistance": 125,
@@ -3045,6 +3089,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 116.45598081269303,
@@ -3062,7 +3107,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 0.05,
-        "at": 26.250000000000238,
+        "at": 26.30000000000024,
         "projected": false
       },
       "actualDistance": 125.00000000000001,
@@ -3113,6 +3158,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 116.45598081269303,
@@ -3130,7 +3176,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 0.13,
-        "at": 27.20000000000025,
+        "at": 27.250000000000252,
         "projected": false
       },
       "actualDistance": 124.99999999999999,
@@ -3181,6 +3227,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 116.45598081269303,
@@ -3198,7 +3245,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": -0.2,
-        "at": 28.150000000000265,
+        "at": 28.200000000000266,
         "projected": false
       },
       "actualDistance": 124.99999999999999,
@@ -3249,6 +3296,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 116.45598081269303,
@@ -3266,7 +3314,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 1.2,
-        "at": 29.10000000000028,
+        "at": 29.15000000000028,
         "projected": false
       },
       "actualDistance": 125,
@@ -3329,18 +3377,21 @@
       ]
     }
   ],
-  "testProfile": "D:\\现代战线HD\\.tmp\\profile-v3110-fps-ballistics-browser",
-  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.11.0\\ModernFrontHD.exe",
-  "packageVersion": "3.11.0",
+  "testProfile": "D:\\现代战线HD\\.tmp\\native-v3120-fps-ballistics-browser-1792848801094",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.12.0\\ModernFrontHD.exe",
+  "packageVersion": "3.12.0",
   "sourceHashes": {
-    "src/direct-control.js": "60f451ccbe68d127f7e6dffea80a9ef7a4be255063258f283f98d7ea4740b562",
-    "src/sim.js": "2c3ff65f24438db51dc7ca66d036d48ee5f69cf1871e9ea545ff85a2e2f74937",
+    "src/direct-control.js": "71e3ad09e054d680bd8578dc32d24abddbb1e656052d16a3cfe12960816e4343",
+    "src/sim.js": "08a5b7404c7f3ffc2f18ce20a87660d67c0578eee1515da4b8fdd46463374d0f",
     "src/operator-sim.js": "8f87ca0e28046d182f9745ea5492cc765601114e137f39ad3114ee34d6716135",
-    "style.css": "150c5842cb6fac70871c3b6c3bad4317dfb8f50390dbfac165ad1852c8cfb8a5"
+    "src/vehicle-weapons.js": "4d245623f2c45fb44eec74c05a17bc8fe6ca88a8ce895bbd442bfd0109e5a22a",
+    "src/weapon-effects.js": "2af68d61687428d279ac81cce1b5b33d52d5e246051c5af8293f93aff751965f",
+    "src/carrier-operations.js": "eb56f0095cb6ae5a5767df05bb968020284611dd723617e4001006ce15c596b1",
+    "style.css": "87263305ed6605ac29375b8621b0df86563040cff6fc64fd1f2960e96b0682e6"
   },
-  "appVersion": "3.11.0",
+  "appVersion": "3.12.0",
   "runtime": {
-    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.11.0 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.12.0 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36",
     "title": "现代战线 HD · 五强遭遇战"
   },
   "imported": {

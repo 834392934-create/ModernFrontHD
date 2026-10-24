@@ -128,7 +128,7 @@ async function nativeFocusCheck(){
 
   // Explicit low cover is inserted into the existing world and raycast as geometry.
   report.cover=[];
-  for(const [kind,faction,expectedOrigin]of [['tank_destroyer','chn','model-muzzle'],['tank','chn','model-muzzle'],['tank','imp','conservative-body']]){
+  for(const [kind,faction,expectedOrigin]of [['tank_destroyer','chn','model-muzzle'],['tank','chn','model-muzzle'],['tank','imp','model-muzzle']]){
   state=await fixture(kind,true,faction);await enter(state,false,true);await paused(false);await p.waitForTimeout(150);
   await aimAt(state.targetId);await p.evaluate(()=>{ModernFront.game.effects=[];ModernFront.game.directFeedback=null;ModernFront.game.get(ModernFront.direct.entityId).cool=0;});
   const proof=await p.evaluate(id=>{
@@ -139,14 +139,14 @@ async function nativeFocusCheck(){
     const center=origin.clone().lerp(target,t),along=center.clone().sub(d.eye).dot(dir),cameraPoint=d.eye.clone().addScaledVector(dir,along),gap=center.distanceTo(cameraPoint);if(gap<.5)continue;
     const size=Math.min(3,gap*.65),mesh=new THREE.Mesh(new THREE.BoxGeometry(size,size,size),new THREE.MeshStandardMaterial({color:0x726d60}));mesh.position.copy(center);r.world.add(mesh);mesh.updateMatrixWorld(true);
     const visible=d.cast(d.eye,dir,2200),muzzle=d.cast(origin,target.clone().sub(origin).normalize(),origin.distanceTo(target)+.2),aim=d.aim();
-    if(visible?.entity?.id===id&&muzzle?.object===mesh&&!aim.target){cover=mesh;proof={originMode:initial.originMode,cameraTarget:visible.entity.id,muzzleHitCover:true,aimTarget:aim.target?.id||null,center:center.toArray(),size,gap};break;}r.world.remove(mesh);mesh.geometry.dispose();mesh.material.dispose();
+    if(visible?.entity?.id===id&&muzzle?.object===mesh&&!aim.target){cover=mesh;proof={originMode:initial.originMode,approximate:!!WarWeaponEffects.weaponAnchor(r.objects.get(d.entityId),d.game.vehicleWeapon(d.game.get(d.entityId)),{kind:d.game.get(d.entityId).kind,faction:d.game.teams[0].faction})?.userData.approximate,cameraTarget:visible.entity.id,muzzleHitCover:true,aimTarget:aim.target?.id||null,center:center.toArray(),size,gap};break;}r.world.remove(mesh);mesh.geometry.dispose();mesh.material.dispose();
    }
    if(!cover)throw new Error('Could not construct separated camera/muzzle cover rays');window.__fpsTestCover=cover;d.aimResult=d.aim();d.lastAimTime=0;return proof;
   },state.targetId);
-  assert.equal(proof.originMode,expectedOrigin);const coveredHP=await p.evaluate(id=>ModernFront.game.get(id).hp,state.targetId);await p.mouse.down();await p.waitForTimeout(200);await p.mouse.up();await p.waitForTimeout(500);assert.equal(await p.evaluate(id=>ModernFront.game.get(id).hp,state.targetId),coveredHP);assert.equal(await p.evaluate(()=>ModernFront.game.directFeedback),null);await shot('muzzle-cover-'+kind+'-'+faction);report.cover.push({kind,faction,...proof,damage:0});
+  assert.equal(proof.originMode,expectedOrigin);if(faction==='imp')assert.equal(proof.approximate,true,'unverified imperial gun uses an explicitly approximate station');const coveredHP=await p.evaluate(id=>ModernFront.game.get(id).hp,state.targetId);await p.mouse.down();await p.waitForTimeout(200);await p.mouse.up();await p.waitForTimeout(500);assert.equal(await p.evaluate(id=>ModernFront.game.get(id).hp,state.targetId),coveredHP);assert.equal(await p.evaluate(()=>ModernFront.game.directFeedback),null);await shot('muzzle-cover-'+kind+'-'+faction);report.cover.push({kind,faction,...proof,damage:0});
   await p.evaluate(()=>{const m=window.__fpsTestCover;m.parent.remove(m);m.geometry.dispose();m.material.dispose();delete window.__fpsTestCover;});
   }
-  report.checks.push('Camera sees target while model-muzzle or conservative-body origin hits cover: new missile vehicle, legacy Chinese tank and unanchored IMP tank all deal zero damage and no hit confirmation');
+  report.checks.push('Camera sees target while the selected weapon station hits cover: missile vehicle, Chinese tank and explicitly approximate IMP station all deal zero damage and no hit confirmation');
   await exit();if(desktop)await nativeFocusCheck();report.renderEnvironment=await p.evaluate(()=>{const r=ModernFront.renderer,gl=r.gl.getContext(),ext=gl.getExtension('WEBGL_debug_renderer_info');return{viewport:[innerWidth,innerHeight],dpr:r.dpr,gpu:ext?gl.getParameter(ext.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER)};});assert.deepEqual(report.errors,[]);report.passed=true;
  }catch(error){report.passed=false;report.failure={message:error.message,stack:error.stack};if(p){try{report.failure.state=await p.evaluate(()=>({paused:ModernFront?.paused,selected:ModernFront?.selection,direct:ModernFront?.direct?.active,locked:!!document.pointerLockElement,entity:ModernFront?.game?.directControl}));await shot('failure');}catch{}}throw error;
  }finally{

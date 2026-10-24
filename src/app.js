@@ -463,6 +463,13 @@
         )
         .join("");
     const chosen = [...selection].map((id) => game.get(id)).filter(Boolean);
+    const vehicle=chosen.length===1&&chosen[0].team===0?chosen[0]:null,stations=vehicle?game.vehicleWeapons(vehicle):[],picker=$('#vehicle-weapon-picker'),weaponSelect=$('#vehicle-weapon');
+    picker.hidden=!stations.length;
+    if(stations.length){
+      const key=vehicle.id+':'+t.faction+':'+game.options.rangeMode+':'+game.options.metersPerUnit;
+      if(weaponSelect.dataset.unit!==key){weaponSelect.innerHTML='<option value="auto">自动按目标选择武器</option>'+stations.map(w=>'<option value="'+escapeHTML(w.id)+'">'+escapeHTML(w.name)+' · '+game.formatRangeDistance(game.weaponRangeProfile(vehicle,w).range)+'</option>').join('');weaponSelect.dataset.unit=key;}
+      weaponSelect.value=vehicle.weaponId||'auto';weaponSelect.onchange=()=>{game.setVehicleWeapon(vehicle.id,weaponSelect.value);updateHUD();};
+    }
     $("#selection-title").textContent =
       chosen.length > 1
         ? "已选编队 / " + chosen.length
@@ -477,7 +484,7 @@
           Math.ceil(chosen[0].maxHp) +
           " · " +
           (U[chosen[0].kind]?.role || "基地设施") +
-          attackRangeText(chosen[0])+(chosen[0].flight?' · '+WarAircraftFlight.labels[chosen[0].flight.phase]+' · R 返航维修':'')
+          attackRangeText(chosen[0])+(chosen[0].flight?' · '+WarAircraftFlight.labels[chosen[0].flight.phase]+' · R 返航维修':'')+(chosen[0].kind==='carrier'?carrierStatusText(chosen[0]):'')
         : chosen.length
           ? "右键移动 / 集火 · A 攻击移动 · S 停止"
           : "左键选择单位，按住拖动框选";
@@ -503,6 +510,7 @@
     const p=nominal?game.weaponRangeProfile(e):game.rangeProfile(e),range=nominal?p.range:p.attack;
     return " · "+(nominal?"标称射程 ":"射程 ")+(p.min?game.formatRangeDistance(p.min)+" – ":"")+game.formatRangeDistance(range)+" · "+(game.rangeReferenceLabel(p.reference)||"游戏平衡")+(p.boosted?" · 雷达 +15%":"");
   }
+  function carrierStatusText(e){const s=WarCarrierOperations.status(game,e);return s?' · 航空队 '+s.active+'/'+s.capacity+' · 在空 '+s.airborne+' · 甲板 '+s.onDeck+(s.waitingForFunds?' · 补机等待资金':''):'';}
   function item(k, name, icon, sub, cost, disabled, title) {
     const range=(U[k]||B[k])?attackRangeText({kind:k,team:0},true):"";
     title+=range+(range?"；最小射程内不能攻击，公开/估算口径以装备资料为准。":"");

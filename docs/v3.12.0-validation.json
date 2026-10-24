@@ -1,0 +1,144 @@
+{
+  "recordedAt": "2026-10-24T14:06:37.398Z",
+  "version": "3.12.0",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.12.0\\ModernFrontHD.exe",
+  "desktopShortcut": "C:\\Users\\Administrator\\Desktop\\现代战线 HD.lnk",
+  "cpu": {
+    "command": "npm test",
+    "passed": 765,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "durationMs": 71562.2485,
+    "localIgnoredLog": ".tmp/v3120-tests-final.log",
+    "logSha256": "ace7e877bad2e72dbb6aa1c06027645045736a248e564c32dffce2c08e882aef"
+  },
+  "nativeGroups": [
+    {
+      "command": "node tests/fps-ballistics-browser.cjs --desktop",
+      "report": "docs/fps-ballistics-desktop-report.json",
+      "sha256": "7de150a7105aae1db67a502bc51553336be2990ebec8d91b9ba97b535ddc57f3",
+      "recordedAt": "2026-10-24T13:33:21.370Z",
+      "passed": true,
+      "appVersion": "3.12.0"
+    },
+    {
+      "command": "node tests/vehicle-camera-browser.cjs --desktop",
+      "report": "docs/vehicle-camera-desktop-report.json",
+      "sha256": "ddc5eadaab530e4a11c919394899fbf7c5b918376057c445df4875b19a677687",
+      "recordedAt": "2026-10-24T13:34:01.975Z",
+      "passed": true,
+      "appVersion": "3.12.0"
+    },
+    {
+      "command": "node tests/vehicle-motion-browser.cjs --desktop",
+      "report": "docs/vehicle-motion-desktop-report.json",
+      "sha256": "84510e04b2b88bdd5b753cf8873bdac58f15e2968693243af81eeb3c57a28673",
+      "recordedAt": "2026-10-24T13:36:41.610Z",
+      "passed": true,
+      "appVersion": "3.12.0"
+    },
+    {
+      "command": "node tests/weapon-effects-browser.cjs --desktop",
+      "report": "docs/weapon-effects-desktop-report.json",
+      "sha256": "b520e549b0fc1a6b3043b5484d02400d52fad58193547f31c83ac7e03450dfa2",
+      "recordedAt": "2026-10-24T13:37:44.605Z",
+      "passed": true,
+      "appVersion": "3.12.0"
+    },
+    {
+      "command": "node tests/public-range-salvo-browser.cjs --desktop",
+      "report": "docs/public-range-salvo-desktop-report.json",
+      "sha256": "c785c3a559bde53b72922081d6b813029572a92afa4548f07345893fce24565e",
+      "recordedAt": "2026-10-24T13:38:05.596Z",
+      "passed": true,
+      "appVersion": "3.12.0"
+    },
+    {
+      "command": "node tests/first-person-browser.cjs --desktop",
+      "report": "docs/first-person-desktop-report.json",
+      "sha256": "0e4bacf12f6812ee2917ee4d56245f7cdc4be6d10f2d4985aeae3a90b1b832f9",
+      "recordedAt": "2026-10-24T13:48:06.786Z",
+      "passed": true,
+      "appVersion": null
+    },
+    {
+      "command": "node tests/upgrade.cjs",
+      "report": "docs/desktop-report.json",
+      "sha256": "dec4553ac76dc633a69db69e4edceb2b4e85af67cb81faa6cb8bc4515c34c1d8",
+      "recordedAt": null,
+      "passed": null,
+      "appVersion": "3.12.0",
+      "note": "Electron/offline/fullscreen acceptance; explicit assertions in tests/upgrade.cjs; no passed field in report."
+    },
+    {
+      "command": "node tests/aircraft-flight-desktop.cjs",
+      "report": "docs/aircraft-flight-desktop-report.json",
+      "sha256": "295f1417538abc9e60758c8dd3bbc42ce392068e0057b45df17482d2b1702430",
+      "recordedAt": "2026-10-24T13:52:33.125Z",
+      "passed": true,
+      "appVersion": "3.12.0"
+    },
+    {
+      "command": "node tests/vehicle-loadouts-desktop.cjs",
+      "report": "docs/vehicle-loadouts-desktop-report.json",
+      "sha256": "95cb8759967ea350e9c26d7e7f633d483d08f913bc4035a8c81c5a7a81923f8b",
+      "recordedAt": "2026-10-24T13:44:05.150Z",
+      "passed": true,
+      "appVersion": "3.12.0"
+    }
+  ],
+  "launchers": {
+    "report": "docs/launcher-desktop-report.json",
+    "sha256": "91db197c618c9316daba0318c96177eea5fc831932eaff39b078a5d2c30fe5f9",
+    "passed": true,
+    "entries": 3
+  },
+  "packageConsistency": {
+    "report": "docs/fps-package-report.json",
+    "sha256Matches": 702,
+    "portraits": 588,
+    "mismatches": []
+  },
+  "modelRefinement": {
+    "report": "docs/reviews/unit-model-refinement-report.json",
+    "sha256": "81783a5c95192ad8456beff6f6585a07a36f6d0f2b665f3f667371f01ed9822d",
+    "integrated": true,
+    "slots": 462,
+    "refinedSlots": 458,
+    "preservedSlots": 4,
+    "portraitsRebaked": 588,
+    "portraitsChanged": 458
+  },
+  "sourceHashes": {
+    "src/data.js": "1b66986d4cc1abcb61b3ccbd760d3c38034be0a891885465ea6e7732319d3324",
+    "src/roster.js": "0609dfb5f0cc07ab408d9675816e236b16a4d13ee6b1d4f209a94b3c8f5f0b81",
+    "src/vehicle-weapons.js": "4d245623f2c45fb44eec74c05a17bc8fe6ca88a8ce895bbd442bfd0109e5a22a",
+    "src/weapon-range-data.js": "5cf2cbd9f5b586ea368e864c38f88d83c9b5406b6d4c5f6f366b8c1a92c1859d",
+    "src/carrier-operations.js": "eb56f0095cb6ae5a5767df05bb968020284611dd723617e4001006ce15c596b1",
+    "src/aircraft-flight.js": "42232528fd1ae6bb1bac157c3401ff5ecc02628fe6d30098e24a52f761a69fc3",
+    "src/sim.js": "08a5b7404c7f3ffc2f18ce20a87660d67c0578eee1515da4b8fdd46463374d0f",
+    "src/app.js": "6017c9fe580569d393b0b8304b09d850df0293e02ebe4bbeb2eacbcd782feb0c",
+    "src/direct-control.js": "71e3ad09e054d680bd8578dc32d24abddbb1e656052d16a3cfe12960816e4343",
+    "src/player-mode.js": "0bbbb83582e08b250e804bfc0d280091483203e9b9d4cb0cf4856e08722e0fb8",
+    "src/weapon-effects.js": "2af68d61687428d279ac81cce1b5b33d52d5e246051c5af8293f93aff751965f",
+    "src/battle3d.js": "5f7a0c88996a6bf0513ea31868769c6a67db41e7a4fe1f476d448842c1cbb83b",
+    "src/models3d.js": "e76d9c4bb56b3b46fcbd26d409744fd88410d6b9eb3518fa74edf1bab558962a",
+    "src/model-unit-refinement.js": "f0f085d15ededb8ef757ee11a93ecffb0b65574f01490ec367947008827cd476",
+    "src/models-imported.js": "e34a5d37ef99d02a114f99189da7a89449429d52cd8273f0903c35154f199ce9",
+    "src/models-imported-ground.js": "6abfd2156cfe6f41ab13d28cca275dc0be1b37f8ff82bd1705a6d766f51405ab",
+    "src/models-imported-air.js": "911cdd2b2765e3ceb9be4477d9ab8e634fdfd5ea5013c45ed1450643c2ceca84",
+    "assets/models/burke.glb": "f7a6ccac4894e9994cc5f75d1ebda3a1930ea5993ebb2b5ec5c118b4dc3d73c6",
+    "assets/models/t90m.glb": "58a8ed5339168757d5ead282639fc74ac4f880cf0b1edae77170a5b943a4ecce",
+    "assets/models/ah64.glb": "b7a0b2a2f917afc83be6736bda1a3bfddafdd17a444d01c3d762cb108849b2fd",
+    "index.html": "05019ba894f25b168c728cfbdbd17fc99a8e372343aff07059e28070aeeedb44",
+    "style.css": "87263305ed6605ac29375b8621b0df86563040cff6fc64fd1f2960e96b0682e6"
+  },
+  "boundaries": [
+    "Material refinement only; not full geometric remodelling or all-model real-photo acceptance.",
+    "Published range evidence, family estimates and fictional game parameters remain distinguished; damage and reload are game parameters.",
+    "Carrier aircraft are existing original role models; Korean aviation ship remains escort-helicopter-only.",
+    "No new sustained-frame-rate claim; historical reports in package checker are retained baselines, not freshly executed native groups.",
+    "ModernFrontHD-portable.zip is a browser compatibility archive, not the standalone runtime."
+  ]
+}

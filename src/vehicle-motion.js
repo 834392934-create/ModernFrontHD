@@ -25,5 +25,22 @@
   m.signedSpeed=sign*travel/dt;m.vx=dx/dt;m.vy=dy/dt;m.turnRate=angleDelta(e.angle,before.angle)/dt;m.steer=clamp(steer,-1,1);m.throttle=clamp(throttle,-1,1);m.distance+=sign*travel;m.travel+=travel;m.reverse=m.signedSpeed<-.01;m.moving=travel>1e-6;m.tick=tick;
  }
  function steerRate(game,e,steer,velocity){const p=profiles[kind(e)];return steer*p.turn*(p.pivot?1:clamp(Math.abs(velocity)/Math.max(1,game.effectiveSpeed(e)*.35),0,1))*(velocity<0?-1:1);}
- root.WarVehicleMotion={profiles,profile,kind,state,stop,speed,record,steerRate,angleDelta};
+ function bankAircraft(e,turnRate,dt,fixedWing=true){
+  if(!(dt>0)||!Number.isFinite(dt))return;
+  // World forward is local +X and the right wing is +Z. With the renderer's
+  // YZX Euler frame a positive local-X roll lowers that right wing, matching
+  // increasing map heading. These are game response constants, not flight data.
+  const target=fixedWing?clamp(turnRate*.6,-.68,.68):0;
+  e.roll=(e.roll||0)+(target-(e.roll||0))*(1-Math.exp(-4*dt));
+ }
+ function steerAircraft(e,desiredYaw,dt,{maxRate=.9,response=1.8,turn=0,fixedWing=true}={}){
+  if(!(dt>0)||!Number.isFinite(dt))return 0;
+  const delta=angleDelta(Number.isFinite(desiredYaw)?desiredYaw:e.angle,e.angle),stick=Number.isFinite(turn)?clamp(turn,-1,1):0;
+  let change=clamp(delta*response+stick*.7,-maxRate,maxRate)*dt;
+  // A finite mouse pulse selects a heading. Do not overshoot and reverse-bank
+  // around that heading on a long frame once keyboard yaw input is released.
+  if(!stick&&Math.sign(change)===Math.sign(delta))change=Math.sign(delta)*Math.min(Math.abs(change),Math.abs(delta));
+  e.angle+=change;const rate=change/dt;bankAircraft(e,rate,dt,fixedWing);return rate;
+ }
+ root.WarVehicleMotion={profiles,profile,kind,state,stop,speed,record,steerRate,angleDelta,bankAircraft,steerAircraft};
 })(globalThis);

@@ -12,7 +12,7 @@ test('free sky rays preserve direction at every map edge and across the old 2000
 });
 test('all armed roles keep a far untargeted endpoint within their full 3D range',()=>{
  for(const [kind,d]of Object.entries(WarData.U).filter(([,d])=>d.damage>0)){
-  const {g,e}=arena(kind),origin={x:e.x,y:e.y,height:g.entityAltitude(e)+8},shot=fire(g,e,{aimOrigin:origin,aimX:e.x+21000,aimY:e.y-8000,aimHeight:origin.height+20000});assert.ok(shot,kind);const distance=Math.hypot(shot.tx-shot.x,shot.ty-shot.y,shot.targetHeight-shot.sourceHeight);assert.ok(distance<=g.rangeProfile(e).attack+1e-7,kind+' 3D range '+distance);
+  const {g,e}=arena(kind);if(kind==='carrier')assert.equal(g.setVehicleWeapon(e.id,'carrier:ciws'),true,'carrier ballistic rays belong to its defensive gun');const origin={x:e.x,y:e.y,height:g.entityAltitude(e)+8},shot=fire(g,e,{aimOrigin:origin,aimX:e.x+21000,aimY:e.y-8000,aimHeight:origin.height+20000});assert.ok(shot,kind);const distance=Math.hypot(shot.tx-shot.x,shot.ty-shot.y,shot.targetHeight-shot.sourceHeight);assert.ok(distance<=g.rangeProfile(e).attack+1e-7,kind+' 3D range '+distance);
  }
 });
 test('real cross-layer targets retain projected reach and exact aimed target height',()=>{
