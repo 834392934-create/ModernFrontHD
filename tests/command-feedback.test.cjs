@@ -109,6 +109,6 @@ test('Game explicit attack can hit across disconnected land within weapon range'
   assert.ok(g.engagementDistance(a,b)<=WarData.U[a.kind].range);
   const result=g.command([a.id],b.x,b.y,true,b.id);
   assert.deepEqual(result.accepted,[a.id]);assert.equal(result.rejected.length,0);
-  for(let i=0;i<40;i++)g.step(.05);
+  require('./combat-preparation.cjs').advanceUntil(g,()=>b.hp<b.maxHp,8);
   assert.ok(b.hp<b.maxHp,'cross-water ranged attack must still inflict damage');
 });

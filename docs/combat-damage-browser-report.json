@@ -1,0 +1,415 @@
+{
+  "at": "2026-10-24T15:04:12.684Z",
+  "scope": "Source browser: real FPS LMB tank damage, and labeled Game.damage location probes for component presentation; probes are not weapon firing verification",
+  "runs": [
+    {
+      "mode": "actual-fps-mouse-fire",
+      "hits": [
+        {
+          "at": 1.7500000000000009,
+          "before": 650,
+          "after": 547.5,
+          "sourceId": 36
+        },
+        {
+          "at": 3.8499999999999943,
+          "before": 547.5,
+          "after": 445,
+          "sourceId": 36
+        }
+      ],
+      "file": "screenshots/combat-damage-tank-actual-hit.png",
+      "time": 3.8499999999999943,
+      "hp": 445,
+      "kind": "tank",
+      "components": {
+        "schema": 1,
+        "parts": {
+          "engine": {
+            "health": 1,
+            "lastHitAt": -1
+          },
+          "tracks": {
+            "health": 1,
+            "lastHitAt": -1
+          },
+          "turret": {
+            "health": 0.49538461538461537,
+            "lastHitAt": 3.8499999999999943
+          },
+          "hull": {
+            "health": 1,
+            "lastHitAt": -1
+          }
+        },
+        "lastHitAt": 3.8499999999999943,
+        "hitPoint": {
+          "x": 1916.52,
+          "y": 1400,
+          "height": 10.274327306796446
+        },
+        "fireUntil": 0,
+        "flooding": 0,
+        "listing": 0,
+        "state": "operational",
+        "destroyedAt": null,
+        "personnel": null
+      },
+      "visual": {
+        "live": 1,
+        "wrecks": 0,
+        "wash": 0,
+        "marks": 0,
+        "limits": {
+          "live": 26,
+          "wreck": 12,
+          "range": 1600,
+          "particles": 5
+        }
+      },
+      "render": {
+        "frame": 368,
+        "calls": 11,
+        "triangles": 53590,
+        "points": 0,
+        "lines": 0
+      }
+    },
+    {
+      "mode": "actual-fps-mouse-destruction",
+      "file": "screenshots/combat-damage-tank-real-wreck.png",
+      "time": 16.150000000000095,
+      "kind": "tank",
+      "components": {
+        "schema": 1,
+        "parts": {
+          "engine": {
+            "health": 1,
+            "lastHitAt": -1
+          },
+          "tracks": {
+            "health": 1,
+            "lastHitAt": -1
+          },
+          "turret": {
+            "health": 0,
+            "lastHitAt": 16.100000000000094
+          },
+          "hull": {
+            "health": 1,
+            "lastHitAt": -1
+          }
+        },
+        "lastHitAt": 16.100000000000094,
+        "hitPoint": {
+          "x": 1916.52,
+          "y": 1400,
+          "height": 10.274327306796444
+        },
+        "fireUntil": 0,
+        "flooding": 0,
+        "listing": 0,
+        "state": "dead",
+        "destroyedAt": 16.100000000000094,
+        "personnel": null
+      },
+      "visual": {
+        "live": 0,
+        "wrecks": 1,
+        "wash": 0,
+        "marks": 1,
+        "limits": {
+          "live": 26,
+          "wreck": 12,
+          "range": 1600,
+          "particles": 5
+        }
+      },
+      "render": {
+        "frame": 1426,
+        "calls": 7,
+        "triangles": 53575,
+        "points": 0,
+        "lines": 0
+      }
+    },
+    {
+      "mode": "controlled-Game.damage-location-probe",
+      "component": "engine",
+      "ratio": 0.55,
+      "file": "screenshots/combat-damage-tank-state-probe.png",
+      "time": 16.6500000000001,
+      "hp": 290.55,
+      "kind": "tank",
+      "components": {
+        "schema": 1,
+        "parts": {
+          "engine": {
+            "health": 0.11999999999999988,
+            "lastHitAt": 16.150000000000095
+          },
+          "tracks": {
+            "health": 1,
+            "lastHitAt": -1
+          },
+          "turret": {
+            "health": 1,
+            "lastHitAt": -1
+          },
+          "hull": {
+            "health": 1,
+            "lastHitAt": -1
+          }
+        },
+        "lastHitAt": 16.6500000000001,
+        "hitPoint": {
+          "x": 1800,
+          "y": 1400,
+          "height": 0
+        },
+        "fireUntil": 25.150000000000095,
+        "flooding": 0,
+        "listing": 0,
+        "state": "burning",
+        "destroyedAt": null,
+        "personnel": null
+      },
+      "visual": {
+        "live": 1,
+        "wrecks": 0,
+        "wash": 0,
+        "marks": 0,
+        "limits": {
+          "live": 26,
+          "wreck": 12,
+          "range": 1600,
+          "particles": 5
+        }
+      },
+      "render": {
+        "frame": 1483,
+        "calls": 10,
+        "triangles": 56684,
+        "points": 0,
+        "lines": 0
+      }
+    },
+    {
+      "mode": "controlled-Game.damage-location-probe",
+      "component": "hull",
+      "ratio": 0.55,
+      "file": "screenshots/combat-damage-destroyer-state-probe.png",
+      "time": 17.15000000000011,
+      "hp": 719.0908543999999,
+      "kind": "destroyer",
+      "components": {
+        "schema": 1,
+        "parts": {
+          "engine": {
+            "health": 1,
+            "lastHitAt": -1
+          },
+          "turret": {
+            "health": 1,
+            "lastHitAt": -1
+          },
+          "hull": {
+            "health": 0.11999999999999988,
+            "lastHitAt": 16.6500000000001
+          }
+        },
+        "lastHitAt": 17.15000000000011,
+        "hitPoint": {
+          "x": 1800,
+          "y": 1400,
+          "height": 2
+        },
+        "fireUntil": 0,
+        "flooding": 0.14308000000000007,
+        "listing": -0.04197550900597239,
+        "state": "flooding",
+        "destroyedAt": null,
+        "personnel": null
+      },
+      "visual": {
+        "live": 1,
+        "wrecks": 0,
+        "wash": 0,
+        "marks": 0,
+        "limits": {
+          "live": 26,
+          "wreck": 12,
+          "range": 1600,
+          "particles": 5
+        }
+      },
+      "render": {
+        "frame": 1532,
+        "calls": 16,
+        "triangles": 116993,
+        "points": 0,
+        "lines": 0
+      }
+    },
+    {
+      "mode": "controlled-Game.damage-location-probe",
+      "component": "engine",
+      "ratio": 0.55,
+      "file": "screenshots/combat-damage-fighter-state-probe.png",
+      "time": 17.600000000000115,
+      "hp": 187.86599999999993,
+      "kind": "fighter",
+      "components": {
+        "schema": 1,
+        "parts": {
+          "engine": {
+            "health": 0.11999999999999988,
+            "lastHitAt": 17.15000000000011
+          },
+          "control": {
+            "health": 1,
+            "lastHitAt": -1
+          },
+          "hull": {
+            "health": 1,
+            "lastHitAt": -1
+          }
+        },
+        "lastHitAt": 17.600000000000115,
+        "hitPoint": {
+          "x": 1821.7124999999999,
+          "y": 1400,
+          "height": 114.60000000000005
+        },
+        "fireUntil": 26.15000000000011,
+        "flooding": 0,
+        "listing": 0,
+        "state": "crashing",
+        "destroyedAt": null,
+        "personnel": null
+      },
+      "visual": {
+        "live": 1,
+        "wrecks": 0,
+        "wash": 0,
+        "marks": 0,
+        "limits": {
+          "live": 26,
+          "wreck": 12,
+          "range": 1600,
+          "particles": 5
+        }
+      },
+      "render": {
+        "frame": 1580,
+        "calls": 18,
+        "triangles": 27184,
+        "points": 0,
+        "lines": 0
+      }
+    },
+    {
+      "mode": "controlled-Game.damage-location-probe",
+      "component": "structure",
+      "ratio": 0.55,
+      "file": "screenshots/combat-damage-factory-state-probe.png",
+      "time": 18.100000000000122,
+      "hp": 581.1,
+      "kind": "factory",
+      "components": {
+        "schema": 1,
+        "parts": {
+          "structure": {
+            "health": 0.11999999999999988,
+            "lastHitAt": 17.600000000000115
+          }
+        },
+        "lastHitAt": 18.100000000000122,
+        "hitPoint": {
+          "x": 1800,
+          "y": 1400,
+          "height": 0
+        },
+        "fireUntil": 26.600000000000115,
+        "flooding": 0,
+        "listing": 0,
+        "state": "disabled",
+        "destroyedAt": null,
+        "personnel": null
+      },
+      "visual": {
+        "live": 1,
+        "wrecks": 0,
+        "wash": 0,
+        "marks": 0,
+        "limits": {
+          "live": 26,
+          "wreck": 12,
+          "range": 1600,
+          "particles": 5
+        }
+      },
+      "render": {
+        "frame": 1630,
+        "calls": 9,
+        "triangles": 24136,
+        "points": 0,
+        "lines": 0
+      }
+    },
+    {
+      "mode": "controlled-Game.damage-location-probe",
+      "component": null,
+      "ratio": 0.45,
+      "file": "screenshots/combat-damage-infantry-state-probe.png",
+      "time": 18.60000000000013,
+      "hp": 57.75,
+      "kind": "infantry",
+      "components": {
+        "schema": 1,
+        "parts": {},
+        "lastHitAt": 18.100000000000122,
+        "hitPoint": {
+          "x": 1795,
+          "y": 1400,
+          "height": 6
+        },
+        "fireUntil": 0,
+        "flooding": 0,
+        "listing": 0,
+        "state": "operational",
+        "destroyedAt": null,
+        "personnel": {
+          "downedAt": null,
+          "bleedUntil": 0,
+          "reviveProgress": 0,
+          "rescuerId": null,
+          "limp": 0.44999999999999996,
+          "staggerUntil": 18.75000000000012,
+          "everDowned": false
+        }
+      },
+      "visual": {
+        "live": 0,
+        "wrecks": 0,
+        "wash": 0,
+        "marks": 0,
+        "limits": {
+          "live": 26,
+          "wreck": 12,
+          "range": 1600,
+          "particles": 5
+        }
+      },
+      "render": {
+        "frame": 1682,
+        "calls": 5,
+        "triangles": 32070,
+        "points": 0,
+        "lines": 0
+      }
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

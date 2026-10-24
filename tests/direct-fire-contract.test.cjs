@@ -1,6 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 require('../src/data');require('../src/roster');require('../src/equipment');require('../src/operator-weapons');require('../src/sim');
-function arena(kind='tank',targetKind='tank',distance=150){const g=new WarSim.Game({map:'desert',faction:'chn',enemies:1,buffs:['vision']});g.entities=[];g.effects=[];g.ore=[];g.map.blocked.fill(0);g.map.navalBlocked.fill(0);g.ai=()=>{};g.spawn(0,'hq',200,200);g.spawn(1,'hq',5500,3500);const e=g.spawn(0,kind,2000,1800),t=g.spawn(1,targetKind,2000+distance,1800);g.beginDirectControl(e.id);e.cool=0;t.disabled=99999;g.random=()=>0;return{g,e,t};}
+const {prepare,face,advanceUntil,emptyVegetation}=require('./combat-preparation.cjs');
+function arena(kind='tank',targetKind='tank',distance=150){const g=new WarSim.Game({map:'desert',faction:'chn',enemies:1,buffs:['vision']});g.entities=[];g.effects=[];g.ore=[];g.map.blocked.fill(0);g.map.navalBlocked.fill(0);g.ai=()=>{};g.spawn(0,'hq',200,200);g.spawn(1,'hq',5500,3500);const e=g.spawn(0,kind,2000,1800),t=g.spawn(1,targetKind,2000+distance,1800);g.beginDirectControl(e.id);e.cool=0;t.disabled=99999;g.random=()=>0;emptyVegetation(g);face(g,e,t);prepare(g,e,t);return{g,e,t};}
 const aim=(g,t,more={})=>({targetId:t.id,aimX:t.x,aimY:t.y,aimHeight:g.entityAltitude(t),...more});
 function tap(g,e,t,more={}){const a=aim(g,t,more);g.setDirectInput({...a,fire:true});g.setDirectInput({...a,fire:false});g.stepDirectControl(e,.05);return g.effects.filter(f=>f.type==='shot'&&f.sourceId===e.id);}
 test('every armed unit captures one short trigger edge between simulation ticks',()=>{
@@ -31,7 +32,7 @@ test('actual model roof and long hull surface are valid direct aim rather than l
  }
 });
 test('status distinguishes range, projection, domain, fog, blocking and actual model aim',()=>{
- const {g,e,t}=arena();let s=g.directFireStatus(e,t,aim(g,t));assert.equal(s.canFire,true);assert.equal(s.rangeState,'in');assert.equal(s.reason,'ready');assert.equal(s.ammo,null);
+ const {g,e,t}=arena();let s=g.directFireStatus(e,t,aim(g,t));assert.equal(s.canFire,true);assert.equal(s.rangeState,'in');assert.equal(s.reason,'ready');assert.equal(s.ammo,e.combat.stations[s.readiness.weaponId].ammo);
  t.x=e.x+s.range+1;s=g.directFireStatus(e,t);assert.equal(s.inRange,false);assert.equal(s.reason,'out-of-range');
  t.x=e.x+150;assert.equal(g.directFireStatus(e,t,{blocked:true}).reason,'blocked');assert.equal(g.directFireStatus(e,t,{aimHeight:500}).reason,'aim-miss');
  const aircraft=g.spawn(1,'fighter',e.x+150,e.y);assert.equal(g.directFireStatus(e,aircraft).reason,'domain');
@@ -52,7 +53,7 @@ test('minimum range, no weapon, EMP and cancelled trigger never acquire or damag
  f.e.disabled=0;f.g.setDirectInput({...aim(f.g,f.t),fire:true});f.g.setDirectInput({cancelJump:true});f.g.stepDirectControl(f.e,.05);assert.equal(f.g.effects.length,0);
 });
 test('a click during cooldown is consumed and is never queued for a later unsolicited shot',()=>{
- const {g,e,t}=arena();e.cool=.4;assert.equal(tap(g,e,t).length,0);e.cool=0;g.stepDirectControl(e,.05);assert.equal(g.effects.length,0);assert.equal(tap(g,e,t).length,1);
+ const {g,e,t}=arena();const w=g.vehicleWeapon(e,t),c=WarCombatReadiness.ensure(g,e);c.stations[w.id].cooldown=.4;c.mounts[w.mountId].cooldown=.4;assert.equal(tap(g,e,t).length,0);prepare(g,e,t);g.stepDirectControl(e,.05);assert.equal(g.effects.length,0);assert.equal(tap(g,e,t).length,1);
 });
 test('rotated visible hull extremities receive operator damage and a moving target still escapes fixed impact',()=>{
  for(const moved of [false,true])for(const angle of [0,Math.PI/2,Math.PI*.73]){
@@ -70,11 +71,11 @@ test('rotated visible hull extremities receive operator damage and a moving targ
 test('off-model aim, wrong domain, fog and missing sonar cannot acquire or damage a target',()=>{
  for(const mode of ['off-model','domain','fog','sonar']){
   const {g,e,t}=arena(mode==='sonar'?'destroyer':'tank',mode==='domain'?'fighter':mode==='sonar'?'submarine':'tank',150);
-  const point=mode==='off-model'?{aimX:t.x+500}:{};
+  const point=mode==='off-model'?{aimX:t.x+500,aimY:t.y+500}:{};
   if(mode==='fog'){g.buffs.delete('vision');g.visibleAt=()=>false;}
   if(mode==='sonar'){g.buffs.delete('vision');e.disabled=99999;g.beginDirectControl(e.id);e.disabled=0;g.canDetect=()=>false;}
   const s=g.directFireStatus(e,t,{...aim(g,t),...point});assert.equal(s.canFire,false,mode);
-  const [shot]=tap(g,e,t,point);if(mode==='domain'){assert.equal(shot,undefined,'no station can launch against an unsupported domain');assert.equal(e.cool,0);}else{assert.ok(shot,mode);assert.equal(shot.target,null,mode);}const hp=t.hp;e.disabled=99999;
+  prepare(g,e,null,{...aim(g,t),...point});const [shot]=tap(g,e,t,point);if(mode==='domain'){assert.equal(shot,undefined,'no station can launch against an unsupported domain');assert.equal(e.cool,0);}else{assert.ok(shot,mode);assert.equal(shot.target,null,mode);}const hp=t.hp;e.disabled=99999;
   for(let i=0;i<20;i++)g.step(.05);assert.equal(t.hp,hp,mode);
  }
 });
@@ -105,7 +106,7 @@ test('target-ID-only input defaults to the target centre without overwriting exp
   const {g,e,t}=arena(kind,kind==='operator'?'infantry':'tank');g.setDirectInput({fire:true,targetId:t.id,yaw:Math.PI/2});
   assert.deepEqual([g.directControl.input.aimX,g.directControl.input.aimY,g.directControl.input.aimHeight],[t.x,t.y,g.entityAltitude(t)]);
   g.setDirectInput({fire:false,targetId:t.id});g.stepDirectControl(e,.05);const shot=g.effects.find(f=>f.sourceId===e.id);assert.equal(shot.target,t.id);assert.equal(shot.tx,t.x);assert.equal(shot.ty,t.y);
-  e.cool=0;g.effects=[];g.setDirectInput({fire:true,targetId:t.id,aimX:t.x+300});assert.equal(g.directControl.input.aimX,t.x+300);assert.equal(g.directControl.input.aimY,t.y);g.stepDirectControl(e,.05);assert.equal(g.effects.find(f=>f.sourceId===e.id).target,null);
+  e.cool=0;prepare(g,e,t);g.effects=[];g.setDirectInput({fire:true,targetId:t.id,aimX:t.x+300});assert.equal(g.directControl.input.aimX,t.x+300);assert.equal(g.directControl.input.aimY,t.y);g.stepDirectControl(e,.05);assert.equal(g.effects.find(f=>f.sourceId===e.id).target,null);
   g.setDirectInput({fire:false,yaw:Math.PI/2});assert.ok(Math.abs(g.directControl.input.aimX-e.x)<1e-6);assert.equal(g.directControl.input.aimY,e.y+(WarData.U[kind].range||250));
  }
 });

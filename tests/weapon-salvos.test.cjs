@@ -9,12 +9,15 @@ function arena(kind='rocket',faction='chn',options={}){
  const e=g.spawn(0,kind,2000,1800);e.angle=0;e.cool=0;const r=g.rangeProfile(e),distance=Math.max(r.min+100,Math.min(r.attack-100,400));
  return{g,e,point:{x:e.x+distance,y:e.y,height:g.entityAltitude(e)}};
 }
-function emit(a,target=null,extra={}){const {g,e,point}=a;assert.equal(g.emitShot(e,target,{...point,...extra,fixedImpact:true}),true);return g.effects.at(-1);}
+function emit(a,target=null,extra={}){const {g,e,point}=a,aim={...point,...extra,fixedImpact:true},w=g.vehicleWeapon(e,target),R=WarCombatReadiness;
+ // Exercise real preparation/traverse time; never force setupReady or clear a chamber.
+ for(let i=0;i<100&&!R.status(g,e,w,target,{aimX:aim.x,aimY:aim.y,aimHeight:aim.height}).canFire;i++){g.time+=.05;R.step(g,e,.05,{weapon:w,target,aimX:aim.x,aimY:aim.y,aimHeight:aim.height,moving:false});}
+ assert.equal(g.emitShot(e,target,aim),true);return g.effects.at(-1);}
 function finish(g,seconds=3){for(let i=0;i<seconds/.05;i++){g.time+=.05;S.update(g);}}
 test('actual port counts, timed independent projectiles, conserved total damage and one reload charge',()=>{
  for(const [f,count]of Object.entries(S.counts)){
   const a=arena('rocket',f);emit(a);assert.equal(a.g.effects.length,1);assert(S.active(a.g,a.e));const cool=a.e.cool;
-  a.g.time=.08;S.update(a.g);assert.equal(a.g.effects.length,1);finish(a.g);assert.equal(a.g.effects.length,count);assert.equal(a.e.cool,cool);
+  a.g.time+=.08;S.update(a.g);assert.equal(a.g.effects.length,1);finish(a.g);assert.equal(a.g.effects.length,count);assert.equal(a.e.cool,cool);
   assert.equal(S.active(a.g,a.e),false);assert.deepEqual(a.g.effects.map(f=>f.portIndex),Array.from({length:count},(_,i)=>i));
   assert(Math.abs(a.g.effects.reduce((n,f)=>n+f.baseDamage,0)-WarData.U.rocket.damage)<1e-8);
   assert.equal(new Set(a.g.effects.map(f=>f.firedAt)).size,count);assert.equal(new Set(a.g.effects.map(f=>f.tx.toFixed(3))).size,count);assert.equal(new Set(a.g.effects.map(f=>f.ty.toFixed(3))).size,count);
@@ -35,7 +38,7 @@ test('frozen area endpoints do not follow moving targets; valid live port origin
 });
 test('local origin snapshot follows the moving source without inventing additional port offsets',()=>{
  const a=arena('rocket','usa');emit(a,null,{origin:{x:a.e.x+20,y:a.e.y+3,height:12}});
- a.e.x+=5;a.e.y+=7;a.e.angle=Math.PI/2;a.g.time=.16;S.update(a.g);
+ a.e.x+=5;a.e.y+=7;a.e.angle=Math.PI/2;a.g.time+=.16;S.update(a.g);
  const f=a.g.effects[1];assert(Math.abs(f.x-(a.e.x-3))<1e-6);assert(Math.abs(f.y-(a.e.y+20))<1e-6);
 });
 test('stop, move, EMP, source death, faction change and control loss cancel only unlaunched rounds',()=>{
@@ -76,7 +79,7 @@ test('cannon, personnel AT and interceptors remain single-shot; AI enters the sa
   const a=arena(kind);emit(a);finish(a.g);assert.equal(a.g.effects.length,1,kind);assert.equal(S.profile(a.g,a.e),null);
  }
  const a=arena(),t=a.g.spawn(1,'tank',a.point.x,a.point.y);t.hp=1e6;t.disabled=99999;a.e.target=t.id;
- for(let i=0;i<4;i++)a.g.step(.05);
+ for(let i=0;i<60&&!a.g.effects.some(f=>f.sourceId===a.e.id&&f.salvoCount===8);i++)a.g.step(.05);
  assert(a.g.effects.some(f=>f.sourceId===a.e.id&&f.salvoCount===8));assert(S.active(a.g,a.e));
 });
 test('cosmetic effect budget cannot silently delete live damage projectiles',()=>{

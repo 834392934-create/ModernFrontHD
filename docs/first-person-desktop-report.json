@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-24T13:48:06.786Z",
+  "recordedAt": "2026-10-24T16:02:05.592Z",
   "environment": "Packaged Electron",
   "checks": [
     "Button entry, real pointer lock and W/S/D/A move the live infantry entity in four directions",
@@ -807,6 +807,83 @@
   ],
   "errors": [],
   "scope": "Deterministic small combat fixtures; real browser input, renderer, model raycasts and simulation. No claim of sustained combat performance or photorealism.",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.13.0\\ModernFrontHD.exe",
+  "sourceHashes": {
+    "index.html": "85a1ce4030f96a4089728ead647300c5cd62f6063a21a5a4f32358ecbd72f952",
+    "style.css": "012864c9f9ca30d7657900b7e2480469f7dd2b001498f1e062a063747c49530d",
+    "desktop/main.cjs": "96d0875472e448019508974d78830f9602f6ea81ac9aa313641082a61c22d495",
+    "assets/vendor/three.min.js": "170c6789f43217c96b3170f4b42fafe135de7f7cd48497a4218f9757ee1d49fa",
+    "assets/vendor/GLTFLoader.bundle.js": "5f2fac6626db707e22e48dff05e55525b1fc75ca68bf18fff90b91beb396ad58",
+    "assets/textures/ground-data.js": "9536c6ebd046299a5542a74415306d7e9fe3028b6c6fcde76769228190a2038f",
+    "src/data.js": "6337334a824d6e51dd50a76ff12649f933e640f693b181ba8cc1af8aa8dba82b",
+    "src/roster.js": "0609dfb5f0cc07ab408d9675816e236b16a4d13ee6b1d4f209a94b3c8f5f0b81",
+    "src/equipment.js": "451d0463150e360b843fed9a6502dcbd5d7ad11c0d6e99c514d01f405b73cf20",
+    "src/maps-large.js": "dc26a17461fc7f2acdbe0d0c4842744ef6caf140dc214e9eed05c6af55ee74d9",
+    "src/command-feedback.js": "5ddd8240c6ce807fb83852a9fd9fd8c36647586b2e1c41e651f67478bb6ebb30",
+    "src/operator-weapons.js": "dbd036a62b74f286e58c7f264521052213f5d7fc393ad8a90fda2b2856f5b4e3",
+    "src/navigation-footprints.js": "4775176fce696c5bcd82ac22db5ce321a82f340ee2d6e516247599b3a8ae815c",
+    "src/crowd-navigation.js": "b4b21336962fbf317490b3b8f74636dbc445d23bb10a9a7d80375d9e2d06dd08",
+    "src/destructible-trees.js": "01fdc770ca776e98c70eb55a2754e67ab5066a8342b63ce7a165b994b8599645",
+    "src/vehicle-motion.js": "b174c65b4b355bab60ded0e83b593e31b4a907a001d91d76b9a45366bcefff08",
+    "src/aircraft-flight.js": "e409bd102931c51d286be5ed3d248224a195f0c4f050582e1018398434d31583",
+    "src/weapon-range-data.js": "ebede21ef1d145e98f84ffa94494ca5b74620d71959c5f6eacf91c56a2c60e9e",
+    "src/vehicle-weapons.js": "476581b05d96e46829cfe9cfbe3be20c96c0f18cbbb8189dfd45605b3f1f2553",
+    "src/carrier-operations.js": "81c1eef31ac12f66ef14dfcd862d94a124a3dd51630cacc0a4d0309964060c5d",
+    "src/weapon-salvos.js": "c91dad8084fdea6cadf1d55156000f14a13d65ff58b4128c6831a753f60e2fac",
+    "src/combat-readiness.js": "622c8d153ca2db96a39362d3328616dcc055407a36f4395290d50e6a0db5472d",
+    "src/combat-damage.js": "e89c5d02085aee3799c4a1946913a0fc8f8262304fe6f2607ce320b1f5aaa9f2",
+    "src/combat-projectiles.js": "500979f07ad3f3c7e9bd4f81cc997af45bf028273a2407a85a95e85114c0b65e",
+    "src/combat-impact.js": "12caa999683d2f3299c7e86507a01d15643ede4e37400e2f64176c0dda318afe",
+    "src/transport-operations.js": "6d1fa8919751fc0c5e38fa8db16e980d57da488bdf9f70eab03708c094f03917",
+    "src/sim.js": "4acd06bd77b6e4f1971b737d62e86c56f2613174bc68f82c53da15cd2b243d88",
+    "src/operator-sim.js": "84c27449ad0fc039f283b6a478a95217781a001012da9aa977dbc670d9a143fa",
+    "src/vehicle-interaction.js": "8d2d1f251fec3b88932c0ac41b59301e5937fe472878815b24a15ae7eabbf313",
+    "src/render.js": "b80b3be9b9e6a865ab9f6ac614693f91a17218240129cbb9d634353d427be0b3",
+    "src/ranges.js": "5d368003b75a1e174ebcd03312bfb05f2bde342db610b7bb88c5c2f252fb4bd1",
+    "src/models3d.js": "e76d9c4bb56b3b46fcbd26d409744fd88410d6b9eb3518fa74edf1bab558962a",
+    "src/vehicle-rig-ground.js": "2ba59047343ce7b209638c5c8e1b9c8be33df85a57576603b03abadccb3f0ed4",
+    "src/vehicle-rig-naval.js": "350789e400f79b5b2919a03690d38ca7855a0c019c36d639750a0ed1a7e4b8f4",
+    "src/vehicle-rig-air.js": "3fb0747434bbf29ba672512c748c9e1912d07cb54ee6112adc31c17e9ee6b1a3",
+    "src/vehicle-animation.js": "d25219668f0ee52b6924cfd87cedea3c12cdbe389bc785097bde77fe1343f6d8",
+    "src/weapon-effects.js": "5fae73b89f809bb327ee6536bc6e7a179f1cc905fe0fe0ad5a008e9497b4392a",
+    "src/models-tanks.js": "a45826f9fdcd9a087e8bb7a237f230d6b014d3b4c26fcbf3aa3514106e916f63",
+    "src/models-vehicles.js": "79990ee7ddc13303cb9b33e1e1f6868eefba6aefaece7b7b35fec47c2b245a4d",
+    "src/models-air.js": "f137a8b18ff94f7ab5114d3e8c6e657186a73d4528199d69f2a30a83dacb3ecb",
+    "src/models-naval.js": "a399e25da16f666bf27648e9e9769d9f7f938b5cd74eef60057e7833d08f6c1f",
+    "src/models-space.js": "48278cb7bc36f8bf8a448b8ceefe46885e6a7effc25f0bb48afdb74df58f7437",
+    "src/model-detail.js": "306e6bc834b8d646f6722a29320cb89c9292c0d022d6683a168c856354f5d166",
+    "src/models-roster.js": "db79d8962883864735f63d56b5dd1a238f3b02126b644a8ccc98a623b3592636",
+    "src/models-reinforcements-ground-naval.js": "9f757a10d2ca0dbff09c835366f241e46559d9789f75b58009168268f3c1daa2",
+    "src/models-reinforcements-air-space.js": "fd093ee562327053594a6226cb7795c5e7b4e1ad16f65f7a6d179ed8218d0da8",
+    "src/models-tactical-ground-naval.js": "ad07feb5963c1f98665ef7f70a248d79661473d2dbe31167ec79344b2bc9398c",
+    "src/models-tactical-air-space.js": "9e516757fb6a61a474a70fc72935680a8f96da3108fc4fab1a077f85332a5535",
+    "src/models-depth-wave.js": "6c1252d05d29deba601e88327baa8fb7b7a526c4f03a0790df9b0fe33a6b549b",
+    "src/models-altitude-wave.js": "6b49f7f29c88a0885436b412ed12818d1f123d11534136b110836c010eb0be97",
+    "src/models-buildings.js": "cef605cade7bfba31105dd3802826c6649a1dedf7363e85b8b09ebd563937ce8",
+    "src/models-defense-wave.js": "303858c8a99a4e82d8b5ff10a2c699817336bf611d681251d69572bbec5b63ae",
+    "src/models-operator.js": "94f4be5b4d7428c8702705271d5b9a235bfcb75e7b258efdd4ff8e0b8b24dac1",
+    "src/personnel-animation.js": "c3000a3c9008188416ae435249566648dd4738e7678ab97a06c708ee7445513b",
+    "assets/models/burke-data.js": "7c1be15f83fdd9755407f07ad66a4afe5ccd76cecd0aeee91b06cee3f77e3f6d",
+    "src/models-imported.js": "e34a5d37ef99d02a114f99189da7a89449429d52cd8273f0903c35154f199ce9",
+    "assets/models/ah64-data.js": "d4aab4b9fb3e09d218482cf6d40278b397278c171a389682efae716a7bfb0b65",
+    "src/models-imported-air.js": "911cdd2b2765e3ceb9be4477d9ab8e634fdfd5ea5013c45ed1450643c2ceca84",
+    "assets/models/t90m-data.js": "af6501e8bad71ad87fe588f5c99a76bfcbd193629c310133b0112b96d9c05446",
+    "src/models-imported-ground.js": "6abfd2156cfe6f41ab13d28cca275dc0be1b37f8ff82bd1705a6d766f51405ab",
+    "src/model-unit-refinement.js": "f0f085d15ededb8ef757ee11a93ecffb0b65574f01490ec367947008827cd476",
+    "src/underwater.js": "efd255e7063c65d1456e79ca65330ef0ee9b3847daed894ac193aae21e9fda79",
+    "src/altitude-scene.js": "a2f96530a204c0a378025c42265d00e8cdc8b1bdf80f64dd2ad8d61b78f88447",
+    "src/combat-damage-visuals.js": "b6b948c9dbcdb1b2d6fbed6f7817599e8da7525100f1ce5eeaa522c62c7f94a5",
+    "src/battle3d.js": "4fe1be0ef1bc92e0d335cb2ca9e12214c9eb020f05a12d50c3c997e1c07b5fc0",
+    "src/lighting.js": "5a2c4b0d67d3eacb06e92f25a93d011236ef2a91a719adfbc06758a9e703216a",
+    "src/fps-viewmodel.js": "145aceb22aa6592f6ce14b574081ca710ca3e9394341a0d7004b215cb3913294",
+    "src/vehicle-camera.js": "97eb37852c014549296515d246a10930cf591f88196362932fd1e84eda73cd2d",
+    "src/combat-audio.js": "08ac7e6160549d7f948d3a1a701bbccce6a832dccbba670fca3e818527523cce",
+    "src/direct-control.js": "d0ddc43736750beb591f28de0f8cf2a3b38cb2a560a6cd2aa76bc9f819c9c168",
+    "src/player-mode.js": "0bbbb83582e08b250e804bfc0d280091483203e9b9d4cb0cf4856e08722e0fb8",
+    "src/operator-ui.js": "e8953ef30c9b6a48c4bf72e66931bef3549762b5b6ee284339d9643b637be2bd",
+    "src/app.js": "50d238bc2b5417acf53003f5419e785c8f10de1185de05c10221c2f707d264bb"
+  },
+  "appVersion": "3.13.0",
   "movement": [
     {
       "key": "KeyW",
@@ -848,7 +925,7 @@
       },
       "after": {
         "x": 700,
-        "y": 825.2000000000002,
+        "y": 821.6000000000001,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -857,13 +934,13 @@
       "key": "KeyA",
       "before": {
         "x": 700,
-        "y": 825.2000000000002,
+        "y": 821.6000000000001,
         "yaw": 0,
         "pitch": -0.025
       },
       "after": {
         "x": 700,
-        "y": 803.6,
+        "y": 800,
         "yaw": 0,
         "pitch": -0.025
       }
@@ -876,8 +953,8 @@
     "view": "infantry"
   },
   "ai": {
-    "calls": 1,
-    "production": 2,
+    "calls": 21,
+    "production": 3,
     "construction": 1,
     "othersOrdered": 1,
     "controlledOrder": null
@@ -895,16 +972,16 @@
   "combat": {
     "targetHP": 576,
     "feedback": {
-      "hitAt": 24.000000000000206,
+      "hitAt": 24.650000000000215,
       "sourceId": 346,
       "targetId": 347,
       "damage": 74
     },
     "incoming": {
-      "x": 745.7908,
+      "x": 745.7855505462542,
       "y": 800.0000000000001,
       "sourceId": 346,
-      "time": 24.000000000000206
+      "time": 24.650000000000215
     },
     "hudConfirmed": true
   },
@@ -936,16 +1013,17 @@
       "faction": "chn",
       "originMode": "model-muzzle",
       "approximate": false,
-      "cameraTarget": 352,
+      "cameraTarget": 354,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
-        719.8599188608109,
+        720.0048387621764,
         17.790547151053666,
-        804.0793841814268
+        803.6473727615089
       ],
-      "size": 2.676198128379161,
-      "gap": 4.117227889814093,
+      "size": 2.3974520878886683,
+      "gap": 3.6883878275210282,
+      "emissions": [],
       "damage": 0
     },
     {
@@ -953,16 +1031,17 @@
       "faction": "chn",
       "originMode": "model-muzzle",
       "approximate": false,
-      "cameraTarget": 357,
+      "cameraTarget": 359,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
-        753.020238860811,
-        12.597097151053665,
-        799.996984181427
+        753.0110368142953,
+        13.368007997697207,
+        799.9858182106353
       ],
-      "size": 2.9614681511893424,
-      "gap": 4.556104847983604,
+      "size": 2.460878877599627,
+      "gap": 3.7859675039994256,
+      "emissions": [],
       "damage": 0
     },
     {
@@ -970,7 +1049,7 @@
       "faction": "imp",
       "originMode": "model-muzzle",
       "approximate": true,
-      "cameraTarget": 362,
+      "cameraTarget": 364,
       "muzzleHitCover": true,
       "aimTarget": null,
       "center": [
@@ -980,11 +1059,12 @@
       ],
       "size": 1.872548483300781,
       "gap": 2.88084382046274,
+      "emissions": [],
       "damage": 0
     }
   ],
   "nativeFocus": {
-    "recordedAt": "2026-10-24T13:49:06.041Z",
+    "recordedAt": "2026-10-24T16:03:07.284Z",
     "method": "Native focus emulation disabled, then BrowserWindow.minimize / restore / show / focus with physical W and primary mouse held",
     "nativeBefore": {
       "fullScreen": true,
@@ -1000,10 +1080,10 @@
       "events": [
         {
           "trusted": true,
-          "at": 58497.299999952316
+          "at": 60863.10000014305
         }
       ],
-      "locked": false,
+      "locked": true,
       "keys": 0,
       "fire": false,
       "input": {
@@ -1019,16 +1099,12 @@
         "ads": false,
         "jump": false,
         "targetId": null,
-        "aimBlocked": true,
+        "aimBlocked": false,
         "targetTreeId": null,
-        "aimX": 1111.9141635668075,
+        "aimX": 825,
         "aimY": 800,
-        "aimHeight": -0.800000011920929,
-        "aimOrigin": {
-          "x": 705.964,
-          "y": 800.952,
-          "height": 7.475999999999999
-        },
+        "aimHeight": 0,
+        "aimOrigin": null,
         "aimOrigins": []
       },
       "position": [
@@ -1053,7 +1129,7 @@
         "ads": false,
         "jump": false,
         "targetId": null,
-        "aimBlocked": true,
+        "aimBlocked": false,
         "targetTreeId": null,
         "aimX": 1111.9141635668075,
         "aimY": 800,

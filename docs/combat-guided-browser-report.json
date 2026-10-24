@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-24T15:03:31.672Z",
+  "scope": "Actual RTS target command, real guided missile phases; labeled pause inspection camera",
+  "phases": [
+    {
+      "phase": "vertical",
+      "time": 0.3,
+      "point": {
+        "x": 1839.366,
+        "y": 1400,
+        "height": 13.2203
+      },
+      "id": 38,
+      "weapon": "destroyer:anti_ship",
+      "kind": "guided",
+      "appearance": {
+        "type": "missile",
+        "powered": false,
+        "tracer": true,
+        "phase": "vertical"
+      },
+      "target": 37,
+      "file": "screenshots/combat-guided-vertical-inspection.png"
+    },
+    {
+      "phase": "powered",
+      "time": 0.7000000000000001,
+      "point": {
+        "x": 1842.9443214963744,
+        "y": 1400,
+        "height": 57.892362956814054
+      },
+      "id": 38,
+      "weapon": "destroyer:anti_ship",
+      "kind": "guided",
+      "appearance": {
+        "type": "missile",
+        "powered": true,
+        "tracer": true,
+        "phase": "powered"
+      },
+      "target": 37,
+      "file": "screenshots/combat-guided-powered-inspection.png"
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

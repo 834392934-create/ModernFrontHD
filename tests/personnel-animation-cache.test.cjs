@@ -11,24 +11,27 @@ function fixture(api=A,kind='infantry',faction='chn'){
  function update(dt=1/60,dx=0,dy=0,angle=e.angle,jump=e.jumpHeight){time+=dt;e.x+=dx;e.y+=dy;e.angle=angle;e.jumpHeight=jump;model.position.set(e.x,jump,e.y);model.rotation.set(0,-angle,0,'YZX');const state=api.update(model,e,time);return state;}
  update(0);return{model,e,update,api};
 }
-function pose(f){
+function pose(f,excludeReboundMedicalArm=false){
  // Emulate the scene world-matrix and skeleton uploads that real Three performs
  // after the animation callback, including parent motion on cached idle frames.
  f.model.updateMatrixWorld(true);const s=f.api.state(f.model),out=[s.phase,s.distance,s.settle,s.teleports,Number(s.moving),Number(s.jumping)];
- for(const p of s.people){p.skeleton.update();for(const b of p.bones)out.push(...b.position.toArray(),...b.quaternion.toArray(),...b.matrixWorld.elements);for(const foot of p.feet)out.push(...foot.target.toArray(),...foot.world.toArray(),...foot.start.toArray(),foot.phase,Number(foot.stance),Number(foot.planted));out.push(...p.skeleton.boneMatrices);}return out;
+ for(const p of s.people){p.skeleton.update();for(const [i,b]of p.bones.entries()){if(excludeReboundMedicalArm&&i>=7&&i<=9)continue;out.push(...b.position.toArray(),...b.quaternion.toArray(),...b.matrixWorld.elements);}for(const foot of p.feet)out.push(...foot.target.toArray(),...foot.world.toArray(),...foot.start.toArray(),foot.phase,Number(foot.stance),Number(foot.planted));for(let i=0;i<p.skeleton.boneMatrices.length;i++){if(excludeReboundMedicalArm&&i>=7*16&&i<10*16)continue;out.push(p.skeleton.boneMatrices[i]);}}return out;
 }
 function measured(work){
  const clone=T.Vector3.prototype.clone,solve=T.Quaternion.prototype.setFromUnitVectors;let vectorClones=0,ikRotations=0;
  T.Vector3.prototype.clone=function(){vectorClones++;return clone.call(this);};T.Quaternion.prototype.setFromUnitVectors=function(...args){ikRotations++;return solve.apply(this,args);};const start=performance.now();try{work();return{milliseconds:performance.now()-start,vectorClones,ikRotations};}finally{T.Vector3.prototype.clone=clone;T.Quaternion.prototype.setFromUnitVectors=solve;}
 }
-test('48 variants match the pinned pre-cache implementation through locomotion and discontinuities',t=>{
+test('48 variants preserve pre-cache locomotion; newly rebound medic left arm has its own anatomical regression',t=>{
  const trajectory=[];const add=(n,...step)=>{for(let i=0;i<n;i++)trajectory.push(step);};
  add(10,1/60,0,0,0,0);add(30,1/60,.35,0,0,0);add(18,1/30,0,.4,.7,0);add(15,1/60,-.7,0,1.2,0);add(8,1/60,.2,.15,1.2,4);add(4,0,0,0,1.2,4);add(18,1/60,.25,-.1,.3,0);add(30,1/60,0,0,.3,0);add(4,1/60,0,0,1.8,0);add(8,1/60,0,0,1.8,0);
  trajectory.push([-.7,0,0,1.8,0],[1/60,0,0,1.8,0],[.8,0,0,1.8,0],[1/60,0,0,1.8,0],[1/60,2000,-500,2.3,0]);add(10,1/60,0,0,2.3,0);add(15,1/60,0,.6,-.5,0);add(24,1/60,0,0,-.5,0);
  let maxError=0,comparisons=0;
  for(const kind of A.roles)for(const faction of Object.keys(WarModels.colors)){
   const a=fixture(A,kind,faction),b=fixture(old,kind,faction);
-  for(const [stepIndex,step]of trajectory.entries()){a.update(...step);b.update(...step);const av=pose(a),bv=pose(b);assert.equal(av.length,bv.length);for(let i=0;i<av.length;i++){const error=Math.abs(av[i]-bv[i]);maxError=Math.max(maxError,error);assert.ok(error<1e-6,`${kind}_${faction} step ${stepIndex} value ${i}: ${av[i]} vs ${bv[i]}`);comparisons++;}}
+  // The new unarmed left forearm intentionally has the same length as its right
+  // counterpart. Its real joint positions are checked in personnel-combat-pose;
+  // compare every other joint, both feet and the complete gait against history.
+  for(const [stepIndex,step]of trajectory.entries()){a.update(...step);b.update(...step);const av=pose(a,kind==='field_medic'),bv=pose(b,kind==='field_medic');assert.equal(av.length,bv.length);for(let i=0;i<av.length;i++){const error=Math.abs(av[i]-bv[i]);maxError=Math.max(maxError,error);assert.ok(error<1e-6,`${kind}_${faction} step ${stepIndex} value ${i}: ${av[i]} vs ${bv[i]}`);comparisons++;}}
   A.release(a.model);old.release(b.model);
  }
  t.diagnostic(JSON.stringify({baseline:BASELINE,variants:48,trajectoryFrames:trajectory.length,comparisons,maxError,includes:'local bones, world bone matrices, uploaded skeleton matrices, foot target/world/start, gait state'}));

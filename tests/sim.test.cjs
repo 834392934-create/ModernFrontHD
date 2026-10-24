@@ -213,10 +213,10 @@ test("sam targets aircraft and jammer disables hostile units", () => {
   const sam = g.spawn(0, "sam", h.x + 250, h.y),
     heli = g.spawn(1, "heli", h.x + 300, h.y);
   g.spawn(0, "power", h.x - 200, h.y);
-  const ground = g.spawn(1, "tank", h.x + 280, h.y);
+  const ground = g.spawn(1, "tank", h.x + 280, h.y + 100);
   g.spawn(0, "jammer", h.x + 100, h.y);
   for (let i = 0; i < 30; i++) g.step(0.05);
-  assert.ok(heli.hp < heli.maxHp);
+  assert.ok(require('./combat-preparation.cjs').advanceUntil(g,()=>heli.hp<heli.maxHp,6));
   assert.ok(ground.disabled > g.time);
   assert.notEqual(sam.target, ground.id);
 });

@@ -4,6 +4,7 @@
  const P=root.WarSim.Game.prototype,{U,W,H}=root.WarData;
  const personnel=e=>!!e&&!!U[e.kind]&&(U[e.kind].modelKind||e.kind)==='infantry';
  const vehicle=e=>!!e&&!e.structure&&!!U[e.kind]&&!personnel(e);
+ const incapacitated=e=>!e||root.WarCombatDamage?.incapacitated(e)||e.hp<=0;
  const finite=Number.isFinite;
  function idle(game,e){game.resetJump(e);e.order=null;e.orderQueue=[];e.path=[];e.target=null;e.manualMove=false;e.retreating=false;delete e.protectionRole;delete e.crowdSteer;delete e.crowdRouteOrder;e.crowdProgress=null;e.crowdWaiting=null;if(e.operatorState){e.operatorState.reloadRemaining=0;e.operatorState.fireHeld=false;}}
  function stow(game,body,crew){
@@ -13,12 +14,12 @@
  }
  P.vehiclePrepareDirect=function(id){
   const body=this.get(id);this.vehicleInteractionMessage='';
-  if(!body||body.team!==0||this.result)return false;
+  if(!body||body.team!==0||this.result||incapacitated(body))return false;
   if(!vehicle(body))return !!body;
-  if(body.vehicleCrew?.hp>0)return true;
+  if(body.vehicleCrew?.hp>0){if(incapacitated(body.vehicleCrew)){this.vehicleInteractionMessage='驾驶员失去行动能力，无法驾驶';return false;}return true;}
   let crew=this.get(body.vehicleDriverId);
-  if(!personnel(crew)||crew.team!==body.team)crew=null;
-  crew??=this.entities.filter(e=>e.kind==='operator'&&e.team===body.team&&e.hp>0&&!(e.disabled>this.time)).sort((a,b)=>Math.hypot(a.x-body.x,a.y-body.y)-Math.hypot(b.x-body.x,b.y-body.y)||a.id-b.id)[0];
+  if(!personnel(crew)||crew.team!==body.team||incapacitated(crew))crew=null;
+  crew??=this.entities.filter(e=>e.kind==='operator'&&e.team===body.team&&!incapacitated(e)&&!(e.disabled>this.time)).sort((a,b)=>Math.hypot(a.x-body.x,a.y-body.y)-Math.hypot(b.x-body.x,b.y-body.y)||a.id-b.id)[0];
   if(!crew){
    if(body.vehicleDriverIssued||body.vehicleDriverId!==undefined){this.vehicleInteractionMessage='原驾驶员已失去联系：请使用现有人员靠近并按 F 登乘';return false;}
    crew=this.spawn(body.team,'operator',body.x,body.y);body.vehicleDriverIssued=true;this.operatorState?.(crew);
@@ -26,8 +27,8 @@
   stow(this,body,crew);return true;
  };
  P.vehicleNearby=function(id){
-  const crew=this.get(id);if(!personnel(crew))return null;
-  return this.entities.filter(e=>vehicle(e)&&e.hp>0&&e.team===crew.team&&!e.vehicleCrew&&!(e.disabled>this.time)&&Math.abs(this.entityAltitude(e)-this.entityAltitude(crew))<=45&&Math.hypot(e.x-crew.x,e.y-crew.y)<=this.navigationRadius(e)+this.navigationRadius(crew)+35)
+  const crew=this.get(id);if(!personnel(crew)||incapacitated(crew))return null;
+  return this.entities.filter(e=>vehicle(e)&&!incapacitated(e)&&e.team===crew.team&&!e.vehicleCrew&&!(e.disabled>this.time)&&Math.abs(this.entityAltitude(e)-this.entityAltitude(crew))<=45&&Math.hypot(e.x-crew.x,e.y-crew.y)<=this.navigationRadius(e)+this.navigationRadius(crew)+35)
    .sort((a,b)=>Math.hypot(a.x-crew.x,a.y-crew.y)-Math.hypot(b.x-crew.x,b.y-crew.y)||a.id-b.id)[0]||null;
  };
  P.vehicleExitPoint=function(body,crew){
@@ -62,6 +63,7 @@
  P.vehicleInteract=function(id){
   const actor=this.get(id),fail=message=>({ok:false,message});
   if(!actor||actor.team!==0||this.result||this.directControl?.id!==id)return fail('只能操作当前驾驶的存活己方单位');
+  if(incapacitated(actor))return fail('当前人员或载具失去行动能力，无法上下车');
   if(actor.disabled>this.time)return fail('EMP 停机期间暂时无法上下车');
   if(personnel(actor)){
    const body=this.vehicleNearby(id);if(!body)return fail('附近没有可登乘的己方空载具；请靠近地面或低空载具');
@@ -89,6 +91,7 @@
    if(body.vehicleDriverIssued!==undefined&&typeof body.vehicleDriverIssued!=='boolean')throw Error('驾驶员记录无效');
    const crew=body.vehicleCrew;if(!crew)continue;
    if(!vehicle(body)||body.team!==0||!personnel(crew)||crew.team!==body.team||crew.structure||!Number.isInteger(crew.id)||crew.id<1||crew.id>=this.nextId||ids.has(crew.id)||crew.embarkedIn!==body.id||body.vehicleDriverId!==crew.id||crew.vehicleCrew||!finite(crew.hp)||!finite(crew.maxHp)||crew.hp<=0||crew.maxHp<=0||crew.hp>crew.maxHp||!finite(crew.x)||!finite(crew.y)||crew.x<0||crew.x>W||crew.y<0||crew.y>H||['altitude','pitch','roll','angle','cool','disabled'].some(k=>!finite(crew[k])))throw Error('乘员存档数据无效');
+   if(incapacitated(crew)||root.WarCombatDamage&&!root.WarCombatDamage.validate(crew)||root.WarCombatReadiness&&!root.WarCombatReadiness.validate(crew,this)||root.WarOperatorCombat&&!root.WarOperatorCombat.validate(crew))throw Error('乘员战斗状态无效');
    ids.add(crew.id);crew.r=U[crew.kind].r;idle(this,crew);
    if(crew.kind==='operator'){
     const s=crew.operatorState,C=root.WarOperatorWeapons;

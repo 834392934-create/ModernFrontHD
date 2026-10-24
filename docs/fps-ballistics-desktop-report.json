@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-24T13:33:21.370Z",
+  "recordedAt": "2026-10-24T15:48:12.246Z",
   "environment": "desktop",
   "scope": "Controlled clear geometry: original terrain retained, decorative world obstacles removed; no combat/AI/asset-fidelity claim",
   "checks": [
@@ -25,6 +25,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 3077.964,
+          "y": 2112.952,
+          "tx": 3528.626108524482,
+          "ty": 2114.383741300038,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.5446483193970691,
+          "max": 0.6446483193970691,
+          "firedAt": 1.3500000000000005,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 30.53304557908291,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 37,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3147.872211184973,
+              "y": 2113.1740964915225,
+              "height": 11.05268590537052
+            },
+            "previous": {
+              "x": 3112.9181055924864,
+              "y": 2113.0630482457614,
+              "height": 9.26434295268526
+            },
+            "origin": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 3528.626108524482,
+              "y": 2114.383741300038,
+              "height": 30.53304557908291
+            },
+            "duration": 0.6446483193970691,
+            "age": 0.1,
+            "maxAge": 0.6446483193970691,
+            "phase": "flight",
+            "velocity": {
+              "x": 699.0821118497294,
+              "y": 2.2209649152218645,
+              "height": 35.76685905370521
+            }
+          },
+          "dischargeId": "36:1",
+          "operatorShotSequence": 1,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            3077.964,
+            2112.952,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -95,6 +175,86 @@
           "weaponFx": "projectile",
           "sourceId": 36
         },
+        "live": {
+          "type": "shot",
+          "x": 3077.964,
+          "y": 2112.952,
+          "tx": 3534.1582777915005,
+          "ty": 2109.691946133534,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.6071428571428571,
+          "max": 0.6571428571428571,
+          "firedAt": 1.6500000000000008,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 66.43490907300568,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 38,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3112.674434179788,
+              "y": 2112.703952423204,
+              "height": 11.962003951206952
+            },
+            "previous": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 3534.1582777915005,
+              "y": 2109.691946133534,
+              "height": 66.43490907300568
+            },
+            "duration": 0.6571428571428571,
+            "age": 0.05,
+            "maxAge": 0.6571428571428571,
+            "phase": "flight",
+            "velocity": {
+              "x": 694.2086835957617,
+              "y": -4.960951535926558,
+              "height": 89.72007902413908
+            }
+          },
+          "dischargeId": "36:2",
+          "operatorShotSequence": 2,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            3077.964,
+            2112.952,
+            7.475999999999999
+          ]
+        },
         "aim": {
           "origin": [
             3077.964,
@@ -140,7 +300,7 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 0.13,
-        "at": 1.6000000000000008,
+        "at": 1.6500000000000008,
         "projected": false
       },
       "actualDistance": 460,
@@ -163,6 +323,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 3077.964,
+          "y": 2112.952,
+          "tx": 3122.216326628721,
+          "ty": 2111.6400992140716,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.03,
+          "max": 0.08,
+          "firedAt": 1.900000000000001,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": -0.8000000119209272,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 39,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3105.621704142951,
+              "y": 2112.132062008795,
+              "height": 2.30349999254942
+            },
+            "previous": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 3122.216326628721,
+              "y": 2111.6400992140716,
+              "height": -0.8000000119209272
+            },
+            "duration": 0.08,
+            "age": 0.05,
+            "maxAge": 0.08,
+            "phase": "flight",
+            "velocity": {
+              "x": 553.1540828590153,
+              "y": -16.398759824107856,
+              "height": -103.45000014901157
+            }
+          },
+          "dischargeId": "36:3",
+          "operatorShotSequence": 3,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            3077.964,
+            2112.952,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -191,7 +431,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
-          "aimBlocked": true,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3077.964,
@@ -209,7 +449,7 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": -0.2,
-        "at": 1.850000000000001,
+        "at": 1.900000000000001,
         "projected": false
       },
       "actualDistance": 45.0386686295728,
@@ -232,6 +472,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 3077.964,
+          "y": 2112.952,
+          "tx": 3247.893465867724,
+          "ty": 2113.17662860571,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.607142857142857,
+          "max": 0.657142857142857,
+          "firedAt": 2.1500000000000004,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 434.9381926812937,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 40,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3090.89341588124,
+              "y": 2112.969091306956,
+              "height": 40.000297269228874
+            },
+            "previous": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 3247.893465867724,
+              "y": 2113.17662860571,
+              "height": 434.9381926812937
+            },
+            "duration": 0.657142857142857,
+            "age": 0.05,
+            "maxAge": 0.657142857142857,
+            "phase": "flight",
+            "velocity": {
+              "x": 258.5883176247975,
+              "y": 0.34182613912355964,
+              "height": 650.4859453845775
+            }
+          },
+          "dischargeId": "36:4",
+          "operatorShotSequence": 4,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            3077.964,
+            2112.952,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -278,7 +598,7 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 1.2,
-        "at": 2.1000000000000005,
+        "at": 2.1500000000000004,
         "projected": false
       },
       "actualDistance": 460,
@@ -301,6 +621,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 3066.036,
+          "y": 2111.048,
+          "tx": 2606.693760430793,
+          "ty": 2102.4521617961123,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.6071428571428572,
+          "max": 0.6571428571428573,
+          "firedAt": 2.3999999999999995,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 30.515498977149768,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 41,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3031.0860469892996,
+              "y": 2110.3939688323126,
+              "height": 9.229005356957046
+            },
+            "previous": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 2606.693760430793,
+              "y": 2102.4521617961123,
+              "height": 30.515498977149768
+            },
+            "duration": 0.6571428571428573,
+            "age": 0.05,
+            "maxAge": 0.6571428571428573,
+            "phase": "flight",
+            "velocity": {
+              "x": -698.9990602140103,
+              "y": -13.080623353741883,
+              "height": 35.060107139140946
+            }
+          },
+          "dischargeId": "36:5",
+          "operatorShotSequence": 5,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            3066.036,
+            2111.048,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -347,7 +747,7 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 0.05,
-        "at": 2.3499999999999996,
+        "at": 2.3999999999999995,
         "projected": false
       },
       "actualDistance": 460.0000000000001,
@@ -370,6 +770,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 3066.036,
+          "y": 2111.048,
+          "tx": 2614.3920870326515,
+          "ty": 2115.812855433426,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.6008555275322209,
+          "max": 0.650855527532221,
+          "firedAt": 2.6499999999999986,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 67.18698487440086,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 42,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3031.339827511476,
+              "y": 2111.414045553265,
+              "height": 12.06311513911548
+            },
+            "previous": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 2614.3920870326515,
+              "y": 2115.812855433426,
+              "height": 67.18698487440086
+            },
+            "duration": 0.650855527532221,
+            "age": 0.05,
+            "maxAge": 0.650855527532221,
+            "phase": "flight",
+            "velocity": {
+              "x": -693.9234497704864,
+              "y": 7.32091106530632,
+              "height": 91.74230278230961
+            }
+          },
+          "dischargeId": "36:6",
+          "operatorShotSequence": 6,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            3066.036,
+            2111.048,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -416,7 +896,7 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 0.13,
-        "at": 2.5999999999999988,
+        "at": 2.6499999999999986,
         "projected": false
       },
       "actualDistance": 455.5988692725547,
@@ -439,6 +919,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 3066.036,
+          "y": 2111.048,
+          "tx": 3021.878757183104,
+          "ty": 2112.1243392436036,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.03,
+          "max": 0.08,
+          "firedAt": 2.8999999999999977,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": -0.8000000119209272,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 43,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3038.43772323944,
+              "y": 2111.7207120272524,
+              "height": 2.30349999254942
+            },
+            "previous": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 3021.878757183104,
+              "y": 2112.1243392436036,
+              "height": -0.8000000119209272
+            },
+            "duration": 0.08,
+            "age": 0.05,
+            "maxAge": 0.08,
+            "phase": "flight",
+            "velocity": {
+              "x": -551.9655352112011,
+              "y": 13.454240545047469,
+              "height": -103.45000014901157
+            }
+          },
+          "dischargeId": "36:7",
+          "operatorShotSequence": 7,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            3066.036,
+            2111.048,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -467,7 +1027,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
-          "aimBlocked": true,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3066.036,
@@ -485,7 +1045,7 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": -0.2,
-        "at": 2.849999999999998,
+        "at": 2.8999999999999977,
         "projected": false
       },
       "actualDistance": 44.93898948079449,
@@ -508,6 +1068,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 3066.036,
+          "y": 2111.048,
+          "tx": 2897.456070568328,
+          "ty": 2102.886378908623,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.6071428571428571,
+          "max": 0.6571428571428571,
+          "firedAt": 3.149999999999997,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 435.394444722792,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 44,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3053.2092662388945,
+              "y": 2110.4270070908733,
+              "height": 40.03501209847331
+            },
+            "previous": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 2897.456070568328,
+              "y": 2102.886378908623,
+              "height": 435.394444722792
+            },
+            "duration": 0.6571428571428571,
+            "age": 0.05,
+            "maxAge": 0.6571428571428571,
+            "phase": "flight",
+            "velocity": {
+              "x": -256.53467522210974,
+              "y": -12.41985818252972,
+              "height": 651.1802419694661
+            }
+          },
+          "dischargeId": "36:8",
+          "operatorShotSequence": 8,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            3066.036,
+            2111.048,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -554,7 +1194,7 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 1.2,
-        "at": 3.049999999999997,
+        "at": 3.149999999999997,
         "projected": false
       },
       "actualDistance": 460,
@@ -568,21 +1208,101 @@
       "pitch": 0.05,
       "shot": {
         "fx": {
-          "x": 3068.455980812693,
-          "y": 2107.109649501314,
+          "x": 3068.4621679970282,
+          "y": 2107.1158366856494,
           "sourceHeight": 7.475999999999999,
-          "tx": 2751.3702443172156,
-          "ty": 1782.3892975492856,
-          "targetHeight": 30.533045579087442,
+          "tx": 2751.376431065053,
+          "ty": 1782.3954842759663,
+          "targetHeight": 30.533032981012173,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
         },
+        "live": {
+          "type": "shot",
+          "x": 3068.4621679970282,
+          "y": 2107.1158366856494,
+          "tx": 2751.376431065053,
+          "ty": 1782.3954842759663,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.5992040630800871,
+          "max": 0.6492040630800872,
+          "firedAt": 3.349999999999996,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 30.533032981012173,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 45,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3044.0410533610852,
+              "y": 2082.106723921546,
+              "height": 9.251792411989864
+            },
+            "previous": {
+              "x": 3068.4621679970282,
+              "y": 2107.1158366856494,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3068.4621679970282,
+              "y": 2107.1158366856494,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 2751.376431065053,
+              "y": 1782.3954842759663,
+              "height": 30.533032981012173
+            },
+            "duration": 0.6492040630800872,
+            "age": 0.05,
+            "maxAge": 0.6492040630800872,
+            "phase": "flight",
+            "velocity": {
+              "x": -488.4222927188593,
+              "y": -500.18225528207284,
+              "height": 35.51584823979731
+            }
+          },
+          "dischargeId": "36:9",
+          "operatorShotSequence": 9,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            3068.4621679970282,
+            2107.1158366856494,
+            7.475999999999999
+          ]
+        },
         "aim": {
           "origin": [
-            3068.455980812693,
+            3068.4621679970282,
             7.475999999999999,
-            2107.109649501314
+            2107.1158366856494
           ],
           "point": [
             -8227.569309393766,
@@ -608,8 +1328,8 @@
           "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
-            "x": 3068.455980812693,
-            "y": 2107.109649501314,
+            "x": 3068.4621679970282,
+            "y": 2107.1158366856494,
             "height": 7.475999999999999
           },
           "aimOrigins": [],
@@ -623,12 +1343,12 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 0.05,
-        "at": 3.2999999999999963,
+        "at": 3.349999999999996,
         "projected": false
       },
-      "actualDistance": 454.44284416366867,
-      "expectedUnclippedDistance": 15994.14480781375,
-      "angleRadians": 0.011955104645537019,
+      "actualDistance": 454.442844156061,
+      "expectedUnclippedDistance": 15994.153546815005,
+      "angleRadians": 0.011955104628720615,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -646,6 +1366,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "tx": 2743.2550559263727,
+          "ty": 1787.9878965528246,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.6064588621435064,
+          "max": 0.6564588621435065,
+          "firedAt": 3.599999999999995,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 67.18698487440594,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 46,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3043.6866507266873,
+              "y": 2082.803347054084,
+              "height": 12.023960909495095
+            },
+            "previous": {
+              "x": 3068.455980812693,
+              "y": 2107.109649501314,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3068.455980812693,
+              "y": 2107.109649501314,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 2743.2550559263727,
+              "y": 1787.9878965528246,
+              "height": 67.18698487440594
+            },
+            "duration": 0.6564588621435065,
+            "age": 0.05,
+            "maxAge": 0.6564588621435065,
+            "phase": "flight",
+            "velocity": {
+              "x": -495.3866017201073,
+              "y": -486.1260489445979,
+              "height": 90.9592181899019
+            }
+          },
+          "dischargeId": "36:10",
+          "operatorShotSequence": 10,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            3068.455980812693,
+            2107.109649501314,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -692,7 +1492,7 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 0.13,
-        "at": 3.4999999999999956,
+        "at": 3.599999999999995,
         "projected": false
       },
       "actualDistance": 459.52120350045453,
@@ -715,6 +1515,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "tx": 3036.26582503767,
+          "ty": 2076.2476901928944,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.03,
+          "max": 0.08,
+          "firedAt": 3.8499999999999943,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": -0.800000011920929,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 47,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3048.3371334533035,
+              "y": 2087.820924933552,
+              "height": 2.303499992549419
+            },
+            "previous": {
+              "x": 3068.455980812693,
+              "y": 2107.109649501314,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3068.455980812693,
+              "y": 2107.109649501314,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 3036.26582503767,
+              "y": 2076.2476901928944,
+              "height": -0.800000011920929
+            },
+            "duration": 0.08,
+            "age": 0.05,
+            "maxAge": 0.08,
+            "phase": "flight",
+            "velocity": {
+              "x": -402.376947187787,
+              "y": -385.77449135524375,
+              "height": -103.4500001490116
+            }
+          },
+          "dischargeId": "36:11",
+          "operatorShotSequence": 11,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            3068.455980812693,
+            2107.109649501314,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -743,7 +1623,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
-          "aimBlocked": true,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3068.455980812693,
@@ -761,7 +1641,7 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": -0.2,
-        "at": 3.7499999999999947,
+        "at": 3.8499999999999943,
         "projected": false
       },
       "actualDistance": 45.35591292623378,
@@ -784,6 +1664,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "tx": 2949.647810230635,
+          "ty": 1992.4537918093115,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.6064185226192907,
+          "max": 0.6564185226192908,
+          "firedAt": 4.099999999999993,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 436.27949642968775,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 48,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3059.40625365783,
+              "y": 2098.3762078218733,
+              "height": 40.13835501084306
+            },
+            "previous": {
+              "x": 3068.455980812693,
+              "y": 2107.109649501314,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3068.455980812693,
+              "y": 2107.109649501314,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 2949.647810230635,
+              "y": 1992.4537918093115,
+              "height": 436.27949642968775
+            },
+            "duration": 0.6564185226192908,
+            "age": 0.05,
+            "maxAge": 0.6564185226192908,
+            "phase": "flight",
+            "velocity": {
+              "x": -180.99454309726121,
+              "y": -174.66883358881154,
+              "height": 653.2471002168611
+            }
+          },
+          "dischargeId": "36:12",
+          "operatorShotSequence": 12,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            3068.455980812693,
+            2107.109649501314,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -830,7 +1790,7 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 1.2,
-        "at": 3.999999999999994,
+        "at": 4.099999999999993,
         "projected": false
       },
       "actualDistance": 459.49296583350355,
@@ -847,12 +1807,92 @@
           "x": 125.964,
           "y": 120.952,
           "sourceHeight": 7.475999999999999,
-          "tx": 585.3307722045554,
-          "ty": 128.1706952797344,
-          "targetHeight": 30.499010941804336,
+          "tx": 577.7665049340233,
+          "ty": 123.15415026952877,
+          "targetHeight": 30.533045579081282,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 125.964,
+          "y": 120.952,
+          "tx": 577.7665049340233,
+          "ty": 123.15415026952877,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.5962797465325448,
+          "max": 0.6462797465325448,
+          "firedAt": 4.3499999999999925,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 30.533045579081282,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 49,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 160.91809745996673,
+              "y": 121.12237128900789,
+              "height": 9.259828574451557
+            },
+            "previous": {
+              "x": 125.964,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 125.964,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 577.7665049340233,
+              "y": 123.15415026952877,
+              "height": 30.533045579081282
+            },
+            "duration": 0.6462797465325448,
+            "age": 0.05,
+            "maxAge": 0.6462797465325448,
+            "phase": "flight",
+            "velocity": {
+              "x": 699.0819491993344,
+              "y": 3.407425780157692,
+              "height": 35.676571489031176
+            }
+          },
+          "dischargeId": "36:13",
+          "operatorShotSequence": 13,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            125.964,
+            120.952,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -899,12 +1939,12 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 0.05,
-        "at": 4.249999999999993,
+        "at": 4.3499999999999925,
         "projected": false
       },
-      "actualDistance": 459.99999999999994,
+      "actualDistance": 452.3958225727814,
       "expectedUnclippedDistance": 15994.14480781375,
-      "angleRadians": 0.015753128140030454,
+      "angleRadians": 0.0049990877315165706,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -922,6 +1962,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 125.964,
+          "y": 120.952,
+          "tx": 582.1302324751028,
+          "ty": 120.29534537631082,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.6071428571428571,
+          "max": 0.6571428571428571,
+          "firedAt": 4.599999999999992,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 66.73759932178322,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 50,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 160.6723002970187,
+              "y": 120.90203714819756,
+              "height": 11.985034731005245
+            },
+            "previous": {
+              "x": 125.964,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 125.964,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 582.1302324751028,
+              "y": 120.29534537631082,
+              "height": 66.73759932178322
+            },
+            "duration": 0.6571428571428571,
+            "age": 0.05,
+            "maxAge": 0.6571428571428571,
+            "phase": "flight",
+            "velocity": {
+              "x": 694.1660059403739,
+              "y": -0.9992570360487494,
+              "height": 90.1806946201049
+            }
+          },
+          "dischargeId": "36:14",
+          "operatorShotSequence": 14,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            125.964,
+            120.952,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -968,7 +2088,7 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 0.13,
-        "at": 4.499999999999992,
+        "at": 4.599999999999992,
         "projected": false
       },
       "actualDistance": 460,
@@ -982,19 +2102,99 @@
       "pitch": -0.2,
       "shot": {
         "fx": {
-          "x": 125.964,
+          "x": 125.95524999999999,
           "y": 120.952,
           "sourceHeight": 7.475999999999999,
-          "tx": 574.8950824688399,
-          "ty": 115.19335913580949,
-          "targetHeight": -83.53178040001067,
+          "tx": 574.8864987287649,
+          "ty": 115.1933633187185,
+          "targetHeight": -83.53095666571708,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
         },
+        "live": {
+          "type": "shot",
+          "x": 125.95524999999999,
+          "y": 120.952,
+          "tx": 574.8864987287649,
+          "ty": 115.1933633187185,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "underwater",
+          "splash": 0,
+          "ttl": 0.6044271433906377,
+          "max": 0.6544271433906378,
+          "firedAt": 4.799999999999991,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": -83.53095666571708,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 51,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 160.2548090313398,
+              "y": 120.51202461546403,
+              "height": 0.5228228904593557
+            },
+            "previous": {
+              "x": 125.95524999999999,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 125.95524999999999,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 574.8864987287649,
+              "y": 115.1933633187185,
+              "height": -83.53095666571708
+            },
+            "duration": 0.6544271433906378,
+            "age": 0.05,
+            "maxAge": 0.6544271433906378,
+            "phase": "flight",
+            "velocity": {
+              "x": 685.9911806267957,
+              "y": -8.799507690719487,
+              "height": -139.06354219081285
+            }
+          },
+          "dischargeId": "36:15",
+          "operatorShotSequence": 15,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            125.95524999999999,
+            120.952,
+            7.475999999999999
+          ]
+        },
         "aim": {
           "origin": [
-            125.964,
+            125.95524999999999,
             7.475999999999999,
             120.952
           ],
@@ -1019,10 +2219,10 @@
           "jump": false,
           "fire": true,
           "ads": false,
-          "aimBlocked": true,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
-            "x": 125.964,
+            "x": 125.95524999999999,
             "y": 120.952,
             "height": 7.475999999999999
           },
@@ -1037,12 +2237,12 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": -0.2,
-        "at": 4.699999999999991,
+        "at": 4.799999999999991,
         "projected": false
       },
-      "actualDistance": 458.09900113903717,
-      "expectedUnclippedDistance": 947.5998603740244,
-      "angleRadians": 0.01159787082081996,
+      "actualDistance": 458.0990003734465,
+      "expectedUnclippedDistance": 947.6084374161562,
+      "angleRadians": 0.011597870234996116,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -1060,6 +2260,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 125.964,
+          "y": 120.952,
+          "tx": 286.108787904555,
+          "ty": 118.94814982863339,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.6039094474207887,
+          "max": 0.6539094474207887,
+          "firedAt": 5.04999999999999,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 436.2794964296756,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 52,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 138.20918077665135,
+              "y": 120.79877923072756,
+              "height": 40.26368169820781
+            },
+            "previous": {
+              "x": 125.964,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 125.964,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 286.108787904555,
+              "y": 118.94814982863339,
+              "height": 436.2794964296756
+            },
+            "duration": 0.6539094474207887,
+            "age": 0.05,
+            "maxAge": 0.6539094474207887,
+            "phase": "flight",
+            "velocity": {
+              "x": 244.90361553302708,
+              "y": -3.0644153854488305,
+              "height": 655.7536339641563
+            }
+          },
+          "dischargeId": "36:16",
+          "operatorShotSequence": 16,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            125.964,
+            120.952,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -1106,7 +2386,7 @@
         "kind": "operator",
         "yaw": 0,
         "pitch": 1.2,
-        "at": 4.94999999999999,
+        "at": 5.04999999999999,
         "projected": false
       },
       "actualDistance": 457.7366131945521,
@@ -1120,19 +2400,99 @@
       "pitch": 0.05,
       "shot": {
         "fx": {
-          "x": 114.036,
+          "x": 114.04475000000001,
           "y": 119.048,
           "sourceHeight": 7.475999999999999,
-          "tx": -345.39689343240195,
-          "ty": 121.34679424442834,
-          "targetHeight": 30.194538186974178,
+          "tx": -345.38814404631535,
+          "ty": 121.34679422964251,
+          "targetHeight": 30.19452577340673,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
         },
+        "live": {
+          "type": "shot",
+          "x": 114.04475000000001,
+          "y": 119.048,
+          "tx": -345.38814404631535,
+          "ty": 121.34679422964251,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.6071428571428571,
+          "max": 0.6571428571428571,
+          "firedAt": 5.249999999999989,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 30.19452577340673,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 53,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 79.08789936604123,
+              "y": 119.22290825660323,
+              "height": 9.204583482759208
+            },
+            "previous": {
+              "x": 114.04475000000001,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 114.04475000000001,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": -345.38814404631535,
+              "y": 121.34679422964251,
+              "height": 30.19452577340673
+            },
+            "duration": 0.6571428571428571,
+            "age": 0.05,
+            "maxAge": 0.6571428571428571,
+            "phase": "flight",
+            "velocity": {
+              "x": -699.1370126791755,
+              "y": 3.4981651320646896,
+              "height": 34.57166965518416
+            }
+          },
+          "dischargeId": "36:17",
+          "operatorShotSequence": 17,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            114.04475000000001,
+            119.048,
+            7.475999999999999
+          ]
+        },
         "aim": {
           "origin": [
-            114.036,
+            114.04475000000001,
             7.475999999999999,
             119.048
           ],
@@ -1160,7 +2520,7 @@
           "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
-            "x": 114.036,
+            "x": 114.04475000000001,
             "y": 119.048,
             "height": 7.475999999999999
           },
@@ -1175,12 +2535,12 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 0.05,
-        "at": 5.1999999999999895,
+        "at": 5.249999999999989,
         "projected": false
       },
       "actualDistance": 460,
-      "expectedUnclippedDistance": 15994.14480781375,
-      "angleRadians": 0.004992453803861421,
+      "expectedUnclippedDistance": 15994.153546815001,
+      "angleRadians": 0.0049924537449203095,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -1198,6 +2558,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 114.036,
+          "y": 119.048,
+          "tx": -336.10399861719554,
+          "ty": 120.28404585221539,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.5986924806463846,
+          "max": 0.6486924806463846,
+          "firedAt": 5.4999999999999885,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 67.18698487440086,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 54,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 79.34005299529161,
+              "y": 119.14327209649353,
+              "height": 12.07841074591325
+            },
+            "previous": {
+              "x": 114.036,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 114.036,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": -336.10399861719554,
+              "y": 120.28404585221539,
+              "height": 67.18698487440086
+            },
+            "duration": 0.6486924806463846,
+            "age": 0.05,
+            "maxAge": 0.6486924806463846,
+            "phase": "flight",
+            "velocity": {
+              "x": -693.9189400941676,
+              "y": 1.9054419298705838,
+              "height": 92.04821491826499
+            }
+          },
+          "dischargeId": "36:18",
+          "operatorShotSequence": 18,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            114.036,
+            119.048,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -1244,7 +2684,7 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 0.13,
-        "at": 5.449999999999989,
+        "at": 5.4999999999999885,
         "projected": false
       },
       "actualDistance": 454.08473645246926,
@@ -1267,6 +2707,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 114.036,
+          "y": 119.048,
+          "tx": -328.3026523324773,
+          "ty": 118.7164774211229,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "underwater",
+          "splash": 0,
+          "ttl": 0.595251454101409,
+          "max": 0.645251454101409,
+          "firedAt": 5.749999999999988,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": -83.8893756368299,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 55,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 79.75954471107023,
+              "y": 119.02231059033112,
+              "height": 0.39617282130210185
+            },
+            "previous": {
+              "x": 114.036,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 114.036,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": -328.3026523324773,
+              "y": 118.7164774211229,
+              "height": -83.8893756368299
+            },
+            "duration": 0.645251454101409,
+            "age": 0.05,
+            "maxAge": 0.645251454101409,
+            "phase": "flight",
+            "velocity": {
+              "x": -685.5291057785953,
+              "y": -0.513788193377703,
+              "height": -141.59654357395794
+            }
+          },
+          "dischargeId": "36:19",
+          "operatorShotSequence": 19,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            114.036,
+            119.048,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -1313,7 +2833,7 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": -0.2,
-        "at": 5.649999999999988,
+        "at": 5.749999999999988,
         "projected": false
       },
       "actualDistance": 451.6760178709863,
@@ -1327,19 +2847,99 @@
       "pitch": 1.2,
       "shot": {
         "fx": {
-          "x": 114.036,
+          "x": 114.04475000000001,
           "y": 119.048,
           "sourceHeight": 7.475999999999999,
-          "tx": -53.01257648431735,
-          "ty": 118.71119094845139,
-          "targetHeight": 436.07214983598016,
+          "tx": -53.00404487486641,
+          "ty": 118.71119094324881,
+          "targetHeight": 436.07206471655115,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
         },
+        "live": {
+          "type": "shot",
+          "x": 114.04475000000001,
+          "y": 119.048,
+          "tx": -53.00404487486641,
+          "ty": 118.71119094324881,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.6071428571428571,
+          "max": 0.6571428571428571,
+          "firedAt": 5.949999999999987,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 436.07206471655115,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 56,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 101.33451560734713,
+              "y": 119.02237322394285,
+              "height": 40.08657014147672
+            },
+            "previous": {
+              "x": 114.04475000000001,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 114.04475000000001,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": -53.00404487486641,
+              "y": 118.71119094324881,
+              "height": 436.07206471655115
+            },
+            "duration": 0.6571428571428571,
+            "age": 0.05,
+            "maxAge": 0.6571428571428571,
+            "phase": "flight",
+            "velocity": {
+              "x": -254.20468785305758,
+              "y": -0.5125355211431194,
+              "height": 652.2114028295343
+            }
+          },
+          "dischargeId": "36:20",
+          "operatorShotSequence": 20,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            114.04475000000001,
+            119.048,
+            7.475999999999999
+          ]
+        },
         "aim": {
           "origin": [
-            114.036,
+            114.04475000000001,
             7.475999999999999,
             119.048
           ],
@@ -1367,7 +2967,7 @@
           "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
-            "x": 114.036,
+            "x": 114.04475000000001,
             "y": 119.048,
             "height": 7.475999999999999
           },
@@ -1382,12 +2982,12 @@
         "kind": "operator",
         "yaw": 3.141592653589793,
         "pitch": 1.2,
-        "at": 5.849999999999987,
+        "at": 5.949999999999987,
         "projected": false
       },
       "actualDistance": 460,
-      "expectedUnclippedDistance": 15999.726611007127,
-      "angleRadians": 0.0014733185894973955,
+      "expectedUnclippedDistance": 15999.729778432116,
+      "angleRadians": 0.0014733183811320497,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -1405,6 +3005,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "tx": -202.21968024228738,
+          "ty": -213.67433699671864,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.6049415211115604,
+          "max": 0.6549415211115605,
+          "firedAt": 6.199999999999986,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 30.533045579081435,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 57,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 92.12742240078114,
+              "y": 90.00939429532052,
+              "height": 9.236236970466404
+            },
+            "previous": {
+              "x": 116.45598081269303,
+              "y": 115.10964950131384,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 116.45598081269303,
+              "y": 115.10964950131384,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": -202.21968024228738,
+              "y": -213.67433699671864,
+              "height": 30.533045579081435
+            },
+            "duration": 0.6549415211115605,
+            "age": 0.05,
+            "maxAge": 0.6549415211115605,
+            "phase": "flight",
+            "velocity": {
+              "x": -486.57116823823776,
+              "y": -502.0051041198663,
+              "height": 35.204739409328084
+            }
+          },
+          "dischargeId": "36:21",
+          "operatorShotSequence": 21,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            116.45598081269303,
+            115.10964950131384,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -1451,7 +3131,7 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 0.05,
-        "at": 6.099999999999986,
+        "at": 6.199999999999986,
         "projected": false
       },
       "actualDistance": 458.45906477809234,
@@ -1474,6 +3154,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "tx": -206.42199421783522,
+          "ty": -207.11020410331716,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.6071428571428571,
+          "max": 0.6571428571428571,
+          "firedAt": 6.449999999999985,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 66.84079750825153,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 58,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 91.88917836471805,
+              "y": 90.59292150965713,
+              "height": 11.99288676693218
+            },
+            "previous": {
+              "x": 116.45598081269303,
+              "y": 115.10964950131384,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 116.45598081269303,
+              "y": 115.10964950131384,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": -206.42199421783522,
+              "y": -207.11020410331716,
+              "height": 66.84079750825153
+            },
+            "duration": 0.6571428571428571,
+            "age": 0.05,
+            "maxAge": 0.6571428571428571,
+            "phase": "flight",
+            "velocity": {
+              "x": -491.3360489594995,
+              "y": -490.3345598331341,
+              "height": 90.33773533864363
+            }
+          },
+          "dischargeId": "36:22",
+          "operatorShotSequence": 22,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            116.45598081269303,
+            115.10964950131384,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -1520,7 +3280,7 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 0.13,
-        "at": 6.349999999999985,
+        "at": 6.449999999999985,
         "projected": false
       },
       "actualDistance": 460,
@@ -1543,6 +3303,86 @@
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
+        },
+        "live": {
+          "type": "shot",
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "tx": -207.725687731888,
+          "ty": -198.4400431641752,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "underwater",
+          "splash": 0,
+          "ttl": 0.6071428571428571,
+          "max": 0.6571428571428571,
+          "firedAt": 6.699999999999984,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": -83.0382862150986,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 59,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 91.78998429299665,
+              "y": 91.25260766807011,
+              "height": 0.5890434401555407
+            },
+            "previous": {
+              "x": 116.45598081269303,
+              "y": 115.10964950131384,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 116.45598081269303,
+              "y": 115.10964950131384,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": -207.725687731888,
+              "y": -198.4400431641752,
+              "height": -83.0382862150986
+            },
+            "duration": 0.6571428571428571,
+            "age": 0.05,
+            "maxAge": 0.6571428571428571,
+            "phase": "flight",
+            "velocity": {
+              "x": -493.3199303939277,
+              "y": -477.1408366648746,
+              "height": -137.73913119688916
+            }
+          },
+          "dischargeId": "36:23",
+          "operatorShotSequence": 23,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            116.45598081269303,
+            115.10964950131384,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -1589,7 +3429,7 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": -0.2,
-        "at": 6.5999999999999845,
+        "at": 6.699999999999984,
         "projected": false
       },
       "actualDistance": 460,
@@ -1603,21 +3443,101 @@
       "pitch": 1.2,
       "shot": {
         "fx": {
-          "x": 116.45598081269303,
-          "y": 115.10964950131384,
+          "x": 116.46216799702842,
+          "y": 115.11583668564923,
           "sourceHeight": 7.475999999999999,
-          "tx": -0.1393417286871852,
-          "ty": -6.972460145894985,
-          "targetHeight": 435.3795980984016,
+          "tx": -0.1333084780956426,
+          "ty": -6.966426888220639,
+          "targetHeight": 435.37951223870436,
           "space": false,
           "weaponFx": "projectile",
           "sourceId": 36
         },
+        "live": {
+          "type": "shot",
+          "x": 116.46216799702842,
+          "y": 115.11583668564923,
+          "tx": -0.1333084780956426,
+          "ty": -6.966426888220639,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 33,
+          "targetDomain": "air",
+          "splash": 0,
+          "ttl": 0.6071428571428571,
+          "max": 0.6571428571428571,
+          "firedAt": 6.8999999999999835,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "operator",
+          "sourceId": 36,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 435.37951223870436,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 33,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "operatorTargets": [
+            "personnel",
+            "ground"
+          ],
+          "weaponId": "rifle_01",
+          "miss": true,
+          "weaponFamily": "rifle",
+          "ammoType": "projectile",
+          "portIndex": 0,
+          "projectileId": 60,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 107.59077304783419,
+              "y": 105.8269688050287,
+              "height": 40.03387593120577
+            },
+            "previous": {
+              "x": 116.46216799702842,
+              "y": 115.11583668564923,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 116.46216799702842,
+              "y": 115.11583668564923,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": -0.1333084780956426,
+              "y": -6.966426888220639,
+              "height": 435.37951223870436
+            },
+            "duration": 0.6571428571428571,
+            "age": 0.05,
+            "maxAge": 0.6571428571428571,
+            "phase": "flight",
+            "velocity": {
+              "x": -177.42789898388443,
+              "y": -185.77735761241067,
+              "height": 651.1575186241154
+            }
+          },
+          "dischargeId": "36:24",
+          "operatorShotSequence": 24,
+          "weaponMechanism": "closed-bolt",
+          "visualOrigin": [
+            116.46216799702842,
+            115.11583668564923,
+            7.475999999999999
+          ]
+        },
         "aim": {
           "origin": [
-            116.45598081269303,
+            116.46216799702842,
             7.475999999999999,
-            115.10964950131384
+            115.11583668564923
           ],
           "point": [
             -3979.6100064958155,
@@ -1643,8 +3563,8 @@
           "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
-            "x": 116.45598081269303,
-            "y": 115.10964950131384,
+            "x": 116.46216799702842,
+            "y": 115.11583668564923,
             "height": 7.475999999999999
           },
           "aimOrigins": [],
@@ -1658,12 +3578,12 @@
         "kind": "operator",
         "yaw": 3.9269908169872414,
         "pitch": 1.2,
-        "at": 6.849999999999984,
+        "at": 6.8999999999999835,
         "projected": false
       },
       "actualDistance": 460,
-      "expectedUnclippedDistance": 15999.726611007127,
-      "angleRadians": 0.009999583084658594,
+      "expectedUnclippedDistance": 15999.72977843212,
+      "angleRadians": 0.009999582506629478,
       "maxAngleRadians": 0.020002333573390492
     },
     {
@@ -1680,7 +3600,81 @@
           "targetHeight": 13.741501516055138,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 3077.964,
+          "y": 2112.952,
+          "tx": 3202.8068749885047,
+          "ty": 2112.944559777254,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142867,
+          "max": 0.1785714285714287,
+          "firedAt": 7.349999999999982,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 13.741501516055138,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 0,
+          "projectileId": 64,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3112.9200049967812,
+              "y": 2112.949916737631,
+              "height": 9.230340424495438
+            },
+            "previous": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 3202.8068749885047,
+              "y": 2112.944559777254,
+              "height": 13.741501516055138
+            },
+            "duration": 0.1785714285714287,
+            "age": 0.05,
+            "maxAge": 0.1785714285714287,
+            "phase": "flight",
+            "velocity": {
+              "x": 699.120099935626,
+              "y": -0.04166524737775032,
+              "height": 35.086808489908755
+            }
+          },
+          "visualOrigin": [
+            3077.964,
+            2112.952,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -1727,7 +3721,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 0.05,
-        "at": 7.299999999999982,
+        "at": 7.349999999999982,
         "projected": false
       },
       "actualDistance": 125.00000000000009,
@@ -1749,7 +3743,81 @@
           "targetHeight": 23.701811107174148,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 3077.964,
+          "y": 2112.952,
+          "tx": 3201.9064180761325,
+          "ty": 2112.944559872228,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142867,
+          "max": 0.1785714285714287,
+          "firedAt": 8.299999999999983,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 23.701811107174148,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 1,
+          "projectileId": 65,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3112.667877061317,
+              "y": 2112.949916764224,
+              "height": 12.019227110008758
+            },
+            "previous": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 3201.9064180761325,
+              "y": 2112.944559872228,
+              "height": 23.701811107174148
+            },
+            "duration": 0.1785714285714287,
+            "age": 0.05,
+            "maxAge": 0.1785714285714287,
+            "phase": "flight",
+            "velocity": {
+              "x": 694.0775412263417,
+              "y": -0.04166471552343862,
+              "height": 90.86454220017518
+            }
+          },
+          "visualOrigin": [
+            3077.964,
+            2112.952,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -1796,7 +3864,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 0.13,
-        "at": 8.249999999999982,
+        "at": 8.299999999999983,
         "projected": false
       },
       "actualDistance": 125.00000000000009,
@@ -1818,7 +3886,81 @@
           "targetHeight": -0.8000000119209272,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 3077.964,
+          "y": 2112.952,
+          "tx": 3122.811495277349,
+          "ty": 2112,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.03,
+          "max": 0.08,
+          "firedAt": 9.249999999999996,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": -0.8000000119209272,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 2,
+          "projectileId": 66,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3105.993684548343,
+              "y": 2112.357,
+              "height": 2.30349999254942
+            },
+            "previous": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 3122.811495277349,
+              "y": 2112,
+              "height": -0.8000000119209272
+            },
+            "duration": 0.08,
+            "age": 0.05,
+            "maxAge": 0.08,
+            "phase": "flight",
+            "velocity": {
+              "x": 560.5936909668628,
+              "y": -11.90000000000282,
+              "height": -103.45000014901157
+            }
+          },
+          "visualOrigin": [
+            3077.964,
+            2112.952,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -1847,7 +3989,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
-          "aimBlocked": true,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3077.964,
@@ -1865,7 +4007,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": -0.2,
-        "at": 9.199999999999996,
+        "at": 9.249999999999996,
         "projected": false
       },
       "actualDistance": 45.61465019978953,
@@ -1887,7 +4029,81 @@
           "targetHeight": 123.99868924719085,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 3077.964,
+          "y": 2112.952,
+          "tx": 3123.2128987190217,
+          "ty": 2112.944562372915,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.1285714285714285,
+          "max": 0.17857142857142852,
+          "firedAt": 10.20000000000001,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 123.99868924719085,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 3,
+          "projectileId": 67,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3090.633691641326,
+              "y": 2112.949917464416,
+              "height": 40.10235298921345
+            },
+            "previous": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3077.964,
+              "y": 2112.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 3123.2128987190217,
+              "y": 2112.944562372915,
+              "height": 123.99868924719085
+            },
+            "duration": 0.17857142857142852,
+            "age": 0.05,
+            "maxAge": 0.17857142857142852,
+            "phase": "flight",
+            "velocity": {
+              "x": 253.39383282652204,
+              "y": -0.04165071167844873,
+              "height": 652.527059784269
+            }
+          },
+          "visualOrigin": [
+            3077.964,
+            2112.952,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -1934,7 +4150,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 1.2,
-        "at": 10.15000000000001,
+        "at": 10.20000000000001,
         "projected": false
       },
       "actualDistance": 124.99999999999997,
@@ -1956,7 +4172,81 @@
           "targetHeight": 13.741501516055138,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 3066.036,
+          "y": 2111.048,
+          "tx": 2941.1931250114953,
+          "ty": 2111.055440222746,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142867,
+          "max": 0.1785714285714287,
+          "firedAt": 11.500000000000028,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 13.741501516055138,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 4,
+          "projectileId": 68,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3031.0799950032188,
+              "y": 2111.050083262369,
+              "height": 9.230340424495438
+            },
+            "previous": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 2941.1931250114953,
+              "y": 2111.055440222746,
+              "height": 13.741501516055138
+            },
+            "duration": 0.1785714285714287,
+            "age": 0.05,
+            "maxAge": 0.1785714285714287,
+            "phase": "flight",
+            "velocity": {
+              "x": -699.120099935626,
+              "y": 0.04166524737775032,
+              "height": 35.086808489908755
+            }
+          },
+          "visualOrigin": [
+            3066.036,
+            2111.048,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2003,7 +4293,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 0.05,
-        "at": 11.100000000000023,
+        "at": 11.500000000000028,
         "projected": false
       },
       "actualDistance": 125.00000000000009,
@@ -2025,7 +4315,81 @@
           "targetHeight": 23.701811107174148,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 3066.036,
+          "y": 2111.048,
+          "tx": 2942.0935819238675,
+          "ty": 2111.055440127772,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142867,
+          "max": 0.1785714285714287,
+          "firedAt": 12.450000000000042,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 23.701811107174148,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 5,
+          "projectileId": 69,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3031.332122938683,
+              "y": 2111.050083235776,
+              "height": 12.019227110008758
+            },
+            "previous": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 2942.0935819238675,
+              "y": 2111.055440127772,
+              "height": 23.701811107174148
+            },
+            "duration": 0.1785714285714287,
+            "age": 0.05,
+            "maxAge": 0.1785714285714287,
+            "phase": "flight",
+            "velocity": {
+              "x": -694.0775412263417,
+              "y": 0.04166471552343862,
+              "height": 90.86454220017518
+            }
+          },
+          "visualOrigin": [
+            3066.036,
+            2111.048,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2072,7 +4436,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 0.13,
-        "at": 12.050000000000036,
+        "at": 12.450000000000042,
         "projected": false
       },
       "actualDistance": 125.00000000000009,
@@ -2094,7 +4458,81 @@
           "targetHeight": -0.8000000119209272,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 3066.036,
+          "y": 2111.048,
+          "tx": 3021.188504722651,
+          "ty": 2112,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.03,
+          "max": 0.08,
+          "firedAt": 13.400000000000055,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": -0.8000000119209272,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 6,
+          "projectileId": 70,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3038.006315451657,
+              "y": 2111.643,
+              "height": 2.30349999254942
+            },
+            "previous": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 3021.188504722651,
+              "y": 2112,
+              "height": -0.8000000119209272
+            },
+            "duration": 0.08,
+            "age": 0.05,
+            "maxAge": 0.08,
+            "phase": "flight",
+            "velocity": {
+              "x": -560.5936909668628,
+              "y": 11.90000000000282,
+              "height": -103.45000014901157
+            }
+          },
+          "visualOrigin": [
+            3066.036,
+            2111.048,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2123,7 +4561,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
-          "aimBlocked": true,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3066.036,
@@ -2141,7 +4579,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": -0.2,
-        "at": 13.00000000000005,
+        "at": 13.400000000000055,
         "projected": false
       },
       "actualDistance": 45.61465019978953,
@@ -2163,7 +4601,81 @@
           "targetHeight": 123.99868924719085,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 3066.036,
+          "y": 2111.048,
+          "tx": 3020.7871012809783,
+          "ty": 2111.055437627085,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.1285714285714285,
+          "max": 0.17857142857142852,
+          "firedAt": 14.350000000000069,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 123.99868924719085,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 7,
+          "projectileId": 71,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3053.366308358674,
+              "y": 2111.050082535584,
+              "height": 40.10235298921345
+            },
+            "previous": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3066.036,
+              "y": 2111.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 3020.7871012809783,
+              "y": 2111.055437627085,
+              "height": 123.99868924719085
+            },
+            "duration": 0.17857142857142852,
+            "age": 0.05,
+            "maxAge": 0.17857142857142852,
+            "phase": "flight",
+            "velocity": {
+              "x": -253.39383282652204,
+              "y": 0.04165071167844873,
+              "height": 652.527059784269
+            }
+          },
+          "visualOrigin": [
+            3066.036,
+            2111.048,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2210,7 +4722,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 1.2,
-        "at": 13.950000000000063,
+        "at": 14.350000000000069,
         "projected": false
       },
       "actualDistance": 124.99999999999997,
@@ -2232,7 +4744,81 @@
           "targetHeight": 13.74150151605637,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "tx": 2980.17347629354,
+          "ty": 2018.837667046075,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142845,
+          "max": 0.17857142857142846,
+          "firedAt": 15.300000000000082,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 13.74150151605637,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 8,
+          "projectileId": 72,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3043.73687954733,
+              "y": 2082.393494413847,
+              "height": 9.230340424495784
+            },
+            "previous": {
+              "x": 3068.455980812693,
+              "y": 2107.109649501314,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3068.455980812693,
+              "y": 2107.109649501314,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 2980.17347629354,
+              "y": 2018.837667046075,
+              "height": 13.74150151605637
+            },
+            "duration": 0.17857142857142846,
+            "age": 0.05,
+            "maxAge": 0.17857142857142846,
+            "phase": "flight",
+            "velocity": {
+              "x": -494.38202530725715,
+              "y": -494.3231017493382,
+              "height": 35.086808489915704
+            }
+          },
+          "visualOrigin": [
+            3068.455980812693,
+            2107.109649501314,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2279,7 +4865,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 0.05,
-        "at": 14.900000000000077,
+        "at": 15.300000000000082,
         "projected": false
       },
       "actualDistance": 124.99999999999993,
@@ -2301,7 +4887,81 @@
           "targetHeight": 23.701811107175526,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "tx": 2980.810195549601,
+          "ty": 2019.4743861678232,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142873,
+          "max": 0.17857142857142874,
+          "firedAt": 16.250000000000096,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 23.701811107175526,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 9,
+          "projectileId": 73,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3043.915160939027,
+              "y": 2082.5717757679367,
+              "height": 12.019227110009144
+            },
+            "previous": {
+              "x": 3068.455980812693,
+              "y": 2107.109649501314,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3068.455980812693,
+              "y": 2107.109649501314,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 2980.810195549601,
+              "y": 2019.4743861678232,
+              "height": 23.701811107175526
+            },
+            "duration": 0.17857142857142874,
+            "age": 0.05,
+            "maxAge": 0.17857142857142874,
+            "phase": "flight",
+            "velocity": {
+              "x": -490.81639747331457,
+              "y": -490.75747466754734,
+              "height": 90.86454220018287
+            }
+          },
+          "visualOrigin": [
+            3068.455980812693,
+            2107.109649501314,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2348,7 +5008,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 0.13,
-        "at": 15.85000000000009,
+        "at": 16.250000000000096,
         "projected": false
       },
       "actualDistance": 125.00000000000011,
@@ -2370,7 +5030,81 @@
           "targetHeight": -0.800000011920929,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "tx": 3036.070847127151,
+          "ty": 2076.070847127151,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.03,
+          "max": 0.08,
+          "firedAt": 17.20000000000011,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": -0.800000011920929,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 10,
+          "projectileId": 74,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3048.215272259229,
+              "y": 2087.710398017462,
+              "height": 2.303499992549419
+            },
+            "previous": {
+              "x": 3068.455980812693,
+              "y": 2107.109649501314,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3068.455980812693,
+              "y": 2107.109649501314,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 3036.070847127151,
+              "y": 2076.070847127151,
+              "height": -0.800000011920929
+            },
+            "duration": 0.08,
+            "age": 0.05,
+            "maxAge": 0.08,
+            "phase": "flight",
+            "velocity": {
+              "x": -404.81417106927324,
+              "y": -387.9850296770371,
+              "height": -103.4500001490116
+            }
+          },
+          "visualOrigin": [
+            3068.455980812693,
+            2107.109649501314,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2399,7 +5133,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
-          "aimBlocked": true,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 3068.455980812693,
@@ -2417,7 +5151,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": -0.2,
-        "at": 16.800000000000104,
+        "at": 17.20000000000011,
         "projected": false
       },
       "actualDistance": 45.6146501997996,
@@ -2439,7 +5173,81 @@
           "targetHeight": 123.99868924719776,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 3068.455980812693,
+          "y": 2107.109649501314,
+          "tx": 3036.4549184907137,
+          "ty": 2075.1191055724307,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142867,
+          "max": 0.17857142857142866,
+          "firedAt": 18.150000000000123,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 123.99868924719776,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 11,
+          "projectileId": 75,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 3059.495683362539,
+              "y": 2098.1522972012267,
+              "height": 40.102352989215355
+            },
+            "previous": {
+              "x": 3068.455980812693,
+              "y": 2107.109649501314,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 3068.455980812693,
+              "y": 2107.109649501314,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 3036.4549184907137,
+              "y": 2075.1191055724307,
+              "height": 123.99868924719776
+            },
+            "duration": 0.17857142857142866,
+            "age": 0.05,
+            "maxAge": 0.17857142857142866,
+            "phase": "flight",
+            "velocity": {
+              "x": -179.20594900308308,
+              "y": -179.14704600174582,
+              "height": 652.5270597843071
+            }
+          },
+          "visualOrigin": [
+            3068.455980812693,
+            2107.109649501314,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2486,7 +5294,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 1.2,
-        "at": 17.750000000000117,
+        "at": 18.150000000000123,
         "projected": false
       },
       "actualDistance": 125.00000000000006,
@@ -2508,7 +5316,81 @@
           "targetHeight": 13.741501516054695,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 125.964,
+          "y": 120.952,
+          "tx": 250.80687498850466,
+          "ty": 120.94455977725417,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142856,
+          "max": 0.17857142857142858,
+          "firedAt": 19.100000000000136,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 13.741501516054695,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 12,
+          "projectileId": 76,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 160.9200049967813,
+              "y": 120.94991673763117,
+              "height": 9.230340424495314
+            },
+            "previous": {
+              "x": 125.964,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 125.964,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 250.80687498850466,
+              "y": 120.94455977725417,
+              "height": 13.741501516054695
+            },
+            "duration": 0.17857142857142858,
+            "age": 0.05,
+            "maxAge": 0.17857142857142858,
+            "phase": "flight",
+            "velocity": {
+              "x": 699.1200999356261,
+              "y": -0.04166524737663622,
+              "height": 35.086808489906296
+            }
+          },
+          "visualOrigin": [
+            125.964,
+            120.952,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2555,7 +5437,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 0.05,
-        "at": 18.70000000000013,
+        "at": 19.100000000000136,
         "projected": false
       },
       "actualDistance": 125,
@@ -2577,7 +5459,81 @@
           "targetHeight": 23.701811107174148,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 125.964,
+          "y": 120.952,
+          "tx": 249.90641807613247,
+          "ty": 120.94455987222793,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142861,
+          "max": 0.1785714285714286,
+          "firedAt": 20.05000000000015,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 23.701811107174148,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 13,
+          "projectileId": 77,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 160.66787706131709,
+              "y": 120.94991676422381,
+              "height": 12.01922711000876
+            },
+            "previous": {
+              "x": 125.964,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 125.964,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 249.90641807613247,
+              "y": 120.94455987222793,
+              "height": 23.701811107174148
+            },
+            "duration": 0.1785714285714286,
+            "age": 0.05,
+            "maxAge": 0.1785714285714286,
+            "phase": "flight",
+            "velocity": {
+              "x": 694.0775412263417,
+              "y": -0.0416647155235978,
+              "height": 90.86454220017522
+            }
+          },
+          "visualOrigin": [
+            125.964,
+            120.952,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2624,7 +5580,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 0.13,
-        "at": 19.650000000000144,
+        "at": 20.05000000000015,
         "projected": false
       },
       "actualDistance": 125.00000000000001,
@@ -2646,7 +5602,81 @@
           "targetHeight": -17.254375108698557,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 125.964,
+          "y": 120.952,
+          "tx": 248.4931507215247,
+          "ty": 120.82641956781947,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142856,
+          "max": 0.17857142857142858,
+          "firedAt": 21.000000000000163,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": -17.254375108698557,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 14,
+          "projectileId": 78,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 160.27216220202692,
+              "y": 120.91683747898945,
+              "height": 0.5514949695644029
+            },
+            "previous": {
+              "x": 125.964,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 125.964,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 248.4931507215247,
+              "y": 120.82641956781947,
+              "height": -17.254375108698557
+            },
+            "duration": 0.17857142857142858,
+            "age": 0.05,
+            "maxAge": 0.17857142857142858,
+            "phase": "flight",
+            "velocity": {
+              "x": 686.1632440405383,
+              "y": -0.7032504202109521,
+              "height": -138.4901006087119
+            }
+          },
+          "visualOrigin": [
+            125.964,
+            120.952,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2675,7 +5705,7 @@
           "jump": false,
           "fire": true,
           "ads": false,
-          "aimBlocked": true,
+          "aimBlocked": false,
           "targetTreeId": null,
           "aimOrigin": {
             "x": 125.964,
@@ -2693,7 +5723,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": -0.2,
-        "at": 20.600000000000158,
+        "at": 21.000000000000163,
         "projected": false
       },
       "actualDistance": 125,
@@ -2715,7 +5745,81 @@
           "targetHeight": 123.99868924719445,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 125.964,
+          "y": 120.952,
+          "tx": 171.21289871901257,
+          "ty": 120.94456237291466,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142856,
+          "max": 0.17857142857142858,
+          "firedAt": 21.950000000000177,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 123.99868924719445,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 15,
+          "projectileId": 79,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 138.6336916413235,
+              "y": 120.9499174644161,
+              "height": 40.102352989214445
+            },
+            "previous": {
+              "x": 125.964,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 125.964,
+              "y": 120.952,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 171.21289871901257,
+              "y": 120.94456237291466,
+              "height": 123.99868924719445
+            },
+            "duration": 0.17857142857142858,
+            "age": 0.05,
+            "maxAge": 0.17857142857142858,
+            "phase": "flight",
+            "velocity": {
+              "x": 253.3938328264704,
+              "y": -0.041650711677891646,
+              "height": 652.5270597842889
+            }
+          },
+          "visualOrigin": [
+            125.964,
+            120.952,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2762,7 +5866,7 @@
         "kind": "infantry",
         "yaw": 0,
         "pitch": 1.2,
-        "at": 21.55000000000017,
+        "at": 21.950000000000177,
         "projected": false
       },
       "actualDistance": 125,
@@ -2784,7 +5888,81 @@
           "targetHeight": 13.741501516054695,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 114.036,
+          "y": 119.048,
+          "tx": -10.80687498850466,
+          "ty": 119.05544022274594,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142856,
+          "max": 0.17857142857142858,
+          "firedAt": 23.250000000000195,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 13.741501516054695,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 16,
+          "projectileId": 80,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 79.0799950032187,
+              "y": 119.05008326236887,
+              "height": 9.230340424495314
+            },
+            "previous": {
+              "x": 114.036,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 114.036,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": -10.80687498850466,
+              "y": 119.05544022274594,
+              "height": 13.741501516054695
+            },
+            "duration": 0.17857142857142858,
+            "age": 0.05,
+            "maxAge": 0.17857142857142858,
+            "phase": "flight",
+            "velocity": {
+              "x": -699.1200999356261,
+              "y": 0.04166524737727286,
+              "height": 35.086808489906296
+            }
+          },
+          "visualOrigin": [
+            114.036,
+            119.048,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2831,7 +6009,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 0.05,
-        "at": 22.500000000000185,
+        "at": 23.250000000000195,
         "projected": false
       },
       "actualDistance": 125,
@@ -2853,7 +6031,81 @@
           "targetHeight": 23.701811107174148,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 114.036,
+          "y": 119.048,
+          "tx": -9.906418076132454,
+          "ty": 119.05544012777207,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142856,
+          "max": 0.17857142857142858,
+          "firedAt": 24.20000000000021,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 23.701811107174148,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 17,
+          "projectileId": 81,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 79.33212293868291,
+              "y": 119.05008323577619,
+              "height": 12.01922711000876
+            },
+            "previous": {
+              "x": 114.036,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 114.036,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": -9.906418076132454,
+              "y": 119.05544012777207,
+              "height": 23.701811107174148
+            },
+            "duration": 0.17857142857142858,
+            "age": 0.05,
+            "maxAge": 0.17857142857142858,
+            "phase": "flight",
+            "velocity": {
+              "x": -694.0775412263417,
+              "y": 0.0416647155235978,
+              "height": 90.86454220017524
+            }
+          },
+          "visualOrigin": [
+            114.036,
+            119.048,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2900,7 +6152,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 0.13,
-        "at": 23.4500000000002,
+        "at": 24.20000000000021,
         "projected": false
       },
       "actualDistance": 125,
@@ -2922,7 +6174,81 @@
           "targetHeight": -17.351547727399428,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 114.036,
+          "y": 119.048,
+          "tx": -8.473562151221799,
+          "ty": 119.05544040509481,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142856,
+          "max": 0.17857142857142858,
+          "firedAt": 25.150000000000222,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": -17.351547727399428,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 18,
+          "projectileId": 82,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 79.73332259765789,
+              "y": 119.05008331342655,
+              "height": 0.5242866363281591
+            },
+            "previous": {
+              "x": 114.036,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 114.036,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": -8.473562151221799,
+              "y": 119.05544040509481,
+              "height": -17.351547727399428
+            },
+            "duration": 0.17857142857142858,
+            "age": 0.05,
+            "maxAge": 0.17857142857142858,
+            "phase": "flight",
+            "velocity": {
+              "x": -686.053548046842,
+              "y": 0.04166626853094613,
+              "height": -139.0342672734368
+            }
+          },
+          "visualOrigin": [
+            114.036,
+            119.048,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -2969,7 +6295,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": -0.2,
-        "at": 24.40000000000021,
+        "at": 25.150000000000222,
         "projected": false
       },
       "actualDistance": 125,
@@ -2991,7 +6317,81 @@
           "targetHeight": 123.99868924719445,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 114.036,
+          "y": 119.048,
+          "tx": 68.78710128098743,
+          "ty": 119.05543762708534,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142856,
+          "max": 0.17857142857142858,
+          "firedAt": 26.100000000000236,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 123.99868924719445,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 19,
+          "projectileId": 83,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 101.36630835867648,
+              "y": 119.0500825355839,
+              "height": 40.102352989214445
+            },
+            "previous": {
+              "x": 114.036,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 114.036,
+              "y": 119.048,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 68.78710128098743,
+              "y": 119.05543762708534,
+              "height": 123.99868924719445
+            },
+            "duration": 0.17857142857142858,
+            "age": 0.05,
+            "maxAge": 0.17857142857142858,
+            "phase": "flight",
+            "velocity": {
+              "x": -253.3938328264704,
+              "y": 0.041650711677891646,
+              "height": 652.5270597842889
+            }
+          },
+          "visualOrigin": [
+            114.036,
+            119.048,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -3038,7 +6438,7 @@
         "kind": "infantry",
         "yaw": 3.141592653589793,
         "pitch": 1.2,
-        "at": 25.350000000000225,
+        "at": 26.100000000000236,
         "projected": false
       },
       "actualDistance": 125,
@@ -3060,7 +6460,81 @@
           "targetHeight": 13.741501516054736,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "tx": 28.17347629353982,
+          "ty": 26.837667046074912,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142861,
+          "max": 0.1785714285714286,
+          "firedAt": 27.05000000000025,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 13.741501516054736,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 20,
+          "projectileId": 84,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 91.73687954733013,
+              "y": 90.39349441384694,
+              "height": 9.230340424495326
+            },
+            "previous": {
+              "x": 116.45598081269303,
+              "y": 115.10964950131384,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 116.45598081269303,
+              "y": 115.10964950131384,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 28.17347629353982,
+              "y": 26.837667046074912,
+              "height": 13.741501516054736
+            },
+            "duration": 0.1785714285714286,
+            "age": 0.05,
+            "maxAge": 0.1785714285714286,
+            "phase": "flight",
+            "velocity": {
+              "x": -494.3820253072579,
+              "y": -494.3231017493379,
+              "height": 35.086808489906524
+            }
+          },
+          "visualOrigin": [
+            116.45598081269303,
+            115.10964950131384,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -3107,7 +6581,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 0.05,
-        "at": 26.30000000000024,
+        "at": 27.05000000000025,
         "projected": false
       },
       "actualDistance": 125.00000000000001,
@@ -3129,7 +6603,81 @@
           "targetHeight": 23.701811107174233,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "tx": 28.810195549601147,
+          "ty": 27.474386167822985,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142856,
+          "max": 0.17857142857142855,
+          "firedAt": 28.000000000000263,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 23.701811107174233,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 21,
+          "projectileId": 85,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 91.91516093902729,
+              "y": 90.5717757679364,
+              "height": 12.019227110008785
+            },
+            "previous": {
+              "x": 116.45598081269303,
+              "y": 115.10964950131384,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 116.45598081269303,
+              "y": 115.10964950131384,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 28.810195549601147,
+              "y": 27.474386167822985,
+              "height": 23.701811107174233
+            },
+            "duration": 0.17857142857142855,
+            "age": 0.05,
+            "maxAge": 0.17857142857142855,
+            "phase": "flight",
+            "velocity": {
+              "x": -490.8163974733146,
+              "y": -490.7574746675489,
+              "height": 90.86454220017572
+            }
+          },
+          "visualOrigin": [
+            116.45598081269303,
+            115.10964950131384,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -3176,7 +6724,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 0.13,
-        "at": 27.250000000000252,
+        "at": 28.000000000000263,
         "projected": false
       },
       "actualDistance": 124.99999999999999,
@@ -3198,7 +6746,81 @@
           "targetHeight": -17.351547727399208,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "tx": 29.823377494471984,
+          "ty": 28.487568504887392,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142856,
+          "max": 0.17857142857142855,
+          "firedAt": 28.950000000000276,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": -17.351547727399208,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 22,
+          "projectileId": 86,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 92.19885188359113,
+              "y": 90.85546682231443,
+              "height": 0.5242866363282204
+            },
+            "previous": {
+              "x": 116.45598081269303,
+              "y": 115.10964950131384,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 116.45598081269303,
+              "y": 115.10964950131384,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 29.823377494471984,
+              "y": 28.487568504887392,
+              "height": -17.351547727399208
+            },
+            "duration": 0.17857142857142855,
+            "age": 0.05,
+            "maxAge": 0.17857142857142855,
+            "phase": "flight",
+            "velocity": {
+              "x": -485.1425785820379,
+              "y": -485.08365357998815,
+              "height": -139.03426727343557
+            }
+          },
+          "visualOrigin": [
+            116.45598081269303,
+            115.10964950131384,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -3245,7 +6867,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": -0.2,
-        "at": 28.200000000000266,
+        "at": 28.950000000000276,
         "projected": false
       },
       "actualDistance": 124.99999999999999,
@@ -3267,7 +6889,81 @@
           "targetHeight": 123.9986892471944,
           "space": false,
           "weaponFx": "projectile",
-          "sourceId": 39
+          "sourceId": 63
+        },
+        "live": {
+          "type": "shot",
+          "x": 116.45598081269303,
+          "y": 115.10964950131384,
+          "tx": 84.45491849070785,
+          "ty": 83.11910557242466,
+          "target": null,
+          "from": 0,
+          "damage": 0,
+          "baseDamage": 12,
+          "targetDomain": null,
+          "splash": 0,
+          "ttl": 0.12857142857142856,
+          "max": 0.17857142857142858,
+          "firedAt": 29.90000000000029,
+          "rocket": false,
+          "space": false,
+          "originFrozen": true,
+          "originApproximate": false,
+          "sourceKind": "infantry",
+          "sourceId": 63,
+          "sourceFaction": "chn",
+          "sourceHeight": 7.475999999999999,
+          "targetHeight": 123.9986892471944,
+          "targetTreeId": null,
+          "excludedTargetId": null,
+          "treeDamage": 12,
+          "treeSplash": 0,
+          "weaponFx": "projectile",
+          "miss": true,
+          "weaponId": "infantry:primary",
+          "weaponFamily": "rifle",
+          "mountId": "main_turret",
+          "ammoType": "rifle",
+          "portIndex": 23,
+          "projectileId": 87,
+          "projectile": {
+            "kind": "kinetic",
+            "position": {
+              "x": 107.49568336253718,
+              "y": 106.15229720122487,
+              "height": 40.10235298921443
+            },
+            "previous": {
+              "x": 116.45598081269303,
+              "y": 115.10964950131384,
+              "height": 7.475999999999999
+            },
+            "origin": {
+              "x": 116.45598081269303,
+              "y": 115.10964950131384,
+              "height": 7.475999999999999
+            },
+            "destination": {
+              "x": 84.45491849070785,
+              "y": 83.11910557242466,
+              "height": 123.9986892471944
+            },
+            "duration": 0.17857142857142858,
+            "age": 0.05,
+            "maxAge": 0.17857142857142858,
+            "phase": "flight",
+            "velocity": {
+              "x": -179.20594900311696,
+              "y": -179.14704600177942,
+              "height": 652.5270597842887
+            }
+          },
+          "visualOrigin": [
+            116.45598081269303,
+            115.10964950131384,
+            7.475999999999999
+          ]
         },
         "aim": {
           "origin": [
@@ -3314,7 +7010,7 @@
         "kind": "infantry",
         "yaw": 3.9269908169872414,
         "pitch": 1.2,
-        "at": 29.15000000000028,
+        "at": 29.90000000000029,
         "projected": false
       },
       "actualDistance": 125,
@@ -3377,21 +7073,21 @@
       ]
     }
   ],
-  "testProfile": "D:\\现代战线HD\\.tmp\\native-v3120-fps-ballistics-browser-1792848801094",
-  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.12.0\\ModernFrontHD.exe",
-  "packageVersion": "3.12.0",
+  "testProfile": "D:\\现代战线HD\\.tmp\\native-final-fps-ballistics-browser.cjs-1792856891979",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.13.0\\ModernFrontHD.exe",
+  "packageVersion": "3.13.0",
   "sourceHashes": {
-    "src/direct-control.js": "71e3ad09e054d680bd8578dc32d24abddbb1e656052d16a3cfe12960816e4343",
-    "src/sim.js": "08a5b7404c7f3ffc2f18ce20a87660d67c0578eee1515da4b8fdd46463374d0f",
-    "src/operator-sim.js": "8f87ca0e28046d182f9745ea5492cc765601114e137f39ad3114ee34d6716135",
-    "src/vehicle-weapons.js": "4d245623f2c45fb44eec74c05a17bc8fe6ca88a8ce895bbd442bfd0109e5a22a",
-    "src/weapon-effects.js": "2af68d61687428d279ac81cce1b5b33d52d5e246051c5af8293f93aff751965f",
-    "src/carrier-operations.js": "eb56f0095cb6ae5a5767df05bb968020284611dd723617e4001006ce15c596b1",
-    "style.css": "87263305ed6605ac29375b8621b0df86563040cff6fc64fd1f2960e96b0682e6"
+    "src/direct-control.js": "d0ddc43736750beb591f28de0f8cf2a3b38cb2a560a6cd2aa76bc9f819c9c168",
+    "src/sim.js": "4acd06bd77b6e4f1971b737d62e86c56f2613174bc68f82c53da15cd2b243d88",
+    "src/operator-sim.js": "84c27449ad0fc039f283b6a478a95217781a001012da9aa977dbc670d9a143fa",
+    "src/vehicle-weapons.js": "476581b05d96e46829cfe9cfbe3be20c96c0f18cbbb8189dfd45605b3f1f2553",
+    "src/weapon-effects.js": "5fae73b89f809bb327ee6536bc6e7a179f1cc905fe0fe0ad5a008e9497b4392a",
+    "src/carrier-operations.js": "81c1eef31ac12f66ef14dfcd862d94a124a3dd51630cacc0a4d0309964060c5d",
+    "style.css": "012864c9f9ca30d7657900b7e2480469f7dd2b001498f1e062a063747c49530d"
   },
-  "appVersion": "3.12.0",
+  "appVersion": "3.13.0",
   "runtime": {
-    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.12.0 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.13.0 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36",
     "title": "现代战线 HD · 五强遭遇战"
   },
   "imported": {

@@ -33,11 +33,33 @@
  const plumeMat=new T.MeshBasicMaterial({color:0xa1d6e6,transparent:true,opacity:.36,blending:T.AdditiveBlending,depthWrite:false,toneMapped:false});
  function plume(g,p,i,space){const [x,y,z,r]=p,len=r*3.8,geo=new T.ConeGeometry(r*.72,len,8,1,true);geo.rotateZ(Math.PI/2);geo.translate(-len/2,0,0);geo.dispose();const mesh=new T.Group();mesh.name='rig_air_exhaust_'+i;mesh.position.set(x,y,z);mesh.visible=false;mesh.userData.preserveMaterial=true;mesh.userData.motionEffect=true;g.add(mesh);desc(g,mesh,'thruster','x',{effect:true,plumeRadius:r,plumeLength:len,control:'thrust',direction:[-1,0,0],side:Math.sign(z),sign:1,space,scaleAxis:'x',idle:space?0:.06,yawContribution:space?Math.sign(z)*.32:0,pitchContribution:space?Math.sign(y)*.25:0});}
  function existing(g){g.traverse(o=>{let role,ax,sign=1;if(/^rotor(?:Counter)?\d*$/.test(o.name)){role='rotor';ax='y';sign=/Counter/.test(o.name)?-1:1;}else if(o.name==='tailRotor'){role='rotor';ax='z';}else if(o.name==='propeller'){role='propeller';ax=o.userData.spinAxis||'x';}else if(o.name==='radar'){role='radar';ax='y';}if(role)desc(g,o,role,ax,{sign:o.userData.spinDirection||sign,speed:o.name==='tailRotor'?38:role==='radar'?.35:27,existing:true});});}
+ // Split whole original primitives, preserving every vertex attribute and the
+ // source material. Do this before wing partitioning invalidates primitive ranges.
+ function primitives(g,mesh,groups){const ps=mesh.userData.motionPrimitives||[];if(!ps.length||mesh.geometry.index)return;const selected=new Map();for(const p of ps){const group=groups.find(x=>x.select(p));if(group)selected.set(p,group);}if(!selected.size)return;
+  const build=items=>{const geo=new T.BufferGeometry();for(const [key,attr]of Object.entries(mesh.geometry.attributes)){const size=attr.itemSize,out=new attr.array.constructor(items.reduce((n,p)=>n+p.count*size,0));let at=0;for(const p of items){const a=attr.array.subarray(p.start*size,(p.start+p.count)*size);out.set(a,at);at+=a.length;}geo.setAttribute(key,new T.BufferAttribute(out,size,attr.normalized));}geo.computeBoundingSphere();return geo;};
+  for(const config of groups){const items=ps.filter(p=>selected.get(p)===config);if(!items.length)continue;const joint=new T.Group();joint.name='rig_air_'+config.name;joint.position.fromArray(config.pivot);const skin=new T.Mesh(build(items),mesh.material);skin.position.fromArray(config.pivot).multiplyScalar(-1);skin.castShadow=mesh.castShadow;skin.receiveShadow=mesh.receiveShadow;joint.add(skin);g.add(joint);desc(g,joint,config.role,config.axis||'y',config.extra||{});
+   if(config.tip){const a=new T.Object3D();a.name=config.anchor||'weapon_port_'+config.name;a.position.fromArray(config.tip).sub(joint.position);a.userData={source:'existing-modeled-store-or-barrel-tip',approximate:false,boundary:'Existing original model geometry; no certified real hardpoint dimensions.'};joint.add(a);}
+  }
+  const kept=ps.filter(p=>!selected.has(p)),geo=build(kept);let at=0;mesh.userData.motionPrimitives=kept.map(p=>{const next={...p,start:at};at+=p.count;return next;});mesh.geometry=geo;
+ }
+ function armament(g,mesh,kind,f){const groups=[],stores=kind==='attack_drone'?[-3.2,-1.7,1.7,3.2].map(z=>[.1,-.44,z,1.45]):kind==='interceptor'?[-3.3,3.3].map(z=>[-.8,-.25,z,2.1]):kind==='escort_helicopter'?[-2.1,-1.6,1.6,2.1].map(z=>[.2,-.58,z,1.5]):[];
+  const podSpan=kind==='heli'&&f!=='imp'?(f==='rus'?2.25:['usa','kor'].includes(f)?2.12:f==='chn'?1.93:1.8):null,podPorts=podSpan?[-1,1].flatMap(s=>[.64,.93].map(z=>[.525,-.55,s*podSpan*z])):kind==='close_support_aircraft'?[-3.8,-2.3,2.3,3.8].map(z=>[.762,-.5,z]):[];
+  for(const [i,p]of podPorts.entries()){const a=new T.Object3D();a.name='weapon_port_rocket_'+i;a.position.fromArray(p);a.userData={source:'existing-rocket-pod-mouth',approximate:false,boundary:'Existing original pod opening; no exact real launcher dimensions.'};g.add(a);}if(podPorts.length)g.userData.rocketPodRig={slots:podPorts.length};
+  stores.forEach(([x,y,z,len],i)=>groups.push({name:'payload_'+i,role:'payload',pivot:[x,y,z],tip:[x+len/2+.335,y,z],extra:{weaponFamily:'missile',slotIndex:i,slotCount:stores.length,articulation:'Existing whole store; visible count is a gameplay magazine representation.'},select:p=>Math.abs(p.pos[2]-z)<.21&&Math.abs(p.pos[1]-y)<.21&&Math.abs(p.pos[0]-x)<len&&(p.type==='CylinderGeometry'||p.type==='BoxGeometry'&&p.params.width<.4)}));
+  if(kind==='heli'&&f!=='imp'){const ka=f==='rus',apache=['usa','kor'].includes(f),x=ka?1.35:apache?2.56:2.66,y=ka?-.43:apache?-.86:-.78,z=ka?.90:0,len=ka?1.26:apache?.78:.77;
+   groups.push({name:'chin_gun',role:'turret',pivot:[x-len/2,y,z],tip:[x+len/2+.012,y,z],anchor:'weapon_port_chin',extra:{mountId:'chin',existing:true},select:p=>p.type==='CylinderGeometry'&&Math.abs(p.pos[0]-x)<.01&&Math.abs(p.pos[1]-y)<.01&&Math.abs(p.pos[2]-z)<.01});
+  }
+  if(kind==='heavy_bomber')groups.push({name:'bay_door',role:'weaponDoor',pivot:[-.4,-.20,.65],axis:'x',extra:{mountId:'hull',limit:.7,articulation:'Existing original closed bay panel, hinge is a game approximation.'},select:p=>p.type==='BoxGeometry'&&p.params.width>2.2&&p.params.width<2.4&&p.pos[1]<-.18&&p.pos[1]>-.25});
+  primitives(g,mesh,groups);
+  const chin=g.getObjectByName('rig_air_chin_gun');if(chin){const pitch=new T.Group();pitch.name='rig_air_chin_pitch';for(const child of [...chin.children])pitch.add(child);chin.add(pitch);desc(g,pitch,'weaponPitch','z',{mountId:'chin'});}
+  if(stores.length)g.userData.payloadRig={slots:stores.length,source:'existing-original-store-primitives',restoration:'authoritative station ammunition only'};
+ }
  function attach(g,kind,f='chn'){
    const u=root.WarData?.U?.[kind];if(!u?.air&&!u?.space)return g;if(g.userData.airMotionRigVersion===1)return g;
    g.userData.motionRig=g.userData.motionRig||[];g.userData.airMotionRigVersion=1;existing(g);
    const licensed=!!g.userData.assetSource;const mesh=g.children.filter(o=>o.isMesh&&!o.userData.motionRigRole).sort((a,b)=>b.geometry.attributes.position.count-a.geometry.attributes.position.count)[0];
-   if(!licensed&&!u.space&&u.modelKind!=='heli'&&mesh){if(kind==='fighter'&&f!=='imp')flatFighter(g,mesh,f);else if(W[kind]){hWing(g,mesh,kind);tails(g,mesh,kind);}else if(kind==='heavy_bomber'||kind==='jet'||kind==='fighter')conceptSurfaces(g,mesh,kind,f);rudders(g,mesh,kind,f);}
+   if(!licensed&&!u.space&&mesh)armament(g,mesh,kind,f);
+   if(!licensed&&!u.space&&u.modelKind!=='heli'&&kind!=='heli'&&mesh){if(kind==='fighter'&&f!=='imp')flatFighter(g,mesh,f);else if(W[kind]){hWing(g,mesh,kind);tails(g,mesh,kind);}else if(kind==='heavy_bomber'||kind==='jet'||kind==='fighter')conceptSurfaces(g,mesh,kind,f);rudders(g,mesh,kind,f);}
    if(!licensed&&kind==='orbital_mapper'&&mesh)mapperArrays(g,mesh);
    if(!licensed)for(const [i,p]of nozzles(kind,f).entries())plume(g,p,i,!!u.space);
    // No missing rotor, nozzle or reaction-control hardware is fabricated for frozen assets.

@@ -2,10 +2,7 @@ const test=require('node:test'),assert=require('node:assert/strict');
 for(const f of ['data','roster','equipment','sim','carrier-operations'])require('../src/'+f);
 const C=WarCarrierOperations;
 function wire(g){
- // Exercise the module through the same simulation hooks used by the live game.
- const step=g.step.bind(g),shot=g.emitShot.bind(g);
- g.step=function(dt){if(dt>0&&!this.result)for(const c of [...this.entities])if(c.kind==='carrier')C.updateCarrier(this,c,dt);return step(dt);};
- g.emitShot=function(e,target,aim,weapon){return e.kind==='carrier'&&!weapon?C.requestStrike(this,e,target||aim):shot(e,target,aim,weapon);};
+ // Game owns the carrier and firing hooks; do not advance the module twice.
  g.ai=()=>{};return g;
 }
 function arena(faction='usa'){

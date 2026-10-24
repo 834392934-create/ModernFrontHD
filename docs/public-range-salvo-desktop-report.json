@@ -1,8 +1,8 @@
 {
-  "recordedAt": "2026-10-24T13:38:05.596Z",
+  "recordedAt": "2026-10-24T15:34:40.116Z",
   "checks": [
     "New game defaults: published, 1 metre per unit",
-    "64 armory cards and sampled details display actual published-mode ranges",
+    "72 armory cards and sampled details display actual published-mode ranges",
     "RMB observes only, no shot",
     "Real LMB completes eight unique model ports, 2D impacts and normalized actual damage",
     "Pause freezes simulation time",
@@ -13,23 +13,145 @@
   ],
   "errors": [],
   "scope": "Public ranges, real-input eight-port salvo, normalized damage and cancellation; CPU metadata does not certify real weapon fidelity",
-  "profile": "D:\\现代战线HD\\.tmp\\native-v3120-public-range-salvo-browser-1792849085334",
-  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.12.0\\ModernFrontHD.exe",
+  "profile": "D:\\现代战线HD\\.tmp\\native-profile-public-range-52172",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.13.0\\ModernFrontHD.exe",
   "sourceHashes": {
-    "src/sim.js": "08a5b7404c7f3ffc2f18ce20a87660d67c0578eee1515da4b8fdd46463374d0f",
-    "src/vehicle-weapons.js": "4d245623f2c45fb44eec74c05a17bc8fe6ca88a8ce895bbd442bfd0109e5a22a",
-    "src/weapon-effects.js": "2af68d61687428d279ac81cce1b5b33d52d5e246051c5af8293f93aff751965f",
-    "src/carrier-operations.js": "eb56f0095cb6ae5a5767df05bb968020284611dd723617e4001006ce15c596b1",
-    "src/weapon-salvos.js": "372b1048feeee0838d65e751b8437abe5c29a0ac6eda6b9a9587d365cbc5757c",
-    "src/weapon-range-data.js": "5cf2cbd9f5b586ea368e864c38f88d83c9b5406b6d4c5f6f366b8c1a92c1859d",
-    "src/operator-ui.js": "aad6cdf6c69f1104d7c74f6cba600d689fefa20999bd1087907efa55b5378f58",
-    "src/direct-control.js": "71e3ad09e054d680bd8578dc32d24abddbb1e656052d16a3cfe12960816e4343",
-    "src/models-vehicles.js": "79990ee7ddc13303cb9b33e1e1f6868eefba6aefaece7b7b35fec47c2b245a4d",
+    "index.html": "85a1ce4030f96a4089728ead647300c5cd62f6063a21a5a4f32358ecbd72f952",
+    "style.css": "012864c9f9ca30d7657900b7e2480469f7dd2b001498f1e062a063747c49530d",
+    "assets/vendor/three.min.js": "170c6789f43217c96b3170f4b42fafe135de7f7cd48497a4218f9757ee1d49fa",
+    "assets/vendor/GLTFLoader.bundle.js": "5f2fac6626db707e22e48dff05e55525b1fc75ca68bf18fff90b91beb396ad58",
+    "assets/textures/ground-data.js": "9536c6ebd046299a5542a74415306d7e9fe3028b6c6fcde76769228190a2038f",
+    "src/data.js": "6337334a824d6e51dd50a76ff12649f933e640f693b181ba8cc1af8aa8dba82b",
+    "src/roster.js": "0609dfb5f0cc07ab408d9675816e236b16a4d13ee6b1d4f209a94b3c8f5f0b81",
+    "src/equipment.js": "451d0463150e360b843fed9a6502dcbd5d7ad11c0d6e99c514d01f405b73cf20",
+    "src/maps-large.js": "dc26a17461fc7f2acdbe0d0c4842744ef6caf140dc214e9eed05c6af55ee74d9",
+    "src/command-feedback.js": "5ddd8240c6ce807fb83852a9fd9fd8c36647586b2e1c41e651f67478bb6ebb30",
+    "src/operator-weapons.js": "dbd036a62b74f286e58c7f264521052213f5d7fc393ad8a90fda2b2856f5b4e3",
+    "src/navigation-footprints.js": "4775176fce696c5bcd82ac22db5ce321a82f340ee2d6e516247599b3a8ae815c",
+    "src/crowd-navigation.js": "b4b21336962fbf317490b3b8f74636dbc445d23bb10a9a7d80375d9e2d06dd08",
+    "src/destructible-trees.js": "01fdc770ca776e98c70eb55a2754e67ab5066a8342b63ce7a165b994b8599645",
+    "src/vehicle-motion.js": "b174c65b4b355bab60ded0e83b593e31b4a907a001d91d76b9a45366bcefff08",
+    "src/aircraft-flight.js": "e409bd102931c51d286be5ed3d248224a195f0c4f050582e1018398434d31583",
+    "src/weapon-range-data.js": "ebede21ef1d145e98f84ffa94494ca5b74620d71959c5f6eacf91c56a2c60e9e",
+    "src/vehicle-weapons.js": "476581b05d96e46829cfe9cfbe3be20c96c0f18cbbb8189dfd45605b3f1f2553",
+    "src/carrier-operations.js": "81c1eef31ac12f66ef14dfcd862d94a124a3dd51630cacc0a4d0309964060c5d",
+    "src/weapon-salvos.js": "c91dad8084fdea6cadf1d55156000f14a13d65ff58b4128c6831a753f60e2fac",
+    "src/combat-readiness.js": "622c8d153ca2db96a39362d3328616dcc055407a36f4395290d50e6a0db5472d",
+    "src/combat-damage.js": "e89c5d02085aee3799c4a1946913a0fc8f8262304fe6f2607ce320b1f5aaa9f2",
+    "src/combat-projectiles.js": "500979f07ad3f3c7e9bd4f81cc997af45bf028273a2407a85a95e85114c0b65e",
+    "src/combat-impact.js": "12caa999683d2f3299c7e86507a01d15643ede4e37400e2f64176c0dda318afe",
+    "src/transport-operations.js": "6d1fa8919751fc0c5e38fa8db16e980d57da488bdf9f70eab03708c094f03917",
+    "src/sim.js": "4acd06bd77b6e4f1971b737d62e86c56f2613174bc68f82c53da15cd2b243d88",
+    "src/operator-sim.js": "84c27449ad0fc039f283b6a478a95217781a001012da9aa977dbc670d9a143fa",
+    "src/vehicle-interaction.js": "8d2d1f251fec3b88932c0ac41b59301e5937fe472878815b24a15ae7eabbf313",
+    "src/render.js": "b80b3be9b9e6a865ab9f6ac614693f91a17218240129cbb9d634353d427be0b3",
+    "src/ranges.js": "5d368003b75a1e174ebcd03312bfb05f2bde342db610b7bb88c5c2f252fb4bd1",
     "src/models3d.js": "e76d9c4bb56b3b46fcbd26d409744fd88410d6b9eb3518fa74edf1bab558962a",
-    "src/vehicle-animation.js": "fdaeba86cf5702aa46d7aa7bd2d492d26d9adb6648845ef6d209586b2dc4e7fd",
-    "index.html": "05019ba894f25b168c728cfbdbd17fc99a8e372343aff07059e28070aeeedb44"
+    "src/vehicle-rig-ground.js": "2ba59047343ce7b209638c5c8e1b9c8be33df85a57576603b03abadccb3f0ed4",
+    "src/vehicle-rig-naval.js": "350789e400f79b5b2919a03690d38ca7855a0c019c36d639750a0ed1a7e4b8f4",
+    "src/vehicle-rig-air.js": "3fb0747434bbf29ba672512c748c9e1912d07cb54ee6112adc31c17e9ee6b1a3",
+    "src/vehicle-animation.js": "d25219668f0ee52b6924cfd87cedea3c12cdbe389bc785097bde77fe1343f6d8",
+    "src/weapon-effects.js": "5fae73b89f809bb327ee6536bc6e7a179f1cc905fe0fe0ad5a008e9497b4392a",
+    "src/models-tanks.js": "a45826f9fdcd9a087e8bb7a237f230d6b014d3b4c26fcbf3aa3514106e916f63",
+    "src/models-vehicles.js": "79990ee7ddc13303cb9b33e1e1f6868eefba6aefaece7b7b35fec47c2b245a4d",
+    "src/models-air.js": "f137a8b18ff94f7ab5114d3e8c6e657186a73d4528199d69f2a30a83dacb3ecb",
+    "src/models-naval.js": "a399e25da16f666bf27648e9e9769d9f7f938b5cd74eef60057e7833d08f6c1f",
+    "src/models-space.js": "48278cb7bc36f8bf8a448b8ceefe46885e6a7effc25f0bb48afdb74df58f7437",
+    "src/model-detail.js": "306e6bc834b8d646f6722a29320cb89c9292c0d022d6683a168c856354f5d166",
+    "src/models-roster.js": "db79d8962883864735f63d56b5dd1a238f3b02126b644a8ccc98a623b3592636",
+    "src/models-reinforcements-ground-naval.js": "9f757a10d2ca0dbff09c835366f241e46559d9789f75b58009168268f3c1daa2",
+    "src/models-reinforcements-air-space.js": "fd093ee562327053594a6226cb7795c5e7b4e1ad16f65f7a6d179ed8218d0da8",
+    "src/models-tactical-ground-naval.js": "ad07feb5963c1f98665ef7f70a248d79661473d2dbe31167ec79344b2bc9398c",
+    "src/models-tactical-air-space.js": "9e516757fb6a61a474a70fc72935680a8f96da3108fc4fab1a077f85332a5535",
+    "src/models-depth-wave.js": "6c1252d05d29deba601e88327baa8fb7b7a526c4f03a0790df9b0fe33a6b549b",
+    "src/models-altitude-wave.js": "6b49f7f29c88a0885436b412ed12818d1f123d11534136b110836c010eb0be97",
+    "src/models-buildings.js": "cef605cade7bfba31105dd3802826c6649a1dedf7363e85b8b09ebd563937ce8",
+    "src/models-defense-wave.js": "303858c8a99a4e82d8b5ff10a2c699817336bf611d681251d69572bbec5b63ae",
+    "src/models-operator.js": "94f4be5b4d7428c8702705271d5b9a235bfcb75e7b258efdd4ff8e0b8b24dac1",
+    "src/personnel-animation.js": "c3000a3c9008188416ae435249566648dd4738e7678ab97a06c708ee7445513b",
+    "assets/models/burke-data.js": "7c1be15f83fdd9755407f07ad66a4afe5ccd76cecd0aeee91b06cee3f77e3f6d",
+    "src/models-imported.js": "e34a5d37ef99d02a114f99189da7a89449429d52cd8273f0903c35154f199ce9",
+    "assets/models/ah64-data.js": "d4aab4b9fb3e09d218482cf6d40278b397278c171a389682efae716a7bfb0b65",
+    "src/models-imported-air.js": "911cdd2b2765e3ceb9be4477d9ab8e634fdfd5ea5013c45ed1450643c2ceca84",
+    "assets/models/t90m-data.js": "af6501e8bad71ad87fe588f5c99a76bfcbd193629c310133b0112b96d9c05446",
+    "src/models-imported-ground.js": "6abfd2156cfe6f41ab13d28cca275dc0be1b37f8ff82bd1705a6d766f51405ab",
+    "src/model-unit-refinement.js": "f0f085d15ededb8ef757ee11a93ecffb0b65574f01490ec367947008827cd476",
+    "src/underwater.js": "efd255e7063c65d1456e79ca65330ef0ee9b3847daed894ac193aae21e9fda79",
+    "src/altitude-scene.js": "a2f96530a204c0a378025c42265d00e8cdc8b1bdf80f64dd2ad8d61b78f88447",
+    "src/combat-damage-visuals.js": "b6b948c9dbcdb1b2d6fbed6f7817599e8da7525100f1ce5eeaa522c62c7f94a5",
+    "src/battle3d.js": "4fe1be0ef1bc92e0d335cb2ca9e12214c9eb020f05a12d50c3c997e1c07b5fc0",
+    "src/lighting.js": "5a2c4b0d67d3eacb06e92f25a93d011236ef2a91a719adfbc06758a9e703216a",
+    "src/fps-viewmodel.js": "145aceb22aa6592f6ce14b574081ca710ca3e9394341a0d7004b215cb3913294",
+    "src/vehicle-camera.js": "97eb37852c014549296515d246a10930cf591f88196362932fd1e84eda73cd2d",
+    "src/combat-audio.js": "08ac7e6160549d7f948d3a1a701bbccce6a832dccbba670fca3e818527523cce",
+    "src/direct-control.js": "d0ddc43736750beb591f28de0f8cf2a3b38cb2a560a6cd2aa76bc9f819c9c168",
+    "src/player-mode.js": "0bbbb83582e08b250e804bfc0d280091483203e9b9d4cb0cf4856e08722e0fb8",
+    "src/operator-ui.js": "e8953ef30c9b6a48c4bf72e66931bef3549762b5b6ee284339d9643b637be2bd",
+    "src/app.js": "50d238bc2b5417acf53003f5419e785c8f10de1185de05c10221c2f707d264bb",
+    "assets/models/burke.glb": "f7a6ccac4894e9994cc5f75d1ebda3a1930ea5993ebb2b5ec5c118b4dc3d73c6",
+    "assets/models/t90m.glb": "58a8ed5339168757d5ead282639fc74ac4f880cf0b1edae77170a5b943a4ecce",
+    "assets/models/ah64.glb": "b7a0b2a2f917afc83be6736bda1a3bfddafdd17a444d01c3d762cb108849b2fd"
   },
-  "version": "3.12.0",
+  "version": "3.13.0",
+  "assets": {
+    "ready": [
+      "ready",
+      "ready",
+      "ready"
+    ],
+    "errors": [],
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "resolution": [
+      1586,
+      963
+    ],
+    "models": [
+      {
+        "key": "tank_rus",
+        "source": "https://sketchfab.com/3d-models/t-90m-2e31a3cf16b04f0180b9387df5198c9a",
+        "license": "CC-BY-4.0",
+        "author": "minehffd",
+        "assetPath": "assets/models/t90m.glb",
+        "meshes": 23,
+        "preserved": 23,
+        "textured": 21,
+        "valid": true
+      },
+      {
+        "key": "destroyer_usa",
+        "source": "https://sketchfab.com/3d-models/11-low-poly-us-navy-ddg-51-uss-arleigh-burke-17be09c31c6047e4a5969b68c29eba03",
+        "license": "CC-BY-4.0",
+        "author": "Yi Tsung Lee / WTigerTw",
+        "assetPath": "assets/models/burke.glb",
+        "meshes": 6,
+        "preserved": 6,
+        "textured": 6,
+        "valid": true
+      },
+      {
+        "key": "heli_usa",
+        "source": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+        "license": "CC-BY-4.0",
+        "author": "Andrew Swihart / ArionDigital",
+        "assetPath": "assets/models/ah64.glb",
+        "meshes": 12,
+        "preserved": 12,
+        "textured": 0,
+        "valid": true
+      },
+      {
+        "key": "heli_kor",
+        "source": "https://sketchfab.com/3d-models/ah-64-helicopter-56f54d3865d247c78b49c2b47454da86",
+        "license": "CC-BY-4.0",
+        "author": "Andrew Swihart / ArionDigital",
+        "assetPath": "assets/models/ah64.glb",
+        "meshes": 12,
+        "preserved": 12,
+        "textured": 0,
+        "valid": true
+      }
+    ]
+  },
   "defaults": {
     "mode": "published",
     "scale": 1
@@ -354,24 +476,64 @@
       "id": "launcher_08",
       "expected": "500 m",
       "text": "发射器雷幕-08 守望伤害 263 · 射程 500 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下 · 空中 · 太空"
+    },
+    {
+      "id": "grenade_01",
+      "expected": "250 m",
+      "text": "榴弹发射器震岳-01 标准伤害 105 · 射程 250 m · 同类估算人员 · 车辆 / 基地"
+    },
+    {
+      "id": "grenade_02",
+      "expected": "250 m",
+      "text": "榴弹发射器震岳-02 紧凑伤害 99 · 射程 250 m · 同类估算人员 · 舰艇 / 水下"
+    },
+    {
+      "id": "grenade_03",
+      "expected": "250 m",
+      "text": "榴弹发射器震岳-03 巡逻伤害 108 · 射程 250 m · 同类估算人员 · 空中"
+    },
+    {
+      "id": "grenade_04",
+      "expected": "250 m",
+      "text": "榴弹发射器震岳-04 高容伤害 101 · 射程 250 m · 同类估算人员 · 太空"
+    },
+    {
+      "id": "grenade_05",
+      "expected": "250 m",
+      "text": "榴弹发射器震岳-05 轻量伤害 96 · 射程 250 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下"
+    },
+    {
+      "id": "grenade_06",
+      "expected": "250 m",
+      "text": "榴弹发射器震岳-06 精确伤害 118 · 射程 250 m · 同类估算人员 · 空中 · 太空"
+    },
+    {
+      "id": "grenade_07",
+      "expected": "250 m",
+      "text": "榴弹发射器震岳-07 突击伤害 111 · 射程 250 m · 同类估算人员 · 太空 · 舰艇 / 水下 · 空中"
+    },
+    {
+      "id": "grenade_08",
+      "expected": "250 m",
+      "text": "榴弹发射器震岳-08 守望伤害 123 · 射程 250 m · 同类估算人员 · 车辆 / 基地 · 舰艇 / 水下 · 空中 · 太空"
     }
   ],
   "fullSalvo": {
-    "time": 3.999999999999994,
+    "time": 4.699999999999991,
     "shots": [
       {
         "portIndex": 0,
         "salvoIndex": 0,
         "count": 8,
         "origin": [
-          1805.754124863377,
-          22.07260165084869,
-          1397.048888888889
+          1801.3821164021142,
+          26.49997730992351,
+          1397.1633897998188
         ],
         "muzzle": [
-          1805.754124863377,
-          22.07260165084869,
-          1397.048888888889
+          1801.3821164021142,
+          26.49997730992351,
+          1397.1633897998188
         ],
         "end": [
           2085.433591553935,
@@ -380,7 +542,7 @@
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 1.6000000000000008,
+        "firedAt": 2.849999999999998,
         "portError": 0
       },
       {
@@ -388,174 +550,174 @@
         "salvoIndex": 1,
         "count": 8,
         "origin": [
-          1806.0303100457345,
-          18.62765495386683,
-          1397.048888888889
+          1802.8227873456788,
+          23.35858890916505,
+          1397.1753329862986
         ],
         "muzzle": [
-          1806.0303100457345,
-          18.62765495386683,
-          1397.048888888889
+          1802.8227873434055,
+          23.35858890898279,
+          1397.175332976072
         ],
         "end": [
-          2097.4234638886974,
+          2102.7869395050857,
           12.33988286374126,
-          1387.335206637835
+          1401.7364747036847
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 1.800000000000001,
-        "portError": 0
+        "firedAt": 3.049999999999997,
+        "portError": 1.0477790196630293e-8
       },
       {
         "portIndex": 2,
         "salvoIndex": 2,
         "count": 8,
         "origin": [
-          1805.754124863377,
-          22.07260165084869,
-          1393.351111111111
+          1801.4994006929105,
+          26.509380121081563,
+          1393.6101991811051
         ],
         "muzzle": [
-          1805.754124863377,
-          22.07260165084869,
-          1393.351111111111
+          1801.4995349137835,
+          26.509390881717223,
+          1393.610443595716
         ],
         "end": [
-          2087.5354639005664,
+          2070.6845328787704,
           12.33988286374126,
-          1420.2707950967178
+          1414.0637217482142
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 1.950000000000001,
-        "portError": 0
+        "firedAt": 3.1999999999999966,
+        "portError": 0.00027905113521864644
       },
       {
         "portIndex": 3,
         "salvoIndex": 3,
         "count": 8,
         "origin": [
-          1806.0303100457345,
-          18.62765495386683,
-          1393.351111111111
+          1802.9400595498219,
+          23.36799075132275,
+          1393.6373440730385
         ],
         "muzzle": [
-          1806.0303100457345,
-          18.62765495386683,
-          1393.351111111111
+          1802.9400597972128,
+          23.36799077115636,
+          1393.637344571668
         ],
         "end": [
-          2060.870168946147,
+          2082.0161291980107,
           12.33988286374126,
-          1385.3234114888733
+          1371.5907597500463
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.1000000000000005,
-        "portError": 0
+        "firedAt": 3.349999999999996,
+        "portError": 5.569803442103629e-7
       },
       {
         "portIndex": 4,
         "salvoIndex": 4,
         "count": 8,
         "origin": [
-          1805.754124863377,
-          22.07260165084869,
-          1402.951111111111
+          1801.3819676917158,
+          26.49996538764659,
+          1402.83721393741
         ],
         "muzzle": [
-          1805.754124863377,
-          22.07260165084869,
-          1402.951111111111
+          1801.382122396495,
+          26.499977790499663,
+          1402.8365858612233
         ],
         "end": [
-          2124.2896680803647,
+          2112.111440305053,
           12.33988286374126,
-          1396.3252427574357
+          1428.4884346679842
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.25,
-        "portError": 0
+        "firedAt": 3.4999999999999956,
+        "portError": 0.0006469676158203263
       },
       {
         "portIndex": 5,
         "salvoIndex": 5,
         "count": 8,
         "origin": [
-          1806.0303100457345,
-          18.62765495386683,
-          1402.951111111111
+          1802.8227873067672,
+          23.358588906045465,
+          1402.824667188738
         ],
         "muzzle": [
-          1806.0303100457345,
-          18.62765495386683,
-          1402.951111111111
+          1802.8227873451453,
+          23.358588909122272,
+          1402.8246670161016
         ],
         "end": [
-          2053.07866530484,
+          2045.8588944291055,
           12.33988286374126,
-          1425.0063595234444
+          1389.7042427826727
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.3999999999999995,
-        "portError": 0
+        "firedAt": 3.649999999999995,
+        "portError": 1.7687759671834942e-7
       },
       {
         "portIndex": 6,
         "salvoIndex": 6,
         "count": 8,
         "origin": [
-          1805.754124863377,
-          22.07260165084869,
-          1406.648888888889
+          1801.4995349137832,
+          26.509390881717202,
+          1406.3895564042843
         ],
         "muzzle": [
-          1805.754124863377,
-          22.07260165084869,
-          1406.648888888889
+          1801.499529501644,
+          26.509390447820024,
+          1406.3895662599612
         ],
         "end": [
-          2090.114009096696,
+          2116.692729594129,
           12.33988286374126,
-          1364.1030095401723
+          1381.7416725456135
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.5999999999999988,
-        "portError": 0
+        "firedAt": 3.8499999999999943,
+        "portError": 0.000011252283457437401
       },
       {
         "portIndex": 7,
         "salvoIndex": 7,
         "count": 8,
         "origin": [
-          1806.0303100457345,
-          18.62765495386683,
-          1406.648888888889
+          1802.9400595390425,
+          23.367990750458553,
+          1406.3626559486881
         ],
         "muzzle": [
-          1806.0303100457345,
-          18.62765495386683,
-          1406.648888888889
+          1802.940059797695,
+          23.36799077119501,
+          1406.36265542736
         ],
         "end": [
-          2116.261024927022,
+          2082.466360177068,
           12.33988286374126,
-          1427.5923505934136
+          1441.2657727129651
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.7499999999999982,
-        "portError": 0
+        "firedAt": 3.999999999999994,
+        "portError": 5.823350253647906e-7
       }
     ],
-    "hp": 9913.771558966666,
+    "hp": 9890.959786364052,
     "initialHp": 10000,
     "active": false,
-    "cool": 4.000000000000009,
+    "cool": 5.700000000000003,
     "range": {
       "kind": "rocket",
       "active": true,
@@ -636,6 +798,39 @@
         "minRange": 125,
         "minMeters": null,
         "splash": 65,
+        "mountId": "launcher",
+        "mount": {
+          "mode": "turret",
+          "yawRate": 1.3,
+          "pitchRate": 1.2,
+          "minPitch": 0.15,
+          "maxPitch": 1.3,
+          "arc": 3.141592653589793,
+          "tolerance": 0.1,
+          "pitchTolerance": 0.2,
+          "boundary": "Game motion and exclusion limits; no exact real-platform firing-arc claim."
+        },
+        "ammoType": "unguided",
+        "burst": {
+          "count": 1,
+          "interval": 6.4
+        },
+        "payloadSlots": 0,
+        "mechanics": {
+          "magazine": 8,
+          "reserve": 24,
+          "reloadSeconds": 11.520000000000001,
+          "fireInterval": 6.4,
+          "setupSeconds": 1.5,
+          "packSeconds": 1.2,
+          "moveFactor": 0,
+          "supplyCost": 204,
+          "intercept": false,
+          "interceptRange": 0,
+          "interceptReload": 0,
+          "dispersion": 1
+        },
+        "parameterBoundary": "Magazine capacity, burst, reload, aiming rate and dispersion are gameplay values.",
         "stationId": "rocket_salvo",
         "kind": "rocket",
         "faction": "chn",
@@ -681,7 +876,7 @@
       12.33988286374126,
       1400
     ],
-    "contact": "M1A2 SEPv3 · 实际距离 300 m / 射程 70 km · 射程内 · 装填中 · 同类估算"
+    "contact": "M1A2 SEPv3 · 实际距离 300 m / 射程 70 km · 射程内 · 换弹中 · 同类估算"
   },
   "rangeBoundary": {
     "min": 1500,
@@ -698,13 +893,13 @@
         "distance": 1501,
         "rangeState": "in",
         "inRange": true,
-        "reason": "ready"
+        "reason": "preparing"
       },
       {
         "distance": 6999,
         "rangeState": "in",
         "inRange": true,
-        "reason": "ready"
+        "reason": "preparing"
       },
       {
         "distance": 7001,

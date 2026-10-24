@@ -1,0 +1,79 @@
+{
+  "at": "2026-10-24T15:04:55.036Z",
+  "environment": "isolated Chromium / source server",
+  "scope": "Actual mouse firing and sampled physical projectiles; separately labeled paused near inspection; not packaged desktop acceptance or equipment-fidelity certification",
+  "shots": [
+    {
+      "weaponId": "machinegun_team:primary",
+      "family": "machinegun",
+      "projectileId": 37,
+      "phase": "flight",
+      "source": [
+        1807.112,
+        7.475999999999999,
+        1400.952
+      ],
+      "position": {
+        "x": 1842.1119996577022,
+        "y": 1400.9499165739373,
+        "height": 7.480429468855605
+      },
+      "time": 0.7500000000000001,
+      "age": 0,
+      "port": 0,
+      "inputs": [
+        {
+          "button": 2,
+          "trusted": true
+        },
+        {
+          "button": 0,
+          "trusted": true
+        }
+      ],
+      "style": {
+        "type": "bullet",
+        "powered": false,
+        "tracer": false,
+        "phase": "flight"
+      },
+      "stats": {
+        "visible": 1,
+        "allocated": 1,
+        "budget": 64,
+        "geometryKinds": 1
+      },
+      "shown": true,
+      "vertices": 336,
+      "kind": "machinegun_team",
+      "station": null,
+      "screen": "screenshots/combat-visual-bullet-actual.png",
+      "close": "screenshots/combat-visual-bullet-inspection.png",
+      "render": {
+        "frame": 119,
+        "calls": 5,
+        "triangles": 22642,
+        "points": 0,
+        "lines": 0
+      }
+    }
+  ],
+  "errors": [],
+  "checks": [],
+  "assets": {
+    "ship": "ready",
+    "ground": "ready",
+    "air": "ready",
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "sourceHashes": {
+    "src/weapon-effects.js": "5fae73b89f809bb327ee6536bc6e7a179f1cc905fe0fe0ad5a008e9497b4392a",
+    "src/vehicle-animation.js": "d25219668f0ee52b6924cfd87cedea3c12cdbe389bc785097bde77fe1343f6d8",
+    "src/vehicle-weapons.js": "1f064734a907ac4f814e382b617bac1dfcf58013bac69e78cba16d72b4bb0e7a",
+    "src/combat-projectiles.js": "17db64a2aee0f71822f467032d1fe41ee23ac2bcd61a7b3fd9284fca7c018bcb",
+    "src/combat-damage-visuals.js": "1bd0668e868d20855a62e975a18b26707dc2f8eebdc8acf03854b8b4c13ac1c5",
+    "src/battle3d.js": "4fe1be0ef1bc92e0d335cb2ca9e12214c9eb020f05a12d50c3c997e1c07b5fc0"
+  },
+  "stage": "machinegun_team:null",
+  "passed": true
+}

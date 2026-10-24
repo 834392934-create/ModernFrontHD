@@ -48,8 +48,8 @@ test('every armed slot has a labelled finite selection while all support remains
   assert.equal(R.resolve(p.primary,{metersPerUnit:10}).range,v.range/10);
  }
 });
-test('all 64 original weapons use honest category estimates rather than fictional model certifications',()=>{
- assert.equal(WarOperatorWeapons.list.length,64);
+test('all 72 original weapons use honest category estimates rather than fictional model certifications',()=>{
+ assert.equal(WarOperatorWeapons.list.length,72);
  for(const w of WarOperatorWeapons.list){
   const p=R.getOperatorProfile(w),v=R.resolve(p.primary);
   assert.equal(p.status,'inferred');assert.equal(v.verified,false);assert.equal(p.primary.publishedM,null);

@@ -36,11 +36,17 @@ for(const kind of kinds)for(const faction of Object.keys(WarData.F))test(`${kind
  }
  near(other.getObjectByName('muzzle').getWorldPosition(new T.Vector3()).distanceTo(beforeOther),0,'same-template peer remains unchanged');
  if(s.skeletons.length&&peer.skeletons.length)assert.notEqual(s.skeletons[0].bones[0],peer.skeletons[0].bones[0]);
- const g=new WarSim.Game({map:'desert',faction,enemies:1});g.effects=[];g.entities=[e];const p=marker.getWorldPosition(new T.Vector3()),direction=new T.Vector3(.7,.22,-.41).normalize(),range=350;
+ const g=new WarSim.Game({map:'desert',faction,enemies:1});g.effects=[];g.entities=[e];const p=marker.getWorldPosition(new T.Vector3()),direction=new T.Vector3(.7,.22,-.41).normalize(),range=kind==='rocket'?200:150;
  const aim={aimOrigin:{x:p.x,y:p.z,height:p.y},aimX:p.x+direction.x*2000,aimY:p.z+direction.z*2000,aimHeight:p.y+direction.y*2000};
- const point=g.directShotPoint(e,aim,null,range);assert.equal(g.emitShot(e,null,{...point,fixedImpact:true}),true);const f=g.effects.find(x=>x.type==='shot');assert.ok(f);
+ // This test concerns the original main gun/launch port, not the new default
+ // anti-ship station. Let the authoritative mount prepare and traverse first.
+ if(kind==='destroyer')e.weaponId='destroyer:naval_gun';
+ const point=g.directShotPoint(e,aim,null,range),w=g.vehicleWeapon(e),ctx={weapon:w,aimX:point.x,aimY:point.y,aimHeight:point.height,aimOrigin:point.origin,moving:false};
+ if(w?.mount.mode==='hull'){e.angle=Math.atan2(direction.z,direction.x);e.pitch=Math.atan2(direction.y,Math.hypot(direction.x,direction.z));}
+ for(let i=0;i<100&&!WarCombatReadiness.status(g,e,w,null,ctx).canFire;i++){g.time+=.05;WarCombatReadiness.step(g,e,.05,ctx);}
+ assert.equal(g.emitShot(e,null,{...point,fixedImpact:true}),true);const f=g.effects.find(x=>x.type==='shot');assert.ok(f);
  near(f.x,p.x,'shot x');near(f.y,p.z,'shot map y');near(f.sourceHeight,p.y,'shot height');
- near(f.tx-f.x,direction.x*range,'ray x');near(f.ty-f.y,direction.z*range,'ray map y');near(f.targetHeight-f.sourceHeight,direction.y*range,'ray height');
+ const rayLength=Math.hypot(point.x-p.x,point.y-p.z,point.height-p.y);assert(rayLength<=range+1e-6);if(kind==='rocket')assert(Math.hypot(point.x-e.x,point.y-e.y,point.height-g.entityAltitude(e))<=range+1e-6);else near(rayLength,range,'full non-salvo ray');near(f.tx-f.x,direction.x*rayLength,'ray x');near(f.ty-f.y,direction.z*rayLength,'ray map y');near(f.targetHeight-f.sourceHeight,direction.y*rayLength,'ray height');
  const frozen=[f.x,f.y,f.sourceHeight,f.tx,f.ty,f.targetHeight];e.turret=-1.2;m.position.x+=100;clock.time+=.05;A.update(m,e,clock);m.updateMatrixWorld(true);
  assert.deepEqual([f.x,f.y,f.sourceHeight,f.tx,f.ty,f.targetHeight],frozen,'old projectile follows a later turret/model pose');
  A.release(m);A.release(other);

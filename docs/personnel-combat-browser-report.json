@@ -1,0 +1,1128 @@
+{
+  "at": "2026-10-24T15:23:15.242Z",
+  "scope": "Source Chromium / original game personnel: true movement and medical simulation; labeled Game.damage injury probes; actual RMB/LMB/R input. Not native package or photographic-realism acceptance.",
+  "runs": [
+    {
+      "mode": "production-state-probe",
+      "label": "健康单兵 · 生产模型静立 / 暂停近距检查",
+      "file": "screenshots/personnel-combat-healthy.png",
+      "time": 0.49999999999999994,
+      "id": 36,
+      "kind": "infantry",
+      "hp": 105,
+      "components": {
+        "schema": 1,
+        "parts": {},
+        "lastHitAt": -1,
+        "hitPoint": null,
+        "fireUntil": 0,
+        "flooding": 0,
+        "listing": 0,
+        "state": "operational",
+        "destroyedAt": null,
+        "personnel": {
+          "downedAt": null,
+          "bleedUntil": 0,
+          "reviveProgress": 0,
+          "rescuerId": null,
+          "limp": 0,
+          "staggerUntil": 0,
+          "everDowned": false
+        }
+      },
+      "pose": {
+        "moving": false,
+        "phase": 0,
+        "torso": [
+          0,
+          0,
+          0
+        ],
+        "joints": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "rescue": []
+    },
+    {
+      "mode": "production-state-probe",
+      "label": "正常行走 · 真实移动驱动步态 / 暂停采样",
+      "file": "screenshots/personnel-combat-walking.png",
+      "time": 0.7500000000000001,
+      "id": 36,
+      "kind": "infantry",
+      "hp": 105,
+      "components": {
+        "schema": 1,
+        "parts": {},
+        "lastHitAt": -1,
+        "hitPoint": null,
+        "fireUntil": 0,
+        "flooding": 0,
+        "listing": 0,
+        "state": "operational",
+        "destroyedAt": null,
+        "personnel": {
+          "downedAt": null,
+          "bleedUntil": 0,
+          "reviveProgress": 0,
+          "rescuerId": null,
+          "limp": 0,
+          "staggerUntil": 0,
+          "everDowned": false
+        }
+      },
+      "pose": {
+        "moving": true,
+        "phase": 0.8142857142857044,
+        "torso": [
+          0,
+          -0.07191062648986955,
+          0
+        ],
+        "joints": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.0012074764755243563,
+            -0.00006037382377621781,
+            0.36039859361762305,
+            0.9327976158170657
+          ],
+          [
+            -0.000270669010741699,
+            -0.000862768233002709,
+            -0.6899455124810503,
+            0.723860740872527
+          ],
+          [
+            -0.0009741605148416489,
+            0.0001129461466483071,
+            0.38270219421420615,
+            0.9238712403782745
+          ],
+          [
+            8.110380240790608e-15,
+            1.4193165421383566e-15,
+            -0.1019039583169467,
+            0.9947942416798249
+          ],
+          [
+            -2.4559034299184954e-15,
+            -5.270157958562516e-15,
+            -0.3995661464123486,
+            0.9167043659987583
+          ],
+          [
+            -3.887541588223558e-15,
+            4.507294595041808e-16,
+            0.49090190512290277,
+            0.8712148526894525
+          ],
+          [
+            0.07304080304496942,
+            0.027852395536604718,
+            0.1316771733975165,
+            0.9882056502365583
+          ],
+          [
+            -0.09004916368111343,
+            -0.0893732950518331,
+            -0.09469452308314162,
+            0.9873887327440833
+          ],
+          [
+            0.0077364728339846,
+            0.06575890894809167,
+            -0.032419082298305944,
+            0.9972787554064217
+          ],
+          [
+            -0.16145049846723,
+            -0.06675324361309459,
+            0.19767926834695707,
+            0.964572779979627
+          ],
+          [
+            0.06973403011443875,
+            0.2630725730523249,
+            -0.07450991293871156,
+            0.9593634656507896
+          ],
+          [
+            0.13465637784704873,
+            -0.19146732945658665,
+            -0.07995780875731352,
+            0.9689244916269816
+          ]
+        ]
+      },
+      "rescue": []
+    },
+    {
+      "mode": "production-state-probe",
+      "label": "受伤跛行 · 生产伤害接口状态检查（非武器命中测试）",
+      "file": "screenshots/personnel-combat-injured.png",
+      "time": 0.8500000000000002,
+      "id": 36,
+      "kind": "infantry",
+      "hp": 57.75,
+      "components": {
+        "schema": 1,
+        "parts": {},
+        "lastHitAt": 0.7500000000000001,
+        "hitPoint": {
+          "x": 1817.814960634378,
+          "y": 1401.0455868695954,
+          "height": 5
+        },
+        "fireUntil": 0,
+        "flooding": 0,
+        "listing": 0,
+        "state": "operational",
+        "destroyedAt": null,
+        "personnel": {
+          "downedAt": null,
+          "bleedUntil": 0,
+          "reviveProgress": 0,
+          "rescuerId": null,
+          "limp": 0.44999999999999996,
+          "staggerUntil": 1.4000000000000001,
+          "everDowned": false
+        }
+      },
+      "pose": {
+        "moving": true,
+        "phase": 0.1896071428571323,
+        "torso": [
+          -0.024062499999999994,
+          -0.08270553393707691,
+          0
+        ],
+        "joints": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            -8.666786841225502e-15,
+            4.333393420612751e-16,
+            0.03493749955022059,
+            0.9993894992069801
+          ],
+          [
+            1.6880734178114577e-15,
+            3.2251960902124485e-15,
+            -0.3357107888673224,
+            0.9419651088220201
+          ],
+          [
+            6.734924941702831e-15,
+            -7.808608628061253e-16,
+            0.3025959315987007,
+            0.9531189339111433
+          ],
+          [
+            -2.493463704418793e-14,
+            -4.363561482732888e-15,
+            -0.04892820309420836,
+            0.9988022982262164
+          ],
+          [
+            1.2914162108371945e-14,
+            1.9089184303376668e-14,
+            -0.5779212234659131,
+            0.816092555699206
+          ],
+          [
+            3.994482600047494e-15,
+            -4.63128417396811e-16,
+            0.6171589885003833,
+            0.7868384732034801
+          ],
+          [
+            0.07332802027092188,
+            0.027801071419011673,
+            0.13509022347244576,
+            0.987725029243092
+          ],
+          [
+            -0.09660452391059646,
+            -0.09142662873974766,
+            -0.09144316880894782,
+            0.986887473015779
+          ],
+          [
+            0.013243575937242427,
+            0.06921282061319681,
+            -0.03897971826906775,
+            0.9967521129763529
+          ],
+          [
+            -0.1665309031051078,
+            -0.0694932596417605,
+            0.1923891533592449,
+            0.9645851744895693
+          ],
+          [
+            0.08243345677791952,
+            0.27837361861932625,
+            -0.009949323206935987,
+            0.9568771418673081
+          ],
+          [
+            0.13270017820873145,
+            -0.2162209870032093,
+            -0.1338665730367726,
+            0.9579764548808699
+          ]
+        ]
+      },
+      "rescue": []
+    },
+    {
+      "mode": "production-state-probe",
+      "label": "倒地待救 · 真实倒地状态；停止行走和开火",
+      "file": "screenshots/personnel-combat-downed.png",
+      "time": 0.9500000000000003,
+      "id": 36,
+      "kind": "infantry",
+      "hp": 1,
+      "components": {
+        "schema": 1,
+        "parts": {},
+        "lastHitAt": 0.8500000000000002,
+        "hitPoint": {
+          "x": 1823.2328480458534,
+          "y": 1401.0106584202108,
+          "height": 5
+        },
+        "fireUntil": 0,
+        "flooding": 0,
+        "listing": 0,
+        "state": "downed",
+        "destroyedAt": null,
+        "personnel": {
+          "downedAt": 0.8500000000000002,
+          "bleedUntil": 35.85,
+          "reviveProgress": 0,
+          "rescuerId": null,
+          "limp": 1,
+          "staggerUntil": 1.5000000000000002,
+          "everDowned": true
+        }
+      },
+      "pose": {
+        "moving": false,
+        "phase": 0.1896071428571323,
+        "torso": [
+          0,
+          0.17,
+          0
+        ],
+        "joints": [
+          [
+            0,
+            0,
+            -0.674287911628145,
+            0.7384685587295879
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0.11971220728891936,
+            0.9928086358538663
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0.2133474283007823,
+            0.9769763942068623
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0.17902957342582418,
+            0,
+            0.9838436927881214
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -0.19866933079506122,
+            0,
+            0.9800665778412416
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "rescue": []
+    },
+    {
+      "mode": "production-state-probe",
+      "label": "救援进行中 · 医疗兵实际推进救援进度",
+      "file": "screenshots/personnel-combat-rescue.png",
+      "time": 1.6500000000000008,
+      "id": 36,
+      "kind": "infantry",
+      "hp": 1,
+      "components": {
+        "schema": 1,
+        "parts": {},
+        "lastHitAt": 0.8500000000000002,
+        "hitPoint": {
+          "x": 1823.2328480458534,
+          "y": 1401.0106584202108,
+          "height": 5
+        },
+        "fireUntil": 0,
+        "flooding": 0,
+        "listing": 0,
+        "state": "downed",
+        "destroyedAt": null,
+        "personnel": {
+          "downedAt": 0.8500000000000002,
+          "bleedUntil": 35.85,
+          "reviveProgress": 0.13999999999999999,
+          "rescuerId": 37,
+          "limp": 1,
+          "staggerUntil": 1.5000000000000002,
+          "everDowned": true
+        }
+      },
+      "pose": {
+        "moving": false,
+        "phase": 0.1896071428571323,
+        "torso": [
+          0,
+          0.17,
+          0
+        ],
+        "joints": [
+          [
+            0,
+            0,
+            -0.674287911628145,
+            0.7384685587295879
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0.11971220728891936,
+            0.9928086358538663
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0.2133474283007823,
+            0.9769763942068623
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0.17902957342582418,
+            0,
+            0.9838436927881214
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            -0.19866933079506122,
+            0,
+            0.9800665778412416
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "rescue": [
+        {
+          "id": 37,
+          "targetId": 36,
+          "time": 1.6500000000000008,
+          "progress": 0.13999999999999999
+        }
+      ]
+    },
+    {
+      "mode": "production-state-probe",
+      "label": "救援完成 · 恢复站立和合法行动",
+      "file": "screenshots/personnel-combat-revived.png",
+      "time": 6.999999999999983,
+      "id": 36,
+      "kind": "infantry",
+      "hp": 41.650000000000034,
+      "components": {
+        "schema": 1,
+        "parts": {},
+        "lastHitAt": 0.8500000000000002,
+        "hitPoint": {
+          "x": 1823.2328480458534,
+          "y": 1401.0106584202108,
+          "height": 5
+        },
+        "fireUntil": 0,
+        "flooding": 0,
+        "listing": 0,
+        "state": "operational",
+        "destroyedAt": null,
+        "personnel": {
+          "downedAt": null,
+          "bleedUntil": 0,
+          "reviveProgress": 1,
+          "rescuerId": null,
+          "limp": 0.3949999999999999,
+          "staggerUntil": 1.5000000000000002,
+          "everDowned": true
+        }
+      },
+      "pose": {
+        "moving": false,
+        "phase": 0.1896071428571323,
+        "torso": [
+          0,
+          0,
+          0
+        ],
+        "joints": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "rescue": [
+        {
+          "id": 37,
+          "targetId": 36,
+          "time": 5.949999999999987,
+          "progress": 1
+        }
+      ]
+    },
+    {
+      "mode": "production-state-probe",
+      "label": "死亡残留 · 原单兵倒地模型；中央死亡结算",
+      "file": "screenshots/personnel-combat-dead.png",
+      "time": 7.099999999999983,
+      "id": 36,
+      "kind": "infantry",
+      "components": {
+        "schema": 1,
+        "parts": {},
+        "lastHitAt": 6.999999999999983,
+        "hitPoint": {
+          "x": 1823.2328480458534,
+          "y": 1401.0106584202108,
+          "height": 5
+        },
+        "fireUntil": 0,
+        "flooding": 0,
+        "listing": 0,
+        "state": "dead",
+        "destroyedAt": 6.999999999999983,
+        "personnel": {
+          "downedAt": null,
+          "bleedUntil": 0,
+          "reviveProgress": 1,
+          "rescuerId": null,
+          "limp": 1,
+          "staggerUntil": 7.6499999999999835,
+          "everDowned": true
+        }
+      },
+      "rescue": [
+        {
+          "id": 37,
+          "targetId": 36,
+          "time": 5.949999999999987,
+          "progress": 1
+        }
+      ]
+    },
+    {
+      "mode": "actual-input-or-labeled-damage-probe",
+      "label": "实际右键零射击 / 左键开火 / R 战术换弹 · 暂停动作采样",
+      "file": "screenshots/personnel-combat-fps-reload.png",
+      "time": 8.999999999999993,
+      "id": 38,
+      "hp": 240,
+      "components": {
+        "schema": 1,
+        "parts": {},
+        "lastHitAt": -1,
+        "hitPoint": null,
+        "fireUntil": 0,
+        "flooding": 0,
+        "listing": 0,
+        "state": "operational",
+        "destroyedAt": null,
+        "personnel": {
+          "downedAt": null,
+          "bleedUntil": 0,
+          "reviveProgress": 0,
+          "rescuerId": null,
+          "limp": 0,
+          "staggerUntil": 0,
+          "everDowned": false
+        }
+      },
+      "operator": {
+        "slots": [
+          {
+            "weaponId": "rifle_01",
+            "ammo": 28,
+            "reserve": 180
+          },
+          {
+            "weaponId": "pistol_01",
+            "ammo": 15,
+            "reserve": 90
+          }
+        ],
+        "activeSlot": 0,
+        "reloadRemaining": 2.1500000000000004,
+        "reloadTotal": 2.2,
+        "action": {
+          "time": 8.999999999999993,
+          "weaponId": "rifle_01",
+          "category": "rifle",
+          "mechanism": "closed-bolt",
+          "reloadStyle": "magazine",
+          "sequence": 3,
+          "shotSequence": 2,
+          "event": "reload",
+          "phase": "mag-out",
+          "progress": 0.022727272727272596,
+          "phaseProgress": 0.09090909090909091,
+          "reloadKind": "tactical",
+          "fireMode": "auto",
+          "shotTime": 8.84999999999999,
+          "ammo": 28,
+          "events": [
+            {
+              "sequence": 1,
+              "type": "fire",
+              "phase": "closed-bolt",
+              "weaponId": "rifle_01",
+              "sourceId": 38,
+              "time": 8.599999999999987
+            },
+            {
+              "sequence": 2,
+              "type": "fire",
+              "phase": "closed-bolt",
+              "weaponId": "rifle_01",
+              "sourceId": 38,
+              "time": 8.84999999999999
+            },
+            {
+              "sequence": 3,
+              "type": "reload",
+              "phase": "mag-out",
+              "weaponId": "rifle_01",
+              "sourceId": 38,
+              "time": 8.949999999999992
+            }
+          ]
+        },
+        "fireMode": "auto",
+        "fireModes": [
+          "auto",
+          "semi",
+          "burst"
+        ],
+        "unlimitedAmmo": false,
+        "quickReload": false,
+        "canResupply": false,
+        "resupplyReason": "需靠近己方指挥部、兵营或精炼厂"
+      },
+      "eyeHeight": 9.5,
+      "viewMetrics": {
+        "triangles": 3693,
+        "drawCalls": 10,
+        "mode": "infantry",
+        "weaponProfile": "original-operator-rifle",
+        "weaponId": "rifle_01",
+        "weaponCategory": "rifle"
+      }
+    },
+    {
+      "mode": "actual-input-or-labeled-damage-probe",
+      "label": "FPS 受伤反馈 · 生产伤害接口状态检查",
+      "file": "screenshots/personnel-combat-fps-injured.png",
+      "time": 8.999999999999993,
+      "id": 38,
+      "hp": 144,
+      "components": {
+        "schema": 1,
+        "parts": {},
+        "lastHitAt": 8.999999999999993,
+        "hitPoint": {
+          "x": 1795,
+          "y": 1400,
+          "height": 5
+        },
+        "fireUntil": 0,
+        "flooding": 0,
+        "listing": 0,
+        "state": "operational",
+        "destroyedAt": null,
+        "personnel": {
+          "downedAt": null,
+          "bleedUntil": 0,
+          "reviveProgress": 0,
+          "rescuerId": null,
+          "limp": 0.4,
+          "staggerUntil": 9.649999999999993,
+          "everDowned": false
+        }
+      },
+      "operator": {
+        "slots": [
+          {
+            "weaponId": "rifle_01",
+            "ammo": 28,
+            "reserve": 180
+          },
+          {
+            "weaponId": "pistol_01",
+            "ammo": 15,
+            "reserve": 90
+          }
+        ],
+        "activeSlot": 0,
+        "reloadRemaining": 2.1500000000000004,
+        "reloadTotal": 2.2,
+        "action": {
+          "time": 8.999999999999993,
+          "weaponId": "rifle_01",
+          "category": "rifle",
+          "mechanism": "closed-bolt",
+          "reloadStyle": "magazine",
+          "sequence": 3,
+          "shotSequence": 2,
+          "event": "reload",
+          "phase": "mag-out",
+          "progress": 0.022727272727272596,
+          "phaseProgress": 0.09090909090909091,
+          "reloadKind": "tactical",
+          "fireMode": "auto",
+          "shotTime": 8.84999999999999,
+          "ammo": 28,
+          "events": [
+            {
+              "sequence": 1,
+              "type": "fire",
+              "phase": "closed-bolt",
+              "weaponId": "rifle_01",
+              "sourceId": 38,
+              "time": 8.599999999999987
+            },
+            {
+              "sequence": 2,
+              "type": "fire",
+              "phase": "closed-bolt",
+              "weaponId": "rifle_01",
+              "sourceId": 38,
+              "time": 8.84999999999999
+            },
+            {
+              "sequence": 3,
+              "type": "reload",
+              "phase": "mag-out",
+              "weaponId": "rifle_01",
+              "sourceId": 38,
+              "time": 8.949999999999992
+            }
+          ]
+        },
+        "fireMode": "auto",
+        "fireModes": [
+          "auto",
+          "semi",
+          "burst"
+        ],
+        "unlimitedAmmo": false,
+        "quickReload": false,
+        "canResupply": false,
+        "resupplyReason": "需靠近己方指挥部、兵营或精炼厂"
+      },
+      "eyeHeight": 9.5,
+      "viewMetrics": {
+        "triangles": 3693,
+        "drawCalls": 10,
+        "mode": "infantry",
+        "weaponProfile": "original-operator-rifle",
+        "weaponId": "rifle_01",
+        "weaponCategory": "rifle"
+      }
+    },
+    {
+      "mode": "actual-input-or-labeled-damage-probe",
+      "label": "FPS 倒地待救 · 镜头降低且禁止射击",
+      "file": "screenshots/personnel-combat-fps-downed.png",
+      "time": 8.999999999999993,
+      "id": 38,
+      "hp": 1,
+      "components": {
+        "schema": 1,
+        "parts": {},
+        "lastHitAt": 8.999999999999993,
+        "hitPoint": {
+          "x": 1795,
+          "y": 1400,
+          "height": 5
+        },
+        "fireUntil": 0,
+        "flooding": 0,
+        "listing": 0,
+        "state": "downed",
+        "destroyedAt": null,
+        "personnel": {
+          "downedAt": 8.999999999999993,
+          "bleedUntil": 43.99999999999999,
+          "reviveProgress": 0,
+          "rescuerId": null,
+          "limp": 1,
+          "staggerUntil": 9.649999999999993,
+          "everDowned": true
+        }
+      },
+      "operator": {
+        "slots": [
+          {
+            "weaponId": "rifle_01",
+            "ammo": 28,
+            "reserve": 180
+          },
+          {
+            "weaponId": "pistol_01",
+            "ammo": 15,
+            "reserve": 90
+          }
+        ],
+        "activeSlot": 0,
+        "reloadRemaining": 2.1500000000000004,
+        "reloadTotal": 2.2,
+        "action": {
+          "time": 8.999999999999993,
+          "weaponId": "rifle_01",
+          "category": "rifle",
+          "mechanism": "closed-bolt",
+          "reloadStyle": "magazine",
+          "sequence": 3,
+          "shotSequence": 2,
+          "event": "reload",
+          "phase": "mag-out",
+          "progress": 0.022727272727272596,
+          "phaseProgress": 0.09090909090909091,
+          "reloadKind": "tactical",
+          "fireMode": "auto",
+          "shotTime": 8.84999999999999,
+          "ammo": 28,
+          "events": [
+            {
+              "sequence": 1,
+              "type": "fire",
+              "phase": "closed-bolt",
+              "weaponId": "rifle_01",
+              "sourceId": 38,
+              "time": 8.599999999999987
+            },
+            {
+              "sequence": 2,
+              "type": "fire",
+              "phase": "closed-bolt",
+              "weaponId": "rifle_01",
+              "sourceId": 38,
+              "time": 8.84999999999999
+            },
+            {
+              "sequence": 3,
+              "type": "reload",
+              "phase": "mag-out",
+              "weaponId": "rifle_01",
+              "sourceId": 38,
+              "time": 8.949999999999992
+            }
+          ]
+        },
+        "fireMode": "auto",
+        "fireModes": [
+          "auto",
+          "semi",
+          "burst"
+        ],
+        "unlimitedAmmo": false,
+        "quickReload": false,
+        "canResupply": false,
+        "resupplyReason": "需靠近己方指挥部、兵营或精炼厂"
+      },
+      "eyeHeight": 2.4,
+      "viewMetrics": {
+        "triangles": 3693,
+        "drawCalls": 10,
+        "mode": "infantry",
+        "weaponProfile": "original-operator-rifle",
+        "weaponId": "rifle_01",
+        "weaponCategory": "rifle"
+      }
+    }
+  ],
+  "errors": [],
+  "environment": {
+    "viewport": [
+      1500,
+      980
+    ],
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "passed": true
+}

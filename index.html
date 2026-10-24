@@ -166,6 +166,7 @@
           <div id="selection-info">左键选择单位，按住拖动框选</div>
           <div id="selection-icons"></div>
           <label id="vehicle-weapon-picker" hidden>载具武器 <select id="vehicle-weapon" aria-label="载具武器选择"></select></label>
+          <div id="combat-actions" hidden><span id="combat-status"></span><div><button id="combat-reload">装填</button><button id="combat-supply">补给 / 返航</button><button id="combat-board" hidden>载入附近人员</button><button id="combat-unload" hidden>人员下车</button><button id="combat-decoy" hidden>声学诱饵</button></div></div>
           <div class="command-buttons">
             <button id="select-all">全军 <kbd>Q</kbd></button
             ><button id="attack-move">攻击移动 <kbd>A</kbd></button
@@ -217,6 +218,11 @@
   <script src="src/vehicle-weapons.js"></script>
   <script src="src/carrier-operations.js"></script>
   <script src="src/weapon-salvos.js"></script>
+  <script src="src/combat-readiness.js"></script>
+  <script src="src/combat-damage.js"></script>
+  <script src="src/combat-projectiles.js"></script>
+<script src="src/combat-impact.js"></script>
+  <script src="src/transport-operations.js"></script>
   <script src="src/sim.js"></script>
   <script src="src/operator-sim.js"></script>
   <script src="src/vehicle-interaction.js"></script>
@@ -254,10 +260,12 @@
     <script src="src/model-unit-refinement.js"></script>
     <script src="src/underwater.js"></script>
     <script src="src/altitude-scene.js"></script>
+  <script src="src/combat-damage-visuals.js"></script>
   <script src="src/battle3d.js"></script>
     <script src="src/lighting.js"></script>
     <script src="src/fps-viewmodel.js"></script>
     <script src="src/vehicle-camera.js"></script>
+    <script src="src/combat-audio.js"></script>
     <script src="src/direct-control.js"></script>
     <script src="src/player-mode.js"></script>
     <script src="src/operator-ui.js"></script>

@@ -56,7 +56,7 @@ async function observe(){
    const anchorPosition=anchor?.getWorldPosition(new THREE.Vector3()).toArray()||null;
    const before=new Set(this.effects),previousMission=actor?.airWing?.mission,result=a.originalEmit.apply(this,args);
    for(const f of this.effects)if(f.type==='shot'&&!before.has(f)){
-    a.live.push(f);a.shots.push({sourceId:f.sourceId,sourceKind:f.sourceKind,carrierOriginId:actor?.carrierOriginId??null,targetId:f.target,weaponId:f.weaponId,weaponFamily:f.weaponFamily,muzzleClass:f.weaponMuzzleClass,domains:f.weaponDomains,rocket:!!f.rocket,beam:!!f.beam,damage:f.damage,time:this.time,ttl:f.ttl,from:[f.x,f.sourceHeight,f.y],to:[f.tx,f.targetHeight,f.ty],anchor:anchorPosition,anchorSource:anchor?.userData.source||'existing-model-muzzle',anchorApproximate:!!anchor?.userData.approximate,direct:ModernFront.direct.entityId===f.sourceId&&ModernFront.direct.active});
+    a.live.push(f);a.shots.push({sourceId:f.sourceId,sourceKind:f.sourceKind,carrierOriginId:actor?.carrierOriginId??null,targetId:f.target,weaponId:f.weaponId,weaponFamily:f.weaponFamily,muzzleClass:f.weaponMuzzleClass,domains:f.weaponDomains,rocket:!!f.rocket,beam:!!f.beam,damage:f.damage,time:this.time,ttl:f.ttl,from:[f.x,f.sourceHeight,f.y],to:[f.tx,f.targetHeight,f.ty],planned:f.projectile?.destination?{...f.projectile.destination}:null,projectileKind:f.projectile?.kind,anchor:anchorPosition,anchorSource:anchor?.userData.source||'existing-model-muzzle',anchorApproximate:!!anchor?.userData.approximate,direct:ModernFront.direct.entityId===f.sourceId&&ModernFront.direct.active});
    }
    if(actor?.kind==='carrier'&&actor.airWing?.mission!==previousMission&&actor.airWing?.mission)a.missions.push({sourceId:actor.id,time:this.time,mission:{...actor.airWing.mission},accepted:result});
    return result;
@@ -146,9 +146,12 @@ async function brackets(state){
  return{right,left:after.weaponId};
 }
 async function adsWithoutFire(state,{legal=true}={}){
+ // Native pointerlockchange clears held buttons. Wait for its delivery after
+ // possession before issuing the independent RMB press under test.
+ await lock();await p.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))));
  const before=await snapshot();await p.mouse.down({button:'right'});
  await p.waitForFunction(()=>ModernFront.direct.ads&&ModernFront.direct.opticalActive());const aim=await aimTarget(state.targetId,{legal});await p.waitForTimeout(250);
- const after=await snapshot();assert.equal(after.fire,false);assert.equal(after.shots.length,before.shots.length,'RMB cannot emit a projectile');assert.equal(after.missions.length,before.missions.length,'RMB cannot dispatch aircraft');
+ if(legal)await p.waitForFunction(()=>ModernFront.direct.orbitTargetStatus().canFire,null,{timeout:6000});const after=await snapshot();assert.equal(after.fire,false);assert.equal(after.shots.length,before.shots.length,'RMB cannot emit a projectile');assert.equal(after.missions.length,before.missions.length,'RMB cannot dispatch aircraft');
  assert.equal(await p.evaluate(id=>ModernFront.game.get(id).hp,state.targetId),state.initialHP,'RMB cannot damage target');
  assert.ok(after.inputs.some(e=>e.button===2&&e.trusted&&e.locked),'RMB assertion requires trusted native input');
  return{aim,status:after.status,shotCount:after.shots.length,missionCount:after.missions.length};
@@ -181,8 +184,8 @@ async function projectileCase(station,targetKind,dx,dy=0){
  await p.waitForFunction(({id,hp})=>ModernFront.game.get(id)?.hp<hp,{id:state.targetId,hp:state.initialHP},{timeout:10000});
  const after=await snapshot(),hp=await p.evaluate(id=>ModernFront.game.get(id).hp,state.targetId);
  assert.ok(hp<state.initialHP,'Real projectile must settle actual target damage');
- const endpoints=await p.evaluate(index=>{const f=window.__loadoutAudit.live[index];return{from:[f.x,f.sourceHeight,f.y],to:[f.tx,f.targetHeight,f.ty]};},after.shots.findIndex(f=>f.sourceId===state.id));
- assert.deepEqual(endpoints.from,shot.from);assert.deepEqual(endpoints.to,shot.to);
+ const endpoints=await p.evaluate(index=>{const f=window.__loadoutAudit.live[index];const r=ModernFront.renderer,target=r.objects.get(f.target),box=target?new THREE.Box3().setFromObject(target).expandByScalar(8):null,point=new THREE.Vector3(f.tx,r.displayHeight(f.targetHeight),f.ty);return{from:[f.x,f.sourceHeight,f.y],to:[f.tx,f.targetHeight,f.ty],planned:f.projectile?.destination,hitOnTarget:!!box?.containsPoint(point)};},after.shots.findIndex(f=>f.sourceId===state.id));
+ assert.deepEqual(endpoints.from,shot.from);assert.equal(endpoints.hitOnTarget,true,'Continuous impact must lie on the actual target model');if(shot.projectileKind!=='guided'&&shot.planned)assert.deepEqual(endpoints.planned,shot.planned,'Unguided launch destination remains frozen');
  report.weapons.push({...state,switchKeys,rmb,shot,damage:state.initialHP-hp,hpEvidence:after.hp});checked(station+': RTS dropdown / [ ] / RMB no fire / native LMB / real damage');
 }
 async function reject(state,label,expectedReason){
@@ -267,7 +270,7 @@ async function imports(){
   for(const file of ['src/data.js','src/roster.js','src/vehicle-weapons.js','src/weapon-range-data.js','src/carrier-operations.js','src/aircraft-flight.js','src/sim.js','src/app.js','src/direct-control.js','src/player-mode.js','src/weapon-effects.js','src/battle3d.js','src/models3d.js','src/model-unit-refinement.js','src/models-imported.js','src/models-imported-ground.js','src/models-imported-air.js','assets/models/burke.glb','assets/models/t90m.glb','assets/models/ah64.glb','index.html','style.css']){
    const local=fs.readFileSync(path.join(root,file)),packaged=fs.readFileSync(path.join(appRoot,file));assert.ok(local.equals(packaged),'Packaged source mismatch: '+file);report.sourceHashes[file]=crypto.createHash('sha256').update(local).digest('hex');
   }
-  host=await _electron.launch({executablePath:executable,args:['--windowed'],env:{...process.env,MODERN_FRONT_TEST_PROFILE:profile},timeout:45000});
+  report.sourceHashes=require('./combat-desktop-harness.cjs').hashes(appRoot);host=await _electron.launch({executablePath:executable,args:['--windowed'],env:{...process.env,MODERN_FRONT_TEST_PROFILE:profile},timeout:45000});
   report.appVersion=await host.evaluate(({app})=>app.getVersion());assert.equal(report.appVersion,report.packageVersion);p=await host.firstWindow();
   p.on('pageerror',error=>report.errors.push(error.message));p.on('console',message=>{if(message.type()==='error')report.errors.push(message.text());});
   await p.waitForFunction(()=>window.ModernFront?.direct);await imports();

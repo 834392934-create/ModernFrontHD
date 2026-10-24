@@ -4,7 +4,7 @@ function fixture(kind='tank'){
  const listeners={},globals={},nodes=new Map();const el=()=>({hidden:false,style:{},classList:{toggle(){},add(){},remove(){}},querySelector(s){if(!nodes.has(s))nodes.set(s,el());return nodes.get(s);}});
  const document={hidden:false,pointerLockElement:null,createElement:el,body:{append(){}},addEventListener(n,f){(listeners[n]??=[]).push(f);}};
  const context={THREE,document,innerWidth:1600,innerHeight:1000,console,addEventListener(n,f){(globals[n]??=[]).push(f);}};context.globalThis=context;vm.createContext(context);
- for(const f of ['data.js','roster.js','direct-control.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../src',f),'utf8'),context);
+ for(const f of ['data.js','roster.js','combat-readiness.js','combat-damage.js','combat-audio.js','transport-operations.js','direct-control.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../src',f),'utf8'),context);
  let paused=false,pauseCalls=0;const e={id:1,kind,x:100,y:200,angle:.4,pitch:.2,roll:0,altitude:0,jumpHeight:0};
  const game={get:()=>e,entityAltitude:o=>o.altitude+(o.jumpHeight||0),setDirectInput(input){this.input=input;}};
  const renderer={canvas:{},width:1600,height:1000,camera:{},entityHeight:o=>o.altitude};

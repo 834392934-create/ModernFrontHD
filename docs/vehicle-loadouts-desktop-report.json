@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-24T13:44:05.150Z",
+  "recordedAt": "2026-10-24T15:38:31.867Z",
   "environment": "native Electron",
   "scope": "Actual RTS weapon UI and native FPS inputs; controlled mesh aiming and cover fixtures; five projectile stations plus real carrier sorties. Balanced game distances, no claim of mouse-only acquisition, exact equipment fidelity or sustained performance.",
   "rangeMode": "balanced",
@@ -41,6 +41,39 @@
         "minMeters": 1000,
         "splash": 24,
         "referenceId": "brahmos_baseline",
+        "mountId": "launcher",
+        "mount": {
+          "mode": "vertical",
+          "yawRate": 1.3,
+          "pitchRate": 1.2,
+          "minPitch": -0.3,
+          "maxPitch": 0.65,
+          "arc": 3.141592653589793,
+          "tolerance": 0.1,
+          "pitchTolerance": 0.2,
+          "boundary": "Game motion and exclusion limits; no exact real-platform firing-arc claim."
+        },
+        "ammoType": "guided",
+        "burst": {
+          "count": 1,
+          "interval": 4.5
+        },
+        "payloadSlots": 0,
+        "mechanics": {
+          "magazine": 12,
+          "reserve": 36,
+          "reloadSeconds": 5,
+          "fireInterval": 4.5,
+          "setupSeconds": 0,
+          "packSeconds": 0,
+          "moveFactor": 1,
+          "supplyCost": 233,
+          "intercept": false,
+          "interceptRange": 0,
+          "interceptReload": 0,
+          "dispersion": 0.12
+        },
+        "parameterBoundary": "Magazine capacity, burst, reload, aiming rate and dispersion are gameplay values.",
         "stationId": "anti_ship",
         "kind": "destroyer",
         "faction": "usa",
@@ -117,10 +150,38 @@
             "canFire": true,
             "reason": "ready",
             "projected": false,
-            "ammo": null,
+            "ammo": 12,
+            "reserve": 36,
             "reloading": false,
             "aimValid": true,
             "cooldown": 0,
+            "readiness": {
+              "canFire": true,
+              "reason": "ready",
+              "weaponId": "destroyer:anti_ship",
+              "ammo": 12,
+              "reserve": 36,
+              "cooldown": 0,
+              "reloadRemaining": 0,
+              "phase": "ready",
+              "aimError": 0,
+              "pitchError": 0,
+              "movementMultiplier": 1,
+              "weaponAction": {
+                "weaponId": "destroyer:anti_ship",
+                "category": "missile",
+                "sequence": 0,
+                "event": "idle",
+                "phase": "ready",
+                "ammo": 12,
+                "time": 0.5499999999999999,
+                "sourceId": 36,
+                "progress": 1,
+                "reloadKind": "tube",
+                "fireMode": "single",
+                "shotTime": -1
+              }
+            },
             "targetId": 37,
             "text": "055 型 · 实际距离 320 u / 射程 650 u · 射程内 · 可射击"
           }
@@ -138,10 +199,38 @@
           "canFire": true,
           "reason": "ready",
           "projected": false,
-          "ammo": null,
+          "ammo": 12,
+          "reserve": 36,
           "reloading": false,
           "aimValid": true,
           "cooldown": 0,
+          "readiness": {
+            "canFire": true,
+            "reason": "ready",
+            "weaponId": "destroyer:anti_ship",
+            "ammo": 12,
+            "reserve": 36,
+            "cooldown": 0,
+            "reloadRemaining": 0,
+            "phase": "ready",
+            "aimError": 0,
+            "pitchError": 0,
+            "movementMultiplier": 1,
+            "weaponAction": {
+              "weaponId": "destroyer:anti_ship",
+              "category": "missile",
+              "sequence": 0,
+              "event": "idle",
+              "phase": "ready",
+              "ammo": 12,
+              "time": 0.8000000000000002,
+              "sourceId": 36,
+              "progress": 1,
+              "reloadKind": "tube",
+              "fireMode": "single",
+              "shotTime": -1
+            }
+          },
           "targetId": 37,
           "text": "055 型 · 实际距离 320 u / 射程 650 u · 射程内 · 可射击"
         },
@@ -174,6 +263,12 @@
           15.834558871574183,
           240.00000000000006
         ],
+        "planned": {
+          "x": 2086.3456028053433,
+          "y": 240.00000000000006,
+          "height": 15.834558871574183
+        },
+        "projectileKind": "kinetic",
         "anchor": [
           1825.38,
           9.452,
@@ -191,14 +286,14 @@
           "hp": 100000
         },
         {
-          "time": 1.2000000000000004,
+          "time": 1.1500000000000004,
           "hp": 99845
         }
       ]
     },
     {
-      "id": 41,
-      "targetId": 42,
+      "id": 42,
+      "targetId": 43,
       "kind": "destroyer",
       "faction": "usa",
       "targetKind": "tank",
@@ -223,6 +318,39 @@
         "splash": 48,
         "referenceId": "tomahawk_iv_v",
         "rangeSourceKey": "tomahawk_iv_v",
+        "mountId": "launcher",
+        "mount": {
+          "mode": "vertical",
+          "yawRate": 1.3,
+          "pitchRate": 1.2,
+          "minPitch": -0.3,
+          "maxPitch": 0.65,
+          "arc": 3.141592653589793,
+          "tolerance": 0.1,
+          "pitchTolerance": 0.2,
+          "boundary": "Game motion and exclusion limits; no exact real-platform firing-arc claim."
+        },
+        "ammoType": "guided",
+        "burst": {
+          "count": 1,
+          "interval": 5.2
+        },
+        "payloadSlots": 0,
+        "mechanics": {
+          "magazine": 12,
+          "reserve": 36,
+          "reloadSeconds": 5,
+          "fireInterval": 5.2,
+          "setupSeconds": 0,
+          "packSeconds": 0,
+          "moveFactor": 1,
+          "supplyCost": 240,
+          "intercept": false,
+          "interceptRange": 0,
+          "interceptReload": 0,
+          "dispersion": 0.12
+        },
+        "parameterBoundary": "Magazine capacity, burst, reload, aiming rate and dispersion are gameplay values.",
         "stationId": "land_attack",
         "kind": "destroyer",
         "faction": "usa",
@@ -280,8 +408,8 @@
             9.452,
             240
           ],
-          "targetId": 42,
-          "observedTarget": 42,
+          "targetId": 43,
+          "observedTarget": 43,
           "occluded": false,
           "status": {
             "armed": true,
@@ -296,11 +424,39 @@
             "canFire": true,
             "reason": "ready",
             "projected": false,
-            "ammo": null,
+            "ammo": 12,
+            "reserve": 36,
             "reloading": false,
             "aimValid": true,
             "cooldown": 0,
-            "targetId": 42,
+            "readiness": {
+              "canFire": true,
+              "reason": "ready",
+              "weaponId": "destroyer:land_attack",
+              "ammo": 12,
+              "reserve": 36,
+              "cooldown": 0,
+              "reloadRemaining": 0,
+              "phase": "ready",
+              "aimError": 0,
+              "pitchError": 0,
+              "movementMultiplier": 1,
+              "weaponAction": {
+                "weaponId": "destroyer:land_attack",
+                "category": "missile",
+                "sequence": 0,
+                "event": "idle",
+                "phase": "ready",
+                "ammo": 12,
+                "time": 1.5500000000000007,
+                "sourceId": 42,
+                "progress": 1,
+                "reloadKind": "tube",
+                "fireMode": "single",
+                "shotTime": -1
+              }
+            },
+            "targetId": 43,
             "text": "ZTZ-99A · 实际距离 280 u / 射程 820 u · 射程内 · 可射击"
           }
         },
@@ -317,21 +473,49 @@
           "canFire": true,
           "reason": "ready",
           "projected": false,
-          "ammo": null,
+          "ammo": 12,
+          "reserve": 36,
           "reloading": false,
           "aimValid": true,
           "cooldown": 0,
-          "targetId": 42,
+          "readiness": {
+            "canFire": true,
+            "reason": "ready",
+            "weaponId": "destroyer:land_attack",
+            "ammo": 12,
+            "reserve": 36,
+            "cooldown": 0,
+            "reloadRemaining": 0,
+            "phase": "ready",
+            "aimError": 0,
+            "pitchError": 0,
+            "movementMultiplier": 1,
+            "weaponAction": {
+              "weaponId": "destroyer:land_attack",
+              "category": "missile",
+              "sequence": 0,
+              "event": "idle",
+              "phase": "ready",
+              "ammo": 12,
+              "time": 1.850000000000001,
+              "sourceId": 42,
+              "progress": 1,
+              "reloadKind": "tube",
+              "fireMode": "single",
+              "shotTime": -1
+            }
+          },
+          "targetId": 43,
           "text": "ZTZ-99A · 实际距离 280 u / 射程 820 u · 射程内 · 可射击"
         },
         "shotCount": 0,
         "missionCount": 0
       },
       "shot": {
-        "sourceId": 41,
+        "sourceId": 42,
         "sourceKind": "destroyer",
         "carrierOriginId": null,
-        "targetId": 42,
+        "targetId": 43,
         "weaponId": "destroyer:land_attack",
         "weaponFamily": "missile",
         "muzzleClass": "launcher",
@@ -342,7 +526,7 @@
         "rocket": true,
         "beam": false,
         "damage": 160,
-        "time": 1.850000000000001,
+        "time": 1.900000000000001,
         "ttl": 0.41311529041260914,
         "from": [
           1825.38,
@@ -354,6 +538,12 @@
           8.910000157356261,
           482.4630769440052
         ],
+        "planned": {
+          "x": 1982.9770866153187,
+          "y": 482.4630769440052,
+          "height": 8.910000157356261
+        },
+        "projectileKind": "kinetic",
         "anchor": [
           1825.38,
           9.452,
@@ -367,7 +557,7 @@
       "damage": 160,
       "hpEvidence": [
         {
-          "time": 1.2000000000000004,
+          "time": 1.1500000000000004,
           "hp": 100000
         },
         {
@@ -377,8 +567,8 @@
       ]
     },
     {
-      "id": 46,
-      "targetId": 47,
+      "id": 48,
+      "targetId": 49,
       "kind": "destroyer",
       "faction": "usa",
       "targetKind": "fighter",
@@ -400,6 +590,39 @@
         "minRange": 30,
         "minMeters": 300,
         "splash": 0,
+        "mountId": "launcher",
+        "mount": {
+          "mode": "vertical",
+          "yawRate": 1.3,
+          "pitchRate": 1.2,
+          "minPitch": -0.3,
+          "maxPitch": 0.65,
+          "arc": 3.141592653589793,
+          "tolerance": 0.1,
+          "pitchTolerance": 0.2,
+          "boundary": "Game motion and exclusion limits; no exact real-platform firing-arc claim."
+        },
+        "ammoType": "guided",
+        "burst": {
+          "count": 1,
+          "interval": 2.2
+        },
+        "payloadSlots": 0,
+        "mechanics": {
+          "magazine": 12,
+          "reserve": 36,
+          "reloadSeconds": 5,
+          "fireInterval": 2.2,
+          "setupSeconds": 0,
+          "packSeconds": 0,
+          "moveFactor": 1,
+          "supplyCost": 96,
+          "intercept": false,
+          "interceptRange": 0,
+          "interceptReload": 0,
+          "dispersion": 0.12
+        },
+        "parameterBoundary": "Magazine capacity, burst, reload, aiming rate and dispersion are gameplay values.",
         "stationId": "sam",
         "kind": "destroyer",
         "faction": "usa",
@@ -458,8 +681,8 @@
             9.452,
             240
           ],
-          "targetId": 47,
-          "observedTarget": 47,
+          "targetId": 49,
+          "observedTarget": 49,
           "occluded": false,
           "status": {
             "armed": true,
@@ -474,11 +697,39 @@
             "canFire": true,
             "reason": "ready",
             "projected": false,
-            "ammo": null,
+            "ammo": 12,
+            "reserve": 36,
             "reloading": false,
             "aimValid": true,
             "cooldown": 0,
-            "targetId": 47,
+            "readiness": {
+              "canFire": true,
+              "reason": "ready",
+              "weaponId": "destroyer:sam",
+              "ammo": 12,
+              "reserve": 36,
+              "cooldown": 0,
+              "reloadRemaining": 0,
+              "phase": "ready",
+              "aimError": 0,
+              "pitchError": 0,
+              "movementMultiplier": 1,
+              "weaponAction": {
+                "weaponId": "destroyer:sam",
+                "category": "missile",
+                "sequence": 0,
+                "event": "idle",
+                "phase": "ready",
+                "ammo": 12,
+                "time": 2.6499999999999986,
+                "sourceId": 48,
+                "progress": 1,
+                "reloadKind": "tube",
+                "fireMode": "single",
+                "shotTime": -1
+              }
+            },
+            "targetId": 49,
             "text": "J-20 · 实际距离 286 u / 射程 570 u · 射程内 · 可射击"
           }
         },
@@ -495,21 +746,49 @@
           "canFire": true,
           "reason": "ready",
           "projected": false,
-          "ammo": null,
+          "ammo": 12,
+          "reserve": 36,
           "reloading": false,
           "aimValid": true,
           "cooldown": 0,
-          "targetId": 47,
+          "readiness": {
+            "canFire": true,
+            "reason": "ready",
+            "weaponId": "destroyer:sam",
+            "ammo": 12,
+            "reserve": 36,
+            "cooldown": 0,
+            "reloadRemaining": 0,
+            "phase": "ready",
+            "aimError": 0,
+            "pitchError": 0,
+            "movementMultiplier": 1,
+            "weaponAction": {
+              "weaponId": "destroyer:sam",
+              "category": "missile",
+              "sequence": 0,
+              "event": "idle",
+              "phase": "ready",
+              "ammo": 12,
+              "time": 2.9499999999999975,
+              "sourceId": 48,
+              "progress": 1,
+              "reloadKind": "tube",
+              "fireMode": "single",
+              "shotTime": -1
+            }
+          },
+          "targetId": 49,
           "text": "J-20 · 实际距离 286 u / 射程 570 u · 射程内 · 可射击"
         },
         "shotCount": 0,
         "missionCount": 0
       },
       "shot": {
-        "sourceId": 46,
+        "sourceId": 48,
         "sourceKind": "destroyer",
         "carrierOriginId": null,
-        "targetId": 47,
+        "targetId": 49,
         "weaponId": "destroyer:sam",
         "weaponFamily": "missile",
         "muzzleClass": "launcher",
@@ -519,7 +798,7 @@
         "rocket": true,
         "beam": false,
         "damage": 64,
-        "time": 2.8999999999999977,
+        "time": 2.9999999999999973,
         "ttl": 0.3532818485053065,
         "from": [
           1825.38,
@@ -531,6 +810,12 @@
           117.44836509983585,
           240.00000000000006
         ],
+        "planned": {
+          "x": 2047.8496310107357,
+          "y": 240.00000000000006,
+          "height": 117.44836509983585
+        },
+        "projectileKind": "kinetic",
         "anchor": [
           1825.38,
           9.452,
@@ -548,14 +833,14 @@
           "hp": 100000
         },
         {
-          "time": 3.2499999999999964,
+          "time": 3.2999999999999963,
           "hp": 99936
         }
       ]
     },
     {
-      "id": 51,
-      "targetId": 52,
+      "id": 54,
+      "targetId": 55,
       "kind": "destroyer",
       "faction": "usa",
       "targetKind": "submarine",
@@ -578,6 +863,39 @@
         "minRange": 25,
         "minMeters": 200,
         "splash": 0,
+        "mountId": "torpedo",
+        "mount": {
+          "mode": "hull",
+          "yawRate": 1.3,
+          "pitchRate": 1.2,
+          "minPitch": -0.3,
+          "maxPitch": 0.65,
+          "arc": 1.3,
+          "tolerance": 0.1,
+          "pitchTolerance": 0.2,
+          "boundary": "Game motion and exclusion limits; no exact real-platform firing-arc claim."
+        },
+        "ammoType": "torpedo",
+        "burst": {
+          "count": 1,
+          "interval": 3.8
+        },
+        "payloadSlots": 0,
+        "mechanics": {
+          "magazine": 4,
+          "reserve": 12,
+          "reloadSeconds": 6.84,
+          "fireInterval": 3.8,
+          "setupSeconds": 0,
+          "packSeconds": 0,
+          "moveFactor": 1,
+          "supplyCost": 195,
+          "intercept": false,
+          "interceptRange": 0,
+          "interceptReload": 0,
+          "dispersion": 0
+        },
+        "parameterBoundary": "Magazine capacity, burst, reload, aiming rate and dispersion are gameplay values.",
         "stationId": "torpedo",
         "kind": "destroyer",
         "faction": "usa",
@@ -637,8 +955,8 @@
             1.46,
             250.5316464670807
           ],
-          "targetId": 52,
-          "observedTarget": 52,
+          "targetId": 55,
+          "observedTarget": 55,
           "occluded": false,
           "status": {
             "armed": true,
@@ -653,11 +971,39 @@
             "canFire": true,
             "reason": "ready",
             "projected": false,
-            "ammo": null,
+            "ammo": 4,
+            "reserve": 12,
             "reloading": false,
             "aimValid": true,
             "cooldown": 0,
-            "targetId": 52,
+            "readiness": {
+              "canFire": true,
+              "reason": "ready",
+              "weaponId": "destroyer:torpedo",
+              "ammo": 4,
+              "reserve": 12,
+              "cooldown": 0,
+              "reloadRemaining": 0,
+              "phase": "ready",
+              "aimError": 0.05127118695371817,
+              "pitchError": 0,
+              "movementMultiplier": 1,
+              "weaponAction": {
+                "weaponId": "destroyer:torpedo",
+                "category": "torpedo",
+                "sequence": 0,
+                "event": "idle",
+                "phase": "ready",
+                "ammo": 4,
+                "time": 3.649999999999995,
+                "sourceId": 54,
+                "progress": 1,
+                "reloadKind": "tube",
+                "fireMode": "single",
+                "shotTime": -1
+              }
+            },
+            "targetId": 55,
             "text": "093 型 · 实际距离 227 u / 射程 320 u · 射程内 · 可射击"
           }
         },
@@ -674,21 +1020,49 @@
           "canFire": true,
           "reason": "ready",
           "projected": false,
-          "ammo": null,
+          "ammo": 4,
+          "reserve": 12,
           "reloading": false,
           "aimValid": true,
           "cooldown": 0,
-          "targetId": 52,
+          "readiness": {
+            "canFire": true,
+            "reason": "ready",
+            "weaponId": "destroyer:torpedo",
+            "ammo": 4,
+            "reserve": 12,
+            "cooldown": 0,
+            "reloadRemaining": 0,
+            "phase": "ready",
+            "aimError": 0.05127118695371817,
+            "pitchError": 0,
+            "movementMultiplier": 1,
+            "weaponAction": {
+              "weaponId": "destroyer:torpedo",
+              "category": "torpedo",
+              "sequence": 0,
+              "event": "idle",
+              "phase": "ready",
+              "ammo": 4,
+              "time": 3.949999999999994,
+              "sourceId": 54,
+              "progress": 1,
+              "reloadKind": "tube",
+              "fireMode": "single",
+              "shotTime": -1
+            }
+          },
+          "targetId": 55,
           "text": "093 型 · 实际距离 227 u / 射程 320 u · 射程内 · 可射击"
         },
         "shotCount": 0,
         "missionCount": 0
       },
       "shot": {
-        "sourceId": 51,
+        "sourceId": 54,
         "sourceKind": "destroyer",
         "carrierOriginId": null,
-        "targetId": 52,
+        "targetId": 55,
         "weaponId": "destroyer:torpedo",
         "weaponFamily": "torpedo",
         "muzzleClass": "torpedo",
@@ -699,8 +1073,8 @@
         "rocket": false,
         "beam": false,
         "damage": 130,
-        "time": 3.7999999999999945,
-        "ttl": 0.9615840454464886,
+        "time": 3.999999999999994,
+        "ttl": 5.458087066715336,
         "from": [
           1810.368,
           1.46,
@@ -711,6 +1085,8 @@
           -48.761988912398486,
           240.0000000000001
         ],
+        "planned": null,
+        "projectileKind": "torpedo",
         "anchor": [
           1810.368,
           1.46,
@@ -724,18 +1100,18 @@
       "damage": 130,
       "hpEvidence": [
         {
-          "time": 3.2499999999999964,
+          "time": 3.2999999999999963,
           "hp": 100000
         },
         {
-          "time": 4.749999999999991,
+          "time": 6.249999999999986,
           "hp": 99870
         }
       ]
     },
     {
-      "id": 56,
-      "targetId": 57,
+      "id": 60,
+      "targetId": 61,
       "kind": "destroyer",
       "faction": "usa",
       "targetKind": "tank",
@@ -762,6 +1138,39 @@
         "referenceId": "mk45_conventional",
         "rangeSourceKey": "mk45_conventional",
         "rangeStatus": "inferred",
+        "mountId": "main",
+        "mount": {
+          "mode": "turret",
+          "yawRate": 1.3,
+          "pitchRate": 1.2,
+          "minPitch": -0.2,
+          "maxPitch": 0.65,
+          "arc": 2.15,
+          "tolerance": 0.1,
+          "pitchTolerance": 0.2,
+          "boundary": "Game motion and exclusion limits; no exact real-platform firing-arc claim."
+        },
+        "ammoType": "multipurpose",
+        "burst": {
+          "count": 1,
+          "interval": 2.6
+        },
+        "payloadSlots": 0,
+        "mechanics": {
+          "magazine": 6,
+          "reserve": 18,
+          "reloadSeconds": 4.680000000000001,
+          "fireInterval": 2.6,
+          "setupSeconds": 0,
+          "packSeconds": 0,
+          "moveFactor": 1,
+          "supplyCost": 128,
+          "intercept": false,
+          "interceptRange": 0,
+          "interceptReload": 0,
+          "dispersion": 0
+        },
+        "parameterBoundary": "Magazine capacity, burst, reload, aiming rate and dispersion are gameplay values.",
         "stationId": "naval_gun",
         "kind": "destroyer",
         "faction": "usa",
@@ -819,12 +1228,12 @@
             482.4630769440052
           ],
           "origin": [
-            1842.93964242475,
+            1844.4846448273531,
             11.274774360943017,
-            244.49449954300212
+            242.3072926659715
           ],
-          "targetId": 57,
-          "observedTarget": 57,
+          "targetId": 61,
+          "observedTarget": 61,
           "occluded": false,
           "status": {
             "armed": true,
@@ -836,15 +1245,43 @@
             "rangeState": "in",
             "domainAllowed": true,
             "detected": true,
-            "canFire": true,
-            "reason": "ready",
+            "canFire": false,
+            "reason": "traversing",
             "projected": false,
-            "ammo": null,
+            "ammo": 6,
+            "reserve": 18,
             "reloading": false,
             "aimValid": true,
             "cooldown": 0,
-            "targetId": 57,
-            "text": "ZTZ-99A · 实际距离 280 u / 射程 360 u · 射程内 · 可射击"
+            "readiness": {
+              "canFire": false,
+              "reason": "traversing",
+              "weaponId": "destroyer:naval_gun",
+              "ammo": 6,
+              "reserve": 18,
+              "cooldown": 0,
+              "reloadRemaining": 0,
+              "phase": "ready",
+              "aimError": 0.6577038707413083,
+              "pitchError": 0.000007638274194263564,
+              "movementMultiplier": 1,
+              "weaponAction": {
+                "weaponId": "destroyer:naval_gun",
+                "category": "navalGun",
+                "sequence": 0,
+                "event": "idle",
+                "phase": "ready",
+                "ammo": 6,
+                "time": 6.699999999999984,
+                "sourceId": 60,
+                "progress": 1,
+                "reloadKind": "magazine",
+                "fireMode": "single",
+                "shotTime": -1
+              }
+            },
+            "targetId": 61,
+            "text": "ZTZ-99A · 实际距离 280 u / 射程 360 u · 射程内 · 炮座转向中"
           }
         },
         "status": {
@@ -860,21 +1297,49 @@
           "canFire": true,
           "reason": "ready",
           "projected": false,
-          "ammo": null,
+          "ammo": 6,
+          "reserve": 18,
           "reloading": false,
           "aimValid": true,
           "cooldown": 0,
-          "targetId": 57,
+          "readiness": {
+            "canFire": true,
+            "reason": "ready",
+            "weaponId": "destroyer:naval_gun",
+            "ammo": 6,
+            "reserve": 18,
+            "cooldown": 0,
+            "reloadRemaining": 0,
+            "phase": "ready",
+            "aimError": 0.06099152753735537,
+            "pitchError": 0.000001138492087897694,
+            "movementMultiplier": 1,
+            "weaponAction": {
+              "weaponId": "destroyer:naval_gun",
+              "category": "navalGun",
+              "sequence": 0,
+              "event": "idle",
+              "phase": "ready",
+              "ammo": 6,
+              "time": 7.149999999999983,
+              "sourceId": 60,
+              "progress": 1,
+              "reloadKind": "magazine",
+              "fireMode": "single",
+              "shotTime": -1
+            }
+          },
+          "targetId": 61,
           "text": "ZTZ-99A · 实际距离 280 u / 射程 360 u · 射程内 · 可射击"
         },
         "shotCount": 0,
         "missionCount": 0
       },
       "shot": {
-        "sourceId": 56,
+        "sourceId": 60,
         "sourceKind": "destroyer",
         "carrierOriginId": null,
-        "targetId": 57,
+        "targetId": 61,
         "weaponId": "destroyer:naval_gun",
         "weaponFamily": "navalGun",
         "muzzleClass": "gun",
@@ -886,22 +1351,28 @@
         "rocket": false,
         "beam": false,
         "damage": 85,
-        "time": 7.049999999999983,
-        "ttl": 0.3943524000989395,
+        "time": 7.199999999999982,
+        "ttl": 0.3943147040679518,
         "from": [
-          1842.5490498176962,
+          1842.3017478249496,
           11.274774360943017,
-          244.8159774426843
+          244.99295469104223
         ],
         "to": [
           1982.9770866153187,
           8.910000157356261,
           482.4630769440052
         ],
+        "planned": {
+          "x": 1982.9770866153187,
+          "y": 482.4630769440052,
+          "height": 8.910000157356261
+        },
+        "projectileKind": "kinetic",
         "anchor": [
-          1842.5490498176962,
+          1842.3017478249496,
           11.274774360943017,
-          244.8159774426843
+          244.99295469104223
         ],
         "anchorSource": "licensed-original-main-gun-tip",
         "anchorApproximate": false,
@@ -911,11 +1382,11 @@
       "damage": 85,
       "hpEvidence": [
         {
-          "time": 4.749999999999991,
+          "time": 6.249999999999986,
           "hp": 100000
         },
         {
-          "time": 7.399999999999982,
+          "time": 7.499999999999981,
           "hp": 99915
         }
       ]
@@ -924,8 +1395,8 @@
   "rejections": [
     {
       "label": "SAM against armor",
-      "id": 61,
-      "targetId": 62,
+      "id": 66,
+      "targetId": 67,
       "kind": "destroyer",
       "faction": "usa",
       "targetKind": "tank",
@@ -947,6 +1418,39 @@
         "minRange": 30,
         "minMeters": 300,
         "splash": 0,
+        "mountId": "launcher",
+        "mount": {
+          "mode": "vertical",
+          "yawRate": 1.3,
+          "pitchRate": 1.2,
+          "minPitch": -0.3,
+          "maxPitch": 0.65,
+          "arc": 3.141592653589793,
+          "tolerance": 0.1,
+          "pitchTolerance": 0.2,
+          "boundary": "Game motion and exclusion limits; no exact real-platform firing-arc claim."
+        },
+        "ammoType": "guided",
+        "burst": {
+          "count": 1,
+          "interval": 2.2
+        },
+        "payloadSlots": 0,
+        "mechanics": {
+          "magazine": 12,
+          "reserve": 36,
+          "reloadSeconds": 5,
+          "fireInterval": 2.2,
+          "setupSeconds": 0,
+          "packSeconds": 0,
+          "moveFactor": 1,
+          "supplyCost": 96,
+          "intercept": false,
+          "interceptRange": 0,
+          "interceptReload": 0,
+          "dispersion": 0.12
+        },
+        "parameterBoundary": "Magazine capacity, burst, reload, aiming rate and dispersion are gameplay values.",
         "stationId": "sam",
         "kind": "destroyer",
         "faction": "usa",
@@ -990,11 +1494,11 @@
         "uiLabel": "Standard / ESSM 类防空导弹 · 570 u"
       },
       "before": {
-        "time": 8.199999999999982,
-        "tick": 164,
+        "time": 8.249999999999982,
+        "tick": 165,
         "paused": false,
         "active": true,
-        "sourceId": 61,
+        "sourceId": 66,
         "kind": "destroyer",
         "weaponId": "destroyer:sam",
         "position": [
@@ -1019,11 +1523,21 @@
           "canFire": false,
           "reason": "domain",
           "projected": false,
-          "ammo": null,
+          "ammo": 0,
+          "reserve": 0,
           "reloading": false,
           "aimValid": true,
           "cooldown": 0,
-          "targetId": 62,
+          "readiness": {
+            "canFire": false,
+            "reason": "unarmed",
+            "ammo": 0,
+            "reserve": 0,
+            "cooldown": 0,
+            "reloadRemaining": 0,
+            "movementMultiplier": 1
+          },
+          "targetId": 67,
           "text": "ZTZ-99A · 实际距离 275 u / 射程 570 u · 射程内 · 不支持目标域"
         },
         "shots": [],
@@ -1034,32 +1548,32 @@
           {
             "button": 0,
             "trusted": true,
-            "time": 7.4499999999999815,
+            "time": 7.549999999999981,
             "locked": false,
-            "sourceId": 56
+            "sourceId": 60
           },
           {
             "button": 0,
             "trusted": true,
-            "time": 7.4499999999999815,
+            "time": 7.549999999999981,
             "locked": false,
-            "sourceId": 56
+            "sourceId": 60
           },
           {
             "button": 2,
             "trusted": true,
-            "time": 7.4499999999999815,
+            "time": 7.599999999999981,
             "locked": true,
-            "sourceId": 61
+            "sourceId": 66
           }
         ],
         "hp": [
           {
-            "time": 7.4499999999999815,
+            "time": 7.549999999999981,
             "hp": 100000
           }
         ],
-        "money": 8.999999999999998,
+        "money": 8.399999999999999,
         "carrier": null
       },
       "after": {
@@ -1067,7 +1581,7 @@
         "tick": 182,
         "paused": false,
         "active": true,
-        "sourceId": 61,
+        "sourceId": 66,
         "kind": "destroyer",
         "weaponId": "destroyer:sam",
         "position": [
@@ -1092,11 +1606,21 @@
           "canFire": false,
           "reason": "domain",
           "projected": false,
-          "ammo": null,
+          "ammo": 0,
+          "reserve": 0,
           "reloading": false,
           "aimValid": true,
           "cooldown": 0,
-          "targetId": 62,
+          "readiness": {
+            "canFire": false,
+            "reason": "unarmed",
+            "ammo": 0,
+            "reserve": 0,
+            "cooldown": 0,
+            "reloadRemaining": 0,
+            "movementMultiplier": 1
+          },
+          "targetId": 67,
           "text": "ZTZ-99A · 实际距离 275 u / 射程 570 u · 射程内 · 不支持目标域"
         },
         "shots": [],
@@ -1107,46 +1631,46 @@
           {
             "button": 0,
             "trusted": true,
-            "time": 7.4499999999999815,
+            "time": 7.549999999999981,
             "locked": false,
-            "sourceId": 56
+            "sourceId": 60
           },
           {
             "button": 0,
             "trusted": true,
-            "time": 7.4499999999999815,
+            "time": 7.549999999999981,
             "locked": false,
-            "sourceId": 56
+            "sourceId": 60
           },
           {
             "button": 2,
             "trusted": true,
-            "time": 7.4499999999999815,
+            "time": 7.599999999999981,
             "locked": true,
-            "sourceId": 61
+            "sourceId": 66
           },
           {
             "button": 0,
             "trusted": true,
-            "time": 8.199999999999982,
+            "time": 8.249999999999982,
             "locked": true,
-            "sourceId": 61
+            "sourceId": 66
           }
         ],
         "hp": [
           {
-            "time": 7.4499999999999815,
+            "time": 7.549999999999981,
             "hp": 100000
           }
         ],
-        "money": 19.800000000000004,
+        "money": 18.6,
         "carrier": null
       }
     },
     {
       "label": "Korean escort helicopter mission against armor",
-      "id": 66,
-      "targetId": 67,
+      "id": 71,
+      "targetId": 72,
       "kind": "carrier",
       "faction": "kor",
       "targetKind": "tank",
@@ -1171,6 +1695,39 @@
         "action": "airWing",
         "setting": true,
         "airWingKind": "escort_helicopter",
+        "mountId": "flightDeck",
+        "mount": {
+          "mode": "turret",
+          "yawRate": 1.3,
+          "pitchRate": 1.2,
+          "minPitch": -0.3,
+          "maxPitch": 0.65,
+          "arc": 3.141592653589793,
+          "tolerance": 0.1,
+          "pitchTolerance": 0.2,
+          "boundary": "Game motion and exclusion limits; no exact real-platform firing-arc claim."
+        },
+        "ammoType": "multipurpose",
+        "burst": {
+          "count": 1,
+          "interval": 18
+        },
+        "payloadSlots": 0,
+        "mechanics": {
+          "magazine": 1,
+          "reserve": 0,
+          "reloadSeconds": 32.4,
+          "fireInterval": 18,
+          "setupSeconds": 0,
+          "packSeconds": 0,
+          "moveFactor": 1,
+          "supplyCost": 10,
+          "intercept": false,
+          "interceptRange": 0,
+          "interceptReload": 0,
+          "dispersion": 0
+        },
+        "parameterBoundary": "Magazine capacity, burst, reload, aiming rate and dispersion are gameplay values.",
         "stationId": "air_wing",
         "kind": "carrier",
         "faction": "kor",
@@ -1217,7 +1774,7 @@
         "tick": 197,
         "paused": false,
         "active": true,
-        "sourceId": 66,
+        "sourceId": 71,
         "kind": "carrier",
         "weaponId": "carrier:air_wing",
         "position": [
@@ -1242,11 +1799,21 @@
           "canFire": false,
           "reason": "domain",
           "projected": false,
-          "ammo": null,
+          "ammo": 0,
+          "reserve": 0,
           "reloading": false,
           "aimValid": true,
           "cooldown": 0,
-          "targetId": 67,
+          "readiness": {
+            "canFire": false,
+            "reason": "unarmed",
+            "ammo": 0,
+            "reserve": 0,
+            "cooldown": 0,
+            "reloadRemaining": 0,
+            "movementMultiplier": 1
+          },
+          "targetId": 72,
           "text": "ZTZ-99A · 实际距离 275 u / 射程 840 u · 射程内 · 不支持目标域"
         },
         "shots": [],
@@ -1257,32 +1824,32 @@
           {
             "button": 0,
             "trusted": true,
-            "time": 9.099999999999994,
+            "time": 9.149999999999995,
             "locked": false,
-            "sourceId": 61
+            "sourceId": 66
           },
           {
             "button": 0,
             "trusted": true,
-            "time": 9.099999999999994,
+            "time": 9.149999999999995,
             "locked": false,
-            "sourceId": 61
+            "sourceId": 66
           },
           {
             "button": 2,
             "trusted": true,
-            "time": 9.099999999999994,
+            "time": 9.249999999999996,
             "locked": true,
-            "sourceId": 66
+            "sourceId": 71
           }
         ],
         "hp": [
           {
-            "time": 9.099999999999994,
+            "time": 9.149999999999995,
             "hp": 100000
           }
         ],
-        "money": 100009.00000000009,
+        "money": 100008.40000000008,
         "carrier": {
           "capacity": 2,
           "rotor": true,
@@ -1303,11 +1870,11 @@
         }
       },
       "after": {
-        "time": 10.650000000000016,
-        "tick": 213,
+        "time": 10.700000000000017,
+        "tick": 214,
         "paused": false,
         "active": true,
-        "sourceId": 66,
+        "sourceId": 71,
         "kind": "carrier",
         "weaponId": "carrier:air_wing",
         "position": [
@@ -1332,11 +1899,21 @@
           "canFire": false,
           "reason": "domain",
           "projected": false,
-          "ammo": null,
+          "ammo": 0,
+          "reserve": 0,
           "reloading": false,
           "aimValid": true,
           "cooldown": 0,
-          "targetId": 67,
+          "readiness": {
+            "canFire": false,
+            "reason": "unarmed",
+            "ammo": 0,
+            "reserve": 0,
+            "cooldown": 0,
+            "reloadRemaining": 0,
+            "movementMultiplier": 1
+          },
+          "targetId": 72,
           "text": "ZTZ-99A · 实际距离 275 u / 射程 840 u · 射程内 · 不支持目标域"
         },
         "shots": [],
@@ -1347,35 +1924,35 @@
           {
             "button": 0,
             "trusted": true,
-            "time": 9.099999999999994,
+            "time": 9.149999999999995,
             "locked": false,
-            "sourceId": 61
+            "sourceId": 66
           },
           {
             "button": 0,
             "trusted": true,
-            "time": 9.099999999999994,
+            "time": 9.149999999999995,
             "locked": false,
-            "sourceId": 61
+            "sourceId": 66
           },
           {
             "button": 2,
             "trusted": true,
-            "time": 9.099999999999994,
+            "time": 9.249999999999996,
             "locked": true,
-            "sourceId": 66
+            "sourceId": 71
           },
           {
             "button": 0,
             "trusted": true,
             "time": 9.850000000000005,
             "locked": true,
-            "sourceId": 66
+            "sourceId": 71
           }
         ],
         "hp": [
           {
-            "time": 9.099999999999994,
+            "time": 9.149999999999995,
             "hp": 100000
           }
         ],
@@ -1402,8 +1979,8 @@
     },
     {
       "label": "Visible enemy with flight-deck launch origin blocked",
-      "id": 71,
-      "targetId": 72,
+      "id": 76,
+      "targetId": 77,
       "kind": "carrier",
       "faction": "usa",
       "targetKind": "destroyer",
@@ -1430,6 +2007,39 @@
         "splash": 0,
         "action": "airWing",
         "setting": true,
+        "mountId": "flightDeck",
+        "mount": {
+          "mode": "turret",
+          "yawRate": 1.3,
+          "pitchRate": 1.2,
+          "minPitch": -0.3,
+          "maxPitch": 0.65,
+          "arc": 3.141592653589793,
+          "tolerance": 0.1,
+          "pitchTolerance": 0.2,
+          "boundary": "Game motion and exclusion limits; no exact real-platform firing-arc claim."
+        },
+        "ammoType": "multipurpose",
+        "burst": {
+          "count": 1,
+          "interval": 18
+        },
+        "payloadSlots": 0,
+        "mechanics": {
+          "magazine": 1,
+          "reserve": 0,
+          "reloadSeconds": 32.4,
+          "fireInterval": 18,
+          "setupSeconds": 0,
+          "packSeconds": 0,
+          "moveFactor": 1,
+          "supplyCost": 10,
+          "intercept": false,
+          "interceptRange": 0,
+          "interceptReload": 0,
+          "dispersion": 0
+        },
+        "parameterBoundary": "Magazine capacity, burst, reload, aiming rate and dispersion are gameplay values.",
         "stationId": "air_wing",
         "kind": "carrier",
         "faction": "usa",
@@ -1482,7 +2092,7 @@
           13.10675297788273,
           239.99625347738984
         ],
-        "cameraTarget": 72,
+        "cameraTarget": 77,
         "occluded": true,
         "originMode": "model-muzzle"
       },
@@ -1491,7 +2101,7 @@
         "tick": 222,
         "paused": false,
         "active": true,
-        "sourceId": 71,
+        "sourceId": 76,
         "kind": "carrier",
         "weaponId": "carrier:air_wing",
         "position": [
@@ -1520,7 +2130,8 @@
           "reloading": false,
           "aimValid": false,
           "cooldown": 0,
-          "targetId": 72,
+          "readiness": null,
+          "targetId": 77,
           "text": "055 型 · 实际距离 600 u / 射程 840 u · 射程内 · 准线被遮挡"
         },
         "shots": [],
@@ -1533,14 +2144,14 @@
             "trusted": true,
             "time": 10.700000000000017,
             "locked": false,
-            "sourceId": 66
+            "sourceId": 71
           },
           {
             "button": 0,
             "trusted": true,
             "time": 10.700000000000017,
             "locked": false,
-            "sourceId": 66
+            "sourceId": 71
           }
         ],
         "hp": [
@@ -1576,7 +2187,7 @@
         "tick": 238,
         "paused": false,
         "active": true,
-        "sourceId": 71,
+        "sourceId": 76,
         "kind": "carrier",
         "weaponId": "carrier:air_wing",
         "position": [
@@ -1605,7 +2216,8 @@
           "reloading": false,
           "aimValid": false,
           "cooldown": 0,
-          "targetId": 72,
+          "readiness": null,
+          "targetId": 77,
           "text": "055 型 · 实际距离 600 u / 射程 840 u · 射程内 · 准线被遮挡"
         },
         "shots": [],
@@ -1618,21 +2230,21 @@
             "trusted": true,
             "time": 10.700000000000017,
             "locked": false,
-            "sourceId": 66
+            "sourceId": 71
           },
           {
             "button": 0,
             "trusted": true,
             "time": 10.700000000000017,
             "locked": false,
-            "sourceId": 66
+            "sourceId": 71
           },
           {
             "button": 0,
             "trusted": true,
-            "time": 11.150000000000023,
+            "time": 11.100000000000023,
             "locked": true,
-            "sourceId": 71
+            "sourceId": 76
           }
         ],
         "hp": [
@@ -1668,7 +2280,7 @@
   "screenshots": [
     {
       "file": "screenshots/vehicle-loadouts-anti-ship-desktop.png",
-      "time": 0.8500000000000002,
+      "time": 0.9500000000000003,
       "sourceId": 36,
       "weaponId": "destroyer:anti_ship",
       "paused": true,
@@ -1698,6 +2310,12 @@
           15.834558871574183,
           240.00000000000006
         ],
+        "planned": {
+          "x": 2086.3456028053433,
+          "y": 240.00000000000006,
+          "height": 15.834558871574183
+        },
+        "projectileKind": "kinetic",
         "anchor": [
           1825.38,
           9.452,
@@ -1711,51 +2329,104 @@
     },
     {
       "file": "screenshots/vehicle-loadouts-carrier-sortie-desktop.png",
-      "time": 17.35000000000011,
-      "sourceId": 76,
+      "time": 17.30000000000011,
+      "sourceId": 81,
       "weaponId": "carrier:air_wing",
       "paused": false,
       "method": "Actual aircraft entities and recorded deck preparation/climb, no inserted models"
     },
     {
       "file": "screenshots/vehicle-loadouts-carrier-aircraft-fps-desktop.png",
-      "time": 18.75000000000013,
-      "sourceId": 79,
+      "time": 28.950000000000276,
+      "sourceId": 84,
       "paused": false,
-      "carrierId": 76,
-      "childId": 79
+      "carrierId": 81,
+      "childId": 84
     }
   ],
   "errors": [],
-  "testProfile": "D:\\现代战线HD\\.tmp\\native-profile-vehicle-loadouts-33460",
-  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.12.0\\ModernFrontHD.exe",
-  "packageVersion": "3.12.0",
+  "testProfile": "D:\\现代战线HD\\.tmp\\native-profile-vehicle-loadouts-102240",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.13.0\\ModernFrontHD.exe",
+  "packageVersion": "3.13.0",
   "sourceHashes": {
-    "src/data.js": "1b66986d4cc1abcb61b3ccbd760d3c38034be0a891885465ea6e7732319d3324",
+    "index.html": "85a1ce4030f96a4089728ead647300c5cd62f6063a21a5a4f32358ecbd72f952",
+    "style.css": "012864c9f9ca30d7657900b7e2480469f7dd2b001498f1e062a063747c49530d",
+    "assets/vendor/three.min.js": "170c6789f43217c96b3170f4b42fafe135de7f7cd48497a4218f9757ee1d49fa",
+    "assets/vendor/GLTFLoader.bundle.js": "5f2fac6626db707e22e48dff05e55525b1fc75ca68bf18fff90b91beb396ad58",
+    "assets/textures/ground-data.js": "9536c6ebd046299a5542a74415306d7e9fe3028b6c6fcde76769228190a2038f",
+    "src/data.js": "6337334a824d6e51dd50a76ff12649f933e640f693b181ba8cc1af8aa8dba82b",
     "src/roster.js": "0609dfb5f0cc07ab408d9675816e236b16a4d13ee6b1d4f209a94b3c8f5f0b81",
-    "src/vehicle-weapons.js": "4d245623f2c45fb44eec74c05a17bc8fe6ca88a8ce895bbd442bfd0109e5a22a",
-    "src/weapon-range-data.js": "5cf2cbd9f5b586ea368e864c38f88d83c9b5406b6d4c5f6f366b8c1a92c1859d",
-    "src/carrier-operations.js": "eb56f0095cb6ae5a5767df05bb968020284611dd723617e4001006ce15c596b1",
-    "src/aircraft-flight.js": "42232528fd1ae6bb1bac157c3401ff5ecc02628fe6d30098e24a52f761a69fc3",
-    "src/sim.js": "08a5b7404c7f3ffc2f18ce20a87660d67c0578eee1515da4b8fdd46463374d0f",
-    "src/app.js": "6017c9fe580569d393b0b8304b09d850df0293e02ebe4bbeb2eacbcd782feb0c",
-    "src/direct-control.js": "71e3ad09e054d680bd8578dc32d24abddbb1e656052d16a3cfe12960816e4343",
-    "src/player-mode.js": "0bbbb83582e08b250e804bfc0d280091483203e9b9d4cb0cf4856e08722e0fb8",
-    "src/weapon-effects.js": "2af68d61687428d279ac81cce1b5b33d52d5e246051c5af8293f93aff751965f",
-    "src/battle3d.js": "5f7a0c88996a6bf0513ea31868769c6a67db41e7a4fe1f476d448842c1cbb83b",
+    "src/equipment.js": "451d0463150e360b843fed9a6502dcbd5d7ad11c0d6e99c514d01f405b73cf20",
+    "src/maps-large.js": "dc26a17461fc7f2acdbe0d0c4842744ef6caf140dc214e9eed05c6af55ee74d9",
+    "src/command-feedback.js": "5ddd8240c6ce807fb83852a9fd9fd8c36647586b2e1c41e651f67478bb6ebb30",
+    "src/operator-weapons.js": "dbd036a62b74f286e58c7f264521052213f5d7fc393ad8a90fda2b2856f5b4e3",
+    "src/navigation-footprints.js": "4775176fce696c5bcd82ac22db5ce321a82f340ee2d6e516247599b3a8ae815c",
+    "src/crowd-navigation.js": "b4b21336962fbf317490b3b8f74636dbc445d23bb10a9a7d80375d9e2d06dd08",
+    "src/destructible-trees.js": "01fdc770ca776e98c70eb55a2754e67ab5066a8342b63ce7a165b994b8599645",
+    "src/vehicle-motion.js": "b174c65b4b355bab60ded0e83b593e31b4a907a001d91d76b9a45366bcefff08",
+    "src/aircraft-flight.js": "e409bd102931c51d286be5ed3d248224a195f0c4f050582e1018398434d31583",
+    "src/weapon-range-data.js": "ebede21ef1d145e98f84ffa94494ca5b74620d71959c5f6eacf91c56a2c60e9e",
+    "src/vehicle-weapons.js": "476581b05d96e46829cfe9cfbe3be20c96c0f18cbbb8189dfd45605b3f1f2553",
+    "src/carrier-operations.js": "81c1eef31ac12f66ef14dfcd862d94a124a3dd51630cacc0a4d0309964060c5d",
+    "src/weapon-salvos.js": "c91dad8084fdea6cadf1d55156000f14a13d65ff58b4128c6831a753f60e2fac",
+    "src/combat-readiness.js": "622c8d153ca2db96a39362d3328616dcc055407a36f4395290d50e6a0db5472d",
+    "src/combat-damage.js": "e89c5d02085aee3799c4a1946913a0fc8f8262304fe6f2607ce320b1f5aaa9f2",
+    "src/combat-projectiles.js": "500979f07ad3f3c7e9bd4f81cc997af45bf028273a2407a85a95e85114c0b65e",
+    "src/combat-impact.js": "12caa999683d2f3299c7e86507a01d15643ede4e37400e2f64176c0dda318afe",
+    "src/transport-operations.js": "6d1fa8919751fc0c5e38fa8db16e980d57da488bdf9f70eab03708c094f03917",
+    "src/sim.js": "4acd06bd77b6e4f1971b737d62e86c56f2613174bc68f82c53da15cd2b243d88",
+    "src/operator-sim.js": "84c27449ad0fc039f283b6a478a95217781a001012da9aa977dbc670d9a143fa",
+    "src/vehicle-interaction.js": "8d2d1f251fec3b88932c0ac41b59301e5937fe472878815b24a15ae7eabbf313",
+    "src/render.js": "b80b3be9b9e6a865ab9f6ac614693f91a17218240129cbb9d634353d427be0b3",
+    "src/ranges.js": "5d368003b75a1e174ebcd03312bfb05f2bde342db610b7bb88c5c2f252fb4bd1",
     "src/models3d.js": "e76d9c4bb56b3b46fcbd26d409744fd88410d6b9eb3518fa74edf1bab558962a",
-    "src/model-unit-refinement.js": "f0f085d15ededb8ef757ee11a93ecffb0b65574f01490ec367947008827cd476",
+    "src/vehicle-rig-ground.js": "2ba59047343ce7b209638c5c8e1b9c8be33df85a57576603b03abadccb3f0ed4",
+    "src/vehicle-rig-naval.js": "350789e400f79b5b2919a03690d38ca7855a0c019c36d639750a0ed1a7e4b8f4",
+    "src/vehicle-rig-air.js": "3fb0747434bbf29ba672512c748c9e1912d07cb54ee6112adc31c17e9ee6b1a3",
+    "src/vehicle-animation.js": "d25219668f0ee52b6924cfd87cedea3c12cdbe389bc785097bde77fe1343f6d8",
+    "src/weapon-effects.js": "5fae73b89f809bb327ee6536bc6e7a179f1cc905fe0fe0ad5a008e9497b4392a",
+    "src/models-tanks.js": "a45826f9fdcd9a087e8bb7a237f230d6b014d3b4c26fcbf3aa3514106e916f63",
+    "src/models-vehicles.js": "79990ee7ddc13303cb9b33e1e1f6868eefba6aefaece7b7b35fec47c2b245a4d",
+    "src/models-air.js": "f137a8b18ff94f7ab5114d3e8c6e657186a73d4528199d69f2a30a83dacb3ecb",
+    "src/models-naval.js": "a399e25da16f666bf27648e9e9769d9f7f938b5cd74eef60057e7833d08f6c1f",
+    "src/models-space.js": "48278cb7bc36f8bf8a448b8ceefe46885e6a7effc25f0bb48afdb74df58f7437",
+    "src/model-detail.js": "306e6bc834b8d646f6722a29320cb89c9292c0d022d6683a168c856354f5d166",
+    "src/models-roster.js": "db79d8962883864735f63d56b5dd1a238f3b02126b644a8ccc98a623b3592636",
+    "src/models-reinforcements-ground-naval.js": "9f757a10d2ca0dbff09c835366f241e46559d9789f75b58009168268f3c1daa2",
+    "src/models-reinforcements-air-space.js": "fd093ee562327053594a6226cb7795c5e7b4e1ad16f65f7a6d179ed8218d0da8",
+    "src/models-tactical-ground-naval.js": "ad07feb5963c1f98665ef7f70a248d79661473d2dbe31167ec79344b2bc9398c",
+    "src/models-tactical-air-space.js": "9e516757fb6a61a474a70fc72935680a8f96da3108fc4fab1a077f85332a5535",
+    "src/models-depth-wave.js": "6c1252d05d29deba601e88327baa8fb7b7a526c4f03a0790df9b0fe33a6b549b",
+    "src/models-altitude-wave.js": "6b49f7f29c88a0885436b412ed12818d1f123d11534136b110836c010eb0be97",
+    "src/models-buildings.js": "cef605cade7bfba31105dd3802826c6649a1dedf7363e85b8b09ebd563937ce8",
+    "src/models-defense-wave.js": "303858c8a99a4e82d8b5ff10a2c699817336bf611d681251d69572bbec5b63ae",
+    "src/models-operator.js": "94f4be5b4d7428c8702705271d5b9a235bfcb75e7b258efdd4ff8e0b8b24dac1",
+    "src/personnel-animation.js": "c3000a3c9008188416ae435249566648dd4738e7678ab97a06c708ee7445513b",
+    "assets/models/burke-data.js": "7c1be15f83fdd9755407f07ad66a4afe5ccd76cecd0aeee91b06cee3f77e3f6d",
     "src/models-imported.js": "e34a5d37ef99d02a114f99189da7a89449429d52cd8273f0903c35154f199ce9",
-    "src/models-imported-ground.js": "6abfd2156cfe6f41ab13d28cca275dc0be1b37f8ff82bd1705a6d766f51405ab",
+    "assets/models/ah64-data.js": "d4aab4b9fb3e09d218482cf6d40278b397278c171a389682efae716a7bfb0b65",
     "src/models-imported-air.js": "911cdd2b2765e3ceb9be4477d9ab8e634fdfd5ea5013c45ed1450643c2ceca84",
+    "assets/models/t90m-data.js": "af6501e8bad71ad87fe588f5c99a76bfcbd193629c310133b0112b96d9c05446",
+    "src/models-imported-ground.js": "6abfd2156cfe6f41ab13d28cca275dc0be1b37f8ff82bd1705a6d766f51405ab",
+    "src/model-unit-refinement.js": "f0f085d15ededb8ef757ee11a93ecffb0b65574f01490ec367947008827cd476",
+    "src/underwater.js": "efd255e7063c65d1456e79ca65330ef0ee9b3847daed894ac193aae21e9fda79",
+    "src/altitude-scene.js": "a2f96530a204c0a378025c42265d00e8cdc8b1bdf80f64dd2ad8d61b78f88447",
+    "src/combat-damage-visuals.js": "b6b948c9dbcdb1b2d6fbed6f7817599e8da7525100f1ce5eeaa522c62c7f94a5",
+    "src/battle3d.js": "4fe1be0ef1bc92e0d335cb2ca9e12214c9eb020f05a12d50c3c997e1c07b5fc0",
+    "src/lighting.js": "5a2c4b0d67d3eacb06e92f25a93d011236ef2a91a719adfbc06758a9e703216a",
+    "src/fps-viewmodel.js": "145aceb22aa6592f6ce14b574081ca710ca3e9394341a0d7004b215cb3913294",
+    "src/vehicle-camera.js": "97eb37852c014549296515d246a10930cf591f88196362932fd1e84eda73cd2d",
+    "src/combat-audio.js": "08ac7e6160549d7f948d3a1a701bbccce6a832dccbba670fca3e818527523cce",
+    "src/direct-control.js": "d0ddc43736750beb591f28de0f8cf2a3b38cb2a560a6cd2aa76bc9f819c9c168",
+    "src/player-mode.js": "0bbbb83582e08b250e804bfc0d280091483203e9b9d4cb0cf4856e08722e0fb8",
+    "src/operator-ui.js": "e8953ef30c9b6a48c4bf72e66931bef3549762b5b6ee284339d9643b637be2bd",
+    "src/app.js": "50d238bc2b5417acf53003f5419e785c8f10de1185de05c10221c2f707d264bb",
     "assets/models/burke.glb": "f7a6ccac4894e9994cc5f75d1ebda3a1930ea5993ebb2b5ec5c118b4dc3d73c6",
     "assets/models/t90m.glb": "58a8ed5339168757d5ead282639fc74ac4f880cf0b1edae77170a5b943a4ecce",
-    "assets/models/ah64.glb": "b7a0b2a2f917afc83be6736bda1a3bfddafdd17a444d01c3d762cb108849b2fd",
-    "index.html": "05019ba894f25b168c728cfbdbd17fc99a8e372343aff07059e28070aeeedb44",
-    "style.css": "87263305ed6605ac29375b8621b0df86563040cff6fc64fd1f2960e96b0682e6"
+    "assets/models/ah64.glb": "b7a0b2a2f917afc83be6736bda1a3bfddafdd17a444d01c3d762cb108849b2fd"
   },
   "stage": "complete",
-  "appVersion": "3.12.0",
+  "appVersion": "3.13.0",
   "assets": {
     "ready": [
       "ready",
@@ -1811,17 +2482,16 @@
     ]
   },
   "runtime": {
-    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.12.0 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) 现代战线HD/3.13.0 Chrome/152.0.7977.149 Electron/44.7.2 Safari/537.36",
     "title": "现代战线 HD · 五强遭遇战"
   },
   "resolution": [
     1600,
     1000
   ],
-  "focusReacquisitions": 1,
   "carrier": {
-    "id": 76,
-    "targetId": 77,
+    "id": 81,
+    "targetId": 82,
     "kind": "carrier",
     "faction": "usa",
     "targetKind": "destroyer",
@@ -1848,6 +2518,39 @@
       "splash": 0,
       "action": "airWing",
       "setting": true,
+      "mountId": "flightDeck",
+      "mount": {
+        "mode": "turret",
+        "yawRate": 1.3,
+        "pitchRate": 1.2,
+        "minPitch": -0.3,
+        "maxPitch": 0.65,
+        "arc": 3.141592653589793,
+        "tolerance": 0.1,
+        "pitchTolerance": 0.2,
+        "boundary": "Game motion and exclusion limits; no exact real-platform firing-arc claim."
+      },
+      "ammoType": "multipurpose",
+      "burst": {
+        "count": 1,
+        "interval": 18
+      },
+      "payloadSlots": 0,
+      "mechanics": {
+        "magazine": 1,
+        "reserve": 0,
+        "reloadSeconds": 32.4,
+        "fireInterval": 18,
+        "setupSeconds": 0,
+        "packSeconds": 0,
+        "moveFactor": 1,
+        "supplyCost": 10,
+        "intercept": false,
+        "interceptRange": 0,
+        "interceptReload": 0,
+        "dispersion": 0
+      },
+      "parameterBoundary": "Magazine capacity, burst, reload, aiming rate and dispersion are gameplay values.",
       "stationId": "air_wing",
       "kind": "carrier",
       "faction": "usa",
@@ -1904,8 +2607,8 @@
           11.907919872283937,
           240
         ],
-        "targetId": 77,
-        "observedTarget": 77,
+        "targetId": 82,
+        "observedTarget": 82,
         "occluded": false,
         "status": {
           "armed": true,
@@ -1924,7 +2627,8 @@
           "reloading": false,
           "aimValid": true,
           "cooldown": 0,
-          "targetId": 77,
+          "readiness": null,
+          "targetId": 82,
           "text": "055 型 · 实际距离 600 u / 射程 840 u · 射程内 · 可射击"
         }
       },
@@ -1945,19 +2649,20 @@
         "reloading": false,
         "aimValid": true,
         "cooldown": 0,
-        "targetId": 77,
+        "readiness": null,
+        "targetId": 82,
         "text": "055 型 · 实际距离 600 u / 射程 840 u · 射程内 · 可射击"
       },
       "shotCount": 0,
       "missionCount": 0
     },
     "mission": {
-      "sourceId": 76,
+      "sourceId": 81,
       "time": 12.600000000000044,
       "mission": {
         "x": 2400,
         "y": 240,
-        "targetId": 77,
+        "targetId": 82,
         "kind": "naval_strike_aircraft",
         "until": 192.60000000000005
       },
@@ -1965,34 +2670,52 @@
     },
     "aircraft": [
       {
-        "id": 79,
+        "id": 84,
         "kind": "naval_strike_aircraft",
-        "carrierOriginId": 76,
-        "firstSeen": 14.050000000000065,
+        "carrierOriginId": 81,
+        "firstSeen": 14.000000000000064,
         "phases": [
           "prepare",
           "takeoff",
           "climb",
-          "attack"
+          "attack",
+          "egress"
         ],
         "maxAltitude": 160
       },
       {
-        "id": 80,
+        "id": 85,
         "kind": "close_support_aircraft",
-        "carrierOriginId": 76,
-        "firstSeen": 18.05000000000012,
+        "carrierOriginId": 81,
+        "firstSeen": 18.00000000000012,
         "phases": [
-          "prepare"
+          "prepare",
+          "takeoff",
+          "climb",
+          "loiter"
         ],
-        "maxAltitude": 23.366
+        "maxAltitude": 160
+      },
+      {
+        "id": 86,
+        "kind": "interceptor",
+        "carrierOriginId": 81,
+        "firstSeen": 22.000000000000178,
+        "phases": [
+          "prepare",
+          "takeoff",
+          "climb",
+          "cruise",
+          "loiter"
+        ],
+        "maxAltitude": 160
       }
     ],
     "childShot": {
-      "sourceId": 79,
+      "sourceId": 84,
       "sourceKind": "naval_strike_aircraft",
-      "carrierOriginId": 76,
-      "targetId": 77,
+      "carrierOriginId": 81,
+      "targetId": 82,
       "weaponId": "naval_strike_aircraft:anti_ship",
       "weaponFamily": "missile",
       "muzzleClass": "launcher",
@@ -2002,22 +2725,28 @@
       "rocket": true,
       "beam": false,
       "damage": 185,
-      "time": 18.150000000000123,
-      "ttl": 0.5468523942662824,
+      "time": 27.70000000000026,
+      "ttl": 5.4626018786155175,
       "from": [
-        2050.297332451931,
-        157.61599999999999,
-        235
+        2583.1396686739927,
+        119.24496697144798,
+        551.967445638368
       ],
       "to": [
         2400,
         2,
         240
       ],
+      "planned": {
+        "x": 2400,
+        "y": 240,
+        "height": 2
+      },
+      "projectileKind": "guided",
       "anchor": [
-        2053.468824575815,
-        151.06363149384933,
-        247.44399980545043
+        2583.1396686739927,
+        119.244966971448,
+        551.967445638368
       ],
       "anchorSource": "approximate-underwing-store-release",
       "anchorApproximate": true,
@@ -2028,43 +2757,49 @@
         "team": 0,
         "requested": 1600,
         "paid": 1600,
-        "time": 14.050000000000065
+        "time": 14.000000000000064
       },
       {
         "team": 0,
         "requested": 1350,
         "paid": 1350,
-        "time": 18.05000000000012
+        "time": 18.00000000000012
+      },
+      {
+        "team": 0,
+        "requested": 1800,
+        "paid": 1800,
+        "time": 22.000000000000178
       }
     ],
-    "moneySpent": 2950,
+    "moneySpent": 4750,
     "targetDamage": 185,
     "hpEvidence": [
       {
-        "time": 12.050000000000036,
+        "time": 12.000000000000036,
         "hp": 100000
       },
       {
-        "time": 18.65000000000013,
+        "time": 28.850000000000275,
         "hp": 99815
       }
     ],
     "possession": {
-      "id": 79,
+      "id": 84,
       "before": [
-        2129.381161514717,
-        160,
-        255.73121950528179
+        2486.969271832463,
+        67.19291520007806,
+        395.63510940973356
       ],
       "after": [
-        2140.5055859171953,
-        161.1066846271442,
-        261.3471048976494
+        2481.205724930206,
+        63.079949009479044,
+        385.32100382024595
       ],
       "phase": "attack",
       "method": "J menu row followed by native W key; no synthetic aircraft"
     }
   },
   "passed": true,
-  "finishedAt": "2026-10-24T13:44:35.052Z"
+  "finishedAt": "2026-10-24T15:39:11.274Z"
 }

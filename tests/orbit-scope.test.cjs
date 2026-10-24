@@ -1,8 +1,9 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const THREE=require('../assets/vendor/three.min.js');require('../src/data');require('../src/roster');require('../src/equipment');require('../src/sim');
+require('../src/combat-audio.js');
 function fixture(kind='orbital',height=4000){
  const nodes=new Map(),listeners={},events={},el=()=>({hidden:false,style:{},classList:{toggle(){},add(){},remove(){}},querySelector(s){if(!nodes.has(s))nodes.set(s,el());return nodes.get(s);}}),document={hidden:false,pointerLockElement:null,createElement:el,body:{append(){}},addEventListener(n,fn){(listeners[n]??=[]).push(fn);}};
- const c={THREE,WarData,WarNavigationFootprints,document,innerWidth:1600,innerHeight:1000,console,addEventListener(n,fn){events[n]=fn;}};c.globalThis=c;vm.createContext(c);vm.runInContext(fs.readFileSync(path.join(__dirname,'../src/direct-control.js'),'utf8'),c);
+ const c={THREE,WarData,WarNavigationFootprints,WarCombatReadiness,WarCombatDamage,WarTransportOperations,WarCombatAudio,document,innerWidth:1600,innerHeight:1000,console,addEventListener(n,fn){events[n]=fn;}};c.globalThis=c;vm.createContext(c);vm.runInContext(fs.readFileSync(path.join(__dirname,'../src/direct-control.js'),'utf8'),c);
  const g=new WarSim.Game({map:'desert',enemies:1,buffs:['vision']});g.entities=[];g.ore=[];g.map.blocked.fill(0);g.map.navalBlocked.fill(0);g.spawn(0,'hq',300,300);g.spawn(1,'hq',5500,3500);const actor=g.spawn(0,kind,1800,1400);actor.altitude=height;g.beginDirectControl(actor.id);g.teams.forEach(t=>{t.aiClock=1e9;t.money=0;});
  const r={canvas:{},width:1600,height:1000,camera:{},objects:new Map(),world:new THREE.Group(),entityHeight:e=>g.entityAltitude(e)};let paused=false,allowed=true;
  const d=new c.WarDirectControl(r,{game:()=>g,paused:()=>paused,canEnter:()=>allowed,unitName:k=>k,sound:()=>false,toast(){}});d.active=true;d.game=g;d.entityId=actor.id;d.yaw=0;d.pitch=-.4;d.lastHP=actor.hp;document.pointerLockElement=r.canvas;d.updateCamera();
@@ -25,7 +26,8 @@ test('zoom projects the same real object sixteen times wider at 64x than at 4x',
 });
 test('orbital HUD respects real domain, range, friendly ownership, EMP, reload and upper layers',()=>{
  const f=fixture(),t=f.g.spawn(1,'tank',f.actor.x+200,f.actor.y);f.key('KeyV');f.d.aimResult={target:t,observedTarget:t};let s=f.d.orbitTargetStatus();assert.equal(s.projected,true);assert.equal(s.distance,200);assert.equal(s.canFire,true);
- t.x=f.actor.x+s.range+1;assert.match(f.d.orbitTargetStatus().text,/超出射程/);t.x=f.actor.x+200;t.team=0;assert.match(f.d.orbitTargetStatus().text,/己方/);t.team=1;f.actor.disabled=f.g.time+10;assert.match(f.d.orbitTargetStatus().text,/EMP/);f.actor.disabled=0;f.actor.cool=2;assert.match(f.d.orbitTargetStatus().text,/装填/);f.actor.cool=0;
+ t.x=f.actor.x+s.range+1;assert.match(f.d.orbitTargetStatus().text,/超出射程/);t.x=f.actor.x+200;t.team=0;assert.match(f.d.orbitTargetStatus().text,/己方/);t.team=1;f.actor.disabled=f.g.time+10;assert.match(f.d.orbitTargetStatus().text,/EMP/);f.actor.disabled=0;
+ assert.equal(f.g.emitShot(f.actor,t),true,'actual launch starts station cooldown');assert.match(f.d.orbitTargetStatus().text,/装填/);
  const upper=f.g.spawn(1,'satellite',f.actor.x+30,f.actor.y);upper.altitude=12000;f.d.aimResult={target:upper,observedTarget:upper};s=f.d.orbitTargetStatus();assert.equal(s.projected,false);assert.ok(s.distance>7900);assert.equal(s.range,f.g.rangeProfile(f.actor).attack);
 });
 test('pause, lock, menus, text input and focus gates prevent scope control; clearing drops fire and movement',()=>{

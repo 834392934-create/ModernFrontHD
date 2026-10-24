@@ -1,0 +1,347 @@
+{
+  "at": "2026-10-24T15:01:45.658Z",
+  "environment": "isolated Chromium / source server",
+  "scope": "Actual mouse firing and sampled physical projectiles; separately labeled paused near inspection; not packaged desktop acceptance or equipment-fidelity certification",
+  "shots": [
+    {
+      "weaponId": "tank:armor_piercing",
+      "family": "cannon",
+      "projectileId": 38,
+      "phase": "flight",
+      "source": [
+        1845.7907968887255,
+        12.356944304643815,
+        1400
+      ],
+      "position": {
+        "x": 1880.7907386617921,
+        "y": 1400,
+        "height": 12.420786938881475
+      },
+      "time": 0.7500000000000001,
+      "age": 0,
+      "port": 0,
+      "inputs": [
+        {
+          "button": 2,
+          "trusted": true
+        },
+        {
+          "button": 0,
+          "trusted": true
+        }
+      ],
+      "style": {
+        "type": "shell",
+        "powered": false,
+        "tracer": true,
+        "phase": "flight"
+      },
+      "stats": {
+        "visible": 1,
+        "allocated": 1,
+        "budget": 64,
+        "geometryKinds": 1
+      },
+      "shown": true,
+      "vertices": 480,
+      "kind": "tank",
+      "station": "armor_piercing",
+      "screen": "screenshots/combat-visual-shell-actual.png",
+      "close": "screenshots/combat-visual-shell-inspection.png",
+      "render": {
+        "frame": 92,
+        "calls": 7,
+        "triangles": 53722,
+        "points": 0,
+        "lines": 0
+      }
+    },
+    {
+      "weaponId": "rocket:rocket_salvo",
+      "family": "rocket",
+      "projectileId": 43,
+      "phase": "powered",
+      "source": [
+        1801.3740656366228,
+        26.499331871160322,
+        1397.1308990364091
+      ],
+      "position": {
+        "x": 1821.3273698176818,
+        "y": 1397.2736647102447,
+        "height": 25.14092463453553
+      },
+      "time": 2.3499999999999996,
+      "age": 0,
+      "port": 0,
+      "inputs": [
+        {
+          "button": 2,
+          "trusted": true
+        },
+        {
+          "button": 0,
+          "trusted": true
+        }
+      ],
+      "style": {
+        "type": "rocket",
+        "powered": true,
+        "tracer": true,
+        "phase": "powered"
+      },
+      "stats": {
+        "visible": 1,
+        "allocated": 1,
+        "budget": 64,
+        "geometryKinds": 1
+      },
+      "shown": true,
+      "vertices": 480,
+      "kind": "rocket",
+      "station": "rocket_salvo",
+      "screen": "screenshots/combat-visual-rocket-actual.png",
+      "close": "screenshots/combat-visual-rocket-inspection.png",
+      "render": {
+        "frame": 218,
+        "calls": 8,
+        "triangles": 31822,
+        "points": 0,
+        "lines": 0
+      }
+    },
+    {
+      "weaponId": "destroyer:anti_ship",
+      "family": "missile",
+      "projectileId": 48,
+      "phase": "powered",
+      "source": [
+        1839.366,
+        6.7203,
+        1400
+      ],
+      "position": {
+        "x": 1872.183230273414,
+        "y": 1400,
+        "height": 18.88703321733183
+      },
+      "time": 2.849999999999998,
+      "age": 0,
+      "port": 0,
+      "inputs": [
+        {
+          "button": 2,
+          "trusted": true
+        },
+        {
+          "button": 0,
+          "trusted": true
+        }
+      ],
+      "style": {
+        "type": "missile",
+        "powered": true,
+        "tracer": true,
+        "phase": "powered"
+      },
+      "stats": {
+        "visible": 1,
+        "allocated": 1,
+        "budget": 64,
+        "geometryKinds": 1
+      },
+      "shown": true,
+      "vertices": 480,
+      "kind": "destroyer",
+      "station": "anti_ship",
+      "screen": "screenshots/combat-visual-missile-actual.png",
+      "close": "screenshots/combat-visual-missile-inspection.png",
+      "render": {
+        "frame": 288,
+        "calls": 7,
+        "triangles": 75126,
+        "points": 0,
+        "lines": 0
+      }
+    },
+    {
+      "weaponId": "submarine:torpedo",
+      "family": "torpedo",
+      "projectileId": 53,
+      "source": [
+        1859.4648,
+        -56.08,
+        1400
+      ],
+      "position": {
+        "x": 1868.4648,
+        "y": 1400,
+        "height": -56.08
+      },
+      "time": 3.399999999999996,
+      "age": 0,
+      "port": 0,
+      "inputs": [
+        {
+          "button": 2,
+          "trusted": true
+        },
+        {
+          "button": 0,
+          "trusted": true
+        }
+      ],
+      "style": {
+        "type": "torpedo",
+        "powered": false,
+        "tracer": true,
+        "phase": "powered"
+      },
+      "stats": {
+        "visible": 1,
+        "allocated": 1,
+        "budget": 64,
+        "geometryKinds": 1
+      },
+      "shown": true,
+      "vertices": 1536,
+      "kind": "submarine",
+      "station": "torpedo",
+      "screen": "screenshots/combat-visual-torpedo-actual.png",
+      "close": "screenshots/combat-visual-torpedo-inspection.png",
+      "render": {
+        "frame": 365,
+        "calls": 5,
+        "triangles": 73448,
+        "points": 0,
+        "lines": 0
+      }
+    },
+    {
+      "weaponId": "heavy_bomber:bombs",
+      "family": "bomb",
+      "projectileId": 58,
+      "source": [
+        1832.1750000000002,
+        178.39350004255775,
+        1400
+      ],
+      "position": {
+        "x": 1871.5000000000007,
+        "y": 1400,
+        "height": 167.80600004255774
+      },
+      "time": 4.449999999999992,
+      "age": 0.4999999999999982,
+      "port": 0,
+      "inputs": [
+        {
+          "button": 2,
+          "trusted": true
+        },
+        {
+          "button": 0,
+          "trusted": true
+        }
+      ],
+      "style": {
+        "type": "bomb",
+        "powered": false,
+        "tracer": true,
+        "phase": "powered"
+      },
+      "stats": {
+        "visible": 1,
+        "allocated": 1,
+        "budget": 64,
+        "geometryKinds": 1
+      },
+      "shown": true,
+      "vertices": 1248,
+      "kind": "heavy_bomber",
+      "station": "bombs",
+      "screen": "screenshots/combat-visual-bomb-actual.png",
+      "close": "screenshots/combat-visual-bomb-inspection.png",
+      "render": {
+        "frame": 449,
+        "calls": 10,
+        "triangles": 28997,
+        "points": 0,
+        "lines": 0
+      }
+    },
+    {
+      "weaponId": "machinegun_team:primary",
+      "family": "machinegun",
+      "projectileId": 62,
+      "phase": "flight",
+      "source": [
+        1807.112,
+        7.475999999999999,
+        1400.952
+      ],
+      "position": {
+        "x": 1842.1119996577022,
+        "y": 1400.9499165739373,
+        "height": 7.480429468855605
+      },
+      "time": 4.899999999999991,
+      "age": 0,
+      "port": 0,
+      "inputs": [
+        {
+          "button": 2,
+          "trusted": true
+        },
+        {
+          "button": 0,
+          "trusted": true
+        }
+      ],
+      "style": {
+        "type": "bullet",
+        "powered": false,
+        "tracer": false,
+        "phase": "flight"
+      },
+      "stats": {
+        "visible": 1,
+        "allocated": 1,
+        "budget": 64,
+        "geometryKinds": 1
+      },
+      "shown": true,
+      "vertices": 336,
+      "kind": "machinegun_team",
+      "station": null,
+      "screen": "screenshots/combat-visual-bullet-actual.png",
+      "close": "screenshots/combat-visual-bullet-inspection.png",
+      "render": {
+        "frame": 580,
+        "calls": 10,
+        "triangles": 4061,
+        "points": 0,
+        "lines": 0
+      }
+    }
+  ],
+  "errors": [],
+  "checks": [],
+  "assets": {
+    "ship": "ready",
+    "ground": "ready",
+    "air": "ready",
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "sourceHashes": {
+    "src/weapon-effects.js": "5fae73b89f809bb327ee6536bc6e7a179f1cc905fe0fe0ad5a008e9497b4392a",
+    "src/vehicle-animation.js": "d25219668f0ee52b6924cfd87cedea3c12cdbe389bc785097bde77fe1343f6d8",
+    "src/vehicle-weapons.js": "1f064734a907ac4f814e382b617bac1dfcf58013bac69e78cba16d72b4bb0e7a",
+    "src/combat-projectiles.js": "2e03a295750bb6e004dd294aec4ceb136d626347a835c84b944b5542d0459b13",
+    "src/combat-damage-visuals.js": "253a7c3f0466816fd51d9a26678ffac27c822fc74a1fc60936eb4d5ee0f4cc22",
+    "src/battle3d.js": "95c3e8a7b29fbcd4a6bc521ad1d51c8d5154aca0b5687b711cd9453e59772a82"
+  },
+  "stage": "machinegun_team:null",
+  "passed": true
+}

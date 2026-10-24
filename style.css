@@ -1392,3 +1392,5 @@ body.direct-view #hud,body.direct-view #restore-hud{display:none!important}
 #vehicle-weapon{width:100%;min-width:0;max-width:100%;padding:8px;background:#172a2b;color:#e4ece5;border:1px solid #59786c;border-radius:3px}
 @media(max-width:850px){#direct-orbit-panel{right:18px;width:238px;padding:11px 12px;gap:8px}#direct-orbit-panel>small{font-size:9px;letter-spacing:.7px}}
 @media(max-height:650px){#direct-orbit-panel{top:auto;bottom:155px;width:260px;padding:10px 12px;gap:6px}#direct-orbit-panel>small{display:none}}
+
+#combat-actions{margin-top:8px;font-size:11px;line-height:1.5;color:#c4d2cc}#combat-actions>div{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}#combat-actions button{font-size:10px;padding:5px 8px}#combat-status{display:block;overflow-wrap:anywhere}.direct-weapon{overflow-wrap:anywhere}

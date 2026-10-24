@@ -1,6 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 require('../src/data.js');require('../src/roster.js');require('../src/equipment.js');require('../src/sim.js');
-const {Game}=WarSim;
+const {Game}=WarSim;const {advanceUntil}=require('./combat-preparation.cjs');
 function arena(){const g=new Game({enemies:1,buffs:['vision'],playerOnlyTech:false,aiSpaceWeapons:true});g.entities=[];g.spawn(0,'hq',300,300);g.spawn(1,'hq',2700,1800);g.teams.forEach(t=>t.aiClock=999999);return g;}
 function step(g,s){for(let i=0;i<s*20;i++)g.step(.05);}
 test('interceptor attacks air and orbit, never land, ships or buildings',()=>{
@@ -25,7 +25,7 @@ test('interceptor build and movement order survive save/load',()=>{
 });
 test('space shot styles preserve origin and target layer including impact',()=>{
  for(const [kind,style,height] of [['orbital','orbital-beam',4000],['orbital_interceptor','interceptor-burst',4000],['asat','missile',12]]){const g=arena();g.spawn(0,kind,700,600);g.spawn(1,'satellite',1000,600);let shot;for(let n=0;n<25&&!shot;n++){g.step(.05);shot=g.effects.find(f=>f.type==='shot'&&f.from===0);}
-  assert.ok(shot,kind);assert.equal(shot.weaponFx,style);if(kind==='asat'){assert.equal(shot.weaponFamily,'missile');assert.deepEqual(shot.weaponDomains,['space']);}assert.equal(shot.sourceHeight,height);assert.equal(shot.targetHeight,4000);step(g,shot.ttl+.05);assert.ok(g.effects.some(f=>f.type==='impact'&&f.height===4000),kind+' impact');
+  assert.ok(shot,kind);assert.equal(shot.weaponFx,style);if(kind==='asat'){assert.equal(shot.weaponFamily,'missile');assert.deepEqual(shot.weaponDomains,['space']);}assert.equal(shot.sourceHeight,height);assert.equal(shot.targetHeight,4000);assert.ok(advanceUntil(g,()=>g.effects.some(f=>f.type==='impact'&&Math.abs(f.height-4000)<40),shot.ttl+.2),kind+' impact remains at the actual orbital hull surface');
  }
 });
 test('player-only technology remains separate from AI orbital permission',()=>{

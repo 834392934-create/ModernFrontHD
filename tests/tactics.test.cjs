@@ -47,7 +47,7 @@ test('mine loading bay remains accessible; depletion chooses another mine',()=>{
  const g=new Game({enemies:1});g.teams.forEach(t=>t.aiClock=9999);let h=g.entities.find(e=>e.team===0&&e.kind==='harvester');g.ore[0].amount=1;advance(g,8);assert.equal(g.ore[0].amount,0);assert.notEqual(h.oreId,0);assert.ok(g.ore.find(o=>o.id===h.oreId).amount>0);
 });
 test('CIWS intercepts rockets and does not erase nuclear warning',()=>{
- const g=new Game({enemies:1});g.spawn(0,'power',800,400);g.spawn(0,'ciws',1100,700);g.effects.push({type:'shot',rocket:true,from:1,x:1150,y:700,tx:1100,ty:700,ttl:2,max:2,damage:100});g.effects.push({type:'nuke',from:1,x:1100,y:700,ttl:6,max:6,r:370});g.step(.05);assert.ok(g.effects.some(e=>e.type==='intercepted'));assert.ok(g.effects.some(e=>e.type==='nuke'));
+ const g=new Game({enemies:1});g.spawn(0,'power',800,400);g.spawn(0,'ciws',1100,700);g.effects.push({type:'shot',rocket:true,from:1,x:1150,y:700,sourceHeight:30,tx:1100,ty:700,targetHeight:20,ttl:2,max:2,damage:100});g.effects.push({type:'nuke',from:1,x:1100,y:700,ttl:6,max:6,r:370});assert.ok(require('./combat-preparation.cjs').advanceUntil(g,()=>g.effects.some(e=>e.type==='intercepted'),2));assert.ok(g.effects.some(e=>e.type==='nuke'));
 });
 test('independent production lanes finish infantry while tank is queued',()=>{
  const g=new Game({enemies:1});g.teams.forEach(t=>t.aiClock=9999);let n=g.entities.filter(e=>e.team===0&&e.kind==='infantry').length;g.train(0,'tank');g.train(0,'infantry');advance(g,3.2);assert.equal(g.entities.filter(e=>e.team===0&&e.kind==='infantry').length,n+1);assert.ok(g.teams[0].queue.some(q=>q.kind==='tank'));

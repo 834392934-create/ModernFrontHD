@@ -1,12 +1,13 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const T=require('../assets/vendor/three.min.js');for(const f of ['data','roster','equipment','sim'])require('../src/'+f);
+require('../src/combat-audio.js');
 function arena(kind='fighter'){
  const g=new WarSim.Game({map:'desert',enemies:1,buffs:['vision']});g.entities=[];g.ore=[];g.effects=[];g.directObstacles=[];g.map.blocked.fill(0);g.map.navalBlocked.fill(0);g.ai=()=>{};g.spawn(0,'hq',300,300);g.spawn(1,'hq',5700,3500);
  const e=g.spawn(0,kind,2600,1800);e.angle=0;e.altitude=300;g.beginDirectControl(e.id);return{g,e};
 }
 function controls(kind='fighter'){
  const {g,e}=arena(kind),nodes=new Map(),listeners={},el=()=>({hidden:false,style:{},classList:{toggle(){},add(){},remove(){}},querySelector(s){if(!nodes.has(s))nodes.set(s,el());return nodes.get(s);}}),doc={hidden:false,pointerLockElement:null,createElement:el,body:{append(){}},addEventListener(k,f){(listeners[k]??=[]).push(f);}};
- const context={THREE:T,WarData,WarNavigationFootprints,WarVehicleMotion,WarAircraftFlight,document:doc,innerWidth:1600,innerHeight:1000,console,addEventListener(){}};context.globalThis=context;vm.createContext(context);
+ const context={THREE:T,WarData,WarNavigationFootprints,WarCombatReadiness,WarCombatDamage,WarTransportOperations,WarCombatAudio,WarVehicleMotion,WarAircraftFlight,document:doc,innerWidth:1600,innerHeight:1000,console,addEventListener(){}};context.globalThis=context;vm.createContext(context);
  for(const file of ['vehicle-camera','direct-control','battle3d'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../src/'+file+'.js'),'utf8'),context);
  const r={canvas:{},width:1600,height:1000,camera:{},objects:new Map(),world:new T.Group(),scene:new T.Scene(),entityHeight:e=>g.entityAltitude(e)};let paused=false;
  const d=new context.WarDirectControl(r,{game:()=>g,paused:()=>paused,canEnter:()=>true,toast(){},sound:()=>false,unitName:k=>k});Object.assign(d,{active:true,game:g,entityId:e.id,pitch:0,yaw:0,flightReady:true});doc.pointerLockElement=r.canvas;d.updateCamera();

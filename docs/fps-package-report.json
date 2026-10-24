@@ -1,9 +1,9 @@
 {
-  "recordedAt": "2026-10-24T13:55:05.580Z",
-  "version": "3.12.0",
-  "sha256Matches": 702,
+  "recordedAt": "2026-10-24T16:04:54.503Z",
+  "version": "3.13.0",
+  "sha256Matches": 709,
   "portraits": 588,
-  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.12.0\\ModernFrontHD.exe",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.13.0\\ModernFrontHD.exe",
   "runtimeChecks": [
     "desktop-report.json",
     "expanded-desktop-report.json",
@@ -31,6 +31,10 @@
     "public-range-salvo-desktop-report.json",
     "aircraft-flight-desktop-report.json",
     "vehicle-loadouts-desktop-report.json",
+    "combat-visuals-desktop-report.json",
+    "combat-guided-desktop-report.json",
+    "combat-damage-desktop-report.json",
+    "personnel-combat-desktop-report.json",
     "reviews/unit-model-refinement-report.json",
     "launcher-desktop-report.json"
   ],

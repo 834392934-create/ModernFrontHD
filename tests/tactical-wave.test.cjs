@@ -1,5 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 require('../src/data.js');require('../src/roster.js');require('../src/sim.js');
+const {advanceUntil}=require('./combat-preparation.cjs');
 const {Game}=WarSim,{U,ROSTER}=WarData;
 function arena(){const g=new Game({faction:'chn',enemies:1,buffs:['vision'],playerOnlyTech:false,aiSpaceWeapons:true});g.entities=[];g.ore=[];g.spawn(0,'hq',300,300);g.spawn(1,'hq',2700,1800);g.teams.forEach(t=>{t.aiClock=999999;t.money=0;});return g;}
 function tick(g,s){for(let i=0;i<s*20;i++)g.step(.05);}
@@ -28,9 +29,9 @@ test('shield AI follows orbit and unarmed support stays legal under the AI orbit
  const g=arena(),shield=g.spawn(1,'orbital_shield',1000,750),escort=g.spawn(1,'orbital_escort',1400,750);g.spawn(1,'spaceport',2200,1500);g.teams[1].money=1e6;g.commandSupport(1,[shield,escort]);assert.ok(shield.order);assert.equal(shield.order.attack,false);g.setAISpaceWeapons(false);assert.ok(g.get(shield.id));assert.equal(g.train(1,'orbital_shield'),true);assert.equal(g.train(1,'orbital_missile_barge'),false);const save=Game.load(JSON.stringify(g.save()));assert.ok(save.get(shield.id));
 });
 test('mobile CIWS intercepts hostile rockets while directly controlled and cannot intercept torpedoes',()=>{
- const g=arena(),ciws=g.spawn(0,'mobile_ciws',1000,750);g.beginDirectControl(ciws.id);const rocket={type:'shot',rocket:true,from:1,x:1100,y:750,tx:1000,ty:750,ttl:2,max:2,damage:100},torpedo={...rocket,rocket:false,weaponFx:'torpedo'};g.effects.push(rocket,torpedo);tick(g,.05);assert.equal(rocket.type,'intercepted');assert.equal(torpedo.type,'shot');assert.equal(g.rangeProfile(ciws).zones.find(z=>z.type==='intercept').radius,220);
+ const g=arena(),ciws=g.spawn(0,'mobile_ciws',1000,750);g.beginDirectControl(ciws.id);const rocket={type:'shot',rocket:true,from:1,x:1100,y:750,tx:1000,ty:750,ttl:2,max:2,damage:100},torpedo={...rocket,rocket:false,weaponFx:'torpedo'};g.effects.push(rocket,torpedo);tick(g,.05);assert.equal(rocket.type,'shot');assert.ok(advanceUntil(g,()=>rocket.type==='intercepted',1.5));assert.equal(torpedo.type,'shot');assert.equal(g.rangeProfile(ciws).zones.find(z=>z.type==='intercept').radius,220);
 });
-test('orbital missile splash hits orbital groups, excludes aircraft, and can be intercepted',()=>{
+test('orbital missile splash hits orbital groups, excludes aircraft, and stays above ground CIWS range',()=>{
  const g=arena(),a=g.spawn(0,'orbital_missile_barge',1000,750),target=g.spawn(1,'orbital',1300,750),near=g.spawn(1,'satellite',1320,750),plane=g.spawn(1,'fighter',1310,750);target.disabled=near.disabled=plane.disabled=999;g.emitShot(a,target);assert.equal(g.effects[0].rocket,true);tick(g,.6);assert.ok(target.hp<target.maxHp);assert.ok(near.hp<near.maxHp);assert.equal(plane.hp,plane.maxHp);
- a.cool=0;const ciws=g.spawn(1,'mobile_ciws',1200,750);g.emitShot(a,target);const missile=g.effects.find(e=>e.type==='shot');tick(g,.05);assert.equal(missile.type,'intercepted');
+ const ciws=g.spawn(1,'mobile_ciws',1200,750),missile=g.effects.find(e=>e.type==='shot');assert.ok(missile);assert.equal(WarCombatProjectiles.interceptionPlan(g,ciws),null,'4000u orbital flight exceeds the 220u ground-defense sphere');tick(g,.05);assert.notEqual(missile.type,'intercepted');
 });

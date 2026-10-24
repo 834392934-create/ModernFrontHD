@@ -4,7 +4,7 @@ function fixture(){
  const keyName=s=>s.replace(/^data-/,'').replace(/-([a-z])/g,(_,c)=>c.toUpperCase());
  class Element {
   constructor(tag='div'){this.tagName=tag.toUpperCase();this.children=[];this.dataset={};this.style={};this.attrs={};this.hidden=false;this.disabled=false;this.isConnected=true;this.value='';this.handlers={};this.classes=new Set();this.classList={toggle:(c,v)=>v?this.classes.add(c):this.classes.delete(c)};}
-  append(...items){for(const el of items){el.parent=this;this.children.push(el);}}
+  append(...items){for(const el of items){el.parent=this;el.parentElement=this;this.children.push(el);}}
   insertBefore(el){this.append(el);}
   setAttribute(k,v){this.attrs[k]=String(v);}
   addEventListener(type,fn){this.handlers[type]=fn;}
@@ -29,7 +29,7 @@ function fixture(){
 }
 
 test('B opens only a live owned operator, consumes the opener, clears input and unlocks without pausing the world',()=>{
- const f=fixture(),e=f.event();f.emit(e);assert.equal(f.ui.open,true);assert.equal(e.prevented,true);assert.equal(e.stopped,true);assert.equal(f.document.pointerLockElement,null);assert.equal(f.document.activeElement.id,'operator-search');assert.ok(f.clearCalls>0);assert.equal(f.ui.el('count').textContent,'64 / 64 款武器');
+ const f=fixture(),e=f.event();f.emit(e);assert.equal(f.ui.open,true);assert.equal(e.prevented,true);assert.equal(e.stopped,true);assert.equal(f.document.pointerLockElement,null);assert.equal(f.document.activeElement.id,'operator-search');assert.ok(f.clearCalls>0);assert.equal(f.ui.el('count').textContent,'72 / 72 款武器');
  for(const change of [x=>x.unit.kind='tank',x=>x.unit.hp=0,x=>x.unit.team=1,x=>x.d.active=false,x=>x.block()]){const x=fixture();change(x);x.emit(x.event());assert.equal(x.ui.open,false);}
 });
 test('text search retains printable defaults and cannot leak R/1/B into combat; Escape closes and restores focus/lock',()=>{
@@ -50,6 +50,7 @@ test('random equip selects only visible candidates and empty filters never call 
 test('HUD reads authoritative ammo, active slot and reload progress; base resupply delegates cost to simulation',()=>{
  const f=fixture();f.ui.update();assert.equal(f.ui.hudEl('magazine').textContent,'13');assert.match(f.ui.hudEl('reserve').textContent,/42/);f.state.activeSlot=1;f.state.reloadRemaining=1;f.ui.update();assert.equal(f.ui.hudEl('magazine').textContent,'5');assert.equal(f.ui.hudEl('progress').style.width,'50%');assert.match(f.ui.hudEl('state').textContent,/1.0 秒/);f.ui.show();assert.equal(f.ui.el('resupply').disabled,true);f.state.canResupply=true;f.ui.update();assert.equal(f.ui.el('resupply').disabled,false);f.ui.el('resupply').onclick();assert.deepEqual(f.supplyCalls,[7]);assert.match(f.ui.el('message').textContent,/花费 100/);
 });
+test('mode control uses the real simulation hook and HUD distinguishes empty/phase/finite chamber with unlimited reserve',()=>{const f=fixture();f.state.fireModes=['auto','semi','burst'];f.state.fireMode='auto';let calls=0;f.game.operatorCycleFireMode=id=>{assert.equal(id,7);calls++;f.state.fireMode='semi';return true;};f.ui.show();f.ui.modeButton.onclick();assert.equal(calls,1);assert.match(f.ui.modeButton.textContent,/半自动/);f.state.unlimitedAmmo=true;f.state.quickReload=true;f.state.reloadRemaining=.3;f.state.reloadTotal=.5;f.state.action={reloadKind:'empty',phase:'chamber'};f.ui.update();assert.equal(f.ui.hudEl('magazine').textContent,'13');assert.match(f.ui.hudEl('reserve').textContent,/∞/);assert.match(f.ui.hudEl('state').textContent,/空仓装填.*恢复待发.*快速装填/);});
 test('death, possession change, game replacement and external modal close armory without relocking',()=>{
  for(const change of [f=>f.unit.hp=0,f=>f.d.entityId=99,f=>f.setGame({...f.game}),f=>f.block()]){const f=fixture();f.ui.show();change(f);f.ui.update();assert.equal(f.ui.open,false);assert.equal(f.locks,0);assert.equal(f.document.activeElement,f.document.body);}
 });

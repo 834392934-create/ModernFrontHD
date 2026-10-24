@@ -40,6 +40,8 @@
     sound = true,
     audio = null,
     hadFocus = true;
+  const combatAudio=new WarCombatAudio({enabled:()=>sound,maxVoices:16});let audioGame=null;
+  document.addEventListener('pointerdown',()=>combatAudio.unlock(),{passive:true});
   const lighting = r.is3D ? {available:true,enabled:true,night:false,output:{hidden:true},draw(){}} : new WarLighting($("#battle"));
   r.camera = { x: D.W / 2, y: D.H / 2, zoom: 0.32 };
   r.prepare(demo);
@@ -465,6 +467,16 @@
     const chosen = [...selection].map((id) => game.get(id)).filter(Boolean);
     const vehicle=chosen.length===1&&chosen[0].team===0?chosen[0]:null,stations=vehicle?game.vehicleWeapons(vehicle):[],picker=$('#vehicle-weapon-picker'),weaponSelect=$('#vehicle-weapon');
     picker.hidden=!stations.length;
+    const combatPanel=$('#combat-actions');combatPanel.hidden=!vehicle;
+    if(vehicle){
+      const cs=game.combatStatus(vehicle,game.get(vehicle.target)),injury=vehicle.components,transport=WarTransportOperations.status(game,vehicle),labels={ready:'就绪',preparing:'准备 / 抬炮',packing:'撤收中',reloading:'换弹中',cooldown:'装填中',traversing:'转向中',arc:'超出射界',elevation:'超出俯仰射界',blocked:'炮口遮挡','no-ammo':'缺弹',downed:'倒地待救',crashing:'失能下降','turret-damaged':'炮塔故障',disabled:'失能'};
+      $('#combat-status').textContent=(cs?.weaponId?'弹仓 '+cs.ammo+' · 备弹 '+(cs.reserve===Infinity?'∞':cs.reserve)+' · '+(labels[cs.reason]||cs.reason):'保障 / 侦察单位')+(injury?.state==='burning'?' · 局部起火':injury?.state==='flooding'?' · 舰体进水':injury?.state==='downed'?' · 倒地待救':'')+(transport.capacity?' · 载员 '+transport.occupied+'/'+transport.capacity:'');
+      $('#combat-reload').hidden=!cs?.weaponId;$('#combat-reload').onclick=()=>{game.reloadWeapon(vehicle.id);updateHUD();};
+      $('#combat-supply').onclick=()=>{toast(game.resupplyUnit(vehicle.id)?'补给请求已登记':'没有可用补给条件');updateHUD();};
+      $('#combat-board').hidden=!transport.capacity;$('#combat-unload').hidden=!transport.capacity;
+      $('#combat-board').onclick=()=>{toast('载入 '+game.boardPassengers(vehicle.id)+' 名人员');updateHUD();};$('#combat-unload').onclick=()=>{toast('下车 '+game.unloadPassengers(vehicle.id)+' 名人员');updateHUD();};
+      $('#combat-decoy').hidden=!U[vehicle.kind]?.naval;$('#combat-decoy').onclick=()=>{toast(game.deployDecoy(vehicle.id)?'声学诱饵已释放':'诱饵未就绪或已用尽');updateHUD();};
+    }
     if(stations.length){
       const key=vehicle.id+':'+t.faction+':'+game.options.rangeMode+':'+game.options.metersPerUnit;
       if(weaponSelect.dataset.unit!==key){weaponSelect.innerHTML='<option value="auto">自动按目标选择武器</option>'+stations.map(w=>'<option value="'+escapeHTML(w.id)+'">'+escapeHTML(w.name)+' · '+game.formatRangeDistance(game.weaponRangeProfile(vehicle,w).range)+'</option>').join('');weaponSelect.dataset.unit=key;}
@@ -1074,6 +1086,8 @@
       $("#fps").textContent = fps + " FPS";
     }
     if (game) {
+      if(!game.resolveWeaponOrigin){const current=game;game.resolveWeaponOrigin=(entity,weapon,port)=>r.resolveWeaponOrigin?.(current,entity,weapon,port)||null;}
+      if(audioGame!==game){combatAudio.reset();audioGame=game;}
       direct.update(raw,now/1000);
       if (!paused && !game.result) {
         acc += raw * speed;
@@ -1090,6 +1104,10 @@
         if (!direct.active&&!direct.vehicleMenu.open&&(keys.has("arrowright") || keys.has("d"))) r.pan(v, 0);
         if (!direct.active&&!direct.vehicleMenu.open&&(keys.has("arrowup") || keys.has("w"))) r.pan(0, -v);
         if (!direct.active&&!direct.vehicleMenu.open&&keys.has("arrowdown")) r.pan(0, v);
+      }
+      if(!paused){
+        const listener=direct.active?game.get(direct.entityId):r.camera;
+        for(const fx of game.effects)if(['shot','discharge'].includes(fx.type)&&game.time-(fx.firedAt??-100)<.25&&listener&&Math.hypot(fx.x-listener.x,fx.y-listener.y)<1200&&(fx.from===0||game.visibleAt(fx.x,fx.y)))combatAudio.playShot(fx,game.get(fx.sourceId));
       }
       r.draw(
         game,
@@ -1291,7 +1309,7 @@
   const rangeReadout=document.createElement('div');rangeReadout.id='range-readout';rangeReadout.hidden=true;$('#hud').append(rangeReadout);
   function toggleRanges(){const modes=['selected','defenses','off'];rangeMode=modes[(modes.indexOf(rangeMode)+1)%modes.length];rangeButton.textContent='范围：'+({selected:'选中',defenses:'防线',off:'关闭'})[rangeMode]+' V';}
   function clearStrategyInput(){keys.clear();drag=null;middle=null;}
-  const direct=new WarDirectControl(r,{game:()=>game,paused:()=>paused,selection:()=>[...selection],canEnter:()=>!!game&&!game.result&&$('#modal').hidden,togglePause,toast,unitName,sound:()=>sound,clearStrategyInput,onEnter:()=>{clearStrategyInput();setMode(null);},onExit:()=>{clearStrategyInput();updateHUD();}});
+  const direct=new WarDirectControl(r,{game:()=>game,paused:()=>paused,selection:()=>[...selection],canEnter:()=>!!game&&!game.result&&$('#modal').hidden,togglePause,toast,unitName,sound:()=>sound,audio:()=>combatAudio,clearStrategyInput,onEnter:()=>{clearStrategyInput();setMode(null);},onExit:()=>{clearStrategyInput();updateHUD();}});
   direct.vehicleMenu=new WarPlayerMode(direct);
   direct.operatorUI=new WarOperatorUI(direct);
   const vehicleButton=document.createElement('button');vehicleButton.id='choose-vehicle';vehicleButton.textContent='换乘载具 J';vehicleButton.onclick=()=>direct.vehicleMenu.show();$('.command-buttons').append(vehicleButton);

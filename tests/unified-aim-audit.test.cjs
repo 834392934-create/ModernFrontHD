@@ -1,11 +1,17 @@
 /* Independent audit: actual simulation and Three CPU raycasts, no WebGL. */
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 global.THREE=require('../assets/vendor/three.min.js');for(const f of ['data','roster','sim','models3d','model-detail','models-tanks','models-vehicles','models-naval','models-roster','models-buildings','models-operator','personnel-animation'])require('../src/'+f+'.js');const T=THREE,{Game}=WarSim;
+require('../src/combat-audio.js');
 function arena(kind='tank',targetKind='tank'){
  const g=new Game({map:'desert',faction:'chn',enemies:1,buffs:['vision'],abilities:false});g.entities=[];g.effects=[];g.ore=[];g.directObstacles=[];g.map.blocked.fill(0);g.map.navalBlocked.fill(0);g.ai=()=>{};g.spawn(0,'hq',300,300);g.spawn(1,'hq',5500,3500);g.teams.forEach(t=>{t.money=0;t.queue=[];t.buildQueue=[];});const actor=g.spawn(0,kind,1800,1400),target=g.spawn(1,targetKind,1950,1400);target.disabled=1e8;g.beginDirectControl(actor.id);g.spatial.rebuild(g.entities);g.random=()=>0;return{g,actor,target};
 }
 function input(f,point,fire=true){return{fire,yaw:0,targetId:f.target.id,aimX:point.x,aimY:point.z,aimHeight:point.y};}
 function finish(f,seconds=.8){f.g.setDirectInput({fire:false});for(let n=0;n<seconds*20;n++)f.g.step(.05);}
+function readyControls(f){
+ f.d.fire=false;f.d.aimResult=f.d.aim();f.d.submit();
+ for(let n=0;n<240&&!f.d.orbitTargetStatus().canFire;n++){f.g.step(.05);f.d.aimResult=f.d.aim();f.d.submit();}
+ assert.equal(f.d.orbitTargetStatus().canFire,true,f.actor.kind+' actual readiness: '+f.d.orbitTargetStatus().text);
+}
 function modelFor(f){const m=WarModels.create(f.target.kind,'chn');m.scale.setScalar(m.userData.scale);m.position.set(f.target.x,f.g.entityAltitude(f.target),f.target.y);m.updateMatrixWorld(true);return m;}
 test('a press and release between ticks fires one non-operator shot and applies damage',()=>{
  for(const kind of ['tank','infantry','destroyer','orbital']){const f=arena(kind);f.target.x=f.actor.x+100;const p=new T.Vector3(f.target.x,5,f.target.y);f.g.setDirectInput(input(f,p,true));f.g.setDirectInput(input(f,p,false));f.g.step(.05);const shots=f.g.effects.filter(x=>x.type==='shot'&&x.sourceId===f.actor.id);assert.equal(shots.length,1,kind+' lost a short click');finish(f);assert.ok(f.target.hp<f.target.maxHp,kind);}
@@ -30,13 +36,13 @@ test('pitched and rolled real aircraft hull surfaces pass the same firing envelo
 });
 function controls(kind='tank'){
  const f=arena(kind),nodes=new Map(),listeners={},el=()=>({hidden:false,style:{},classList:{toggle(){},add(){},remove(){}},querySelector(s){if(!nodes.has(s))nodes.set(s,el());return nodes.get(s);}}),document={hidden:false,pointerLockElement:null,createElement:el,body:{append(){}},addEventListener(n,fn){(listeners[n]??=[]).push(fn);}};
- const c={THREE:T,WarData,WarNavigationFootprints,WarOperatorWeapons,WarTrees,document,innerWidth:1600,innerHeight:1000,console,addEventListener(){}};c.globalThis=c;vm.createContext(c);vm.runInContext(fs.readFileSync(require('node:path').join(__dirname,'../src/direct-control.js'),'utf8'),c);
+ const c={THREE:T,WarData,WarNavigationFootprints,WarCombatReadiness,WarCombatDamage,WarTransportOperations,WarCombatAudio,WarOperatorWeapons,WarTrees,document,innerWidth:1600,innerHeight:1000,console,addEventListener(){}};c.globalThis=c;vm.createContext(c);vm.runInContext(fs.readFileSync(require('node:path').join(__dirname,'../src/direct-control.js'),'utf8'),c);
  f.g.teams[1].faction='chn';f.target.x=f.actor.x+100;const r={canvas:{},width:1600,height:1000,camera:{},objects:new Map(),world:new T.Group(),entityHeight:e=>f.g.entityAltitude(e)},d=new c.WarDirectControl(r,{game:()=>f.g,paused:()=>false,canEnter:()=>true,unitName:k=>k,sound:()=>false,toast(){}});d.active=true;d.game=f.g;d.entityId=f.actor.id;d.yaw=0;const height=f.g.entityAltitude(f.actor)+(WarData.U[kind].air?7:kind==='operator'?9.5:WarData.U[kind].naval?21:19);d.pitch=Math.atan2(8-height,100);r.objects.set(f.target.id,modelFor(f));d.updateCamera();document.pointerLockElement=r.canvas;
  const event=(more={})=>({target:{tagName:'DIV',closest(){return null;}},preventDefault(){},stopImmediatePropagation(){},...more});return{...f,d,r,document,pointer:(type,button)=>listeners[type].forEach(fn=>fn(event({button}))),wheel:dy=>d.wheel(event({deltaY:dy})),key:code=>d.keyDown(event({code,repeat:false}))};
 }
 test('all optical magnifications accept real left-click while right button is held; release restores V latch',()=>{
  for(const kind of ['tank','operator','orbital']){const f=controls(kind),zooms=kind==='orbital'?[4,8,16,32,64]:[1.5,2,4,8,16];f.target.hp=f.target.maxHp=10000;const slot=kind==='operator'?f.g.operatorState(f.actor).activeSlot:null;f.pointer('mousedown',2);
- for(const z of zooms){assert.equal(f.d.scopeState().zoom,z);const hp=f.target.hp;f.actor.cool=0;f.pointer('mousedown',0);f.pointer('mouseup',0);f.g.step(.05);finish(f);assert.ok(f.target.hp<hp,kind+' '+z+'x real shot');assert.ok(f.d.opticalActive());assert.ok(Math.abs(Math.tan(f.d.camera.fov*Math.PI/360)*z-Math.tan(70*Math.PI/360))<1e-10);f.wheel(-1);}
+ for(const z of zooms){assert.equal(f.d.scopeState().zoom,z);readyControls(f);const hp=f.target.hp;f.pointer('mousedown',0);f.pointer('mouseup',0);f.g.step(.05);finish(f);assert.ok(f.target.hp<hp,kind+' '+z+'x real shot');assert.ok(f.d.opticalActive());assert.ok(Math.abs(Math.tan(f.d.camera.fov*Math.PI/360)*z-Math.tan(70*Math.PI/360))<1e-10);f.wheel(-1);}
  if(slot!==null)assert.equal(f.g.operatorState(f.actor).activeSlot,slot,'zoom wheel must not switch operator weapon');f.pointer('mouseup',2);assert.equal(f.d.opticalActive(),false);f.key('KeyV');f.pointer('mousedown',2);f.pointer('mouseup',2);assert.equal(f.d.opticalActive(),true,'V-latched state survives RMB release');
  }
 });

@@ -366,6 +366,8 @@
   ];
   MAPS.push({id:'archipelago',name:'群岛海战',en:'ISLAND THEATRE',desc:'群岛海峡 · 岛内陆战 · 深海舰队与空天协同',seed:91827,palette:['#57796d','#6c8c76','#466b61']});
   const BUFFS = {
+    ammo: { name: "无限备用弹药", desc: "仅玩家备用弹药不限；仍消耗弹仓并完成换弹，关闭后恢复原库存" },
+    reload: { name: "快速装填", desc: "仅玩家换弹与武器装填用时 ×0.25，保留准备和装填动作" },
     unlimited: { name: "无限资源", desc: "玩家建造、训练和能力不受资金限制且不扣余额；关闭恢复正常消费" },
     wealth: { name: "充裕资金", desc: "初始资金 25,000" },
     income: { name: "后勤补给", desc: "玩家收入 ×2" },

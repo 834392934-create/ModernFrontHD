@@ -1,7 +1,7 @@
 /* Integration fixtures create entities, but possession, movement, ADS, fire and exit
  * use browser input. Ray tests use actual model meshes and an explicit cover mesh. */
 const {chromium,_electron}=require(process.env.PLAYWRIGHT_MODULE||'C:/Users/Administrator/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
-const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
 const desktop=process.argv.includes('--desktop'),suffix=desktop?'desktop':'browser',focusOnly=process.argv.includes('--focus-only');
 const report=focusOnly?JSON.parse(fs.readFileSync('docs/first-person-'+suffix+'-report.json','utf8')):{recordedAt:new Date().toISOString(),environment:desktop?'Packaged Electron':'Chromium',checks:[],possession:[],screenshots:[],errors:[],scope:'Deterministic small combat fixtures; real browser input, renderer, model raycasts and simulation. No claim of sustained combat performance or photorealism.'};
 fs.mkdirSync('screenshots',{recursive:true});fs.mkdirSync('docs',{recursive:true});
@@ -36,7 +36,7 @@ async function lock(){
  // Chromium briefly rejects a fresh lock after release. A new real click is required.
  for(let attempt=0;attempt<3;attempt++){
   if(desktop)await host.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].focus());
-  await p.waitForTimeout(1300);const viewport=await p.evaluate(()=>({x:innerWidth*.5,y:innerHeight*.46}));await p.mouse.click(viewport.x,viewport.y);
+  await p.waitForTimeout(1300);if(await p.evaluate(()=>document.pointerLockElement===ModernFront.renderer.canvas))return;const viewport=await p.evaluate(()=>({x:innerWidth*.5,y:innerHeight*.46}));await p.mouse.click(viewport.x,viewport.y);
   try{await p.waitForFunction(()=>document.pointerLockElement===ModernFront.renderer.canvas,{},{timeout:1200});return;}catch{if(attempt===2)throw new Error('Real canvas click failed to acquire pointer lock after three retries');}
  }
 }
@@ -74,7 +74,13 @@ async function nativeFocusCheck(){
 }
 (async()=>{
  try{
+  if(desktop){
+   const {executable,appRoot}=require('./desktop-path.cjs');report.executable=executable;report.sourceHashes={};
+   const scripts=[...fs.readFileSync('index.html','utf8').matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]);
+   for(const f of ['index.html','style.css','desktop/main.cjs',...scripts]){const source=fs.readFileSync(f);assert.ok(source.equals(fs.readFileSync(path.join(appRoot,f))),'Packaged source mismatch '+f);report.sourceHashes[f]=crypto.createHash('sha256').update(source).digest('hex');}
+  }
   host=desktop?await _electron.launch({executablePath:require('./desktop-path.cjs').executable,args:[],timeout:45000}):await chromium.launch({headless:true,channel:'chromium'});
+  if(desktop){report.appVersion=await host.evaluate(({app})=>app.getVersion());assert.equal(report.appVersion,require('../package.json').version);}
   p=desktop?await host.firstWindow():await host.newPage({viewport:{width:1600,height:1000}});
   p.on('pageerror',e=>report.errors.push(e.message));p.on('console',m=>{if(m.type()==='error')report.errors.push(m.text());});
   if(!desktop)await p.goto(process.env.GAME_URL||'http://127.0.0.1:8765');
@@ -130,7 +136,12 @@ async function nativeFocusCheck(){
   report.cover=[];
   for(const [kind,faction,expectedOrigin]of [['tank_destroyer','chn','model-muzzle'],['tank','chn','model-muzzle'],['tank','imp','model-muzzle']]){
   state=await fixture(kind,true,faction);await enter(state,false,true);await paused(false);await p.waitForTimeout(150);
-  await aimAt(state.targetId);await p.evaluate(()=>{ModernFront.game.effects=[];ModernFront.game.directFeedback=null;ModernFront.game.get(ModernFront.direct.entityId).cool=0;});
+  // The actual weapon servo now moves the muzzle. Construct this small cover only
+  // after ordinary simulation has consumed input edges and finished aiming.
+  await p.waitForFunction(()=>{const g=ModernFront.game,d=ModernFront.direct;return !d.leftFire&&!g.directControl.firePending&&!g.effects.some(f=>f.type==='shot'&&f.sourceId===d.entityId);},null,{timeout:8000});
+  for(let settle=0;settle<3;settle++){await aimAt(state.targetId);await p.waitForTimeout(100);}
+  await p.waitForFunction(()=>ModernFront.direct.orbitTargetStatus().canFire,null,{timeout:8000});
+  await p.evaluate(()=>{ModernFront.game.directFeedback=null;window.__fpsCoverEmissions=[];const g=ModernFront.game,emit=window.__fpsCoverOriginalEmit||g.emitShot;window.__fpsCoverOriginalEmit=emit;g.emitShot=function(...args){if(args[0]?.id===ModernFront.direct.entityId)window.__fpsCoverEmissions.push({time:g.time,input:structuredClone(g.directControl.input),aimBlocked:!!ModernFront.direct.aim().occluded});return emit.apply(this,args);};});
   const proof=await p.evaluate(id=>{
    const d=ModernFront.direct,r=ModernFront.renderer,initial=d.aim(),origin=initial.origin,target=initial.point;
    const dir=d.camera.getWorldDirection(new THREE.Vector3()),cameraHit=d.cast(d.eye,dir,2200);if(cameraHit?.entity?.id!==id)throw new Error('Camera must see target before cover fixture');
@@ -143,12 +154,12 @@ async function nativeFocusCheck(){
    }
    if(!cover)throw new Error('Could not construct separated camera/muzzle cover rays');window.__fpsTestCover=cover;d.aimResult=d.aim();d.lastAimTime=0;return proof;
   },state.targetId);
-  assert.equal(proof.originMode,expectedOrigin);if(faction==='imp')assert.equal(proof.approximate,true,'unverified imperial gun uses an explicitly approximate station');const coveredHP=await p.evaluate(id=>ModernFront.game.get(id).hp,state.targetId);await p.mouse.down();await p.waitForTimeout(200);await p.mouse.up();await p.waitForTimeout(500);assert.equal(await p.evaluate(id=>ModernFront.game.get(id).hp,state.targetId),coveredHP);assert.equal(await p.evaluate(()=>ModernFront.game.directFeedback),null);await shot('muzzle-cover-'+kind+'-'+faction);report.cover.push({kind,faction,...proof,damage:0});
+  assert.equal(proof.originMode,expectedOrigin);if(faction==='imp')assert.equal(proof.approximate,true,'unverified imperial gun uses an explicitly approximate station');const coveredHP=await p.evaluate(id=>ModernFront.game.get(id).hp,state.targetId);await p.mouse.down();await p.waitForTimeout(200);await p.mouse.up();await p.waitForTimeout(500);assert.equal(await p.evaluate(id=>ModernFront.game.get(id).hp,state.targetId),coveredHP);assert.equal(await p.evaluate(()=>ModernFront.game.directFeedback),null);proof.emissions=await p.evaluate(()=>window.__fpsCoverEmissions);assert.deepEqual(proof.emissions,[],'Blocked muzzle must not reach emitShot');await shot('muzzle-cover-'+kind+'-'+faction);report.cover.push({kind,faction,...proof,damage:0});
   await p.evaluate(()=>{const m=window.__fpsTestCover;m.parent.remove(m);m.geometry.dispose();m.material.dispose();delete window.__fpsTestCover;});
   }
   report.checks.push('Camera sees target while the selected weapon station hits cover: missile vehicle, Chinese tank and explicitly approximate IMP station all deal zero damage and no hit confirmation');
   await exit();if(desktop)await nativeFocusCheck();report.renderEnvironment=await p.evaluate(()=>{const r=ModernFront.renderer,gl=r.gl.getContext(),ext=gl.getExtension('WEBGL_debug_renderer_info');return{viewport:[innerWidth,innerHeight],dpr:r.dpr,gpu:ext?gl.getParameter(ext.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER)};});assert.deepEqual(report.errors,[]);report.passed=true;
- }catch(error){report.passed=false;report.failure={message:error.message,stack:error.stack};if(p){try{report.failure.state=await p.evaluate(()=>({paused:ModernFront?.paused,selected:ModernFront?.selection,direct:ModernFront?.direct?.active,locked:!!document.pointerLockElement,entity:ModernFront?.game?.directControl}));await shot('failure');}catch{}}throw error;
+ }catch(error){report.passed=false;report.failure={message:error.message,stack:error.stack};if(p){try{report.coverEmissions=await p.evaluate(()=>window.__fpsCoverEmissions);report.failure.state=await p.evaluate(()=>({paused:ModernFront?.paused,selected:ModernFront?.selection,direct:ModernFront?.direct?.active,locked:!!document.pointerLockElement,entity:ModernFront?.game?.directControl}));await shot('failure');}catch{}}throw error;
  }finally{
   fs.writeFileSync('docs/first-person-'+suffix+'-report.json',JSON.stringify(report,null,2));console.log(JSON.stringify({passed:report.passed,environment:report.environment,checks:report.checks,possession:report.possession.length,combat:report.combat,cover:report.cover,errors:report.errors,failure:report.failure}));await host?.close();
  }

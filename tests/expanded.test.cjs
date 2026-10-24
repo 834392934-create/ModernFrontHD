@@ -1,7 +1,8 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 require('../src/data.js');require('../src/roster.js');require('../src/equipment.js');require('../src/sim.js');require('../src/ranges.js');
 const {Game}=WarSim,{U,B,ROSTER}=WarData;
-function arena(){const g=new Game({faction:'chn',enemies:1,buffs:['vision'],playerOnlyTech:false,aiSpaceWeapons:true});g.entities=[];g.spawn(0,'hq',300,300);g.spawn(1,'hq',2700,1800);g.teams.forEach(t=>t.aiClock=999999);return g;}
+const {advanceUntil,emptyVegetation}=require('./combat-preparation.cjs');
+function arena(){const g=new Game({faction:'chn',enemies:1,buffs:['vision'],playerOnlyTech:false,aiSpaceWeapons:true});g.entities=[];g.spawn(0,'hq',300,300);g.spawn(1,'hq',2700,1800);g.teams.forEach(t=>t.aiClock=999999);emptyVegetation(g);g.map.blocked.fill(0);g.map.navalBlocked.fill(0);return g;}
 function step(g,s){for(let i=0;i<Math.ceil(s*20);i++)g.step(.05);}
 const targets={underwater:'submarine',ground:'tank',naval:'destroyer',air:'fighter',space:'satellite',structure:'hq'};
 test('four groups have 21/19/18/18 roles, with harvester separately counted',()=>{
@@ -12,14 +13,14 @@ test('four groups have 21/19/18/18 roles, with harvester separately counted',()=
 test('every added armed role really hits only its declared target domains (246 armed firing scenarios)',()=>{
  for(const k of ROSTER.added.filter(k=>U[k].damage))for(const [domain,kind] of Object.entries(targets)){
   const g=arena(),d=U[k],distance=Math.max(d.minRange||0,0)+Math.min(70,(d.range-(d.minRange||0))/2),a=g.spawn(0,k,1000,750),b=g.spawn(1,kind,1000+distance,750),hp=b.hp;
-  b.disabled=999;g.command([a.id],a.x,a.y,true,b.id);step(g,distance/700+1);
+  b.disabled=999;g.command([a.id],a.x,a.y,true,b.id);advanceUntil(g,()=>b.hp<hp,d.air&&!d.space?45:12);
   assert.equal(b.hp<hp,d.targetDomains.includes(domain),k+' -> '+domain);
  }
 });
 test('restricted splash cannot bypass domain rules',()=>{
  for(const [kind,target,protectedKind] of [['orbital_bombardment','tank','hq'],['shore_bombardment','hq','destroyer'],['heavy_bomber','hq','fighter']]){
   const g=arena(),a=g.spawn(0,kind,1000,750),b=g.spawn(1,target,1400,750),other=g.spawn(1,protectedKind,1410,750),hp=other.hp; b.disabled=other.disabled=999;
-  g.command([a.id],a.x,a.y,true,b.id);step(g,2);assert.ok(b.hp<b.maxHp,kind);assert.equal(other.hp,hp,kind+' protects '+protectedKind);
+  g.command([a.id],a.x,a.y,true,b.id);advanceUntil(g,()=>b.hp<b.maxHp,20);assert.ok(b.hp<b.maxHp,kind);assert.equal(other.hp,hp,kind+' protects '+protectedKind);
  }
 });
 test('role damage bonuses apply by target family without inflating structures',()=>{
@@ -90,7 +91,7 @@ test('AI fleet attacks eligible ships and support follows friendly ships instead
  g.teams[1].money=0;g.teams[1].aiClock=0;g.ai(g.teams[1],.05);
  assert.equal(missile.order?.target,enemy.id);assert.ok(repair.order);assert.notEqual(repair.order.target,enemy.id);assert.equal(repair.order.attack,false);
  const idx=Math.floor(missile.order.y/48)*WarData.COLS+Math.floor(missile.order.x/48);assert.equal(g.map.navalBlocked[idx],0);
- step(g,3);assert.ok(enemy.hp<enemy.maxHp);assert.ok(repair.x<2600);
+ assert.ok(advanceUntil(g,()=>enemy.hp<enemy.maxHp,10));assert.ok(repair.x<2600);
 });
 test('AI coast approach stays on water on every map',()=>{
  for(const map of ['river','desert','industry']){const g=new Game({map,enemies:1}),ship=g.entities.find(e=>e.team===1&&U[e.kind]?.naval),hq=g.entities.find(e=>e.team===0&&e.kind==='hq'),p=g.navalApproach(ship,hq);assert.ok(p);assert.equal(g.map.navalBlocked[Math.floor(p.y/48)*WarData.COLS+Math.floor(p.x/48)],0);}

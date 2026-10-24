@@ -35,7 +35,7 @@
   tank:[gun(),mg()],
   ifv:[auto(),atgm(330,76,3.8),mg()],
   arty:[station('howitzer','榴弹炮高爆弹','howitzer',G,440,105,4.8,30000,{minRange:100,splash:42})],
-  rocket:[station('rocket_salvo','多管火箭覆盖齐射','rocket',G,510,136,6.4,70000,{minRange:125,splash:65})],
+  rocket:[station('rocket_salvo','多管火箭覆盖齐射','rocket',G,510,136,6.4,70000,{minRange:125,splash:65}),station('guided_rocket_salvo','制导火箭集中齐射（类别参照）','rocket',G,510,136,6.4,70000,{minRange:125,splash:32,ammoType:'guided',rangeStatus:'inferred'})],
   aa:[aa(285,46,1.2)],
   asat:[orbitMissile('asat','反轨拦截弹（游戏设定）',S,1400,160,3.5)],
   harvester:[],
@@ -112,6 +112,9 @@
   if(kind==='tank'){
    specs[0].name=['rus','chn','ind'].includes(faction)?'125 mm 主炮多用途弹':faction==='imp'?'帝国主炮（架空）':'120 mm 主炮多用途弹';
    if(faction==='ind')specs.push({...atgm(370,100,3.5),id:'gun_launched_missile',name:'125 mm 炮射导弹',rangeSourceKey:'t90s_guided'});
+   specs.push({...gun(),id:'armor_piercing',name:'主炮穿甲弹（游戏弹种）',ammoType:'ap',splash:0,damage:82,targetBonuses:{tank:1.25,ifv:1.15,infantry:.3}});
+   specs.push({...gun(),id:'high_explosive',name:'主炮高爆弹（游戏弹种）',ammoType:'he',splash:29,damage:61,targetBonuses:{tank:.5,infantry:1.5}});
+   if(faction==='usa')specs.push(station('roof_rws','CROWS 车顶机枪（家族参照）','machinegun',['ground','air'],185,10,.19,1200,{mountId:'roof',ammoType:'ball',sourceUrl:'https://www.peosoldier.army.mil/Equipment/Equipment-Portfolio/Project-Manager-Soldier-Lethality-Portfolio/M153-A1-A2-CROWS/',targetBonuses:{tank:.03,ifv:.15},equipmentBoundary:'M1A2 integration is public; exact vehicle variant, mount dimensions and traverse limits remain game approximations.'}));
   }
   if(kind==='ifv'){
    if(faction==='usa'){specs[0]={...specs[0],name:'M242 25 mm 机炮',rangeSourceKey:'bradley_m242',rangeStatus:'inferred'};specs[1]={...specs[1],name:'TOW 反装甲导弹（家族参照）',rangeSourceKey:'bradley_tow',rangeStatus:'inferred',meters:3750};}
@@ -127,6 +130,7 @@
    else specs=[{...ciws(285,46,1.2),name:'九头蛇防空炮（架空）',setting:true}];
   }
   if(catalogKey[kind]?.[faction])specs[0]={...specs[0],rangeSourceKey:catalogKey[kind][faction],rangeStatus:kind==='arty'&&faction==='ind'||kind==='rocket'&&faction==='ind'?'inferred':undefined};
+  if(kind==='rocket'&&specs[1])specs[1]={...specs[1],rangeSourceKey:specs[0].rangeSourceKey,minMeters:root.WarWeaponRanges?.catalog?.[specs[0].rangeSourceKey]?.minM??specs[0].minMeters,rangeStatus:'inferred'};
   if(kind==='destroyer'){
    // Missing loadout evidence stays generic: TLAM land-attack is never the antiship slot.
    if(faction==='usa'){specs[1]={...specs[1],name:'Tomahawk 对陆巡航导弹',rangeSourceKey:'tomahawk_iv_v'};specs[2].name='Standard / ESSM 类防空导弹';specs[3]={...specs[3],name:'Mk45 127 mm 舰炮',rangeSourceKey:'mk45_conventional',rangeStatus:'inferred',meters:24076};}
@@ -152,12 +156,28 @@
    note:setting?'原创/概念武器的游戏设定，不代表现实性能。':'武器类别或家族参照；具体装弹和改型未逐一证实。伤害、装填、散布为游戏设定。'});
  }
  function supported(value){const kind=typeof value==='string'?value:value?.kind;return Object.prototype.hasOwnProperty.call(config,kind);}
+ // These action limits are intentionally game-scale, never certified weapon data.
+ // Mount identity is shared by coax/main ammunition, independently from magazines.
+ function stationMechanics(spec,kind,faction){
+  const u=root.WarData?.U?.[kind]||{},family=spec.family,air=!!u.air&&!u.space,rotor=air&&(u.modelKind||kind)==='heli',artillery=['howitzer','mortar'].includes(family)||family==='rocket'&&!air,rapid=['machinegun','autocannon'].includes(family),guided=family==='missile',store=air&&['missile','rocket','bomb','torpedo'].includes(family),vertical=!air&&(guided&&(u.naval&&!u.underwater||u.space));
+  // Dedicated fictional air-to-orbit stations deploy independently of the nose.
+  // Ordinary forward guns and air-to-air/ground seeker release arcs stay limited.
+  const spaceLauncher=air&&guided&&spec.targetDomains.length===1&&spec.targetDomains[0]==='space';
+  const mountId=spec.mountId||(spaceLauncher?'space_launcher':spec.id==='coax_mg'||['ifv','aa'].includes(kind)||kind==='tank'&&guided?'main':family==='airWing'?'flightDeck':family==='torpedo'?'torpedo':vertical||family==='rocket'&&!air?'launcher':rapid&&u.naval?'ciws':guided&&!air?'launcher':air&&!rotor?'hull':rotor?(rapid?'chin':'pylon'):'main');
+  const gun=mountId==='main'||mountId==='chin',mode=u.space||kind==='asat'||vertical||spaceLauncher?'vertical':air&&!rotor||mountId==='pylon'||mountId==='torpedo'?'hull':'turret';
+  const magazine=family==='airWing'?1:kind==='orbital_missile_barge'?8:rapid?120:family==='rocket'?(air?14:({usa:6,rus:12,chn:8,ind:12,kor:12,imp:6}[faction]||12)):family==='bomb'?4:guided?(air?(kind==='interceptor'?2:4):u.naval?12:4):family==='torpedo'?4:6;
+  const mount={mode,yawRate:rapid?2.7:1.3,pitchRate:1.2,minPitch:artillery?.15:mountId==='chin'?-1.2:gun?-.2:-.3,maxPitch:artillery?1.30:mountId==='chin'?.3:rapid?.95:.65,arc:mode==='hull'?(rotor?.55:air?.22:1.3):mountId==='chin'?1.6:Math.PI,tolerance:rapid?.16:.1,pitchTolerance:.2,boundary:'Game motion and exclusion limits; no exact real-platform firing-arc claim.'};
+  if(u.naval&&family==='navalGun')mount.arc=2.15; // Forward mount cannot traverse through the aft bridge.
+  if(air&&guided&&mode==='hull'){mount.minPitch=-.75;mount.maxPitch=.75;mount.pitchTolerance=.75;mount.boundary='Gameplay seeker release cone; continuous missile guidance still uses the actual target. No certified real off-boresight limit.';}
+  return{mountId,mount,ammoType:spec.ammoType||(family==='torpedo'?'torpedo':family==='bomb'?'guided_bomb':guided?'guided':family==='rocket'?'unguided':artillery?'he':rapid?'ball':'multipurpose'),burst:{count:rapid?3:1,interval:rapid?.08:spec.reload},payloadSlots:store?magazine:0,
+   mechanics:{magazine,reserve:family==='airWing'||air?0:magazine*3,reloadSeconds:rapid?3.5:guided?5:spec.reload*1.8,fireInterval:spec.reload,setupSeconds:artillery?1.5:0,packSeconds:artillery?1.2:0,moveFactor:artillery?0:1,supplyCost:Math.max(10,Math.round(spec.damage*1.5)),intercept:spec.id==='ciws',interceptRange:spec.id==='ciws'?spec.range:0,interceptReload:spec.id==='ciws'?.25:0,dispersion:spec.ammoType==='guided'?.16:family==='rocket'?1:guided?.12:0},parameterBoundary:'Magazine capacity, burst, reload, aiming rate and dispersion are gameplay values.'};
+ }
  function list(value,faction){
   const kind=typeof value==='string'?value:value?.kind;faction=faction||(typeof value==='object'&&value?.faction)||'chn';
   if(!supported(kind))return empty;const key=faction+':'+kind;if(cache.has(key))return cache.get(key);
   const specs=factionSpecs(kind,faction),result=freeze(specs.map((spec,index)=>{
    const rangeReference=evidence(spec,kind,faction),rocket=['missile','rocket'].includes(spec.family),beam=spec.family==='beam';
-   return {...spec,id:kind+':'+spec.id,stationId:spec.id,kind,faction,primary:index===0,
+   return {...spec,...stationMechanics(spec,kind,faction),id:kind+':'+spec.id,stationId:spec.id,kind,faction,primary:index===0,
     rocket,beam,action:spec.action||'fire',weaponFx:beam?'orbital-beam':spec.family==='pulse'?'interceptor-burst':spec.family,
     muzzleClass:spec.family==='missile'?'launcher':spec.family==='rocket'?'rocket':spec.family==='torpedo'?'torpedo':spec.family==='bomb'?'bombBay':spec.family==='airWing'?'flightDeck':'gun',
     rangeSourceKey:spec.rangeSourceKey||null,rangeReference,status:rangeReference.status,parameterBasis:'伤害/装填/平衡射程为游戏参数；米制射程依单项证据限定。'};
@@ -189,7 +209,7 @@
   if(!profile)return {...base,damage:0,targetDomains:[],rocket:false,beam:false,splash:0,minRange:0,weaponId:null,weaponFamily:null,weaponAction:null};
   return {...base,damage:profile.damage,range:profile.range,minRange:profile.minRange,reload:profile.reload,
    targetDomains:profile.targetDomains,rocket:profile.rocket,beam:profile.beam,splash:profile.splash,
-   weaponId:profile.id,weaponFamily:profile.family,weaponFx:profile.weaponFx,weaponAction:profile.action,
+   weaponId:profile.id,weaponFamily:profile.family,weaponFx:profile.weaponFx,weaponAction:profile.action,mountId:profile.mountId,ammoType:profile.ammoType,burst:profile.burst,payloadSlots:profile.payloadSlots,mechanics:profile.mechanics,mount:profile.mount,
    rangeSourceKey:profile.rangeSourceKey,rangeReference:profile.rangeReference,vehicleWeapon:profile,
    personnelOnly:!!profile.personnelOnly,antiAir:profile.targetDomains.includes('air'),antiSpace:profile.targetDomains.includes('space'),
    onlyAir:profile.targetDomains.length>0&&profile.targetDomains.every(d=>d==='air'||d==='space'),

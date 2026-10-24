@@ -14,7 +14,8 @@ function enemy(g,kind,x=1900,y=1400){const e=g.spawn(1,kind,x,y);e.disabled=1e9;
 function advance(g,seconds){for(let i=0;i<Math.ceil(seconds/.05);i++)g.step(.05);}
 function slot(g,e,id){const w=g.vehicleWeapons(e).find(w=>w.stationId===id);assert.ok(w,e.kind+' missing '+id);return w;}
 function select(g,e,id){const w=slot(g,e,id);assert.equal(g.setVehicleWeapon(e.id,w.id),true);return w;}
-function shots(g,e){return g.effects.filter(f=>f.type==='shot'&&f.sourceId===e.id);}
+function shots(g,e){return g.effects.filter(f=>['shot','discharge'].includes(f.type)&&f.sourceId===e.id);}
+function waitShot(g,e){for(let i=0;i<160&&!shots(g,e).length;i++)g.step(.05);return shots(g,e)[0];}
 function fireInput(g,e,target){assert.equal(g.beginDirectControl(e.id),true);g.setDirectInput({yaw:Math.atan2(target.y-e.y,target.x-e.x),fire:true,targetId:target.id,aimX:target.x,aimY:target.y,aimHeight:g.entityAltitude(target)});g.step(.05);}
 
 test('all 69 vehicle roles and six factions resolve through Game; unarmed roles never acquire guns',()=>{
@@ -33,7 +34,7 @@ for(const [kind,stationId,family]of [['destroyer','anti_ship','missile'],['tank'
  test('AI destroyer selects '+stationId+' against '+kind+' and produces a matching actual projectile',()=>{
   const {g,e}=arena(),target=enemy(g,kind,1650,1400);if(kind==='fighter')target.altitude=120;
   assert.equal(g.setVehicleWeapon(e.id,'auto'),true);e.target=target.id;e.order={x:target.x,y:target.y,attack:true,target:target.id};
-  g.step(.05);const shot=shots(g,e)[0];assert.ok(shot,'AI must fire');
+  const shot=waitShot(g,e);assert.ok(shot,'AI must finish traversing and fire');
   assert.equal(shot.weaponId,slot(g,e,stationId).id);assert.equal(shot.weaponFamily,family);
   assert.equal(shot.weaponMuzzleClass,family==='torpedo'?'torpedo':'launcher');assert.equal(shot.rocket,family==='missile');
   assert.ok(shot.weaponDomains.includes(g.targetDomain(target.kind)));assert.ok(shot.weaponDefinition&&typeof shot.weaponDefinition==='object');assert.ok(Number.isFinite(shot.baseDamage)&&shot.baseDamage>0);
@@ -51,10 +52,10 @@ test('each destroyer station supplies its own published range and manual HUD use
 });
 
 test('destroyer short-range self defense chooses a close weapon inside missile minimum range',()=>{
- const {g,e}=arena(),target=enemy(g,'fighter',e.x+15,e.y);target.altitude=25;
+ const {g,e}=arena(),target=enemy(g,'fighter',e.x+22,e.y);target.altitude=20;
  const sam=slot(g,e,'sam');assert.ok(g.engagementDistance(e,target)<sam.minRange);
  const chosen=g.vehicleWeapon(e,target);assert.ok(chosen);assert.equal(chosen.family,'autocannon');
- e.target=target.id;g.step(.05);assert.equal(shots(g,e)[0]?.weaponFamily,'autocannon');
+ e.target=target.id;assert.equal(waitShot(g,e)?.weaponFamily,'autocannon');
 });
 
 test('tank switches between main gun and anti-personnel coax without permitting coax anti-armor fire',()=>{

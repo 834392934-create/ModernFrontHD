@@ -5,7 +5,7 @@
  const labels={prepare:'起飞准备',lineup:'滑行进入跑道',takeoff:'加速滑跑',climb:'离地爬升',cruise:'巡航',attack:'攻击通场',egress:'脱离转弯',loiter:'空中待命',return:'返航',approach:'对正进近',landing:'减速着陆',taxi:'滑行停机',service:'停机维修',manual:'手动驾驶'};
  const groundPhases=new Set(['prepare','lineup','takeoff','landing','taxi','service']);
  const supported=e=>!!U[e.kind]?.air&&!U[e.kind].space;
- const fixed=e=>supported(e)&&(U[e.kind].modelKind||e.kind)!=='heli';
+ const fixed=e=>supported(e)&&!U[e.kind].vtol&&(U[e.kind].modelKind||e.kind)!=='heli';
  const point=(r,s)=>({x:r.x+Math.cos(r.angle)*s,y:r.y+Math.sin(r.angle)*s});
  function groundHeight(g,e){return Math.max(12,-(root.WarNavigationFootprints.bounds[e.kind+'_'+g.teams[e.team].faction]?.[1]||0)+3);}
  function runwayContains(r,p,margin=0){const dx=p.x-r.x,dy=p.y-r.y,c=Math.cos(r.angle),s=Math.sin(r.angle),along=dx*c+dy*s;return along>=-margin&&along<=r.length+margin&&Math.abs(-dx*s+dy*c)<=r.width/2+margin;}
@@ -47,7 +47,7 @@
   return floor;
  }
  function move(g,e,goal,altitude,speed,dt,turnRate=.85){
-  const m=root.WarVehicleMotion,before={x:e.x,y:e.y,angle:e.angle},desired=Math.atan2(goal.y-e.y,goal.x-e.x),delta=m.angleDelta(desired,e.angle),turn=clamp(delta,-turnRate*dt,turnRate*dt);
+  const m=root.WarVehicleMotion,before={x:e.x,y:e.y,angle:e.angle},desired=Math.atan2(goal.y-e.y,goal.x-e.x),delta=m.angleDelta(desired,e.angle),limitedRate=turnLimit(g,e,e.flightSpeed||speed,turnRate),turn=clamp(delta,-limitedRate*dt,limitedRate*dt);
   e.angle+=turn;e.flightSpeed+=(clamp(speed,0,g.effectiveSpeed(e)*1.1)-e.flightSpeed)*Math.min(1,dt*1.3);
   const dx=Math.cos(e.angle)*e.flightSpeed*dt,dy=Math.sin(e.angle)*e.flightSpeed*dt,r=g.navigationRadius(e)+4;
   const nx=clamp(e.x+dx,r,W-r),ny=clamp(e.y+dy,r,H-r),floor=aheadFloor(g,e,nx,ny,Math.max(180,e.flightSpeed*2));
@@ -57,6 +57,8 @@
   m.bankAircraft(e,turn/Math.max(.001,dt),dt,true);
   m.record(e,before,dt,speed/g.effectiveSpeed(e),turn/Math.max(.001,dt),g.tick);e.flightSpeed=Math.hypot(dx,dy)/dt;
  }
+ function configuration(e){const d=U[e.kind]||{},type=d.flightModel?.type||(d.vtol?'vtol':(d.modelKind||e.kind)==='heli'?'rotor':'fixed');return{type,uncrewed:!!d.uncrewed||e.kind.includes('drone'),hover:type==='rotor'||type==='vtol',turnLoad:d.flightModel?.turnLoad||.75,basis:'gameplay flight configuration'};}
+ function turnLimit(g,e,speed,base=.85){if(!fixed(e))return base;const normal=Math.max(1,g.effectiveSpeed(e)),ratio=Math.max(1,speed/normal+.2);return Math.min(base,base/ratio);}
  function loiterGoal(g,e,anchor){const radius=Math.max(130,g.effectiveSpeed(e)*1.15),a=Math.atan2(e.y-anchor.y,e.x-anchor.x)+.65;return{x:clamp(anchor.x+Math.cos(a)*radius,240,W-240),y:clamp(anchor.y+Math.sin(a)*radius,240,H-240)};}
  function runwayStep(g,e,field,dt){
   const f=e.flight,r=field?.runway;if(!r){phase(f,'climb');return false;}
@@ -83,8 +85,10 @@
   if(f.phase==='prepare'){root.WarVehicleMotion.stop(e);if(f.elapsed>=1.5&&base.disabled<=g.time){if(fixed(e)){if(runwayClear(g,base,e))phase(f,'takeoff');}else phase(f,'climb');}return true;}
   if(f.phase==='service'){
    root.WarVehicleMotion.stop(e);if(base.disabled<=g.time)e.hp=Math.min(e.maxHp,e.hp+e.maxHp*.08*dt*(g.power(e.team)<0?.4:1));
+   const supplied=!root.WarCombatReadiness||root.WarCombatReadiness.service(g,e,base,dt);
+   root.WarCombatDamage?.repair(g,e,base,dt);
    const manual=g.directControl?.id===e.id&&g.directControl.input.throttle>0;
-   if((e.order||f.resume||manual)&&f.elapsed>=5&&e.hp>=e.maxHp&&!occupied(g,base,e)&&base.disabled<=g.time){if(!e.order&&f.resume){e.order=f.resume;f.resume=null;}f.returning=false;e.retreating=false;f.airtime=0;phase(f,fixed(e)?'lineup':'prepare');}
+   if((e.order||f.resume||manual)&&supplied&&f.elapsed>=5&&e.hp>=e.maxHp&&!occupied(g,base,e)&&base.disabled<=g.time){if(!e.order&&f.resume){e.order=f.resume;f.resume=null;}f.returning=false;e.retreating=false;f.airtime=0;phase(f,fixed(e)?'lineup':'prepare');}
    return true;
   }
   return runwayStep(g,e,base,dt);
@@ -106,13 +110,21 @@
   if(dd<4){phase(f,f.phase==='lineup'?'prepare':'service');f.parking=null;root.WarVehicleMotion.stop(e);}
   return true;
  }
- function canFire(g,e,target){if(!supported(e))return true;const f=e.flight;if(f&&(groundPhases.has(f.phase)||['climb','return','approach'].includes(f.phase)))return false;return !fixed(e)||Math.abs(root.WarVehicleMotion.angleDelta(Math.atan2(target.y-e.y,target.x-e.x),e.angle))<.9;}
+ function canFire(g,e,target){if(!supported(e))return true;const f=e.flight;if(f&&(groundPhases.has(f.phase)||['climb','return','approach'].includes(f.phase)))return false;
+  const weapon=g.vehicleWeapon?.(e,target);if(weapon?.family==='bomb'){
+   // The same gravity and release velocity used by the live bomb determine the
+   // autonomous drop window. No target-ID guaranteed hit or nose-down gun gate.
+   const start=g.resolveWeaponOrigin?.(e,weapon,e.combat?.stations?.[weapon.id]?.nextPort||0)||{x:e.x,y:e.y,height:g.entityAltitude(e)},solution=root.WarCombatProjectiles.bombSolution(e,start,g.entityAltitude(target));
+   if(Math.hypot(solution.point.x-target.x,solution.point.y-target.y)>Math.max(12,(target.r||10)+(weapon.splash||0)*.35))return false;
+  }
+  return !fixed(e)||Math.abs(root.WarVehicleMotion.angleDelta(Math.atan2(target.y-e.y,target.x-e.x),e.angle))<.9;
+ }
  function update(g,e,dt,target){
   if(!supported(e))return false;
   const f=state(g,e),max=g.effectiveSpeed(e);f.elapsed+=dt;f.airtime+=dt;e.path=[];
   if(f.phase==='manual')phase(f,'cruise');
   const base=g.get(f.homeId);
-  if(!f.returning&&(e.hp<e.maxHp*.25||f.airtime>180)&&home(g,e)){f.resume=e.order?{...e.order}:null;requestReturn(g,e);}
+  if(!f.returning&&(e.hp<e.maxHp*.25||f.airtime>180||root.WarCombatReadiness?.needsReturn(g,e))&&home(g,e)){f.resume=e.order?{...e.order}:null;requestReturn(g,e);}
   if(f.returning){
    const field=home(g,e);
    if(field?.kind==='carrier')return root.WarCarrierOperations.updateReturn(g,e,field,dt,{move,rotorMove,loiterGoal});
@@ -154,9 +166,16 @@
   const fight=target&&(!order||order.attack),goal=fight?target:order;
   if(!fixed(e)){
    if(goal&&!(fight&&g.engagementDistance(e,target)<=g.rangeProfile(e).attack)){rotorMove(g,e,goal,Math.max(100,g.entityAltitude(e)),dt);if(!fight&&distance(e,goal)<6){e.order=e.orderQueue?.shift()||null;e.manualMove=false;}}
-   else{e.altitude=Math.max(e.altitude,clearance(g,e,e.x,e.y));root.WarVehicleMotion.stop(e);}phase(f,fight?'attack':goal?'cruise':'loiter');return true;
+   else{e.altitude=Math.max(e.altitude,clearance(g,e,e.x,e.y));root.WarVehicleMotion.stop(e);
+    if(fight){const before={x:e.x,y:e.y,angle:e.angle},desired=Math.atan2(target.y-e.y,target.x-e.x),turn=clamp(root.WarVehicleMotion.angleDelta(desired,e.angle),-1.3*dt,1.3*dt);e.angle+=turn;e.pitch*=Math.max(0,1-dt*3);root.WarVehicleMotion.record(e,before,dt,0,turn/Math.max(.001,dt),g.tick);}
+   }phase(f,fight?'attack':goal?'cruise':'loiter');return true;
   }
-  const cruise=fight&&U[target.kind]?.air?clamp(g.entityAltitude(target),100,1600):(f.cruiseAltitude??160);
+  const surfaceRun=fight&&!U[target.kind]?.air;
+  // A shallow game-scale attack descent aligns a fixed forward weapon with a
+  // surface target. Holding 160u level flight would leave it outside the real
+  // mount's finite pitch envelope for the whole close pass.
+  const forwardSurfaceWeapon=surfaceRun&&g.vehicleWeapon?.(e,target)?.family!=='bomb';
+  const cruise=fight&&U[target.kind]?.air?clamp(g.entityAltitude(target),100,1600):forwardSurfaceWeapon?clamp(g.entityAltitude(target)+distance(e,target)*.35,25,160):surfaceRun?clamp(g.entityAltitude(target)+distance(e,target)*.12,105,160):(f.cruiseAltitude??160);
   let aim=goal;
   if(f.egress&&g.time<f.egress.until){aim=f.egress;phase(f,'egress');}
   else if(fight){phase(f,'attack');if(distance(e,target)<Math.max(100,max*.7)){f.egress={x:clamp(e.x+Math.cos(e.angle)*max*2.6,240,W-240),y:clamp(e.y+Math.sin(e.angle)*max*2.6,240,H-240),until:g.time+2.6};aim=f.egress;phase(f,'egress');}}
@@ -169,5 +188,5 @@
  }
  function rotorMove(g,e,goal,height,dt){const before={x:e.x,y:e.y,angle:e.angle},max=g.effectiveSpeed(e),dd=distance(e,goal),step=Math.min(dd,max*dt),heading=Math.atan2(goal.y-e.y,goal.x-e.x);e.angle+=clamp(root.WarVehicleMotion.angleDelta(heading,e.angle),-1.3*dt,1.3*dt);e.x+=Math.cos(heading)*step;e.y+=Math.sin(heading)*step;e.altitude=Math.max(clearance(g,e,e.x,e.y),e.altitude+clamp(Math.max(height,aheadFloor(g,e,e.x,e.y))-e.altitude,-60*dt,60*dt));e.roll*=Math.max(0,1-dt*4);e.pitch+=(step>0?-.08-e.pitch:-e.pitch)*Math.min(1,dt*3);root.WarVehicleMotion.record(e,before,dt,step>0?1:0,0,g.tick);e.flightSpeed=step/dt;}
  function validate(e){const f=e.flight;if(!f)return true;return supported(e)&&Object.hasOwn(labels,f.phase)&&[f.elapsed,f.airtime,f.anchor?.x,f.anchor?.y].every(Number.isFinite)&&(f.homeId==null||Number.isInteger(f.homeId))&&(!f.egress||[f.egress.x,f.egress.y,f.egress.until].every(Number.isFinite))&&(!f.resume||[f.resume.x,f.resume.y].every(Number.isFinite))&&(!f.parking||[f.parking.x,f.parking.y].every(Number.isFinite))&&(f.returnStage==null||[0,1,2].includes(f.returnStage))&&(!f.deck||root.WarCarrierOperations?.validate(e)===true);}
- root.WarAircraftFlight={supported,fixed,labels,groundPhases,runwayContains,launchPosition,launch,groundStep,update,canFire,requestReturn,command,stop,aheadFloor,validate};
+ root.WarAircraftFlight={supported,fixed,configuration,turnLimit,labels,groundPhases,runwayContains,launchPosition,launch,groundStep,update,canFire,requestReturn,command,stop,aheadFloor,validate};
 })(globalThis);

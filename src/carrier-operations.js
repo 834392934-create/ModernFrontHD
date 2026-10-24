@@ -88,7 +88,9 @@
    if(Math.abs(delta)<1){f.deck.along=d.start;phase(e,'service');root.WarVehicleMotion.stop(e);}
   }else if(f.phase==='service'){
    root.WarVehicleMotion.stop(e);e.hp=Math.min(e.maxHp,e.hp+e.maxHp*.10*dt);
-   if(f.elapsed>=cfg.serviceSeconds&&e.hp>=e.maxHp){
+   const supplied=!root.WarCombatReadiness||root.WarCombatReadiness.service(g,e,c,dt);
+   root.WarCombatDamage?.repair(g,e,c,dt);
+   if(supplied&&f.elapsed>=cfg.serviceSeconds&&e.hp>=e.maxHp){
     f.returning=false;e.retreating=false;f.airtime=0;f.resume=null;phase(e,'prepare');assignMission(g,c,e,mission(g,c));
    }
   }

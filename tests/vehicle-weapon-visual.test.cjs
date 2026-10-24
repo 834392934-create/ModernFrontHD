@@ -36,8 +36,8 @@ test('ship guns retain the exact barrel while missiles and torpedoes use indepen
 test('dual-armament IFVs and air defense vehicles emit gun flash at their existing secondary gun',()=>{
  for(const [kind,faction,local]of [['ifv','chn',[3.712,.28,.05]],['ifv','rus',[3.562,.39,-.21]],['aa','usa',[2.062,.53,0]],['aa','rus',[2.662,.65,.91]]]){
   const m=model(kind,faction),p=V.list(kind,faction).find(w=>w.family==='autocannon'),a=E.weaponAnchor(m,p),base=m.getObjectByName('muzzle');assert.notEqual(a,base,kind+':'+faction);
-  assert.equal(a.parent,m.getObjectByName('turret'));near(a.position,new T.Vector3(...local));assert.equal(a.userData.source,'existing-secondary-autocannon-barrel-tip');
-  const before=a.getWorldPosition(new T.Vector3());a.parent.rotation.y+=.5;m.updateMatrixWorld(true);assert.ok(a.getWorldPosition(new T.Vector3()).distanceTo(before)>.1);WarVehicleAnimation.release(m);
+  near(a.getWorldPosition(new T.Vector3()),m.getObjectByName('turret').localToWorld(new T.Vector3(...local)));assert.equal(a.userData.source,'existing-secondary-autocannon-barrel-tip');
+  const before=a.getWorldPosition(new T.Vector3());m.getObjectByName('turret').rotation.y+=.5;m.updateMatrixWorld(true);assert.ok(a.getWorldPosition(new T.Vector3()).distanceTo(before)>.1);WarVehicleAnimation.release(m);
  }
 });
 

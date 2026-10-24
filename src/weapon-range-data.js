@@ -134,7 +134,8 @@
   lmg:[600,'m249_point','同类班用机枪点目标600m参照'],
   marksman:[800,'m107','精确射手角色800m游戏估算，非M107公开数值'],
   sniper:[1200,'m107','狙击角色1200m游戏估算，非M107公开数值'],
-  launcher:[500,null,'原创肩射发射器500m游戏估算，非自动继承反坦克导弹最大射程']
+  launcher:[500,null,'原创肩射发射器500m游戏估算，非自动继承反坦克导弹最大射程'],
+  grenade:[250,null,'原创榴弹发射器250m游戏选值，不代表某制式弹药的公开最大射程']
  };
  function inferred(id,platform,spec,status='inferred'){
   const [estimateM,ref,note]=spec,reference=ref?catalog[ref]:null;

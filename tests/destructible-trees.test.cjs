@@ -1,6 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 global.THREE=require('../assets/vendor/three.min.js');
 for(const file of ['data','roster','equipment','maps-large','destructible-trees','sim'])require('../src/'+file);
+const {prepare,advanceUntil}=require('./combat-preparation.cjs');
 const A=WarTrees,{COLS,ROWS,T}=WarData;
 function fixture(seed=123){return{map:{id:'forest',seed,tiles:new Uint8Array(COLS*ROWS),spawns:[]},nodes:[],ore:[],time:0};}
 function matrix(mesh,index){const m=new THREE.Matrix4();mesh.getMatrixAt(index,m);return m;}
@@ -65,6 +66,6 @@ test('real operator rifle fire damages trees through normal ammunition and coold
  const next=g.trees.find(t=>t.hp>0);operator.x=next.x-25;operator.y=next.y;ammo.ammo=0;ammo.reserve=0;const hp=next.hp;g.setDirectInput({fire:true,yaw:0,targetTreeId:next.id,aimX:next.x,aimY:next.y,aimHeight:5});tick(g,1);assert.equal(next.hp,hp,'empty magazine cannot apply a manual tree damage shortcut');
 });
 test('normal tank direct fire and RTS artillery blast both reach tree impact handling',()=>{
- const g=combat(),tree=A.ensure(g)[0],tank=g.spawn(0,'tank',tree.x-80,tree.y);g.beginDirectControl(tank.id);g.teams[0].aiClock=1e9;g.setDirectInput({fire:true,yaw:0,targetTreeId:tree.id,aimX:tree.x,aimY:tree.y,aimHeight:5});g.step(.05);g.setDirectInput({fire:false});tick(g,.5);assert.ok(tree.hp<A.MAX_HP,'tank shell damages the aimed tree');g.endDirectControl();
- const next=g.trees.find(t=>t.hp===A.MAX_HP),arty=g.spawn(0,'arty',next.x-200,next.y),target=g.spawn(1,'ifv',next.x+6,next.y);g.spatial.rebuild(g.entities);g.emitShot(arty,target);tick(g,1);assert.ok(next.hp<A.MAX_HP,'RTS area damage affects adjacent tree cover');
+ const g=combat(),tree=A.ensure(g)[0],tank=g.spawn(0,'tank',tree.x-80,tree.y);g.beginDirectControl(tank.id);g.teams[0].aiClock=1e9;prepare(g,tank,null,{aimX:tree.x,aimY:tree.y,aimHeight:5});g.setDirectInput({fire:true,yaw:0,targetTreeId:tree.id,aimX:tree.x,aimY:tree.y,aimHeight:5});g.step(.05);g.setDirectInput({fire:false});tick(g,.5);assert.ok(tree.hp<A.MAX_HP,'tank shell damages the aimed tree');g.endDirectControl();
+ const next=g.trees.find(t=>t.hp===A.MAX_HP),arty=g.spawn(0,'arty',next.x-200,next.y),target=g.spawn(1,'ifv',next.x+6,next.y);g.spatial.rebuild(g.entities);assert.ok(prepare(g,arty,target));assert.ok(g.emitShot(arty,target));advanceUntil(g,()=>next.hp<A.MAX_HP,5);assert.ok(next.hp<A.MAX_HP,'RTS area damage affects adjacent tree cover');
 });
