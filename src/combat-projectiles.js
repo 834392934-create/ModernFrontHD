@@ -54,12 +54,13 @@
   if(fx.weaponDomains)return fx.weaponDomains.includes(domain)&&(!fx.weaponPersonnelOnly||isPerson);
   return !fx.sourceKind||g.canTargetKind(fx.sourceKind,e.kind);
  }
- function local(g,e,p){const dx=p.x-e.x,dz=p.y-e.y,dy=p.height-g.entityAltitude(e),a=e.structure?0:e.angle||0,c=Math.cos(a),s=Math.sin(a),cp=Math.cos(e.pitch||0),sp=Math.sin(e.pitch||0),cr=Math.cos(e.roll||0),sr=Math.sin(e.roll||0),x=c*dx+s*dz,z=-s*dx+c*dz,y=dy,xx=cp*x+sp*y,yy=-sp*x+cp*y;return{x:xx,y:cr*yy+sr*z,z:-sr*yy+cr*z};}
+ function local(g,e,p){const dx=p.x-e.x,dz=p.y-e.y,dy=p.height-g.entityAltitude(e),a=e.structure&&!data(e).rotatable?0:e.angle||0,c=Math.cos(a),s=Math.sin(a),cp=Math.cos(e.pitch||0),sp=Math.sin(e.pitch||0),cr=Math.cos(e.roll||0),sr=Math.sin(e.roll||0),x=c*dx+s*dz,z=-s*dx+c*dz,y=dy,xx=cp*x+sp*y,yy=-sp*x+cp*y;return{x:xx,y:cr*yy+sr*z,z:-sr*yy+cr*z};}
  function boxEntry(a,b,min,max){let lo=0,hi=1;for(const key of ['x','y','z']){const delta=b[key]-a[key];if(Math.abs(delta)<1e-9){if(a[key]<min[key]||a[key]>max[key])return null;continue;}let near=(min[key]-a[key])/delta,far=(max[key]-a[key])/delta;if(near>far)[near,far]=[far,near];lo=Math.max(lo,near);hi=Math.min(hi,far);if(lo>hi)return null;}return lo;}
  function collision(g,fx,a,b){
   const mid={x:(a.x+b.x)/2,y:(a.y+b.y)/2},radius=Math.hypot(b.x-a.x,b.y-a.y)/2+240,candidates=g.spatial?.query(mid.x,mid.y,radius)||g.entities;let best=null;
   for(const e of candidates){if(e.hp<=0||e.id===fx.sourceId||e.embarkedIn||e.components?.state==='downed')continue;
-   const bounds=root.WarNavigationFootprints?.bounds[e.kind+'_'+g.teams[e.team]?.faction],r=e.r||10,min=bounds?{x:bounds[3]-1,y:bounds[1]-1,z:bounds[5]-1}:{x:-r,y:-1,z:-r},max=bounds?{x:bounds[4]+1,y:bounds[2]+1,z:bounds[6]+1}:{x:r,y:g.hitHeightRadius?.(e)||r*2,z:r},t=boxEntry(local(g,e,a),local(g,e,b),min,max);
+   const shape=e.structure?data(e).footprint:null,bounds=root.WarNavigationFootprints?.bounds[e.kind+'_'+g.teams[e.team]?.faction],r=e.r||10;
+   const min=shape?{x:-shape.halfLength,y:shape.minY??0,z:-shape.halfWidth}:bounds?{x:bounds[3]-1,y:bounds[1]-1,z:bounds[5]-1}:{x:-r,y:-1,z:-r},max=shape?{x:shape.halfLength,y:shape.maxY??data(e).collisionHeight??2,z:shape.halfWidth}:bounds?{x:bounds[4]+1,y:bounds[2]+1,z:bounds[6]+1}:{x:r,y:g.hitHeightRadius?.(e)||r*2,z:r},t=boxEntry(local(g,e,a),local(g,e,b),min,max);
    if(t!==null&&(!best||t<best.t))best={t,entity:e};
   }
   for(const tree of root.WarTrees?.liveColliders(g)||g.directObstacles||[]){if(tree.hp===0)continue;const r=tree.r||4,t=boxEntry({x:a.x,y:a.height,z:a.y},{x:b.x,y:b.height,z:b.y},{x:tree.x-r,y:0,z:tree.y-r},{x:tree.x+r,y:tree.height||30,z:tree.y+r});if(t!==null&&(!best||t<best.t))best={t,tree};}
@@ -73,6 +74,33 @@
   if(!canImpact(g,fx,e)){fx.damage=fx.baseDamage=fx.splash=fx.treeDamage=fx.treeSplash=0;return impact(fx,null);}
   fx.damage=g.attackDamage(fx.sourceKind,e,fx.baseDamage||fx.damage,fx.weaponDefinition);fx.targetDomain=g.targetDomain(e.kind);fx.directHitArea={x:e.x,y:e.y,altitude:g.entityAltitude(e),r:e.r||10,verticalRadius:g.hitHeightRadius?.(e)||20};
   return impact(fx,e);
+ }
+ function direction(p){return{x:Math.cos(p.heading)*Math.cos(p.pitch),y:Math.sin(p.heading)*Math.cos(p.pitch),height:Math.sin(p.pitch)};}
+ function steerGuided(p,q,dt){
+  const forward=direction(p),dx=q.x-p.position.x,dy=q.y-p.position.y,dz=q.height-p.position.height,length=Math.hypot(dx,dy,dz);
+  if(length<1e-8)return;
+  const desired={x:dx/length,y:dy/length,height:dz/length},dot=clamp(forward.x*desired.x+forward.y*desired.y+forward.height*desired.height,-1,1),angle=Math.acos(dot),rate=Math.min(p.turnRate,p.pitchRate),turn=Math.min(angle,rate*dt);
+  if(angle>1e-8&&turn>0){
+   // A bounded rotation in 3D avoids the yaw discontinuity directly above a
+   // target. An antiparallel vector gets a deterministic perpendicular axis.
+   let tx=desired.x-dot*forward.x,ty=desired.y-dot*forward.y,tz=desired.height-dot*forward.height,n=Math.hypot(tx,ty,tz);
+   if(n<1e-8){if(Math.abs(forward.height)<.9){tx=-forward.height*forward.x;ty=-forward.height*forward.y;tz=1-forward.height*forward.height;}else{tx=1-forward.x*forward.x;ty=-forward.x*forward.y;tz=-forward.x*forward.height;}n=Math.hypot(tx,ty,tz);}
+   const c=Math.cos(turn),s=Math.sin(turn),x=forward.x*c+tx/n*s,y=forward.y*c+ty/n*s,h=forward.height*c+tz/n*s;
+   p.heading=Math.atan2(y,x);p.pitch=Math.atan2(h,Math.hypot(x,y));
+  }
+  // In game units, a circle reaching a point at angular error a needs
+  // r <= distance/(2*sin(a)). Reduce speed before the turn runs out of room;
+  // retaining finite acceleration/braking also prevents a terminal snap.
+  // An aligned missile needs no curvature braking. A broad artificial angle
+  // floor would make straight orbital approaches decelerate exponentially.
+  const demand=Math.max(1e-6,Math.sin(Math.min(angle,Math.PI/2))),desiredSpeed=Math.min(p.cruiseSpeed,Math.max(30,length*rate*.8/(2*demand))),acceleration=p.spaceProjection?p.cruiseSpeed*6:600,braking=p.spaceProjection?p.cruiseSpeed*8:1200;
+  p.speed+=clamp(desiredSpeed-p.speed,-braking*dt,acceleration*dt);
+ }
+ function guidedSurface(p){
+  // Surface crossing is a segment intersection, not a target-ID hit. Upward
+  // submarine ejection is allowed to leave the water before seeking.
+  if(p.previous.height>=0&&p.position.height<=0&&p.position.height<p.previous.height){const t=p.previous.height/(p.previous.height-p.position.height);p.position={x:p.previous.x+(p.position.x-p.previous.x)*t,y:p.previous.y+(p.position.y-p.previous.y)*t,height:0};return true;}
+  return false;
  }
  function step(g,fx,dt){
   const p=fx.projectile;if(!p)return {handled:false,expired:false,impact:false};if(!(dt>0))return {handled:true,expired:false,impact:false};
@@ -104,15 +132,19 @@
     p.position.x+=p.releaseVelocity.x*dt;p.position.y+=p.releaseVelocity.y*dt;p.position.height+=(p.releaseVelocity.height-12)*dt;
     if(p.phaseAge>=.18){p.phase='ignition';p.phaseAge=0;}
    }else if(p.phase==='vertical'){
-    p.position.height+=90*dt;if(p.phaseAge>=.28){p.phase='ignition';p.phaseAge=0;}
+    p.position.height+=90*dt;if(p.phaseAge>=.28&&p.position.height>=8){p.phase='ignition';p.phaseAge=0;}
    }else{
     if(p.phase==='ignition'&&p.phaseAge>=.12){p.phase='powered';p.phaseAge=0;}
-    const target=g.get(p.lockId);if(target&&canImpact(g,fx,target)&&g.canDetect(fx.from,target))p.destination={x:target.x,y:target.y,height:g.entityAltitude(target)};else{p.lockId=null;p.phase='coast';}
-    const q=p.destination,desired=Math.atan2(q.y-p.position.y,q.x-p.position.x),pitch=Math.atan2(q.height-p.position.height,Math.hypot(q.x-p.position.x,q.y-p.position.y));p.heading+=clamp(wrap(desired-p.heading),-p.turnRate*dt,p.turnRate*dt);p.pitch+=clamp(pitch-p.pitch,-p.pitchRate*dt,p.pitchRate*dt);p.speed=Math.min(p.cruiseSpeed,p.speed+(p.spaceProjection?p.cruiseSpeed*6:600)*dt);
-    p.position.x+=Math.cos(p.heading)*Math.cos(p.pitch)*p.speed*dt;p.position.y+=Math.sin(p.heading)*Math.cos(p.pitch)*p.speed*dt;p.position.height+=Math.sin(p.pitch)*p.speed*dt;
+    if(p.phase!=='coast'){
+     const target=g.get(p.lockId);if(target&&canImpact(g,fx,target)&&g.canDetect(fx.from,target)){p.destination={x:target.x,y:target.y,height:g.entityAltitude(target)};steerGuided(p,p.destination,dt);}
+     else{p.lockId=null;fx.target=null;p.phase='coast';p.phaseAge=0;}
+    }
+    const forward=direction(p);p.position.x+=forward.x*p.speed*dt;p.position.y+=forward.y*p.speed*dt;p.position.height+=forward.height*p.speed*dt;
    }
+   const surface=guidedSurface(p);
    const hit=resolveCollision(g,fx);if(hit)return hit;
-   if(p.position.height< -100&&p.destination.height>=-10)return expire(fx);
+   if(surface)return impact(fx,null);
+   if(p.phase==='coast'&&p.phaseAge>=1.5||p.position.height< -100&&p.destination.height>=-10)return expire(fx);
   }else if(p.kind==='torpedo'){
    const target=g.get(p.lockId),decoys=g.effects.filter(d=>d.type==='decoy'&&d.projectile?.kind==='decoy'&&d.from!==fx.from&&d.projectile.age<d.projectile.maxAge&&dist(position(d),p.position)<130),decoy=decoys.sort((a,b)=>dist(position(a),p.position)-dist(position(b),p.position))[0];
    let q=null;

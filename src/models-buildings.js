@@ -13,6 +13,15 @@
  function cage(b,x,z,w=1.15,h=1.1){b.box(w,h,.8,x,.3+h/2,z,C.sand);for(let i=0;i<=6;i++)b.box(w,.018,.014,x,.3+i*h/6,z+.41,C.steel);for(let i=0;i<=6;i++)b.box(.018,h,.014,x-w/2+i*w/6,.3+h/2,z+.415,C.steel);b.box(w,.04,.86,x,.3+h,z,C.edge);}
  function roof(b,x,y,z,w,d,c){b.prism([[x-w/2,z-d/2],[x+w/2,z-d/2],[x+w/2,z+d/2],[x-w/2,z+d/2]],y,.24,c,.98,0);for(let i=0;i<Math.floor(w/.5);i++)b.box(.035,.025,d,x-w/2+.25+i*.5,y+.27,z,C.edge);}
  function building(kind,f){const b=new B(),t=new B(),c=M.colors[f],r=root.WarData.B[kind].r/7,small=['turret','ciws','sam','laser','shield','jammer','radar','bunker'].includes(kind),w=r*1.65,d=r*1.55;
+  if(kind==='runway'){
+   // Original 360 x 160 game-scale facility; markings and inset lights stay below its 2u collider.
+   const length=360/7,width=160/7;b.box(length,.12,width,0,.06,0,0x535958);b.box(length-.6,.035,width-.6,0,.14,0,0x3b4243);
+   for(const side of [-1,1]){b.box(length-1,.025,.13,0,.175,side*(width/2-.5),C.white);for(let x=-24;x<=24;x+=4)b.box(.13,.045,.13,x,.195,side*(width/2-.23),0xb2cfda);}
+   for(let x=-18;x<=18;x+=6)b.box(2.5,.025,.18,x,.175,0,C.white);
+   for(const end of [-1,1])for(const side of [-1,1])for(let i=0;i<4;i++)b.box(3.3,.025,.24,end*(length/2-3),.175,side*(1.3+i*.65),C.white);
+   for(const end of [-1,1])for(const side of [-1,1])b.box(2,.025,.65,end*(length/2-8),.175,side*3.8,C.white);
+   const group=new T.Group(),surface=b.finish();surface.name='runway-surface';group.add(surface);group.userData={scale:7,parts:b.parts,profile:'independent-runway-v1',evidenceStatus:'original-game-facility',fiction:false,reviewStatus:'needs-visual-review'};return group;
+  }
   if(kind==='navalyard'){for(const s of [-1,1])b.box(1.6,.28,r*2,s*(r-.8),.14,0,C.concrete);b.box(r*2,.28,1.1,0,.14,-r+.55,C.concrete);}
   else b.box(r*2,.28,r*2,0,.14,0,C.concrete);
   for(const s of [-1,1]){b.box(r*2,.12,.12,0,.33,s*r,C.edge);for(let n=0;n<4;n++)b.box(.24,.025,.12,-r+.55+n*(r*2-1.1)/3,.4,s*r,C.yellow);}

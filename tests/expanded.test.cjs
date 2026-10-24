@@ -3,6 +3,7 @@ require('../src/data.js');require('../src/roster.js');require('../src/equipment.
 const {Game}=WarSim,{U,B,ROSTER}=WarData;
 const {advanceUntil,emptyVegetation}=require('./combat-preparation.cjs');
 function arena(){const g=new Game({faction:'chn',enemies:1,buffs:['vision'],playerOnlyTech:false,aiSpaceWeapons:true});g.entities=[];g.spawn(0,'hq',300,300);g.spawn(1,'hq',2700,1800);g.teams.forEach(t=>t.aiClock=999999);emptyVegetation(g);g.map.blocked.fill(0);g.map.navalBlocked.fill(0);return g;}
+function runwayFor(g,field){const site=WarAirbaseRunways.findSite(g,field);assert(site,'production fixture requires a legal independent runway');const r=g.spawn(field.team,'runway',site.x,site.y);r.angle=site.angle;return r;}
 function step(g,s){for(let i=0;i<Math.ceil(s*20);i++)g.step(.05);}
 const targets={underwater:'submarine',ground:'tank',naval:'destroyer',air:'fighter',space:'satellite',structure:'hq'};
 test('four groups have 21/19/18/18 roles, with harvester separately counted',()=>{
@@ -37,13 +38,13 @@ test('support repairs only its own domain, never buildings or enemies, and never
 });
 test('all 77 units can be trained, completed and loaded using their real production lanes',()=>{
  for(const k of Object.keys(U)){
-  const g=arena();g.spawn(0,'power',450,450);g.spawn(0,'power',550,450);g.spawn(0,U[k].producer,U[k].naval?720:700,U[k].naval?120:600);g.teams[0].money=100000;
+  const g=arena();g.spawn(0,'power',450,450);g.spawn(0,'power',550,450);const factory=g.spawn(0,U[k].producer,U[k].naval?720:700,U[k].naval?120:600);if(WarAircraftFlight.fixed({kind:k}))runwayFor(g,factory);g.teams[0].money=100000;
   assert.equal(g.train(0,k),true,k);const saved=Game.load(JSON.stringify(g.save()));assert.equal(saved.teams[0].queue[0].kind,k);step(saved,U[k].time+2);
   assert.ok(saved.entities.some(e=>e.team===0&&e.kind===k),k+' completed');
  }
 });
 test('AI choices include fractional-weight support and obey advanced and orbital bans',()=>{
- const g=arena();for(const k of new Set(Object.values(U).map(d=>d.producer)))g.spawn(1,k,2200,1500);g.teams[1].money=1e6;
+ const g=arena();for(const k of new Set(Object.values(U).map(d=>d.producer)))g.spawn(1,k,2200,1500);g.teams[1].money=1e6;runwayFor(g,g.entities.find(e=>e.kind==='airfield'&&e.team===1));
  const choices=g.availableUnitKinds(1);for(const k of ROSTER.added)assert.ok(choices.includes(k),k);
  g.random=()=>0;assert.equal(g.chooseUnitKind(['repair_ship','tank']),'repair_ship');g.random=()=>.999;assert.equal(g.chooseUnitKind(['repair_ship','tank']),'tank');
  g.options.aiSpaceWeapons=false;assert.ok(g.availableUnitKinds(1).every(k=>!U[k].spaceWeapon));assert.ok(g.availableUnitKinds(1).includes('orbital_repair'));assert.ok(g.availableUnitKinds(1).includes('jet'));

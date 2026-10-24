@@ -1,9 +1,9 @@
 {
-  "recordedAt": "2026-10-24T16:04:54.503Z",
-  "version": "3.13.0",
-  "sha256Matches": 709,
-  "portraits": 588,
-  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.13.0\\ModernFrontHD.exe",
+  "recordedAt": "2026-10-24T17:40:27.599Z",
+  "version": "3.14.0",
+  "sha256Matches": 717,
+  "portraits": 594,
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.14.0\\ModernFrontHD.exe",
   "runtimeChecks": [
     "desktop-report.json",
     "expanded-desktop-report.json",
@@ -36,7 +36,9 @@
     "combat-damage-desktop-report.json",
     "personnel-combat-desktop-report.json",
     "reviews/unit-model-refinement-report.json",
-    "launcher-desktop-report.json"
+    "launcher-desktop-report.json",
+    "runway-desktop-report.json",
+    "fps-performance-desktop-report.json"
   ],
   "mismatches": []
 }

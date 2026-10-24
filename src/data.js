@@ -325,6 +325,11 @@
       time: 14,
       icon: "✈",
     },
+    runway: {
+      name: "独立跑道", hp: 1100, cost: 1000, r: 197, power: 0, time: 16, icon: "▰",
+      rotatable: true, collisionHeight: 2,
+      footprint: { halfLength: 180, halfWidth: 80, minY: 0, maxY: 2 },
+    },
     turret: {
       name: "防御炮塔",
       hp: 800,

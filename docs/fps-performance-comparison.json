@@ -1,0 +1,78 @@
+{
+  "at": "2026-10-24T17:31:07.777Z",
+  "scope": "Same 99-entity static first-person scene, LMB held, 1500x980 CSS/DPR1.25/RTX3060. Frame samples are uninstrumented; aim CPU timings come from a separate instrumented4s trace. Before is native3.13, after is a copied3.13 app changing only direct-control.js, run with the same Electron runtime. Final3.14 movement/cadence acceptance is separate.",
+  "before": {
+    "tag": "before-clean",
+    "recordedAt": "2026-10-24T17:19:22.599Z",
+    "sample": {
+      "meanFPS": 45.97088510682969,
+      "p50": 21.600000000000364,
+      "p95": 22.200000000000728,
+      "p99": 24.100000000000364,
+      "stalls50ms": 0,
+      "frames": 276,
+      "viewport": [
+        1500,
+        980
+      ],
+      "dpr": 1.25,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "entities": 99,
+      "firstPerson": true,
+      "locked": true,
+      "paused": false,
+      "calls": 522,
+      "triangles": 3314393,
+      "foregroundCalls": 9,
+      "foregroundTriangles": 3672,
+      "visibleEntities": 98,
+      "geometries": 178
+    },
+    "aim": {
+      "calls": 61,
+      "meanMs": 6.511475406709264,
+      "maxMs": 10.5
+    }
+  },
+  "after": {
+    "tag": "after-clean",
+    "recordedAt": "2026-10-24T17:19:45.573Z",
+    "sample": {
+      "meanFPS": 46.443493749271724,
+      "p50": 21.600000000000364,
+      "p95": 22.299999999999272,
+      "p99": 22.600000000000364,
+      "stalls50ms": 0,
+      "frames": 279,
+      "viewport": [
+        1500,
+        980
+      ],
+      "dpr": 1.25,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 (0x00002504) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "entities": 99,
+      "firstPerson": true,
+      "locked": true,
+      "paused": false,
+      "calls": 521,
+      "triangles": 3314281,
+      "foregroundCalls": 9,
+      "foregroundTriangles": 3672,
+      "visibleEntities": 98,
+      "geometries": 178
+    },
+    "aim": {
+      "calls": 62,
+      "meanMs": 2.503225803375244,
+      "maxMs": 3.700000047683716
+    }
+  },
+  "aimTimeReductionPercent": 61.5567034040245,
+  "limits": [
+    "Frame throughput remains about46FPS in both samples; do not claim a proportional FPS gain.",
+    "Excluded .tmp aim-after and aim-after-final attempts: former launched baseline by mistake, latter overlapped other work.",
+    "No geometry/quality/resolution downgrade or H3 inference."
+  ],
+  "baselineSourceSha256": "d0ddc43736750beb591f28de0f8cf2a3b38cb2a560a6cd2aa76bc9f819c9c168",
+  "isolatedAfterSourceSha256": "6326f9e07b4ebfa54113302030dec050e152b4309f7800ce88084ad25ee5bd53"
+}

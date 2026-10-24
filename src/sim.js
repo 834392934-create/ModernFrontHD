@@ -2,6 +2,7 @@
   "use strict";
   if(typeof module!=='undefined'&&typeof require==='function')require('./navigation-footprints.js');
   if(typeof module!=='undefined'&&typeof require==='function')require('./vehicle-motion.js');
+  if(typeof module!=='undefined'&&typeof require==='function')require('./airbase-runways.js');
   if(typeof module!=='undefined'&&typeof require==='function')require('./aircraft-flight.js');
   if(typeof module!=='undefined'&&typeof require==='function')require('./weapon-range-data.js');
   if(typeof module!=='undefined'&&typeof require==='function')require('./vehicle-weapons.js');
@@ -456,17 +457,17 @@
       if(this.directControl){this.directControl.jumpHeld=false;this.directControl.jumpPending=false;}
     }
     hitHeightRadius(e) {
-      const d=U[e.kind];return e.structure?Math.max(60,e.r*2):d?.naval?Math.max(30,e.r*2):d?.air?Math.max(12,e.r):Math.max(20,e.r);
+      const d=U[e.kind];return e.structure?(B[e.kind].collisionHeight??Math.max(60,e.r*2)):d?.naval?Math.max(30,e.r*2):d?.air?Math.max(12,e.r):Math.max(20,e.r);
     }
     directAimValid(target,options={}) {
       if(!target)return false;
-      const b=root.WarNavigationFootprints?.bounds[target.kind+'_'+this.teams[target.team]?.faction],r=this.hitHeightRadius(target),height=options.aimHeight??options.aimPoint?.y;
+      const fp=B[target.kind]?.footprint,b=fp?[Math.hypot(fp.halfLength,fp.halfWidth),fp.minY,fp.maxY,-fp.halfLength,fp.halfLength,-fp.halfWidth,fp.halfWidth]:root.WarNavigationFootprints?.bounds[target.kind+'_'+this.teams[target.team]?.faction],r=this.hitHeightRadius(target),height=options.aimHeight??options.aimPoint?.y;
       const x=options.aimX??options.aimPoint?.x,y=options.aimY??options.aimPoint?.z,hasHeight=Number.isFinite(height),hasXY=Number.isFinite(x)&&Number.isFinite(y);
       const dx=hasXY?x-target.x:0,dz=hasXY?y-target.y:0,dy=hasHeight?height-this.entityAltitude(target):0;
       // Keep the old combat volume; model additions must be inside the rotated measured box.
-      if((!hasHeight||Math.abs(dy)<=r+2)&&(!hasXY||Math.hypot(dx,dz)<=target.r+2))return true;
+      if(!fp&&(!hasHeight||Math.abs(dy)<=r+2)&&(!hasXY||Math.hypot(dx,dz)<=target.r+2))return true;
       if(!b||b.length<7)return false;
-      const angle=target.structure?0:target.angle||0,c=Math.cos(angle),s=Math.sin(angle),cp=Math.cos(target.pitch||0),sp=Math.sin(target.pitch||0),cr=Math.cos(target.roll||0),sr=Math.sin(target.roll||0);
+      const angle=target.structure&&!B[target.kind]?.rotatable?0:target.angle||0,c=Math.cos(angle),s=Math.sin(angle),cp=Math.cos(target.pitch||0),sp=Math.sin(target.pitch||0),cr=Math.cos(target.roll||0),sr=Math.sin(target.roll||0);
       if(!hasXY){
         const contributions=[[sp,b[3],b[4]],[cp*cr,b[1],b[2]],[-cp*sr,b[5],b[6]]];
         const min=contributions.reduce((n,[a,lo,hi])=>n+Math.min(a*lo,a*hi),0),max=contributions.reduce((n,[a,lo,hi])=>n+Math.max(a*lo,a*hi),0);
@@ -692,7 +693,7 @@
     }
     availableUnitKinds(team) {
       const t=this.teams[team],own=this.teamEntities(team),producers=new Set(own.filter(e=>e.structure&&e.disabled<=this.time).map(e=>e.kind));
-      return Object.keys(U).filter(k=>{const d=U[k];return !d.playerOnly&&!d.logistics&&k!=='harvester'&&producers.has(d.producer)&&this.canAfford(team,this.cost(team,k))&&
+      return Object.keys(U).filter(k=>{const d=U[k];return !d.playerOnly&&!d.logistics&&k!=='harvester'&&producers.has(d.producer)&&root.WarAirbaseRunways.available(this,team,k)&&this.canAfford(team,this.cost(team,k))&&
         !(d.advanced&&(!this.options.advanced||(team>0&&this.options.playerOnlyTech)))&&!(team>0&&d.spaceWeapon&&this.options.aiSpaceWeapons===false);});
     }
     chooseUnitKind(choices) {
@@ -776,8 +777,8 @@
     flightFloor(e,x,y) {
       const shape=root.WarNavigationFootprints.bounds[e.kind+'_'+this.teams[e.team]?.faction];
       let floor=25;const clearance=Math.max(16,-(shape?.[1]||0)+8),radius=this.navigationRadius(e);
-      for(const o of this.entities)if(o.structure&&o.hp>0&&Math.hypot(x-o.x,y-o.y)<radius+o.r+6)
-        floor=Math.max(floor,this.entityAltitude(o)+(B[o.kind].collisionHeight||60)+clearance);
+      for(const o of this.entities)if(o.structure&&o.hp>0&&root.WarNavigationFootprints.structureDistance(o,x,y)<radius+6)
+        floor=Math.max(floor,this.entityAltitude(o)+(B[o.kind].collisionHeight??60)+clearance);
       for(const o of this.directObstacles||[])if(Math.hypot(x-o.x,y-o.y)<radius+o.r)
         floor=Math.max(floor,(o.height??50)+clearance);
       return floor;
@@ -793,7 +794,7 @@
         const px=x+(n<0?0:Math.cos(n*Math.PI/4)*radius),py=y+(n<0?0:Math.sin(n*Math.PI/4)*radius);
         if(blocked[Math.floor(py/T)*COLS+Math.floor(px/T)])return false;
       }
-      for(const o of this.entities)if(o.structure&&o.hp>0&&Math.hypot(x-o.x,y-o.y)<radius+o.r+6)return false;
+      for(const o of this.entities)if(o.structure&&o.hp>0&&!root.WarNavigationFootprints.structureClear(this,e,o,x,y,6))return false;
       if(!d.naval&&(this.directObstacles||[]).some(o=>Math.hypot(x-o.x,y-o.y)<radius+o.r))return false;
       return d.naval||!this.ore.some(o=>Math.hypot(x-o.x,y-o.y)<radius+48);
     }
@@ -962,7 +963,7 @@
     }
     canBuild(team, kind, x, y) {
       const d = B[kind];
-      if(d&&this.entities.some(o=>o.hp>0&&o.runway&&root.WarAircraftFlight.runwayContains(o.runway,{x,y},d.r+20)))return false;
+
       if (
         !d ||
         (d.advanced &&
@@ -987,6 +988,7 @@
         )
       )
         return false;
+      if(kind==='runway')return !!root.WarAirbaseRunways.plan(this,team,x,y);
       for (
         let cy = Math.floor((y - d.r) / T);
         cy <= Math.floor((y + d.r) / T);
@@ -1006,11 +1008,11 @@
       return (
         !this.ore.some(o=>dist(o,{x,y})<48+d.r+6) &&
         !this.entities.some(
-          (e) => e.hp > 0 && e.structure && dist(e, { x, y }) < e.r + d.r + 20,
+          (e) => e.hp > 0 && e.structure && root.WarNavigationFootprints.structureDistance(e,x,y) < d.r + 20,
         ) &&
         !this.teams.some((t) =>
           t.buildQueue.some(
-            (q) => Math.hypot(q.x - x, q.y - y) < B[q.kind].r + d.r + 20,
+            (q) => root.WarNavigationFootprints.structureDistance({...q,r:B[q.kind].r},x,y) < d.r + 20,
           ),
         )
       );
@@ -1030,6 +1032,7 @@
         kind,
         x,
         y,
+        ...(kind==='runway'?{angle:root.WarAirbaseRunways.plan(this,team,x,y).angle}:{}),
         total: B[kind].time,
         remaining: B[kind].time,
         paid,
@@ -1043,7 +1046,7 @@
       const heading=Math.atan2(y-e.y,x-e.x);
       const free=(px,py)=>budget.remaining-->0&&root.WarNavigationFootprints.terrain(this,e,px,py,heading)&&
         (!U[e.kind]?.naval||root.WarNavigationFootprints.turningRoom(this,e,px,py))&&
-        (U[e.kind]?.air||!this.entities.some(o=>o.structure&&o.hp>0&&this.navigationLayer(e,o)&&Math.hypot(px-o.x,py-o.y)<o.r+r+10))&&
+        (U[e.kind]?.air||!this.entities.some(o=>o.structure&&o.hp>0&&this.navigationLayer(e,o)&&!root.WarNavigationFootprints.structureClear(this,e,o,px,py,10)))&&
         (U[e.kind]?.air||U[e.kind]?.naval||!this.ore.some(o=>Math.hypot(o.x-px,o.y-py)<48+r+4));
       if(free(x,y))return{x,y};
       for(let radius=24;radius<Math.max(W,H)&&budget.remaining>0;radius+=24)for(let j=0;j<24&&budget.remaining>0;j++){const a=j*Math.PI/12,px=x+Math.cos(a)*radius,py=y+Math.sin(a)*radius;if(free(px,py))return{x:px,y:py};}
@@ -1389,10 +1392,11 @@
         hq = es.find((e) => e.kind === "hq") || es.find(e=>e.structure) || es[0];
       if (!hq) return;
       const protection=protecting?this.updatePlayerProtection(t,es,hq):null;
+      const runwayField=es.find(e=>e.kind==='airfield'&&!root.WarAirbaseRunways.select(this,e));
       const buildKind =
         this.power(t.id) < (protecting?this.options.playerProtection.powerReserve:20)
           ? "power"
-          : protection?.buildKind || (!es.some((e) => e.kind === "airfield") && this.time > 35
+          : protection?.buildKind || (runwayField&&!t.buildQueue.some(q=>q.kind==='runway')?'runway':!es.some((e) => e.kind === "airfield") && this.time > 35
             ? "airfield"
             : !es.some((e) => e.kind === "spaceport") && this.time > 65
               ? "spaceport"
@@ -1409,7 +1413,8 @@
                         : null);
       const urgentPower=protecting&&buildKind==='power'&&!t.buildQueue.some(q=>q.kind==='power');
       if (buildKind && es.some(e=>e.structure) && (!t.buildQueue.length||urgentPower)) {
-        for (let a = 0; a < 20; a++) {
+        if(buildKind==='runway'){const site=root.WarAirbaseRunways.findSite(this,runwayField);if(site)this.build(t.id,'runway',site.x,site.y);}
+        else for (let a = 0; a < 20; a++) {
           const ang = this.random() * Math.PI * 2,
             rad = 190 + this.random() * 230,
             x = hq.x + Math.cos(ang) * rad,
@@ -1507,7 +1512,7 @@
       if(!this.groundNavigation||this.tick%10===1){
         const blocked=this.map.blocked.slice();
         for(const e of this.entities)if(e.structure&&e.hp>0&&!B[e.kind].water){
-          for(let y=Math.max(0,Math.floor((e.y-e.r-12)/T));y<=Math.min(ROWS-1,Math.floor((e.y+e.r+12)/T));y++)for(let x=Math.max(0,Math.floor((e.x-e.r-12)/T));x<=Math.min(COLS-1,Math.floor((e.x+e.r+12)/T));x++)if(Math.hypot(x*T+24-e.x,y*T+24-e.y)<e.r+14)blocked[y*COLS+x]=1;
+          for(let y=Math.max(0,Math.floor((e.y-e.r-12)/T));y<=Math.min(ROWS-1,Math.floor((e.y+e.r+12)/T));y++)for(let x=Math.max(0,Math.floor((e.x-e.r-12)/T));x<=Math.min(COLS-1,Math.floor((e.x+e.r+12)/T));x++)if(root.WarNavigationFootprints.structureDistance(e,x*T+24,y*T+24)<14)blocked[y*COLS+x]=1;
         }
         this.groundNavigation={blocked};
         for(const o of this.ore)for(let y=Math.max(0,Math.floor((o.y-48)/T));y<=Math.min(ROWS-1,Math.floor((o.y+48)/T));y++)for(let x=Math.max(0,Math.floor((o.x-48)/T));x<=Math.min(COLS-1,Math.floor((o.x+48)/T));x++)if(Math.hypot(x*T+24-o.x,y*T+24-o.y)<45)blocked[y*COLS+x]=1;
@@ -1536,9 +1541,8 @@
           (t.id === 0 && this.buffs.has("rapid") ? 10 : 1);
         const productionHeads=[...new Set(t.queue.map(q=>U[q.kind].producer))].map(producer=>t.queue.find(q=>U[q.kind].producer===producer));
         for (const q of productionHeads) {
-          const prod = es.find(
-            (e) => e.kind === U[q.kind].producer && e.disabled <= this.time,
-          );
+          const producers=es.filter(e=>e.kind===U[q.kind].producer&&e.disabled<=this.time);
+          const prod=producers.find(e=>!root.WarAircraftFlight.fixed({kind:q.kind})||root.WarAircraftFlight.launchPosition(this,e,q.kind))||producers[0];
           if (prod) {
             q.remaining = Math.max(0,q.remaining-dt*rate);
             if (q.remaining <= 0) {
@@ -1546,7 +1550,7 @@
               q.blockedReason=pos?'':U[q.kind].air?'等待可用跑道或起飞位置':'等待出口腾空';
               if (pos) {
                 const spawned=this.spawn(t.id, q.kind, pos.x, pos.y);
-                if(root.WarAircraftFlight.supported(spawned))root.WarAircraftFlight.launch(this,spawned,prod);
+                if(root.WarAircraftFlight.supported(spawned))root.WarAircraftFlight.launch(this,spawned,prod,pos);
                 if(prod.rally&&q.kind!=='harvester')this.command([spawned.id],prod.rally.x,prod.rally.y,true);
                 t.queue.splice(t.queue.indexOf(q),1);
               }
@@ -1559,8 +1563,10 @@
         if (b) {
           b.remaining -= dt * rate;
           if (b.remaining <= 0) {
-            this.spawn(t.id, b.kind, b.x, b.y);
-            t.buildQueue.shift();
+            if(b.kind!=='runway'||root.WarAirbaseRunways.plan(this,t.id,b.x,b.y,b.angle,b)){
+              const made=this.spawn(t.id,b.kind,b.x,b.y);if(b.kind==='runway'){made.angle=b.angle||0;for(const tree of root.WarTrees.ensure(this))if(tree.hp>0&&root.WarAirbaseRunways.signedDistance(made,tree)<12)root.WarTrees.damage(this,tree.id,tree.maxHp,made);}
+              t.buildQueue.shift();
+            }else{b.remaining=0;b.blockedReason='等待跑道区域腾空或关联机场重建';}
           }
         }
         if (t.id > 0 || (t.id===0&&this.directControl)) this.ai(t, dt);
@@ -1677,7 +1683,7 @@
           }
           // Construction can invalidate an already accepted move/rally order.
           // Keep queued orders and attack targets; relocate only a blocked stop.
-          if(!orderedTarget&&this.tick%10===e.id%10&&this.entities.some(o=>o.structure&&o.hp>0&&this.navigationLayer(e,o)&&dist(o,goal)<o.r+this.navigationRadius(e)+8)){
+          if(!orderedTarget&&this.tick%10===e.id%10&&this.entities.some(o=>o.structure&&o.hp>0&&this.navigationLayer(e,o)&&!root.WarNavigationFootprints.structureClear(this,e,o,goal.x,goal.y,8))){
             const p=this.destination(e,goal.x,goal.y);
             if(p){Object.assign(goal,p);e.path=[];e.repath=0;e.crowdRouteOrder=null;e.crowdDetourUntil=0;}
           }
@@ -1904,7 +1910,7 @@
       const e={kind,team:prod.team,r:U[kind].r,angle:.6},r=this.navigationRadius(e);
       for(let ring=0;ring<8;ring++)for(let i=0;i<24;i++){
         const a=i*Math.PI/12,rad=prod.r+r+12+ring*48,x=prod.x+Math.cos(a)*rad,y=prod.y+Math.sin(a)*rad;
-        if(root.WarNavigationFootprints.terrain(this,e,x,y)&&(U[kind].air||U[kind].naval||!this.ore.some(o=>Math.hypot(o.x-x,o.y-y)<48+r+4))&&!this.entities.some(o=>o.hp>0&&this.navigationLayer(e,o)&&Math.hypot(o.x-x,o.y-y)<r+(o.structure?o.r:this.navigationRadius(o))+12))return{x,y};
+        if(root.WarNavigationFootprints.terrain(this,e,x,y)&&(U[kind].air||U[kind].naval||!this.ore.some(o=>Math.hypot(o.x-x,o.y-y)<48+r+4))&&!this.entities.some(o=>o.hp>0&&this.navigationLayer(e,o)&&(o.structure?!root.WarNavigationFootprints.structureClear(this,e,o,x,y,12):Math.hypot(o.x-x,o.y-y)<r+this.navigationRadius(o)+12)))return{x,y};
       }
       return null;
     }
@@ -1912,6 +1918,7 @@
       return structuredClone({
         version: D.version,
         altitudeSchema: 2,
+        runwaySchema: 1,
         mapScaleVersion: 2,
         options: this.options,
         time: this.time,
@@ -1954,6 +1961,7 @@
         s.version !== D.version ||
         s.mapScaleVersion!==2 ||
         (s.altitudeSchema!==undefined&&s.altitudeSchema!==2) ||
+        (s.runwaySchema!==undefined&&s.runwaySchema!==1) ||
         !s.options ||
         !Array.isArray(s.entities) ||
         s.entities.length > 1000 ||
@@ -2003,7 +2011,7 @@
               !finite(q.remaining) ||
               (q.paid!==undefined&&(!finite(q.paid)||q.paid<0)) ||
               !finite(q.x) ||
-              !finite(q.y),
+              !finite(q.y) || (q.kind==='runway'&&!finite(q.angle)),
           )
         )
           throw Error("存档队伍数据无效");
@@ -2020,7 +2028,7 @@
           e.y > H ||
           !finite(e.hp) ||
           !finite(e.maxHp) ||
-          ["altitude","pitch","roll","flightSpeed","jumpHeight","jumpVelocity"].some(k=>e[k]!==undefined&&!finite(e[k])) ||
+          ["angle","altitude","pitch","roll","flightSpeed","jumpHeight","jumpVelocity"].some(k=>e[k]!==undefined&&!finite(e[k])) ||
           !Number.isInteger(e.id) ||
           e.maxHp <= 0 ||
           !root.WarAircraftFlight.validate(e) ||
@@ -2080,6 +2088,8 @@
       g.validateVehicleCrews?.();
       root.WarTrees.restore(g,s.trees);
       g.directObstacles=root.WarTrees.liveColliders(g);
+      root.WarAirbaseRunways.migrate(g,s.runwaySchema);
+      if(!root.WarAirbaseRunways.validateGame(g))throw Error('跑道关联存档无效');
       g.spatial.rebuild(g.entities);
       if(g.options.aiSpaceWeapons===false)g.setAISpaceWeapons(false);
       g.updateFog();

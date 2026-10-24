@@ -56,7 +56,7 @@
     displayHeight(h){return this.firstPerson?.active?h:h>=2000?145+(h-4000)*.003:h>65?65+Math.log(h/65)*20:h;}
     entityHeight(e){return this.displayHeight(this.physicalHeight(e));}
     resolveWeaponOrigin(game,e,weapon,portIndex){const model=this.objects.get(e.id);if(!model)return null;
-      model.position.set(e.x,this.entityHeight(e),e.y);model.rotation.set(e.roll||0,e.structure?0:-(e.angle||0),e.pitch||0,'YZX');
+      model.position.set(e.x,this.entityHeight(e),e.y);model.rotation.set(e.roll||0,e.structure&&!B[e.kind]?.rotatable?0:-(e.angle||0),e.pitch||0,'YZX');
       root.WarCombatDamageVisuals?.applyBodyPose(this,model,e);
       if(model.userData.personnelRig)root.WarPersonnelAnimation?.update(model,e,game.time);else root.WarVehicleAnimation?.syncWeaponPose(model,e);
       const anchor=root.WarWeaponEffects?.weaponAnchor(model,weapon,{kind:e.kind,faction:game.teams[e.team]?.faction,portIndex});if(!anchor)return null;model.updateMatrixWorld(true);const p=anchor.getWorldPosition(new T.Vector3());
@@ -64,7 +64,7 @@
     }
     entityScreen(e){return this.toScreen(e.x,e.y,U[e.kind]?.underwater&&!this.firstPerson?.active?0:this.physicalHeight(e));}
     pick(game,x,y,enemy=false){
-      let best=null,score=Infinity;for(const e of game.entities){if(enemy?!game.isEnemy(0,e.team):e.team!==0)continue;if(enemy&&!(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))continue;const p=this.entityScreen(e),d=Math.hypot(x-p.x,y-p.y);if(d<Math.max(16,e.r*this.camera.zoom+7)&&d<score){best=e;score=d;}}return best;
+      let best=null,score=Infinity;for(const e of game.entities){if(enemy?!game.isEnemy(0,e.team):e.team!==0)continue;if(enemy&&!(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))continue;if(B[e.kind]?.footprint){const world=this.toWorld(x,y);if(root.WarNavigationFootprints.structureDistance(e,world.x,world.y)>7/this.camera.zoom)continue;}const p=this.entityScreen(e),d=Math.hypot(x-p.x,y-p.y);if(d<Math.max(16,e.r*this.camera.zoom+7)&&d<score){best=e;score=d;}}return best;
     }
     pan(dx,dy){this.camera.x=clamp(this.camera.x+dx,0,W);this.camera.y=clamp(this.camera.y+dy/Math.sin(this.elevation),0,H);}
     zoomAt(f,x,y){let a=this.toWorld(x,y);this.camera.zoom=clamp(this.camera.zoom*f,.18,4.5);let b=this.toWorld(x,y);this.camera.x=clamp(this.camera.x+a.x-b.x,0,W);this.camera.y=clamp(this.camera.y+a.y-b.y,0,H);}
@@ -74,7 +74,6 @@
       root.WarCombatDamageVisuals?.clear(this);
       root.WarWeaponEffects?.clearProjectiles(this);
       this.treeVisual=null;
-      this.runwayObjects=new Map();
       const geos=new Set(),mats=new Set();this.world.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.geometry)geos.add(o.geometry);if(o.material)mats.add(o.material);});
       geos.forEach(g=>g.dispose());mats.forEach(m=>{m.map?.dispose();m.normalMap?.dispose();m.userData.detailTexture?.dispose();m.dispose();});this.world.clear();
       this.clearObjects();
@@ -158,22 +157,8 @@
       if(changed){this.fogCtx.putImageData(im,0,0);this.fogTex.needsUpdate=true;}
       this.fogEnabled.value=demo?0:1;
     }
-    syncRunways(game,ui){
-      this.runwayObjects??=new Map();const alive=new Set();
-      for(const e of game.entities){if(e.hp<=0||!e.runway)continue;alive.add(e.id);const r=e.runway,key=JSON.stringify(r);let entry=this.runwayObjects.get(e.id);
-        if(entry?.key!==key){if(entry){entry.mesh.removeFromParent();entry.mesh.geometry.dispose();entry.mesh.material.dispose();}const b=new root.WarModels.Builder();
-          b.box(r.length+24,.6,r.width,r.length/2,.4,0,0x343b3d);
-          for(const side of [-1,1]){b.box(r.length, .05,1.4,r.length/2,.76,side*(r.width/2-5),0xd5d6c7);for(let x=0;x<=r.length;x+=45)b.box(2,1.5,2,x,1.5,side*(r.width/2+1),0x92d4ef);}
-          for(let x=18;x<r.length;x+=36)b.box(18,.07,2,x,.8,0,0xd7dbcf);
-          for(let z=-50;z<=50;z+=20){b.box(18,.07,7,12,.8,z,0xe2e2d6);b.box(18,.07,7,r.length-12,.8,z,0xe2e2d6);}
-          const mesh=b.finish();mesh.name='airfield-runway-'+e.id;mesh.material=this.fogify(new T.MeshStandardMaterial({vertexColors:true,roughness:.92}));mesh.position.set(r.x,0,r.y);mesh.rotation.y=-r.angle;mesh.castShadow=false;mesh.receiveShadow=true;this.world.add(mesh);entry={mesh,key};this.runwayObjects.set(e.id,entry);
-        }entry.mesh.visible=!!ui.demo||e.team===0||game.visibleAt(e.x,e.y);
-      }
-      for(const [id,entry]of this.runwayObjects)if(!alive.has(id)){entry.mesh.removeFromParent();entry.mesh.geometry.dispose();entry.mesh.material.dispose();this.runwayObjects.delete(id);}
-    }
     draw(game,ui={},time=0){
       this.treeVisual?.sync(game);
-      this.syncRunways(game,ui);
       this.syncCamera();this.updateFog(game,!!ui.demo);this.underwaterScene?.update(this.firstPerson?.underwater===true,time);if(this.altitudeScene&&!this.firstPerson?.active)this.altitudeScene.group.visible=false;const g=this.ctx;g.setTransform(this.dpr,0,0,this.dpr,0,0);g.clearRect(0,0,this.width,this.height);
       for(const {m,ore}of this.oreObjects||[])m.material.color.setHex(ore.amount>0?0xffffff:0x7a7e78);
       if(this.contextLost){g.fillStyle='#dbe3d8';g.fillText('图形设备正在恢复…',40,90);return;}
@@ -183,7 +168,8 @@
       for(const e of game.entities){alive.add(e.id);let o=this.objects.get(e.id),p=this.firstPerson?.active?null:this.entityScreen(e);const visible=(ui.demo||e.team===0||(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))&&(this.firstPerson?.active?(this.firstPerson.orbitScope?.active||Math.hypot(e.x-this.camera.x,e.y-this.camera.y)<3200):p.x>-140&&p.x<this.width+140&&p.y>-160&&p.y<this.height+180);
         if(!visible){if(o)o.visible=false;continue;}
         if(!o){o=root.WarModels.create(e.kind,game.teams[e.team].faction);o.scale.setScalar(o.userData.scale);o.traverse(m=>{if(m.isMesh&&m.userData.preserveMaterial)for(const mat of Array.isArray(m.material)?m.material:[m.material])this.fogify(mat)});this.objects.set(e.id,o);this.scene.add(o);}
-        o.visible=e.id!==this.firstPerson?.entityId||!!this.firstPerson?.exteriorActive();visibleCount++;o.position.set(e.x,this.entityHeight(e),e.y);o.rotation.set(e.roll||0,e.structure?0:-e.angle,e.pitch||0,'YZX');
+        const pose=this.firstPerson?.active&&e.id===this.firstPerson.entityId?this.firstPerson.renderPose?.(e)||e:e;
+        o.visible=e.id!==this.firstPerson?.entityId||!!this.firstPerson?.exteriorActive();visibleCount++;o.position.set(pose.x,this.entityHeight(pose),pose.y);o.rotation.set(pose.roll||0,e.structure&&!B[e.kind]?.rotatable?0:-pose.angle,pose.pitch||0,'YZX');
         o.userData.personnelDamageDetail=this.firstPerson?.active?o.position.distanceToSquared(this.cam.position)<650*650:Math.hypot(e.x-this.camera.x,e.y-this.camera.y)<650;
         root.WarPersonnelAnimation?.update(o,e,game.time);
         if(root.WarVehicleAnimation)root.WarVehicleAnimation.update(o,e,game);else {
@@ -259,7 +245,7 @@
         }else ring(fx.x,fx.y,12+t*25,fx.attack?'#eeb195':'#b6dfca',2,1-t);
       }
       for(const b of game.teams[0].buildQueue){ring(b.x,b.y,B[b.kind].r+4,'#b2d1ad',2);const p=this.toScreen(b.x,b.y);text('建造 '+Math.round((1-b.remaining/b.total)*100)+'%',p.x,p.y);}
-      if(ui.mode){const p=this.toWorld(ui.pointer.x,ui.pointer.y),good=!B[ui.mode]||game.canBuild(0,ui.mode,p.x,p.y);ring(p.x,p.y,B[ui.mode]?.r||D.ABILITIES[ui.mode]?.radius||20,good?'#d6e7b2':'#ff8c71',2);}
+      if(ui.mode){const p=this.toWorld(ui.pointer.x,ui.pointer.y),good=!B[ui.mode]||game.canBuild(0,ui.mode,p.x,p.y);if(ui.mode==='runway'){const a=root.WarAirbaseRunways.plan(game,0,p.x,p.y)?.angle||0,c=Math.cos(a),s=Math.sin(a);g.strokeStyle=good?'#d6e7b2':'#ff8c71';g.lineWidth=2;g.beginPath();for(const [i,[x,y]]of [[-180,-80],[180,-80],[180,80],[-180,80]].entries()){const q=this.toScreen(p.x+c*x-s*y,p.y+s*x+c*y,1);if(i)g.lineTo(q.x,q.y);else g.moveTo(q.x,q.y);}g.closePath();g.stroke();const start=this.toScreen(p.x-c*140,p.y-s*140,2),end=this.toScreen(p.x+c*140,p.y+s*140,2);g.beginPath();g.moveTo(start.x,start.y);g.lineTo(end.x,end.y);g.stroke();}else ring(p.x,p.y,B[ui.mode]?.r||D.ABILITIES[ui.mode]?.radius||20,good?'#d6e7b2':'#ff8c71',2);}
       if(ui.drag){g.fillStyle='#abd1c41c';g.strokeStyle='#b1d6c9';g.lineWidth=1;g.fillRect(ui.drag.x,ui.drag.y,ui.pointer.x-ui.drag.x,ui.pointer.y-ui.drag.y);g.strokeRect(ui.drag.x,ui.drag.y,ui.pointer.x-ui.drag.x,ui.pointer.y-ui.drag.y);}
       root.WarWeaponEffects?.draw(this,game);if(!ui.demo)this.drawMinimap(game);
     }

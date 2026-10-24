@@ -339,7 +339,7 @@
             k,
             unitName(k, t.faction),
             d.icon,
-            !technologyReady ? "尖端科技未开启" : prod
+            !technologyReady ? "尖端科技未开启" : prod && !WarAirbaseRunways.available(game,0,k) ? "需独立跑道 · 可先排队生产" : prod
               ? (d.advanced ? "尖端科技 · " : d.name + " · ") + d.time + "s"
               : "需要 " + B[d.producer].name,
             cost,
@@ -365,7 +365,7 @@
               "s",
             d.cost,
             !game.canAfford(0,d.cost) || t.buildQueue.length >= 4,
-            "在己方建筑 400 范围内放置",
+            k==='runway'?"360×160 · 关联 600 范围内友方机场 · 在己方建筑 400 范围内放置":"在己方建筑 400 范围内放置",
           ),
         )
         .join("");
@@ -1094,7 +1094,9 @@
         let steps = 0;
         while (acc >= 0.05 && steps < 8) {
           direct.submit();
+          direct.timeline?.captureBefore(game);
           game.step(0.05);
+          direct.timeline?.captureAfter(game);
           acc -= 0.05;
           steps++;
         }
@@ -1105,6 +1107,7 @@
         if (!direct.active&&!direct.vehicleMenu.open&&(keys.has("arrowup") || keys.has("w"))) r.pan(0, -v);
         if (!direct.active&&!direct.vehicleMenu.open&&keys.has("arrowdown")) r.pan(0, v);
       }
+      direct.timeline?.beginFrame(game,acc/.05,{paused:paused||!!game.result});
       if(!paused){
         const listener=direct.active?game.get(direct.entityId):r.camera;
         for(const fx of game.effects)if(['shot','discharge'].includes(fx.type)&&game.time-(fx.firedAt??-100)<.25&&listener&&Math.hypot(fx.x-listener.x,fx.y-listener.y)<1200&&(fx.from===0||game.visibleAt(fx.x,fx.y)))combatAudio.playShot(fx,game.get(fx.sourceId));

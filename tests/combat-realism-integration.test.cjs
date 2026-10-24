@@ -67,6 +67,8 @@ test('actual artillery projectile supplies the identical world position to RTS a
 
 test('point defense emits a delayed interceptor before destroying a real incoming missile; unrelated shot survives',()=>{
  const {g,e}=arena('mobile_ciws'),launcher=g.spawn(1,'destroyer',2450,1600),target=g.spawn(0,'tank',1790,1610);
+ const observer=g.spawn(1,'recon_vehicle',1950,1450);observer.disabled=1e6;
+ assert.ok(g.unitsInSight(e,g.teamEntities(1)),'a real observer must maintain the enemy missile lock');
  launcher.angle=launcher.turret=Math.PI;launcher.weaponId=weapon(g,launcher,'land_attack').id;
  assert.equal(g.emitShot(launcher,e),true);const threat=shots(g,launcher)[0];launcher.disabled=1e6;
  const tank=g.spawn(1,'tank',2100,1700),victim=g.spawn(0,'tank',1920,1700);tank.angle=tank.turret=Math.PI;tank.weaponId=weapon(g,tank,'main_gun').id;
