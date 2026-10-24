@@ -9,6 +9,7 @@
   function animatedParts(model){let parts=partCache.get(model);if(!parts){parts=Object.fromEntries(partNames.map(name=>[name,model.getObjectByName(name)]));partCache.set(model,parts);}return parts;}
   class Battle3D {
     constructor(canvas,mini){
+      const {COLS,ROWS}=root.WarMapDimensions?.forMap(this.mapSize)||D;
       this.canvas=canvas;this.mini=mini;this.mc=mini.getContext('2d');
       this.gl=new T.WebGLRenderer({canvas,antialias:true,powerPreference:'high-performance'});
       this.gl.outputColorSpace=T.SRGBColorSpace;this.gl.toneMapping=T.ACESFilmicToneMapping;this.gl.toneMappingExposure=1.05;
@@ -34,7 +35,7 @@
     fogify(mat){
       if(mat.userData.battleFog)return mat;mat.userData.battleFog=true;
       const previous=mat.onBeforeCompile;mat.onBeforeCompile=s=>{
-        previous?.call(mat,s);s.uniforms.warFog=this.fogUniform;s.uniforms.warFogEnabled=this.fogEnabled;
+        previous?.call(mat,s);s.uniforms.warFog=this.fogUniform;s.uniforms.warFogEnabled=this.fogEnabled;s.uniforms.warMapSize=this.mapSizeUniform??={value:new T.Vector2(6144,4224)};
         s.vertexShader='varying vec3 vWarWorld;\n'+s.vertexShader;
         s.vertexShader=s.vertexShader.replace('#include <project_vertex>',`#include <project_vertex>
           vec4 warPos=vec4(transformed,1.0);
@@ -42,9 +43,9 @@
           warPos=instanceMatrix*warPos;
           #endif
           vWarWorld=(modelMatrix*warPos).xyz;`);
-        s.fragmentShader='uniform sampler2D warFog; uniform float warFogEnabled; varying vec3 vWarWorld;\n'+s.fragmentShader;
+        s.fragmentShader='uniform sampler2D warFog; uniform float warFogEnabled; uniform vec2 warMapSize; varying vec3 vWarWorld;\n'+s.fragmentShader;
         s.fragmentShader=s.fragmentShader.replace('#include <dithering_fragment>',`#include <dithering_fragment>
-          float obscured=texture2D(warFog,vec2(vWarWorld.x/${W.toFixed(1)},1.0-vWarWorld.z/${H.toFixed(1)})).a*warFogEnabled;
+          float obscured=texture2D(warFog,vec2(vWarWorld.x/warMapSize.x,1.0-vWarWorld.z/warMapSize.y)).a*warFogEnabled;
           gl_FragColor.rgb=mix(gl_FragColor.rgb,vec3(.045,.075,.087),obscured);`);
       };mat.needsUpdate=true;return mat;
     }
@@ -64,10 +65,12 @@
     }
     entityScreen(e){return this.toScreen(e.x,e.y,U[e.kind]?.underwater&&!this.firstPerson?.active?0:this.physicalHeight(e));}
     pick(game,x,y,enemy=false){
-      let best=null,score=Infinity;for(const e of game.entities){if(enemy?!game.isEnemy(0,e.team):e.team!==0)continue;if(enemy&&!(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))continue;if(B[e.kind]?.footprint){const world=this.toWorld(x,y);if(root.WarNavigationFootprints.structureDistance(e,world.x,world.y)>7/this.camera.zoom)continue;}const p=this.entityScreen(e),d=Math.hypot(x-p.x,y-p.y);if(d<Math.max(16,e.r*this.camera.zoom+7)&&d<score){best=e;score=d;}}return best;
+      let best=null,score=Infinity;for(const e of game.entities){if(enemy?!game.isEnemy(0,e.team):e.team!==0)continue;if(enemy&&!(game.entityVisible?game.entityVisible(0,e):(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y))))continue;if(B[e.kind]?.footprint){const world=this.toWorld(x,y);if(root.WarNavigationFootprints.structureDistance(e,world.x,world.y)>7/this.camera.zoom)continue;}const p=this.entityScreen(e),d=Math.hypot(x-p.x,y-p.y);if(d<Math.max(16,e.r*this.camera.zoom+7)&&d<score){best=e;score=d;}}return best;
     }
-    pan(dx,dy){this.camera.x=clamp(this.camera.x+dx,0,W);this.camera.y=clamp(this.camera.y+dy/Math.sin(this.elevation),0,H);}
-    zoomAt(f,x,y){let a=this.toWorld(x,y);this.camera.zoom=clamp(this.camera.zoom*f,.18,4.5);let b=this.toWorld(x,y);this.camera.x=clamp(this.camera.x+a.x-b.x,0,W);this.camera.y=clamp(this.camera.y+a.y-b.y,0,H);}
+    pan(dx,dy){
+      const {W,H}=root.WarMapDimensions?.forMap(this.mapSize)||D;this.camera.x=clamp(this.camera.x+dx,0,W);this.camera.y=clamp(this.camera.y+dy/Math.sin(this.elevation),0,H);}
+    zoomAt(f,x,y){
+      const {W,H}=root.WarMapDimensions?.forMap(this.mapSize)||D;let a=this.toWorld(x,y);this.camera.zoom=clamp(this.camera.zoom*f,.18,4.5);let b=this.toWorld(x,y);this.camera.x=clamp(this.camera.x+a.x-b.x,0,W);this.camera.y=clamp(this.camera.y+a.y-b.y,0,H);}
     removeObject(id){const o=this.objects.get(id);if(!o)return;root.WarPersonnelAnimation?.release(o);root.WarVehicleAnimation?.release(o);this.scene.remove(o);this.objects.delete(id);}
     clearObjects(){for(const id of this.objects.keys())this.removeObject(id);}
     disposeWorld(){
@@ -79,12 +82,15 @@
       this.clearObjects();
     }
     prepare(game){
-      this.disposeWorld();this.mapId=game.map.id;const rnd=root.WarSim.rng(game.map.seed),desert=game.map.id==='desert';
+      const {W,H,COLS,ROWS}=root.WarMapDimensions?.forMap(game.map)||D;
+      this.mapSize=root.WarMapDimensions?.forMap(game.map)||D;this.mapSizeUniform??={value:new T.Vector2(W,H)};this.mapSizeUniform.value.set(W,H);
+      if(this.fogCanvas.width!==COLS||this.fogCanvas.height!==ROWS){this.fogCanvas.width=COLS;this.fogCanvas.height=ROWS;this.fogImage=null;this.fogGame=null;this.fogTex.needsUpdate=true;}
+      this.altitudeScene?.dispose?.();this.altitudeScene=null;this.disposeWorld();this.mapId=game.map.id;const rnd=root.WarSim.rng(game.map.seed),desert=game.map.id==='desert';
       const c=document.createElement('canvas');c.width=2048;c.height=1408;const g=c.getContext('2d'),sx=c.width/W,sy=c.height/H;
       g.fillStyle=desert?'#9b8d6b':'#627257';g.fillRect(0,0,c.width,c.height);
       // Continuous mottled ground instead of visible checkerboard tiles.
       for(let i=0;i<8000;i++){const x=rnd()*c.width,y=rnd()*c.height,r=5+rnd()*45;g.globalAlpha=.025+rnd()*.035;g.fillStyle=rnd()>.5?'#d5c59c':'#1e3328';g.beginPath();g.ellipse(x,y,r,r*.55,0,0,7);g.fill();}g.globalAlpha=1;
-      g.save();g.scale(sx,sy);g.strokeStyle=desert?'#aa9976':'#7b7963';g.lineWidth=67;g.lineCap='round';g.beginPath();g.moveTo(180*W/3072,H/2);g.lineTo(W-182*W/3072,H/2);for(const x of [720,2352].map(v=>v*W/3072)){g.moveTo(x,200*H/2112);g.lineTo(x,H-202*H/2112);}g.stroke();g.strokeStyle='#c4b28b35';g.lineWidth=2;g.setLineDash([22,26]);g.stroke();g.setLineDash([]);
+      g.save();g.scale(sx,sy);if(!game.map.geography){g.strokeStyle=desert?'#aa9976':'#7b7963';g.lineWidth=67;g.lineCap='round';g.beginPath();g.moveTo(180*W/3072,H/2);g.lineTo(W-182*W/3072,H/2);for(const x of [720,2352].map(v=>v*W/3072)){g.moveTo(x,200*H/2112);g.lineTo(x,H-202*H/2112);}g.stroke();g.strokeStyle='#c4b28b35';g.lineWidth=2;g.setLineDash([22,26]);g.stroke();g.setLineDash([]);}
       for(const p of game.map.spawns){g.fillStyle='#6c746655';g.fillRect(p.x-220,p.y-160,440,340);}
       g.restore();
       for(let i=0;i<90000;i++){g.fillStyle=rnd()>.5?'#b8b29b24':'#18241f20';g.fillRect(rnd()*c.width,rnd()*c.height,1+rnd()*2,1);}
@@ -92,9 +98,9 @@
       const groundMat=this.fogify(new T.MeshStandardMaterial({map:tex,roughness:1}));
       if(root.GroundTextures){
         const loader=new T.TextureLoader(),detail=loader.load(root.GroundTextures.diffuse),normal=loader.load(root.GroundTextures.normal);
-        detail.colorSpace=T.SRGBColorSpace;detail.wrapS=detail.wrapT=normal.wrapS=normal.wrapT=T.RepeatWrapping;normal.repeat.set(38,26);normal.anisotropy=4;detail.anisotropy=4;
+        detail.colorSpace=T.SRGBColorSpace;detail.wrapS=detail.wrapT=normal.wrapS=normal.wrapT=T.RepeatWrapping;normal.repeat.set(W/6144*38,H/4224*26);normal.anisotropy=4;detail.anisotropy=4;
         groundMat.normalMap=normal;groundMat.normalScale=new T.Vector2(.65,.65);groundMat.userData.detailTexture=detail;
-        const prev=groundMat.onBeforeCompile;groundMat.onBeforeCompile=s=>{prev(s);s.uniforms.groundDetail={value:detail};s.fragmentShader='uniform sampler2D groundDetail;\n'+s.fragmentShader;s.fragmentShader=s.fragmentShader.replace('#include <map_fragment>','#include <map_fragment>\ndiffuseColor.rgb *= mix(vec3(1.0), texture2D(groundDetail,vMapUv*vec2(38.0,26.0)).rgb*2.3, .60);');};
+        const prev=groundMat.onBeforeCompile;groundMat.onBeforeCompile=s=>{prev(s);s.uniforms.groundDetail={value:detail};s.fragmentShader='uniform sampler2D groundDetail;\n'+s.fragmentShader;s.fragmentShader=s.fragmentShader.replace('#include <map_fragment>','#include <map_fragment>\ndiffuseColor.rgb *= mix(vec3(1.0), texture2D(groundDetail,vWarWorld.xz*vec2(0.0061848958,0.0061553030)).rgb*2.3, .60);');};
       }
       // A real seabed replaces the opaque flat plane below ocean tiles.
       const terrainVertices=[],terrainUV=[],wet=(x,y)=>x>=0&&y>=0&&x<COLS&&y<ROWS&&[3,6].includes(game.map.tiles[y*COLS+x]);
@@ -138,14 +144,15 @@
         b.box(18,13,17,x-65,8,z-29,0x737f6a);b.box(20,1.5,19,x-65,15,z-29,0x3c4b42);
         const m=b.finish();m.material=this.fogify(new T.MeshStandardMaterial({vertexColors:true,roughness:.96}));this.world.add(m);this.oreObjects.push({m,ore});
       }
-      this.underwaterScene=root.WarUnderwater?.create(this,game);this.altitudeScene??=root.WarAltitudeScene?.create(this);this.syncCamera();
+      this.underwaterScene=root.WarUnderwater?.create(this,game);this.altitudeScene??=root.WarAltitudeScene?.create(this,game);this.syncCamera();
     }
     updateFog(game,demo){
+      const {COLS,ROWS}=root.WarMapDimensions?.forMap(game.map)||D;
       const vision=game.buffs.has('vision'),revision=game.fogRevision??game.tick;
       if(this.fogGame===game&&this.fogVisible===game.visible&&this.fogExplored===game.explored&&this.fogRevision===revision&&this.lastDemo===demo&&this.fogVision===vision)return;
       this.fogGame=game;this.fogVisible=game.visible;this.fogExplored=game.explored;this.fogRevision=revision;this.lastDemo=demo;this.fogVision=vision;
-      let changed=!this.fogImage;
-      if(!this.fogImage){
+      let changed=!this.fogImage||this.fogImage.data.length!==COLS*ROWS*4;
+      if(!this.fogImage||this.fogImage.data.length!==COLS*ROWS*4){
         this.fogImage=this.fogCtx.createImageData(COLS,ROWS);
         for(let i=0;i<COLS*ROWS;i++){const p=i*4;this.fogImage.data[p]=14;this.fogImage.data[p+1]=23;this.fogImage.data[p+2]=26;}
       }
@@ -165,7 +172,7 @@
       const night=root.ModernFront?.lighting?.night;this.sun.intensity=night?1:this.firstPerson?.active?2.6:3;this.hemi.intensity=night?.6:this.firstPerson?.active?1.2:2;
       const lightHeight=this.firstPerson?.active?this.firstPerson.eye.y:0;this.sun.position.set(this.camera.x-600,lightHeight+1400,this.camera.y+350);this.sun.target.position.set(this.camera.x,lightHeight,this.camera.y);this.sun.target.updateMatrixWorld();
       const alive=new Set();let visibleCount=0;
-      for(const e of game.entities){alive.add(e.id);let o=this.objects.get(e.id),p=this.firstPerson?.active?null:this.entityScreen(e);const visible=(ui.demo||e.team===0||(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))&&(this.firstPerson?.active?(this.firstPerson.orbitScope?.active||Math.hypot(e.x-this.camera.x,e.y-this.camera.y)<3200):p.x>-140&&p.x<this.width+140&&p.y>-160&&p.y<this.height+180);
+      for(const e of game.entities){alive.add(e.id);let o=this.objects.get(e.id),p=this.firstPerson?.active?null:this.entityScreen(e);const visible=(ui.demo||e.team===0||(game.entityVisible?game.entityVisible(0,e):(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y))))&&(this.firstPerson?.active?(this.firstPerson.orbitScope?.active||Math.hypot(e.x-this.camera.x,e.y-this.camera.y)<3200):p.x>-140&&p.x<this.width+140&&p.y>-160&&p.y<this.height+180);
         if(!visible){if(o)o.visible=false;continue;}
         if(!o){o=root.WarModels.create(e.kind,game.teams[e.team].faction);o.scale.setScalar(o.userData.scale);o.traverse(m=>{if(m.isMesh&&m.userData.preserveMaterial)for(const mat of Array.isArray(m.material)?m.material:[m.material])this.fogify(mat)});this.objects.set(e.id,o);this.scene.add(o);}
         const pose=this.firstPerson?.active&&e.id===this.firstPerson.entityId?this.firstPerson.renderPose?.(e)||e:e;
@@ -250,10 +257,11 @@
       root.WarWeaponEffects?.draw(this,game);if(!ui.demo)this.drawMinimap(game);
     }
     drawMinimap(game,targetCanvas=this.mini){
+      const {W,H}=root.WarMapDimensions?.forMap(game.map)||D;
       const c=targetCanvas===this.mini?this.mc:targetCanvas.getContext('2d'),w=targetCanvas.width,h=targetCanvas.height;
       c.clearRect(0,0,w,h);c.drawImage(this.miniTerrain,0,0,w,h);c.drawImage(this.fogCanvas,0,0,w,h);
       for(const n of game.nodes){c.fillStyle=n.owner<0?'#e1d5ad':n.owner===0?'#94d7c8':'#e89978';c.fillRect(n.x/W*w-2,n.y/H*h-2,4,4);}
-      for(const e of game.entities){if(e.hp<=0||(e.team!==0&&!(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y))))continue;c.fillStyle=e.team===0?'#b5e7d7':'#f1a38a';const r=e.structure?3:1.5;c.fillRect(e.x/W*w-r,e.y/H*h-r,r*2,r*2);}
+      for(const e of game.entities){if(e.hp<=0||(e.team!==0&&!(game.entityVisible?game.entityVisible(0,e):(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))))continue;c.fillStyle=e.team===0?'#b5e7d7':'#f1a38a';const r=e.structure?3:1.5;c.fillRect(e.x/W*w-r,e.y/H*h-r,r*2,r*2);}
       if(this.firstPerson?.active){
         const actor=game.get(this.firstPerson.entityId);if(!actor)return;
         const yaw=U[actor.kind]?.air&&!U[actor.kind]?.space?actor.angle:this.firstPerson.yaw;

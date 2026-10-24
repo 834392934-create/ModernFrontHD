@@ -55,7 +55,7 @@
               <label>武器射程<select id="range-mode"><option value="published" selected>公开射程 · 未知项标注估算</option><option value="balanced">原版平衡射程</option></select></label>
               <label>射程标尺<select id="range-scale"><option value="1" selected>1 游戏单位 = 1 米</option><option value="5">1 游戏单位 = 5 米</option><option value="10">1 游戏单位 = 10 米</option></select></label>
             </div>
-            <p class="small-note">标尺用于交战距离，载具外观有放大。远程武器可覆盖全图，仍受侦察、最小射程和目标类型限制。</p>
+            <p class="small-note">标尺用于交战距离，载具外观有放大。远程武器可覆盖全图，仍受侦察、最小射程和目标类型限制。新增地理地图采用压缩海岸轮廓；基地与矿山为虚构部署。轨道测绘不等于实时识别所有人员。</p>
             <div class="switch-row">
               <label><input id="allied" type="checkbox" />敌方结盟</label
               ><label
@@ -172,6 +172,7 @@
             ><button id="attack-move">攻击移动 <kbd>A</kbd></button
             ><button id="stop-units">停止 <kbd>S</kbd></button
             ><button id="home">基地 <kbd>H</kbd></button>
+            <button id="commander-ai" aria-pressed="false" title="Y 切换建造、生产与部队托管；手动命令优先">AI 接管：关 <kbd>Y</kbd></button>
           </div>
         </div>
         <div class="bottom-status">
@@ -206,6 +207,8 @@
     <script src="src/data.js"></script>
     <script src="src/roster.js"></script>
     <script src="src/equipment.js"></script>
+    <script src="src/map-dimensions.js"></script>
+    <script src="src/map-geography.js"></script>
     <script src="src/maps-large.js"></script>
     <script src="src/command-feedback.js"></script>
   <script src="src/operator-weapons.js"></script>
@@ -217,6 +220,8 @@
   <script src="src/aircraft-flight.js"></script>
   <script src="src/weapon-range-data.js"></script>
   <script src="src/vehicle-weapons.js"></script>
+  <script src="src/sensors.js"></script>
+  <script src="src/commander-ai.js"></script>
   <script src="src/carrier-operations.js"></script>
   <script src="src/weapon-salvos.js"></script>
   <script src="src/combat-readiness.js"></script>

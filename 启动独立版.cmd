@@ -1,8 +1,8 @@
 @echo off
 rem Keep Windows CRLF line endings; launcher-format.test.cjs checks this.
 cd /d "%~dp0"
-if exist "release\ModernFrontHD-3.14.0\ModernFrontHD.exe" (
- start "" "release\ModernFrontHD-3.14.0\ModernFrontHD.exe"
+if exist "release\ModernFrontHD-3.15.0\ModernFrontHD.exe" (
+ start "" "release\ModernFrontHD-3.15.0\ModernFrontHD.exe"
 ) else if exist "release\ModernFrontHD\ModernFrontHD.exe" (
  start "" "release\ModernFrontHD\ModernFrontHD.exe"
 ) else (

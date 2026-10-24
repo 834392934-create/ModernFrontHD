@@ -50,18 +50,19 @@
   for(const t of [texture,cloudTexture]){t.colorSpace=T.SRGBColorSpace;t.wrapS=T.RepeatWrapping;t.anisotropy=2;}
   return {texture,cloudTexture};
  }
- function makePerimeter(earth){
+ function makePerimeter(earth,size){
+  const {W,H}=size;
   // A hollow collar only outside the playable rectangle. Nine rings / 2,048 triangles.
   // The first rim meets the map's outer water at y=-0.8; the outer rim joins the sphere.
   const margins=[0,120,300,600,1000,1700,2500,3800,5200],segments=128,perSide=segments/4;
-  const positions=[],colors=[],indices=[],halfW=D.W/2,halfH=D.H/2,R=24000,color=[0,0,0];
+  const positions=[],colors=[],indices=[],halfW=W/2,halfH=H/2,R=24000,color=[0,0,0];
   const inverse=earth.quaternion.clone().invert(),normal=new T.Vector3(),linear=new T.Color();
   for(let ring=0;ring<margins.length;ring++){
    const margin=margins[ring],blend=smooth(0,2500,margin);
    for(let i=0;i<segments;i++){
     const side=Math.floor(i/perSide),f=(i%perSide)/perSide;
-    const bx=side===0?-halfW+f*D.W:side===1?halfW:side===2?halfW-f*D.W:-halfW;
-    const bz=side===0?-halfH:side===1?-halfH+f*D.H:side===2?halfH:halfH-f*D.H;
+    const bx=side===0?-halfW+f*W:side===1?halfW:side===2?halfW-f*W:-halfW;
+    const bz=side===0?-halfH:side===1?-halfH+f*H:side===2?halfH:halfH-f*H;
     const x=bx*(halfW+margin)/halfW,z=bz*(halfH+margin)/halfH;
     const sphereY=earth.position.y+Math.sqrt(Math.max(0,R*R-x*x-z*z));
     positions.push(halfW+x,mix(-.8,sphereY+2,blend),halfH+z);
@@ -77,12 +78,13 @@
   const mesh=new T.Mesh(geometry,material);mesh.name='orbital-ocean-transition';mesh.userData={decorative:true,playableInteriorExcluded:true,triangleCount:indices.length/3};mesh.raycast=()=>{};
   return mesh;
  }
- root.WarAltitudeScene={create(r){
+ root.WarAltitudeScene={create(r,game){
+  const size=root.WarMapDimensions?.forMap(game?.map||r.mapSize)||D,{W,H}=size;
   const group=new T.Group();group.name='high-altitude-backdrop';r.scene.add(group);group.visible=false;
   const {texture,cloudTexture}=makeTextures(),rnd=root.WarSim.rng(18325);
   const earthMat=new T.MeshStandardMaterial({map:texture,roughness:1,metalness:0,transparent:true});
-  const earth=new T.Mesh(new T.SphereGeometry(24000,96,64),earthMat);earth.name='procedural-orbital-planet';earth.position.set(D.W/2,-24300,D.H/2);earth.rotation.set(.35,.55,-.45);group.add(earth);
-  const perimeter=makePerimeter(earth);group.add(perimeter);
+  const earth=new T.Mesh(new T.SphereGeometry(24000,96,64),earthMat);earth.name='procedural-orbital-planet';earth.position.set(W/2,-24300,H/2);earth.rotation.set(.35,.55,-.45);group.add(earth);
+  const perimeter=makePerimeter(earth,size);group.add(perimeter);
   const cloudMat=new T.MeshStandardMaterial({map:cloudTexture,transparent:true,opacity:.48,depthWrite:false,roughness:1});
   const clouds=new T.Mesh(new T.SphereGeometry(24070,96,64),cloudMat);clouds.name='procedural-cloud-bands';clouds.position.copy(earth.position);clouds.rotation.copy(earth.rotation);group.add(clouds);
   const atmosphereMat=new T.ShaderMaterial({transparent:true,depthWrite:false,side:T.BackSide,blending:T.AdditiveBlending,uniforms:{fade:{value:1}},vertexShader:'varying vec3 n;varying vec3 v;void main(){vec4 p=modelViewMatrix*vec4(position,1.);n=normalize(normalMatrix*normal);v=normalize(-p.xyz);gl_Position=projectionMatrix*p;}',fragmentShader:'uniform float fade;varying vec3 n;varying vec3 v;void main(){float rim=pow(1.-abs(dot(normalize(n),normalize(v))),4.);gl_FragColor=vec4(.12,.45,.85,rim*.48*fade);}'});
@@ -92,7 +94,7 @@
   const starMat=new T.PointsMaterial({color:0xc7d9ef,size:1.6,sizeAttenuation:false,transparent:true,depthWrite:false}),stars=new T.Points(starGeo,starMat);stars.name='orbital-stars';group.add(stars);
   group.traverse(o=>{if(o.isMesh||o.isPoints){o.raycast=()=>{};o.userData.decorative=true;}});
   const sky=new T.Color(),night=new T.Color(0x01040b),fog=new T.FogExp2(0x9eb9c9,.0003);
-  return {group,update(d,e,time){
+  return {group,dispose(){const geos=new Set(),mats=new Set();group.traverse(o=>{if(o.geometry)geos.add(o.geometry);if(o.material)mats.add(o.material);});for(const g of geos)g.dispose();for(const m of mats){m.map?.dispose();m.dispose();}group.removeFromParent();},update(d,e,time){
    const h=e?.altitude||0,active=!!d?.active&&!!D.U[e?.kind]?.air&&h>700;group.visible=active;if(!active)return;
    const blend=clamp((h-700)/1500,0,1);earthMat.opacity=blend;perimeter.material.opacity=blend;cloudMat.opacity=.48*blend;atmosphereMat.uniforms.fade.value=blend;
    starMat.opacity=clamp((h-1400)/1800,0,1);stars.position.copy(d.camera.position);clouds.rotation.y=.55+time*.0004;

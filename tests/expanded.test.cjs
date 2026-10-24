@@ -81,7 +81,7 @@ test('placement preview projects electrical load and min-range troops do not fre
  const a=g.spawn(0,'mortar_team',1000,750),b=g.spawn(1,'tank',1040,750);b.disabled=999;g.command([a.id],1500,750,true);const start={x:a.x,y:a.y};step(g,1);assert.ok(Math.hypot(a.x-start.x,a.y-start.y)>10);assert.ok(!g.effects.some(e=>e.sourceId===a.id));
 });
 test('range hints do not expose hidden enemies; off mode and unarmed sight work',()=>{
- const g=arena(),a=g.spawn(0,'recon_drone',600,600),enemy=g.spawn(1,'ciws',650,600),r={width:1600,height:1000,toScreen:(x,y)=>({x,y}),toWorld:(x,y)=>({x,y})};g.visibleAt=()=>false;
+ const g=arena(),a=g.spawn(0,'recon_drone',600,600),enemy=g.spawn(1,'ciws',650,600),r={width:1600,height:1000,toScreen:(x,y)=>({x,y}),toWorld:(x,y)=>({x,y})};g.buffs.delete('vision');g.visibleAt=()=>false;
  assert.deepEqual(WarRanges.collect(g,{hover:enemy.id,selection:new Set(),rangeMode:'selected'},r),[]);
  const ui={selection:new Set([a.id]),rangeMode:'selected'},p=WarRanges.collect(g,ui,r);assert.equal(p.length,1);assert.equal(p[0].profile.attack,0);assert.equal(p[0].profile.zones[0].type,'sight');
  assert.deepEqual(WarRanges.collect(g,{...ui,rangeMode:'off'},r),[]);

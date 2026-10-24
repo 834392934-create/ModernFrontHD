@@ -44,6 +44,7 @@
   return floor;
  }
  function move(g,e,goal,altitude,speed,dt,turnRate=.85){
+  const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(g.map)||root.WarData;
   const m=root.WarVehicleMotion,before={x:e.x,y:e.y,angle:e.angle},desired=Math.atan2(goal.y-e.y,goal.x-e.x),delta=m.angleDelta(desired,e.angle),limitedRate=turnLimit(g,e,e.flightSpeed||speed,turnRate),turn=clamp(delta,-limitedRate*dt,limitedRate*dt);
   e.angle+=turn;e.flightSpeed+=(clamp(speed,0,g.effectiveSpeed(e)*1.1)-e.flightSpeed)*Math.min(1,dt*1.3);
   const dx=Math.cos(e.angle)*e.flightSpeed*dt,dy=Math.sin(e.angle)*e.flightSpeed*dt,r=g.navigationRadius(e)+4;
@@ -56,7 +57,8 @@
  }
  function configuration(e){const d=U[e.kind]||{},type=d.flightModel?.type||(d.vtol?'vtol':(d.modelKind||e.kind)==='heli'?'rotor':'fixed');return{type,uncrewed:!!d.uncrewed||e.kind.includes('drone'),hover:type==='rotor'||type==='vtol',turnLoad:d.flightModel?.turnLoad||.75,basis:'gameplay flight configuration'};}
  function turnLimit(g,e,speed,base=.85){if(!fixed(e))return base;const normal=Math.max(1,g.effectiveSpeed(e)),ratio=Math.max(1,speed/normal+.2);return Math.min(base,base/ratio);}
- function loiterGoal(g,e,anchor){const radius=Math.max(130,g.effectiveSpeed(e)*1.15),a=Math.atan2(e.y-anchor.y,e.x-anchor.x)+.65;return{x:clamp(anchor.x+Math.cos(a)*radius,240,W-240),y:clamp(anchor.y+Math.sin(a)*radius,240,H-240)};}
+ function loiterGoal(g,e,anchor){
+  const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(g.map)||root.WarData;const radius=Math.max(130,g.effectiveSpeed(e)*1.15),a=Math.atan2(e.y-anchor.y,e.x-anchor.x)+.65;return{x:clamp(anchor.x+Math.cos(a)*radius,240,W-240),y:clamp(anchor.y+Math.sin(a)*radius,240,H-240)};}
  function runwayStep(g,e,field,dt){
   const f=e.flight,r=runway(g,field,e);if(!r){e.flightSpeed=0;root.WarVehicleMotion.stop(e);return true;}
   const m=root.WarVehicleMotion,before={x:e.x,y:e.y,angle:e.angle},max=g.effectiveSpeed(e),floor=groundHeight(g,e);
@@ -117,6 +119,7 @@
   return !fixed(e)||Math.abs(root.WarVehicleMotion.angleDelta(Math.atan2(target.y-e.y,target.x-e.x),e.angle))<.9;
  }
  function update(g,e,dt,target){
+  const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(g.map)||root.WarData;
   if(!supported(e))return false;
   const f=state(g,e),max=g.effectiveSpeed(e);f.elapsed+=dt;f.airtime+=dt;e.path=[];
   if(f.phase==='manual')phase(f,'cruise');
@@ -159,7 +162,7 @@
    else{e.altitude+=60*dt;e.pitch=e.roll=0;root.WarVehicleMotion.stop(e);}
    if(e.altitude>=155){phase(f,'cruise');}return true;
   }
-  const order=e.order,ordered=order?.target&&g.get(order.target);if(ordered&&g.canDetect(e.team,ordered))Object.assign(order,{x:ordered.x,y:ordered.y});
+  const order=e.order,ordered=order?.target&&g.get(order.target);if(ordered&&g.canDetect(e.team,ordered)&&(!g.entityVisible||g.entityVisible(e.team,ordered)))Object.assign(order,{x:ordered.x,y:ordered.y});else if(order?.target)order.target=null;
   const fight=target&&(!order||order.attack),goal=fight?target:order;
   if(!fixed(e)){
    if(goal&&!(fight&&g.engagementDistance(e,target)<=g.rangeProfile(e).attack)){rotorMove(g,e,goal,Math.max(100,g.entityAltitude(e)),dt);if(!fight&&distance(e,goal)<6){e.order=e.orderQueue?.shift()||null;e.manualMove=false;}}

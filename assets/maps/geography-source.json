@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "source": {
+    "dataset": "Natural Earth 1:50m land",
+    "repository": "https://github.com/nvkelso/natural-earth-vector",
+    "revision": "ca96624a56bd078437bca8184e78163e5039ad19",
+    "file": "geojson/ne_50m_land.geojson",
+    "sha256": "e874b27a51d146452be360cafb3cc50c86001074a67d534113e6534682f9826b",
+    "license": "Public domain",
+    "terms": "https://www.naturalearthdata.com/about/terms-of-use/"
+  },
+  "notes": "Real land outlines sampled at cell centres; bases, mines, objectives and harbours are fictional gameplay placements. Distances are compressed and are not a real-world military scenario.",
+  "regions": {
+    "english_channel": {
+      "bounds": [
+        -6.02574204,
+        48,
+        3.02574204,
+        52
+      ],
+      "projection": "Equirectangular at central latitude; north up; aspect preserved",
+      "landCells": 23790
+    },
+    "gibraltar": {
+      "bounds": [
+        -7.09583412,
+        34,
+        0.09583412,
+        38
+      ],
+      "projection": "Equirectangular at central latitude; north up; aspect preserved",
+      "landCells": 26403
+    },
+    "taiwan_strait": {
+      "bounds": [
+        116.03475962,
+        21,
+        123.96524038,
+        26
+      ],
+      "projection": "Equirectangular at central latitude; north up; aspect preserved",
+      "landCells": 11165
+    }
+  }
+}

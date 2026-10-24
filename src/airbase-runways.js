@@ -15,6 +15,7 @@
  }
  function usable(g,r,team){return !!r&&r.kind==='runway'&&r.hp>0&&r.team===team&&(r.disabled||0)<=g.time&&!['disabled','dead'].includes(r.components?.state)&&!(r.components?.parts?.structure?.health<=.15);}
  function terrain(g,r){
+  const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(g.map)||root.WarData;
   const c=Math.cos(r.angle||0),s=Math.sin(r.angle||0);
   // Sample full surface, not merely three lines: a small water cell cannot hide inside.
   for(let along=-180;along<=180;along+=20)for(let cross=-80;cross<=80;cross+=20){const x=r.x+c*along-s*cross,y=r.y+s*along+c*cross;if(x<90||y<90||x>W-90||y>H-90||g.map.blocked[Math.floor(y/T)*COLS+Math.floor(x/T)])return false;}

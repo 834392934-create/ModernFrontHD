@@ -30,7 +30,9 @@
   aim9:{publisher:'US Air Force',url:'https://www.af.mil/About-Us/Fact-Sheets/Display/Article/104557/aim-9-sidewinder/',access:'indexed-primary'},
   m9:{publisher:'US Army TC 3-21.75, p10-3',url:'https://rdl.train.army.mil/catalog-ws/view/100.ATSC/C6763F0D-4346-4DA6-BC8C-4EBFF5B34997-1377112048566/tc_3-21x75.pdf',access:'indexed-primary'},
   mortar:{publisher:'US Army Watervliet Arsenal',url:'https://www.army.mil/article/109967/watervliets_4_3m_contract_may_lighten_the_load_for_infantrymen',access:'indexed-primary'},
-  biho:{publisher:'Hanwha Defense brochure, p26–27',url:'https://www.hanwhaaerospace.com/assets/content/library/download/Hanwha%20Defense%20Brochure_EN.pdf',access:'indexed-primary'}
+  biho:{publisher:'Hanwha Defense brochure, p26–27',url:'https://www.hanwhaaerospace.com/assets/content/library/download/Hanwha%20Defense%20Brochure_EN.pdf',access:'indexed-primary'},
+  skyranger:{publisher:'Rheinmetall',url:'https://www.rheinmetall.com/en/products/air-defence-systems/mobile-air-defence-skyranger',access:'opened-primary',checked:'2026-10-25'},
+  nasams:{publisher:'Spanish Army',url:'https://ejercito.defensa.gob.es/en/materiales/artilleria_antiaerea/NASAMS.html',access:'opened-primary',checked:'2026-10-25'}
  };
  const catalog=Object.create(null);
  function add(id,platform,weapon,target,publishedM,publishedKind,minM,qualifier,source,scope,note){
@@ -70,6 +72,10 @@
  add('m9','M9','9 mm 手枪',['personnel'],50,'effective',null,'exact','m9','weapon-reference','2013公开资料口径；只作为原创手枪角色参照，不宣称是M17性能。');
  add('m224a1','M224A1','60 mm 迫击炮，弹种未指定',['ground','structure'],3500,'maximum',null,'approximate','mortar','weapon-reference','官方报道约3500m；不推断其他口径迫击炮同值。');
  add('biho_gun','BIHO 家族','30 mm 双联机炮',['air'],3000,'effective',null,'exact','biho','family-reference','厂家混合型资料将机炮3km与导弹6km分别列出；本游戏K30模型仅机炮，不继承导弹。官网旧PDF打开失效，核对官方域名索引表格。');
+ add('skyranger35_gun','Skyranger 35','35 mm 机炮',['air'],4000,'effective',null,'up-to','skyranger','weapon-reference','厂家机炮有效交战距离至4km；不包含搜索雷达范围，不证明原创固定炮塔安装了该炮。');
+ add('skyranger30_gun','Skyranger 30','30 mm 机炮',['air'],3000,'effective',null,'up-to','skyranger','weapon-reference','厂家机炮有效交战距离至3km；不包含导弹，不把原创C-RAM风格外观认证为30mm实装。');
+ add('nasams_spanish','西班牙陆军 NASAMS','该官方条目地空导弹',['air'],25000,'maximum',null,'exact','nasams','system-reference','官方条目最大25km，仅作通用防空阵地类别参考；不推断所有NASAMS改型/导弹弹种或制导细节。');
+ for(const key of ['skyranger35_gun','skyranger30_gun','nasams_spanish'])catalog[key].checked='2026-10-25';
  const mappings={
   'usa:tank':['m256_demonstrated'],'ind:tank':['t90s_guided'],'kor:tank':['k2_unverified'],
   'usa:ifv':['bradley_m242','bradley_tow'],'usa:arty':['m109a7_unspecified'],
@@ -122,8 +128,8 @@
   interceptor_drone:[10000,'meteor','原创截击无人机10km游戏估算，非Meteor改型'],
   heavy_bomber:[20000,null,'未指定滑翔弹的投放距离20000m游戏设定，不是飞机作战半径'],
   naval_strike_aircraft:[120000,'brahmos_baseline','原创空射反舰导弹120km估算，非飞机航程'],
-  turret:[2500,'bradley_m242','通用炮塔2500m估算'],bunker:[800,'m249_area','通用机枪掩体800m面目标估算'],
-  ciws:[2000,'pantsir_gun','通用近防炮2000m估算'],sam:[25000,'akash','通用防空阵地25000m估算'],
+  turret:[4000,'skyranger35_gun','通用炮塔按35mm防空炮4km类别估算；原有对地目标域是游戏规则，不是该炮对地性能认证'],bunker:[800,'m249_area','通用机枪掩体800m面目标估算'],
+  ciws:[3000,'skyranger30_gun','通用近防炮按30mm防空炮3km类别估算；现有C-RAM风格模型不是该系统或口径的实物还原'],sam:[25000,'nasams_spanish','通用防空阵地按官方NASAMS条目25km类别估算，不认证建筑具体发射器/弹种'],
   sonar_bastion:[10000,null,'原创岸基鱼雷10000m游戏设定，声呐半径不随攻击射程改变']
  };
  const operatorEstimates={
@@ -141,7 +147,7 @@
   const [estimateM,ref,note]=spec,reference=ref?catalog[ref]:null;
   return deepFreeze({id,platform,weapon:'未指定制式型号的游戏武器',target:[],publishedM:null,publishedKind:'estimate',
    effectiveM:null,maxM:null,minM:null,estimateM,status,scope:'game-role-estimate',qualifier:'estimated',
-   source:reference?.source||null,sourceUrl:reference?.sourceUrl||null,referenceIds:ref?[ref]:[],checked,
+   source:reference?.source||null,sourceUrl:reference?.sourceUrl||null,referenceIds:ref?[ref]:[],checked:reference?.checked||checked,
    reliability:'估算/游戏设定，不是该装备公开性能',note});
  }
  function deepFreeze(o){if(o&&typeof o==='object'&&!Object.isFrozen(o)){for(const x of Object.values(o))deepFreeze(x);Object.freeze(o);}return o;}

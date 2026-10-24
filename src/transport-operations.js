@@ -12,9 +12,10 @@
   idle(g,p);p.embarkedIn=e.id;p.passengerSeat=e.passengers.length;e.passengers.push(p);g.entities=g.entities.filter(x=>x.id!==p.id);return true;
  }
  function exitPoint(g,e,p){
+  const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(g.map)||root.WarData;
   if(g.vehicleExitPoint)return g.vehicleExitPoint(e,p);
   const radius=g.navigationRadius(e)+g.navigationRadius(p)+12;
-  for(let ring=0;ring<4;ring++)for(let i=0;i<16;i++){const a=(e.angle||0)+i*Math.PI/8,x=e.x+Math.cos(a)*(radius+ring*25),y=e.y+Math.sin(a)*(radius+ring*25);if(x<0||y<0||x>root.WarData.W||y>root.WarData.H)continue;
+  for(let ring=0;ring<4;ring++)for(let i=0;i<16;i++){const a=(e.angle||0)+i*Math.PI/8,x=e.x+Math.cos(a)*(radius+ring*25),y=e.y+Math.sin(a)*(radius+ring*25);if(x<0||y<0||x>W||y>H)continue;
    if(root.WarNavigationFootprints?.terrain(g,p,x,y)&&!g.entities.some(o=>o.hp>0&&Math.hypot(o.x-x,o.y-y)<g.navigationRadius(p)+g.navigationRadius(o)+5))return {x,y};}
   return null;
  }

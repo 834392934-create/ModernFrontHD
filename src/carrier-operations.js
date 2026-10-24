@@ -26,12 +26,14 @@
   slot.planeId=e.id;slot.kind=e.kind;e.carrierOriginId=c.id;e.flight.homeId=c.id;return true;
  }
  function phase(e,name){if(e.flight.phase!==name){e.flight.phase=name;e.flight.elapsed=0;}}
- function align(g,c,e){const f=e.flight,q=point(c,f.deck.along,f.deck.cross);e.x=clamp(q.x,1,W-1);e.y=clamp(q.y,1,H-1);e.angle=c.angle||0;e.altitude=deckHeight(g,c,e);e.pitch=0;e.roll=0;}
+ function align(g,c,e){
+  const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(g.map)||root.WarData;const f=e.flight,q=point(c,f.deck.along,f.deck.cross);e.x=clamp(q.x,1,W-1);e.y=clamp(q.y,1,H-1);e.angle=c.angle||0;e.altitude=deckHeight(g,c,e);e.pitch=0;e.roll=0;}
  function kindFor(g,c,target){const cfg=config(g,c),domain=target?g.targetDomain(target.kind):'ground';return cfg.kinds.find(k=>g.targetDomains(k).includes(domain))||null;}
  function requestStrike(g,c,targetOrPoint){
+  const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(g.map)||root.WarData;
   if(!carrier(c)||c.hp<=0||!g.operational(c)||!targetOrPoint)return false;
   const target=Number.isInteger(targetOrPoint.id)?g.get(targetOrPoint.id):null;
-  if(target&&(!g.isEnemy(c.team,target.team)||!g.canDetect(c.team,target)))return false;
+  if(target&&(!g.isEnemy(c.team,target.team)||!g.canDetect(c.team,target)||(g.entityVisible&&!g.entityVisible(c.team,target))))return false;
   if(Number.isInteger(targetOrPoint.id)&&!target)return false;
   const p=target||targetOrPoint;if(![p.x,p.y].every(Number.isFinite)||p.x<0||p.y<0||p.x>W||p.y>H)return false;
   const range=g.rangeProfile(c).attack;if(dist(c,p)>range+.001)return false;
@@ -39,8 +41,9 @@
   const wing=ensure(g,c);wing.mission={x:p.x,y:p.y,targetId:target?.id??null,kind,until:g.time+180};
   c.cool=Math.max(c.cool||0,g.vehicleWeapons?.(c).find(w=>w.action==='airWing')?.reload||U.carrier.reload);return true;
  }
- function mission(g,c){const w=ensure(g,c),m=w.mission;if(!m)return null;const target=m.targetId&&g.get(m.targetId);if(m.until<g.time||(m.targetId&&!target)){w.mission=null;return null;}if(target&&g.canDetect(c.team,target)){m.x=target.x;m.y=target.y;}return m;}
+ function mission(g,c){const w=ensure(g,c),m=w.mission;if(!m)return null;const target=m.targetId&&g.get(m.targetId);if(m.until<g.time||(m.targetId&&!target)){w.mission=null;return null;}if(target&&g.canDetect(c.team,target)&&(!g.entityVisible||g.entityVisible(c.team,target))){m.x=target.x;m.y=target.y;}else if(m.targetId)m.targetId=null;return m;}
  function assignMission(g,c,e,m){
+  const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(g.map)||root.WarData;
   if(g.directControl?.id===e.id||e.flight?.returning)return;
   const t=m?.targetId&&g.get(m.targetId);if(m&&(!t||g.canTargetKind(e,t.kind))){
    const order=e.order;if(!order||order.target!==(t?.id??null)||dist(order,m)>120){g.command([e.id],m.x,m.y,true,t?.id??null);if(e.order)e.order.carrierMission=true;}
@@ -125,7 +128,8 @@
   }return true;
  }
  function status(g,c){const w=ensure(g,c);if(!w)return null;const planes=w.slots.map(s=>g.get(s.planeId)).filter(Boolean),m=w.mission;return{...config(g,c),active:planes.length,airborne:planes.filter(e=>!attached(e)).length,onDeck:planes.filter(attached).length,repairing:planes.filter(e=>e.flight?.phase==='service').length,planeIds:planes.map(e=>e.id),mission:m,waitingForFunds:!!m&&!g.canAfford(c.team,g.cost(c.team,m.kind)),replacementCost:m?g.cost(c.team,m.kind):0};}
- function validate(e){
+ function validate(e,map){
+  const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(map)||root.WarData;
   const finite=Number.isFinite,w=e.airWing,f=e.flight;
   if(e.carrierOriginId!==undefined&&(!Number.isInteger(e.carrierOriginId)||e.carrierOriginId<1))return false;
   if(f?.deck&&(!U[e.kind]?.air||!deckPhases.has(f.phase)||![f.deck.along,f.deck.cross].every(finite)||Math.abs(f.deck.along)>150||Math.abs(f.deck.cross)>50||!Number.isInteger(f.homeId)))return false;
@@ -138,7 +142,7 @@
  function validateGame(g){
   for(const c of g.entities.filter(e=>e.hp>0&&e.airWing)){
    const cfg=config(g,c);
-   if(!validate(c)||c.airWing.capacity!==cfg.capacity||c.airWing.slots.some(s=>!cfg.kinds.includes(s.kind))||(c.airWing.mission&&!cfg.kinds.includes(c.airWing.mission.kind)))return false;
+   if(!validate(c,g.map)||c.airWing.capacity!==cfg.capacity||c.airWing.slots.some(s=>!cfg.kinds.includes(s.kind))||(c.airWing.mission&&!cfg.kinds.includes(c.airWing.mission.kind)))return false;
    for(const s of c.airWing.slots){const e=g.get(s.planeId);if(e&&(!e.flight||e.team!==c.team||e.carrierOriginId!==c.id||e.kind!==s.kind||!config(g,c).kinds.includes(e.kind)))return false;}
   }
   for(const e of g.entities)if(e.hp>0&&e.flight?.deck){const c=g.get(e.flight.homeId);if(!c||!compatible(g,c,e)||!c.airWing?.slots.some(s=>s.planeId===e.id))return false;}

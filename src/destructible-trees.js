@@ -5,13 +5,13 @@
  const MAX_TREES=170,MAX_HP=90,FALL_SECONDS=1.2,LEAVES=12;
  function hash(text){let h=2166136261;for(const c of String(text)){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;}
  function random(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
- const key=game=>`${game.map.id}:${game.map.seed}:${root.WarData.W}:${root.WarData.H}`;
+ const key=game=>{const {W,H}=root.WarMapDimensions?.forMap(game.map)||root.WarData;return `${game.map.id}:${game.map.seed}:${W}:${H}`;};
  function ensure(game){
   if(game._treeState?.mapKey===key(game))return game.trees;
-  const {W,H,COLS,T}=root.WarData,rnd=random(hash('trees-v1:'+key(game))),desert=game.map.id==='desert',trees=[];
+  const {W,H,COLS,T}=root.WarMapDimensions?.forMap(game.map)||root.WarData,rnd=random(hash('trees-v1:'+key(game))),desert=game.map.id==='desert',trees=[];
   for(let attempt=0;attempt<1800&&trees.length<MAX_TREES;attempt++){
    const x=170+rnd()*(W-340),y=210+rnd()*(H-420),idx=Math.floor(y/T)*COLS+Math.floor(x/T);
-   if(game.map.tiles[idx]>1||Math.abs(y-H/2)<75||[720,2352].some(a=>Math.abs(x-a*W/3072)<85)||(game.map.spawns||[]).some(p=>Math.hypot(x-p.x,y-p.y)<330)||(game.nodes||[]).some(n=>Math.hypot(x-n.x,y-n.y)<120)||(game.ore||[]).some(o=>Math.hypot(x-o.x,y-o.y)<130))continue;
+   if(game.map.tiles[idx]>1||!game.map.geography&&(Math.abs(y-H/2)<75||[720,2352].some(a=>Math.abs(x-a*W/3072)<85))||(game.map.spawns||[]).some(p=>Math.hypot(x-p.x,y-p.y)<330)||(game.nodes||[]).some(n=>Math.hypot(x-n.x,y-n.y)<120)||(game.ore||[]).some(o=>Math.hypot(x-o.x,y-o.y)<130))continue;
    const crownY=desert?12+rnd()*12:22+rnd()*22;
    trees.push({id:`tree:${hash(key(game)).toString(16)}:${attempt}`,x,y,r:4,height:crownY*1.28+8,trunkHeight:crownY*.8,crownY,hp:MAX_HP,maxHp:MAX_HP,destroyedAt:null,fallAngle:rnd()*Math.PI*2});
   }

@@ -6,7 +6,7 @@
  function radius(game,e){return Math.max(e.r||0,shape(game,e)[0]);}
  function sameLayer(game,a,b){const A=shape(game,a),B=shape(game,b),ah=game.entityAltitude(a),bh=game.entityAltitude(b);return ah+A[1]<bh+B[2]&&bh+B[1]<ah+A[2];}
  function turningRoom(game,e,x,y){
-  const {U,W,H,T,COLS}=root.WarData,r=radius(game,e),mask=U[e.kind]?.naval?game.map.navalBlocked:game.map.blocked;
+  const {U}=root.WarData,{W,H,T,COLS}=root.WarMapDimensions?.forMap(game.map)||root.WarData,r=radius(game,e),mask=U[e.kind]?.naval?game.map.navalBlocked:game.map.blocked;
   if(x<r||y<r||x>W-r||y>H-r)return false;
   for(let ty=Math.floor((y-r)/T);ty<=Math.floor((y+r)/T);ty++)for(let tx=Math.floor((x-r)/T);tx<=Math.floor((x+r)/T);tx++){
    if(!mask[ty*COLS+tx])continue;
@@ -15,7 +15,7 @@
   }return true;
  }
  function terrain(game,e,x,y,angle=e.angle||0){
-  const {U,W,H,T,COLS}=root.WarData;
+  const {U}=root.WarData,{W,H,T,COLS}=root.WarMapDimensions?.forMap(game.map)||root.WarData;
   const b=shape(game,e),r=radius(game,e),c=Math.cos(angle),s=Math.sin(angle),hx=b.length>3?(b[4]-b[3])/2:r,hy=b.length>3?(b[6]-b[5])/2:r;
   const ox=b.length>3?(b[4]+b[3])/2:0,oy=b.length>3?(b[6]+b[5])/2:0,cx=x+c*ox-s*oy,cy=y+s*ox+c*oy;
   const ex=Math.abs(c)*hx+Math.abs(s)*hy,ey=Math.abs(s)*hx+Math.abs(c)*hy;
@@ -76,7 +76,7 @@
  // Terrain keeps its oriented-box contract; only buildings are expanded to the
  // same clearance used by local movement. All domains share this height test.
  function pathGrid(game,e){
-  const {U,T,COLS,ROWS}=root.WarData,d=U[e.kind],r=radius(game,e);
+  const {U}=root.WarData,{T,COLS,ROWS}=root.WarMapDimensions?.forMap(game.map)||root.WarData,d=U[e.kind],r=radius(game,e);
   const structures=game.entities.filter(o=>o.structure&&o.hp>0&&sameLayer(game,e,o));
   const ore=!d.air&&!d.naval?game.ore:[];
   // One immutable map per matching mover envelope/layer per simulation tick.
@@ -94,7 +94,7 @@
    for(let y=Math.max(0,Math.floor((o.y-extent)/T));y<=Math.min(ROWS-1,Math.floor((o.y+extent)/T));y++)for(let x=Math.max(0,Math.floor((o.x-extent)/T));x<=Math.min(COLS-1,Math.floor((o.x+extent)/T));x++)if(structureDistance(o,(x+.5)*T,(y+.5)*T)<r+10)blocked[y*COLS+x]=1;
   }
   for(const o of ore)mark(o,48+r+4);
-  const result={blocked};cache.set(key,result);return result;
+  const result={...root.WarMapDimensions?.forMap(game.map),blocked};cache.set(key,result);return result;
  }
  root.WarNavigationFootprints={bounds,radius,sameLayer,terrain,turningRoom,pathGrid,buildingSegmentClear,footprint,structureDistance,structureContact,structureClear,structureSegmentClear,structureWaypoints};
 })(globalThis);

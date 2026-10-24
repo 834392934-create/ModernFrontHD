@@ -52,6 +52,7 @@
   const turret=health(e,'turret');return {available:turret>.15||w?.mount?.mode==='vertical',reason:turret<=.15?'turret-damaged':'ready',traverseMultiplier:turret<=.15?0:Math.max(.15,turret)};
  }
  function step(g,e,dt){
+  const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(g.map)||root.WarData;
   const result={damage:0,expireDowned:false,crashImpact:false};if(!(dt>0)||e.hp<=0)return result;const c=ensure(g,e),d=data(e);
   if(c.personnel){if(c.personnel.downedAt!=null&&g.time>=c.personnel.bleedUntil)result.expireDowned=true;return result;}
   if(c.fireUntil>g.time&&!c.fatalFlight)result.damage+=e.maxHp*.006*dt;
@@ -60,11 +61,11 @@
   if(c.state==='crashing'){
    const before={x:e.x,y:e.y,angle:e.angle},speed=Math.max(25,e.flightSpeed||50),loss=health(e,'engine')<=.15;
    e.pitch+=clamp((loss?-.22:-.45)-(e.pitch||0),-.6*dt,.6*dt);e.roll+=clamp((health(e,'control')<=.15?.45:0)-(e.roll||0),-.3*dt,.3*dt);
-   e.flightSpeed=Math.max(25,speed-7*dt);e.x=clamp(e.x+Math.cos(e.angle||0)*e.flightSpeed*dt,0,root.WarData.W);e.y=clamp(e.y+Math.sin(e.angle||0)*e.flightSpeed*dt,0,root.WarData.H);
+   e.flightSpeed=Math.max(25,speed-7*dt);e.x=clamp(e.x+Math.cos(e.angle||0)*e.flightSpeed*dt,0,W);e.y=clamp(e.y+Math.sin(e.angle||0)*e.flightSpeed*dt,0,H);
    e.altitude=Math.max(0,(e.altitude||0)-Math.max(12,speed*(loss?.18:.32))*dt);root.WarVehicleMotion?.record(e,before,dt,0,0,g.tick);
    if(e.altitude<=3){result.crashImpact=true;
     // A controlled emergency landing survives on traversable land; otherwise central damage ends it.
-    const at=Math.floor(e.y/root.WarData.T)*root.WarData.COLS+Math.floor(e.x/root.WarData.T),land=!g.map?.blocked?.[at];
+    const at=Math.floor(e.y/T)*COLS+Math.floor(e.x/T),land=!g.map?.blocked?.[at];
     if(health(e,'control')>.45&&land){e.altitude=3;e.flightSpeed=0;c.state='disabled';c.emergencyLanded=true;e.order=null;e.target=null;if(e.flight)e.flight.phase='service';}
     else result.damage+=e.maxHp*2;
    }

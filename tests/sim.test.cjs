@@ -34,6 +34,10 @@ test("mainland maps connect all bases; island maps retain local objectives and s
       if(m.id==='archipelago'){
         assert.ok(map.nodes.some(n=>findPath(map,p.x,p.y,n.x,n.y).length>0),'each island has a reachable objective');
         for(const q of map.spawns)if(p!==q)assert.equal(findPath(map,p.x,p.y,q.x,q.y).length,0,'separate islands require sea/air transport');
+      }else if(map.geography){
+        const groups=m.id==='english_channel'?[[0,1],[2,3,4]]:[[0,1,2],[3,4]],from=map.spawns.indexOf(p),group=groups.find(g=>g.includes(from));
+        assert.ok(map.nodes.some(n=>findPath(map,p.x,p.y,n.x,n.y).length>0),'each geographic shore has a reachable objective');
+        for(const [i,q]of map.spawns.entries())assert.equal(findPath(map,p.x,p.y,q.x,q.y).length>0,group.includes(i),m.id+' keeps same-shore access and no artificial land bridge');
       }else{
         assert.ok(findPath(map,p.x,p.y,WarData.W/2,WarData.H/2).length>0,m.id+' centre');
         for(const q of map.spawns)assert.ok(findPath(map,p.x,p.y,q.x,q.y).length>0,m.id+' base route');
@@ -118,12 +122,12 @@ test("building placement rejects river, overlap and distant territory", () => {
 test("all maps have connected oceans and ships stay on water", () => {
   for (const def of WarData.MAPS) {
     const m = makeMap(def.id),
-      path = findPath({ blocked: m.navalBlocked }, m.navalUnitSpawns[0].x, m.navalUnitSpawns[0].y, m.navalUnitSpawns[1].x, m.navalUnitSpawns[1].y);
+      path = findPath({ ...m,blocked: m.navalBlocked }, m.navalUnitSpawns[0].x, m.navalUnitSpawns[0].y, m.navalUnitSpawns[1].x, m.navalUnitSpawns[1].y);
     assert.ok(path.length > 0);
     assert.ok(
       path.every(
         (p) =>
-          !m.navalBlocked[Math.floor(p.y / 48) * WarData.COLS + Math.floor(p.x / 48)],
+          !m.navalBlocked[Math.floor(p.y / m.tileSize) * m.cols + Math.floor(p.x / m.tileSize)],
       ),
     );
   }

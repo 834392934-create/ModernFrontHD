@@ -18,3 +18,7 @@
 ## 2.1 原创太空与建筑
 
 `src/models-space.js`、`src/models-buildings.js`为本项目原创程序网格。影视/官方设备图片只作视觉研究，未将图片或预览网格打入发布包。引用与观察记录见 `docs/reviews/space-reference-review.md`、`defense-building-reference.md`。Sketchfab新候选尚未取得源文件，没有新增第三方模型导入；既有T-90M/AH-64/伯克许可继续适用。
+
+## 地理地图数据
+
+新增英吉利海峡、直布罗陀海峡、台湾海峡采用 Natural Earth 1:50,000,000 land 数据，公共领域（https://www.naturalearthdata.com/about/terms-of-use/）。官方维护仓库 `nvkelso/natural-earth-vector`，固定版本 `ca96624a56bd078437bca8184e78163e5039ad19`，文件 `geojson/ne_50m_land.geojson`，原始 SHA-256 `e874b27a51d146452be360cafb3cc50c86001074a67d534113e6534682f9826b`。本项目裁剪、等距经纬投影并采样成游戏海陆网格，离线数据在 `src/map-geography.js`，来源清单在 `assets/maps/geography-source.json`，可重建工具在 `tools/build-geographic-maps.cjs`。基地、矿山与目标点为原创虚构部署。制图比例不是 50 米精度；不包含真实军事设施与地形高程。

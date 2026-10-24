@@ -5,6 +5,7 @@
     clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   class Renderer {
     constructor(canvas, mini) {
+      const {COLS,ROWS}=root.WarMapDimensions?.forMap(this.mapSize)||D;
       this.canvas = canvas;
       this.ctx = canvas.getContext("2d", { alpha: false });
       this.mini = mini;
@@ -83,6 +84,7 @@
       };
     }
     pan(dx, dy) {
+      const {W,H}=root.WarMapDimensions?.forMap(this.mapSize)||D;
       this.camera.x = clamp(this.camera.x + dx, 0, W);
       this.camera.y = clamp(this.camera.y + dy, 0, H);
     }
@@ -93,14 +95,16 @@
       this.pan(before.x - after.x, before.y - after.y);
     }
     prepare(game) {
+      const {W,H,ROWS,COLS,T}=root.WarMapDimensions?.forMap(game.map)||D;
+      this.mapSize=root.WarMapDimensions?.forMap(game.map)||D;this.fogCanvas.width=COLS;this.fogCanvas.height=ROWS;
       this.mapId = game.map.id;
       const m = game.map,
         def = D.MAPS.find((d) => d.id === m.id),
         r = root.WarSim.rng(m.seed);
       const c = document.createElement("canvas");
-      c.width = W;
-      c.height = H;
-      const g = c.getContext("2d");
+      c.width = Math.min(2048,W);
+      c.height = Math.max(1,Math.round(c.width*H/W));
+      const g = c.getContext("2d");g.scale(c.width/W,c.height/H);
       g.fillStyle = def.palette[0];
       g.fillRect(0, 0, W, H);
       for (let y = 0; y < ROWS; y++)
@@ -116,7 +120,7 @@
         g.fillStyle = r() > 0.5 ? "#d5d1a610" : "#152d2515";
         g.fillRect(x, y, 2 + r() * 10, 1 + r() * 4);
       }
-      g.strokeStyle = m.id === "desert" ? "#8b7e5b" : "#667563";
+      if(!m.geography){g.strokeStyle = m.id === "desert" ? "#8b7e5b" : "#667563";
       g.lineWidth = 88;
       g.beginPath();
       g.moveTo(100, 1056);
@@ -128,7 +132,7 @@
       g.stroke();
       g.strokeStyle = m.id === "desert" ? "#aa9a72" : "#77816e";
       g.lineWidth = 60;
-      g.stroke();
+      g.stroke();}
       if (m.id === "industry") {
         g.strokeStyle = "#424f4c";
         g.lineWidth = 72;
@@ -275,6 +279,7 @@
       g.fillRect(x, y, w, h);
     }
     drawBuilding(g, e, game, time, ghost = false) {
+      const {H}=root.WarMapDimensions?.forMap(game.map)||D;
       const d = B[e.kind],
         f = F[game.teams[e.team].faction],
         col = f.color,
@@ -911,6 +916,7 @@
       g.restore();
     }
     draw(game, ui = {}, time = 0) {
+      const {H,COLS,ROWS,W}=root.WarMapDimensions?.forMap(game.map)||D;
       if (!this.terrain || this.mapId !== game.map.id) this.prepare(game);
       const g = this.ctx,
         z = this.camera.zoom;
@@ -923,7 +929,7 @@
       g.translate(-this.camera.x, -this.camera.y);
       const tl = this.toWorld(0, 0),
         br = this.toWorld(this.width, this.height);
-      g.drawImage(this.terrain, 0, 0);
+      g.drawImage(this.terrain, 0, 0, W, H);
       if (game.map.id === "river") {
         g.strokeStyle = "#b8c7b71c";
         g.lineWidth = 2;
@@ -965,7 +971,7 @@
             ((U[b.kind]?.air ? 10000 : 0) + b.y),
         );
       for (const e of sorted) {
-        if (e.team !== 0 && !ui.demo && !(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y))) continue;
+        if (e.team !== 0 && !ui.demo && !(game.entityVisible?game.entityVisible(0,e):(U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)))) continue;
         const chosen = ui.selection?.has(e.id),
           hover = ui.hover === e.id;
         const col = F[game.teams[e.team].faction].color;
@@ -1202,6 +1208,7 @@
       if (!ui.demo) this.drawMinimap(game);
     }
     drawMinimap(game) {
+      const {W,H}=root.WarMapDimensions?.forMap(game.map)||D;
       const c = this.mc,
         w = this.mini.width,
         h = this.mini.height;
@@ -1213,7 +1220,7 @@
         c.fillRect((n.x / W) * w - 2, (n.y / H) * h - 2, 4, 4);
       }
       for (const e of game.entities) {
-        if (e.team !== 0 && (!game.visibleAt(e.x, e.y)||!game.canDetect(0,e))) continue;
+        if (e.team !== 0 && !(game.entityVisible?game.entityVisible(0,e):game.visibleAt(e.x,e.y)&&game.canDetect(0,e))) continue;
         c.fillStyle = F[game.teams[e.team].faction].color;
         const r = e.structure ? 3 : 1.5;
         c.fillRect((e.x / W) * w - r, (e.y / H) * h - r, r * 2, r * 2);

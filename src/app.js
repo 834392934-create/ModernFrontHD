@@ -4,6 +4,7 @@
     { F, U, B, BUFFS, ABILITIES } = D,
     $ = (s) => document.querySelector(s),
     $$ = (s) => [...document.querySelectorAll(s)];
+  const mapSize=value=>globalThis.WarMapDimensions?.forMap(value)||D;
   const r = new WarRenderer($("#battle"), $("#minimap"));
   let game = null,
     demo = new WarSim.Game({
@@ -43,7 +44,7 @@
   const combatAudio=new WarCombatAudio({enabled:()=>sound,maxVoices:16});let audioGame=null;
   document.addEventListener('pointerdown',()=>combatAudio.unlock(),{passive:true});
   const lighting = r.is3D ? {available:true,enabled:true,night:false,output:{hidden:true},draw(){}} : new WarLighting($("#battle"));
-  r.camera = { x: D.W / 2, y: D.H / 2, zoom: 0.32 };
+  r.camera = { x: mapSize(game?.map||demo.map).W / 2, y: mapSize(game?.map||demo.map).H / 2, zoom: 0.32 };
   r.prepare(demo);
   function escapeHTML(v) {
     return String(v).replace(
@@ -164,6 +165,7 @@
             map,
             buffs: ["vision"],
           });
+          r.camera.x=mapSize(demo.map).W/2;r.camera.y=mapSize(demo.map).H/2;
           r.prepare(demo);
           beep();
         }),
@@ -184,21 +186,21 @@
                 ? "#374746"
                 : def.palette[m.tiles[i] === 1 ? 1 : 0];
         g.fillRect(
-          ((i % D.COLS) * 172) / D.COLS,
-          (Math.floor(i / D.COLS) * 120) / D.ROWS,
-          172 / D.COLS + 1,
-          120 / D.ROWS + 1,
+          ((i % m.cols) * 172) / m.cols,
+          (Math.floor(i / m.cols) * 120) / m.rows,
+          172 / m.cols + 1,
+          120 / m.rows + 1,
         );
       }
       for (const n of m.nodes) {
         g.fillStyle = "#e5c880";
-        g.fillRect((n.x / D.W) * 172 - 2, (n.y / D.H) * 120 - 2, 4, 4);
+        g.fillRect((n.x / m.width) * 172 - 2, (n.y / m.height) * 120 - 2, 4, 4);
       }
       for (let i = 0; i < 5; i++) {
         const p = m.spawns[i];
         g.fillStyle = i === 0 ? "#edd49d" : "#c68577";
         g.beginPath();
-        g.arc((p.x / D.W) * 172, (p.y / D.H) * 120, 3, 0, 7);
+        g.arc((p.x / m.width) * 172, (p.y / m.height) * 120, 3, 0, 7);
         g.fill();
       }
     });
@@ -318,6 +320,11 @@
     const enemies=game.entities.filter(e=>e.hp>0&&game.isEnemy(0,e.team));
     $("#objective").textContent = '全歼敌军 · 剩余设施 '+enemies.filter(e=>e.structure).length+' · 单位 '+enemies.filter(e=>!e.structure).length+' · 据点 '+game.nodes.filter(n=>n.owner===0).length+'/6';
     $("#pause").textContent = paused ? "▶ 继续" : "Ⅱ 暂停";
+    const commander=$('#commander-ai'),delegated=!!game.commanderAI.enabled;
+    commander.disabled=direct.active||!!game.result;
+    commander.setAttribute('aria-pressed',String(delegated));
+    commander.innerHTML=(direct.active?'驾驶中 · AI 护卫':'AI 接管：'+(delegated?'开':'关'))+' <kbd>Y</kbd>';
+    commander.title=delegated?'AI 建造、生产和作战；'+game.commanderAI.manualIds.length+' 个单位保留人工控制。关闭后停止新调度。':'Y 开启托管；手动命令优先，再次开启时将单位交回 AI。';
     $("#pause-banner").hidden = !paused || !$("#modal").hidden;
     const activeIds = new Set(game.entities.map((e) => e.id));
     for (const id of selection) if (!activeIds.has(id)) selection.delete(id);
@@ -472,7 +479,7 @@
       const cs=game.combatStatus(vehicle,game.get(vehicle.target)),injury=vehicle.components,transport=WarTransportOperations.status(game,vehicle),labels={ready:'就绪',preparing:'准备 / 抬炮',packing:'撤收中',reloading:'换弹中',cooldown:'装填中',traversing:'转向中',arc:'超出射界',elevation:'超出俯仰射界',blocked:'炮口遮挡','no-ammo':'缺弹',downed:'倒地待救',crashing:'失能下降','turret-damaged':'炮塔故障',disabled:'失能'};
       $('#combat-status').textContent=(cs?.weaponId?'弹仓 '+cs.ammo+' · 备弹 '+(cs.reserve===Infinity?'∞':cs.reserve)+' · '+(labels[cs.reason]||cs.reason):'保障 / 侦察单位')+(injury?.state==='burning'?' · 局部起火':injury?.state==='flooding'?' · 舰体进水':injury?.state==='downed'?' · 倒地待救':'')+(transport.capacity?' · 载员 '+transport.occupied+'/'+transport.capacity:'');
       $('#combat-reload').hidden=!cs?.weaponId;$('#combat-reload').onclick=()=>{game.reloadWeapon(vehicle.id);updateHUD();};
-      $('#combat-supply').onclick=()=>{toast(game.resupplyUnit(vehicle.id)?'补给请求已登记':'没有可用补给条件');updateHUD();};
+      $('#combat-supply').onclick=()=>{const accepted=game.resupplyUnit(vehicle.id);if(accepted)game.manualCommand([vehicle.id]);toast(accepted?'补给请求已登记':'没有可用补给条件');updateHUD();};
       $('#combat-board').hidden=!transport.capacity;$('#combat-unload').hidden=!transport.capacity;
       $('#combat-board').onclick=()=>{toast('载入 '+game.boardPassengers(vehicle.id)+' 名人员');updateHUD();};$('#combat-unload').onclick=()=>{toast('下车 '+game.unloadPassengers(vehicle.id)+' 名人员');updateHUD();};
       $('#combat-decoy').hidden=!U[vehicle.kind]?.naval;$('#combat-decoy').onclick=()=>{toast(game.deployDecoy(vehicle.id)?'声学诱饵已释放':'诱饵未就绪或已用尽');updateHUD();};
@@ -574,7 +581,7 @@
     return game.entities.find(
       (e) =>
         game.isEnemy(0, e.team) &&
-        (U[e.kind]?.underwater?game.canDetect(0,e):game.visibleAt(e.x,e.y)) &&
+        game.entityVisible(0,e) &&
         Math.hypot(p.x - e.x, p.y - e.y) < e.r + 12,
     );
   }
@@ -615,7 +622,7 @@
         target = enemyAt(p);
       const picked=r.pick?.(game,e.clientX,e.clientY,true)||target;
       if([...selection].some(id=>game.get(id)?.structure)){game.setRally([...selection],p.x,p.y);toast('集结点已设置，新生产单位自动前往');}
-      const result=game.command([...selection], picked?.x||p.x, picked?.y||p.y, !!picked, picked?.id || null,{queue:e.shiftKey});
+      const result=game.command([...selection], picked?.x||p.x, picked?.y||p.y, !!picked, picked?.id || null,{queue:e.shiftKey,source:'player'});
       if(result?.rejected.length)toast(WarCommandFeedback.format(result));
       beep(330, 0.06);
       return;
@@ -628,7 +635,7 @@
       }
       const p = r.toWorld(e.clientX, e.clientY);
       if (mode === "attack") {
-        const result=game.command([...selection], p.x, p.y, true,null,{queue:e.shiftKey});
+        const result=game.command([...selection], p.x, p.y, true,null,{queue:e.shiftKey,source:'player'});
         if(result?.rejected.length)toast(WarCommandFeedback.format(result));
         setMode(null);
       } else if (B[mode]) {
@@ -731,12 +738,12 @@
   $("#minimap").addEventListener("pointerdown", (e) => {
     if (!strategyPointerAvailable()) return;
     const rect = e.currentTarget.getBoundingClientRect(),
-      x = ((e.clientX - rect.left) / rect.width) * D.W,
-      y = ((e.clientY - rect.top) / rect.height) * D.H;
+      x = ((e.clientX - rect.left) / rect.width) * mapSize(game?.map||demo.map).W,
+      y = ((e.clientY - rect.top) / rect.height) * mapSize(game?.map||demo.map).H;
     if (e.button === 2) {
       e.preventDefault();
       if (paused) return;
-      const result=game.command([...selection], x, y, mode === "attack");
+      const result=game.command([...selection], x, y, mode === "attack",null,{queue:e.shiftKey,source:'player'});
       if(result?.rejected.length)toast(WarCommandFeedback.format(result));
       setMode(null);
     } else {
@@ -761,6 +768,7 @@
     }
   }
   function stopUnits() {
+    game.manualCommand([...selection]);
     for (const id of selection) {
       const e = game.get(id);
       if (e) {
@@ -770,7 +778,7 @@
         e.path = [];
         e.target = null;
         e.orderQueue=[];
-        e.manualMove=false;
+        e.manualMove=e.kind==='harvester';
       }
     }
     setMode(null);
@@ -779,6 +787,15 @@
   $("#attack-move").onclick = () => setMode("attack");
   $("#stop-units").onclick = stopUnits;
   $("#home").onclick = home;
+  function toggleCommanderAI() {
+    if(!game||game.result||direct.active||direct.vehicleMenu.open||!$('#modal').hidden||!document.hasFocus())return;
+    const enabled=!game.commanderAI.enabled;
+    if(game.setCommanderAI(enabled)){
+      toast(enabled?'AI 接管已开启：自动建设、生产和作战；手动下令的单位由你保留。':'AI 接管已关闭：已取消 AI 调动，保留手动命令和已付费队列。');
+      updateHUD();
+    }
+  }
+  $('#commander-ai').onclick=toggleCommanderAI;
   function togglePause() {
     if (!game || game.result || !$("#modal").hidden) return;
     paused = !paused;
@@ -811,6 +828,10 @@
     if ([" ", "arrowup", "arrowdown", "arrowleft", "arrowright"].includes(k))
       e.preventDefault();
     if (e.repeat) return;
+    if(k==='y'){
+      if(!e.ctrlKey&&!e.altKey&&!e.metaKey){e.preventDefault();toggleCommanderAI();}
+      return;
+    }
     if (k === " " || k === "p") {
       togglePause();
       return;
@@ -825,7 +846,7 @@
       e.stopPropagation();
       direct.vehicleMenu.show();
     }
-    else if (k === "r") {game.retreat([...selection]);toast('撤回基地，脱战后维修');}
+    else if (k === "r") {game.manualCommand([...selection]);game.retreat([...selection]);toast('撤回基地，脱战后维修');}
     else if (k === "f") {const fs=['line','column','spread'];game.formation=fs[(fs.indexOf(game.formation)+1)%3];$('#formation').value=game.formation;toast('阵型已切换');}
     else if (k === "v") toggleRanges();
     else if (k === "f5") {
@@ -895,7 +916,7 @@
   $("#close-modal").onclick = closeModal;
   function help() {
     openModal(
-      '<small>FIELD MANUAL / 01</small><h2>作战指南</h2><p>通过基地与补给站获得资金，扩建产能，组织兵种协同，消灭所有敌方设施和单位获胜。总部被摧毁后，残余部队与设施仍继续作战；据点提供经济收益。</p><div class="help-grid"><div><strong>选择与指挥</strong>左键选择，拖动框选；Shift 追加。<br>右键移动 / 指定敌军集火。<br>Q 选全军，A 后左键攻击移动，S 停止。<br>Ctrl + 1–5 编组，数字键调用。<br>实线为已求路径，虚线为后续目标；跨岛陆军移动会提示不可达。</div><div><strong>镜头与节奏</strong>方向键 / W D 平移，中键拖动。<br>滚轮缩放，H 回到基地。<br>小地图左键定位，右键下达指令。<br>P / 空格暂停，右上角调节 1–2 倍速。</div><div><strong>建设与经济</strong>右侧“建造”选建筑，左键放置。<br>建筑需在己方建筑 400 范围内。<br>靠近补给站并独占 7 秒即可占领。<br>低电力生产速度仅为 40%。</div><div><strong>兵种与支援</strong>坦克抗线，步战车清步兵。<br>火炮需要前线视野且有最小射程。<br>防空克制直升机与六代机。<br>支援需视野，侦察可揭示任意区域。</div><div><strong>第一人称驾驶</strong>选中己方单位，点击驾驶按钮或按 E。<br>WASD 移动，鼠标观察，左键开火；按住右键仅瞄准，左键才开火。<br>C 切换载具内外视角；车外按住右键进入光学瞄准。<br>F 靠近己方空载具登乘 / 离舱回到人员；E / Esc 返回总指挥。<br>J 搜索并换乘存活己方单位；海空天离舱采用游戏安全落点。<br>所有单位按住右键仅瞄准、左键开火；滚轮 1.5–16 倍变焦，V 可选观察。<br>太空单位 4–64 倍，G 对地俯视；目标状态显示射程与开火限制。<br>AI 接管建造、生产、基地留守与玩家护卫。<br>飞机鼠标上推下降、下拉爬升；W/S 油门。<br>固定翼从机场滑跑起飞、到位盘旋；R 返航着陆维修，暂停后按 W 恢复飞控。<br>直升机垂直起降；空中飞越建筑，低空自动爬升净空。<br>行动员 B 军械库；1/2 或未瞄准时滚轮切枪；R 装填。<br>全部武器可对人员，其他目标看军械库标签。<br>子弹与范围爆炸可破坏树木；树木倒下后解除遮挡。<br>人员空格跳跃；所有 FPS 单元 P 暂停，非人员也兼容空格暂停。<br>M 开关晃动；驾驶小地图常驻只读，保留迷雾与声呐。</div><div><strong>尖端科技</strong>核打击延迟 6 秒，钻地弹延迟 4 秒。<br>六代机先建设陆航基地再生产。<br>默认尖端科技仅玩家可用。<br>全部均为游戏数值；本版无友军伤害。</div><div><strong>科幻阵营</strong>战锤·人类帝国为非官方同人。<br>生命 ×3、火力 ×2.6、生产 ×1.3。<br>专属轨道光矛，强度远高于现代军队。<br>开局可把它选为玩家或 AI。</div></div><p>F5 保存 / F9 读取；菜单中可导出与导入存档。桌面鼠标键盘是完整操作方式；窄屏支持基本查看和点选。</p>',
+      '<small>FIELD MANUAL / 01</small><h2>作战指南</h2><p>通过基地与补给站获得资金，扩建产能，组织兵种协同，消灭所有敌方设施和单位获胜。总部被摧毁后，残余部队与设施仍继续作战；据点提供经济收益。</p><div class="help-grid"><div><strong>选择与指挥</strong>左键选择，拖动框选；Shift 追加。<br>右键移动 / 指定敌军集火。<br>Q 选全军，A 后左键攻击移动，S 停止。<br>Y 开关 AI 接管：自动建设、生产、作战；手动命令优先。<br>Ctrl + 1–5 编组，数字键调用。<br>实线为已求路径，虚线为后续目标；跨岛陆军移动会提示不可达。</div><div><strong>镜头与节奏</strong>方向键 / W D 平移，中键拖动。<br>滚轮缩放，H 回到基地。<br>小地图左键定位，右键下达指令。<br>P / 空格暂停，右上角调节 1–2 倍速。</div><div><strong>建设与经济</strong>右侧“建造”选建筑，左键放置。<br>建筑需在己方建筑 400 范围内。<br>靠近补给站并独占 7 秒即可占领。<br>低电力生产速度仅为 40%。</div><div><strong>兵种与支援</strong>坦克抗线，步战车清步兵。<br>火炮需要前线视野且有最小射程。<br>防空克制直升机与六代机。<br>支援需视野，侦察可揭示任意区域。</div><div><strong>第一人称驾驶</strong>选中己方单位，点击驾驶按钮或按 E。<br>WASD 移动，鼠标观察，左键开火；按住右键仅瞄准，左键才开火。<br>C 切换载具内外视角；车外按住右键进入光学瞄准。<br>F 靠近己方空载具登乘 / 离舱回到人员；E / Esc 返回总指挥。<br>J 搜索并换乘存活己方单位；海空天离舱采用游戏安全落点。<br>所有单位按住右键仅瞄准、左键开火；滚轮 1.5–16 倍变焦，V 可选观察。<br>太空单位 4–64 倍，G 对地俯视；目标状态显示射程与开火限制。<br>AI 接管建造、生产、基地留守与玩家护卫。<br>飞机鼠标上推下降、下拉爬升；W/S 油门。<br>固定翼从机场滑跑起飞、到位盘旋；R 返航着陆维修，暂停后按 W 恢复飞控。<br>直升机垂直起降；空中飞越建筑，低空自动爬升净空。<br>行动员 B 军械库；1/2 或未瞄准时滚轮切枪；R 装填。<br>全部武器可对人员，其他目标看军械库标签。<br>子弹与范围爆炸可破坏树木；树木倒下后解除遮挡。<br>人员空格跳跃；所有 FPS 单元 P 暂停，非人员也兼容空格暂停。<br>M 开关晃动；驾驶小地图常驻只读，保留迷雾与声呐。</div><div><strong>尖端科技</strong>核打击延迟 6 秒，钻地弹延迟 4 秒。<br>六代机先建设陆航基地再生产。<br>默认尖端科技仅玩家可用。<br>全部均为游戏数值；本版无友军伤害。</div><div><strong>科幻阵营</strong>战锤·人类帝国为非官方同人。<br>生命 ×3、火力 ×2.6、生产 ×1.3。<br>专属轨道光矛，强度远高于现代军队。<br>开局可把它选为玩家或 AI。</div></div><p>F5 保存 / F9 读取；菜单中可导出与导入存档。桌面鼠标键盘是完整操作方式；窄屏支持基本查看和点选。</p>',
     );
   }
   $("#help-menu").onclick = help;
@@ -921,7 +942,7 @@
     $("#menu").hidden = false;
     paused = false;
     mode = null;
-    r.camera = { x: D.W / 2, y: D.H / 2, zoom: 0.32 };
+    r.camera = { x: mapSize(game?.map||demo.map).W / 2, y: mapSize(game?.map||demo.map).H / 2, zoom: 0.32 };
     r.prepare(demo);
     setupMenu();
   }
@@ -1128,7 +1149,7 @@
       }
       if (game.result) result();
     } else {
-      r.camera.x = D.W / 2 + Math.sin(now / 60000) * 180;
+      r.camera.x = mapSize(game?.map||demo.map).W / 2 + Math.sin(now / 60000) * 180;
       r.draw(demo, { demo: true }, now / 1000);
     }
     try {
@@ -1294,13 +1315,13 @@
   $('#difficulty').insertAdjacentHTML('beforeend','<option value="brutal">残酷 · 收入 ×1.7 / 快速攻势</option>');
   const spaceOption=document.createElement('label');spaceOption.className='space-option';spaceOption.innerHTML='<input id="ai-space-ban" type="checkbox" checked>禁止 AI 建造太空武器';$('.battle-section').append(spaceOption);
   const formation=document.createElement('select');formation.id='formation';formation.title='编队阵型 F';formation.innerHTML='<option value="line">横队 · F</option><option value="column">纵队 · F</option><option value="spread">疏散 · F</option>';formation.onchange=()=>{if(game)game.formation=formation.value;};$('.command-buttons').append(formation);
-  const retreatButton=document.createElement('button');retreatButton.id='retreat';retreatButton.textContent='撤回维修 R';retreatButton.onclick=()=>{game.retreat([...selection]);toast('撤回基地，脱战后自动维修');};$('.command-buttons').append(retreatButton);
+  const retreatButton=document.createElement('button');retreatButton.id='retreat';retreatButton.textContent='撤回维修 R';retreatButton.onclick=()=>{game.manualCommand([...selection]);game.retreat([...selection]);toast('撤回基地，脱战后自动维修');};$('.command-buttons').append(retreatButton);
   async function toggleFullscreen(){try{if(window.DesktopGame){await DesktopGame.fullscreen();}else if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch(e){toast('无法切换全屏：'+e.message)}}
   const fsButton=document.createElement('button');fsButton.id='fullscreen';fsButton.textContent='全屏 F11';fsButton.onclick=toggleFullscreen;$('.topbar').insertBefore(fsButton,$('#settings'));
   const immersion=document.createElement('button');immersion.id='immersion';immersion.textContent='沉浸 Tab';immersion.onclick=()=>document.body.classList.toggle('immersive');$('.bottom-status>div:last-child').append(immersion);
   if(window.DesktopGame){const quit=document.createElement('button');quit.id='desktop-quit';quit.textContent='退出游戏';quit.onclick=()=>DesktopGame.close();$('.launch-actions').append(quit);const minimize=document.createElement('button');minimize.textContent='—';minimize.title='最小化';minimize.onclick=()=>DesktopGame.minimize();$('.topbar').append(minimize);}
   const restore=document.createElement('button');restore.id='restore-hud';restore.textContent='恢复指挥界面 · Tab';restore.onclick=()=>document.body.classList.remove('immersive');document.body.append(restore);
-  $('.bottom-status p').innerHTML='右键指令 · Shift 连续路点 / 追加选择<br>F 阵型 · R 撤退 · F11 全屏 · Tab 沉浸<br>选择生产建筑 → 右键设集结点';
+  $('.bottom-status p').innerHTML='右键指令 · Shift 连续路点 / 追加选择<br>Y AI 接管 · F 阵型 · R 撤退 · F11 全屏 · Tab 沉浸<br>选择生产建筑 → 右键设集结点';
   document.querySelector('.edition').textContent='DESKTOP TACTICAL EDITION / 03';
   document.querySelector('.menu-footer>div:first-child').innerHTML='<span class="status-dot"></span>本地离线战役 · 实时三维战场<p>自动采矿 / 联合作战 / 据点争夺 / 1–4 名 AI</p>';
   const filters=document.createElement('div');filters.id='unit-filters';

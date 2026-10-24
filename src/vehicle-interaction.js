@@ -32,6 +32,7 @@
    .sort((a,b)=>Math.hypot(a.x-crew.x,a.y-crew.y)-Math.hypot(b.x-crew.x,b.y-crew.y)||a.id-b.id)[0]||null;
  };
  P.vehicleExitPoint=function(body,crew){
+  const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(this.map)||root.WarData;
   const actor={...crew,angle:body.angle||0,altitude:0,jumpHeight:0},r=this.navigationRadius(actor);
   const trees=root.WarTrees?.liveColliders(this)||this.directObstacles||[];
   let attempts=0;
@@ -85,6 +86,7 @@
   delete body.vehicleCrew;
  };
  P.validateVehicleCrews=function(){
+  const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(this.map)||root.WarData;
   const ids=new Set(this.entities.map(e=>e.id));
   for(const body of this.entities){
    if(body.vehicleDriverId!==undefined&&(!Number.isInteger(body.vehicleDriverId)||body.vehicleDriverId<1||body.vehicleDriverId>=this.nextId))throw Error('驾驶员关联标识无效');

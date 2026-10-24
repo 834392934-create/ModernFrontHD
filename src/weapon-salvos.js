@@ -26,12 +26,13 @@
     return dist>=range.min-1e-6&&dist<=range.attack+1e-6;
   }
   function freezePoints(game,e,fx,p,range,projected){
+  const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(game.map)||root.WarData;
     const angle=((e.id*2.399963229728653+game.time*.73)%(Math.PI*2)),c=Math.cos(angle),s=Math.sin(angle),points=[];
     for(let i=0;i<p.count;i++){
       const r=i?Math.sqrt(i/(p.count-1)):0,a=i*2.399963229728653,dx=Math.cos(a)*r*p.spreadX,dy=Math.sin(a)*r*p.spreadY;
       let x=fx.tx+dx*c-dy*s,y=fx.ty+dx*s+dy*c;
       const dz=projected?0:fx.targetHeight-game.entityAltitude(e),maximum=Math.sqrt(Math.max(0,range.attack**2-dz**2)),minimum=Math.sqrt(Math.max(0,range.min**2-dz**2)),length=Math.hypot(x-e.x,y-e.y),distance=clamp(length,minimum,maximum),heading=length?Math.atan2(y-e.y,x-e.x):(e.angle||0);
-      x=clamp(e.x+Math.cos(heading)*distance,0,root.WarData.W);y=clamp(e.y+Math.sin(heading)*distance,0,root.WarData.H);
+      x=clamp(e.x+Math.cos(heading)*distance,0,W);y=clamp(e.y+Math.sin(heading)*distance,0,H);
       const point={x,y,height:fx.targetHeight};if(!legalPoint(game,e,point,range,projected))return null;points.push(point);
     }
     return points;

@@ -370,6 +370,11 @@
     },
   ];
   MAPS.push({id:'archipelago',name:'群岛海战',en:'ISLAND THEATRE',desc:'群岛海峡 · 岛内陆战 · 深海舰队与空天协同',seed:91827,palette:['#57796d','#6c8c76','#466b61']});
+  MAPS.push(
+    {id:'english_channel',name:'英吉利海峡',en:'ENGLISH CHANNEL · XL',desc:'真实海岸轮廓 · 超大战场 · 英法两岸与跨海协同',seed:31501,palette:['#728265','#9a9d73','#506b62'],geographic:true},
+    {id:'gibraltar',name:'直布罗陀海峡',en:'GIBRALTAR · XL',desc:'真实海岸轮廓 · 超大战场 · 狭窄海峡与两岸部署',seed:31502,palette:['#a89b71','#c1ac7d','#75806a'],geographic:true},
+    {id:'taiwan_strait',name:'台湾海峡',en:'TAIWAN STRAIT · XL',desc:'真实海岸轮廓 · 超大战场 · 岛岸海空与轨道协同',seed:31503,palette:['#60806a','#899573','#486b60'],geographic:true}
+  );
   const BUFFS = {
     ammo: { name: "无限备用弹药", desc: "仅玩家备用弹药不限；仍消耗弹仓并完成换弹，关闭后恢复原库存" },
     reload: { name: "快速装填", desc: "仅玩家换弹与武器装填用时 ×0.25，保留准备和装填动作" },

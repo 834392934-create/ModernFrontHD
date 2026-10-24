@@ -48,11 +48,18 @@
  function impact(fx,target){const p=fx.projectile.position;fx.tx=p.x;fx.ty=p.y;fx.targetHeight=p.height;fx.target=target?.id??null;fx.ttl=0;return {handled:true,expired:false,impact:true};}
  function canImpact(g,fx,e){
   if(!e||e.hp<=0||e.id===fx.excludedTargetId||!g.isEnemy(fx.from,e.team)||!g.canDetect(fx.from,e))return false;
-  if(!data(e).underwater&&(fx.from===0?!g.visibleAt(e.x,e.y):!g.unitsInSight(e,g.teamEntities(fx.from))))return false;
   const domain=g.targetDomain(e.kind),isPerson=(data(e).modelKind||e.kind)==='infantry';
   if(fx.operatorTargets)return fx.operatorTargets.includes(g.operatorDomain(e));
   if(fx.weaponDomains)return fx.weaponDomains.includes(domain)&&(!fx.weaponPersonnelOnly||isPerson);
   return !fx.sourceKind||g.canTargetKind(fx.sourceKind,e.kind);
+ }
+ // Contact is required for steering, not for physical collision. An already
+ // airborne round can hit an unseen enemy; losing radar must not erase matter.
+ function canTrack(g,fx,e){
+  if(!canImpact(g,fx,e))return false;
+  if(g.entityVisible)return g.entityVisible(fx.from,e);
+  if(data(e).underwater)return true; // canImpact retains the existing sonar gate.
+  return fx.from===0?g.visibleAt(e.x,e.y):g.unitsInSight(e,g.teamEntities(fx.from));
  }
  function local(g,e,p){const dx=p.x-e.x,dz=p.y-e.y,dy=p.height-g.entityAltitude(e),a=e.structure&&!data(e).rotatable?0:e.angle||0,c=Math.cos(a),s=Math.sin(a),cp=Math.cos(e.pitch||0),sp=Math.sin(e.pitch||0),cr=Math.cos(e.roll||0),sr=Math.sin(e.roll||0),x=c*dx+s*dz,z=-s*dx+c*dz,y=dy,xx=cp*x+sp*y,yy=-sp*x+cp*y;return{x:xx,y:cr*yy+sr*z,z:-sr*yy+cr*z};}
  function boxEntry(a,b,min,max){let lo=0,hi=1;for(const key of ['x','y','z']){const delta=b[key]-a[key];if(Math.abs(delta)<1e-9){if(a[key]<min[key]||a[key]>max[key])return null;continue;}let near=(min[key]-a[key])/delta,far=(max[key]-a[key])/delta;if(near>far)[near,far]=[far,near];lo=Math.max(lo,near);hi=Math.min(hi,far);if(lo>hi)return null;}return lo;}
@@ -136,7 +143,7 @@
    }else{
     if(p.phase==='ignition'&&p.phaseAge>=.12){p.phase='powered';p.phaseAge=0;}
     if(p.phase!=='coast'){
-     const target=g.get(p.lockId);if(target&&canImpact(g,fx,target)&&g.canDetect(fx.from,target)){p.destination={x:target.x,y:target.y,height:g.entityAltitude(target)};steerGuided(p,p.destination,dt);}
+     const target=g.get(p.lockId);if(target&&canTrack(g,fx,target)){p.destination={x:target.x,y:target.y,height:g.entityAltitude(target)};steerGuided(p,p.destination,dt);}
      else{p.lockId=null;fx.target=null;p.phase='coast';p.phaseAge=0;}
     }
     const forward=direction(p);p.position.x+=forward.x*p.speed*dt;p.position.y+=forward.y*p.speed*dt;p.position.height+=forward.height*p.speed*dt;
@@ -149,16 +156,17 @@
    const target=g.get(p.lockId),decoys=g.effects.filter(d=>d.type==='decoy'&&d.projectile?.kind==='decoy'&&d.from!==fx.from&&d.projectile.age<d.projectile.maxAge&&dist(position(d),p.position)<130),decoy=decoys.sort((a,b)=>dist(position(a),p.position)-dist(position(b),p.position))[0];
    let q=null;
    if(decoy){p.decoyId=id(g,decoy);p.state='decoy';q=position(decoy);}
-   else if(target&&canImpact(g,fx,target)&&g.canDetect(fx.from,target)&&['naval','underwater'].includes(g.targetDomain(target.kind))){p.state='tracking';p.lostFor=0;p.searchRemaining=3;q={x:target.x,y:target.y,height:g.entityAltitude(target)};}
+   else if(target&&canTrack(g,fx,target)&&['naval','underwater'].includes(g.targetDomain(target.kind))){p.state='tracking';p.lostFor=0;p.searchRemaining=3;q={x:target.x,y:target.y,height:g.entityAltitude(target)};}
    else{p.state='searching';p.lostFor+=dt;p.searchRemaining-=dt;p.lockId=null;fx.target=null;}
-   if(!q&&p.searchRemaining>0){const contact=g.entities.filter(e=>canImpact(g,fx,e)&&['naval','underwater'].includes(g.targetDomain(e.kind))&&g.canDetect(fx.from,e)&&dist({x:e.x,y:e.y,height:g.entityAltitude(e)},p.position)<150).sort((a,b)=>a.id-b.id)[0];if(contact){p.lockId=contact.id;q={x:contact.x,y:contact.y,height:g.entityAltitude(contact)};p.state='tracking';}}
+   if(!q&&p.searchRemaining>0){const contact=g.entities.filter(e=>canTrack(g,fx,e)&&['naval','underwater'].includes(g.targetDomain(e.kind))&&dist({x:e.x,y:e.y,height:g.entityAltitude(e)},p.position)<150).sort((a,b)=>a.id-b.id)[0];if(contact){p.lockId=contact.id;q={x:contact.x,y:contact.y,height:g.entityAltitude(contact)};p.state='tracking';}}
    if(q){const desired=Math.atan2(q.y-p.position.y,q.x-p.position.x);p.heading+=clamp(wrap(desired-p.heading),-p.turnRate*dt,p.turnRate*dt);p.position.height+=clamp(q.height-p.position.height,-22*dt,22*dt);}
    const depthApproach=q?clamp(Math.hypot(q.x-p.position.x,q.y-p.position.y)/Math.max(1,Math.abs(q.height-p.position.height)*8),.1,1):1;
    p.position.x+=Math.cos(p.heading)*p.speed*depthApproach*dt;p.position.y+=Math.sin(p.heading)*p.speed*depthApproach*dt;
    if(q&&swept(p.previous,p.position,q,decoy?12:Math.max(12,target?.r||12))){if(decoy)return expire(fx);const hit=g.get(p.lockId);return impact(fx,hit);}
    if(p.searchRemaining<=0)return expire(fx);
   }
-  if(p.age>=p.maxAge||p.position.x<0||p.position.y<0||p.position.x>root.WarData.W||p.position.y>root.WarData.H)return expire(fx);
+  const bounds=root.WarMapDimensions?.forMap(g.map)||{width:root.WarData.W,height:root.WarData.H};
+  if(p.age>=p.maxAge||p.position.x<0||p.position.y<0||p.position.x>bounds.width||p.position.y>bounds.height)return expire(fx);
   // The dynamic trajectory owns its expiry, independent of the original straight-line TTL.
   fx.ttl=Math.max(.001,p.maxAge-p.age);return {handled:true,expired:false,impact:false};
  }
@@ -169,7 +177,7 @@
   if(!defensive.length)return null;
   const origin={x:e.x,y:e.y,height:g.entityAltitude(e)+8};
   const threats=g.effects.filter(f=>f.type==='shot'&&(f.rocket||['missile','rocket'].includes(f.weaponFamily))&&g.isEnemy(e.team,f.from));
-  for(const fx of threats){const q=position(fx);for(const w of defensive){const range=base.interceptRange||w.mechanics?.interceptRange||w.range;if(dist(origin,q)<=range){const st=R.ensure(g,e).stations[R.profile(g,e,w).id];if(st.ammo>0&&!st.reloadRemaining&&st.cooldown<=0)return {weapon:w,projectile:fx,position:q,range,origin};}}}
+  for(const fx of threats){const q=position(fx);for(const w of defensive){const range=root.WarSensors?.interceptionRange(g,e,w)??(base.interceptRange||w.mechanics?.interceptRange||w.range);if(dist(origin,q)<=range){const st=R.ensure(g,e).stations[R.profile(g,e,w).id];if(st.ammo>0&&!st.reloadRemaining&&st.cooldown<=0)return {weapon:w,projectile:fx,position:q,range,origin};}}}
   return null;
  }
  function tryIntercept(g,e,dt){
@@ -198,5 +206,5 @@
   return true;
  }
  function validateEntity(e){const c=e.countermeasures;return !c||!!data(e).naval&&Number.isInteger(c.charges)&&c.charges>=0&&c.charges<=3&&finite(c.nextAt)&&c.nextAt>=0;}
- const api={decorateLaunch,bombSolution,position,step,interceptionPlan,tryIntercept,deployDecoy,canImpact,validate,validateEntity};root.WarCombatProjectiles=api;if(typeof module!=='undefined')module.exports=api;
+ const api={decorateLaunch,bombSolution,position,step,interceptionPlan,tryIntercept,deployDecoy,canImpact,canTrack,validate,validateEntity};root.WarCombatProjectiles=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

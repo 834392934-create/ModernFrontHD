@@ -143,6 +143,7 @@
   return false;
  }
  function detour(game,e,goal,findPath){
+  const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(game.map)||root.WarData;
   const local=visibilityDetour(game,e,goal);
   if(local){e.path=local;e.crowdRouteOrder=e.order;e.crowdDetourUntil=game.time+2;return 1;}
   const base=root.WarNavigationFootprints.pathGrid(game,e).blocked,blocked=base.slice();
@@ -151,10 +152,10 @@
    const r=game.navigationRadius(e)+game.navigationRadius(o)+12;
    for(let y=Math.max(0,Math.floor((o.y-r)/T));y<=Math.min(ROWS-1,Math.floor((o.y+r)/T));y++)for(let x=Math.max(0,Math.floor((o.x-r)/T));x<=Math.min(COLS-1,Math.floor((o.x+r)/T));x++)if(Math.hypot(x*T+T/2-o.x,y*T+T/2-o.y)<r)blocked[y*COLS+x]=1;
   }
-  let searches=1,path=findPath({blocked},e.x,e.y,goal.x,goal.y);
+  let searches=1,path=findPath({...root.WarMapDimensions?.forMap(game.map),blocked},e.x,e.y,goal.x,goal.y);
   // Dense circles can occupy every coarse neighbour cell; retain static routing as a fallback.
   let routed=!!path.length;
-  if(!path.length&&game.pathBudget>1){searches++;path=findPath({blocked:base},e.x,e.y,goal.x,goal.y);routed=false;}
+  if(!path.length&&game.pathBudget>1){searches++;path=findPath({...root.WarMapDimensions?.forMap(game.map),blocked:base},e.x,e.y,goal.x,goal.y);routed=false;}
   if(path.length){const last=path.at(-1);if(Math.hypot(last.x-goal.x,last.y-goal.y)<T*1.5)path.push({x:goal.x,y:goal.y});e.path=path;e.crowdRouteOrder=routed?e.order:null;e.crowdDetourUntil=game.time+2;}
   return searches;
  }

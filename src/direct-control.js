@@ -180,7 +180,7 @@
   }
   cast(origin,direction,max,includeWorld=true,boxes=null){
    const r=this.r,g=this.game;this.ray.set(origin,direction);this.ray.far=max;const hits=[];const point=this.castPoint??=new T.Vector3();
-   for(const e of g.entities){if(e.id===this.entityId||e.hp<=0||(e.team!==0&&!(D.U[e.kind]?.underwater?g.canDetect(0,e):g.visibleAt(e.x,e.y))))continue;const o=r.objects.get(e.id);if(!o?.visible)continue;
+   for(const e of g.entities){if(e.id===this.entityId||e.hp<=0||(e.team!==0&&!(g.entityVisible?g.entityVisible(0,e):(D.U[e.kind]?.underwater?g.canDetect(0,e):g.visibleAt(e.x,e.y)))))continue;const o=r.objects.get(e.id);if(!o?.visible)continue;
     // Baked full-model extents, expanded for articulated parts and every hull
     // attitude, only reject distant misses. Unknown/new artwork takes the exact
     // path. Damage and final aiming still use the original triangle raycast.

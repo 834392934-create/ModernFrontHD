@@ -1,13 +1,13 @@
 {
-  "at": "2026-10-24T17:29:42.217Z",
+  "at": "2026-10-24T19:51:55.933Z",
   "scope": "Original game personnel: true movement and medical simulation; labeled Game.damage injury probes; actual RMB/LMB/R input. Native package when --desktop, source Chromium otherwise. No photographic-realism claim.",
   "runs": [
     {
       "mode": "production-state-probe",
       "label": "健康单兵 · 生产模型静立 / 暂停近距检查",
       "file": "screenshots/personnel-combat-healthy-desktop.png",
-      "time": 0.35,
-      "id": 36,
+      "time": 0.6,
+      "id": 39,
       "kind": "infantry",
       "hp": 105,
       "components": {
@@ -125,8 +125,8 @@
       "mode": "production-state-probe",
       "label": "正常行走 · 真实移动驱动步态 / 暂停采样",
       "file": "screenshots/personnel-combat-walking-desktop.png",
-      "time": 0.6,
-      "id": 36,
+      "time": 0.8500000000000002,
+      "id": 39,
       "kind": "infantry",
       "hp": 105,
       "components": {
@@ -151,10 +151,10 @@
       },
       "pose": {
         "moving": true,
-        "phase": 0.8142857142857014,
+        "phase": 0.814285714285711,
         "torso": [
           0,
-          -0.07191062648986982,
+          -0.07191062648986896,
           0
         ],
         "joints": [
@@ -165,75 +165,75 @@
             1
           ],
           [
-            1.2113443746642045e-14,
-            -6.056721873321022e-16,
-            0.3549838790587409,
-            0.9348724221028286
+            0.022105598977177548,
+            -0.0011052799488588773,
+            0.3641466433010043,
+            0.9310785912170391
           ],
           [
-            -2.828125070644799e-15,
-            -8.582305942633932e-15,
-            -0.6896251731671577,
-            0.7241665005605881
+            -0.004777570600318861,
+            -0.015887612551372846,
+            -0.6890993851503692,
+            0.7244769119661162
           ],
           [
-            -9.59248107479638e-15,
-            1.1121717188169715e-15,
-            0.38764412252847186,
-            0.9218091094522397
+            -0.018113770893989106,
+            0.002100147350027722,
+            0.37814633483754934,
+            0.9255662213661625
           ],
           [
-            -1.3725258869030208e-14,
-            -2.4019203020802867e-15,
-            -0.10190395831695363,
-            0.9947942416798242
+            -3.2216925818033226e-14,
+            -5.637962018155815e-15,
+            -0.10190395831699203,
+            0.9947942416798203
           ],
           [
-            4.156144266015841e-15,
-            8.918728852951832e-15,
-            -0.3995661464123388,
-            0.9167043659987627
+            9.755604086230487e-15,
+            2.0934688998474192e-14,
+            -0.39956614641231303,
+            0.916704365998774
           ],
           [
-            6.5789165339168575e-15,
-            -7.627729314686215e-16,
-            0.4909019051228995,
-            0.8712148526894544
+            1.5442511355066253e-14,
+            -1.790436099138117e-15,
+            0.49090190512290865,
+            0.8712148526894493
           ],
           [
             0.07304080304496938,
-            0.02785239553660469,
-            0.13167717339751664,
-            0.9882056502365582
+            0.02785239553660471,
+            0.1316771733975164,
+            0.9882056502365583
           ],
           [
-            -0.09004916368111354,
-            -0.08937329505183306,
-            -0.09469452308314162,
+            -0.09004916368111303,
+            -0.08937329505183297,
+            -0.09469452308314188,
             0.9873887327440832
           ],
           [
-            0.007736472833984738,
-            0.0657589089480917,
-            -0.03241908229830611,
+            0.0077364728339842795,
+            0.06575890894809147,
+            -0.032419082298305577,
             0.9972787554064217
           ],
           [
-            -0.16145049846723003,
-            -0.06675324361309458,
-            0.19767926834695754,
+            -0.16145049846723009,
+            -0.06675324361309468,
+            0.1976792683469562,
             0.9645727799796269
           ],
           [
-            0.06973403011443893,
+            0.06973403011443843,
             0.2630725730523249,
-            -0.07450991293871172,
-            0.9593634656507894
+            -0.07450991293871126,
+            0.9593634656507892
           ],
           [
-            0.13465637784704867,
-            -0.1914673294565867,
-            -0.07995780875731381,
+            0.13465637784704892,
+            -0.19146732945658654,
+            -0.07995780875731291,
             0.9689244916269815
           ]
         ]
@@ -244,17 +244,17 @@
       "mode": "production-state-probe",
       "label": "受伤跛行 · 生产伤害接口状态检查（非武器命中测试）",
       "file": "screenshots/personnel-combat-injured-desktop.png",
-      "time": 0.7000000000000001,
-      "id": 36,
+      "time": 0.9500000000000003,
+      "id": 39,
       "kind": "infantry",
       "hp": 57.75,
       "components": {
         "schema": 1,
         "parts": {},
-        "lastHitAt": 0.6,
+        "lastHitAt": 0.8500000000000002,
         "hitPoint": {
-          "x": 1817.9999999999995,
-          "y": 1400,
+          "x": 1817.6295863632736,
+          "y": 1402.1348533141804,
           "height": 5
         },
         "fireUntil": 0,
@@ -268,16 +268,16 @@
           "reviveProgress": 0,
           "rescuerId": null,
           "limp": 0.44999999999999996,
-          "staggerUntil": 1.25,
+          "staggerUntil": 1.5000000000000002,
           "everDowned": false
         }
       },
       "pose": {
         "moving": true,
-        "phase": 0.18960714285712904,
+        "phase": 0.18960714285714098,
         "torso": [
           -0.024062499999999994,
-          -0.08270553393707655,
+          -0.08270553393707791,
           0
         ],
         "joints": [
@@ -288,76 +288,76 @@
             1
           ],
           [
-            1.1569739715228183e-14,
-            -5.784869857614091e-16,
-            0.034937499550203616,
-            0.9993894992069807
+            -1.2642570125185848e-14,
+            6.321285062592924e-16,
+            0.03493749955022743,
+            0.9993894992069798
           ],
           [
-            -2.253496067466681e-15,
-            -4.3054802175164236e-15,
-            -0.3357107888673033,
-            0.941965108822027
+            2.462456611904741e-15,
+            4.704715655868389e-15,
+            -0.3357107888673404,
+            0.9419651088220137
           ],
           [
-            -8.990797859069336e-15,
-            1.0424113459790532e-15,
-            0.3025959315986976,
-            0.9531189339111444
+            9.82449002418292e-15,
+            -1.1390713071516427e-15,
+            0.3025959315987124,
+            0.9531189339111396
           ],
           [
-            -1.6744872251896808e-14,
-            -2.9303526440819413e-15,
-            -0.048928203094246225,
-            0.9988022982262146
+            -3.431176550524979e-14,
+            -6.0045589634187134e-15,
+            -0.04892820309418816,
+            0.9988022982262174
           ],
           [
-            8.672514236391628e-15,
-            1.2819354538287194e-14,
-            -0.5779212234658859,
-            0.8160925556992256
+            1.777077008075072e-14,
+            2.6268022844817297e-14,
+            -0.5779212234659261,
+            0.8160925556991967
           ],
           [
-            2.6824974725591987e-15,
-            -3.1101419971700856e-16,
-            0.6171589885003869,
-            0.7868384732034776
+            5.496681184681086e-15,
+            -6.372963692383869e-16,
+            0.6171589885003799,
+            0.7868384732034827
           ],
           [
-            0.07332802027092195,
-            0.02780107141901173,
-            0.1350902234724455,
-            0.987725029243092
+            0.07332802027092157,
+            0.02780107141901148,
+            0.13509022347244679,
+            0.9877250292430918
           ],
           [
-            -0.09660452391059635,
-            -0.09142662873974783,
-            -0.09144316880894768,
-            0.986887473015779
+            -0.09660452391059679,
+            -0.09142662873974745,
+            -0.09144316880894829,
+            0.9868874730157787
           ],
           [
-            0.013243575937242246,
-            0.06921282061319686,
-            -0.03897971826906761,
-            0.9967521129763529
+            0.01324357593724297,
+            0.06921282061319692,
+            -0.03897971826906832,
+            0.9967521129763528
           ],
           [
-            -0.16653090310510774,
-            -0.0694932596417605,
-            0.19238915335924445,
-            0.9645851744895696
+            -0.1665309031051077,
+            -0.06949325964176037,
+            0.19238915335924667,
+            0.9645851744895693
           ],
           [
-            0.08243345677791909,
-            0.27837361861932614,
-            -0.009949323206936289,
+            0.08243345677792036,
+            0.27837361861932636,
+            -0.009949323206935864,
             0.9568771418673084
           ],
           [
-            0.1327001782087316,
-            -0.216220987003209,
-            -0.13386657303677185,
-            0.95797645488087
+            0.13270017820873106,
+            -0.21622098700320974,
+            -0.13386657303677443,
+            0.9579764548808697
           ]
         ]
       },
@@ -367,17 +367,17 @@
       "mode": "production-state-probe",
       "label": "倒地待救 · 真实倒地状态；停止行走和开火",
       "file": "screenshots/personnel-combat-downed-desktop.png",
-      "time": 0.8000000000000002,
-      "id": 36,
+      "time": 1.0500000000000003,
+      "id": 39,
       "kind": "infantry",
       "hp": 1,
       "components": {
         "schema": 1,
         "parts": {},
-        "lastHitAt": 0.7000000000000001,
+        "lastHitAt": 0.9500000000000003,
         "hitPoint": {
-          "x": 1823.4179999999997,
-          "y": 1400,
+          "x": 1823.0471181162907,
+          "y": 1402.0636233692749,
           "height": 5
         },
         "fireUntil": 0,
@@ -386,18 +386,18 @@
         "state": "downed",
         "destroyedAt": null,
         "personnel": {
-          "downedAt": 0.7000000000000001,
-          "bleedUntil": 35.7,
+          "downedAt": 0.9500000000000003,
+          "bleedUntil": 35.95,
           "reviveProgress": 0,
           "rescuerId": null,
           "limp": 1,
-          "staggerUntil": 1.35,
+          "staggerUntil": 1.6000000000000003,
           "everDowned": true
         }
       },
       "pose": {
         "moving": false,
-        "phase": 0.18960714285712904,
+        "phase": 0.18960714285714098,
         "torso": [
           0,
           0.17,
@@ -490,17 +490,17 @@
       "mode": "production-state-probe",
       "label": "救援进行中 · 医疗兵实际推进救援进度",
       "file": "screenshots/personnel-combat-rescue-desktop.png",
-      "time": 1.5000000000000007,
-      "id": 36,
+      "time": 1.7500000000000009,
+      "id": 39,
       "kind": "infantry",
       "hp": 1,
       "components": {
         "schema": 1,
         "parts": {},
-        "lastHitAt": 0.7000000000000001,
+        "lastHitAt": 0.9500000000000003,
         "hitPoint": {
-          "x": 1823.4179999999997,
-          "y": 1400,
+          "x": 1823.0471181162907,
+          "y": 1402.0636233692749,
           "height": 5
         },
         "fireUntil": 0,
@@ -509,18 +509,18 @@
         "state": "downed",
         "destroyedAt": null,
         "personnel": {
-          "downedAt": 0.7000000000000001,
-          "bleedUntil": 35.7,
+          "downedAt": 0.9500000000000003,
+          "bleedUntil": 35.95,
           "reviveProgress": 0.13999999999999999,
-          "rescuerId": 37,
+          "rescuerId": 40,
           "limp": 1,
-          "staggerUntil": 1.35,
+          "staggerUntil": 1.6000000000000003,
           "everDowned": true
         }
       },
       "pose": {
         "moving": false,
-        "phase": 0.18960714285712904,
+        "phase": 0.18960714285714098,
         "torso": [
           0,
           0.17,
@@ -609,9 +609,9 @@
       },
       "rescue": [
         {
-          "id": 37,
-          "targetId": 36,
-          "time": 1.5000000000000007,
+          "id": 40,
+          "targetId": 39,
+          "time": 1.7500000000000009,
           "progress": 0.13999999999999999
         }
       ]
@@ -620,17 +620,17 @@
       "mode": "production-state-probe",
       "label": "救援完成 · 恢复站立和合法行动",
       "file": "screenshots/personnel-combat-revived-desktop.png",
-      "time": 6.849999999999984,
-      "id": 36,
+      "time": 7.099999999999983,
+      "id": 39,
       "kind": "infantry",
       "hp": 41.650000000000034,
       "components": {
         "schema": 1,
         "parts": {},
-        "lastHitAt": 0.7000000000000001,
+        "lastHitAt": 0.9500000000000003,
         "hitPoint": {
-          "x": 1823.4179999999997,
-          "y": 1400,
+          "x": 1823.0471181162907,
+          "y": 1402.0636233692749,
           "height": 5
         },
         "fireUntil": 0,
@@ -644,13 +644,13 @@
           "reviveProgress": 1,
           "rescuerId": null,
           "limp": 0.3949999999999999,
-          "staggerUntil": 1.35,
+          "staggerUntil": 1.6000000000000003,
           "everDowned": true
         }
       },
       "pose": {
         "moving": false,
-        "phase": 0.18960714285712904,
+        "phase": 0.18960714285714098,
         "torso": [
           0,
           0,
@@ -739,9 +739,9 @@
       },
       "rescue": [
         {
-          "id": 37,
-          "targetId": 36,
-          "time": 5.799999999999987,
+          "id": 40,
+          "targetId": 39,
+          "time": 6.0499999999999865,
           "progress": 1
         }
       ]
@@ -750,38 +750,38 @@
       "mode": "production-state-probe",
       "label": "死亡残留 · 原单兵倒地模型；中央死亡结算",
       "file": "screenshots/personnel-combat-dead-desktop.png",
-      "time": 6.949999999999983,
-      "id": 36,
+      "time": 7.199999999999982,
+      "id": 39,
       "kind": "infantry",
       "components": {
         "schema": 1,
         "parts": {},
-        "lastHitAt": 6.849999999999984,
+        "lastHitAt": 7.099999999999983,
         "hitPoint": {
-          "x": 1823.4179999999997,
-          "y": 1400,
+          "x": 1823.0471181162907,
+          "y": 1402.0636233692749,
           "height": 5
         },
         "fireUntil": 0,
         "flooding": 0,
         "listing": 0,
         "state": "dead",
-        "destroyedAt": 6.849999999999984,
+        "destroyedAt": 7.099999999999983,
         "personnel": {
           "downedAt": null,
           "bleedUntil": 0,
           "reviveProgress": 1,
           "rescuerId": null,
           "limp": 1,
-          "staggerUntil": 7.499999999999984,
+          "staggerUntil": 7.749999999999983,
           "everDowned": true
         }
       },
       "rescue": [
         {
-          "id": 37,
-          "targetId": 36,
-          "time": 5.799999999999987,
+          "id": 40,
+          "targetId": 39,
+          "time": 6.0499999999999865,
           "progress": 1
         }
       ]
@@ -790,8 +790,8 @@
       "mode": "actual-input-or-labeled-damage-probe",
       "label": "实际右键零射击 / 左键开火 / R 战术换弹 · 暂停动作采样",
       "file": "screenshots/personnel-combat-fps-reload-desktop.png",
-      "time": 8.74999999999999,
-      "id": 38,
+      "time": 8.999999999999993,
+      "id": 41,
       "hp": 240,
       "components": {
         "schema": 1,
@@ -817,7 +817,7 @@
         "slots": [
           {
             "weaponId": "rifle_01",
-            "ammo": 29,
+            "ammo": 28,
             "reserve": 180
           },
           {
@@ -830,45 +830,53 @@
         "reloadRemaining": 2.2,
         "reloadTotal": 2.2,
         "action": {
-          "time": 8.74999999999999,
+          "time": 8.999999999999993,
           "weaponId": "rifle_01",
           "category": "rifle",
           "mechanism": "closed-bolt",
           "reloadStyle": "magazine",
-          "sequence": 3,
-          "shotSequence": 1,
+          "sequence": 4,
+          "shotSequence": 2,
           "event": "reload",
           "phase": "mag-out",
           "progress": 0,
           "phaseProgress": 0,
           "reloadKind": "tactical",
           "fireMode": "semi",
-          "shotTime": 8.649999999999988,
-          "ammo": 29,
+          "shotTime": 8.999999999999993,
+          "ammo": 28,
           "events": [
             {
               "sequence": 1,
               "type": "fire",
               "phase": "closed-bolt",
               "weaponId": "rifle_01",
-              "sourceId": 38,
-              "time": 8.649999999999988
+              "sourceId": 41,
+              "time": 8.84999999999999
             },
             {
               "sequence": 2,
-              "type": "mode",
-              "phase": "semi",
+              "type": "fire",
+              "phase": "closed-bolt",
               "weaponId": "rifle_01",
-              "sourceId": 38,
-              "time": 8.74999999999999
+              "sourceId": 41,
+              "time": 8.999999999999993
             },
             {
               "sequence": 3,
+              "type": "mode",
+              "phase": "semi",
+              "weaponId": "rifle_01",
+              "sourceId": 41,
+              "time": 8.999999999999993
+            },
+            {
+              "sequence": 4,
               "type": "reload",
               "phase": "mag-out",
               "weaponId": "rifle_01",
-              "sourceId": 38,
-              "time": 8.74999999999999
+              "sourceId": 41,
+              "time": 8.999999999999993
             }
           ]
         },
@@ -897,13 +905,13 @@
       "mode": "actual-input-or-labeled-damage-probe",
       "label": "FPS 受伤反馈 · 生产伤害接口状态检查",
       "file": "screenshots/personnel-combat-fps-injured-desktop.png",
-      "time": 8.74999999999999,
-      "id": 38,
+      "time": 8.999999999999993,
+      "id": 41,
       "hp": 144,
       "components": {
         "schema": 1,
         "parts": {},
-        "lastHitAt": 8.74999999999999,
+        "lastHitAt": 8.999999999999993,
         "hitPoint": {
           "x": 1795,
           "y": 1400,
@@ -920,7 +928,7 @@
           "reviveProgress": 0,
           "rescuerId": null,
           "limp": 0.4,
-          "staggerUntil": 9.39999999999999,
+          "staggerUntil": 9.649999999999993,
           "everDowned": false
         }
       },
@@ -928,7 +936,7 @@
         "slots": [
           {
             "weaponId": "rifle_01",
-            "ammo": 29,
+            "ammo": 28,
             "reserve": 180
           },
           {
@@ -941,45 +949,53 @@
         "reloadRemaining": 2.2,
         "reloadTotal": 2.2,
         "action": {
-          "time": 8.74999999999999,
+          "time": 8.999999999999993,
           "weaponId": "rifle_01",
           "category": "rifle",
           "mechanism": "closed-bolt",
           "reloadStyle": "magazine",
-          "sequence": 3,
-          "shotSequence": 1,
+          "sequence": 4,
+          "shotSequence": 2,
           "event": "reload",
           "phase": "mag-out",
           "progress": 0,
           "phaseProgress": 0,
           "reloadKind": "tactical",
           "fireMode": "semi",
-          "shotTime": 8.649999999999988,
-          "ammo": 29,
+          "shotTime": 8.999999999999993,
+          "ammo": 28,
           "events": [
             {
               "sequence": 1,
               "type": "fire",
               "phase": "closed-bolt",
               "weaponId": "rifle_01",
-              "sourceId": 38,
-              "time": 8.649999999999988
+              "sourceId": 41,
+              "time": 8.84999999999999
             },
             {
               "sequence": 2,
-              "type": "mode",
-              "phase": "semi",
+              "type": "fire",
+              "phase": "closed-bolt",
               "weaponId": "rifle_01",
-              "sourceId": 38,
-              "time": 8.74999999999999
+              "sourceId": 41,
+              "time": 8.999999999999993
             },
             {
               "sequence": 3,
+              "type": "mode",
+              "phase": "semi",
+              "weaponId": "rifle_01",
+              "sourceId": 41,
+              "time": 8.999999999999993
+            },
+            {
+              "sequence": 4,
               "type": "reload",
               "phase": "mag-out",
               "weaponId": "rifle_01",
-              "sourceId": 38,
-              "time": 8.74999999999999
+              "sourceId": 41,
+              "time": 8.999999999999993
             }
           ]
         },
@@ -1008,13 +1024,13 @@
       "mode": "actual-input-or-labeled-damage-probe",
       "label": "FPS 倒地待救 · 镜头降低且禁止射击",
       "file": "screenshots/personnel-combat-fps-downed-desktop.png",
-      "time": 8.74999999999999,
-      "id": 38,
+      "time": 8.999999999999993,
+      "id": 41,
       "hp": 1,
       "components": {
         "schema": 1,
         "parts": {},
-        "lastHitAt": 8.74999999999999,
+        "lastHitAt": 8.999999999999993,
         "hitPoint": {
           "x": 1795,
           "y": 1400,
@@ -1026,12 +1042,12 @@
         "state": "downed",
         "destroyedAt": null,
         "personnel": {
-          "downedAt": 8.74999999999999,
-          "bleedUntil": 43.749999999999986,
+          "downedAt": 8.999999999999993,
+          "bleedUntil": 43.99999999999999,
           "reviveProgress": 0,
           "rescuerId": null,
           "limp": 1,
-          "staggerUntil": 9.39999999999999,
+          "staggerUntil": 9.649999999999993,
           "everDowned": true
         }
       },
@@ -1039,7 +1055,7 @@
         "slots": [
           {
             "weaponId": "rifle_01",
-            "ammo": 29,
+            "ammo": 28,
             "reserve": 180
           },
           {
@@ -1052,45 +1068,53 @@
         "reloadRemaining": 2.2,
         "reloadTotal": 2.2,
         "action": {
-          "time": 8.74999999999999,
+          "time": 8.999999999999993,
           "weaponId": "rifle_01",
           "category": "rifle",
           "mechanism": "closed-bolt",
           "reloadStyle": "magazine",
-          "sequence": 3,
-          "shotSequence": 1,
+          "sequence": 4,
+          "shotSequence": 2,
           "event": "reload",
           "phase": "mag-out",
           "progress": 0,
           "phaseProgress": 0,
           "reloadKind": "tactical",
           "fireMode": "semi",
-          "shotTime": 8.649999999999988,
-          "ammo": 29,
+          "shotTime": 8.999999999999993,
+          "ammo": 28,
           "events": [
             {
               "sequence": 1,
               "type": "fire",
               "phase": "closed-bolt",
               "weaponId": "rifle_01",
-              "sourceId": 38,
-              "time": 8.649999999999988
+              "sourceId": 41,
+              "time": 8.84999999999999
             },
             {
               "sequence": 2,
-              "type": "mode",
-              "phase": "semi",
+              "type": "fire",
+              "phase": "closed-bolt",
               "weaponId": "rifle_01",
-              "sourceId": 38,
-              "time": 8.74999999999999
+              "sourceId": 41,
+              "time": 8.999999999999993
             },
             {
               "sequence": 3,
+              "type": "mode",
+              "phase": "semi",
+              "weaponId": "rifle_01",
+              "sourceId": 41,
+              "time": 8.999999999999993
+            },
+            {
+              "sequence": 4,
               "type": "reload",
               "phase": "mag-out",
               "weaponId": "rifle_01",
-              "sourceId": 38,
-              "time": 8.74999999999999
+              "sourceId": 41,
+              "time": 8.999999999999993
             }
           ]
         },
@@ -1119,37 +1143,41 @@
   "errors": [],
   "environment": "native Electron / isolated profile",
   "sourceHashes": {
-    "index.html": "e6393f0fbb84985246b99753f32ece39f29b05c64b7c47b4394e2830a43b2127",
+    "index.html": "f362f702f1854fff46d8263d5fc73aed14bee8fb007472768e073787843ccac0",
     "style.css": "012864c9f9ca30d7657900b7e2480469f7dd2b001498f1e062a063747c49530d",
     "assets/vendor/three.min.js": "170c6789f43217c96b3170f4b42fafe135de7f7cd48497a4218f9757ee1d49fa",
     "assets/vendor/GLTFLoader.bundle.js": "5f2fac6626db707e22e48dff05e55525b1fc75ca68bf18fff90b91beb396ad58",
     "assets/textures/ground-data.js": "9536c6ebd046299a5542a74415306d7e9fe3028b6c6fcde76769228190a2038f",
-    "src/data.js": "542d855502d26dbac68f5f7aaf7f19982fc2abe45ee019d9b37a8790f5e7b8b2",
+    "src/data.js": "9ecbb40e58fc43b2cb705b75bc1c8d565820178e97ec348121d0419a30b5c04c",
     "src/roster.js": "0609dfb5f0cc07ab408d9675816e236b16a4d13ee6b1d4f209a94b3c8f5f0b81",
     "src/equipment.js": "451d0463150e360b843fed9a6502dcbd5d7ad11c0d6e99c514d01f405b73cf20",
-    "src/maps-large.js": "dc26a17461fc7f2acdbe0d0c4842744ef6caf140dc214e9eed05c6af55ee74d9",
+    "src/map-dimensions.js": "f9690773ad6c705a484b3cc5f3896521b7d92400137e4d80e41a1bebd73eb79a",
+    "src/map-geography.js": "fc72e7b875f86ae667abe5c0ad5871c5abf94a6be7b80a838c3addfcc1b01a23",
+    "src/maps-large.js": "1a81550a4905a4669b9137aa8226f3ceabd0a6588307a71d405f133f642ca48c",
     "src/command-feedback.js": "5ddd8240c6ce807fb83852a9fd9fd8c36647586b2e1c41e651f67478bb6ebb30",
     "src/operator-weapons.js": "dbd036a62b74f286e58c7f264521052213f5d7fc393ad8a90fda2b2856f5b4e3",
-    "src/navigation-footprints.js": "ad65d61d5d9e6d76ef05a688c97355fee4f57c99d8feb32371d61e36827f022f",
-    "src/crowd-navigation.js": "e732319bcbcb6b59f52e71dd6acaa5a77ffd3fffaa4ec1bf6f0fb8e025ff4471",
-    "src/destructible-trees.js": "01fdc770ca776e98c70eb55a2754e67ab5066a8342b63ce7a165b994b8599645",
+    "src/navigation-footprints.js": "338b8785f0cdecdf79a51c3593813fcc80f8a5e9db9bbc7e4a929034c5f2784c",
+    "src/crowd-navigation.js": "979a84103bf4be083cb8293df1c63942c4070871abaac98f7d4f15fcdd1a73c0",
+    "src/destructible-trees.js": "16c279f0f62c6ad65a8aa7b89f8689bbbb49a6091aa38d0d2b30a0ad334946f5",
     "src/vehicle-motion.js": "b174c65b4b355bab60ded0e83b593e31b4a907a001d91d76b9a45366bcefff08",
-    "src/airbase-runways.js": "0d6ad57de2c31515a514451fdff0d9b9d79884f421119b0a773af5ddd512677e",
-    "src/aircraft-flight.js": "6db7eca2dfb7a124adedc8fe0e21e95d32c1dd10189636f7521602c4d4a4bb22",
-    "src/weapon-range-data.js": "ebede21ef1d145e98f84ffa94494ca5b74620d71959c5f6eacf91c56a2c60e9e",
+    "src/airbase-runways.js": "a3ead3d6a1ae8cbdef7d23d3776d257dc43e8c8544ac5336c613788bdbb0e7bd",
+    "src/aircraft-flight.js": "d31beda0af1d6f874b88f22a8a2bd3d66b9444b9f9f1a9d6bde9a481244d6161",
+    "src/weapon-range-data.js": "344d8caaff11ca53253346f093d4b98abc277a42bb3d76dab8edc425ccb94d1f",
     "src/vehicle-weapons.js": "476581b05d96e46829cfe9cfbe3be20c96c0f18cbbb8189dfd45605b3f1f2553",
-    "src/carrier-operations.js": "81c1eef31ac12f66ef14dfcd862d94a124a3dd51630cacc0a4d0309964060c5d",
-    "src/weapon-salvos.js": "c91dad8084fdea6cadf1d55156000f14a13d65ff58b4128c6831a753f60e2fac",
+    "src/sensors.js": "c1f27707256f5aeb54323fe2d0f03984647c442bcd83b865b892d8421b037d5c",
+    "src/commander-ai.js": "a2896ca2b97227bfa26b1697bf8db4c511426dcab224b71250f9f9838de96e27",
+    "src/carrier-operations.js": "b3b1567078a817f0bf86919490c39ba48dd18d96e1d8556ca00ae9e06212f6ae",
+    "src/weapon-salvos.js": "a4ed6488cb3b9ebc734c8e54d1b6be66cfb2807e0e37e7b8868fa77e6cd6e97e",
     "src/combat-readiness.js": "622c8d153ca2db96a39362d3328616dcc055407a36f4395290d50e6a0db5472d",
-    "src/combat-damage.js": "e89c5d02085aee3799c4a1946913a0fc8f8262304fe6f2607ce320b1f5aaa9f2",
-    "src/combat-projectiles.js": "42e8662fb9adeea10839e39cdce7fa760f9bf44ffd52157ea299ad1c0b052341",
+    "src/combat-damage.js": "04939a52c86f5d0d65093fbfde7387f2af3a60f424f19faa1f59a404e0b281a8",
+    "src/combat-projectiles.js": "ec06228fefe21e379e4569d0912c3425fdbe4bff3e60c2c01cc5e6e142359f4a",
     "src/combat-impact.js": "b7cb052c2a405cdffbf2630654ed4209e9a981d5afcde83725be9ba0d14a7e10",
-    "src/transport-operations.js": "6d1fa8919751fc0c5e38fa8db16e980d57da488bdf9f70eab03708c094f03917",
-    "src/sim.js": "8c18116c14551a63f862aae164570266f70d7b5e6cf3729d3164ad4afe62632f",
+    "src/transport-operations.js": "b3901dbddfbdaa19ea254c54757109ebe01bd143fcc1e786ac8e4fbd643021f5",
+    "src/sim.js": "8e92ff13c2d7af18d55cd44259d61a7e1a42ece79c73e96f2828fcff832afac1",
     "src/operator-sim.js": "84c27449ad0fc039f283b6a478a95217781a001012da9aa977dbc670d9a143fa",
-    "src/vehicle-interaction.js": "8d2d1f251fec3b88932c0ac41b59301e5937fe472878815b24a15ae7eabbf313",
-    "src/render.js": "b80b3be9b9e6a865ab9f6ac614693f91a17218240129cbb9d634353d427be0b3",
-    "src/ranges.js": "5d368003b75a1e174ebcd03312bfb05f2bde342db610b7bb88c5c2f252fb4bd1",
+    "src/vehicle-interaction.js": "a1726152b2932fc211984276d2fe133a66d35dc09ad8816e3774b4e86bc5b737",
+    "src/render.js": "42fc5ad870650e3a65e7fd13d20260f9d9b97072049a269890d2f58a14392d9a",
+    "src/ranges.js": "67e277ee4a1fd8a67ee9b5731cc24281b268fa8d3c86e5faedc5f3db1202a57a",
     "src/models3d.js": "e76d9c4bb56b3b46fcbd26d409744fd88410d6b9eb3518fa74edf1bab558962a",
     "src/vehicle-rig-ground.js": "2ba59047343ce7b209638c5c8e1b9c8be33df85a57576603b03abadccb3f0ed4",
     "src/vehicle-rig-naval.js": "350789e400f79b5b2919a03690d38ca7855a0c019c36d639750a0ed1a7e4b8f4",
@@ -1180,26 +1208,26 @@
     "assets/models/t90m-data.js": "af6501e8bad71ad87fe588f5c99a76bfcbd193629c310133b0112b96d9c05446",
     "src/models-imported-ground.js": "6abfd2156cfe6f41ab13d28cca275dc0be1b37f8ff82bd1705a6d766f51405ab",
     "src/model-unit-refinement.js": "f0f085d15ededb8ef757ee11a93ecffb0b65574f01490ec367947008827cd476",
-    "src/underwater.js": "efd255e7063c65d1456e79ca65330ef0ee9b3847daed894ac193aae21e9fda79",
-    "src/altitude-scene.js": "a2f96530a204c0a378025c42265d00e8cdc8b1bdf80f64dd2ad8d61b78f88447",
-    "src/combat-damage-visuals.js": "b6b948c9dbcdb1b2d6fbed6f7817599e8da7525100f1ce5eeaa522c62c7f94a5",
-    "src/battle3d.js": "018f0a346b423ae1ab964fb615680e6c3ed40b51e61c632fe6030e42b97a550c",
+    "src/underwater.js": "9127fa13e2b67a0a4ff7d3d85430e7f77823722e8bdcce27a1f9ed494cfac414",
+    "src/altitude-scene.js": "53a00335e49dfe83f4042fc31fbf4a530c56eb36de100f00674d6f991b3a13d5",
+    "src/combat-damage-visuals.js": "19574d2869f98e67fae971fcbd0fbfe96699080028c5f061f36df2ffa3a85278",
+    "src/battle3d.js": "1fda0a2dcf38205eec984493565b7f01a1daa7045422b6e8ffc7ed17a1cadda7",
     "src/lighting.js": "5a2c4b0d67d3eacb06e92f25a93d011236ef2a91a719adfbc06758a9e703216a",
     "src/fps-viewmodel.js": "145aceb22aa6592f6ce14b574081ca710ca3e9394341a0d7004b215cb3913294",
     "src/vehicle-camera.js": "97eb37852c014549296515d246a10930cf591f88196362932fd1e84eda73cd2d",
     "src/combat-audio.js": "08ac7e6160549d7f948d3a1a701bbccce6a832dccbba670fca3e818527523cce",
     "src/render-timeline.js": "9c6018d7970024031e186521946d182468cfed8127f02a946e26ba039473fab7",
-    "src/direct-control.js": "1a45dc63154bc0b882d586ab6a57bddcc8d72fe70fed7aa11e742f318c5590c2",
+    "src/direct-control.js": "8080a882cde4620bea1de71927b2390f6c31cd36479cdde28681421d5d2ec20a",
     "src/player-mode.js": "0bbbb83582e08b250e804bfc0d280091483203e9b9d4cb0cf4856e08722e0fb8",
     "src/operator-ui.js": "e8953ef30c9b6a48c4bf72e66931bef3549762b5b6ee284339d9643b637be2bd",
-    "src/app.js": "b49d1bb88e9da51401d52c51a622df20e6e78a1f675979172d80bf94040dbec6",
+    "src/app.js": "6fb878a603a43e4af05e0a6ce72a25199d131ad2b988547e7e0c5328d85916d0",
     "assets/models/burke.glb": "f7a6ccac4894e9994cc5f75d1ebda3a1930ea5993ebb2b5ec5c118b4dc3d73c6",
     "assets/models/t90m.glb": "58a8ed5339168757d5ead282639fc74ac4f880cf0b1edae77170a5b943a4ecce",
     "assets/models/ah64.glb": "b7a0b2a2f917afc83be6736bda1a3bfddafdd17a444d01c3d762cb108849b2fd"
   },
-  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.14.0\\ModernFrontHD.exe",
-  "testProfile": "D:\\现代战线HD\\.tmp\\native-profile-personnel-combat-91624",
-  "appVersion": "3.14.0",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.15.0\\ModernFrontHD.exe",
+  "testProfile": "D:\\现代战线HD\\.tmp\\native-profile-personnel-combat-93964",
+  "appVersion": "3.15.0",
   "assets": {
     "ready": [
       "ready",
@@ -1262,7 +1290,7 @@
   "inputEvidence": {
     "rightMouseAmmoBefore": 30,
     "rightMouseAmmoAfter": 30,
-    "leftMouseAmmoAfter": 29,
+    "leftMouseAmmoAfter": 28,
     "modeBefore": "auto",
     "modeAfter": "semi"
   },

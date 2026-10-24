@@ -13,6 +13,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
       for(const file of ['index.html','src/data.js','src/sim.js','src/maps-large.js'])
         assert.equal(digest(path.join(require('./desktop-path.cjs').appRoot,file)),digest(file),'Stale packaged map source: '+file);
       report.packageSourceMatch=true;
+      report.sourceHashes=require('./combat-desktop-harness.cjs').hashes(require('./desktop-path.cjs').appRoot);
     }
     host=desktop?await _electron.launch({executablePath:require('./desktop-path.cjs').executable,args:[],timeout:45000}):await chromium.launch({headless:true,channel:'chromium'});
     page=desktop?await host.firstWindow():await host.newPage({viewport:{width:1600,height:1000}});
@@ -89,7 +90,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
     assert.ok(report.movement.input.some(e=>e.button===2&&e.trusted));
     await page.screenshot({path:`${shots}/ship-moving-${environment}.png`});
     report.checks.push('Actual left-click selects own ship and trusted right-click sea order moves it over 60 world units; no direct simulation command used');
-    if(desktop)report.desktop=await host.evaluate(async({app,BrowserWindow})=>({electron:process.versions.electron,fullscreen:BrowserWindow.getAllWindows()[0].isFullScreen(),gpu:await app.getGPUInfo('basic')}));
+    if(desktop){report.desktop=await host.evaluate(async({app,BrowserWindow})=>({electron:process.versions.electron,version:app.getVersion(),fullscreen:BrowserWindow.getAllWindows()[0].isFullScreen(),gpu:await app.getGPUInfo('basic')}));report.appVersion=report.desktop.version;assert.equal(report.appVersion,require('../package.json').version);}
     assert.deepEqual(report.errors,[]);report.passed=true;
   }catch(error){report.passed=false;report.failure=error.stack;if(page)try{await page.screenshot({path:`${shots}/failure-${environment}.png`});}catch{}process.exitCode=1;}
   finally{fs.writeFileSync(`${reportDir}/${environment}-report.json`,JSON.stringify(report,null,2));console.log(JSON.stringify({passed:report.passed,checks:report.checks,errors:report.errors,failure:report.failure}));if(host)await host.close();}
