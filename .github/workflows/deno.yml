@@ -1,0 +1,29 @@
+name: Node.js simulation tests
+
+on:
+  push:
+    branches: ["codex/modern-front-hd"]
+  pull_request:
+    branches: ["codex/modern-front-hd"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: simulation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run simulation regression tests
+        run: npm test

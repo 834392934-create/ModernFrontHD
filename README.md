@@ -2,7 +2,7 @@
 
 **从总指挥切换到第一人称，在同一场战斗中指挥部队、驾驶载具、上下车作战。**
 
-作者：**ayuan**。这是一个使用 JavaScript、Three.js 和 Electron 开发的离线三维即时战略游戏实验，支持地面、水面、水下、空中和轨道层作战，以及基于规则的 AI 建设、生产与护卫。开发采用 AI 辅助，并公开源码、回归用例和性能记录，希望帮助学习游戏开发、仿真调度与性能分析的朋友。
+作者：**AYUAN**。这是一个使用 JavaScript、Three.js 和 Electron 开发的离线三维即时战略游戏实验，支持地面、水面、水下、空中和轨道层作战，以及基于规则的 AI 建设、生产与护卫。开发采用 AI 辅助，并公开源码、回归用例和性能记录，希望帮助学习游戏开发、仿真调度与性能分析的朋友。
 
 [技术实现与阅读路线](docs/TECHNICAL_HIGHLIGHTS.md) · [实测与限制](docs/VALIDATION.md) · [Codespaces 使用说明](docs/CODESPACES.md) · [第三方素材与许可](THIRD_PARTY_NOTICES.md)
 
