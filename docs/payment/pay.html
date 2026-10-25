@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>支付宝付款说明 · Modern Front HD</title>
+  <style>
+    :root{color-scheme:light;font-family:"Segoe UI","Microsoft YaHei",sans-serif;color:#17342e;background:#f1f4f0}
+    *{box-sizing:border-box}body{margin:0;font-size:15px;line-height:1.7}main{max-width:860px;margin:auto;padding:30px 20px 48px}a{color:#285c48;text-underline-offset:4px}header{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid #cbd7cd;padding-bottom:20px}header strong{letter-spacing:.06em;font-size:14px}h1{font-size:clamp(26px,5vw,36px);line-height:1.3;margin:28px 0 12px}h2{font-size:20px;margin:0 0 12px}p{margin:0 0 16px}.muted,small{color:#52675e}.notice{padding:14px 18px;background:#e5ede5;border-left:3px solid #285c48;margin:20px 0}.panel{background:white;border:1px solid #cbd7cd;border-radius:12px;padding:24px;margin-top:20px}.steps{padding-left:24px}.steps li{margin-bottom:9px}.check{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1px solid #cbd7cd;border-radius:8px}.check input{margin-top:7px;accent-color:#285c48;flex-shrink:0}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.55;cursor:not-allowed}.btn{display:inline-flex;justify-content:center;align-items:center;min-height:46px;background:#285c48;border:1px solid #285c48;border-radius:7px;padding:10px 18px;color:white;font-weight:600;text-decoration:none}.secondary{color:#285c48;background:white;border-color:#cbd7cd}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}.qr{display:block;width:min(100%,400px);height:auto;margin:20px auto;border-radius:10px}.recipient{font-size:20px;font-weight:700;overflow-wrap:anywhere}.field{display:block;margin:18px 0 12px;font-size:14px}.field input{display:block;width:100%;border:1px solid #cbd7cd;border-radius:7px;padding:11px;margin-top:7px}.mail{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f4f0;padding:16px;border-radius:8px;font:14px/1.7 inherit}footer{font-size:12px;margin-top:24px;color:#52675e;overflow-wrap:anywhere}[hidden]{display:none!important}:focus-visible{outline:3px solid #b07834;outline-offset:4px}
+    @media(max-width:500px){main{padding:20px 16px 36px}.panel{padding:18px}header{flex-wrap:wrap}.actions>.btn{width:100%}}
+  </style>
+</head>
+<body>
+  <main>
+    <header><strong>MODERN FRONT HD / AYUAN</strong><a href="index.html">返回授权咨询</a></header>
+    <h1>确认报价后，支付宝扫码付款</h1>
+    <p class="muted">商业授权报价 USD 3,000–60,000 / 项目 · 人工核账后交付</p>
+    <div class="notice"><strong>此页包含真实收款码。</strong>尚未收到双方确认的书面报价、订单编号和授权协议时，请先联系 <a href="mailto:834392934@qq.com">834392934@qq.com</a>，不要付款。该区间是美元报价范围，不是本订单应付金额。</div>
+    <ol class="steps">
+      <li>核对报价中的购买主体、项目、版本、授权范围、报价有效期与交付安排。</li><li>核对<strong>实际结算币种、精确金额和税费</strong>。人民币结算须在报价中约定折算依据及应付人民币金额；不要把 3,000 美元填写为 3,000 元。页面不自动换算汇率。</li>
+      <li>扫码后核对支付宝实际显示的收款方，核对币种，按书面订单的实际结算金额付款；若支持备注，填写订单编号。</li>
+      <li>付款后按原订单联系核账。ayuan 在收款账单核实到账后，向约定邮箱交付授权书和文件。</li>
+    </ol>
+    <section class="panel">
+      <h2>核对收款信息</h2>
+      <p>收款码图片展示名称<br><span class="recipient">吃好喝好长生不老</span></p>
+      <p class="muted">以支付宝扫码后的收款方及书面报价为准。名称不符或无法确认时，暂停付款并联系 ayuan。图片上的“经营”标识不代表本网页已通过支付平台审核。</p>
+      <p class="muted">此码能否直接收美元、接受境外付款或支持本订单金额，尚未验证。若币种不符、限额或渠道不支持，请停止付款并联系协商可用方式；不要拆单规避限额。</p>
+      <label class="check"><input type="checkbox" id="quote-confirmed"><span>我已有双方确认的有效书面报价、协议与订单编号，已核对<strong>实际结算币种与应付金额</strong>、收款方和授权范围。</span></label>
+      <div class="actions"><button class="btn" type="button" id="show-qr" disabled>查看真实支付宝收款码</button></div>
+      <div id="payment-details" hidden tabindex="-1">
+        <img class="qr" id="alipay-qr" width="1200" height="1800" alt="ayuan 提供的支付宝经营收款码原图，图片展示名称：吃好喝好长生不老">
+        <div class="actions"><a class="btn secondary" href="alipay-collection.jpg" target="_blank" rel="noopener">查看收款码原图</a><a class="btn secondary" href="alipay-collection.jpg" download="ayuan-支付宝收款码.jpg">保存收款码</a></div>
+        <p class="muted" style="margin-top:16px">同一手机可尝试保存原图后，在支付宝“扫一扫”中选择相册；以当前客户端支持情况为准。无法识别时用另一台设备扫码或联系 ayuan。已扣款但未收到回复时，请勿重复付款。</p>
+        <p><strong>网页不会自动查账或发放授权。</strong>展开二维码、点击按钮或发邮件均不代表已到账或已获授权。</p>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>已付款，联系核账</h2>
+      <p class="muted">填写报价中已有的订单编号，整理一封邮件。不创建新订单，不自动发送，不保存到服务器。</p>
+      <form id="receipt-form">
+        <label class="field">已有订单编号<input id="order-reference" required maxlength="80" autocomplete="off" placeholder="填写 ayuan 报价中给出的编号"></label>
+        <button class="btn secondary" type="submit">整理核账邮件</button>
+      </form>
+      <div id="receipt-result" hidden tabindex="-1">
+        <pre class="mail" id="receipt-text"></pre>
+        <div class="actions"><a class="btn" id="receipt-mail" href="mailto:834392934@qq.com">打开邮件草稿</a><button class="btn secondary" id="copy-receipt" type="button">复制内容</button></div>
+        <p id="copy-status" role="status"></p>
+        <small>在邮件中核对实际付款金额、时间与支付宝交易编号后发送；不要发送密码、验证码或付款码。没有默认邮箱应用时可复制内容。</small>
+      </div>
+    </section>
+    <footer>维护者 ayuan（个人） · <a href="mailto:834392934@qq.com">834392934@qq.com</a><br>历史 MIT 内容和第三方许可不因付款改变；商业许可仅覆盖双方约定且有权授权的内容。<a href="../COMMERCIAL_LICENSE.md">查看授权说明</a></footer>
+  </main>
+  <script>
+    'use strict';
+    const byId = id => document.getElementById(id);
+    const consent = byId('quote-confirmed');
+    let receiptText = '';
+    function resetPayment(){consent.checked=false;byId('show-qr').disabled=true;byId('payment-details').hidden=true;byId('alipay-qr').removeAttribute('src');}
+    window.addEventListener('pageshow',resetPayment);
+    consent.addEventListener('change',()=>{byId('show-qr').disabled=!consent.checked;if(!consent.checked){byId('payment-details').hidden=true;byId('alipay-qr').removeAttribute('src');}});
+    byId('show-qr').addEventListener('click',()=>{if(!consent.checked)return;byId('alipay-qr').src='alipay-collection.jpg';byId('payment-details').hidden=false;byId('payment-details').focus();});
+    const order = byId('order-reference');
+    order.addEventListener('input',()=>{order.setCustomValidity('');byId('receipt-result').hidden=true;byId('receipt-mail').href='mailto:834392934@qq.com';byId('copy-status').textContent='';receiptText='';});
+    byId('receipt-form').addEventListener('submit',event=>{
+      event.preventDefault();const reference=order.value.trim();if(!reference){order.setCustomValidity('请填写报价中的订单编号，不能仅为空格。');order.reportValidity();return;}if(!event.currentTarget.reportValidity())return;
+      receiptText='ModernFrontHD 支付宝付款核账申请\n\n订单编号：'+reference+'\n实际付款币种与金额：［请按支付宝账单填写，不使用报价区间代替］\n付款时间：［请按支付宝账单填写］\n支付宝交易编号：［请按支付宝账单填写］\n\n请核对实际到账，并按原协议处理授权交付。\n本邮件是核账申请，不是收款确认或商业授权书。';
+      byId('receipt-text').textContent=receiptText;byId('receipt-mail').href='mailto:834392934@qq.com?subject='+encodeURIComponent('ModernFrontHD 付款核账 — '+reference)+'&body='+encodeURIComponent(receiptText);byId('receipt-result').hidden=false;byId('receipt-result').focus();
+    });
+    byId('copy-receipt').addEventListener('click',async()=>{if(!receiptText)return;try{await navigator.clipboard.writeText(receiptText);byId('copy-status').textContent='已复制。请核对填写后自行发送。';}catch{const range=document.createRange();range.selectNodeContents(byId('receipt-text'));const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);byId('copy-status').textContent='已选中内容，请手动复制。';}});
+  </script>
+</body>
+</html>

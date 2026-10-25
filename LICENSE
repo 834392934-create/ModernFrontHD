@@ -1,25 +1,60 @@
-MIT License
+ModernFrontHD Noncommercial and Commercial Licensing Notice
+ModernFrontHD 非商业许可与商业授权说明 1.0
 
-Copyright (c) 2026 Modern Front HD contributors
+维护者及商业授权联系人：ayuan（个人）
+联系邮箱：834392934@qq.com
+Copyright (c) 2026 ayuan, solely to the extent of rights owned or controlled.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+一、适用范围与原有权利
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. 本许可仅适用于本政策首次发布后新增加、明确按本许可发布，且许可方有权授予许可的原创代码、文档与资产中的受保护表达（下称“许可内容”）。具体过渡范围见 docs/LICENSE_TRANSITION.md。
+2. 已按 MIT 或其他许可发布的内容，继续保留原许可及原受许可人的相应权利。旧 MIT 原文保存在 LICENSES/MIT-legacy.txt。不得仅因复制、移动、改名、重新打包或修改许可证文件，将此前 MIT 内容解释为需要另行购买商业许可。
+3. 若一个文件同时包含历史 MIT 内容与本政策下的新增内容，本许可只约束新增且由许可方有权控制的部分；不收回旧部分的许可。不确定范围应根据来源、版本记录和逐文件说明核实，不凭整个仓库的标题推定。
+4. 第三方代码、模型、纹理、地图、音频、商标、世界观等不因本许可而成为许可方的自有内容，仍按 THIRD_PARTY_NOTICES.md 及各自权利文件处理。不得删除或覆盖第三方署名与许可证。
+5. 本许可不限制法律允许无需许可的行为，也不授予许可方并不拥有或无权转授的权利。
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+二、免费非商业许可
 
-This license applies only to original project code and original project
-assets. It does not license third-party trademarks, fictional universes,
-photographs, proprietary game assets or other third-party intellectual property.
+在遵守本许可的前提下，许可方授予接收者全球范围内、非独占、免许可费的权利，为个人娱乐、学习、非商业研究和其他不以经营收益为目的的活动使用、复制和修改许可内容，并进行免费的非商业分发。
+
+非商业分发须同时保留本许可、适用的历史许可、第三方声明及原有署名；应明确标注修改及修改者，不得使接收者误认为改版由 ayuan 发布或背书。对本许可内容的分发不得附加与接收者依本许可享有的权利相冲突的限制。接收者直接从有权许可者获得相同的非商业许可。
+
+个人在私人时间游玩，不因其受雇于企业而自动变成商业用途。与取得软件、功能、商业使用权或交付服务无关的自愿赠与，不自动构成购买授权。不得用“捐赠”“会员”等名义规避实质上的收费交易。
+
+三、商业用途须另行授权
+
+下列使用许可内容的情形须事先向 834392934@qq.com 取得书面商业授权，并按双方约定支付费用：
+- 销售软件、收费分发改版、提供收费运营或付费访问；
+- 将许可内容集成至商业产品、收费服务或客户交付物；
+- 为企业经营提供内部业务工具或系统；
+- 将许可内容用于以销售、广告变现、赞助交付或其他经营收益为目的的产品或服务。
+
+边界不明确的使用可先书面说明实际用途。专门的游戏录播、直播或媒体合作授权应另行书面明确；本条不改变法律允许的评论、引用等行为，也不能代替第三方素材的授权。
+
+商业授权以双方确认的协议和交付清单为准，通常按指定被许可主体、项目和版本授权。版权转让、独家权利、源码转售、对第三方再许可、其他项目及后续版本均不因付款而自动获得。
+
+付款记录、付款截图、捐赠、下载或取得激活码本身，均不能替代约定授权范围的书面协议。未经订单确认，不应付款。
+
+四、权属、商标与贡献
+
+本许可和商业许可均不自动转让著作权，不授予第三方商标或世界观权利，不表明任何真实装备厂商、第三方模型作者或其他权利人认可本项目。
+
+外部贡献者应明确其贡献许可和权属。除非另有明确授权，提交代码或文档不等于将版权转让给维护者，也不自动授权维护者把贡献改为其他商业条款。
+
+五、期限、违反与恢复
+
+对已合法取得的许可内容，在持续遵守本许可的情况下，本许可在相关权利有效期内持续适用；许可方不能仅因后来调整版本政策而追溯收回该版本已经授予的权利。
+
+违反本许可时，依本许可取得的权利可以终止。首次在发现或收到通知后 30 日内完整纠正的，可恢复本许可下的权利；重复违反或有争议的情形应取得许可方书面确认。该机制不消除既有责任，不影响适用法律规定的权利与救济，也不影响独立存在的历史 MIT 或第三方许可。
+
+六、免责声明与强制性权利
+
+免费提供的许可内容按现状提供，在适用法律允许的范围内不承诺特定适销性、用途适用性、持续支持或不间断运行。任何责任限制均不得排除依法不能排除的责任、消费者法定权利，或另行商业合同明确承诺的义务。
+
+商业订单的交付、验收、支持、退款及责任依双方明确协议和适用法律处理。本文件不是“所有付款概不退款”的依据。
+
+七、说明文件
+
+docs/COMMERCIAL_LICENSE.md 说明咨询与购买流程；docs/COMMERCIAL_AGREEMENT_TEMPLATE.md 是未签署模板，不是已发出的授权。
+
+本项目新政策下的许可内容属于源码可见、非商业免费使用的内容；本自定义许可不是 MIT，也不声称符合 OSI 开源定义。第三方及历史 MIT 内容的开源属性不因此改变。

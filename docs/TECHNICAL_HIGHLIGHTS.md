@@ -104,7 +104,7 @@ node --test tests/commander-ai.test.cjs tests/hotpath-equivalence.test.cjs tests
 
 3.16.0 的发布验证包含 1036 项通过的 CPU 测试、21 组独立版检查/压力采样、启动入口验证及包内源码哈希检查。可以借鉴 [原生验收启动器](../tests/combat-desktop-harness.cjs) 的做法：启动真正交付的 EXE、隔离测试存档、检查包内源码与模型加载状态，避免只验证开发环境。
 
-本项目原创代码与原创资产的许可见 [LICENSE](../LICENSE)；第三方模型、纹理和其他内容按 [第三方说明](../THIRD_PARTY_NOTICES.md) 及各资产许可证处理。迁移代码时不要把独立授权的美术资产一并视为项目原创资产。
+历史 MIT 内容保留原许可，新政策下新增原创内容的许可见 [LICENSE](../LICENSE) 与 [许可过渡](LICENSE_TRANSITION.md)；商业报价与付款见 [商业授权](COMMERCIAL_LICENSE.md)；第三方模型、纹理和其他内容按 [第三方说明](../THIRD_PARTY_NOTICES.md) 及各资产许可证处理。迁移代码时不要把独立授权的美术资产一并视为项目原创资产。
 
 ## 可以继续贡献的方向
 

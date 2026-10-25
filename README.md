@@ -4,7 +4,7 @@
 
 作者：**AYUAN**。这是一个使用 JavaScript、Three.js 和 Electron 开发的离线三维即时战略游戏实验，支持地面、水面、水下、空中和轨道层作战，以及基于规则的 AI 建设、生产与护卫。开发采用 AI 辅助，并公开源码、回归用例和性能记录，希望帮助学习游戏开发、仿真调度与性能分析的朋友。
 
-[技术实现与阅读路线](docs/TECHNICAL_HIGHLIGHTS.md) · [实测与限制](docs/VALIDATION.md) · [Codespaces 使用说明](docs/CODESPACES.md) · [第三方素材与许可](THIRD_PARTY_NOTICES.md)
+[技术实现与阅读路线](docs/TECHNICAL_HIGHLIGHTS.md) · [实测与限制](docs/VALIDATION.md) · [Codespaces 使用说明](docs/CODESPACES.md) · [第三方素材与许可](THIRD_PARTY_NOTICES.md) · [商业授权与付款](docs/COMMERCIAL_LICENSE.md)
 
 | 第一人称载具驾驶：实机验收截图 | 北海地图：离线海岸与侦察覆盖 |
 |---|---|
@@ -411,4 +411,14 @@ git push -u origin AYuan/modern-front-hd
 
 首次上传遇到 2 GiB 包限制或 `remote end hung up unexpectedly`，先核对失败日志，再参考 [分批推送说明](docs/GITHUB_UPLOAD.md)。该说明包含本项目 3.16 历史的实际分批节点，适用于尚未完成首次上传的维护者。
 
-运行时、研究照片、缓存、日志与存档不进入Git。原创代码/资产使用MIT；第三方许可见 [第三方说明](THIRD_PARTY_NOTICES.md)。
+运行时、研究照片、缓存、日志与存档不进入Git。已发布的历史 MIT 内容保留原许可；本政策下新增且有权许可的原创内容非商业免费，商业用途另行书面授权，见 [许可过渡](docs/LICENSE_TRANSITION.md)。第三方许可见 [第三方说明](THIRD_PARTY_NOTICES.md)。
+
+## 商业授权与付款
+
+商业授权报价 **USD 3,000–60,000（3,000 至 60,000 美元）/ 项目**，按主体、指定版本和交付范围书面确认。该区间不是游戏售价，不对历史 MIT 使用权追溯收费。联系 **ayuan（个人）**：[834392934@qq.com](mailto:834392934@qq.com)。
+
+[授权说明](docs/COMMERCIAL_LICENSE.md) · [咨询页面源码](docs/payment/index.html) · [支付宝付款说明源码](docs/payment/pay.html) · [协议模板](docs/COMMERCIAL_AGREEMENT_TEMPLATE.md)
+
+本地运行 `npm start` 后打开 `http://127.0.0.1:8765/docs/payment/index.html`，也可直接用浏览器打开 `docs/payment/index.html`。GitHub 的 HTML 文件页展示源码，并非已上线的付款网站。咨询页只整理邮件，由访客自行发送。
+
+确认书面报价、订单号、实际结算币种和金额后，查看原始支付宝收款码；人工核实到账后按协议交付。美元报价不等于收款码支持美元；不自动换算、不自动扣款或发放授权。当前未验证真实资金交易。
