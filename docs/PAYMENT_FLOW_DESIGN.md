@@ -1,48 +1,58 @@
-# 商业授权付款流程与验证
+# Commercial licensing payment flow and verification
 
-日期：2026-10-26。维护者 ayuan（个人），邮箱 834392934@qq.com。
+Date: 2026-10-26. Maintainer: ayuan (individual), 834392934@qq.com.
 
-## 当前实现
+## Implementation
 
-**USD 3,000–60,000 / 项目报价**；首版采用免注册静态页面、邮件确认报价、支付宝收款码和人工核账。正式页面已去掉模拟报价、模拟付款成功及模拟签发界面，避免把流程演示当成真实业务状态。
+**USD 3,000–60,000 per project** is the quotation range. This version uses registration-free static pages, email-confirmed quotes, an Alipay collection code, and manual reconciliation. Simulated quotations, payment-success screens, and mock license issuance have been removed so a demonstration cannot be confused with an actual order state.
 
-| 步骤 | 买方操作 | 实际行为 |
+| Stage | Buyer action | Actual behavior |
 | --- | --- | --- |
-| 咨询 | 选择用途，填项目名、邮箱，可选预算与备注 | 整理邮件草稿，支持复制/下载；买方自行发送，无服务器保存 |
-| 报价 | 双方确认主体、范围、版本、费用与合同 | 私下形成真实订单编号、具体美元报价、结算币种/金额、折算依据、有效期及交付安排 |
-| 付款 | 确认已有有效报价，展开原图扫码 | 不自动换算、下单、查账或宣称支付成功；不支持的币种或金额先联系 |
-| 交付 | 按原订单联系核账 | 维护者查询实际到账，按协议签发授权与交付；一笔交易只计一次 |
+| Inquiry | Select a purpose and enter project name/email; budget and notes are optional | Prepare, copy, or download an email draft. The buyer sends it; no server stores it |
+| Quote | Confirm the parties, scope, version, fees, and agreement | Privately establish a real order number, exact USD quote, settlement currency/amount, conversion basis, expiry, and delivery arrangements |
+| Payment | Confirm a valid quote, reveal the original image, and scan | No automatic conversion, ordering, account lookup, or payment-success claim; contact the maintainer if currency/amount is unsupported |
+| Delivery | Request reconciliation using the existing order | The maintainer checks actual receipt and delivers the agreed authorization/materials; count each transaction once |
 
-[咨询页](payment/index.html) · [付款说明](payment/pay.html) · [商用范围](COMMERCIAL_LICENSE.md) · [核账操作](PAYMENT_OPERATIONS.md)
+[Inquiry source](payment/index.html) · [Payment instructions source](payment/pay.html) · [Commercial scope](COMMERCIAL_LICENSE.md) · [Reconciliation operations](PAYMENT_OPERATIONS.md)
 
-用浏览器直接打开 HTML，或在项目根运行 `npm start` 后访问 `http://127.0.0.1:8765/docs/payment/index.html`。仓库未启用 GitHub Pages；提交源码不等于已上线付款网站。本次未创建外部托管或支付后台。
+For local preview, open the HTML directly, or run `npm start` in the repository root and visit `http://127.0.0.1:8765/docs/payment/index.html`. A GitHub HTML file view shows source and is not itself a hosted payment page. Public hosting status is recorded separately after deployment verification.
 
-## 体验与数据边界
+## Public hosting
 
-- 首次仅三项必填；三个预算区间仅表达意向，不自动对应某种授权套餐或订单金额。
-- 先书面确认实际应付币种与金额；USD 报价不直接填入人民币收款框，不内置汇率、不伪造美元或跨境能力。
-- 取消报价确认或重新进入付款页时收起二维码；确认门槛只是防误付提示，二维码文件本身不是受保护的秘密。
-- 输入作为文本和编码后的 `mailto` 参数使用，不执行 HTML。不使用第三方追踪、外部字体、注册账户或自动发送服务。
-- 核账草稿包含订单号、实际付款币种/金额、时间、交易号待填位置；不是到账凭证或授权书。
-- 原图不重绘；恢复、退款与补发均沿原订单处理，已扣款不重复支付。
-- 游戏运行和免费使用不增加付款门槛。历史 MIT 和第三方许可继续独立适用。
+On 2026-10-26, Sites reported a successful public deployment at [the inquiry website](https://modern-front-hd-ayuan.sunny-seal-5928.chatgpt.site/); payment instructions are at [/pay.html](https://modern-front-hd-ayuan.sunny-seal-5928.chatgpt.site/pay.html). This is static hosting, with no payment backend. GitHub Pages remains disabled because its [usage limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits#usage-limits) exclude sites primarily facilitating commercial transactions.
 
-## 验证方法
+Sites project: `appgprj_6ade3912623c819193ef405f28b414a1`. Published source commit: `ad427b318df8cd6af3c0e3afab8eb3fc46d5f6e1`; version: `1`; deployment: `appgdep_6ade3a545d948191a9f65561e46e0e09`. The site source is maintained in a separate Sites checkout; it packages only the reviewed pages, original collection image, sitemap, and robots file. Links to licensing documents point to this GitHub repository. Reuse the existing Sites identity for updates; do not create another site.
 
-1. `node --test tests/payment-pages.test.cjs`：实际 HTTP 服务返回页面与正确 JPEG MIME/字节、相对链接可访问、MIT 基线字节一致。
-2. 本机浏览器实测 320/390/768/1366 像素宽度；检查无横向溢出，报价、预算、特殊字符与邮件编码正确，复制/下载可用。
-3. 检查未确认不加载收款图、取消或刷新后复位，图片为 1200×1800；空订单号不能整理邮件，改订单后旧草稿失效。
-4. 本次不启动支付宝、不发送邮件、不生成真实订单或执行交易。真实渠道适用性、实际扫码显示的收款方、到账及退款需按真实账户另行验证，页面测试不能替代。
+The Windows packaging helper failed under local Node.js 24.14.0 during static-directory copying; the same helper completed under bundled Node.js 24.19.0. No plugin code or game files were changed to work around that failure.
 
-后续若需要自动支付，先确认实际官方支付产品和主体权限，再建设服务端订单、金额校验、回调验签、主动查单和幂等授权。当前不添加未配置的支付接口。
+Anonymous Microsoft Edge checks passed against the public URL: inquiry/payment interactions, four viewport widths, draft encoding, copying/downloading, and QR reset. Both pages and the original JPEG returned HTTP 200 without signing in. The public JPEG matched all 218120 source bytes and the recorded SHA-256. HTML retained the source markup with a Cloudflare hosting-layer script appended. A raw non-browser HTTP client received 403 from the hosting layer; normal anonymous browser access passed. These checks do not establish availability on every network or verify a funds transaction.
 
-## 本次实测记录
+## User experience and data boundaries
 
-2026-10-26，本机 Node.js 24.14.0 + Microsoft Edge：
+- Only three initial fields are required. Budget bands indicate intent; they do not select fixed license packages or create an amount due.
+- Confirm the exact settlement currency and amount in writing. Do not enter the USD quote as a CNY amount; there is no built-in exchange rate or claim of USD/international acceptance.
+- Withdrawing quote confirmation or revisiting the payment page hides the QR code. This is a mistaken-payment prompt, not access control: the image itself is not a protected secret.
+- Inputs are treated as text and encoded `mailto` parameters, not executable HTML. No third-party tracking, external fonts, registration, or automatic email sending is used.
+- A reconciliation draft contains an order number and fields for the actual currency/amount, time, and transaction reference. It is neither a payment receipt nor a license.
+- Preserve the original image. Recovery, refunds, and repeated delivery use the existing order; already debited orders must not be paid twice.
+- No payment gate is added to game execution or eligible free use. Historical MIT and third-party licenses continue to apply independently.
 
-- `npm test`：**1037 通过，0 失败、0 跳过**，包含新增的付款页面 HTTP 回归。
-- 咨询/付款两页在 320、390、768、1366 像素宽度无横向溢出；原图尺寸、报价确认复位、空白输入、特殊字符、复制/下载、修改后草稿失效检查通过，无脚本错误或外部网络请求。
-- 实际启动 `release/ModernFrontHD-3.16.0/ModernFrontHD.exe`，独立测试存档；菜单与遭遇战正常，仿真时间从 0.55 秒推进至 3.10 秒。版本、包内游戏源码哈希及 T-90M/AH-64/伯克级模型来源与材质断言通过，无页面脚本错误。此次只是启动验收，不是全局画质或性能承诺。
-- 本地证据保存在 `.tmp/payment-browser-report.json`、`.tmp/payment-game-launch-report.json`、`.tmp/payment-npm-tests.log` 及同目录截图；运行证据不进入公开仓库。
+## Verification procedure
 
-以上结果不包括实际付款、到账、退款、美元收款或支付平台审核。
+1. Run `node --test tests/payment-pages.test.cjs`: the actual HTTP server must return pages, the correct JPEG MIME type and bytes, working relative links, and an unchanged historical MIT file.
+2. Check widths of 320, 390, 768, and 1366 pixels in a browser: no horizontal overflow; correct quote/budget display, special-character handling, email encoding, copying, and downloading.
+3. Confirm that the image is not loaded before quote confirmation, cancellation/reload resets it, and its size is 1200 × 1800. Blank order references must be rejected and editing an order must invalidate its previous draft.
+4. Do not launch Alipay, send email, create real orders, or execute transactions during automated page checks. Channel suitability, the scanned payee, receipt of funds, and refunds require separate verification using the actual account.
+
+If automatic payments are requested later, verify official enabled products and account eligibility before implementing server-side orders, amount validation, signed callbacks, active queries, and idempotent authorization. No unconfigured payment API is included now.
+
+## Recorded local verification
+
+On 2026-10-26, using local Node.js 24.14.0 and Microsoft Edge:
+
+- `npm test`: **1037 passed, 0 failed, 0 skipped**, including payment-page HTTP regression coverage.
+- Both pages passed at widths of 320, 390, 768, and 1366 pixels without horizontal overflow. Image dimensions, confirmation reset, blank input, special characters, copying/downloading, and draft invalidation passed, with no script errors or external network requests in the local-page checks.
+- The actual `release/ModernFrontHD-3.16.0/ModernFrontHD.exe` launched with an isolated test profile. Menu and skirmish worked; simulation time advanced from 0.55 to 3.10 seconds. Version, packaged game-source hashes, and T-90M/AH-64/Burke model provenance/material assertions passed without page-script errors. This was a startup check, not a general visual-quality or performance guarantee.
+- Local evidence: `.tmp/payment-browser-report.json`, `.tmp/payment-game-launch-report.json`, `.tmp/payment-npm-tests.log`, and accompanying screenshots. Runtime evidence is not committed to the public repository.
+
+These results do not include actual payment, receipt of funds, refunds, USD acceptance, or payment-platform approval. They record the previous source verification; subsequent documentation-only translation does not claim a new game-runtime test.

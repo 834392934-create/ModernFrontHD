@@ -4,7 +4,7 @@
 
 作者：**AYUAN**。这是一个使用 JavaScript、Three.js 和 Electron 开发的离线三维即时战略游戏实验，支持地面、水面、水下、空中和轨道层作战，以及基于规则的 AI 建设、生产与护卫。开发采用 AI 辅助，并公开源码、回归用例和性能记录，希望帮助学习游戏开发、仿真调度与性能分析的朋友。
 
-[技术实现与阅读路线](docs/TECHNICAL_HIGHLIGHTS.md) · [实测与限制](docs/VALIDATION.md) · [Codespaces 使用说明](docs/CODESPACES.md) · [第三方素材与许可](THIRD_PARTY_NOTICES.md) · [商业授权与付款](docs/COMMERCIAL_LICENSE.md)
+[技术实现与阅读路线](docs/TECHNICAL_HIGHLIGHTS.md) · [实测与限制](docs/VALIDATION.md) · [Codespaces 使用说明](docs/CODESPACES.md) · [Third-party notices](THIRD_PARTY_NOTICES.md) · [Commercial licensing and payment](docs/COMMERCIAL_LICENSE.md)
 
 | 第一人称载具驾驶：实机验收截图 | 北海地图：离线海岸与侦察覆盖 |
 |---|---|
@@ -241,7 +241,7 @@ RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU
 - 选中单位时，青色实线显示实际已求得路径，金色虚线和编号表示尚待执行的排队目标。尚未求出路径的当前目标也显示虚线。
 - 移动可达性和武器射程分别判断；跨河/隔海的直接远程攻击继续有效。
 
-实现为本项目独立 JavaScript，没有打入 Warzone 源码、素材或运行时。[固定提交、许可及源码分析](docs/reviews/warzone2100-reference.md)。
+The implementation is independently written JavaScript for this project. No Warzone source code, assets, or runtime are included. See the [pinned revision, licensing, and source analysis](docs/reviews/warzone2100-reference.md).
 
 ## 3.2 水下作战与三维驾驶（历史）
 
@@ -358,7 +358,7 @@ RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU
 
 主战场使用实时三维模型；装备检视提供透视/正/侧/后/俯五视图。五国坦克、步战车、自行炮、火箭炮、防空车、战机、直升机和舰艇分别按实物照片重建。三名agent的差异审查见 [审查目录](docs/reviews/)。
 
-大部分装备为原创程序网格；俄罗斯T-90M、美国伯克级与美韩AH-64已接入有CC-BY署名许可的离线美术资产。T-90M保留独立炮塔，AH-64保留主/尾旋翼动画。AH-64按Longbow家族参考外观展示，不认证某个AH-64E生产批次。具体作者、来源、改动和许可见 [第三方说明](THIRD_PARTY_NOTICES.md)。
+Most equipment uses original procedural meshes. Russian T-90M, US Arleigh Burke, and US/South Korean AH-64 units use attributed offline artwork under CC BY licenses. T-90M retains its independent turret; AH-64 retains main/tail rotor animation. The AH-64 exterior references the Longbow family and is not certified as a particular AH-64E production configuration. Authors, sources, changes, and licenses are listed in [third-party notices](THIRD_PARTY_NOTICES.md).
 
 **尚未完成所有型号“接近实物”的视觉终验。** 功能测试、部件数和三角面数不能代表真实性。照片仅支持可见外观；原创航天单元不冒称现实已部署装备。25个地面槽位通过一级轮廓初审，详细剩余项见 [验收顺序](docs/reviews/ACCEPTANCE_POLICY.md) 和 [49个实物槽位清单](docs/reviews/KNOWN_EQUIPMENT.md)。
 
@@ -411,14 +411,16 @@ git push -u origin AYuan/modern-front-hd
 
 首次上传遇到 2 GiB 包限制或 `remote end hung up unexpectedly`，先核对失败日志，再参考 [分批推送说明](docs/GITHUB_UPLOAD.md)。该说明包含本项目 3.16 历史的实际分批节点，适用于尚未完成首次上传的维护者。
 
-运行时、研究照片、缓存、日志与存档不进入Git。已发布的历史 MIT 内容保留原许可；本政策下新增且有权许可的原创内容非商业免费，商业用途另行书面授权，见 [许可过渡](docs/LICENSE_TRANSITION.md)。第三方许可见 [第三方说明](THIRD_PARTY_NOTICES.md)。
+Runtime binaries, research photographs, caches, logs, and saves are excluded from Git. Previously published MIT content retains its original license. New original content released under the new policy and within the licensor's authority is free for noncommercial use; commercial use requires separate written authorization. See the [license transition](docs/LICENSE_TRANSITION.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
-## 商业授权与付款
+## Commercial licensing and payment
 
-商业授权报价 **USD 3,000–60,000（3,000 至 60,000 美元）/ 项目**，按主体、指定版本和交付范围书面确认。该区间不是游戏售价，不对历史 MIT 使用权追溯收费。联系 **ayuan（个人）**：[834392934@qq.com](mailto:834392934@qq.com)。
+**Public website:** [Commercial licensing inquiry](https://modern-front-hd-ayuan.sunny-seal-5928.chatgpt.site/) · [Alipay payment instructions](https://modern-front-hd-ayuan.sunny-seal-5928.chatgpt.site/pay.html). Hosted on Sites with public access; the customer-facing interface is in Chinese. Licensing and payment-policy documents in this repository are in English.
 
-[授权说明](docs/COMMERCIAL_LICENSE.md) · [咨询页面源码](docs/payment/index.html) · [支付宝付款说明源码](docs/payment/pay.html) · [协议模板](docs/COMMERCIAL_AGREEMENT_TEMPLATE.md)
+Commercial licensing is quoted at **USD 3,000–60,000 per project**, with the entity, specified version, and deliverables confirmed in writing. This is not the retail game price and does not retroactively charge for historical MIT rights. Contact **ayuan (individual)**: [834392934@qq.com](mailto:834392934@qq.com).
 
-本地运行 `npm start` 后打开 `http://127.0.0.1:8765/docs/payment/index.html`，也可直接用浏览器打开 `docs/payment/index.html`。GitHub 的 HTML 文件页展示源码，并非已上线的付款网站。咨询页只整理邮件，由访客自行发送。
+[License details](docs/COMMERCIAL_LICENSE.md) · [Inquiry page source](docs/payment/index.html) · [Alipay instructions source](docs/payment/pay.html) · [Agreement template](docs/COMMERCIAL_AGREEMENT_TEMPLATE.md)
 
-确认书面报价、订单号、实际结算币种和金额后，查看原始支付宝收款码；人工核实到账后按协议交付。美元报价不等于收款码支持美元；不自动换算、不自动扣款或发放授权。当前未验证真实资金交易。
+For local preview, run `npm start` and open `http://127.0.0.1:8765/docs/payment/index.html`, or open `docs/payment/index.html` directly in a browser. GitHub HTML file views display source; they are not payment websites. The inquiry page prepares a draft for the visitor to send.
+
+View the original Alipay collection code only after confirming the written quote, order number, settlement currency, and exact amount. The maintainer verifies receipt manually and delivers according to the agreement. A USD quote does not establish USD acceptance; there is no automatic conversion, charging, or license issuance. Actual funds transactions remain unverified.

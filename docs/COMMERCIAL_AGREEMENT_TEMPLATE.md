@@ -1,90 +1,90 @@
-# ModernFrontHD 商业许可与交付协议模板
+# ModernFrontHD commercial license and delivery agreement template
 
-**未填写、未由双方有效确认的模板不构成授权，不用于直接收款。** 这是使用许可模板，不是著作权转让或独家授权合同。实际合同须确认合法签约主体、交付权利范围及适用法律；有争议或特殊业务应进行法律复核。
+**An incomplete template or one not validly confirmed by both parties is not a license and must not be used to collect payment.** This is a use-license template, not a copyright-transfer or exclusive-license contract. Verify the contracting parties, rights in the deliverables, and applicable law. Obtain legal review for disputed or specialized arrangements.
 
-## 1. 当事人及订单
+## 1. Parties and order
 
-| 项目 | 约定 |
+| Item | Agreement |
 | --- | --- |
-| 订单号 / 协议编号 | 待填写 |
-| 许可方公开署名 | ayuan |
-| 许可方类型 | 个人 |
-| 许可方法定姓名 | 待签约时核实并填写 |
-| 许可方联系邮箱 | 834392934@qq.com |
-| 被许可方类型与法定姓名 / 企业全称 | 待填写 |
-| 被许可方联系邮箱 | 待填写 |
-| 项目或产品名称 | 待填写 |
-| 签订日期 | 待填写 |
+| Order / agreement number | To be completed |
+| Licensor's public name | ayuan |
+| Licensor type | Individual |
+| Licensor's legal name | Verify and complete when signing |
+| Licensor email | 834392934@qq.com |
+| Licensee type and legal name / full entity name | To be completed |
+| Licensee contact email | To be completed |
+| Project or product | To be completed |
+| Signing date | To be completed |
 
-公开署名不代替法定姓名。含签名、银行账户、客户信息的实际协议保存在私人业务记录中，不提交公共 Git 仓库。
+A public name does not replace a legal identity. Keep agreements containing signatures, bank details, or customer information in private business records, not a public Git repository.
 
-## 2. 授权交付物
+## 2. Licensed deliverables
 
-| 项目 | 约定 |
+| Item | Agreement |
 | --- | --- |
-| 指定版本、提交 SHA | 待填写 |
-| 文件 / 模块清单及文件 SHA-256 | 待填写或附清单 |
-| 许可方有权许可的内容 | 待逐项填写 |
-| 历史 MIT 内容及适用许可 | 待逐项列明；原有权利不改变 |
-| 第三方组件与素材清单及许可证 | 待附完整清单 |
-| 明确排除的内容 | 未获授权的第三方内容、商标与世界观；其他排除项待填写 |
+| Specified version and commit SHA | To be completed |
+| File / module schedule and SHA-256 hashes | Complete or attach a schedule |
+| Content the licensor has authority to license | Identify each item |
+| Historical MIT content and applicable terms | Identify each item; existing rights remain unchanged |
+| Third-party components, assets, and licenses | Attach a complete schedule |
+| Express exclusions | Unlicensed third-party content, trademarks, and fictional settings; complete other exclusions |
 
-许可费对应本协议明示授予的权利和交付服务，不是针对被许可方此前已合法取得的 MIT 使用权追加收费。任何不属于许可方权利范围的内容，不因列在文件夹中或付款而取得许可。
+The fee covers the rights and services expressly granted in this agreement. It does not impose an additional fee on MIT rights the licensee already lawfully obtained. Merely including a file in a folder or accepting payment cannot grant rights outside the licensor's authority.
 
-## 3. 商业许可范围
+## 3. Commercial license scope
 
-在满足约定生效条件后，许可方授予被许可方针对上述项目和交付物的非独占商业使用许可。下列项目必须逐项勾选或填写；空白项不得推定为无限授权。
+Once the agreed conditions take effect, the licensor grants a nonexclusive commercial-use license for the specified project and deliverables. Complete or explicitly select each item below; blank fields do not imply unlimited authorization.
 
-| 范围 | 约定 |
+| Scope | Agreement |
 | --- | --- |
-| 用途：内部使用 / 产品集成 / 游戏发行 / 收费服务 | 待填写 |
-| 是否可修改指定原创源码 | 待填写 |
-| 是否可向最终用户分发及分发形态 | 待填写：可执行文件 / 指定源码 / 其他 |
-| 项目数、主体范围、地区、规模限制 | 待填写 |
-| 许可期限与起止条件 | 待填写；明确指定版本是否永久使用 |
-| 允许使用的项目名称与署名方式 | 待填写 |
-| 后续升级和支持 | 待填写；未约定不包含未来升级维护 |
+| Use: internal / product integration / game distribution / paid service | To be completed |
+| Permission to modify specified original source code | To be completed |
+| End-user distribution and delivery form | Specify executables / identified source / other |
+| Project count, covered entities, territory, scale | To be completed |
+| Duration and start/end conditions | Specify whether use of the delivered version is perpetual |
+| Permitted project names and attribution | To be completed |
+| Future upgrades and support | To be completed; not included unless agreed |
 
-版权转让、独家权利、单独出售源码、允许下游再授权、多项目使用和与本项目无关的商标权，均须明确另行书面约定。允许向最终用户分发时，应明确最终用户可获得的使用权，不能以禁止再许可否定已经约定的最终用户正常使用。
+Copyright transfer, exclusivity, standalone source resale, downstream sublicensing, use across multiple projects, and unrelated trademark rights require a separate express written agreement. Where end-user distribution is permitted, specify end-user rights; a sublicensing restriction must not negate ordinary end-user use already agreed.
 
-## 4. 费用、付款与生效
+## 4. Fees, payment, and effectiveness
 
-当前公开商业授权报价区间为 **USD 3,000–60,000 / 项目**。区间不是本订单金额；必须填明下表，不得凭空白模板收款。
+The current public quote range is **USD 3,000–60,000 per project**. This range is not the amount due for this order. Complete the table before requesting payment.
 
-| 项目 | 约定 |
+| Item | Agreement |
 | --- | --- |
-| 授权报价（USD） | 待填写具体金额，不能只写区间 |
-| 许可费、服务费、税费及总应付额 | 待逐项填写，不得在付款后增加未约定费用 |
-| 实际结算币种与精确金额 | 待填写；例如双方同意的 CNY 金额，不自动使用美元数字 |
-| 换算依据、汇率确定时间、报价有效期 | 跨币种结算时填写；同币种填写不适用 |
-| 渠道手续费及承担方 | 待填写，金额与承担方付款前确认 |
-| 付款时间、分期条件 | 待填写 |
-| 收款主体与渠道 | 待核实后填写 |
-| 发票或其他合法收款凭证安排 | 待填写，不能承诺尚无能力开具的票据 |
-| 协议生效条件 | 双方有效确认并满足本订单约定付款条件；特殊约定待填写 |
+| License quote in USD | Specify an exact amount, not only the range |
+| License fee, service fees, taxes, and total payable | Itemize; do not add unagreed charges after payment |
+| Actual settlement currency and exact amount | Specify, for example, the agreed CNY amount; do not reuse the USD number automatically |
+| Conversion basis, rate determination time, quote validity | Complete for cross-currency settlement; otherwise not applicable |
+| Channel fees and responsible party | Confirm before payment |
+| Payment date and installment conditions | To be completed |
+| Payee and payment channel | Verify and complete |
+| Invoice or other lawful receipt arrangements | Specify only documents the issuer can actually provide |
+| Effective conditions | Valid confirmation by both parties and satisfaction of agreed payment conditions; complete any special terms |
 
-实际到账由许可方通过支付平台或银行记录核实。授权书应载明本协议编号、授权范围和生效条件；不得以截图、口头承诺或未确认付款替代。
+The licensor verifies actual receipt through payment-platform or bank records. The license document must identify this agreement, scope, and effective conditions. Screenshots, oral promises, or unconfirmed payments cannot replace those requirements.
 
-## 5. 交付与验收
+## 5. Delivery and acceptance
 
-约定交付时间：待填写。交付渠道：待填写。目标系统和运行环境：待填写。
+Delivery deadline: to be completed. Delivery channel: to be completed. Target system and runtime environment: to be completed.
 
-验收项目、操作步骤、预期结果与验收期限：待填写。至少区分文件和版本一致性、启动、约定功能、素材许可清单；没有约定的帧率、画质或真实武器性能不构成验收承诺。
+Acceptance items, procedures, expected results, and acceptance period: to be completed. Distinguish file/version consistency, launch, agreed functions, and asset-license schedules. Unagreed frame rates, visual quality, or real-weapon performance are not acceptance promises.
 
-对不符合约定的交付物，修复期限、重新验收、解除及退款安排：待填写。不能以“已发送文件”为由排除依法或依约应承担的责任。
+Remediation deadlines, repeated acceptance, termination, and refunds for nonconforming deliverables: to be completed. Sending files alone does not remove statutory or contractual obligations.
 
-## 6. 退款、终止与责任
+## 6. Refunds, termination, and liability
 
-未交付、无法取得承诺范围的权利、交付不符合验收标准、买方变更需求等情形，分别约定处理方式、费用结算及退款时限：待填写。
+Specify procedures, fee settlement, and refund deadlines separately for nondelivery, inability to grant promised rights, failed acceptance, and buyer scope changes: to be completed.
 
-不得设置排除法定权利的“一经付款概不退款”。违约通知、纠正期限、终止后的新增使用与已合法分发副本处理方式：待填写。第三方许可证及既有 MIT 权利独立存在，不因本商业合同终止而自动消失。
+Do not use an "all payments are nonrefundable" term that excludes statutory rights. Breach notice, cure periods, new use after termination, and treatment of lawfully distributed copies: to be completed. Independent third-party licenses and existing MIT rights do not automatically cease when this commercial contract ends.
 
-本合同的责任限制不得排除依法不能排除的责任。适用法律和争议解决方式由双方在依法允许的范围内明确填写，不擅自指定未经双方确认的仲裁机构。
+Liability limitations must not exclude liability that cannot lawfully be excluded. Both parties must specify governing law and dispute resolution within legally permitted boundaries; do not impose an arbitration institution that the parties have not agreed to.
 
-## 7. 确认与附件
+## 7. Confirmation and attachments
 
-- 许可方签名 / 有效电子确认：待填写。
-- 被许可方签名或盖章 / 有效电子确认：待填写。
-- 交付清单、第三方声明、验收记录、付款及授权书编号：待填写。
+- Licensor signature / valid electronic confirmation: to be completed.
+- Licensee signature or seal / valid electronic confirmation: to be completed.
+- Delivery schedule, third-party notices, acceptance records, payment reference, and license number: to be completed.
 
-本模板在填写前不代表任何订单已经签订、已经收到款项或已取得第三方许可。
+Before completion, this template is not evidence that an order has been signed, funds received, or third-party permissions obtained.

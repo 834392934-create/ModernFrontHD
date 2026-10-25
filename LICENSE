@@ -1,60 +1,59 @@
-ModernFrontHD Noncommercial and Commercial Licensing Notice
-ModernFrontHD 非商业许可与商业授权说明 1.0
+ModernFrontHD Noncommercial and Commercial Licensing Notice 1.0
 
-维护者及商业授权联系人：ayuan（个人）
-联系邮箱：834392934@qq.com
+Maintainer and commercial licensing contact: ayuan (individual)
+Email: 834392934@qq.com
 Copyright (c) 2026 ayuan, solely to the extent of rights owned or controlled.
 
-一、适用范围与原有权利
+1. Scope and existing rights
 
-1. 本许可仅适用于本政策首次发布后新增加、明确按本许可发布，且许可方有权授予许可的原创代码、文档与资产中的受保护表达（下称“许可内容”）。具体过渡范围见 docs/LICENSE_TRANSITION.md。
-2. 已按 MIT 或其他许可发布的内容，继续保留原许可及原受许可人的相应权利。旧 MIT 原文保存在 LICENSES/MIT-legacy.txt。不得仅因复制、移动、改名、重新打包或修改许可证文件，将此前 MIT 内容解释为需要另行购买商业许可。
-3. 若一个文件同时包含历史 MIT 内容与本政策下的新增内容，本许可只约束新增且由许可方有权控制的部分；不收回旧部分的许可。不确定范围应根据来源、版本记录和逐文件说明核实，不凭整个仓库的标题推定。
-4. 第三方代码、模型、纹理、地图、音频、商标、世界观等不因本许可而成为许可方的自有内容，仍按 THIRD_PARTY_NOTICES.md 及各自权利文件处理。不得删除或覆盖第三方署名与许可证。
-5. 本许可不限制法律允许无需许可的行为，也不授予许可方并不拥有或无权转授的权利。
+1.1 This license applies only to protected expression in original code, documents, and assets newly added after this policy was first published, expressly released under this license, and within the licensor's authority to license (the "Licensed Content"). See docs/LICENSE_TRANSITION.md for the transition boundaries.
+1.2 Content previously released under MIT or another license retains that license and the corresponding rights of existing recipients. The previous MIT text is preserved in LICENSES/MIT-legacy.txt. Copying, moving, renaming, repackaging, or changing a license file does not make previously MIT-licensed content subject to a new commercial license fee.
+1.3 Where a file contains both historical MIT content and new content under this policy, this license governs only the new portions within the licensor's control. It does not revoke rights in the old portions. Resolve uncertain scope using provenance, version history, and file-specific notices, rather than the repository's title alone.
+1.4 Third-party code, models, textures, maps, audio, trademarks, fictional settings, and other material do not become the licensor's property under this license. THIRD_PARTY_NOTICES.md and the applicable rights documents continue to govern them. Do not remove or replace third-party attribution or licenses.
+1.5 This license does not restrict acts that applicable law permits without authorization and does not grant rights the licensor does not own or have authority to sublicense.
 
-二、免费非商业许可
+2. Free noncommercial license
 
-在遵守本许可的前提下，许可方授予接收者全球范围内、非独占、免许可费的权利，为个人娱乐、学习、非商业研究和其他不以经营收益为目的的活动使用、复制和修改许可内容，并进行免费的非商业分发。
+Subject to compliance with this license, the licensor grants recipients a worldwide, nonexclusive, royalty-free right to use, copy, and modify the Licensed Content for personal entertainment, learning, noncommercial research, and other activities not intended to generate business revenue, and to distribute it free of charge for noncommercial purposes.
 
-非商业分发须同时保留本许可、适用的历史许可、第三方声明及原有署名；应明确标注修改及修改者，不得使接收者误认为改版由 ayuan 发布或背书。对本许可内容的分发不得附加与接收者依本许可享有的权利相冲突的限制。接收者直接从有权许可者获得相同的非商业许可。
+Noncommercial distributions must retain this license, applicable historical licenses, third-party notices, and original attribution. Clearly identify modifications and their authors; do not imply that ayuan published or endorsed a modified version. Do not impose restrictions on the Licensed Content that conflict with recipients' rights under this license. Recipients obtain the same noncommercial license directly from the party entitled to grant it.
 
-个人在私人时间游玩，不因其受雇于企业而自动变成商业用途。与取得软件、功能、商业使用权或交付服务无关的自愿赠与，不自动构成购买授权。不得用“捐赠”“会员”等名义规避实质上的收费交易。
+Playing privately does not automatically become commercial use merely because the player is employed by a business. A voluntary gift unrelated to obtaining software, features, commercial rights, or delivery services does not automatically purchase a license. Labels such as "donation" or "membership" must not disguise a transaction that is substantively a paid sale.
 
-三、商业用途须另行授权
+3. Separate authorization for commercial use
 
-下列使用许可内容的情形须事先向 834392934@qq.com 取得书面商业授权，并按双方约定支付费用：
-- 销售软件、收费分发改版、提供收费运营或付费访问；
-- 将许可内容集成至商业产品、收费服务或客户交付物；
-- 为企业经营提供内部业务工具或系统；
-- 将许可内容用于以销售、广告变现、赞助交付或其他经营收益为目的的产品或服务。
+The following uses of the Licensed Content require prior written commercial authorization from 834392934@qq.com and payment as agreed by both parties:
+- Selling the software, charging to distribute modified versions, operating paid services, or providing paid access;
+- Integrating the Licensed Content into commercial products, paid services, or customer deliverables;
+- Providing internal business tools or systems for business operations;
+- Using the Licensed Content in products or services intended to generate sales, advertising revenue, sponsorship deliverables, or other business revenue.
 
-边界不明确的使用可先书面说明实际用途。专门的游戏录播、直播或媒体合作授权应另行书面明确；本条不改变法律允许的评论、引用等行为，也不能代替第三方素材的授权。
+If the boundary is unclear, describe the intended use in writing first. Specific gameplay recording, streaming, or media partnership permissions should be agreed in writing. This provision does not alter legally permitted commentary or quotation and does not replace permission for third-party material.
 
-商业授权以双方确认的协议和交付清单为准，通常按指定被许可主体、项目和版本授权。版权转让、独家权利、源码转售、对第三方再许可、其他项目及后续版本均不因付款而自动获得。
+Commercial authorization is governed by the agreement and delivery schedule confirmed by both parties, normally for a named licensee, project, and version. Payment does not automatically confer copyright ownership, exclusivity, source-code resale rights, downstream sublicensing, rights for other projects, or future versions.
 
-付款记录、付款截图、捐赠、下载或取得激活码本身，均不能替代约定授权范围的书面协议。未经订单确认，不应付款。
+A payment record, screenshot, donation, download, or activation code does not replace a written agreement defining the authorized scope. Do not pay before an order has been confirmed.
 
-四、权属、商标与贡献
+4. Ownership, trademarks, and contributions
 
-本许可和商业许可均不自动转让著作权，不授予第三方商标或世界观权利，不表明任何真实装备厂商、第三方模型作者或其他权利人认可本项目。
+Neither this license nor a commercial license automatically transfers copyright, grants third-party trademark or fictional-setting rights, or implies endorsement by equipment manufacturers, third-party model authors, or other rights holders.
 
-外部贡献者应明确其贡献许可和权属。除非另有明确授权，提交代码或文档不等于将版权转让给维护者，也不自动授权维护者把贡献改为其他商业条款。
+External contributors should identify the ownership and license of their contributions. Without separate express authorization, submitting code or documents neither transfers copyright to the maintainer nor automatically permits the maintainer to relicense those contributions under different commercial terms.
 
-五、期限、违反与恢复
+5. Duration, breach, and reinstatement
 
-对已合法取得的许可内容，在持续遵守本许可的情况下，本许可在相关权利有效期内持续适用；许可方不能仅因后来调整版本政策而追溯收回该版本已经授予的权利。
+For lawfully obtained Licensed Content, this license continues for the duration of the relevant rights while its conditions are met. A later policy change cannot retroactively revoke rights already granted for that version.
 
-违反本许可时，依本许可取得的权利可以终止。首次在发现或收到通知后 30 日内完整纠正的，可恢复本许可下的权利；重复违反或有争议的情形应取得许可方书面确认。该机制不消除既有责任，不影响适用法律规定的权利与救济，也不影响独立存在的历史 MIT 或第三方许可。
+Rights granted under this license may terminate on breach. For a first breach fully cured within 30 days of discovery or notice, rights under this license may be reinstated. Repeated breaches or disputed cases require written confirmation from the licensor. This mechanism does not extinguish existing liability, affect statutory rights or remedies, or alter independent historical MIT or third-party licenses.
 
-六、免责声明与强制性权利
+6. Disclaimer and mandatory rights
 
-免费提供的许可内容按现状提供，在适用法律允许的范围内不承诺特定适销性、用途适用性、持续支持或不间断运行。任何责任限制均不得排除依法不能排除的责任、消费者法定权利，或另行商业合同明确承诺的义务。
+Licensed Content provided free of charge is supplied "as is." To the extent permitted by applicable law, no particular merchantability, fitness for purpose, continuing support, or uninterrupted operation is promised. No liability limitation excludes liability that cannot lawfully be excluded, statutory consumer rights, or obligations expressly assumed in a separate commercial contract.
 
-商业订单的交付、验收、支持、退款及责任依双方明确协议和适用法律处理。本文件不是“所有付款概不退款”的依据。
+Delivery, acceptance, support, refunds, and liability for commercial orders are governed by the parties' express agreement and applicable law. This document does not establish an "all payments are nonrefundable" rule.
 
-七、说明文件
+7. Supporting documents
 
-docs/COMMERCIAL_LICENSE.md 说明咨询与购买流程；docs/COMMERCIAL_AGREEMENT_TEMPLATE.md 是未签署模板，不是已发出的授权。
+docs/COMMERCIAL_LICENSE.md explains inquiries and purchasing. docs/COMMERCIAL_AGREEMENT_TEMPLATE.md is an unsigned template, not an issued license.
 
-本项目新政策下的许可内容属于源码可见、非商业免费使用的内容；本自定义许可不是 MIT，也不声称符合 OSI 开源定义。第三方及历史 MIT 内容的开源属性不因此改变。
+Licensed Content under this new policy is source-available and free for noncommercial use. This custom license is not MIT and does not claim to satisfy the OSI Open Source Definition. The open-source status of historical MIT and third-party content is unchanged.

@@ -1,37 +1,39 @@
-# 收款、核账与交付
+# Payment, reconciliation, and delivery
 
-公开联系人：**ayuan（个人）**，邮箱 [834392934@qq.com](mailto:834392934@qq.com)。
+Public contact: **ayuan (individual)**, [834392934@qq.com](mailto:834392934@qq.com).
 
-ModernFrontHD 商业授权报价 **USD 3,000–60,000 / 项目**。本仓库提供[咨询页](payment/index.html)、[支付宝付款说明](payment/pay.html)及[协议模板](COMMERCIAL_AGREEMENT_TEMPLATE.md)。静态页面没有支付 API、服务器订单、自动核账或自动发货；没有执行真实资金交易。GitHub 的 HTML 源码页不是付款网站，本地可通过 `npm start` 打开 `/docs/payment/index.html`。
+Public entry: [Inquiry website](https://modern-front-hd-ayuan.sunny-seal-5928.chatgpt.site/) and [payment instructions](https://modern-front-hd-ayuan.sunny-seal-5928.chatgpt.site/pay.html), hosted on Sites with public access.
 
-## 订单步骤
+ModernFrontHD commercial licensing is quoted at **USD 3,000–60,000 per project**. This repository includes the [inquiry page](payment/index.html), [Alipay instructions](payment/pay.html), and [agreement template](COMMERCIAL_AGREEMENT_TEMPLATE.md). These static pages do not provide a payment API, server-side orders, automatic reconciliation, or automatic delivery. No actual funds transaction has been tested. GitHub HTML file views display source; locally, use `npm start` and open `/docs/payment/index.html`.
 
-1. 买方提供用途、项目名称、邮箱，可选预算与备注。页面整理邮件草稿，买方自行发送；不自动发送或保存客户资料。
-2. 维护者核实交付权利，逐项确认主体、版本、用途、修改/分发范围、期限、支持、验收、退款与票据安排。原有 MIT 和第三方权利不改变；未授权内容不得纳入可商业发行承诺。
-3. 一次给出唯一订单号、书面协议、**美元具体报价、实际结算币种及精确应付金额、税费/手续费承担方、有效期**。跨币种结算同时写明双方认可的折算依据与确定时间；不使用实时浮动网页价格替代约定金额。
-4. 双方确认后扫码，买方核对支付宝实际收款方、币种及金额。人民币结算使用约定人民币金额，不能将美元数字直接作为人民币数字付款。此收款码能否收美元、接受境外付款或支持某笔大额订单尚未验证；不支持就停止并联系协商可用方式，不拆单规避限额。
-5. 维护者查询实际收款账单，核对收款账户、交易号、金额、币种与订单。截图、按钮点击或核账邮件不是到账证明。收到不符金额时先核实，按双方协议补款或退款，不直接签发。
-6. 每笔交易只计入一次；每个订单按约定签发一次授权。将授权书、交付清单、版本/文件哈希和凭据发往确认邮箱，按照协议验收；补发沿用原订单记录，不重复收费。实际发送由维护者完成或另行明确授权。
+## Order procedure
 
-## 收款图与能力
+1. The buyer provides intended use, project name, and email, optionally a budget and notes. The page prepares an email draft for the buyer to send; it does not automatically send messages or store customer information.
+2. The maintainer checks rights in the deliverables and confirms the parties, version, use, modification/distribution scope, duration, support, acceptance, refunds, and receipt arrangements. Historical MIT and third-party rights remain unchanged; unlicensed content must not be promised as cleared for commercial distribution.
+3. Issue a unique order number and written agreement specifying the **exact USD quote, actual settlement currency and exact amount due, responsibility for taxes/fees, and expiry**. For cross-currency settlement, record the agreed conversion basis and determination time. Do not substitute a floating webpage rate for an agreed amount.
+4. After confirmation, the buyer scans the code and checks the actual Alipay payee, currency, and amount. CNY settlement uses the agreed CNY amount, not the USD number. USD, international, and particular high-value payments are unverified. If unsupported, stop and agree on a suitable method; do not split payments to evade limits.
+5. The maintainer checks actual collection records against the account, transaction number, amount, currency, and order. Screenshots, button clicks, and reconciliation emails are not proof of receipt. Resolve mismatched amounts before issuing a license; handle additional payment or refund under the agreement.
+6. Count each transaction once and issue each order's agreed authorization once. Send the license, delivery schedule, version/file hashes, and receipt to the confirmed email and perform agreed acceptance. Re-delivery uses the existing order and must not trigger duplicate charges. Actual sending is performed by the maintainer or separately authorized.
 
-用户提供的支付宝原图带“经营”标识，图片展示名称为 **吃好喝好长生不老**。付款页先确认已有报价才展开；图片不是订单，也没有编码本项目的金额或授权范围。展示名称不等于已核验的法定姓名，应与实际扫码结果、书面协议收款信息相互核对。
+## Collection image and capabilities
 
-首笔交易前，通过本人账户确认实际支付产品适用于本订单的主体、经营类目、远程场景与金额。收钱码和接口接入是不同产品能力；不由二维码推导自动查单权限。产品信息参见 [支付宝官方接入说明](https://open.alipay.com/operatingGuide.htm) 与 [商家中心](https://ms.alipay.com/signing/home.htm)。具体以账户实际开通结果为准。
+The supplied original Alipay image carries a business/merchant marker. Its display name is transcribed as **Chi hao he hao chang sheng bu lao** (literal meaning: "Eat well, drink well, live long"). These English words are only a reference translation/transcription; the original image and scanned account information remain authoritative for comparison. The image is shown after quote confirmation. It is not an order and does not encode this project's price or licensed scope. The display name is not a verified legal identity; compare the actual scanned result against the payee in the written agreement.
 
-二维码为用户提供的原始 JPEG，1200×1800 像素，218120 字节。SHA-256：`56e07e92fc85161b74fa587afe50f3b14236af8f781e5b676a2065ab99646e53`。浏览器加载和哈希一致只能证明文件正确，不能证明资金链路已通过。
+Before the first transaction, use the account's actual product information to confirm suitability for the parties, business category, remote transaction, and amount. A collection code and API integration are different capabilities; a QR code does not establish automatic query permissions. Consult [Alipay's official integration information](https://open.alipay.com/operatingGuide.htm) and [merchant center](https://ms.alipay.com/signing/home.htm); the account's enabled products determine actual availability.
 
-## 账本与异常
+The QR image is the original JPEG: 1200 × 1800 pixels, 218120 bytes. SHA-256: `56e07e92fc85161b74fa587afe50f3b14236af8f781e5b676a2065ab99646e53`. Browser loading and matching hashes establish file integrity, not a completed funds-flow test.
 
-在**私人业务记录**保存订单号、双方主体、用途和范围、版本、美元报价、结算币种/金额、折算依据、有效期、交易号、到账时间、授权编号、交付物哈希、验收及退款状态。客户资料、付款截图、签署文件和完整交易记录不进入公共 Git 仓库。
+## Ledger and exceptions
 
-| 情况 | 处理 |
+Keep order numbers, parties, purpose/scope, version, USD quote, settlement currency/amount, conversion basis, expiry, transaction numbers, receipt time, license number, delivery hashes, acceptance, and refund status in **private business records**. Customer information, payment screenshots, signed agreements, and complete transaction records must not enter the public Git repository.
+
+| Situation | Action |
 | --- | --- |
-| 已扣款但未回复 | 按原订单联系核账，不重复付款 |
-| 无法对应订单、少付或多付 | 保持待核实，联系双方确认，不错误发放授权 |
-| 同一交易被重复通知 | 核对唯一交易号，不重复计收入或签发 |
-| 已到账但交付失败 | 保留已付款状态，重试交付，不要求再次购买 |
-| 需要退款 | 根据协议及适用规定处理，优先原交易渠道，记录实际结果；申请不等于已退款 |
-| 超出渠道能力 | 停止付款，协商可用方式；不声称支持未验证的美元/跨境/大额收款 |
+| Debited but no response | Request reconciliation for the existing order; do not pay again |
+| Unmatched order, underpayment, or overpayment | Keep pending verification and contact the parties; do not issue incorrectly |
+| Repeated notification for one transaction | Check the unique transaction number; do not count or issue twice |
+| Payment received but delivery failed | Preserve paid status and retry delivery; do not require another purchase |
+| Refund requested | Follow the agreement and applicable requirements, preferably through the original channel; record actual results. A request is not a completed refund |
+| Channel cannot support the order | Stop and agree on a supported method; do not claim unverified USD/international/high-value collection capabilities |
 
-实际资金测试须用户明确确认交易，不通过擅自转账验证。未来需要自动化时再根据已开通的官方产品接入服务器订单、签名校验、主动查单和幂等交付，不能用客户端“成功”跳转替代核账。
+Actual funds testing requires the user's explicit confirmation of a transaction; do not transfer funds merely to test the page. If automation is later requested, use the officially enabled products to implement server-side orders, signature checks, active queries, and idempotent delivery. A client-side success redirect cannot replace reconciliation.

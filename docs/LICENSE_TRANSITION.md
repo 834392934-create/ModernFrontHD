@@ -1,34 +1,38 @@
-# 许可过渡与内容范围
+# License transition and content boundaries
 
-本政策由个人维护者 ayuan 发布，联系邮箱为 834392934@qq.com。
+This policy is published by ayuan, an individual maintainer. Contact: 834392934@qq.com.
 
-## 当前核验基线
+## Verified baseline
 
-2026-10-26 合入本政策前已公开发布的最后一个 MIT 基线为：
+The last publicly released MIT baseline before this policy was integrated on 2026-10-26 is:
 
-- 提交：`26543874515f5765eabfa450ad71e787ccef3311`
-- Git 树：`ec729c4708ddc60ff9a1229f6740818270aab2d4`
-- 软件版本：`3.16.0`
-- 原 MIT 文件：[LICENSES/MIT-legacy.txt](../LICENSES/MIT-legacy.txt)
+- Commit: `26543874515f5765eabfa450ad71e787ccef3311`
+- Git tree: `ec729c4708ddc60ff9a1229f6740818270aab2d4`
+- Software version: `3.16.0`
+- Original MIT file: [LICENSES/MIT-legacy.txt](../LICENSES/MIT-legacy.txt)
 
-本基线包含此前所有已发布的游戏代码；本次新增付款页面和许可文档不会追溯改变这些代码的许可。本文件的列举不能缩小任何人已经合法取得的许可。历史 MIT 文件原有署名完整保留，不把第三方或历史贡献者统一替换成 ayuan。
+This baseline includes all game code previously published. Adding payment pages and policy documents does not retroactively change that code's license. Nothing listed here narrows a license already lawfully obtained. Original attribution in the historical MIT file is preserved; third-party and historical contributors are not relabeled as ayuan.
 
-## 新政策何时适用
+## When the new policy applies
 
-新政策仅对首次包含本政策的正式提交及之后、明确以本政策发布且有权许可的新增原创表达适用。日期、标签或维护者改署名本身不是收回旧权利的依据。
+The new policy applies only to newly added original protected expression, first released in the formal commit containing this policy or later, expressly released under the policy, and within the licensor's authority. A date, tag, or change of attribution alone does not revoke existing rights.
 
-仅新增许可证、联系方式或收款说明，不会把此前整套游戏代码变成必须付费才能商用的代码。用户仍可根据旧版本及其 MIT 许可使用相应内容。商业授权不能保证阻止别人合法继续使用历史 MIT 版本。
+Adding a license, contact details, or payment instructions does not make the entire previously released game require a commercial license purchase. Recipients can continue to use the relevant historical content under its MIT terms. A commercial license cannot guarantee that others will be prevented from lawfully using historical MIT versions.
 
-如果后续新文件复制了旧代码，或旧文件加入新功能，应保留原有 MIT 说明，注明新增部分及对应提交，不得只看文件名或修改日期就认定整份文件受新限制。
+When later files copy historical code or existing files receive new features, retain the original MIT notices and identify new portions and their commits. Do not classify an entire file under the new restrictions merely by its filename or modification date.
 
-## 第三方内容
+## Third-party content
 
-[第三方说明](../THIRD_PARTY_NOTICES.md) 与各资产的独立许可继续适用。项目根 LICENSE 不覆盖或替换它们；公共领域数据也不会因此变成维护者的独占内容。
+[Third-party notices](../THIRD_PARTY_NOTICES.md) and individual asset licenses remain applicable. The root LICENSE does not cover or replace them. Public-domain data does not become the maintainer's exclusive property.
 
-本政策及向 ayuan 付款均不授予战锤商标、世界观、真实装备厂商商标或其他无权转授的内容使用权。当前代码中存在相关展示不等于商业发行已获授权。
+Neither this policy nor payment to ayuan grants Warhammer trademark or fictional-setting rights, equipment-manufacturer trademarks, or any other rights that the licensor cannot sublicense. Their presence in the current game does not establish clearance for commercial distribution.
 
-## 对外说明
+## Public description
 
-准确表述为：**历史 MIT 内容保留原许可；新政策下新增原创内容源码可见、非商业免费，商业用途另行许可；第三方内容按原许可使用。**
+Use this accurate description: **Historical MIT content retains its original license. New original content under the new policy is source-available and free for noncommercial use, with a separate license for commercial use. Third-party content retains its own terms.**
 
-不要宣传为“MIT 商用收费版”“所有素材已获得商业授权”或“旧版也禁止商用”。本政策不声称已经过律师审核或取得版权登记。
+Do not advertise an "MIT license with commercial fees," claim all assets have commercial clearance, or state that historical versions now prohibit commercial use. This policy does not claim legal review or copyright registration.
+
+## Language update
+
+On 2026-10-26 the public licensing and payment notices were translated into English at the maintainer's request. This is a language update, not a new fee, a transfer of third-party rights, or a revocation of previously granted rights. The historical MIT license and individual third-party licenses remain unchanged.

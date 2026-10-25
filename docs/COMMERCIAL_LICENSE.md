@@ -1,63 +1,65 @@
-# 商业授权与联系
+# Commercial licensing and contact
 
-维护者：**ayuan（个人）**
+Maintainer: **ayuan (individual)**
 
-商业联系邮箱：[834392934@qq.com](mailto:834392934@qq.com)
+Business contact: [834392934@qq.com](mailto:834392934@qq.com)
 
-**先咨询，按双方确认的订单付款。** 支付宝收款码已接入本地付款说明页；收款方、产品适用场景、交付物权利范围和订单条款须在实际收款前确认。商业授权按项目报价 **USD 3,000–60,000（3,000 至 60,000 美元）**，这不是游戏零售价，也不是付款订单。没有自动支付接口或已经验证到账的交易。
+Public website: [Commercial licensing inquiry](https://modern-front-hd-ayuan.sunny-seal-5928.chatgpt.site/) · [Alipay payment instructions](https://modern-front-hd-ayuan.sunny-seal-5928.chatgpt.site/pay.html). The customer-facing pages are in Chinese; these policy documents are in English.
 
-## 先确认你需要什么授权
+**Inquire first; pay only against an order confirmed by both parties.** The original Alipay collection code is included in the payment instructions. Confirm the payee, payment-product suitability, rights in the deliverables, and order terms before accepting payment. Commercial licenses are quoted at **USD 3,000–60,000 per project**. This is neither a retail game price nor a payment order. There is no automatic payment API or verified completed funds transaction.
 
-| 使用范围 | 处理方式 |
+## Determine which rights you need
+
+| Use | Treatment |
 | --- | --- |
-| 已按 MIT 发布的旧内容 | 继续遵守原 MIT，不要求重新购买商用许可 |
-| 新政策下的原创内容：个人娱乐、学习、非商业研究 | 按 [项目许可](../LICENSE) 免费使用 |
-| 新政策下的原创内容：企业业务、商业产品集成、收费运营或出售改版 | 先取得书面商业许可 |
-| 源码转售、独家许可、版权转让、向第三方再许可 | 单独议定，普通授权不包含 |
-| 第三方模型、组件、商标、世界观 | 各自许可单独适用，向 ayuan 付款不能替代第三方授权 |
+| Previously MIT-licensed content | Continue to follow the original MIT license; no new commercial license purchase is required |
+| New original content under the new policy: personal entertainment, learning, noncommercial research | Free use subject to the [project license](../LICENSE) |
+| New original content under the new policy: business operations, commercial product integration, paid services, or sales of modified versions | Obtain written commercial authorization first |
+| Source-code resale, exclusivity, copyright transfer, or downstream sublicensing | Negotiate separately; not included in an ordinary license |
+| Third-party models, components, trademarks, and fictional settings | Their own terms apply; payment to ayuan cannot replace third-party permission |
 
-版本边界见 [许可过渡说明](LICENSE_TRANSITION.md)。不能将整个旧版游戏描述为“现在商用都必须付费”。
+See the [license transition](LICENSE_TRANSITION.md) for version boundaries. Do not describe the entire historical game as now requiring payment for every commercial use.
 
-## 价格与结算
+## Pricing and settlement
 
-报价区间适用于 ModernFrontHD 新政策下有权授权的原创内容，按单一主体、单一项目及明确交付范围协商；不代表任何旧 MIT 内容必须付费，也不保证所有需求均能承接。不同用途不自动对应某个固定套餐。
+The quoted range applies to new original ModernFrontHD content that the licensor has authority to license, negotiated for one entity, one project, and specified deliverables. It does not impose fees on historical MIT rights or guarantee that all requested work can be accepted. Different use cases do not automatically correspond to fixed packages.
 
-美元是报价币种。**实际付款必须使用书面订单列明的结算币种与精确金额**；若协商人民币结算，报价需同时写明美元报价、双方认可的折算依据及时间、人民币应付金额、有效期和税费/手续费承担方。页面不抓取汇率、不自动换算，不把 3,000 美元当成 3,000 元。授权费、另行约定的服务及总应付额须在付款前一次说明，未确认的收费不生效。
+USD is the quotation currency. **Pay only in the settlement currency and exact amount stated in the written order.** If the parties agree to CNY settlement, the quote must specify the USD price, agreed conversion basis and time, CNY amount due, validity period, and responsibility for taxes and fees. The page does not fetch exchange rates or convert currencies, and USD 3,000 must not be treated as CNY 3,000. License fees, separately agreed services, and the total payable must be disclosed together before payment; unconfirmed charges do not take effect.
 
-提供收款码不能证明该账户可直接收美元、接受境外付款或承接本区间的任意金额。实际渠道无法支持时停止付款并联系协商可用方式，不拆单规避限额，也不重复支付已扣款订单。
+A collection image does not establish that the account accepts USD, international payments, or every amount within the quote range. If the channel cannot support an order, stop and agree on a supported method. Do not split transactions to evade limits or pay again for an already debited order.
 
-## 推荐购买方式
+## Purchase process
 
-采用**单一主体 + 单一项目 + 指定版本或交付物**报价。许可费、期限、分发规模、支持和升级范围在付款前书面确定。现有版本使用权与以后新增功能、升级维护分别说明，不默认承诺终身更新。
+Quote for **one named entity, one project, and a specified version or delivery schedule**. Confirm the fee, duration, distribution scale, support, and upgrades in writing before payment. Distinguish use of the delivered version from future features and maintenance; lifetime updates are not implicitly promised.
 
-1. 初次只提供三项：使用场景、项目名称、联系邮箱。可用[商业授权咨询页](payment/index.html)整理邮件草稿，由你确认后自行发送；无需注册。
-2. 维护者在报价阶段一次确认购买主体、版本、是否修改/分发、授权期限与支持需求，并给出有权授权的交付物、排除内容、总价和验收范围，双方确认订单及书面协议。
-3. 按该订单中确认的收款方和渠道付款，备注订单号。不要向未经订单确认的二维码或第三方账户付款。
-4. 维护者以收款后台或银行实际到账记录核账，再发送签署的授权书和交付物；付款截图不能单独作为到账证据。
-5. 双方核对版本、交付物哈希、授权范围与验收结果。退款、开票和维护按协议及适用规定处理。
+1. Initially provide only the intended use, project name, and contact email. The [inquiry page](payment/index.html) prepares an email draft for you to review and send; no registration is required.
+2. During quotation, the maintainer confirms the purchasing entity, version, modification/distribution needs, duration, support, licensable deliverables, exclusions, total price, and acceptance scope. Both parties confirm the order and written agreement.
+3. Pay using the payee and channel specified in that order, quoting its order number. Do not pay an unconfirmed QR code or third-party account.
+4. The maintainer checks actual payment-platform or bank records, then delivers the signed license and agreed materials. A payment screenshot alone is not evidence of receipt.
+5. Check versions, delivery hashes, scope, and acceptance results together. Refunds, invoicing, and maintenance follow the agreement and applicable requirements.
 
-## 发起咨询的邮件格式
+## Inquiry email
 
-主题：ModernFrontHD 商业授权咨询 — 项目名称
+Subject: ModernFrontHD commercial license inquiry — Project name
 
 ```text
-使用场景：企业内部使用 / 产品集成与发行 / 其他商业合作
-项目名称：
-联系邮箱：
-预算区间（美元，选填）：
-补充说明（选填）：
+Intended use: internal business use / product integration and distribution / other commercial collaboration
+Project name:
+Contact email:
+Budget range in USD (optional):
+Additional information (optional):
 ```
 
-初次咨询不需要身份证照片、完整银行卡号或支付平台密钥。个人许可方的法定姓名及必要合同信息在签约阶段核实，公开署名继续使用 ayuan。
+An initial inquiry does not require ID photographs, complete bank-account details, or payment-platform secrets. Verify the individual licensor's legal name and necessary contract details during contracting; the public attribution remains ayuan.
 
-## 素材与交付范围
+## Assets and deliverables
 
-本项目当前包含战锤相关非官方展示，不能因此推定可商业发行。任何商业交付都应明确排除未经授权的名称、设定和资产，或取得对应权利方许可。原有第三方模型并不因其文件与源码放在一起就成为 ayuan 的独占作品。
+The project currently includes an unofficial Warhammer-related presentation; that does not establish permission for commercial distribution. Commercial deliverables must expressly exclude unlicensed names, settings, and assets or obtain permission from the relevant rights holders. Third-party models do not become ayuan's exclusive property merely because their files accompany the source code.
 
-T-90M、AH-64、伯克级等模型应继续保留各自 CC BY 署名、来源及修改说明；Three.js 等继续按其 MIT 条款处理。完整清单见 [第三方说明](../THIRD_PARTY_NOTICES.md)。
+Retain CC BY attribution, sources, and modification notices for T-90M, AH-64, and Burke models. Three.js and other dependencies retain their own licenses. See [third-party notices](../THIRD_PARTY_NOTICES.md).
 
-[协议填写模板](COMMERCIAL_AGREEMENT_TEMPLATE.md) · [收款与交付流程](PAYMENT_OPERATIONS.md) · [付款流程设计与验收](PAYMENT_FLOW_DESIGN.md)
+[Agreement template](COMMERCIAL_AGREEMENT_TEMPLATE.md) · [Payment operations](PAYMENT_OPERATIONS.md) · [Flow and verification](PAYMENT_FLOW_DESIGN.md)
 
-## 支付宝付款入口
+## Alipay payment entry
 
-用户提供的经营收款码已接入[付款说明页](payment/pay.html)。先确认书面报价、订单、收款方和授权范围，再扫码；收款账单人工核实后交付。没有报价的访问者请先咨询。页面不自动查账或签发授权，尚未验证实际资金交易。
+The original business collection code is included in the [payment instructions](payment/pay.html). Confirm the written quote, order, payee, and scope first; payment records are checked manually before delivery. Visitors without a quote should inquire first. The page does not automatically check payments or issue licenses. Actual funds transactions remain unverified.
