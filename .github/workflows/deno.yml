@@ -2,9 +2,9 @@ name: Node.js simulation tests
 
 on:
   push:
-    branches: ["codex/modern-front-hd"]
+    branches: ["AYuan/modern-front-hd"]
   pull_request:
-    branches: ["codex/modern-front-hd"]
+    branches: ["AYuan/modern-front-hd"]
   workflow_dispatch:
 
 permissions:

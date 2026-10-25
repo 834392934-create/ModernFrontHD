@@ -2,7 +2,7 @@
 
 ## 本次失败的证据
 
-2026-10-25，首次推送 `codex/modern-front-hd` 的终端记录包含：
+2026-10-25，首次推送原开发分支（现已更名为 `AYuan/modern-front-hd`）的终端记录包含：
 
 ```text
 error: RPC failed; curl 55 Send failure: Connection was reset
@@ -25,7 +25,7 @@ Everything up-to-date
 
 ```cmd
 cd /d "D:\现代战线HD"
-git push origin COMMIT_SHA:refs/heads/codex/modern-front-hd
+git push origin COMMIT_SHA:refs/heads/AYuan/modern-front-hd
 ```
 
 每批完成后验证远端；连接中断时先查询已成功的节点再续传。远端有独立提交时应先合并，不能用强制推送绕过分叉。本次发布保留了维护者在线创建的工作流提交，并将 Deno 模板改为项目实际使用的 Node.js 测试。
@@ -35,11 +35,11 @@ git push origin COMMIT_SHA:refs/heads/codex/modern-front-hd
 终端通常会显示新分支创建或提交区间更新，且没有 `fatal` / `error`。最后核对：
 
 ```cmd
-git rev-parse codex/modern-front-hd
-git ls-remote --heads origin refs/heads/codex/modern-front-hd
+git rev-parse AYuan/modern-front-hd
+git ls-remote --heads origin refs/heads/AYuan/modern-front-hd
 ```
 
-两处提交哈希一致，表示当前本地分支已经上传。刷新 GitHub 代码页，应看到 `README.md`、`src/`、`tests/` 等文件。若有其他分支，选择 `codex/modern-front-hd` 查看。
+两处提交哈希一致，表示当前本地分支已经上传。刷新 GitHub 代码页，应看到 `README.md`、`src/`、`tests/` 等文件。若有其他分支，选择 `AYuan/modern-front-hd` 查看。
 
 ## 连接超时与代理配置
 

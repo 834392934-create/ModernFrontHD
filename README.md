@@ -401,12 +401,12 @@ powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.16.0
 
 ## Git
 
-开发分支为 `codex/modern-front-hd`。从 GitHub 克隆时已经有 `origin`；本地新建的仓库需先添加自己的远端：
+开发分支为 `AYuan/modern-front-hd`。从 GitHub 克隆时已经有 `origin`；本地新建的仓库需先添加自己的远端：
 
 ```powershell
 cd 'D:\现代战线HD'
 git remote add origin '你的远端仓库URL'
-git push -u origin codex/modern-front-hd
+git push -u origin AYuan/modern-front-hd
 ```
 
 首次上传遇到 2 GiB 包限制或 `remote end hung up unexpectedly`，先核对失败日志，再参考 [分批推送说明](docs/GITHUB_UPLOAD.md)。该说明包含本项目 3.16 历史的实际分批节点，适用于尚未完成首次上传的维护者。

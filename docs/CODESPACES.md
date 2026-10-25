@@ -5,7 +5,7 @@ Codespaces 提供云端开发容器和浏览器中的编辑器，可用于修改
 ## 创建
 
 1. 先把本地项目推送到 GitHub。创建 Codespace 所选的分支不能是空分支，不必为了这个按钮另建一份 README。
-2. 打开仓库，选中包含游戏代码的分支；本项目现有开发分支为 `codex/modern-front-hd`。
+2. 打开仓库，选中包含游戏代码的分支；本项目现有开发分支为 `AYuan/modern-front-hd`。
 3. 点击 **Code → Codespaces → Create codespace**，等待浏览器编辑器打开。
 
 这些步骤依据 [GitHub 创建 Codespace 文档](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository)，核对日期为 2026-10-25。这里没有代用户创建或启用云端资源。
