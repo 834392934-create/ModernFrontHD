@@ -10,12 +10,12 @@
  function segment(game,e,to){
   const length=Math.hypot(to.x-e.x,to.y-e.y),steps=Math.max(1,Math.ceil(length/16));
   const heading=Math.atan2(to.y-e.y,to.x-e.x);
-  if(U[e.kind].air){if(!clear(game,e,to.x,to.y,heading))return false;}
+  if(U[e.kind].air&&!e.groundTaxi){if(!clear(game,e,to.x,to.y,heading))return false;}
   else for(let i=1;i<=steps;i++)if(!clear(game,e,e.x+(to.x-e.x)*i/steps,e.y+(to.y-e.y)*i/steps,heading))return false;
   if(!root.WarNavigationFootprints.buildingSegmentClear(game,e,to))return false;
   if(e.crowdRouteOrder===e.order)for(const o of game.spatial.query(e.x,e.y,length+260)){
    if(o.id===e.id||o.structure||o.hp<=0||!game.navigationLayer(e,o))continue;
-   const dx=to.x-e.x,dy=to.y-e.y,t=Math.max(0,Math.min(1,((o.x-e.x)*dx+(o.y-e.y)*dy)/Math.max(1,length*length))),safe=game.navigationRadius(e)+game.navigationRadius(o)+2;
+   const dx=to.x-e.x,dy=to.y-e.y,t=Math.max(0,Math.min(1,((o.x-e.x)*dx+(o.y-e.y)*dy)/Math.max(1,length*length))),safe=game.navigationRadius(e)+game.navigationRadius(o)+(e.groundTaxi?24:2);
    if(Math.hypot(e.x+t*dx-o.x,e.y+t*dy-o.y)<safe)return false;
   }
   return true;
@@ -29,12 +29,12 @@
  function move(game,e,to,dt){
   const dx=to.x-e.x,dy=to.y-e.y,distance=Math.hypot(dx,dy),speed=game.effectiveSpeed(e),step=Math.min(distance,speed*dt);let heading=Math.atan2(dy,dx);
   const physics=root.WarVehicleMotion,profile=physics.profile(e),before={x:e.x,y:e.y,angle:e.angle},vehicle=profile.kind!=='personnel';
-  const neighbors=game.spatial.query(e.x,e.y,game.navigationRadius(e)+260).filter(o=>o.id!==e.id&&o.hp>0&&game.navigationLayer(e,o));
+  const neighbors=game.spatial.query(e.x,e.y,game.navigationRadius(e)+260).filter(o=>o.id!==e.id&&o.hp>0);
   const footprints=root.WarNavigationFootprints,radius=game.navigationRadius(e),contacts=neighbors.map(o=>{
    const rect=o.structure&&footprints.footprint(o),point=rect?footprints.structureContact(o,e.x,e.y):o;
    return{o,rect,point,safe:radius+(rect?0:o.structure?o.r:game.navigationRadius(o))+(o.structure?8:2),now:rect?footprints.structureDistance(o,e.x,e.y):Math.hypot(e.x-o.x,e.y-o.y)};
-  }).filter(p=>p.now<p.safe+speed*.5+step+32);
-  const contactDistance=(p,x,y)=>p.rect?footprints.structureDistance(p.o,x,y):Math.hypot(x-p.o.x,y-p.o.y);
+  }).filter(p=>p.now<p.safe+speed*.5+step+32&&game.navigationLayer(e,p.o));
+  const contactDistance=(p,x,y)=>{if(p.rect)return footprints.structureDistance(p.o,x,y);const dx=x-p.o.x,dy=y-p.o.y;return Math.sqrt(dx*dx+dy*dy);};
   // Keep a chosen passing side while rounding a hull. Re-evaluating the shortest
   // left/right step each frame oscillates at a stationary obstacle's near face.
   let obstruction=null,nearest=Infinity;
@@ -74,7 +74,13 @@
    // A long hull beside a wall may have room to reverse but none to rotate.
    // Preserve body orientation while backing out; all ordinary checks still apply.
    const {turn,reverse}=candidate;if(turn===null&&best)continue;
-   const angle=turn===null?e.angle:heading+turn+(reverse?Math.PI:0),motion=reverse?angle+Math.PI:angle,x=e.x+Math.cos(motion)*step,y=e.y+Math.sin(motion)*step;
+   const angle=turn===null?e.angle:heading+turn+(reverse?Math.PI:0);
+   // Penalties are nonnegative. A candidate whose best possible score cannot
+   // beat the incumbent cannot change the selected move. Keep both straight
+   // probes because they also observe the blocker used by queue recovery.
+   const upper=turn===null?-2:Math.cos(turn)-Math.abs(turn)*.04+(turn>0?.03:0)-(reverse?reverseCost:0)-(vehicle?Math.abs(physics.angleDelta(angle,e.angle))*.2:0);
+   if(turn!==0&&upper<=bestScore)continue;
+   const motion=reverse?angle+Math.PI:angle,x=e.x+Math.cos(motion)*step,y=e.y+Math.sin(motion)*step;
    if(!clear(game,e,x,y,angle))continue;
    let blocked=false,penalty=0;
    for(const p of contacts){
@@ -167,7 +173,7 @@
   // Moving dense crowds invalidate visibility graphs before they can be used;
   // keep their existing bounded grid planner, then use the graph for parked obstacles.
   if(nearby.filter(o=>o.order).length>10)return null;
-  const footprints=root.WarNavigationFootprints,obstacles=nearby.sort((a,b)=>Math.hypot(a.x-e.x,a.y-e.y)-Math.hypot(b.x-e.x,b.y-e.y)).slice(0,16).map(o=>({o,rect:o.structure&&footprints.footprint(o),x:o.x,y:o.y,margin:game.navigationRadius(e)+10,r:game.navigationRadius(e)+(o.structure?o.r:game.navigationRadius(o))+(o.structure?10:4)}));
+  const footprints=root.WarNavigationFootprints,obstacles=nearby.sort((a,b)=>Math.hypot(a.x-e.x,a.y-e.y)-Math.hypot(b.x-e.x,b.y-e.y)).slice(0,16).map(o=>({o,rect:o.structure&&footprints.footprint(o),x:o.x,y:o.y,margin:game.navigationRadius(e)+10,r:game.navigationRadius(e)+(o.structure?o.r:game.navigationRadius(o))+(o.structure?10:e.groundTaxi?24:4)}));
   if(!obstacles.length)return null;
   const points=[{x:e.x,y:e.y},{x:goal.x,y:goal.y}];
   const outside=(p,b)=>b.rect?footprints.structureDistance(b.o,p.x,p.y)>=b.margin:Math.hypot(p.x-b.x,p.y-b.y)>=b.r;
@@ -204,5 +210,5 @@
    e.crowdRepathCount=(e.crowdRepathCount||0)+1;e.crowdProgress={distance:Math.hypot(e.x-e.order.x,e.y-e.order.y),time:game.time};
   }
  }
- root.WarCrowdNavigation={clear,segment,waypoint,move,detour,enqueue,process};
+ root.WarCrowdNavigation={clear,segment,waypoint,move,detour,visibilityDetour,enqueue,process};
 })(typeof globalThis!=='undefined'?globalThis:this);

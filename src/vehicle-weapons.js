@@ -192,18 +192,15 @@
   const opts=options(targetOrOptions),domain=opts.domain||opts.targetDomain,available=list(entity,opts.faction||faction),chosen=opts.weaponId??entity?.weaponId??'auto';
   if(!available.length)return null;
   if(chosen!=='auto')return available.find(p=>(p.id===chosen||p.stationId===chosen)&&canTarget(p,domain,opts))||null;
-  let candidates=available.filter(p=>canTarget(p,domain,opts));
-  if(opts.allowAirWing===false)candidates=candidates.filter(p=>p.action!=='airWing');
-  if(Number.isFinite(opts.distance)){
-   const ranges=typeof opts.rangeFor==='function'?opts.rangeFor:p=>({range:p.range,minRange:p.minRange});
-   const inRange=candidates.filter(p=>{const r=ranges(p);return opts.distance>=(r?.minRange??r?.min??0)&&opts.distance<=(r?.range??r?.attack??p.range);});
-   // Caller may request the next approach weapon; otherwise impossible attacks return null.
-   if(inRange.length)candidates=inRange;else if(!opts.allowOutOfRange)return null;
+  const ranged=Number.isFinite(opts.distance),personnel=opts.personnel||domain==='personnel';let first=null,preferred=null,inRange=null,inRangePreferred=null;
+  for(const p of available){
+   if(!canTarget(p,domain,opts)||opts.allowAirWing===false&&p.action==='airWing')continue;
+   const favored=personnel&&(p.personnelPreferred||p.family==='machinegun'||p.family==='autocannon');first??=p;if(favored)preferred??=p;
+   if(ranged){const r=typeof opts.rangeFor==='function'?opts.rangeFor(p):p;if(opts.distance>=(r?.minRange??r?.min??0)&&opts.distance<=(r?.range??r?.attack??p.range)){inRange??=p;if(favored)inRangePreferred??=p;}}
   }
-  if(opts.personnel||domain==='personnel'){
-   const preferred=candidates.find(p=>p.personnelPreferred||p.family==='machinegun'||p.family==='autocannon');if(preferred)return preferred;
-  }
-  return candidates[0]||null;
+  if(ranged&&inRange)return inRangePreferred||inRange;
+  if(ranged&&!opts.allowOutOfRange)return null;
+  return preferred||first;
  }
  function definition(base,profile){
   if(!profile)return {...base,damage:0,targetDomains:[],rocket:false,beam:false,splash:0,minRange:0,weaponId:null,weaponFamily:null,weaponAction:null};

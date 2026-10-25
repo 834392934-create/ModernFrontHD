@@ -42,6 +42,13 @@
  // claim a model has passed real equipment verification. Their metadata exposes
  // whether a point is an original modeled port or a conservative approximation.
  function weaponAnchor(model,weapon={},options={}){
+  if(!model)return null;weapon=weapon||{};
+  let cache=anchorCaches.get(model);if(!cache){cache=new Map();anchorCaches.set(model,cache);}
+  const key='resolved|'+[options.kind||weapon.sourceKind||weapon.kind||model.userData.kind,options.faction||weapon.sourceFaction||weapon.faction||model.userData.faction,weapon.weaponId||weapon.id,weapon.weaponFamily||weapon.family,weapon.weaponMuzzleClass||weapon.muzzleClass,options.portIndex??weapon.portIndex??'base'].join('|');
+  if(cache.has(key))return cache.get(key);
+  const anchor=buildWeaponAnchor(model,weapon,options);if(anchor)cache.set(key,anchor);return anchor;
+ }
+ function buildWeaponAnchor(model,weapon={},options={}){
   if(!model?.getObjectByName||!root.THREE)return null;
   weapon=weapon||{};
   const T=root.THREE,kind=options.kind||weapon.sourceKind||weapon.kind||model.userData.kind,faction=options.faction||weapon.sourceFaction||weapon.faction||model.userData.faction,

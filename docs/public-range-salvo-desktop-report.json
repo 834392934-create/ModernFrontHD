@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-24T19:52:41.953Z",
+  "recordedAt": "2026-10-25T06:53:26.108Z",
   "checks": [
     "New game defaults: published, 1 metre per unit",
     "72 armory cards and sampled details display actual published-mode ranges",
@@ -13,41 +13,41 @@
   ],
   "errors": [],
   "scope": "Public ranges, real-input eight-port salvo, normalized damage and cancellation; CPU metadata does not certify real weapon fidelity",
-  "profile": "D:\\现代战线HD\\.tmp\\native-v315-public-range-salvo-browser.cjs-1792871561663",
-  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.15.0\\ModernFrontHD.exe",
+  "profile": "D:\\现代战线HD\\.tmp\\native-v316-public-range-salvo-browser.cjs-1792911205814",
+  "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.16.0\\ModernFrontHD.exe",
   "sourceHashes": {
     "index.html": "f362f702f1854fff46d8263d5fc73aed14bee8fb007472768e073787843ccac0",
     "style.css": "012864c9f9ca30d7657900b7e2480469f7dd2b001498f1e062a063747c49530d",
     "assets/vendor/three.min.js": "170c6789f43217c96b3170f4b42fafe135de7f7cd48497a4218f9757ee1d49fa",
     "assets/vendor/GLTFLoader.bundle.js": "5f2fac6626db707e22e48dff05e55525b1fc75ca68bf18fff90b91beb396ad58",
     "assets/textures/ground-data.js": "9536c6ebd046299a5542a74415306d7e9fe3028b6c6fcde76769228190a2038f",
-    "src/data.js": "9ecbb40e58fc43b2cb705b75bc1c8d565820178e97ec348121d0419a30b5c04c",
+    "src/data.js": "17118c1eb4ff0722fe7652670dff24d363024eea70df71feb89a8d18f36af29f",
     "src/roster.js": "0609dfb5f0cc07ab408d9675816e236b16a4d13ee6b1d4f209a94b3c8f5f0b81",
     "src/equipment.js": "451d0463150e360b843fed9a6502dcbd5d7ad11c0d6e99c514d01f405b73cf20",
-    "src/map-dimensions.js": "f9690773ad6c705a484b3cc5f3896521b7d92400137e4d80e41a1bebd73eb79a",
-    "src/map-geography.js": "fc72e7b875f86ae667abe5c0ad5871c5abf94a6be7b80a838c3addfcc1b01a23",
-    "src/maps-large.js": "1a81550a4905a4669b9137aa8226f3ceabd0a6588307a71d405f133f642ca48c",
+    "src/map-dimensions.js": "28ab491cafbc81ab54432ca3ee73da04ee7c35c65aad0fc4e39a463466bb58bf",
+    "src/map-geography.js": "615c75b9631592b60ceb6d0f223bdc3380e9a8ba2d29f29259b3170819735db0",
+    "src/maps-large.js": "1e9a61723d9d90883a00859863b78e4b111aacb158bb5141a6222b886d79a4e5",
     "src/command-feedback.js": "5ddd8240c6ce807fb83852a9fd9fd8c36647586b2e1c41e651f67478bb6ebb30",
     "src/operator-weapons.js": "dbd036a62b74f286e58c7f264521052213f5d7fc393ad8a90fda2b2856f5b4e3",
-    "src/navigation-footprints.js": "338b8785f0cdecdf79a51c3593813fcc80f8a5e9db9bbc7e4a929034c5f2784c",
-    "src/crowd-navigation.js": "979a84103bf4be083cb8293df1c63942c4070871abaac98f7d4f15fcdd1a73c0",
+    "src/navigation-footprints.js": "430b6b7cda0fa29d3e3381364dbaac6e3cea94cd255dd78f94717c123b6ea587",
+    "src/crowd-navigation.js": "d30e0de4542306ec2dbe0517e551e1119ce9ea4a6afd9197e6d1a34310b86e2f",
     "src/destructible-trees.js": "16c279f0f62c6ad65a8aa7b89f8689bbbb49a6091aa38d0d2b30a0ad334946f5",
     "src/vehicle-motion.js": "b174c65b4b355bab60ded0e83b593e31b4a907a001d91d76b9a45366bcefff08",
     "src/airbase-runways.js": "a3ead3d6a1ae8cbdef7d23d3776d257dc43e8c8544ac5336c613788bdbb0e7bd",
-    "src/aircraft-flight.js": "d31beda0af1d6f874b88f22a8a2bd3d66b9444b9f9f1a9d6bde9a481244d6161",
+    "src/aircraft-flight.js": "788340dbd6783861a3048b5a2b3ee6228ec505b3f4814c2e6dea7868de962aa7",
     "src/weapon-range-data.js": "344d8caaff11ca53253346f093d4b98abc277a42bb3d76dab8edc425ccb94d1f",
-    "src/vehicle-weapons.js": "476581b05d96e46829cfe9cfbe3be20c96c0f18cbbb8189dfd45605b3f1f2553",
-    "src/sensors.js": "c1f27707256f5aeb54323fe2d0f03984647c442bcd83b865b892d8421b037d5c",
+    "src/vehicle-weapons.js": "c6a34c3e1956c8190dd5e8968c52a5b62ee4ec9b82ee6561dfc43a8ff8a0e5e7",
+    "src/sensors.js": "3a446665c1a3658741c0646353fbd9ad1d3b1a2dfa2d1581ba23dd009b9cd9f1",
     "src/commander-ai.js": "a2896ca2b97227bfa26b1697bf8db4c511426dcab224b71250f9f9838de96e27",
     "src/carrier-operations.js": "b3b1567078a817f0bf86919490c39ba48dd18d96e1d8556ca00ae9e06212f6ae",
     "src/weapon-salvos.js": "a4ed6488cb3b9ebc734c8e54d1b6be66cfb2807e0e37e7b8868fa77e6cd6e97e",
-    "src/combat-readiness.js": "622c8d153ca2db96a39362d3328616dcc055407a36f4395290d50e6a0db5472d",
+    "src/combat-readiness.js": "96e5b5de75a4dafb228b84b82e4b8a53eeeb72791e278b68074971a25bc06175",
     "src/combat-damage.js": "04939a52c86f5d0d65093fbfde7387f2af3a60f424f19faa1f59a404e0b281a8",
-    "src/combat-projectiles.js": "ec06228fefe21e379e4569d0912c3425fdbe4bff3e60c2c01cc5e6e142359f4a",
+    "src/combat-projectiles.js": "69bb3af33226a60256739c7ec6fe161de7a198bf6810e329325375c90e7f938b",
     "src/combat-impact.js": "b7cb052c2a405cdffbf2630654ed4209e9a981d5afcde83725be9ba0d14a7e10",
     "src/transport-operations.js": "b3901dbddfbdaa19ea254c54757109ebe01bd143fcc1e786ac8e4fbd643021f5",
-    "src/sim.js": "8e92ff13c2d7af18d55cd44259d61a7e1a42ece79c73e96f2828fcff832afac1",
-    "src/operator-sim.js": "84c27449ad0fc039f283b6a478a95217781a001012da9aa977dbc670d9a143fa",
+    "src/sim.js": "d3184a79a420f871796d9ff10ece4fe7c850d62e00fee69a0f9f58211c5157be",
+    "src/operator-sim.js": "163c39fa9b9c1173df9e3268c7035638776dd14c667779b5043312df9c3265d2",
     "src/vehicle-interaction.js": "a1726152b2932fc211984276d2fe133a66d35dc09ad8816e3774b4e86bc5b737",
     "src/render.js": "42fc5ad870650e3a65e7fd13d20260f9d9b97072049a269890d2f58a14392d9a",
     "src/ranges.js": "67e277ee4a1fd8a67ee9b5731cc24281b268fa8d3c86e5faedc5f3db1202a57a",
@@ -55,8 +55,8 @@
     "src/vehicle-rig-ground.js": "2ba59047343ce7b209638c5c8e1b9c8be33df85a57576603b03abadccb3f0ed4",
     "src/vehicle-rig-naval.js": "350789e400f79b5b2919a03690d38ca7855a0c019c36d639750a0ed1a7e4b8f4",
     "src/vehicle-rig-air.js": "3fb0747434bbf29ba672512c748c9e1912d07cb54ee6112adc31c17e9ee6b1a3",
-    "src/vehicle-animation.js": "d25219668f0ee52b6924cfd87cedea3c12cdbe389bc785097bde77fe1343f6d8",
-    "src/weapon-effects.js": "5fae73b89f809bb327ee6536bc6e7a179f1cc905fe0fe0ad5a008e9497b4392a",
+    "src/vehicle-animation.js": "c2abc50ecdb4dec0d38b24afb47f1d8659eae6189b9b863051b2c249710a7e91",
+    "src/weapon-effects.js": "c3bd0c35f301d3b512fa8e8ff0aa7086368969611f934b82d6da751645640651",
     "src/models-tanks.js": "a45826f9fdcd9a087e8bb7a237f230d6b014d3b4c26fcbf3aa3514106e916f63",
     "src/models-vehicles.js": "79990ee7ddc13303cb9b33e1e1f6868eefba6aefaece7b7b35fec47c2b245a4d",
     "src/models-air.js": "f137a8b18ff94f7ab5114d3e8c6e657186a73d4528199d69f2a30a83dacb3ecb",
@@ -84,21 +84,21 @@
     "src/underwater.js": "9127fa13e2b67a0a4ff7d3d85430e7f77823722e8bdcce27a1f9ed494cfac414",
     "src/altitude-scene.js": "53a00335e49dfe83f4042fc31fbf4a530c56eb36de100f00674d6f991b3a13d5",
     "src/combat-damage-visuals.js": "19574d2869f98e67fae971fcbd0fbfe96699080028c5f061f36df2ffa3a85278",
-    "src/battle3d.js": "1fda0a2dcf38205eec984493565b7f01a1daa7045422b6e8ffc7ed17a1cadda7",
+    "src/battle3d.js": "0da96c4dfed2e385a607cd4669cfcf22370073e32abbfbccb5d50ee4ff715e1c",
     "src/lighting.js": "5a2c4b0d67d3eacb06e92f25a93d011236ef2a91a719adfbc06758a9e703216a",
     "src/fps-viewmodel.js": "145aceb22aa6592f6ce14b574081ca710ca3e9394341a0d7004b215cb3913294",
     "src/vehicle-camera.js": "97eb37852c014549296515d246a10930cf591f88196362932fd1e84eda73cd2d",
     "src/combat-audio.js": "08ac7e6160549d7f948d3a1a701bbccce6a832dccbba670fca3e818527523cce",
     "src/render-timeline.js": "9c6018d7970024031e186521946d182468cfed8127f02a946e26ba039473fab7",
-    "src/direct-control.js": "8080a882cde4620bea1de71927b2390f6c31cd36479cdde28681421d5d2ec20a",
+    "src/direct-control.js": "9103f9c0e3ade5ddfbac54890c84062e9b85aeefe54cde1da570dd4698b4bb8f",
     "src/player-mode.js": "0bbbb83582e08b250e804bfc0d280091483203e9b9d4cb0cf4856e08722e0fb8",
     "src/operator-ui.js": "e8953ef30c9b6a48c4bf72e66931bef3549762b5b6ee284339d9643b637be2bd",
-    "src/app.js": "6fb878a603a43e4af05e0a6ce72a25199d131ad2b988547e7e0c5328d85916d0",
+    "src/app.js": "5c58c619ca77de93d731e185a4d3747e42297f13f04df01499f18f475e8441f1",
     "assets/models/burke.glb": "f7a6ccac4894e9994cc5f75d1ebda3a1930ea5993ebb2b5ec5c118b4dc3d73c6",
     "assets/models/t90m.glb": "58a8ed5339168757d5ead282639fc74ac4f880cf0b1edae77170a5b943a4ecce",
     "assets/models/ah64.glb": "b7a0b2a2f917afc83be6736bda1a3bfddafdd17a444d01c3d762cb108849b2fd"
   },
-  "version": "3.15.0",
+  "version": "3.16.0",
   "assets": {
     "ready": [
       "ready",
@@ -525,7 +525,7 @@
     }
   ],
   "fullSalvo": {
-    "time": 4.749999999999991,
+    "time": 4.599999999999992,
     "shots": [
       {
         "portIndex": 0,
@@ -548,7 +548,7 @@
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 2.9999999999999973,
+        "firedAt": 2.849999999999998,
         "portError": 0
       },
       {
@@ -566,13 +566,13 @@
           1397.175332976072
         ],
         "end": [
-          2092.9385509267204,
+          2094.6139751860596,
           12.33988286374126,
-          1415.742605067875
+          1414.8281686622877
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 3.1999999999999966,
+        "firedAt": 3.049999999999997,
         "portError": 1.0477790196630293e-8
       },
       {
@@ -590,13 +590,13 @@
           1393.610443595716
         ],
         "end": [
-          2065.763313518943,
+          2065.298710947767,
           12.33988286374126,
-          1394.670538184697
+          1396.8520507961512
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 3.349999999999996,
+        "firedAt": 3.1999999999999966,
         "portError": 0.00027905113521864644
       },
       {
@@ -614,13 +614,13 @@
           1393.637344571668
         ],
         "end": [
-          2107.96263428593,
+          2105.8998690566473,
           12.33988286374126,
-          1382.3589622155139
+          1380.0026135278706
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 3.4999999999999956,
+        "firedAt": 3.349999999999996,
         "portError": 5.569803442103629e-7
       },
       {
@@ -638,13 +638,13 @@
           1402.8365858612233
         ],
         "end": [
-          2074.887298402689,
+          2079.056988305795,
           12.33988286374126,
-          1437.577576087176
+          1438.5050315521928
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 3.649999999999995,
+        "firedAt": 3.4999999999999956,
         "portError": 0.0006469676158203263
       },
       {
@@ -662,13 +662,13 @@
           1402.8246670161016
         ],
         "end": [
-          2073.737523747152,
+          2069.525528574508,
           12.33988286374126,
-          1360.8163137637705
+          1362.3291518353687
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 3.7999999999999945,
+        "firedAt": 3.649999999999995,
         "portError": 1.7687759671834942e-7
       },
       {
@@ -686,13 +686,13 @@
           1406.3895662599612
         ],
         "end": [
-          2117.2450405370673,
+          2118.9426882834227,
           12.33988286374126,
-          1417.2780770353966
+          1413.698199473703
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 3.999999999999994,
+        "firedAt": 3.8499999999999943,
         "portError": 0.000011252283457437401
       },
       {
@@ -710,17 +710,17 @@
           1406.36265542736
         ],
         "end": [
-          2048.600145663006,
+          2050.879664447092,
           12.33988286374126,
-          1418.8405340540544
+          1422.7529026969514
         ],
         "baseDamage": 17,
         "damage": 17,
-        "firedAt": 4.149999999999993,
+        "firedAt": 3.999999999999994,
         "portError": 5.823350253647906e-7
       }
     ],
-    "hp": 9891.445548225494,
+    "hp": 9890.169341781919,
     "initialHp": 10000,
     "active": false,
     "cool": 5.8000000000000025,
@@ -776,45 +776,6 @@
       "domains": [
         "ground",
         "structure"
-      ],
-      "zones": [
-        {
-          "type": "attack",
-          "label": "攻击",
-          "radius": 70000,
-          "min": 0,
-          "domains": [
-            "ground",
-            "structure"
-          ]
-        },
-        {
-          "type": "sight",
-          "meters": 2400,
-          "radius": 2400,
-          "domains": [
-            "ground",
-            "naval",
-            "air",
-            "structure"
-          ],
-          "active": true,
-          "terrainReveal": true,
-          "contactsOnly": false,
-          "reference": {
-            "status": "game-setting",
-            "note": "角色近场光学观察估算；不是保证识别距离，且不提供轨道或水下识别。",
-            "sourceUrl": null,
-            "metric": "game-estimate",
-            "publishedM": null,
-            "estimateM": 2400,
-            "checked": "2026-10-25"
-          },
-          "reveal": "visible",
-          "terrainRadius": 2400,
-          "label": "光学观察",
-          "unit": "metric"
-        }
       ],
       "weapon": {
         "id": "rocket:rocket_salvo",
@@ -899,7 +860,46 @@
         },
         "status": "inferred",
         "parameterBasis": "伤害/装填/平衡射程为游戏参数；米制射程依单项证据限定。"
-      }
+      },
+      "zones": [
+        {
+          "type": "attack",
+          "label": "攻击",
+          "radius": 70000,
+          "min": 0,
+          "domains": [
+            "ground",
+            "structure"
+          ]
+        },
+        {
+          "type": "sight",
+          "meters": 2400,
+          "radius": 2400,
+          "domains": [
+            "ground",
+            "naval",
+            "air",
+            "structure"
+          ],
+          "active": true,
+          "terrainReveal": true,
+          "contactsOnly": false,
+          "reference": {
+            "status": "game-setting",
+            "note": "角色近场光学观察估算；不是保证识别距离，且不提供轨道或水下识别。",
+            "sourceUrl": null,
+            "metric": "game-estimate",
+            "publishedM": null,
+            "estimateM": 2400,
+            "checked": "2026-10-25"
+          },
+          "reveal": "visible",
+          "terrainRadius": 2400,
+          "label": "光学观察",
+          "unit": "metric"
+        }
+      ]
     },
     "damageBudget": 136,
     "unitDamage": 136,
@@ -941,7 +941,7 @@
         "reason": "out-of-range"
       }
     ],
-    "queryMs": 0.09999990463256836,
+    "queryMs": 0,
     "queries": 20,
     "found": 80
   },

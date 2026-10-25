@@ -2,7 +2,7 @@
   'use strict';
   // Terrain only: construction/mining obstacles remain the simulation's responsibility.
   const BASE_W=3072,BASE_H=2112;
-  const defaults={river:6812,desert:1239,industry:4521,archipelago:91827,english_channel:501251,gibraltar:501252,taiwan_strait:501253};
+  const defaults={river:6812,desert:1239,industry:4521,archipelago:91827,english_channel:501251,gibraltar:501252,taiwan_strait:501253,north_sea:31601,baltic_sea:31602,persian_gulf:31603};
   const oldSpawns=[[720,360],[2352,1752],[2352,360],[720,1752],[2736,1056]];
   const oldNodes=[[1176,528],[1896,1584],[1176,1584],[1896,528],[1536,1056],[2592,1056]];
   function seeded(seed) {
@@ -42,7 +42,7 @@
     const id=Object.hasOwn(defaults,requested)?requested:'river';
     const seed=D.MAPS?.find(m=>m.id===id)?.seed??defaults[id],r=rngFactory(seed);
     if(typeof r!=='function')throw new TypeError('makeMap expects rngFactory(seed) returning a random function.');
-    if(['english_channel','gibraltar','taiwan_strait'].includes(id))return {...geographic(id,r),seed};
+    if(root.WarMapDimensions?.isGeographic(id))return {...geographic(id,r),seed};
     const tiles=new Uint8Array(COLS*ROWS),blocked=new Uint8Array(COLS*ROWS);
     const sx=W/BASE_W,sy=H/BASE_H,point=([x,y])=>({x:x*sx,y:y*sy});
     let spawns,nodes,navalSpawns,navalUnitSpawns;

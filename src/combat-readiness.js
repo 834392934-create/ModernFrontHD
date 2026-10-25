@@ -59,7 +59,7 @@
  function station(g,e,w){const p=profile(g,e,w),c=ensure(g,e);return p&&c?{p,c,s:c.stations[p.id]}:null;}
  function point(g,target,ctx){const p=ctx.aimPoint,q={x:ctx.aimX??p?.x,y:ctx.aimY??p?.z??p?.y,height:ctx.aimHeight??p?.height??p?.y};return ['x','y','height'].every(k=>finite(q[k]))?q:target?{x:target.x,y:target.y,height:g.entityAltitude(target)}:q;}
  function aim(g,e,p,target,ctx={}){
-  const q=point(g,target,ctx),resolved=ctx.aimOrigin||g.resolveWeaponOrigin?.(e,p,e.combat?.stations?.[p.id]?.nextPort||0),d=data(e),origin=resolved&&['x','y','height'].every(k=>finite(resolved[k]))&&(!g.validDirectShotOrigin||g.validDirectShotOrigin(e,resolved))?resolved:{x:e.x,y:e.y,height:g.entityAltitude(e)+(e.structure?20:!d.air&&!d.naval?12:0)},dx=q.x-origin.x,dy=q.y-origin.y,dz=q.height-origin.height,hasPoint=finite(dx)&&finite(dy)&&finite(dz),scale=Math.max(Math.abs(dx),Math.abs(dy),Math.abs(dz),.001);
+  const q=point(g,target,ctx),hasAimPoint=finite(q.x)&&finite(q.y)&&finite(q.height),resolved=ctx.aimOrigin||(hasAimPoint?g.resolveWeaponOrigin?.(e,p,e.combat?.stations?.[p.id]?.nextPort||0):null),d=data(e),origin=resolved&&['x','y','height'].every(k=>finite(resolved[k]))&&(!g.validDirectShotOrigin||g.validDirectShotOrigin(e,resolved))?resolved:{x:e.x,y:e.y,height:g.entityAltitude(e)+(e.structure?20:!d.air&&!d.naval?12:0)},dx=q.x-origin.x,dy=q.y-origin.y,dz=q.height-origin.height,hasPoint=finite(dx)&&finite(dy)&&finite(dz),scale=Math.max(Math.abs(dx),Math.abs(dy),Math.abs(dz),.001);
   const yaw=hasPoint?Math.atan2(dy,dx):finite(ctx.aimYaw)?ctx.aimYaw:e.turret??e.angle??0;
   const linePitch=hasPoint?Math.atan2(dz/scale,Math.hypot(dx/scale,dy/scale)):finite(ctx.aimPitch)?ctx.aimPitch:e.combat?.mounts?.[p.mountId]?.pitch||0;
   // A self-guided torpedo leaves its tube level; depth seeking belongs to the
@@ -105,9 +105,10 @@
   if(!(dt>0)||!supported(e)||e.hp<=0)return;const c=ensure(g,e);if(!c)return;if(e.disabled>g.time){for(const s of Object.values(c.stations))if(s.phase==='setup'||s.phase==='pack'){s.phaseAt+=dt;s.phaseUntil+=dt;}cancelBurst(e);return;}
   const active=profile(g,e,ctx.weapon||weapons(g,e).find(w=>w.id===(e.weaponId==='auto'?c.activeId:e.weaponId))||weapons(g,e)[0]);if(active)c.activeId=active.id;
   c.movementMultiplier=1;const moving=!!ctx.moving;
-  for(const m of Object.values(c.mounts))m.cooldown=Math.max(0,(m.cooldown||0)-dt/(g.cooldownMultiplier?.(e)||1));
+  const cooldownMultiplier=ctx.cooldownMultiplier??g.cooldownMultiplier?.(e)??1;
+  for(const m of Object.values(c.mounts))m.cooldown=Math.max(0,(m.cooldown||0)-dt/cooldownMultiplier);
   for(const w of weapons(g,e)){const p=profile(g,e,w);if(!p)continue;const s=c.stations[p.id];
-   s.cooldown=Math.max(0,s.cooldown-dt/(g.cooldownMultiplier?.(e)||1));
+   s.cooldown=Math.max(0,s.cooldown-dt/cooldownMultiplier);
    if(s.reloadRemaining>0){s.reloadRemaining=Math.max(0,s.reloadRemaining-dt);if(!s.reloadRemaining){const n=Math.min(p.magazine-s.ammo,infinite(g,e)?p.magazine:s.reserve);s.ammo+=n;if(!infinite(g,e))s.reserve-=n;setPhase(g,s,'ready');}}
    if(p.artillery){
     if(moving&&(s.setupReady||s.phase==='setup')&&s.phase!=='pack'){s.setupReady=false;setPhase(g,s,'pack',p.packSeconds);}

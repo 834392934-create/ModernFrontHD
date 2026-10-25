@@ -28,13 +28,13 @@
   const f=state(g,e),old=g.get(f.homeId),carriers=root.WarCarrierOperations;
   const bind=field=>{if(fixed(e)){const r=runwayEntity(g,field,e);if(r&&r.id!==f.runwayId){f.runwayId=r.id;f.returnStage=0;f.parking=null;if(f.phase==='approach')phase(f,'return');if(groundPhases.has(f.phase)&&f.phase!=='service'){e.flightSpeed=0;phase(f,distance(e,point(strips().geometry(r),0))>8?'lineup':'prepare');}}}return field;};
   // A grounded aircraft waits at its airport; loss of a runway cannot grant a free launch.
-  if(old?.kind==='carrier'&&carriers?.compatible(g,old,e))return old;
-  if(old?.kind==='airfield'&&old.team===e.team&&(groundPhases.has(f.phase)||!fixed(e)||runwayEntity(g,old,e)))return bind(old);
+  if(old?.kind==='carrier'&&carriers?.compatible(g,old,e)&&(groundPhases.has(f.phase)||g.operational(old)))return old;
+  if(old?.kind==='airfield'&&old.team===e.team&&(groundPhases.has(f.phase)||g.operational(old)&&(!fixed(e)||runwayEntity(g,old,e))))return bind(old);
   if(groundPhases.has(f.phase))return null;
-  const next=g.teamEntities(e.team).filter(o=>o.kind==='airfield'&&(!fixed(e)||runwayEntity(g,o,e))||o.kind==='carrier'&&carriers?.canRecover(g,o,e)).sort((a,b)=>distance(a,e)-distance(b,e))[0];
+  const next=g.teamEntities(e.team).filter(o=>g.operational(o)&&(o.kind==='airfield'&&(!fixed(e)||runwayEntity(g,o,e))||o.kind==='carrier'&&carriers?.canRecover(g,o,e))).sort((a,b)=>distance(a,e)-distance(b,e))[0];
   f.homeId=next?.id??null;if(next?.kind==='carrier'){delete f.runwayId;carriers.adopt(g,next,e);}else if(next)bind(next);return next;
  }
- function requestReturn(g,e){if(!supported(e))return false;const f=state(g,e),base=home(g,e);if(!base)return false;f.returning=true;f.returnStage=0;e.retreating=true;e.order=null;e.orderQueue=[];e.target=null;e.path=[];if(!groundPhases.has(f.phase))phase(f,'return');return true;}
+ function requestReturn(g,e){if(!supported(e))return false;const f=state(g,e),base=home(g,e);if(!base)return false;if(f.returning)return true;f.returning=true;f.returnStage=0;e.retreating=true;e.order=null;e.orderQueue=[];e.target=null;e.path=[];if(!groundPhases.has(f.phase))phase(f,'return');return true;}
  function command(g,e){if(!supported(e))return;const f=state(g,e);f.returning=false;e.retreating=false;f.egress=null;f.airtime=0;if(['return','approach','landing'].includes(f.phase)){delete f.deck;phase(f,'climb');}}
  function stop(g,e){if(!supported(e))return;command(g,e);const f=state(g,e);f.anchor={x:e.x,y:e.y};f.resume=null;}
  function clearance(g,e,x,y){return g.flightFloor(e,x,y);}
@@ -87,7 +87,7 @@
    const supplied=!root.WarCombatReadiness||root.WarCombatReadiness.service(g,e,base,dt);
    root.WarCombatDamage?.repair(g,e,base,dt);
    const manual=g.directControl?.id===e.id&&g.directControl.input.throttle>0;
-   if((e.order||f.resume||manual)&&supplied&&f.elapsed>=5&&e.hp>=e.maxHp&&!occupied(g,base,e)&&base.disabled<=g.time){if(!e.order&&f.resume){e.order=f.resume;f.resume=null;}f.returning=false;e.retreating=false;f.airtime=0;phase(f,fixed(e)?'lineup':'prepare');}
+   if((e.order||f.resume||manual)&&supplied&&f.elapsed>=5&&e.hp>=e.maxHp&&(!fixed(e)||!occupied(g,base,e))&&base.disabled<=g.time){if(!e.order&&f.resume){e.order=f.resume;f.resume=null;}f.returning=false;e.retreating=false;f.airtime=0;phase(f,fixed(e)?'lineup':'prepare');}
    return true;
   }
   return runwayStep(g,e,base,dt);
@@ -96,17 +96,29 @@
   const f=e.flight,r=runway(g,base,e);if(!r){e.flightSpeed=0;root.WarVehicleMotion.stop(e);return true;}
   if(f.phase==='taxi'&&!f.parking){
    for(let row=0;row<4&&!f.parking;row++)for(const side of [1,-1])for(let col=0;col<3;col++){
-    const q=point(r,40+col*140),p={x:q.x-Math.sin(r.angle)*side*(180+row*160),y:q.y+Math.cos(r.angle)*side*(180+row*160)},probe={...e,kind:'tank'};
+    const q=point(r,40+col*140),p={x:q.x-Math.sin(r.angle)*side*(180+row*160),y:q.y+Math.cos(r.angle)*side*(180+row*160)},probe={...e,groundTaxi:true};
     if(root.WarNavigationFootprints.terrain(g,probe,p.x,p.y)&&!g.entities.some(o=>o.hp>0&&o.id!==e.id&&o.id!==f.runwayId&&g.entityAltitude(o)<45&&(o.structure?!root.WarNavigationFootprints.structureClear(g,probe,o,p.x,p.y,12):distance(o,p)<g.navigationRadius(e)+g.navigationRadius(o)+12))){f.parking=p;break;}
    }
   }
   const goal=f.phase==='lineup'?point(r,0):f.parking;if(!goal){root.WarVehicleMotion.stop(e);return true;}
-  const before={x:e.x,y:e.y,angle:e.angle},dd=distance(e,goal),angle=Math.atan2(goal.y-e.y,goal.x-e.x),delta=root.WarVehicleMotion.angleDelta(angle,e.angle);
-  e.angle+=clamp(delta,-1.2*dt,1.2*dt);const speed=Math.min(32,dd*1.5)*Math.max(0,Math.cos(delta)),nx=e.x+Math.cos(e.angle)*speed*dt,ny=e.y+Math.sin(e.angle)*speed*dt;
-  const probe={...e,kind:'tank'};
-  if(root.WarNavigationFootprints.terrain(g,probe,nx,ny)&&!g.entities.some(o=>o.hp>0&&o.id!==e.id&&o.id!==f.runwayId&&g.entityAltitude(o)<45&&(o.structure?!root.WarNavigationFootprints.structureClear(g,probe,o,nx,ny,6):distance(o,{x:nx,y:ny})<g.navigationRadius(e)+g.navigationRadius(o)+6))){e.x=nx;e.y=ny;}
+  const probe={...e,groundTaxi:true,order:goal,crowdRouteOrder:goal},taxiGame=Object.create(g);
+  taxiGame.entities=g.entities.filter(o=>o.id!==f.runwayId);
+  taxiGame.spatial={query:(...args)=>g.spatial.query(...args).filter(o=>o.id!==f.runwayId)};
+  const nav=root.WarCrowdNavigation;
+  if(f.taxiGoal?.x!==goal.x||f.taxiGoal?.y!==goal.y){f.taxiGoal={...goal};f.taxiPath=null;f.taxiPlanAt=0;}
+  if(!f.taxiPath?.length&&g.time>=(f.taxiPlanAt||0)){
+   f.taxiPath=nav?.segment(taxiGame,probe,goal)?[goal]:nav?.visibilityDetour(taxiGame,probe,goal)||root.WarSim.findPath(root.WarNavigationFootprints.pathGrid(taxiGame,probe),e.x,e.y,goal.x,goal.y);
+   if(f.taxiPath?.length&&distance(f.taxiPath.at(-1),goal)>1)f.taxiPath.push({...goal});
+   f.taxiPlanAt=g.time+1;f.taxiReplans=(f.taxiReplans||0)+1;
+  }
+  while(f.taxiPath?.length>1&&distance(e,f.taxiPath[0])<12)f.taxiPath.shift();
+  const waypoint=f.taxiPath?.[0];if(!waypoint){root.WarVehicleMotion.stop(e);return true;}
+  const before={x:e.x,y:e.y,angle:e.angle},dd=distance(e,goal),angle=Math.atan2(waypoint.y-e.y,waypoint.x-e.x),delta=root.WarVehicleMotion.angleDelta(angle,e.angle);
+  const nextAngle=e.angle+clamp(delta,-1.2*dt,1.2*dt),speed=Math.min(32,dd*1.5)*Math.max(0,Math.cos(delta)),nx=e.x+Math.cos(nextAngle)*speed*dt,ny=e.y+Math.sin(nextAngle)*speed*dt;
+  if(root.WarNavigationFootprints.terrain(g,probe,nx,ny,nextAngle)&&!g.entities.some(o=>o.hp>0&&o.id!==e.id&&o.id!==f.runwayId&&g.entityAltitude(o)<45&&(o.structure?!root.WarNavigationFootprints.structureClear(g,probe,o,nx,ny,6):distance(o,{x:nx,y:ny})<g.navigationRadius(e)+g.navigationRadius(o)+6))){e.x=nx;e.y=ny;e.angle=nextAngle;f.taxiBlocked=0;}
+  else {f.taxiBlocked=(f.taxiBlocked||0)+dt;if(f.taxiBlocked>1){f.taxiPath=null;}if(f.taxiBlocked>8&&f.phase==='taxi'){f.parking=null;f.taxiGoal=null;f.taxiBlocked=0;}}
   e.pitch=e.roll=0;e.flightSpeed=speed;root.WarVehicleMotion.record(e,before,dt,.2,delta,g.tick);
-  if(dd<4){phase(f,f.phase==='lineup'?'prepare':'service');f.parking=null;root.WarVehicleMotion.stop(e);}
+  if(dd<4){phase(f,f.phase==='lineup'?'prepare':'service');f.parking=null;f.taxiPath=null;f.taxiGoal=null;root.WarVehicleMotion.stop(e);}
   return true;
  }
  function canFire(g,e,target){if(!supported(e))return true;const f=e.flight;if(f&&(groundPhases.has(f.phase)||['climb','return','approach'].includes(f.phase)))return false;
@@ -187,6 +199,6 @@
   move(g,e,aim,cruise,max*(f.phase==='loiter'?.65:.85),dt);return true;
  }
  function rotorMove(g,e,goal,height,dt){const before={x:e.x,y:e.y,angle:e.angle},max=g.effectiveSpeed(e),dd=distance(e,goal),step=Math.min(dd,max*dt),heading=Math.atan2(goal.y-e.y,goal.x-e.x);e.angle+=clamp(root.WarVehicleMotion.angleDelta(heading,e.angle),-1.3*dt,1.3*dt);e.x+=Math.cos(heading)*step;e.y+=Math.sin(heading)*step;e.altitude=Math.max(clearance(g,e,e.x,e.y),e.altitude+clamp(Math.max(height,aheadFloor(g,e,e.x,e.y))-e.altitude,-60*dt,60*dt));e.roll*=Math.max(0,1-dt*4);e.pitch+=(step>0?-.08-e.pitch:-e.pitch)*Math.min(1,dt*3);root.WarVehicleMotion.record(e,before,dt,step>0?1:0,0,g.tick);e.flightSpeed=step/dt;}
- function validate(e){const f=e.flight;if(!f)return true;return supported(e)&&Object.hasOwn(labels,f.phase)&&[f.elapsed,f.airtime,f.anchor?.x,f.anchor?.y].every(Number.isFinite)&&(f.homeId==null||Number.isInteger(f.homeId))&&(f.runwayId==null||Number.isInteger(f.runwayId))&&(!f.egress||[f.egress.x,f.egress.y,f.egress.until].every(Number.isFinite))&&(!f.resume||[f.resume.x,f.resume.y].every(Number.isFinite))&&(!f.parking||[f.parking.x,f.parking.y].every(Number.isFinite))&&(f.returnStage==null||[0,1,2].includes(f.returnStage))&&(!f.deck||root.WarCarrierOperations?.validate(e)===true);}
+ function validate(e){const f=e.flight;if(!f)return true;return supported(e)&&Object.hasOwn(labels,f.phase)&&[f.elapsed,f.airtime,f.anchor?.x,f.anchor?.y].every(Number.isFinite)&&(f.homeId==null||Number.isInteger(f.homeId))&&(f.runwayId==null||Number.isInteger(f.runwayId))&&(!f.egress||[f.egress.x,f.egress.y,f.egress.until].every(Number.isFinite))&&(!f.resume||[f.resume.x,f.resume.y].every(Number.isFinite))&&(!f.parking||[f.parking.x,f.parking.y].every(Number.isFinite))&&(f.returnStage==null||[0,1,2].includes(f.returnStage))&&(!f.taxiPath||Array.isArray(f.taxiPath)&&f.taxiPath.length<=512&&f.taxiPath.every(p=>p&&[p.x,p.y].every(Number.isFinite)))&&(!f.taxiGoal||[f.taxiGoal.x,f.taxiGoal.y].every(Number.isFinite))&&(!f.deck||root.WarCarrierOperations?.validate(e)===true);}
  root.WarAircraftFlight={supported,fixed,configuration,turnLimit,labels,groundPhases,runwayContains,launchPosition,launch,groundStep,update,canFire,requestReturn,command,stop,aheadFloor,validate};
 })(globalThis);

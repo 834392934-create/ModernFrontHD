@@ -14,14 +14,14 @@
       this.gl=new T.WebGLRenderer({canvas,antialias:true,powerPreference:'high-performance'});
       this.gl.outputColorSpace=T.SRGBColorSpace;this.gl.toneMapping=T.ACESFilmicToneMapping;this.gl.toneMappingExposure=1.05;
       this.gl.shadowMap.enabled=true;this.gl.shadowMap.type=T.PCFSoftShadowMap;
-      this.scene=new T.Scene();this.scene.background=new T.Color(0x283b41);
+      this.scene=new T.Scene();this.scene.matrixAutoUpdate=false;this.scene.background=new T.Color(0x283b41);
       this.cam=new T.OrthographicCamera(-800,800,500,-500,1,9000);this.strategyCam=this.cam;
       this.camera={x:720,y:550,zoom:1.15};this.elevation=.78;
       this.hemi=new T.HemisphereLight(0xd5e6e9,0x786e4f,2);this.scene.add(this.hemi);
       this.sun=new T.DirectionalLight(0xffead0,3.0);this.sun.castShadow=true;this.sun.shadow.mapSize.set(2048,2048);
       Object.assign(this.sun.shadow.camera,{left:-1100,right:1100,top:1100,bottom:-1100,near:10,far:4000});
       this.sun.shadow.bias=-.00025;this.sun.shadow.normalBias=1.1;this.scene.add(this.sun,this.sun.target);
-      this.objects=new Map();this.world=new T.Group();this.scene.add(this.world);this.effects=[];
+      this.objects=new Map();this.world=new T.Group();this.world.matrixAutoUpdate=false;this.scene.add(this.world);this.effects=[];
       this.overlay=document.createElement('canvas');this.overlay.id='battle-overlay';this.overlay.style.cssText='position:absolute;inset:0;pointer-events:none;width:100%;height:100%';canvas.after(this.overlay);this.ctx=this.overlay.getContext('2d');
       this.fogCanvas=document.createElement('canvas');this.fogCanvas.width=COLS;this.fogCanvas.height=ROWS;this.fogCtx=this.fogCanvas.getContext('2d');this.fogTex=new T.CanvasTexture(this.fogCanvas);this.fogTex.minFilter=this.fogTex.magFilter=T.LinearFilter;
       this.fogUniform={value:this.fogTex};this.fogEnabled={value:0};this.fogify(root.WarModels.material);
@@ -57,11 +57,14 @@
     displayHeight(h){return this.firstPerson?.active?h:h>=2000?145+(h-4000)*.003:h>65?65+Math.log(h/65)*20:h;}
     entityHeight(e){return this.displayHeight(this.physicalHeight(e));}
     resolveWeaponOrigin(game,e,weapon,portIndex){const model=this.objects.get(e.id);if(!model)return null;
+      const mount=e.combat?.mounts?.[weapon?.mountId||'main'],parent=e.combat?.mounts?.main,key=(weapon?.id||weapon?.weaponId||'primary')+':'+(portIndex||0),values=[game.time,e.x,e.y,e.altitude,e.angle,e.roll,e.pitch,e.jumpHeight,e.components?.state,e.components?.lastHitAt,mount?.yaw,mount?.pitch,parent?.yaw,parent?.pitch];
+      const cache=model.userData.originCache||(model.userData.originCache=new Map()),cached=cache.get(key);
       model.position.set(e.x,this.entityHeight(e),e.y);model.rotation.set(e.roll||0,e.structure&&!B[e.kind]?.rotatable?0:-(e.angle||0),e.pitch||0,'YZX');
       root.WarCombatDamageVisuals?.applyBodyPose(this,model,e);
       if(model.userData.personnelRig)root.WarPersonnelAnimation?.update(model,e,game.time);else root.WarVehicleAnimation?.syncWeaponPose(model,e);
-      const anchor=root.WarWeaponEffects?.weaponAnchor(model,weapon,{kind:e.kind,faction:game.teams[e.team]?.faction,portIndex});if(!anchor)return null;model.updateMatrixWorld(true);const p=anchor.getWorldPosition(new T.Vector3());
-      return {x:p.x,y:p.z,height:p.y+this.physicalHeight(e)-this.entityHeight(e),approximate:!!anchor.userData.approximate||/^approximate-/.test(anchor.userData.source||''),source:anchor.userData.source||'existing-modeled-port'};
+      if(cached&&cached.values.every((v,i)=>v===values[i]))return {...cached.point};
+      const anchor=root.WarWeaponEffects?.weaponAnchor(model,weapon,{kind:e.kind,faction:game.teams[e.team]?.faction,portIndex});if(!anchor)return null;const p=anchor.getWorldPosition(new T.Vector3());
+      const point={x:p.x,y:p.z,height:p.y+this.physicalHeight(e)-this.entityHeight(e),approximate:!!anchor.userData.approximate||/^approximate-/.test(anchor.userData.source||''),source:anchor.userData.source||'existing-modeled-port'};cache.set(key,{values,point});return {...point};
     }
     entityScreen(e){return this.toScreen(e.x,e.y,U[e.kind]?.underwater&&!this.firstPerson?.active?0:this.physicalHeight(e));}
     pick(game,x,y,enemy=false){
@@ -178,6 +181,7 @@
         const pose=this.firstPerson?.active&&e.id===this.firstPerson.entityId?this.firstPerson.renderPose?.(e)||e:e;
         o.visible=e.id!==this.firstPerson?.entityId||!!this.firstPerson?.exteriorActive();visibleCount++;o.position.set(pose.x,this.entityHeight(pose),pose.y);o.rotation.set(pose.roll||0,e.structure&&!B[e.kind]?.rotatable?0:-pose.angle,pose.pitch||0,'YZX');
         o.userData.personnelDamageDetail=this.firstPerson?.active?o.position.distanceToSquared(this.cam.position)<650*650:Math.hypot(e.x-this.camera.x,e.y-this.camera.y)<650;
+        o.userData.animationInterval=game.entities.length>180&&!ui.selection?.has(e.id)&&ui.hover!==e.id&&(this.firstPerson?.active?o.position.distanceToSquared(this.cam.position)>900*900:e.r*this.camera.zoom*2<90)?.075:0;
         root.WarPersonnelAnimation?.update(o,e,game.time);
         if(root.WarVehicleAnimation)root.WarVehicleAnimation.update(o,e,game);else {
         const parts=animatedParts(o),turretAngle=e.target?(e.structure?0:e.angle)-e.turret:0;
@@ -191,7 +195,10 @@
       for(const id of this.objects.keys())if(!alive.has(id))this.removeObject(id);
       this.damageVisualStats=root.WarCombatDamageVisuals?.update(this,game);
       this.projectileVisualStats=root.WarWeaponEffects?.updateProjectiles(this,game);
-      this.gl.render(this.scene,this.cam);this.stats={calls:this.gl.info.render.calls,triangles:this.gl.info.render.triangles,foregroundCalls:0,foregroundTriangles:0,visibleEntities:visibleCount,geometries:this.gl.info.memory.geometries};
+      const shadowInterval=visibleCount>180&&!this.firstPerson?.active ? .1 : 0;
+      if(this.gl.shadowMap){this.gl.shadowMap.autoUpdate=!shadowInterval;
+      if(!shadowInterval||!this.shadowFrame||game.time-this.shadowFrame.time>=shadowInterval||game.time<this.shadowFrame.time||Math.hypot(this.camera.x-this.shadowFrame.x,this.camera.y-this.shadowFrame.y)>50){this.gl.shadowMap.needsUpdate=true;this.shadowFrame={time:game.time,x:this.camera.x,y:this.camera.y};}}
+      this.gl.render(this.scene,this.cam);this.stats={calls:this.gl.info.render.calls,triangles:this.gl.info.render.triangles,foregroundCalls:0,foregroundTriangles:0,visibleEntities:visibleCount,geometries:this.gl.info.memory.geometries,shadowInterval};
       if(this.firstPerson?.active){
         this.rangeOverlays=[];const worldFrame=this.gl.info.render.frame;this.firstPerson.drawOverlay(game,time);root.WarWeaponEffects?.draw(this,game);
         // Three resets draw counters per render. Scoped/disposed views skip their

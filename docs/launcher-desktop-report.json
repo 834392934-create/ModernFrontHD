@@ -1,33 +1,33 @@
 {
-  "recordedAt": "2026-10-24T20:03:34.3135033Z",
-  "version": "3.15.0",
+  "recordedAt": "2026-10-25T07:04:14.2791290Z",
+  "version": "3.16.0",
   "passed": true,
   "entries": [
     {
       "entry": "启动独立版.cmd",
-      "pid": 48768,
+      "pid": 91544,
       "title": "现代战线 HD · 五强遭遇战",
       "responsive": true,
-      "version": "3.15.0",
-      "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.15.0\\ModernFrontHD.exe",
+      "version": "3.16.0",
+      "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.16.0\\ModernFrontHD.exe",
       "isolatedProfile": true
     },
     {
       "entry": "启动游戏.cmd",
-      "pid": 26360,
+      "pid": 23076,
       "title": "现代战线 HD · 五强遭遇战",
       "responsive": true,
-      "version": "3.15.0",
-      "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.15.0\\ModernFrontHD.exe",
+      "version": "3.16.0",
+      "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.16.0\\ModernFrontHD.exe",
       "isolatedProfile": true
     },
     {
       "entry": "现代战线 HD.lnk",
-      "pid": 84488,
+      "pid": 100512,
       "title": "现代战线 HD · 五强遭遇战",
       "responsive": true,
-      "version": "3.15.0",
-      "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.15.0\\ModernFrontHD.exe",
+      "version": "3.16.0",
+      "executable": "D:\\现代战线HD\\release\\ModernFrontHD-3.16.0\\ModernFrontHD.exe",
       "isolatedProfile": true
     }
   ]

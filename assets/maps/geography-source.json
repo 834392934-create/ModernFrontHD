@@ -40,6 +40,36 @@
       ],
       "projection": "Equirectangular at central latitude; north up; aspect preserved",
       "landCells": 11165
+    },
+    "north_sea": {
+      "bounds": [
+        -11.62413826,
+        50,
+        16.62413826,
+        61
+      ],
+      "projection": "Equirectangular at central latitude; north up; aspect preserved",
+      "landCells": 81130
+    },
+    "baltic_sea": {
+      "bounds": [
+        5.27578244,
+        53,
+        32.72421756,
+        63
+      ],
+      "projection": "Equirectangular at central latitude; north up; aspect preserved",
+      "landCells": 128432
+    },
+    "persian_gulf": {
+      "bounds": [
+        44.97010189,
+        23,
+        58.02989811,
+        31
+      ],
+      "projection": "Equirectangular at central latitude; north up; aspect preserved",
+      "landCells": 136787
     }
   }
 }

@@ -278,6 +278,7 @@
       enemies: Number($("#enemies").value),
       difficulty: $("#difficulty").value,
       allied: $("#allied").checked,
+      friendlyFire: $('#friendly-fire').checked,
       abilities: $("#abilities").checked,
       advanced: $("#advanced").checked,
       playerOnlyTech: $("#player-only").checked,
@@ -620,7 +621,7 @@
       if (paused) return;
       const p = r.toWorld(e.clientX, e.clientY),
         target = enemyAt(p);
-      const picked=r.pick?.(game,e.clientX,e.clientY,true)||target;
+      const picked=(e.ctrlKey&&game.options.friendlyFire?r.pick?.(game,e.clientX,e.clientY,false):null)||r.pick?.(game,e.clientX,e.clientY,true)||target;
       if([...selection].some(id=>game.get(id)?.structure)){game.setRally([...selection],p.x,p.y);toast('集结点已设置，新生产单位自动前往');}
       const result=game.command([...selection], picked?.x||p.x, picked?.y||p.y, !!picked, picked?.id || null,{queue:e.shiftKey,source:'player'});
       if(result?.rejected.length)toast(WarCommandFeedback.format(result));
@@ -1027,6 +1028,7 @@
     game.options.playerOnlyTech = $("#live-player-only").checked;
     game.options.advanced = $("#live-advanced").checked;
     game.setAISpaceWeapons(!$('#live-ai-space-ban').checked);
+    game.setFriendlyFire($('#live-friendly-fire').checked);
     if (game.options.playerOnlyTech || !game.options.advanced) {
       for (const t of game.teams) {
         if (t.id === 0 && game.options.advanced) continue;
@@ -1056,6 +1058,7 @@
     openModal(
       "<small>PLAYER MODIFIERS</small><h2>战场增益与科技</h2>" +
         '<label class="buff-item">禁止 AI 建造太空武器<input id="live-ai-space-ban" type="checkbox" '+(game.options.aiSpaceWeapons===false?'checked':'')+'></label>' +
+        '<label class="buff-item">玩家友军攻击 · 指挥 Ctrl＋右键 / 第一人称直接开火<input id="live-friendly-fire" type="checkbox" '+(game.options.friendlyFire?'checked':'')+'></label>' +
         buffHTML(game.buffs, "live") +
         '<div class="switch-row"><label><input id="live-advanced" type="checkbox" ' +
         (game.options.advanced ? "checked" : "") +
@@ -1096,10 +1099,10 @@
   }
   // One simulation clock at 20 Hz; rendering follows the browser refresh rate.
   function frame(now) {
-    const raw = Math.min(0.25, (now - last) / 1000);
+    const elapsed = Math.max(0,(now-last)/1000),raw=Math.min(0.25,elapsed);
     last = now;
     frames++;
-    frameTimer += raw;
+    frameTimer += elapsed;
     if (frameTimer > 1) {
       fps = Math.round(frames / frameTimer);
       frames = 0;
@@ -1314,6 +1317,7 @@
   $('.battle-section').insertBefore(modeRow,$('.battle-section .option-row'));
   $('#difficulty').insertAdjacentHTML('beforeend','<option value="brutal">残酷 · 收入 ×1.7 / 快速攻势</option>');
   const spaceOption=document.createElement('label');spaceOption.className='space-option';spaceOption.innerHTML='<input id="ai-space-ban" type="checkbox" checked>禁止 AI 建造太空武器';$('.battle-section').append(spaceOption);
+  const friendlyOption=document.createElement('label');friendlyOption.className='space-option';friendlyOption.innerHTML='<input id="friendly-fire" type="checkbox">玩家友军攻击（指挥 Ctrl＋右键；第一人称直接瞄准）';$('.battle-section').append(friendlyOption);
   const formation=document.createElement('select');formation.id='formation';formation.title='编队阵型 F';formation.innerHTML='<option value="line">横队 · F</option><option value="column">纵队 · F</option><option value="spread">疏散 · F</option>';formation.onchange=()=>{if(game)game.formation=formation.value;};$('.command-buttons').append(formation);
   const retreatButton=document.createElement('button');retreatButton.id='retreat';retreatButton.textContent='撤回维修 R';retreatButton.onclick=()=>{game.manualCommand([...selection]);game.retreat([...selection]);toast('撤回基地，脱战后自动维修');};$('.command-buttons').append(retreatButton);
   async function toggleFullscreen(){try{if(window.DesktopGame){await DesktopGame.fullscreen();}else if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch(e){toast('无法切换全屏：'+e.message)}}

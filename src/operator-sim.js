@@ -78,7 +78,7 @@
   if(!wants||e.cool>0){sync(this,e,s,w);return;}
   if(a.ammo<=0){if(pressed)event(this,e,s,'dry','empty');s.burstRemaining=0;s.burstInput=null;sync(this,e,s,w);return;}
   if(mode==='burst'&&!input.fire)input=s.burstInput;
-  const candidate=this.get(input.targetId),status=this.directFireStatus(e,candidate,input),range=status.range,valid=candidate&&!input.aimBlocked&&status.inRange&&status.domainAllowed&&status.detected&&status.aimValid&&this.isEnemy(e.team,candidate.team);
+  const candidate=this.get(input.targetId),status=this.directFireStatus(e,candidate,input),range=status.range,valid=candidate&&!input.aimBlocked&&status.inRange&&status.domainAllowed&&status.detected&&status.aimValid&&this.playerAttackAllowed(e,candidate,true);
   const point=this.directShotPoint(e,input,valid?candidate:null,range),len=point.distance;
   e.target=valid?candidate.id:null;const start=this.effects.length;
   for(let n=0;n<w.pellets;n++){

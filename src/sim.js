@@ -237,7 +237,7 @@
       const b=this.bounds||{minX:-Infinity,minY:-Infinity,maxX:Infinity,maxY:Infinity},minX=Math.max(b.minX,Math.floor((x-r)/this.size)),maxX=Math.min(b.maxX,Math.floor((x+r)/this.size)),minY=Math.max(b.minY,Math.floor((y-r)/this.size)),maxY=Math.min(b.maxY,Math.floor((y+r)/this.size));
       // Public missile ranges can be much larger than the map. Visit occupied
       // buckets instead of millions of empty coordinates in that case.
-      if((maxX-minX+1)*(maxY-minY+1)>this.buckets.size*2){for(const bucket of this.buckets.values())for(const e of bucket)if(Math.hypot(e.x-x,e.y-y)<=r+e.r)a.push(e);return a;}
+      if((maxX-minX+1)*(maxY-minY+1)>this.buckets.size*2){for(const bucket of this.buckets.values())for(const e of bucket){const dx=e.x-x,dy=e.y-y,limit=r+e.r;if(dx*dx+dy*dy<=limit*limit)a.push(e);}return a;}
       for (
         let cy = minY;
         cy <= maxY;
@@ -250,12 +250,13 @@
         ) {
           const b = this.buckets.get(cx + "," + cy);
           if (b)
-            for (const e of b)
-              if (Math.hypot(e.x - x, e.y - y) <= r + e.r) a.push(e);
+            for (const e of b){const dx=e.x-x,dy=e.y-y,limit=r+e.r;
+              if (dx*dx+dy*dy<=limit*limit) a.push(e);}
         }
       return a;
     }
   }
+  const entityIndexes=new WeakMap();
   class Game {
     constructor(options = {}) {
       this.options = {
@@ -264,6 +265,7 @@
         map: "river",
         difficulty: "normal",
         allied: false,
+        friendlyFire: false,
         buffs: [],
         advanced: true,
         playerOnlyTech: true,
@@ -275,6 +277,7 @@
         ...options,
       };
       this.options.rangeMode=this.options.rangeMode==='published'?'published':'balanced';
+      this.options.friendlyFire=this.options.friendlyFire===true;
       this.options.mode='annihilation';
       this.options.metersPerUnit=Number.isFinite(Number(this.options.metersPerUnit))?clamp(Number(this.options.metersPerUnit),1,100):1;
       this.options.playerProtection=Object.fromEntries(Object.entries(PLAYER_PROTECTION_DEFAULTS).map(([k,v])=>{
@@ -441,7 +444,13 @@
       return e;
     }
     get(id) {
-      return this.entities.find((e) => e.id === id && e.hp > 0);
+      if(id==null)return null;
+      let index=entityIndexes.get(this);
+      if(!index||index.entities!==this.entities||index.length!==this.entities.length){const byId=new Map();for(let i=0;i<this.entities.length;i++)if(!byId.has(this.entities[i].id))byId.set(this.entities[i].id,i);index={entities:this.entities,length:this.entities.length,byId};entityIndexes.set(this,index);}
+      const i=index.byId.get(id),e=this.entities[i];if(e?.id===id&&e.hp>0)return e;
+      // Also tolerate same-array replacement, reordering, death and save fixtures.
+      const found=this.entities.findIndex(e=>e.id===id&&e.hp>0);if(found>=0){index.byId.set(id,found);return this.entities[found];}
+      return undefined;
     }
     power(team) {
       return this.entities.reduce(
@@ -489,7 +498,7 @@
     }
     directFireStatus(e,target,options={}) {
       const d=e?this.weaponDefinition(e,target):null,weapon=e?.kind==='operator'?this.operatorWeapon(e):null,state=weapon?this.operatorState(e):null;
-      const profile=d?this.rangeProfile(e,false,target):null,armed=!!((weapon||d)?.damage>0||d?.weaponAction==='airWing'||e&&this.vehicleWeapons(e).some(w=>w.damage>0||w.action==='airWing')),range=profile?.attack||0,minRange=profile?.min||0;
+      const profile=d?this.engagementProfile(e,false,target):null,armed=!!((weapon||d)?.damage>0||d?.weaponAction==='airWing'||e&&this.vehicleWeapons(e).some(w=>w.damage>0||w.action==='airWing')),range=profile?.attack||0,minRange=profile?.min||0;
       const x=options.aimX??options.aimPoint?.x,y=options.aimY??options.aimPoint?.z,height=options.aimHeight??options.aimPoint?.y;
       const point=target?{x:target.x,y:target.y,height:this.entityAltitude(target)}:Number.isFinite(x)&&Number.isFinite(y)?{x,y,height:Number.isFinite(height)?height:this.entityAltitude(e)}:null;
       // A far sky aim point is not an orbital target. Projection belongs only
@@ -502,7 +511,7 @@
       const detected=!target||!!(e&&this.canDetect(e.team,target)&&this.entityVisible(e.team,target));
       const readiness=e&&e.kind!=='operator'&&d?.weaponAction!=='airWing'?root.WarCombatReadiness.status(this,e,this.vehicleWeapon(e,target)||d,target,options):null;
       const ammo=weapon?state.stash[weapon.id].ammo:readiness?.ammo??null,reloading=!!(state?.reloadRemaining||readiness?.reloadRemaining),cooldown=Math.max(0,readiness?.cooldown??e?.cool??0),aimValid=!target||this.directAimValid(target,options);
-      const reason=!e||e.hp<=0?'dead':root.WarCombatDamage.incapacitated(e)?e.components?.state||'disabled':!armed?'unarmed':target&&!domainAllowed?'domain':e.disabled>this.time?'emp':!profile.active?'inactive':!point?'no-target':options.blocked||options.aimBlocked?'blocked':target&&!this.isEnemy(e.team,target.team)?'friendly':!detected?'undetected':!aimValid?'aim-miss':rangeState==='min'?'min-range':rangeState==='out'?'out-of-range':readiness&&!readiness.canFire?readiness.reason:reloading?'reloading':ammo===0?'no-ammo':cooldown>0?'cooldown':'ready';
+      const reason=!e||e.hp<=0?'dead':root.WarCombatDamage.incapacitated(e)?e.components?.state||'disabled':!armed?'unarmed':target&&!domainAllowed?'domain':e.disabled>this.time?'emp':!profile.active?'inactive':!point?'no-target':options.blocked||options.aimBlocked?'blocked':target&&(!this.playerAttackAllowed(e,target,true)||d?.weaponAction==='airWing'&&!this.isEnemy(e.team,target.team))?'friendly':!detected?'undetected':!aimValid?'aim-miss':rangeState==='min'?'min-range':rangeState==='out'?'out-of-range':readiness&&!readiness.canFire?readiness.reason:reloading?'reloading':ammo===0?'no-ammo':cooldown>0?'cooldown':'ready';
       return{armed,range,minRange,distance,actualDistance,inRange,rangeState,domainAllowed,detected,canFire:reason==='ready',reason,projected,ammo,reserve:readiness?.reserve,reloading,aimValid,cooldown,readiness};
     }
     validDirectShotOrigin(e,p) {
@@ -553,6 +562,14 @@
       return this.entities.some(s=>s.team===team&&(U[s.kind]||B[s.kind])?.sonarRange&&this.operational(s)&&this.engagementDistance(s,e)<=(U[s.kind]||B[s.kind]).sonarRange);
     }
     entityVisible(team,e) {return root.WarSensors.entityVisible(this,team,e);}
+    playerAttackAllowed(e,target,manual=this.directControl?.id===e?.id||e?.order?.playerAttack&&e.order.target===target?.id) {
+      return !!e&&!!target&&(this.isEnemy(e.team,target.team)||this.options.friendlyFire===true&&manual&&e.team===0&&target.team===0&&e.id!==target.id);
+    }
+    setFriendlyFire(enabled) {
+      this.options.friendlyFire=enabled===true;
+      if(enabled)return;
+      for(const e of this.entities){const friendly=id=>{const t=this.get(id);return t&&!this.isEnemy(e.team,t.team);};if(friendly(e.order?.target)){e.order=null;e.path=[];}e.orderQueue=e.orderQueue?.filter(o=>!friendly(o.target))||[];if(friendly(e.target)){e.target=null;root.WarCombatReadiness.cancelBurst?.(e);root.WarWeaponSalvos?.cancel(this,e,'friendly-fire-off');}}
+    }
     setCommanderAI(enabled) {return root.WarCommanderAI.setEnabled(this,enabled);}
     manualCommand(ids) {return root.WarCommanderAI.markManual(this,ids);}
     operational(e, power) {
@@ -639,8 +656,8 @@
     }
     canTargetKind(sourceKind,targetKind) {
       if(typeof sourceKind==='object'&&root.WarVehicleWeapons.supported(sourceKind)){
-        const target={kind:targetKind,x:sourceKind.x,y:sourceKind.y,altitude:this.entityAltitude(sourceKind)};
-        return !!this.vehicleWeapon(sourceKind,target);
+        const chosen=sourceKind.weaponId||'auto',domain=this.targetDomain(targetKind),personnel=(U[targetKind]?.modelKind||targetKind)==='infantry';
+        return this.vehicleWeapons(sourceKind).some(w=>(chosen==='auto'||w.id===chosen||w.stationId===chosen)&&w.targetDomains.includes(domain)&&(!w.personnelOnly||personnel));
       }
       return this.targetDomains(sourceKind).includes(this.targetDomain(targetKind));
     }
@@ -669,10 +686,15 @@
       if(!weapon&&root.WarVehicleWeapons.supported(e))weapon=this.vehicleWeapon(e);
       const d=weapon||U[e.kind]||B[e.kind],legacy={range:d?.range||0,min:d?.minRange||0,reference:null};
       if(this.options.rangeMode!=='published'||!root.WarWeaponRanges||(!d?.damage&&d?.action!=='airWing'))return legacy;
+      // Evidence and unit conversion are immutable for a loadout; no positions,
+      // ammunition, power or visibility results are cached here.
+      const cache=this._rangeEvidence||(this._rangeEvidence=new WeakMap()),key=this.teams[e.team]?.faction+':'+this.options.metersPerUnit,old=cache.get(d);
+      if(old&&old.key===key&&old.range===d.range&&old.min===d.minRange&&old.reference===d.rangeReference)return old.value;
       const data=weapon?.rangeReference?{primary:weapon.rangeReference,notes:weapon.parameterBasis,platform:e.kind}:weapon?root.WarWeaponRanges.getOperatorProfile(weapon):root.WarWeaponRanges.getProfile(e.kind,this.teams[e.team]?.faction),record=data?.primary;
       const resolved=record&&root.WarWeaponRanges.resolve(record,{metersPerUnit:this.options.metersPerUnit,metric:'selected'});
       if(!resolved?.known)return {...legacy,reference:{status:'game-setting',notes:'无已核实射程，沿用游戏设定。',meters:legacy.range*this.options.metersPerUnit}};
-      return {range:resolved.range,min:resolved.minRange??0,reference:{...resolved,record,notes:data.notes,platform:data.platform}};
+      const value={range:resolved.range,min:resolved.minRange??0,reference:{...resolved,record,notes:data.notes,platform:data.platform}};
+      cache.set(d,{key,range:d.range,min:d.minRange,reference:d.rangeReference,value});return value;
     }
     formatRangeDistance(value) {
       if(!Number.isFinite(value))return '—';
@@ -684,11 +706,15 @@
       const status=reference.status,base=status==='published'||status==='public'||status==='verified'?'公开数据':status==='inferred'||status==='estimate'?'同类估算':'游戏设定';
       return base+(reference.qualifier==='greater-than'?'（公开下限）':'');
     }
-    rangeProfile(e,preview=false,target=null) {
-      const base=this.weaponDefinition(e,target),weapon=e.kind==='operator'?this.operatorWeapon?.(e):this.vehicleWeapon(e,target)||this.vehicleWeapon(e),d=weapon?{...base,range:weapon.range,damage:weapon.damage}:base,structure=!!B[e.kind],power=(structure?this.power(e.team):0)+(preview?(d.power||0):0);
+    engagementProfile(e,preview=false,target=null) {
+      const d=U[e.kind]||B[e.kind],weapon=e.kind==='operator'?this.operatorWeapon?.(e):this.vehicleWeapon(e,target)||this.vehicleWeapon(e),damage=weapon?weapon.damage:root.WarVehicleWeapons.supported(e)?0:d.damage,structure=!!B[e.kind],power=(structure?this.power(e.team):0)+(preview?(d.power||0):0);
       const active=this.operational(e,power),reason=e.disabled>this.time?'EMP停机':!active?'供电不足':null;
-      const boosted=this.options.rangeMode!=='published'&&structure&&d.damage>0&&power>=0&&this.teamEntities(e.team).some(r=>r.kind==='radar'&&this.operational(r,power)&&dist(e,r)<450);
-      const nominal=this.weaponRangeProfile(e,weapon),attack=d.damage>0||weapon?.action==='airWing'?nominal.range*(boosted?1.15:1):0,min=nominal.min,domains=weapon?.targetDomains||this.targetDomains(e.kind);
+      const boosted=this.options.rangeMode!=='published'&&structure&&damage>0&&power>=0&&this.teamEntities(e.team).some(r=>r.kind==='radar'&&this.operational(r,power)&&dist(e,r)<450);
+      const nominal=this.weaponRangeProfile(e,weapon),attack=damage>0||weapon?.action==='airWing'?nominal.range*(boosted?1.15:1):0,min=nominal.min,domains=weapon?.targetDomains||this.targetDomains(e.kind);
+      return {kind:e.kind,active,reason,preview,power,boosted,attack,nominal:nominal.range,min,reference:nominal.reference,domains,weapon};
+    }
+    rangeProfile(e,preview=false,target=null) {
+      const profile=this.engagementProfile(e,preview,target),{attack,min,domains,weapon,power}=profile,d=U[e.kind]||B[e.kind];
       const zones=[];
       if(attack){zones.push({type:'attack',label:weapon?.action==='airWing'?'航空队任务':'攻击',radius:attack,min,domains});if(min)zones.push({type:'blind',label:'最小射程盲区',radius:min});}
       zones.push(...root.WarSensors.zones(this,e,power));
@@ -697,7 +723,7 @@
       if(d.shield)zones.push({type:'shield',label:'护盾',radius:d.range,domains:d.shieldDomains||['ground','naval','underwater','air','space','structure']});
       if(d.jam)zones.push({type:'jam',label:'电磁压制',radius:d.range});
       if(e.kind==='radar')zones.push({type:'link',label:'雷达联动',radius:450});
-      return {kind:e.kind,active,reason,preview,power,boosted,attack,nominal:nominal.range,min,reference:nominal.reference,domains,zones,weapon};
+      return {...profile,zones};
     }
     availableUnitKinds(team) {
       const t=this.teams[team],own=this.teamEntities(team),producers=new Set(own.filter(e=>e.structure&&e.disabled<=this.time).map(e=>e.kind));
@@ -809,7 +835,7 @@
     }
     emitShot(e,target,aim,weapon,context={}) {
       if(!e||(!target&&!aim))return false;
-      if(target&&(!this.isEnemy(e.team,target.team)||!this.canDetect(e.team,target)||!this.entityVisible(e.team,target)))return false;
+      if(target&&(!this.playerAttackAllowed(e,target)||!this.canDetect(e.team,target)||!this.entityVisible(e.team,target)))return false;
       if(e.kind==='operator'&&!weapon&&this.operatorAutoFire)return this.operatorAutoFire(e,target);
       const d=weapon||this.weaponDefinition(e,target),vehicleWeapon=d.vehicleWeapon;
       if(vehicleWeapon?.action==='airWing')return this.operational(e)&&e.cool<=0&&root.WarCarrierOperations.requestStrike(this,e,target||aim);
@@ -818,8 +844,8 @@
       if(readiness&&!readiness.canFire&&!(context.burstContinuation&&readiness.reason==='cooldown'))return false;
       if(this.weaponPathBlocked(e,target,aim,root.WarCombatReadiness.profile(this,e,combatWeapon)))return false;
       if(e.kind==='operator'&&e.cool>0)return false;
-      if(target&&(!this.isEnemy(e.team,target.team)||!this.canDetect(e.team,target)||!this.canTargetKind(e,target.kind)&&e.kind!=='operator'))return false;
-      if(target){const r=this.rangeProfile(e,false,target),distance=this.engagementDistance(e,target);if(distance<r.min-1e-6||distance>r.attack+1e-6)return false;}
+      if(target&&(!this.playerAttackAllowed(e,target)||!this.canDetect(e.team,target)||!this.canTargetKind(e,target.kind)&&e.kind!=='operator'))return false;
+      if(target){const r=this.engagementProfile(e,false,target),distance=this.engagementDistance(e,target);if(distance<r.min-1e-6||distance>r.attack+1e-6)return false;}
       let val=target?this.attackDamage(e.kind,target,d.damage,d):0;
       if(target&&!vehicleWeapon){
         if(e.kind==='submarine'&&!U[target.kind]?.naval)val*=.2;
@@ -831,6 +857,7 @@
       const resolvedOrigin=!aim?.origin?this.resolveWeaponOrigin?.(e,combatWeapon,e.combat?.stations[combatWeapon.id]?.nextPort||0):null;
       const origin=aim?.origin||resolvedOrigin||{x:e.x,y:e.y,height:this.entityAltitude(e)+(e.structure?20:!d.air&&!d.naval?12:0)},destination=aim?.fixedImpact?aim:target||aim,destinationHeight=aim?.fixedImpact?aim.height:target?this.entityAltitude(target):aim?.height??0,crossLayer=target?(!!U[e.kind]?.space!==!!U[target.kind]?.space):aim?.projected===true,travel=Math.max(.08,Math.hypot(origin.x-destination.x,origin.y-destination.y,crossLayer?0:(aim?.origin?origin.height:this.entityAltitude(e))-destinationHeight)/(weaponFx==='torpedo'?220:e.kind==='rocket'?400:700));
       const shot={type:'shot',x:origin.x,y:origin.y,tx:destination.x,ty:destination.y,target:target?.id??null,from:e.team,
+        playerFriendlyFire:this.options.friendlyFire===true&&e.team===0&&(this.directControl?.id===e.id||e.order?.playerAttack===true),
         damage:val,baseDamage:target||weapon?d.damage:0,targetDomain:target?this.targetDomain(target.kind):weapon?(destinationHeight>=2000?'space':destinationHeight>25?'air':destinationHeight< -15?'underwater':null):null,splash:target||weapon?(d.splash||0):0,
         // TTL also advances during the firing step. Keep visual discharge age
         // independent so a short muzzle flash survives its first rendered frame.
@@ -930,7 +957,7 @@
       if(e.kind==='operator'&&this.stepOperator){this.stepOperator(e,dt,input);return;}
       const fireInput=this.directControl.firePending||input;this.directControl.firePending=null;
       const candidate=this.get(fireInput.targetId),status=this.directFireStatus(e,candidate,fireInput),range=status.range;
-      const target=candidate&&!fireInput.aimBlocked&&status.inRange&&status.domainAllowed&&status.detected&&status.aimValid&&this.isEnemy(e.team,candidate.team)?candidate:null;
+      const target=candidate&&!fireInput.aimBlocked&&status.inRange&&status.domainAllowed&&status.detected&&status.aimValid&&this.playerAttackAllowed(e,candidate,true)?candidate:null;
       e.target=target?.id??null;
       if(!fireInput.fire||!status.armed||(candidate&&!status.domainAllowed)||status.rangeState==='min'||fireInput.aimBlocked||e.disabled>this.time||root.WarCombatDamage.incapacitated(e))return;
       if(this.vehicleWeapon(e,candidate)?.action==='airWing'&&!status.canFire)return;
@@ -1096,7 +1123,8 @@
         const side=((n%cols)-(width-1)/2)*spacing,front=((rows-1)/2-Math.floor(n/cols))*spacing;
         const cached=cachedPlan?.get(e.id);let p=this.destination(e,cached?.x??x+rx*side+fx*front,cached?.y??y+ry*side+fy*front,destinationBudget);
         if(!p){report.rejected.push({id:e.id,reason:'no-free-berth'});n++;continue;}
-        const vacant=q=>q&&reserved.every(o=>!this.navigationLayer(e,o.entity)||Math.hypot(q.x-o.x,q.y-o.y)>=this.navigationRadius(e)+this.navigationRadius(o.entity)+32);
+        const moverRadius=this.navigationRadius(e),occupants=reserved.filter(o=>this.navigationLayer(e,o.entity)).map(o=>({x:o.x,y:o.y,safe:moverRadius+this.navigationRadius(o.entity)+32}));
+        const vacant=q=>q&&occupants.every(o=>{const dx=q.x-o.x,dy=q.y-o.y;return dx*dx+dy*dy>=o.safe*o.safe;});
         if(!vacant(p)){
           const original=p;let found=false;
           const berthStep=U[e.kind]?.naval?spacing:Math.max(32,this.navigationRadius(e));
@@ -1107,7 +1135,7 @@
         }
         if(!vacant(p)){report.rejected.push({id:e.id,reason:'no-free-berth'});n++;continue;}
         const contact=this.get(target),tracked=contact&&this.canDetect(e.team,contact)&&this.entityVisible(e.team,contact)?target:null;
-        const order={x:p.x,y:p.y,attack,target:tracked};
+        const order={x:p.x,y:p.y,attack,target:tracked,...(options.source==='player'&&attack?{playerAttack:true}:{})};
         // Movement connectivity is distinct from ranged fire: an explicit detected
         // attack target can remain valid across a river or between islands.
         const from=options.queue?(e.orderQueue?.at(-1)||e.order||e):e;
@@ -1268,7 +1296,7 @@
         if(e.id===this.directControl?.id)this.endDirectControl();
         const t = this.teams[e.team];
         t.lost++;
-        if (this.teams[from]) this.teams[from].kills++;
+        if (this.teams[from]&&this.isEnemy(from,e.team)) this.teams[from].kills++;
         this.effects.push(root.WarCombatDamage.wreck(this,e));
         this.effects.push({
           type: "explosion",
@@ -1319,14 +1347,14 @@
       const own=es.filter(e=>!e.structure&&e.id!==player.id&&root.WarCommanderAI.eligible(this,e)&&this.operational(e)&&!e.retreating),
         armed=own.filter(e=>U[e.kind].damage>0&&e.hp/e.maxHp>.25),assets=es.filter(e=>e.structure),
         observed=this.entities.filter(e=>this.isEnemy(0,e.team)&&this.operational(e)&&(U[e.kind]||B[e.kind]).damage>0&&this.canDetect(0,e)&&this.entityVisible(0,e)),
-        threatens=(enemy,ally,radius)=>this.canTargetKind(enemy,ally.kind)&&this.engagementDistance(enemy,ally)<=Math.max(radius,this.rangeProfile(enemy,false,ally).attack+100),
+        threatens=(enemy,ally,radius)=>this.canTargetKind(enemy,ally.kind)&&this.engagementDistance(enemy,ally)<=Math.max(radius,this.engagementProfile(enemy,false,ally).attack+100),
         playerThreats=observed.filter(e=>threatens(e,player,cfg.playerRadius)).sort((a,b)=>this.engagementDistance(a,player)-this.engagementDistance(b,player)),
         baseThreats=observed.filter(e=>assets.some(a=>threatens(e,a,cfg.baseRadius))).sort((a,b)=>dist(a,hq)-dist(b,hq)),
         critical=player.hp/player.maxHp<cfg.criticalRatio,reserved=new Set(),assigned=new Set();
       const reserve=(e,role)=>{reserved.add(e.id);e.protectionRole=role;};
       if(!root.WarCommandFeedback&&typeof module!=='undefined'&&typeof require==='function')require('./command-feedback.js');
       const reachable=(e,goal,allowFire=false)=>{
-        if(allowFire&&this.canTargetKind(e,goal.kind)&&this.engagementDistance(e,goal)<=this.rangeProfile(e,false,goal).attack)return true;
+        if(allowFire&&this.canTargetKind(e,goal.kind)&&this.engagementDistance(e,goal)<=this.engagementProfile(e,false,goal).attack)return true;
         const destination=this.destination(e,goal.x,goal.y);
         return !!destination&&root.WarCommandFeedback?.check(this.map,U[e.kind],e,destination)?.reachable!==false;
       };
@@ -1601,7 +1629,7 @@
         if(e.hp<=0||root.WarCombatDamage.incapacitated(e)||e.disabled>this.time)continue;
         const d = U[e.kind] || B[e.kind];
         const input=e.id===this.directControl?.id?this.directControl.input:null,pendingTarget=this.get(input?.targetId??e.target),combatTarget=pendingTarget&&this.canDetect(e.team,pendingTarget)&&this.entityVisible(e.team,pendingTarget)?pendingTarget:null,combatWeapon=this.vehicleWeapon(e,combatTarget)||d;
-        root.WarCombatReadiness.step(this,e,dt,{target:combatTarget,weapon:combatWeapon,moving:input?!!(input.forward||input.strafe||input.throttle):!!e.order&&(!combatTarget||this.engagementDistance(e,combatTarget)>this.rangeProfile(e,false,combatTarget).attack),aimYaw:input?.yaw,aimPitch:input?.pitch,aimX:input?.aimX,aimY:input?.aimY,aimHeight:input?.aimHeight,intentFire:!!input?.fire});
+        root.WarCombatReadiness.step(this,e,dt,{cooldownMultiplier:this.cooldownMultiplier(e,fireControllers),target:combatTarget,weapon:combatWeapon,moving:input?!!(input.forward||input.strafe||input.throttle):!!e.order&&(!combatTarget||this.engagementDistance(e,combatTarget)>this.engagementProfile(e,false,combatTarget).attack),aimYaw:input?.yaw,aimPitch:input?.pitch,aimX:input?.aimX,aimY:input?.aimY,aimHeight:input?.aimHeight,intentFire:!!input?.fire});
         this.combatSupplyStep(e,dt);
         const burst=root.WarCombatReadiness.takeBurst?.(this,e);if(burst){const profile=root.WarCombatReadiness.weapons(this,e).find(w=>w.id===burst.weaponId);if(profile)this.emitShot(e,this.get(burst.targetId),burst.aim,{...root.WarVehicleWeapons.definition(d,profile),vehicleWeapon:profile},{burstContinuation:true});}
         if(e.kind==='harvester'&&e.id!==this.directControl?.id)this.harvest(e,dt);
@@ -1638,16 +1666,16 @@
         if(root.WarAircraftFlight.groundStep(this,e,dt))continue;
         if(e.kind==='operator')this.operatorAutoTick(e,dt);
         if (!d.damage && !e.order && !root.WarAircraftFlight.supported(e)) continue;
-        let target = this.get(e.target);
-        let firingRange=this.rangeProfile(e,false,target),range=firingRange.attack,minRange=firingRange.min;
+        let target = this.get(e.order?.playerAttack&&e.order.target?e.order.target:e.target);
+        let firingRange=this.engagementProfile(e,false,target),range=firingRange.attack,minRange=firingRange.min;
         const searchRange=root.WarVehicleWeapons.supported(e)&&(!e.weaponId||e.weaponId==='auto')?Math.max(0,...this.vehicleWeapons(e).map(p=>this.weaponRangeProfile(e,p).range)):range;
         const canHit = (t) =>
           d.damage > 0 &&
           (e.kind!=='operator'||this.operatorCanTarget(e,t)) &&
-          this.isEnemy(e.team, t.team) &&
-          this.canTargetKind(e,t.kind) && this.canDetect(e.team,t) && this.engagementDistance(e,t)>=this.rangeProfile(e,false,t).min &&
+          this.playerAttackAllowed(e,t) &&
+          this.canTargetKind(e,t.kind) && this.canDetect(e.team,t) &&
           this.entityVisible(e.team,t);
-        if (!target || !canHit(target) || this.engagementDistance(e, target) > range * 1.35)
+        if (!target || !canHit(target) || this.engagementDistance(e, target) < minRange || this.engagementDistance(e, target) > range * 1.35)
           target = null;
         // Player explicit movement suppresses auto-fire until arrival; attack move engages.
         if (
@@ -1657,7 +1685,9 @@
         ) {
           let best = Infinity;
           for (const o of this.spatial.query(e.x, e.y, searchRange)) {
-            const delta = this.engagementDistance(e, o),candidateRange=this.rangeProfile(e,false,o);
+            if(!this.isEnemy(e.team,o.team)||o.hp<=0||!this.canTargetKind(e,o.kind))continue;
+            const delta = this.engagementDistance(e, o);if(delta>=best)continue;
+            const candidateRange=this.engagementProfile(e,false,o);
             if (
               canHit(o) &&
               delta < candidateRange.attack &&
@@ -1665,12 +1695,12 @@
               delta < best
             ) {
               best = delta;
-              target = o;
+              target = o;firingRange=candidateRange;
             }
           }
         }
         e.target = target?.id || null;
-        firingRange=this.rangeProfile(e,false,target);range=firingRange.attack;minRange=firingRange.min;
+        range=firingRange.attack;minRange=firingRange.min;
         if (target) {
           const mount=root.WarCombatReadiness.profile(this,e,this.vehicleWeapon(e,target))?.mount;
           if(d.naval&&mount?.mode==='hull'&&(!e.order||e.order.attack)){
@@ -1725,6 +1755,7 @@
                 goal.x,
                 goal.y,
               );
+              if(!e.path.length&&root.WarCrowdNavigation.segment(this,e,goal))e.path=[{x:goal.x,y:goal.y}];
               if(e.path.length){const last=e.path[e.path.length-1];if(Math.hypot(last.x-goal.x,last.y-goal.y)<T*1.5)e.path.push({x:goal.x,y:goal.y});}
               e.repath = this.time + 1;
               this.pathBudget--;

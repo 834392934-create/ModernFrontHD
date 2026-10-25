@@ -13,7 +13,7 @@ test('A* respects each map size without changing global dimensions or another ga
  assert.ok(legacy.length>0);assert.ok(legacy.every(p=>p.x<6144&&p.y<4224));
 });
 
-const ids=['english_channel','gibraltar','taiwan_strait'];
+const ids=['english_channel','gibraltar','taiwan_strait','north_sea','baltic_sea','persian_gulf'];
 const historical={river:'d7ab8b0206e47f64284e869c1f2119adff9ff4744b82f11016b9fdbb41f617bf',desert:'719fccccba893116b423e6f8d12b5df68f024cf3f1b408aa9e5e0616bc1a499d',industry:'aea40d23c4e3722fe90fa6b41bd67111eb6989f5f439bc351b815906bcfb6cbd',archipelago:'6fe0f647ec3493a3318cc0ac4ecbc5a79f9b388650e420f1266b19836fdf469e'};
 const index=(m,p)=>Math.floor(p.y/m.tileSize)*m.cols+Math.floor(p.x/m.tileSize);
 function flood(m,mask,p){const seen=new Uint8Array(mask.length),queue=new Int32Array(mask.length),start=index(m,p);if(mask[start])return seen;seen[start]=1;queue[0]=start;let head=0,tail=1;while(head<tail){const i=queue[head++],x=i%m.cols,y=Math.floor(i/m.cols);for(const j of [x?i-1:-1,x+1<m.cols?i+1:-1,y?i-m.cols:-1,y+1<m.rows?i+m.cols:-1])if(j>=0&&!seen[j]&&!mask[j]){seen[j]=1;queue[tail++]=j;}}return seen;}
@@ -25,8 +25,8 @@ test('all four legacy maps retain their exact v3.14 terrain and deployment hashe
 for(const id of ids){
  test(`${id}: offline coast is unchanged and five complete bases have mine/objective access`,()=>{
   const g=new WarSim.Game({map:id,enemies:4}),m=g.map,source=WarMapGeography.regions[id];
-  assert.deepEqual([m.width,m.height,m.tileSize,m.cols,m.rows],[12288,8448,48,256,176]);assert.equal(m.spawns.length,5);assert.equal(m.nodes.length,6);assert.equal(m.geography.coastModified,false);
-  let at=0;for(let i=0;i<source.landRuns.length;i+=2)for(let n=0;n<source.landRuns[i];n++){assert.equal(m.blocked[at],1-source.landRuns[i+1]);assert.equal(m.navalBlocked[at],source.landRuns[i+1]);at++;}assert.equal(at,45056);
+  assert.deepEqual([m.width,m.height,m.tileSize,m.cols,m.rows],(ids.indexOf(id)<3?[12288,8448,48,256,176]:[24576,16896,48,512,352]));assert.equal(m.spawns.length,5);assert.equal(m.nodes.length,6);assert.equal(m.geography.coastModified,false);
+  let at=0;for(let i=0;i<source.landRuns.length;i+=2)for(let n=0;n<source.landRuns[i];n++){assert.equal(m.blocked[at],1-source.landRuns[i+1]);assert.equal(m.navalBlocked[at],source.landRuns[i+1]);at++;}assert.equal(at,m.cols*m.rows);
   for(const e of g.entities){if(e.structure)clear(m,WarData.B[e.kind].water?m.navalBlocked:m.blocked,e,e.r,`${id}/${e.team}/${e.kind} building footprint`);else if(!WarData.U[e.kind].air)assert.equal(WarNavigationFootprints.terrain(g,e,e.x,e.y),true,`${id}/${e.team}/${e.kind} full unit footprint`);}
   for(const [team,p]of m.spawns.entries()){const mine=g.ore[team],miner=g.entities.find(e=>e.team===team&&e.kind==='harvester');clear(m,m.blocked,mine,80,`${id} team ${team} mine`);g.harvest(miner,.05);const entrance=miner.mineApproach,refinery=g.entities.find(e=>e.team===team&&e.kind==='refinery');assert.ok(entrance&&g.directPositionFree(miner,entrance.x,entrance.y),'physical loading approach');const land=flood(m,m.blocked,p);assert.equal(land[index(m,entrance)],1,'loading area shares the base land region');assert.equal(land[index(m,refinery)],1,'refinery shares the base land region');assert.ok(m.nodes.some(n=>land[index(m,n)]),'an objective is reachable on each starting land mass');}
  });
@@ -42,10 +42,10 @@ for(const id of ids){
  });
  test(`${id}: independent visibility, local A* masks and save/load preserve far-side coordinates`,()=>{
   const g=new WarSim.Game({map:id,enemies:4}),legacy=new WarSim.Game({map:'river',enemies:1});
-  const far=g.map.spawns.find(p=>p.x>6144),target=g.spawn(0,'recon_vehicle',far.x+250,far.y+260);g.updateFog();assert.equal(g.visible.length,45056);assert.equal(g.visibleAt(target.x,target.y),true);assert.equal(legacy.visible.length,11264);
-  const mask=WarNavigationFootprints.pathGrid(g,target);assert.equal(mask.cols,256);assert.equal(mask.width,12288);
+  const far=g.map.spawns.find(p=>p.x>6144),target=g.spawn(0,'recon_vehicle',far.x+250,far.y+260);g.updateFog();assert.equal(g.visible.length,g.map.cols*g.map.rows);assert.equal(g.visibleAt(target.x,target.y),true);assert.equal(legacy.visible.length,11264);
+  const mask=WarNavigationFootprints.pathGrid(g,target);assert.equal(mask.cols,g.map.cols);assert.equal(mask.width,g.map.width);
   const destination=g.destination(target,target.x+100,target.y);assert.ok(destination&&destination.x>6144);g.command([target.id],destination.x,destination.y);assert.ok(target.order.x>6144);
-  const saved=g.save(),loaded=WarSim.Game.load(saved);assert.equal(loaded.get(target.id).x,target.x);assert.deepEqual(loaded.map.spawns,g.map.spawns);assert.equal(loaded.visible.length,45056);
+  const saved=g.save(),loaded=WarSim.Game.load(saved);assert.equal(loaded.get(target.id).x,target.x);assert.deepEqual(loaded.map.spawns,g.map.spawns);assert.equal(loaded.visible.length,g.map.cols*g.map.rows);
   const old=legacy.save();delete old.mapGeometry;assert.equal(WarSim.Game.load(old).map.width,6144);
   const bad=structuredClone(saved);bad.mapGeometry.width=6144;assert.throws(()=>WarSim.Game.load(bad),/geometry/i);assert.equal(WarData.W,6144);
  });

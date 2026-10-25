@@ -35,7 +35,7 @@ test("mainland maps connect all bases; island maps retain local objectives and s
         assert.ok(map.nodes.some(n=>findPath(map,p.x,p.y,n.x,n.y).length>0),'each island has a reachable objective');
         for(const q of map.spawns)if(p!==q)assert.equal(findPath(map,p.x,p.y,q.x,q.y).length,0,'separate islands require sea/air transport');
       }else if(map.geography){
-        const groups=m.id==='english_channel'?[[0,1],[2,3,4]]:[[0,1,2],[3,4]],from=map.spawns.indexOf(p),group=groups.find(g=>g.includes(from));
+        const groups=({english_channel:[[0,1],[2,3,4]],gibraltar:[[0,1,2],[3,4]],taiwan_strait:[[0,1,2],[3,4]],north_sea:[[0,1],[2],[3,4]],baltic_sea:[[0,1],[2,3,4]],persian_gulf:[[0,1,2,3,4]]})[m.id],from=map.spawns.indexOf(p),group=groups.find(g=>g.includes(from));
         assert.ok(map.nodes.some(n=>findPath(map,p.x,p.y,n.x,n.y).length>0),'each geographic shore has a reachable objective');
         for(const [i,q]of map.spawns.entries())assert.equal(findPath(map,p.x,p.y,q.x,q.y).length>0,group.includes(i),m.id+' keeps same-shore access and no artificial land bridge');
       }else{

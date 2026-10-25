@@ -47,7 +47,7 @@
  function expire(fx){fx.ttl=0;fx.target=null;fx.damage=0;fx.baseDamage=0;fx.splash=0;fx.treeDamage=0;fx.treeSplash=0;fx.type='spent-projectile';return {handled:true,expired:true,impact:false};}
  function impact(fx,target){const p=fx.projectile.position;fx.tx=p.x;fx.ty=p.y;fx.targetHeight=p.height;fx.target=target?.id??null;fx.ttl=0;return {handled:true,expired:false,impact:true};}
  function canImpact(g,fx,e){
-  if(!e||e.hp<=0||e.id===fx.excludedTargetId||!g.isEnemy(fx.from,e.team)||!g.canDetect(fx.from,e))return false;
+  if(!e||e.hp<=0||e.id===fx.excludedTargetId||e.id===fx.sourceId||!(g.isEnemy(fx.from,e.team)||g.options.friendlyFire===true&&fx.playerFriendlyFire===true&&fx.from===0&&e.team===0)||!g.canDetect(fx.from,e))return false;
   const domain=g.targetDomain(e.kind),isPerson=(data(e).modelKind||e.kind)==='infantry';
   if(fx.operatorTargets)return fx.operatorTargets.includes(g.operatorDomain(e));
   if(fx.weaponDomains)return fx.weaponDomains.includes(domain)&&(!fx.weaponPersonnelOnly||isPerson);
@@ -65,8 +65,13 @@
  function boxEntry(a,b,min,max){let lo=0,hi=1;for(const key of ['x','y','z']){const delta=b[key]-a[key];if(Math.abs(delta)<1e-9){if(a[key]<min[key]||a[key]>max[key])return null;continue;}let near=(min[key]-a[key])/delta,far=(max[key]-a[key])/delta;if(near>far)[near,far]=[far,near];lo=Math.max(lo,near);hi=Math.min(hi,far);if(lo>hi)return null;}return lo;}
  function collision(g,fx,a,b){
   const mid={x:(a.x+b.x)/2,y:(a.y+b.y)/2},radius=Math.hypot(b.x-a.x,b.y-a.y)/2+240,candidates=g.spatial?.query(mid.x,mid.y,radius)||g.entities;let best=null;
+  const lowX=Math.min(a.x,b.x),highX=Math.max(a.x,b.x),lowY=Math.min(a.y,b.y),highY=Math.max(a.y,b.y),lowH=Math.min(a.height,b.height),highH=Math.max(a.height,b.height);
   for(const e of candidates){if(e.hp<=0||e.id===fx.sourceId||e.embarkedIn||e.components?.state==='downed')continue;
    const shape=e.structure?data(e).footprint:null,bounds=root.WarNavigationFootprints?.bounds[e.kind+'_'+g.teams[e.team]?.faction],r=e.r||10;
+   // Conservative sphere around the complete rotated hull, followed by the
+   // existing swept OBB. Reject only impossible segment/hull intersections.
+   const reach=shape?Math.hypot(shape.halfLength,shape.halfWidth,Math.max(Math.abs(shape.minY||0),shape.maxY||data(e).collisionHeight||2)):bounds?Math.hypot(Math.max(Math.abs(bounds[3]),Math.abs(bounds[4]))+1,Math.max(Math.abs(bounds[1]),Math.abs(bounds[2]))+1,Math.max(Math.abs(bounds[5]),Math.abs(bounds[6]))+1):Math.hypot(r,r,g.hitHeightRadius?.(e)||r*2),h=g.entityAltitude(e);
+   if(e.x+reach<lowX||e.x-reach>highX||e.y+reach<lowY||e.y-reach>highY||h+reach<lowH||h-reach>highH)continue;
    const min=shape?{x:-shape.halfLength,y:shape.minY??0,z:-shape.halfWidth}:bounds?{x:bounds[3]-1,y:bounds[1]-1,z:bounds[5]-1}:{x:-r,y:-1,z:-r},max=shape?{x:shape.halfLength,y:shape.maxY??data(e).collisionHeight??2,z:shape.halfWidth}:bounds?{x:bounds[4]+1,y:bounds[2]+1,z:bounds[6]+1}:{x:r,y:g.hitHeightRadius?.(e)||r*2,z:r},t=boxEntry(local(g,e,a),local(g,e,b),min,max);
    if(t!==null&&(!best||t<best.t))best={t,entity:e};
   }

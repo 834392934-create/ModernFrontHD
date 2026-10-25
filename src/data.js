@@ -373,7 +373,10 @@
   MAPS.push(
     {id:'english_channel',name:'英吉利海峡',en:'ENGLISH CHANNEL · XL',desc:'真实海岸轮廓 · 超大战场 · 英法两岸与跨海协同',seed:31501,palette:['#728265','#9a9d73','#506b62'],geographic:true},
     {id:'gibraltar',name:'直布罗陀海峡',en:'GIBRALTAR · XL',desc:'真实海岸轮廓 · 超大战场 · 狭窄海峡与两岸部署',seed:31502,palette:['#a89b71','#c1ac7d','#75806a'],geographic:true},
-    {id:'taiwan_strait',name:'台湾海峡',en:'TAIWAN STRAIT · XL',desc:'真实海岸轮廓 · 超大战场 · 岛岸海空与轨道协同',seed:31503,palette:['#60806a','#899573','#486b60'],geographic:true}
+    {id:'taiwan_strait',name:'台湾海峡',en:'TAIWAN STRAIT · XL',desc:'真实海岸轮廓 · 超大战场 · 岛岸海空与轨道协同',seed:31503,palette:['#60806a','#899573','#486b60'],geographic:true},
+    {id:'north_sea',name:'北海大剧场',en:'NORTH SEA · XXL',desc:'24576 × 16896 · 英伦、斯堪的纳维亚与大陆海岸 · 原超大图4倍面积',seed:31601,palette:['#728265','#9a9d73','#506b62'],geographic:true},
+    {id:'baltic_sea',name:'波罗的海大剧场',en:'BALTIC SEA · XXL',desc:'24576 × 16896 · 半岛、海湾与漫长海岸线 · 原超大图4倍面积',seed:31602,palette:['#60806a','#899573','#486b60'],geographic:true},
+    {id:'persian_gulf',name:'波斯湾大剧场',en:'PERSIAN GULF · XXL',desc:'24576 × 16896 · 荒漠海岸与海峡 · 原超大图4倍面积',seed:31603,palette:['#a89b71','#c1ac7d','#75806a'],geographic:true}
   );
   const BUFFS = {
     ammo: { name: "无限备用弹药", desc: "仅玩家备用弹药不限；仍消耗弹仓并完成换弹，关闭后恢复原库存" },

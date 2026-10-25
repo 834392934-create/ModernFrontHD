@@ -3,6 +3,18 @@
 (function(root){
  'use strict';const T=root.THREE,states=new WeakMap(),eventIndexes=new WeakMap(),plumes=new Map(),plumeMaterial=new T.MeshBasicMaterial({color:0xa1d6e6,transparent:true,opacity:.36,blending:T.AdditiveBlending,depthWrite:false,toneMapped:false}),clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
  function shotsFor(game,id){let index=eventIndexes.get(game);if(!index||index.time!==game.time||index.count!==(game.effects||[]).length){index={time:game.time,count:(game.effects||[]).length,byId:new Map()};for(const fx of game.effects||[])if(['shot','interceptor','discharge'].includes(fx.type)){if(!index.byId.has(fx.sourceId))index.byId.set(fx.sourceId,[]);index.byId.get(fx.sourceId).push(fx);}eventIndexes.set(game,index);}return index.byId.get(id)||[];}
+ const farGeometry=new WeakMap();
+ function trackLod(model,state,enabled){
+  if(state.trackLod===enabled)return;
+  if(!state.lodMeshes){state.lodMeshes=[];const tracks=new Set(state.joints.filter(j=>j.d.role==='track').map(j=>j.node));
+   model.traverse(mesh=>{if(!mesh.isSkinnedMesh||!mesh.skeleton.bones.some(b=>tracks.has(b)))return;const full=mesh.skeleton,kept=full.bones.map((b,i)=>({b,i})).filter(v=>!tracks.has(v.b)),removed=full.bones.filter(b=>tracks.has(b)).map(b=>({bone:b,parent:b.parent})),map=new Map(kept.map((v,i)=>[v.i,i]));
+    let geometry=farGeometry.get(mesh.geometry);if(!geometry){geometry=new T.BufferGeometry();for(const [name,attribute]of Object.entries(mesh.geometry.attributes))geometry.setAttribute(name,attribute);geometry.setIndex(mesh.geometry.index);const index=mesh.geometry.attributes.skinIndex,values=new Uint16Array(index.array.length);for(let i=0;i<values.length;i++)values[i]=map.get(index.array[i])??0;geometry.setAttribute('skinIndex',new T.Uint16BufferAttribute(values,4));geometry.boundingBox=mesh.geometry.boundingBox;geometry.boundingSphere=mesh.geometry.boundingSphere;farGeometry.set(mesh.geometry,geometry);}
+    const reduced=new T.Skeleton(kept.map(v=>v.b),kept.map(v=>full.boneInverses[v.i]));state.skeletons.push(reduced);state.lodMeshes.push({mesh,full,reduced,geometry,original:mesh.geometry,removed});
+   });
+  }
+  for(const v of state.lodMeshes){v.mesh.skeleton=enabled?v.reduced:v.full;v.mesh.geometry=enabled?v.geometry:v.original;for(const o of v.removed)if(enabled)o.bone.removeFromParent();else o.parent.add(o.bone);}
+  state.trackLod=enabled;
+ }
  function attach(model){const meshes=[];model.traverse(o=>{if(o.isMesh&&o.userData.vehicleBones&&!o.isSkinnedMesh)meshes.push(o);});const skeletons=[];
   for(const src of meshes){const mesh=new T.SkinnedMesh(src.geometry,src.material);mesh.name=src.name;mesh.userData={...src.userData};mesh.position.copy(src.position);mesh.quaternion.copy(src.quaternion);mesh.scale.copy(src.scale);mesh.castShadow=src.castShadow;mesh.receiveShadow=src.receiveShadow;mesh.frustumCulled=false;
    const bones=src.userData.vehicleBones.map(d=>{const b=new T.Bone();b.name=d.node;b.position.set(...d.pivot);return b;});for(let i=0;i<bones.length;i++){const parent=src.userData.vehicleBones[i].parent;((parent&&bones.find(b=>b.name===parent))||mesh).add(bones[i]);}for(const child of [...src.children])mesh.add(child);src.parent.add(mesh);src.parent.remove(src);model.updateMatrixWorld(true);const skeleton=new T.Skeleton(bones);mesh.bind(skeleton);skeletons.push(skeleton);
@@ -14,14 +26,18 @@
   // Exhaust is render-only. Templates and baked navigation envelopes contain
   // the physical vehicle, never the length of a flame or smoke effect.
   for(const {d,node}of joints)if(d.effect&&d.plumeRadius&&!node.children.length){const key=d.plumeRadius+':'+d.plumeLength;let geo=plumes.get(key);if(!geo){geo=new T.ConeGeometry(d.plumeRadius*.72,d.plumeLength,8,1,true);geo.rotateZ(Math.PI/2);geo.translate(-d.plumeLength/2,0,0);plumes.set(key,geo);}const mesh=new T.Mesh(geo,plumeMaterial);mesh.userData.motionEffect=true;mesh.raycast=()=>{};node.add(mesh);}
-  const state={joints,skeletons,paths,time:null,x:0,y:0,angle:0,distance:0,seen:new WeakSet(),serials:new Map(),shots:[],q:new T.Quaternion(),axis:new T.Vector3()};states.set(model,state);return state;
+  // Static mesh-local transforms never change. Keep articulated nodes live,
+  // while avoiding repeated quaternion-to-matrix composition for every bolt.
+  const moving=new Set([model,...joints.map(j=>j.node)]);model.traverse(node=>{if(!node.isBone&&!moving.has(node)){node.updateMatrix();node.matrixAutoUpdate=false;}});
+  const state={joints,skeletons,paths,weaponJoints:joints.filter(j=>['turret','weaponPitch'].includes(j.d.role)),time:null,x:0,y:0,angle:0,distance:0,seen:new WeakSet(),serials:new Map(),shots:[],q:new T.Quaternion(),axis:new T.Vector3()};states.set(model,state);return state;
  }
  function update(model,e,game){const s=states.get(model)||attach(model),time=Number(game?.time)||0,m=e.motion||{},scale=model.userData.scale||1,dt=s.time===null?0:time-s.time;
-  if(s.time===time)return s;const fresh=s.time===null||dt<0||dt>.5,dx=e.x-s.x,dy=e.y-s.y,travel=Math.hypot(dx,dy),signed=travel*((dx*Math.cos(e.angle)+dy*Math.sin(e.angle))<0?-1:1),distance=Number.isFinite(m.distance)?m.distance:0,delta=fresh?0:(Number.isFinite(m.distance)?distance-s.distance:signed)/scale,turn=fresh?0:wrap((e.angle||0)-s.angle);
+  trackLod(model,s,!!model.userData.animationInterval);
+  if(s.time===time||s.time!==null&&dt>=0&&dt<(model.userData.animationInterval||0))return s;const fresh=s.time===null||dt<0||dt>.5,dx=e.x-s.x,dy=e.y-s.y,travel=Math.hypot(dx,dy),signed=travel*((dx*Math.cos(e.angle)+dy*Math.sin(e.angle))<0?-1:1),distance=Number.isFinite(m.distance)?m.distance:0,delta=fresh?0:(Number.isFinite(m.distance)?distance-s.distance:signed)/scale,turn=fresh?0:wrap((e.angle||0)-s.angle);
   for(const fx of shotsFor(game,e.id))if(!s.seen.has(fx)){s.seen.add(fx);if(fx.projectileId!=null&&s.shots.some(v=>v.projectileId===fx.projectileId))continue;s.shots.push({projectileId:fx.projectileId,at:Number.isFinite(fx.firedAt)?fx.firedAt:time-Math.max(0,fx.max-fx.ttl),mountId:fx.mountId||'main',profile:root.WarWeaponEffects?.profile(fx)});}s.shots=s.shots.filter(x=>time-x.at<1.2);
   const recoilFor=d=>{let recoil=0;for(const shot of s.shots){const a=time-shot.at,p=shot.profile;if((shot.mountId!==(d.mountId||'main'))||(d.families&&!d.families.includes(p?.name)))continue;if(a>=0&&a<.6)recoil=Math.max(recoil,(p?.recoil??.7)*Math.min(1,a/.035)*Math.exp(-Math.max(0,a-.035)*8));}return recoil;};
   const speed=Math.abs(m.signedSpeed||e.flightSpeed||0),max=root.WarData?.U?.[e.kind]?.speed||100,throttle=clamp(m.throttle||0,0,1),roll=clamp((e.roll||0)/.42,-1,1),pitch=clamp((e.pitch||0)/.6,-1,1),yaw=clamp((m.turnRate||0),-1,1);
-  for(const j of s.joints){const {d,node}=j;let a=0;node.position.fromArray(d.pivot);node.quaternion.fromArray(d.rest);node.scale.fromArray(d.restScale||[1,1,1]);
+  for(const j of s.joints){const {d,node}=j;if(s.trackLod&&d.role==='track')continue;let a=0;node.position.fromArray(d.pivot);node.quaternion.fromArray(d.rest);node.scale.fromArray(d.restScale||[1,1,1]);
    switch(d.role){
     case 'wheel':if(!fresh)j.phase-=(delta-turn*(d.positionZ||0))/Math.max(.1,d.radius);a=j.phase;if(d.steering)node.quaternion.multiply(s.q.setFromAxisAngle(s.axis.set(0,1,0),-(m.steer||0)*.43));break;
     case 'track':{const path=s.paths[d.path];if(!path)break;if(!fresh)j.phase-=delta-turn*(d.positionZ||0);const offset=((d.pathOffset+j.phase)%path.length+path.length)%path.length,seg=path.segments.find(x=>offset<x.start+x.size-1e-9)||path.segments.at(-1),t=clamp((offset-seg.start)/seg.size,0,1);node.position.set(seg.a[0]+(seg.b[0]-seg.a[0])*t,seg.a[1]+(seg.b[1]-seg.a[1])*t,d.pivot[2]);a=Math.atan2(seg.b[1]-seg.a[1],seg.b[0]-seg.a[0])-d.pathAngle;break;}
@@ -49,6 +65,6 @@
  function release(model){const s=states.get(model);if(s)for(const sk of s.skeletons)sk.dispose();states.delete(model);}
  // Simulation may request a port between rendered frames. Synchronize the
  // authoritative mount angles without integrating wheels/rotors or shot queues.
- function syncWeaponPose(model,e){const s=states.get(model)||attach(model);for(const {d,node}of s.joints){if(!['turret','weaponPitch'].includes(d.role))continue;const m=e.combat?.mounts?.[d.mountId||'main'];if(!m)continue;let a=m.pitch||0;if(d.role==='turret'){const parent=e.combat?.mounts?.[d.parentMountId];a=(d.parentMountId?(parent?.yaw??e.turret??e.angle??0):(e.structure?0:e.angle||0))-(m.yaw||0);}node.quaternion.fromArray(d.rest).multiply(s.q.setFromAxisAngle(s.axis.fromArray(d.axis||[0,1,0]),a*(d.sign??1)));if(d.wholeMountPitch)node.quaternion.multiply(s.q.setFromAxisAngle(s.axis.set(0,0,1),m.pitch||0));}return s;}
+ function syncWeaponPose(model,e){const s=states.get(model)||attach(model);for(const {d,node}of s.weaponJoints){const m=e.combat?.mounts?.[d.mountId||'main'];if(!m)continue;let a=m.pitch||0;if(d.role==='turret'){const parent=e.combat?.mounts?.[d.parentMountId];a=(d.parentMountId?(parent?.yaw??e.turret??e.angle??0):(e.structure?0:e.angle||0))-(m.yaw||0);}node.quaternion.fromArray(d.rest).multiply(s.q.setFromAxisAngle(s.axis.fromArray(d.axis||[0,1,0]),a*(d.sign??1)));if(d.wholeMountPitch)node.quaternion.multiply(s.q.setFromAxisAngle(s.axis.set(0,0,1),m.pitch||0));}return s;}
  root.WarVehicleAnimation={update,attach,release,syncWeaponPose,state:model=>states.get(model)};
 })(globalThis);

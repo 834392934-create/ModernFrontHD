@@ -61,10 +61,17 @@
    return true;
   }return false;
  }
+ const observerHints=new WeakMap();
  function unitsInSight(g,target,units){
   // Every query observes current power, including a same-tick destroyed plant,
   // but one shared team calculation replaces one full entity scan per observer.
-  const powers=[];for(const e of units||[]){const d=data(e),needsPower=B[e.kind]&&(!publicMode(g)||e.kind==='radar'||d.sonarRange);if(needsPower&&powers[e.team]===undefined)powers[e.team]=g.power?.(e.team);if(detects(g,e,target,powers[e.team]))return true;}return false;
+  if(!units?.length||!target)return false;
+  let byList=observerHints.get(g);if(!byList){byList=new WeakMap();observerHints.set(g,byList);}let hints=byList.get(units);if(!hints){hints=new WeakMap();byList.set(units,hints);}
+  const powers=[],test=e=>{const d=data(e),needsPower=B[e.kind]&&(!publicMode(g)||e.kind==='radar'||d.sonarRange);if(needsPower&&powers[e.team]===undefined)powers[e.team]=g.power?.(e.team);return detects(g,e,target,powers[e.team]);},hint=hints.get(target);
+  // Cache only the promising observer, never visibility. Revalidate current
+  // membership, position, health, EMP, altitude and team power on every query.
+  if(hint&&units[hint.index]===hint.observer&&test(hint.observer))return true;
+  for(let i=0;i<units.length;i++)if(test(units[i])){hints.set(target,{observer:units[i],index:i});return true;}return false;
  }
  function entityVisible(g,team,e){
   if(!alive(e))return false;if(!g.isEnemy(team,e.team))return true;
