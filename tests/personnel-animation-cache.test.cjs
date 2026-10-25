@@ -1,10 +1,10 @@
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),{execFileSync}=require('node:child_process'),os=require('node:os');
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),os=require('node:os');
 global.THREE=require('../assets/vendor/three.min.js');for(const file of ['models3d','model-detail','models-operator','personnel-animation'])require('../src/'+file);
 const T=THREE,A=WarPersonnelAnimation,repo=path.resolve(__dirname,'..');
 // Pinned pre-optimization repository implementation, not a rewritten oracle.
-// This differential check is a source-checkout test and requires its Git history.
+// Its byte-for-byte snapshot ships with the tests, including shallow clones and archives.
 const BASELINE='2de5cd59e2cae1b066393e0f175a40c59464df47';
-const oldSource=execFileSync('git',['show',BASELINE+':src/personnel-animation.js'],{cwd:repo,encoding:'utf8'});
+const oldSource=fs.readFileSync(path.join(__dirname,'fixtures/baselines/personnel-animation.pre-pose-cache.js'),'utf8');
 const context=vm.createContext({THREE:T,WarModels:{colors:WarModels.colors,register(){}},WarDetail,WarOperatorModel});vm.runInContext(oldSource,context,{filename:'baseline-personnel-animation.js'});const old=context.WarPersonnelAnimation;
 function fixture(api=A,kind='infantry',faction='chn'){
  const model=WarModels.create(kind,faction),e={kind,x:120,y:140,angle:0,jumpHeight:0};model.scale.setScalar(model.userData.scale);let time=0;

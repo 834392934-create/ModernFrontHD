@@ -1,13 +1,13 @@
 /* CPU geometry/raycast differential review; no renderer or GPU is created.
  * Texture decoding alone is stubbed, never licensed geometry or skeletons. */
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),{execFileSync}=require('node:child_process');
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 global.THREE=require('../assets/vendor/three.min.js');global.self=globalThis;global.dispatchEvent=()=>{};global.CustomEvent=class{};
 const T=THREE,repo=path.resolve(__dirname,'..'),load=file=>vm.runInThisContext(fs.readFileSync(path.join(repo,file),'utf8'),{filename:file});
 for(const name of ['data','roster','equipment','operator-weapons','sim','models3d','vehicle-rig-ground','vehicle-rig-naval','vehicle-rig-air','models-tanks','models-vehicles','models-air','models-naval','models-space','model-detail','models-roster','models-reinforcements-ground-naval','models-reinforcements-air-space','models-tactical-ground-naval','models-tactical-air-space','models-depth-wave','models-altitude-wave','models-buildings','models-defense-wave','models-operator','personnel-animation','model-unit-refinement','weapon-effects','vehicle-animation'])require('../src/'+name+'.js');
 load('assets/vendor/GLTFLoader.bundle.js');const Loader=T.GLTFLoader;T.GLTFLoader=class extends Loader{constructor(){super();for(const name of ['CPUTextureFixture','EXT_texture_webp'])this.register(()=>({name,loadTexture:()=>Promise.resolve(new T.Texture())}));}};
 for(const name of ['assets/models/burke-data.js','src/models-imported.js','assets/models/ah64-data.js','src/models-imported-air.js','assets/models/t90m-data.js','src/models-imported-ground.js'])load(name);
 const ready=Promise.all([WarImported.ready,WarImportedAir.ready,WarImportedGround.ready]);
-const baseline='3b758f1',oldSource=execFileSync('git',['show',baseline+':src/direct-control.js'],{cwd:repo,encoding:'utf8'});
+const baseline='3b758f1',oldSource=fs.readFileSync(path.join(__dirname,'fixtures/baselines/direct-control.pre-raycast-cache.js'),'utf8');
 function api(source){const c=vm.createContext({THREE:T,WarData,WarNavigationFootprints,console});vm.runInContext(source,c);return c.WarDirectControl.prototype;}
 const old=api(oldSource),current=api(fs.readFileSync(path.join(repo,'src/direct-control.js'),'utf8'));
 function fixture(){const g=new WarSim.Game({faction:'usa',enemies:1,buffs:['vision']});g.entities=[];g.effects=[];const r={objects:new Map(),world:new T.Group()};return{g,r,a:{r,game:g,entityId:-1,ray:new T.Raycaster()},b:{r,game:g,entityId:-1,ray:new T.Raycaster()}};}
