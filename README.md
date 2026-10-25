@@ -1,6 +1,56 @@
 # 现代战线 HD · 3.16.0
 
-可离线运行的三维即时战略遭遇战。项目位于 `D:\现代战线HD`；原参考目录 `D:\红警\2024` 未修改。
+**从总指挥切换到第一人称，在同一场战斗中指挥部队、驾驶载具、上下车作战。**
+
+作者：**ayuan**。这是一个使用 JavaScript、Three.js 和 Electron 开发的离线三维即时战略游戏实验，支持地面、水面、水下、空中和轨道层作战，以及基于规则的 AI 建设、生产与护卫。开发采用 AI 辅助，并公开源码、回归用例和性能记录，希望帮助学习游戏开发、仿真调度与性能分析的朋友。
+
+[技术实现与阅读路线](docs/TECHNICAL_HIGHLIGHTS.md) · [实测与限制](docs/VALIDATION.md) · [Codespaces 使用说明](docs/CODESPACES.md) · [第三方素材与许可](THIRD_PARTY_NOTICES.md)
+
+| 第一人称载具驾驶：实机验收截图 | 北海地图：离线海岸与侦察覆盖 |
+|---|---|
+| ![坦克第一人称驾驶](screenshots/fps-tank-desktop.png) | ![北海战术地图](screenshots/north_sea-minimap-desktop.png) |
+
+## 值得研究的技术
+
+| 技术 | 实际解决的问题 | 实现入口 |
+|---|---|---|
+| RTS / 第一人称共享战场状态 | 驾驶、换乘、返回指挥时延续同一实体的生命、弹药与战况 | [直接控制](src/direct-control.js)、[模拟](src/sim.js) |
+| 固定步长模拟与显示插值 | 以 20 Hz 更新模拟，驾驶镜头和被驾驶载具按显示帧插值，缓解低频位置跳动 | [主循环](src/app.js)、[显示姿态](src/direct-control.js) |
+| 按车体尺寸与高度层寻路 | 结合 A*、旋转占地检查、编队停位与有限预算重规划，处理窄路和建筑拥堵 | [导航包络](src/navigation-footprints.js)、[群体导航](src/crowd-navigation.js) |
+| 连续弹道与独立炮口判定 | 检查弹体两次更新之间经过的路径，减少高速穿透；镜头瞄准与炮口遮挡分别处理 | [弹体模拟](src/combat-projectiles.js)、[瞄准控制](src/direct-control.js) |
+| 玩家 / AI 控制权交接 | 手动命令优先，记录 AI 下发命令；关闭托管时保留人工操作 | [指挥官托管](src/commander-ai.js)、[玩家护卫](src/player-mode.js) |
+| 航空作业状态机 | 串联起飞、巡航、返航、进近、滑行和维修；舰载机也是可驾驶的战场实体 | [航空流程](src/aircraft-flight.js)、[舰载航空](src/carrier-operations.js) |
+| 分层传感器与离线地理地图 | 分开处理地形探索、实时接触、雷达和声呐；把地理轮廓转换成可玩的海陆网格 | [传感器](src/sensors.js)、[地图生成工具](tools/build-geographic-maps.cjs) |
+| 有证据的性能优化 | 缓存稳定资料，保留实时状态检查；按距离降低骨骼与阴影更新开销 | [动画分级](src/vehicle-animation.js)、[等价性用例](tests/hotpath-equivalence.test.cjs) |
+
+以上是当前项目的工程实现与学习入口，不宣称算法首创。模块仍依赖项目的数据与全局接口；迁移到其他游戏前，应先读配套测试和边界说明。
+
+## 性能结果与当前边界
+
+3.16.0 的配对压力样本：RTX 3060、1500×980 CSS 像素、DPR 1.25，320 个作战单位加 2 个总部，采样 12 秒，两个版本均开启 CPU 采样。
+
+| 指标 | 3.15.0 | 3.16.0 |
+|---|---:|---:|
+| 平均 FPS | 2.58 | 34.84 |
+| P95 帧时间，越低越好 | 499.9 ms | 44.2 ms |
+| 平均模拟步耗时 | 68.37 ms | 18.78 ms |
+| 模拟时间 / 实际时间 | 0.645 | 1.023 |
+
+这是刻意制造密集拥堵的固定场景，不能代表所有玩家战局。**640 单位、60 秒、无 CPU 采样的极密压力场景仍只有约 5.01 FPS，尚未达到流畅标准。** 3.16.0 发布记录包含 1036 项通过的 CPU 回归及 21 组独立版检查/采样；功能验收通过与性能达标分别记录。[原始报告与复现方法](docs/PEAK_RECOVERY_316.md)
+
+本项目仍是开发中的游戏实验：大部分外观为程序化模型，真实装备的外形核验尚未全部完成；武器参数包含公开资料、同类估算与游戏设定。当前没有 DLSS、光线追踪或 H3 神经渲染，也没有达到商业 AAA 美术水平。
+
+## 从源码试运行
+
+Git 仓库包含源码和所需游戏资源，**不包含 `release/` 下的 Windows EXE 运行时**。已安装 Node.js 时，在仓库根目录运行：
+
+```sh
+npm start
+```
+
+然后用支持 WebGL 的浏览器访问 `http://localhost:8765`，这是源码的浏览器兼容入口。`npm start` 使用 Node 内置模块和仓库内资源，无需先安装 npm 依赖。Windows 独立版的构建步骤见下方“构建与验证”；云端编辑和预览见 [Codespaces 指南](docs/CODESPACES.md)。
+
+欢迎通过 Issue 提供最小复现步骤，或通过 PR 改进导航、性能、测试和文档。性能问题请附版本/提交号、CPU/GPU、分辨率、地图、单位数量和采样时长，便于对照验证。
 
 ## 启动
 
@@ -101,7 +151,7 @@
 
 RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU 绘制提交从 6.17 降到 3.98 ms，半数行走时从 5.66 降到 4.11 ms；两版帧率均约 50 FPS。492 项 CPU 测试及本轮原生回归通过。范围和完整证据见 [验证记录](docs/VALIDATION.md)；不将短样本外推到大型长局。
 
-本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.12.0`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
+本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.16.0`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
 
 ## 第一人称瞄准与单兵作战
 
@@ -302,7 +352,7 @@ RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU
 | 飞机/潜艇升降 | Shift / Ctrl |
 | 攻击与支援范围 | V：选中/防线/关闭 |
 
-独占据点7秒开始产出；据点不再提供积分胜利。电力不足减慢生产并停用高能防御。大型打击需要侦察和可见目标。当前没有友军伤害。
+独占据点7秒开始产出；据点不再提供积分胜利。电力不足减慢生产并停用高能防御。大型打击需要侦察和可见目标。玩家友军攻击默认关闭，开启后的操作见上方 3.16.0 说明。
 
 ## 外观与真实资料
 
@@ -322,7 +372,7 @@ RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU
 npm test
 # 首次构建独立版需要联网下载官方运行时：
 powershell -File tools/fetch-desktop-runtime.ps1
-powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.12.0
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.16.0
 node server.cjs
 # 第二终端；需要已有Playwright或设置PLAYWRIGHT_MODULE：
 node tests/gallery.cjs
@@ -342,7 +392,7 @@ node tests/performance3d.cjs --desktop
 node tools/capture-model-review.cjs tank_chn tank_usa
 node tools/bake-portraits.cjs
 node tools/export-model-inventory.cjs
-powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.12.0
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.16.0
 ```
 
 游戏运行不需要开发工具。报告见 [验证记录](docs/VALIDATION.md)，真实截图在 `screenshots/`。
@@ -351,12 +401,14 @@ powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.12.0
 
 ## Git
 
-本地分支 `codex/modern-front-hd`，未配置远端。自行在Git账户建空仓库后：
+开发分支为 `codex/modern-front-hd`。从 GitHub 克隆时已经有 `origin`；本地新建的仓库需先添加自己的远端：
 
 ```powershell
 cd 'D:\现代战线HD'
 git remote add origin '你的远端仓库URL'
 git push -u origin codex/modern-front-hd
 ```
+
+首次上传遇到 2 GiB 包限制或 `remote end hung up unexpectedly`，先核对失败日志，再参考 [分批推送说明](docs/GITHUB_UPLOAD.md)。该说明包含本项目 3.16 历史的实际分批节点，适用于尚未完成首次上传的维护者。
 
 运行时、研究照片、缓存、日志与存档不进入Git。原创代码/资产使用MIT；第三方许可见 [第三方说明](THIRD_PARTY_NOTICES.md)。
