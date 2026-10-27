@@ -63,12 +63,13 @@ test('actual Game swept impact damages once and a moved target avoids original t
   g.step(.05);assert.equal(target.hp<hp,!moved);const after=target.hp;g.step(.05);assert.equal(target.hp,after);
  }
 });
-test('torpedo loses sonar contact and expires without magical target ID damage',()=>{
+test('torpedo loses sonar guidance but retains damage until normal lifetime, without target ID damage',()=>{
  const {g,e}=arena('submarine'),target=g.spawn(1,'submarine',e.x+300,e.y),w=R.weapons(g,e)[0],fx=shot(g,e,w,target);g.buffs.delete('vision');g.effects.push(fx);assert(g.canDetect(e.team,target));P.step(g,fx,.1);assert.equal(fx.projectile.state,'tracking');target.x+=1800;
- let result;advance(g,4,dt=>{if(fx.type==='shot')result=P.step(g,fx,dt);});assert.equal(result.expired,true);assert.equal(fx.target,null);assert.equal(fx.damage,0);assert.equal(fx.projectile.state,'searching');
+ let result;advance(g,4,dt=>{if(fx.type==='shot')result=P.step(g,fx,dt);});assert.equal(result.expired,false);assert.equal(fx.target,null);assert(fx.damage>0);assert.equal(fx.projectile.state,'searching');
+ advance(g,fx.projectile.maxAge+1,dt=>{if(fx.type==='shot')result=P.step(g,fx,dt);});assert(result.expired);assert.equal(fx.damage,0);
 });
 test('naval decoys consume charges and lure nearby torpedoes without duplicate impacts',()=>{
- const {g,e}=arena('submarine'),target=g.spawn(1,'submarine',e.x+200,e.y),w=R.weapons(g,e)[0],fx=shot(g,e,w,target);g.effects.push(fx);assert(P.deployDecoy(g,target));assert.equal(target.countermeasures.charges,2);assert.equal(P.deployDecoy(g,target),false);
+ const {g,e}=arena('submarine'),target=g.spawn(1,'submarine',e.x+200,e.y);target.angle=0;const w=R.weapons(g,e)[0],fx=shot(g,e,w,target);g.effects.push(fx);assert(P.deployDecoy(g,target));assert.equal(target.countermeasures.charges,2);assert.equal(P.deployDecoy(g,target),false);
  let sawDecoy=false;advance(g,2,dt=>{if(fx.type==='shot'){P.step(g,fx,dt);sawDecoy||=fx.projectile.state==='decoy';}});assert(sawDecoy);assert.equal(fx.type,'spent-projectile');assert.equal(fx.damage,0);
 });
 test('projectile validators reject corrupted trajectory state and preserve old frozen shots',()=>{

@@ -32,7 +32,7 @@
    const heading=Math.atan2(target.y-start.y,target.x-start.x),speed=180;
    shot.projectile={kind:'torpedo',position:start,previous:{...start},velocity:{x:Math.cos(heading)*speed,y:Math.sin(heading)*speed,height:0},heading,speed,turnRate:.8,age:0,maxAge:Math.min(35,Math.max(4,shot.max*2+2,Math.abs(target.height-start.height)/22+dist(start,target)/speed+2)),lockId:shot.target??null,decoyId:null,lostFor:0,searchRemaining:3,state:'tracking',impactHeight:target.height};
    shot.ttl=shot.max=shot.projectile.maxAge;delete shot.directHitArea;
-  }else if(family==='missile'&&shot.target!=null&&!shot.directHitArea&&!Number.isInteger(shot.salvoIndex)){
+  }else if(family==='missile'&&shot.target!=null&&!shot.directHitArea&&(!Number.isInteger(shot.salvoIndex)||shot.guidedSalvo)){
    const air=!!data(e).air&&!data(e).space,vertical=!data(e).space&&p?.mount?.mode==='vertical',heading=air?e.angle||0:Math.atan2(target.y-start.y,target.x-start.x),pitch=vertical?Math.PI/2:air?e.pitch||0:Math.atan2(target.height-start.height,Math.max(.01,Math.hypot(target.x-start.x,target.y-start.y))),flightSpeed=e.flightSpeed||0,spaceProjection=!!data(e).space!==!!data(g.get(shot.target)).space;
    const lifetime=spaceProjection?clamp((shot.max||.5)+3,4,10):clamp(dist(start,target)/260+4,4,35),cruiseSpeed=spaceProjection?clamp(dist(start,target)/Math.max(.35,shot.max||.5),380,40000):380;
    shot.projectile={kind:'guided',position:start,previous:{...start},age:0,maxAge:lifetime,phase:air?'separation':vertical?'vertical':'ignition',phaseAge:0,heading,pitch,speed:air?flightSpeed:vertical?90:40,cruiseSpeed,spaceProjection,turnRate:1.8,pitchRate:1.5,lockId:shot.target,destination:{...target},releaseVelocity:{x:Math.cos(e.angle||0)*Math.cos(e.pitch||0)*flightSpeed,y:Math.sin(e.angle||0)*Math.cos(e.pitch||0)*flightSpeed,height:Math.sin(e.pitch||0)*flightSpeed},basis:'gameplay-guided-launch'};
@@ -47,7 +47,7 @@
  function expire(fx){fx.ttl=0;fx.target=null;fx.damage=0;fx.baseDamage=0;fx.splash=0;fx.treeDamage=0;fx.treeSplash=0;fx.type='spent-projectile';return {handled:true,expired:true,impact:false};}
  function impact(fx,target){const p=fx.projectile.position;fx.tx=p.x;fx.ty=p.y;fx.targetHeight=p.height;fx.target=target?.id??null;fx.ttl=0;return {handled:true,expired:false,impact:true};}
  function canImpact(g,fx,e){
-  if(!e||e.hp<=0||e.id===fx.excludedTargetId||e.id===fx.sourceId||!(g.isEnemy(fx.from,e.team)||g.options.friendlyFire===true&&fx.playerFriendlyFire===true&&fx.from===0&&e.team===0)||!g.canDetect(fx.from,e))return false;
+  if(!e||e.hp<=0||e.id===fx.excludedTargetId||e.id===fx.sourceId||!(g.isEnemy(fx.from,e.team)||g.options.friendlyFire===true&&fx.playerFriendlyFire===true&&fx.from===0&&e.team===0))return false;
   const domain=g.targetDomain(e.kind),isPerson=(data(e).modelKind||e.kind)==='infantry';
   if(fx.operatorTargets)return fx.operatorTargets.includes(g.operatorDomain(e));
   if(fx.weaponDomains)return fx.weaponDomains.includes(domain)&&(!fx.weaponPersonnelOnly||isPerson);
@@ -56,9 +56,9 @@
  // Contact is required for steering, not for physical collision. An already
  // airborne round can hit an unseen enemy; losing radar must not erase matter.
  function canTrack(g,fx,e){
-  if(!canImpact(g,fx,e))return false;
+  if(!canImpact(g,fx,e)||!g.canDetect(fx.from,e))return false;
   if(g.entityVisible)return g.entityVisible(fx.from,e);
-  if(data(e).underwater)return true; // canImpact retains the existing sonar gate.
+  if(data(e).underwater)return true; // Steering still requires sonar contact.
   return fx.from===0?g.visibleAt(e.x,e.y):g.unitsInSight(e,g.teamEntities(fx.from));
  }
  function local(g,e,p){const dx=p.x-e.x,dz=p.y-e.y,dy=p.height-g.entityAltitude(e),a=e.structure&&!data(e).rotatable?0:e.angle||0,c=Math.cos(a),s=Math.sin(a),cp=Math.cos(e.pitch||0),sp=Math.sin(e.pitch||0),cr=Math.cos(e.roll||0),sr=Math.sin(e.roll||0),x=c*dx+s*dz,z=-s*dx+c*dz,y=dy,xx=cp*x+sp*y,yy=-sp*x+cp*y;return{x:xx,y:cr*yy+sr*z,z:-sr*yy+cr*z};}
@@ -66,7 +66,7 @@
  function collision(g,fx,a,b){
   const mid={x:(a.x+b.x)/2,y:(a.y+b.y)/2},radius=Math.hypot(b.x-a.x,b.y-a.y)/2+240,candidates=g.spatial?.query(mid.x,mid.y,radius)||g.entities;let best=null;
   const lowX=Math.min(a.x,b.x),highX=Math.max(a.x,b.x),lowY=Math.min(a.y,b.y),highY=Math.max(a.y,b.y),lowH=Math.min(a.height,b.height),highH=Math.max(a.height,b.height);
-  for(const e of candidates){if(e.hp<=0||e.id===fx.sourceId||e.embarkedIn||e.components?.state==='downed')continue;
+  for(const e of candidates){if(e.hp<=0||e.id===fx.sourceId||e.embarkedIn)continue;
    const shape=e.structure?data(e).footprint:null,bounds=root.WarNavigationFootprints?.bounds[e.kind+'_'+g.teams[e.team]?.faction],r=e.r||10;
    // Conservative sphere around the complete rotated hull, followed by the
    // existing swept OBB. Reject only impossible segment/hull intersections.
@@ -151,24 +151,30 @@
      const target=g.get(p.lockId);if(target&&canTrack(g,fx,target)){p.destination={x:target.x,y:target.y,height:g.entityAltitude(target)};steerGuided(p,p.destination,dt);}
      else{p.lockId=null;fx.target=null;p.phase='coast';p.phaseAge=0;}
     }
+    // A salvo stores an inertial aim point, so loss before ignition can still
+    // finish the vertical pitch-over. It never reads a vanished target again.
+    if(p.phase==='coast'&&fx.guidedSalvo)steerGuided(p,p.destination,dt);
     const forward=direction(p);p.position.x+=forward.x*p.speed*dt;p.position.y+=forward.y*p.speed*dt;p.position.height+=forward.height*p.speed*dt;
    }
    const surface=guidedSurface(p);
    const hit=resolveCollision(g,fx);if(hit)return hit;
    if(surface)return impact(fx,null);
-   if(p.phase==='coast'&&p.phaseAge>=1.5||p.position.height< -100&&p.destination.height>=-10)return expire(fx);
+   if(p.phase==='coast'&&fx.guidedSalvo&&swept(p.previous,p.position,p.destination,6))return impact(fx,null);
+   // Loss of contact stops guidance, not the physical warhead. Coast until
+   // collision, surface impact, the original lifetime or the map boundary.
+   if(p.position.height< -100&&p.destination.height>=-10)return expire(fx);
   }else if(p.kind==='torpedo'){
    const target=g.get(p.lockId),decoys=g.effects.filter(d=>d.type==='decoy'&&d.projectile?.kind==='decoy'&&d.from!==fx.from&&d.projectile.age<d.projectile.maxAge&&dist(position(d),p.position)<130),decoy=decoys.sort((a,b)=>dist(position(a),p.position)-dist(position(b),p.position))[0];
    let q=null;
    if(decoy){p.decoyId=id(g,decoy);p.state='decoy';q=position(decoy);}
    else if(target&&canTrack(g,fx,target)&&['naval','underwater'].includes(g.targetDomain(target.kind))){p.state='tracking';p.lostFor=0;p.searchRemaining=3;q={x:target.x,y:target.y,height:g.entityAltitude(target)};}
-   else{p.state='searching';p.lostFor+=dt;p.searchRemaining-=dt;p.lockId=null;fx.target=null;}
+   else{p.state='searching';p.lostFor+=dt;p.searchRemaining=Math.max(0,p.searchRemaining-dt);p.lockId=null;fx.target=null;}
    if(!q&&p.searchRemaining>0){const contact=g.entities.filter(e=>canTrack(g,fx,e)&&['naval','underwater'].includes(g.targetDomain(e.kind))&&dist({x:e.x,y:e.y,height:g.entityAltitude(e)},p.position)<150).sort((a,b)=>a.id-b.id)[0];if(contact){p.lockId=contact.id;q={x:contact.x,y:contact.y,height:g.entityAltitude(contact)};p.state='tracking';}}
    if(q){const desired=Math.atan2(q.y-p.position.y,q.x-p.position.x);p.heading+=clamp(wrap(desired-p.heading),-p.turnRate*dt,p.turnRate*dt);p.position.height+=clamp(q.height-p.position.height,-22*dt,22*dt);}
    const depthApproach=q?clamp(Math.hypot(q.x-p.position.x,q.y-p.position.y)/Math.max(1,Math.abs(q.height-p.position.height)*8),.1,1):1;
    p.position.x+=Math.cos(p.heading)*p.speed*depthApproach*dt;p.position.y+=Math.sin(p.heading)*p.speed*depthApproach*dt;
-   if(q&&swept(p.previous,p.position,q,decoy?12:Math.max(12,target?.r||12))){if(decoy)return expire(fx);const hit=g.get(p.lockId);return impact(fx,hit);}
-   if(p.searchRemaining<=0)return expire(fx);
+   const hit=resolveCollision(g,fx);if(hit)return hit;
+   if(decoy&&q&&swept(p.previous,p.position,q,12))return expire(fx);
   }
   const bounds=root.WarMapDimensions?.forMap(g.map)||{width:root.WarData.W,height:root.WarData.H};
   if(p.age>=p.maxAge||p.position.x<0||p.position.y<0||p.position.x>bounds.width||p.position.y>bounds.height)return expire(fx);
@@ -197,7 +203,8 @@
  function deployDecoy(g,e){
   if(!e||e.hp<=0||!data(e).naval||!g.operational(e)||root.WarCombatDamage?.incapacitated(e))return false;
   e.countermeasures??={charges:3,nextAt:0};const c=e.countermeasures;if(c.charges<=0||c.nextAt>g.time)return false;c.charges--;c.nextAt=g.time+8;
-  const point={x:e.x-Math.cos(e.angle||0)*25,y:e.y-Math.sin(e.angle||0)*25,height:g.entityAltitude(e)},fx={type:'decoy',from:e.team,sourceId:e.id,x:point.x,y:point.y,sourceHeight:point.height,tx:point.x,ty:point.y,targetHeight:point.height,ttl:6,max:6,firedAt:g.time,projectile:{kind:'decoy',position:point,previous:{...point},age:0,maxAge:6}};id(g,fx);g.effects.push(fx);return true;
+  const bounds=root.WarNavigationFootprints?.bounds[e.kind+'_'+g.teams[e.team]?.faction],clearance=Math.max(25,(bounds?Math.max(Math.abs(bounds[3]),Math.abs(bounds[4])):e.r||10)+20);
+  const point={x:e.x-Math.cos(e.angle||0)*clearance,y:e.y-Math.sin(e.angle||0)*clearance,height:g.entityAltitude(e)},fx={type:'decoy',from:e.team,sourceId:e.id,x:point.x,y:point.y,sourceHeight:point.height,tx:point.x,ty:point.y,targetHeight:point.height,ttl:6,max:6,firedAt:g.time,projectile:{kind:'decoy',position:point,previous:{...point},age:0,maxAge:6}};id(g,fx);g.effects.push(fx);return true;
  }
  function validate(fx){
   if(fx.projectileId!==undefined&&(!Number.isInteger(fx.projectileId)||fx.projectileId<1))return false;const p=fx.projectile;if(!p)return true;

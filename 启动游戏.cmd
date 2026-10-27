@@ -2,7 +2,7 @@
 rem Keep Windows CRLF line endings; launcher-format.test.cjs checks this.
 chcp 65001 >nul
 cd /d "%~dp0"
-if exist "%~dp0release\ModernFrontHD-3.16.0\ModernFrontHD.exe" (
+if exist "%~dp0release\ModernFrontHD-3.17.0\ModernFrontHD.exe" (
   call "%~dp0启动独立版.cmd"
   exit /b
 )

@@ -12,6 +12,7 @@
   if(typeof module!=='undefined'&&typeof require==='function')require('./carrier-operations.js');
   if(typeof module!=='undefined'&&typeof require==='function')require('./destructible-trees.js');
   if(typeof module!=='undefined'&&typeof require==='function')require('./weapon-salvos.js');
+  if(typeof module!=='undefined'&&typeof require==='function')require('./fire-allocation.js');
   if(typeof module!=='undefined'&&typeof require==='function')for(const file of ['combat-readiness','combat-damage','combat-projectiles','combat-impact','transport-operations'])require('./'+file+'.js');
   const D = root.WarData,
     { F, U, B, W, H, T, COLS, ROWS, ABILITIES } = D,
@@ -858,7 +859,7 @@
       const origin=aim?.origin||resolvedOrigin||{x:e.x,y:e.y,height:this.entityAltitude(e)+(e.structure?20:!d.air&&!d.naval?12:0)},destination=aim?.fixedImpact?aim:target||aim,destinationHeight=aim?.fixedImpact?aim.height:target?this.entityAltitude(target):aim?.height??0,crossLayer=target?(!!U[e.kind]?.space!==!!U[target.kind]?.space):aim?.projected===true,travel=Math.max(.08,Math.hypot(origin.x-destination.x,origin.y-destination.y,crossLayer?0:(aim?.origin?origin.height:this.entityAltitude(e))-destinationHeight)/(weaponFx==='torpedo'?220:e.kind==='rocket'?400:700));
       const shot={type:'shot',x:origin.x,y:origin.y,tx:destination.x,ty:destination.y,target:target?.id??null,from:e.team,
         playerFriendlyFire:this.options.friendlyFire===true&&e.team===0&&(this.directControl?.id===e.id||e.order?.playerAttack===true),
-        damage:val,baseDamage:target||weapon?d.damage:0,targetDomain:target?this.targetDomain(target.kind):weapon?(destinationHeight>=2000?'space':destinationHeight>25?'air':destinationHeight< -15?'underwater':null):null,splash:target||weapon?(d.splash||0):0,
+        damage:val,baseDamage:d.damage,targetDomain:target?this.targetDomain(target.kind):(destinationHeight>=2000?'space':destinationHeight>25?'air':destinationHeight< -15?'underwater':null),splash:d.splash||0,
         // TTL also advances during the firing step. Keep visual discharge age
         // independent so a short muzzle flash survives its first rendered frame.
         ttl:travel,max:travel,firedAt:this.time,rocket:vehicleWeapon?d.rocket:weaponFx!=='torpedo'&&(!!d.rocket||['rocket','heli','asat','sam'].includes(e.kind)),space:!!d.spaceWeapon,originFrozen:!!aim?.origin||!!resolvedOrigin,originApproximate:!aim?.origin&&(!resolvedOrigin||!!resolvedOrigin.approximate),
@@ -872,7 +873,8 @@
         ...(!target?{miss:true}:{}),
         ...(aim?.fixedImpact&&target?{directHitArea:{x:target.x,y:target.y,altitude:this.entityAltitude(target),r:target.r,verticalRadius:this.hitHeightRadius(target)}}:{}),
       };
-      if(!weapon&&root.WarWeaponSalvos?.profile(this,e,d.vehicleWeapon))return root.WarWeaponSalvos.begin(this,e,target,aim,d,shot);
+      const salvo=!weapon&&root.WarWeaponSalvos?.profile(this,e,d.vehicleWeapon);
+      if(salvo){const started=root.WarWeaponSalvos.begin(this,e,target,aim,d,shot);if(started||!salvo.multiTargetOnly)return started;}
       if(e.kind!=='operator'&&!root.WarCombatReadiness.consumeRound(this,e,combatWeapon,{deferCooldown:!!context.burstContinuation}))return false;
       if(e.kind==='operator')e.cool=d.reload;
       const launchProfile=e.kind==='operator'?weapon:root.WarCombatReadiness.profile(this,e,combatWeapon);
@@ -1286,7 +1288,9 @@
       if(!source?.componentTick)e.lastHitFromTeam=from;
       e.lastHitSourceId=Number.isInteger(source?.sourceId)?source.sourceId:null;
       e.lastHitFrom=Number.isFinite(source?.x)&&Number.isFinite(source?.y)?{x:source.x,y:source.y,sourceId:e.lastHitSourceId,time:this.time}:null;
-      root.WarCombatDamage.apply(this,e,actual,source);
+      // Injury severity uses the incoming post-shield hit, not remaining HP.
+      // Keep actual HP loss for hit feedback/statistics only.
+      root.WarCombatDamage.apply(this,e,applied,source);
       if(root.WarCombatDamage.incapacitated(e)){root.WarCombatReadiness.cancelBurst?.(e);this.operatorCancelTrigger?.(e.id);root.WarWeaponSalvos?.cancel(this,e,'disabled');}
       if(e.lastHitSourceId===this.directControl?.id&&this.isEnemy(from,e.team))
         this.directFeedback={hitAt:this.time,sourceId:e.lastHitSourceId,targetId:e.id,damage:actual};
@@ -1619,6 +1623,7 @@
         else root.WarCommanderAI.run(this,t,dt);
       }
       const fireControllers=this.entities.filter(e=>U[e.kind]?.fireControl&&this.operational(e));
+      root.WarFireAllocation.begin(this);
       for (const e of this.entities) {
         if(e.hp<=0)continue;
         const injury=root.WarCombatDamage.step(this,e,dt);
@@ -1679,26 +1684,27 @@
           target = null;
         // Player explicit movement suppresses auto-fire until arrival; attack move engages.
         if (
-          !target &&
+          (!target || !e.order?.playerAttack&&!e.combat?.burst&&!root.WarWeaponSalvos.active(this,e)&&root.WarFireAllocation.needsReview(this,e,target)) &&
           (!e.order || e.order.attack || e.structure) &&
           this.tick % 5 === e.id % 5
         ) {
           let best = Infinity;
+          const previous=target;
           for (const o of this.spatial.query(e.x, e.y, searchRange)) {
             if(!this.isEnemy(e.team,o.team)||o.hp<=0||!this.canTargetKind(e,o.kind))continue;
-            const delta = this.engagementDistance(e, o);if(delta>=best)continue;
+            const delta = this.engagementDistance(e, o);
             const candidateRange=this.engagementProfile(e,false,o);
             if (
               canHit(o) &&
               delta < candidateRange.attack &&
-              delta >= candidateRange.min &&
-              delta < best
+              delta >= candidateRange.min
             ) {
-              best = delta;
-              target = o;firingRange=candidateRange;
+              const score=root.WarFireAllocation.score(this,e,o,delta,searchRange,previous);
+              if(score<best){best=score;target=o;firingRange=candidateRange;}
             }
           }
         }
+        root.WarFireAllocation.assign(this,e,target);
         e.target = target?.id || null;
         range=firingRange.attack;minRange=firingRange.min;
         if (target) {

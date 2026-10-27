@@ -10,10 +10,13 @@
   const games=new WeakMap(),finite=Number.isFinite,clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
   function pending(game){let q=games.get(game);if(!q){q=new Map();games.set(game,q);}return q;}
   function profile(game,e,weapon){
-    const base=defaults[e.kind];if(!base)return null;
-    const f=game.teams[e.team]?.faction,config=game.options.weaponSalvos?.[e.kind]||{},p={...base,count:e.kind==='rocket'?counts[f]||6:8};
+    const f=game.teams[e.team]?.faction,w=weapon||root.WarVehicleWeapons?.list(e,f).find(w=>w.id===e.weaponId),unit=root.WarData.U[e.kind];
+    const navalMissile=unit?.naval&&w?.family==='missile'&&w.splash>0;
+    const airRocket=unit?.air&&!unit.space&&w?.family==='rocket';
+    const base=defaults[e.kind]||(navalMissile?{interval:.25,spreadX:0,spreadY:0,totalDamageMultiplier:1,reloadMultiplier:1,multiTargetOnly:true,guided:true}:airRocket?{interval:.12,spreadX:8,spreadY:6,totalDamageMultiplier:1,reloadMultiplier:1}:null);if(!base)return null;
+    const config=game.options.weaponSalvos?.[e.kind]||{},p={...base,count:e.kind==='rocket'?counts[f]||6:e.kind==='orbital_missile_barge'?8:4};
     for(const key of ['interval','spreadX','spreadY','totalDamageMultiplier','reloadMultiplier'])if(finite(config[key]))p[key]=clamp(config[key],key==='interval'?.05:key.includes('Multiplier')?.1:0,key==='interval'?1:key.includes('Multiplier')?5:200);
-    const w=weapon||root.WarVehicleWeapons?.list(e,f).find(w=>w.id===e.weaponId);if(w?.ammoType==='guided'){const scale=w.mechanics?.dispersion??.16;p.spreadX*=scale;p.spreadY*=scale;}
+    if(w?.ammoType==='guided'){const scale=w.mechanics?.dispersion??.16;p.spreadX*=scale;p.spreadY*=scale;}
     return p;
   }
   function cancel(game,e,reason='stop'){const q=games.get(game),id=typeof e==='object'?e.id:e;return q?.delete(id)||false;}
@@ -25,15 +28,36 @@
     const dz=projected?0:p.height-game.entityAltitude(e),dx=p.x-e.x,dy=p.y-e.y,dist=Math.hypot(dx,dy,dz);
     return dist>=range.min-1e-6&&dist<=range.attack+1e-6;
   }
-  function freezePoints(game,e,fx,p,range,projected){
+  function legalMount(game,e,weapon,point,origin){
+    if(weapon?.mount?.mode!=='hull')return true;
+    const state=root.WarCombatReadiness.status(game,e,weapon,null,{aimX:point.x,aimY:point.y,aimHeight:point.height,aimOrigin:origin,burstContinuation:true});
+    return !['arc','elevation','blocked'].includes(state.reason)&&state.aimError<=weapon.mount.tolerance+1e-7&&state.pitchError<=weapon.mount.pitchTolerance+1e-7;
+  }
+  function coverageCenters(game,e,target,fx,p,range,projected,weapon){
+    const center={x:fx.tx,y:fx.ty,height:fx.targetHeight,targetId:target?.id??null};
+    // Deliberate first-person aim remains a fixed area; no hidden auto-aim.
+    if(!target||game.directControl?.id===e.id||!game.spatial)return [center];
+    const radius=Math.min(240,Math.max(100,(fx.splash||0)*2.5)),domain=game.targetDomain(target.kind);
+    const candidates=game.spatial.query(center.x,center.y,radius).filter(t=>{
+      if(t.id===target.id||t.hp<=0||!game.isEnemy(e.team,t.team)||!game.canDetect(e.team,t)||!game.entityVisible(e.team,t))return false;
+      const td=game.targetDomain(t.kind),personnel=(root.WarData.U[t.kind]?.modelKind||t.kind)==='infantry';
+      if(['air','space','underwater'].includes(domain)?td!==domain:['air','space','underwater'].includes(td))return false;
+      if(weapon&&!root.WarVehicleWeapons.canTarget(weapon,td,{personnel}))return false;
+      if(Math.hypot(t.x-center.x,t.y-center.y)>radius)return false;
+      const point={x:t.x,y:t.y,height:game.entityAltitude(t)};
+      return legalPoint(game,e,point,range,projected)&&legalMount(game,e,weapon,point);
+    }).sort((a,b)=>Math.hypot(a.x-center.x,a.y-center.y)-Math.hypot(b.x-center.x,b.y-center.y)||a.id-b.id);
+    return [center,...candidates.slice(0,p.count-1).map(t=>({x:t.x,y:t.y,height:game.entityAltitude(t),targetId:t.id}))];
+  }
+  function freezePoints(game,e,fx,p,range,projected,centers){
   const {W,H,T,COLS,ROWS}=root.WarMapDimensions?.forMap(game.map)||root.WarData;
     const angle=((e.id*2.399963229728653+game.time*.73)%(Math.PI*2)),c=Math.cos(angle),s=Math.sin(angle),points=[];
     for(let i=0;i<p.count;i++){
-      const r=i?Math.sqrt(i/(p.count-1)):0,a=i*2.399963229728653,dx=Math.cos(a)*r*p.spreadX,dy=Math.sin(a)*r*p.spreadY;
-      let x=fx.tx+dx*c-dy*s,y=fx.ty+dx*s+dy*c;
-      const dz=projected?0:fx.targetHeight-game.entityAltitude(e),maximum=Math.sqrt(Math.max(0,range.attack**2-dz**2)),minimum=Math.sqrt(Math.max(0,range.min**2-dz**2)),length=Math.hypot(x-e.x,y-e.y),distance=clamp(length,minimum,maximum),heading=length?Math.atan2(y-e.y,x-e.x):(e.angle||0);
+      const center=centers[i%centers.length],r=i<centers.length?0:Math.sqrt(i/(p.count-1)),a=i*2.399963229728653,dx=Math.cos(a)*r*p.spreadX,dy=Math.sin(a)*r*p.spreadY;
+      let x=center.x+dx*c-dy*s,y=center.y+dx*s+dy*c;
+      const dz=projected?0:center.height-game.entityAltitude(e),maximum=Math.sqrt(Math.max(0,range.attack**2-dz**2)),minimum=Math.sqrt(Math.max(0,range.min**2-dz**2)),length=Math.hypot(x-e.x,y-e.y),distance=clamp(length,minimum,maximum),heading=length?Math.atan2(y-e.y,x-e.x):(e.angle||0);
       x=clamp(e.x+Math.cos(heading)*distance,0,W);y=clamp(e.y+Math.sin(heading)*distance,0,H);
-      const point={x,y,height:fx.targetHeight};if(!legalPoint(game,e,point,range,projected))return null;points.push(point);
+      const point={x,y,height:center.height,targetId:center.targetId};if(!legalPoint(game,e,point,range,projected))return null;points.push(point);
     }
     return points;
   }
@@ -47,14 +71,16 @@
   function launch(game,b,index){
     const e=game.get(b.id),point=b.points[index];if(!e||!legalPoint(game,e,point,b.range,b.projected))return false;
     const R=root.WarCombatReadiness,station=R?.ensure(game,e)?.stations?.[b.weapon?.id],portIndex=station?.nextPort??index;
-    if(R&&!R.consumeRound(game,e,b.weapon,{deferCooldown:true}))return false;
     const input=game.directControl?.id===e.id?game.directControl.input:null;
     const live=input?.aimOrigins?.[portIndex],single=input?.aimOrigin;
     // Keep the snapshot offset if the caller has no verified per-port origin.
     // Do not invent spacing from alleged real weapon dimensions.
     const resolved=game.resolveWeaponOrigin?.(e,b.weapon,portIndex),origin=validOrigin(live)?live:index===0&&validOrigin(single)?single:validOrigin(resolved)?resolved:worldOrigin(game,e,b.origins[portIndex]||b.origins[0]);
+    if(!legalMount(game,e,b.weapon,point,origin))return false;
+    if(R&&!R.consumeRound(game,e,b.weapon,{deferCooldown:true}))return false;
     const travel=Math.max(.08,Math.hypot(point.x-origin.x,point.y-origin.y,b.projected?0:point.height-origin.height)/(e.kind==='rocket'?400:700));
-    const fx={...b.template,x:origin.x,y:origin.y,sourceHeight:origin.height,tx:point.x,ty:point.y,targetHeight:point.height,
+    const fx={...b.template,x:origin.x,y:origin.y,sourceHeight:origin.height,tx:point.x,ty:point.y,targetHeight:point.height,target:point.targetId,
+      guidedSalvo:b.guided,mountId:b.weapon?.mountId,ammoType:b.weapon?.ammoType,
       firedAt:game.time,ttl:travel,max:travel,originFrozen:true,visualOrigin:[origin.x,origin.y,origin.height],salvoIndex:index,portIndex,shotSerial:station?.shotSerial,salvoCount:b.points.length,
       salvoRangeMin:b.range.min,salvoRangeOrigin:{x:e.x,y:e.y,height:game.entityAltitude(e)},salvoProjected:b.projected};
     // Each shot is a frozen area impact. Neither a target id nor the renderer
@@ -67,7 +93,8 @@
     const resolved=weapon&&game.weaponRangeProfile?.(e,weapon),range=resolved?{attack:resolved.range,min:resolved.min}:game.rangeProfile(e,false,target),projected=!!aim?.projected||(!!root.WarData.U[e.kind]?.space!==!!root.WarData.U[target?.kind]?.space&&!!target);
     // Aiming inside the blind zone must not be silently moved onto its edge.
     if(!legalPoint(game,e,{x:fx.tx,y:fx.ty,height:fx.targetHeight},range,projected))return false;
-    const points=freezePoints(game,e,fx,p,range,projected);
+    const centers=coverageCenters(game,e,target,fx,p,range,projected,weapon),points=freezePoints(game,e,fx,p,range,projected,centers);
+    if(p.multiTargetOnly&&centers.length<2)return false;
     // The normal fire-status checks reject out-of-range commands. Keep this
     // final guard for external callers without charging a failed launch.
     if(!points)return false;
@@ -76,7 +103,7 @@
       multiplier=p.totalDamageMultiplier/p.count,template={...fx,damage:fx.damage*multiplier,baseDamage:d.damage*multiplier,
         treeDamage:d.damage*multiplier,splash:d.splash||0,targetDomain:e.kind==='orbital_missile_barge'?'space':target?game.targetDomain(target.kind):'ground'};
     const b={id:e.id,team:e.team,controlled:game.directControl?.id===e.id,origins,points,range:{min:range.min,attack:range.attack},
-      projected,template,weapon,reload:d.reload*p.reloadMultiplier,next:1,interval:p.interval,due:game.time+p.interval};
+      projected,template,weapon,guided:!!p.guided,reload:d.reload*p.reloadMultiplier,next:1,interval:p.interval,due:game.time+p.interval};
     e.cool=d.reload*p.reloadMultiplier;pending(game).set(e.id,b);launch(game,b,0);return true;
   }
   function update(game){

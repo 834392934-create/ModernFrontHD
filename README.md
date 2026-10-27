@@ -1,4 +1,4 @@
-# 现代战线 HD · 3.16.0
+# 现代战线 HD · 3.17.0
 
 **从总指挥切换到第一人称，在同一场战斗中指挥部队、驾驶载具、上下车作战。**
 
@@ -54,11 +54,19 @@ npm start
 
 ## 启动
 
-双击 **启动独立版.cmd**，或 **启动游戏.cmd**。当前新版位于 `release/ModernFrontHD-3.16.0/ModernFrontHD.exe`，需保留整个同名目录；启动器优先新版，找不到时回退到原 `release/ModernFrontHD`。旧程序运行中可并列构建新版，正在进行的对局继续运行。默认全屏，F11切换全屏，Tab隐藏/恢复作战界面，无需另外安装 Node.js 或浏览器。
+双击 **启动独立版.cmd**，或 **启动游戏.cmd**。当前新版位于 `release/ModernFrontHD-3.17.0/ModernFrontHD.exe`，需保留整个同名目录；启动器优先新版，找不到时回退到原 `release/ModernFrontHD`。旧程序运行中可并列构建新版，正在进行的对局继续运行。默认全屏，F11切换全屏，Tab隐藏/恢复作战界面，无需另外安装 Node.js 或浏览器。
 
 独立窗口使用Electron + Three.js WebGL；不是Unreal/DirectX引擎重写。资源全部本地加载，不要求账号、服务器或联网AI。浏览器兼容入口保留为 `play.ps1` 或 `index.html`。
 
 `release/ModernFrontHD-portable.zip` 是浏览器兼容包，不含独立版运行时；本机优先使用上面的EXE目录。
+
+## 3.17.0 伤害、齐射与火力分配
+
+- 修复受伤人员错误保留 1 HP，以及弹体穿过倒地人员的问题；正常救援保留。
+- 原目标消失后，已发射弹药仍具有实际碰撞与杀伤力；鱼雷失去声呐也不会失去物理碰撞。
+- 火箭覆盖多个目标，导弹舰可对附近多个合法目标发起分配齐射；按发射数扣弹药，保留射程、射角和目标域限制。
+- 自动部队分散选敌并考虑在途火力；明确的玩家集火命令优先。自由瞄准的爆炸弹药保留范围伤害。
+- [操作、限制与回归验证](docs/COMBAT_317.md) · [虚幻引擎迁移评估（尚未接入）](docs/UNREAL_MIGRATION.md)
 
 ## 3.16.0 大规模交战、返航维修与友军攻击
 
@@ -151,7 +159,7 @@ npm start
 
 RTX 3060、3440×1440、128 名士兵的 8 秒固定场景：静止时平均 CPU 绘制提交从 6.17 降到 3.98 ms，半数行走时从 5.66 降到 4.11 ms；两版帧率均约 50 FPS。492 项 CPU 测试及本轮原生回归通过。范围和完整证据见 [验证记录](docs/VALIDATION.md)；不将短样本外推到大型长局。
 
-本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.16.0`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
+本版构建：`powershell -NoProfile -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.17.0`。原生测试自动选择当前版本目录，也可用 `MODERN_FRONT_EXE` 指定；设置 `MODERN_FRONT_TEST_PROFILE` 为独立目录，可隔离测试与玩家的存档、设置。
 
 ## 第一人称瞄准与单兵作战
 
@@ -372,7 +380,7 @@ Most equipment uses original procedural meshes. Russian T-90M, US Arleigh Burke,
 npm test
 # 首次构建独立版需要联网下载官方运行时：
 powershell -File tools/fetch-desktop-runtime.ps1
-powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.16.0
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.17.0
 node server.cjs
 # 第二终端；需要已有Playwright或设置PLAYWRIGHT_MODULE：
 node tests/gallery.cjs
@@ -392,7 +400,7 @@ node tests/performance3d.cjs --desktop
 node tools/capture-model-review.cjs tank_chn tank_usa
 node tools/bake-portraits.cjs
 node tools/export-model-inventory.cjs
-powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.16.0
+powershell -File build-desktop.ps1 -OutputDirectory release/ModernFrontHD-3.17.0
 ```
 
 游戏运行不需要开发工具。报告见 [验证记录](docs/VALIDATION.md)，真实截图在 `screenshots/`。

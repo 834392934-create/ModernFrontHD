@@ -45,9 +45,9 @@ test('guidance has finite speed and three-dimensional turning and keeps pause/sa
  }
  assert(c.target.hp<c.target.maxHp);
 });
-test('losing a lock coasts along its current heading and expires without circling the old point',()=>{
+test('losing a lock coasts along its current heading until physical lifetime without circling the old point',()=>{
  const c=launch({gap:650}),{g,fx,target}=c;for(let i=0;i<16;i++)g.step(.05);target.hp=0;g.step(.05);const p=fx.projectile,heading=p.heading,pitch=p.pitch,start=p.age;
- assert.equal(p.phase,'coast');assert.equal(p.lockId,null);assert.equal(fx.target,null);trace(c);assert.equal(p.heading,heading);assert.equal(p.pitch,pitch);assert(p.age-start<=1.6);assert.equal(fx.damage,0);
+ assert.equal(p.phase,'coast');assert.equal(p.lockId,null);assert.equal(fx.target,null);trace(c);assert.equal(p.heading,heading);assert.equal(p.pitch,pitch);assert(p.age-start>1.6);assert(p.age<=p.maxAge+.051);assert.equal(fx.damage,0);
 });
 test('guided ground crossing clips the actual segment at the surface rather than flying underground',()=>{
  const c=launch({kind:'fighter',station:'agm',height:65,gap:220}),{g,fx,target}=c,p=fx.projectile;
